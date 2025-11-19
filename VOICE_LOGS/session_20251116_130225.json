@@ -33116,16 +33116,115 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T09:39:20.208371",
+      "type": "stt",
+      "data": {
+        "text": "we're going to get graded on how",
+        "chars": 32,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:39:28.313309",
+      "type": "stt",
+      "data": {
+        "text": "we have to just smile at each",
+        "chars": 29,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:39:32.473482",
+      "type": "stt",
+      "data": {
+        "text": "not stomp them into the dirt",
+        "chars": 28,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:39:37.609886",
+      "type": "stt",
+      "data": {
+        "text": "cut them down at the legs and then let them down softly",
+        "chars": 55,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:39:42.585429",
+      "type": "stt",
+      "data": {
+        "text": "that's the funny part",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:40:37.134559",
+      "type": "stt",
+      "data": {
+        "text": "can you pull up testosterone",
+        "chars": 28,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:41:36.113145",
+      "type": "stt",
+      "data": {
+        "text": "fully loaded with all the good",
+        "chars": 30,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:42:50.392420",
+      "type": "stt",
+      "data": {
+        "text": "s24 tablet",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:42:59.981439",
+      "type": "stt",
+      "data": {
+        "text": "bitches going to get the z3 niger",
+        "chars": 33,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 113,
-    "stt_events": 2548,
+    "stt_events": 2557,
     "commands_processed": 39,
     "errors": 399,
     "total_chars_spoken": 7430,
-    "total_chars_heard": 85330,
+    "total_chars_heard": 85596,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T09:38:35.687563"
+  "last_updated": "2025-11-19T09:42:59.981453"
 }
