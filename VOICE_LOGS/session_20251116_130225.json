@@ -30635,16 +30635,27 @@
         "message": "[WinError 10053] An established connection was aborted by the software in your host machine",
         "details": null
       }
+    },
+    {
+      "timestamp": "2025-11-19T05:17:07.222816",
+      "type": "stt",
+      "data": {
+        "text": "do you know actually know of a secret reset",
+        "chars": 43,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 105,
-    "stt_events": 2333,
+    "stt_events": 2334,
     "commands_processed": 37,
     "errors": 397,
     "total_chars_spoken": 7004,
-    "total_chars_heard": 78481,
+    "total_chars_heard": 78524,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T05:09:15.910258"
+  "last_updated": "2025-11-19T05:17:07.222849"
 }
