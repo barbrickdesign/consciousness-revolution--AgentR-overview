@@ -33380,16 +33380,159 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T09:48:50.992841",
+      "type": "stt",
+      "data": {
+        "text": "the bowl is so big it",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:49:38.222822",
+      "type": "stt",
+      "data": {
+        "text": "it looks like it would have been passed around like a ritual",
+        "chars": 60,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:51:08.247703",
+      "type": "stt",
+      "data": {
+        "text": "in maggie's name amen",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:51:38.495563",
+      "type": "stt",
+      "data": {
+        "text": "maybe heavy d showed us",
+        "chars": 23,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:52:08.021813",
+      "type": "stt",
+      "data": {
+        "text": "hey before i proceed much further",
+        "chars": 33,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:52:44.814944",
+      "type": "stt",
+      "data": {
+        "text": "i think you have to clone it and work on it locally and then push the changes",
+        "chars": 77,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:52:49.743179",
+      "type": "stt",
+      "data": {
+        "text": "he needs some map out the whole thing and download all the shit",
+        "chars": 63,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:53:06.859349",
+      "type": "stt",
+      "data": {
+        "text": "get his screenshot function going",
+        "chars": 33,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:53:12.003066",
+      "type": "stt",
+      "data": {
+        "text": "python pillow",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:53:19.398275",
+      "type": "stt",
+      "data": {
+        "text": "gooey",
+        "chars": 5,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:53:25.774966",
+      "type": "stt",
+      "data": {
+        "text": "just tell him that",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:53:45.791974",
+      "type": "stt",
+      "data": {
+        "text": "he'll have to download python",
+        "chars": 29,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T09:53:52.695520",
+      "type": "stt",
+      "data": {
+        "text": "start copying the files out of the",
+        "chars": 34,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 113,
-    "stt_events": 2572,
+    "stt_events": 2585,
     "commands_processed": 39,
     "errors": 399,
     "total_chars_spoken": 7430,
-    "total_chars_heard": 85982,
+    "total_chars_heard": 86412,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T09:48:44.583094"
+  "last_updated": "2025-11-19T09:53:52.695536"
 }
