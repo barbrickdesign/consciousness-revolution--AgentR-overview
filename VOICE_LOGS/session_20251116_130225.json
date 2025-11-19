@@ -32435,16 +32435,126 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T08:53:40.715402",
+      "type": "stt",
+      "data": {
+        "text": "will it rain in exist",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T08:53:54.865241",
+      "type": "stt",
+      "data": {
+        "text": "algorithm",
+        "chars": 9,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T08:55:56.359624",
+      "type": "stt",
+      "data": {
+        "text": "clothes in my central",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T08:56:17.131496",
+      "type": "stt",
+      "data": {
+        "text": "what is the cost for creation in the war of a turbo that questions limits the real",
+        "chars": 82,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T08:56:33.859098",
+      "type": "stt",
+      "data": {
+        "text": "ocean city is understanding of true creation always",
+        "chars": 51,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T08:56:55.574206",
+      "type": "stt",
+      "data": {
+        "text": "what happens",
+        "chars": 12,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T08:57:14.392032",
+      "type": "stt",
+      "data": {
+        "text": "but how will you know",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T08:57:20.096958",
+      "type": "stt",
+      "data": {
+        "text": "if they cannot be measured",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T08:57:41.218013",
+      "type": "stt",
+      "data": {
+        "text": "verizon store",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T08:57:59.317526",
+      "type": "stt",
+      "data": {
+        "text": "side by",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 107,
-    "stt_events": 2494,
+    "stt_events": 2504,
     "commands_processed": 37,
     "errors": 398,
     "total_chars_spoken": 7053,
-    "total_chars_heard": 83368,
+    "total_chars_heard": 83631,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T08:53:12.486324"
+  "last_updated": "2025-11-19T08:57:59.317543"
 }
