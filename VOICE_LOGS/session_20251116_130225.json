@@ -29413,16 +29413,258 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-18T21:08:39.809448",
+      "type": "stt",
+      "data": {
+        "text": "anyways we're not doing the",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:09:25.997609",
+      "type": "stt",
+      "data": {
+        "text": "i've been running i have been having both of my trinity",
+        "chars": 55,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:09:31.347216",
+      "type": "stt",
+      "data": {
+        "text": "they've done a lot of work",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:09:41.415131",
+      "type": "stt",
+      "data": {
+        "text": "okay so",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:10:00.588267",
+      "type": "stt",
+      "data": {
+        "text": "do you have your terminal window open",
+        "chars": 37,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:10:09.108620",
+      "type": "stt",
+      "data": {
+        "text": "any buttons",
+        "chars": 11,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:10:21.925698",
+      "type": "stt",
+      "data": {
+        "text": "it'll just start fixing to",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:10:28.120451",
+      "type": "stt",
+      "data": {
+        "text": "you can go through and fix the details of the cycle turns truly",
+        "chars": 63,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:10:34.148672",
+      "type": "stt",
+      "data": {
+        "text": "you should ask it how how are we going to test the speed",
+        "chars": 56,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:10:37.643388",
+      "type": "stt",
+      "data": {
+        "text": "it's improving",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:10:42.020823",
+      "type": "stt",
+      "data": {
+        "text": "learning praat",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:10:53.535483",
+      "type": "stt",
+      "data": {
+        "text": "you got to ask it are these placeholder",
+        "chars": 39,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:11:08.626693",
+      "type": "stt",
+      "data": {
+        "text": "realize",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:11:58.052265",
+      "type": "stt",
+      "data": {
+        "text": "i'm on a dashboard",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:12:03.455420",
+      "type": "stt",
+      "data": {
+        "text": "revolution",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:12:06.801390",
+      "type": "stt",
+      "data": {
+        "text": "i'm on the website",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:12:12.233278",
+      "type": "stt",
+      "data": {
+        "text": "is it already",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:12:18.488588",
+      "type": "stt",
+      "data": {
+        "text": "suppress refresh",
+        "chars": 16,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:12:31.902920",
+      "type": "stt",
+      "data": {
+        "text": "the autonomous cyclotron buttons",
+        "chars": 32,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:12:42.058461",
+      "type": "stt",
+      "data": {
+        "text": "it says checking 301 know",
+        "chars": 25,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:13:00.163999",
+      "type": "stt",
+      "data": {
+        "text": "so we just got to start so you have a window open",
+        "chars": 49,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T21:13:08.367707",
+      "type": "stt",
+      "data": {
+        "text": "here i have it's listening to me right now",
+        "chars": 42,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 105,
-    "stt_events": 2244,
+    "stt_events": 2266,
     "commands_processed": 37,
     "errors": 370,
     "total_chars_spoken": 7004,
-    "total_chars_heard": 75429,
+    "total_chars_heard": 76034,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-18T21:05:03.165592"
+  "last_updated": "2025-11-18T21:13:08.367718"
 }
