@@ -33662,16 +33662,144 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T10:10:18.931277",
+      "type": "stt",
+      "data": {
+        "text": "ask claude",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:10:18.964233",
+      "type": "tts",
+      "data": {
+        "text": "Yes Commander?",
+        "chars": 14,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:10:29.696200",
+      "type": "error",
+      "data": {
+        "error_type": "stt",
+        "message": "Timeout waiting for command",
+        "details": null
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:10:29.724266",
+      "type": "tts",
+      "data": {
+        "text": "I didn't hear a command. Try again.",
+        "chars": 35,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:11:28.593485",
+      "type": "stt",
+      "data": {
+        "text": "but let's not lose track",
+        "chars": 24,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:11:36.032673",
+      "type": "stt",
+      "data": {
+        "text": "establish communications",
+        "chars": 24,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:12:07.154423",
+      "type": "stt",
+      "data": {
+        "text": "hilariously",
+        "chars": 11,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:12:42.907216",
+      "type": "stt",
+      "data": {
+        "text": "and i'll send you a link right now",
+        "chars": 34,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:13:02.736758",
+      "type": "stt",
+      "data": {
+        "text": "they all go through",
+        "chars": 19,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:13:31.027463",
+      "type": "stt",
+      "data": {
+        "text": "31827 east highway",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:13:42.329017",
+      "type": "stt",
+      "data": {
+        "text": "sandpoint idaho 838",
+        "chars": 19,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:13:59.204262",
+      "type": "stt",
+      "data": {
+        "text": "31827 east highway",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
-    "tts_events": 115,
-    "stt_events": 2595,
+    "tts_events": 117,
+    "stt_events": 2604,
     "commands_processed": 39,
-    "errors": 400,
-    "total_chars_spoken": 7479,
-    "total_chars_heard": 86608,
+    "errors": 401,
+    "total_chars_spoken": 7528,
+    "total_chars_heard": 86785,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T10:08:21.046660"
+  "last_updated": "2025-11-19T10:13:59.204273"
 }
