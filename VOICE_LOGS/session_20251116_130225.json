@@ -33900,16 +33900,71 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T10:34:37.509272",
+      "type": "stt",
+      "data": {
+        "text": "instead of focusing on yourself you",
+        "chars": 35,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:35:13.533854",
+      "type": "stt",
+      "data": {
+        "text": "andrew is so retarded",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:35:45.058274",
+      "type": "stt",
+      "data": {
+        "text": "turn it all the way down",
+        "chars": 24,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:36:41.447301",
+      "type": "stt",
+      "data": {
+        "text": "i'm worried about the best app for video call",
+        "chars": 45,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T10:37:57.776086",
+      "type": "stt",
+      "data": {
+        "text": "where are we going to be using this for a week",
+        "chars": 46,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 117,
-    "stt_events": 2614,
+    "stt_events": 2619,
     "commands_processed": 39,
     "errors": 401,
     "total_chars_spoken": 7528,
-    "total_chars_heard": 87089,
+    "total_chars_heard": 87260,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T10:33:59.878494"
+  "last_updated": "2025-11-19T10:37:57.776099"
 }
