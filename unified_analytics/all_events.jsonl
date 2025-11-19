@@ -1,0 +1,1 @@
+{"timestamp": "2025-11-06T16:49:25.866478", "session_id": "9911ac6f5631adf4", "event_type": "page_view", "page": "/test", "data": {"page": "/test", "user_name": "C1_Mechanic", "test": true, "timestamp": "$(date -Iseconds)", "ip": "127.0.0.1", "user_agent": "curl/8.15.0"}}

@@ -1,0 +1,21 @@
+
+> philosopher-ai-backend@1.0.0 test:sqlite
+> node server-sqlite.js
+
+🔍 Debug: ANTHROPIC_API_KEY length: 108
+🔍 Debug: ANTHROPIC_API_KEY starts with: sk-ant-api
+⚠️  WARNING: Stripe not initialized - set STRIPE_SECRET_KEY in .env
+✅ SQLite database initialized
+
+================================================
+🌀 PHILOSOPHER AI BACKEND (SQLite Test) - READY
+================================================
+Server running on port 3001
+Environment: development
+API URL: http://localhost:3001
+Version: 1.0.0 (SQLite Test)
+================================================
+✅ Database: SQLite (no PostgreSQL needed)
+✅ Ready for testing!
+================================================
+

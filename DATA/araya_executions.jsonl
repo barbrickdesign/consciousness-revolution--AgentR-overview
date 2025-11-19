@@ -1,0 +1,2 @@
+{"timestamp": "2025-11-08T08:21:33.159589", "user_id": "test_user", "type": "python", "code": "\nx = 5\ny = 10\nresult = x + y\nprint(f\"Result: {result}\")\n", "success": true, "error": null, "output_preview": "Result: 15\n"}
+{"timestamp": "2025-11-08T08:21:33.183352", "user_id": "test_user", "type": "bash", "code": "echo \"Hello from Araya!\"", "success": true, "error": null, "output_preview": "\"Hello from Araya!\"\n"}

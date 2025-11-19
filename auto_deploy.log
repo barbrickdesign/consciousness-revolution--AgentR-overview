@@ -1,0 +1,95 @@
+[2025-11-18 20:00:49] ============================================================
+[2025-11-18 20:00:49] 🤖 AUTO DEPLOY WATCHER STARTED
+[2025-11-18 20:00:49] ============================================================
+[2025-11-18 20:00:49] Watching: C:\Users\dwrek\100X_DEPLOYMENT
+[2025-11-18 20:00:49] Checking for changes every 5 minutes...
+[2025-11-18 20:00:49] Press Ctrl+C to stop
+[2025-11-18 20:00:49] ============================================================
+[2025-11-18 20:00:49] 
+--- Cycle #1 ---
+[2025-11-18 20:00:49] 🔄 Changes detected!
+[2025-11-18 20:00:49] 📝 Changes detected. Committing...
+[2025-11-18 20:00:52] ❌ Git push failed: To https://github.com/overkillkulture/consciousness-revolution.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/overkillkulture/consciousness-revolution.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. If you want to integrate the remote changes, use 'git pull'
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+[2025-11-18 20:00:52] ❌ FAILED: Could not commit/push changes
+[2025-11-18 20:00:52] ⏰ Sleeping for 5 minutes...
+[2025-11-18 20:05:52] 
+--- Cycle #2 ---
+[2025-11-18 20:05:53] 🔄 Changes detected!
+[2025-11-18 20:05:53] 📝 Changes detected. Committing...
+[2025-11-18 20:05:55] ❌ Git push failed: To https://github.com/overkillkulture/consciousness-revolution.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/overkillkulture/consciousness-revolution.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. If you want to integrate the remote changes, use 'git pull'
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+[2025-11-18 20:05:55] ❌ FAILED: Could not commit/push changes
+[2025-11-18 20:05:55] ⏰ Sleeping for 5 minutes...
+[2025-11-18 20:10:55] 
+--- Cycle #3 ---
+[2025-11-18 20:10:55] 🔄 Changes detected!
+[2025-11-18 20:10:55] 📝 Changes detected. Committing...
+[2025-11-18 20:10:58] ❌ Git push failed: To https://github.com/overkillkulture/consciousness-revolution.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/overkillkulture/consciousness-revolution.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. If you want to integrate the remote changes, use 'git pull'
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+[2025-11-18 20:10:58] ❌ FAILED: Could not commit/push changes
+[2025-11-18 20:10:58] ⏰ Sleeping for 5 minutes...
+[2025-11-18 20:15:58] 
+--- Cycle #4 ---
+[2025-11-18 20:15:58] 🔄 Changes detected!
+[2025-11-18 20:15:58] 📝 Changes detected. Committing...
+[2025-11-18 20:16:00] ❌ Git push failed: To https://github.com/overkillkulture/consciousness-revolution.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/overkillkulture/consciousness-revolution.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. If you want to integrate the remote changes, use 'git pull'
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+[2025-11-18 20:16:00] ❌ FAILED: Could not commit/push changes
+[2025-11-18 20:16:00] ⏰ Sleeping for 5 minutes...
+[2025-11-18 20:21:00] 
+--- Cycle #5 ---
+[2025-11-18 20:21:01] 🔄 Changes detected!
+[2025-11-18 20:21:01] 📝 Changes detected. Committing...
+[2025-11-18 20:21:06] ❌ Git push failed: To https://github.com/overkillkulture/consciousness-revolution.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/overkillkulture/consciousness-revolution.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. If you want to integrate the remote changes, use 'git pull'
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+[2025-11-18 20:21:06] ❌ FAILED: Could not commit/push changes
+[2025-11-18 20:21:06] ⏰ Sleeping for 5 minutes...
+[2025-11-18 20:26:06] 
+--- Cycle #6 ---
+[2025-11-18 20:26:07] 🔄 Changes detected!
+[2025-11-18 20:26:07] 📝 Changes detected. Committing...
+[2025-11-18 20:26:09] ❌ Git push failed: To https://github.com/overkillkulture/consciousness-revolution.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/overkillkulture/consciousness-revolution.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. If you want to integrate the remote changes, use 'git pull'
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+[2025-11-18 20:26:09] ❌ FAILED: Could not commit/push changes
+[2025-11-18 20:26:09] ⏰ Sleeping for 5 minutes...
+[2025-11-18 20:31:09] 
+--- Cycle #7 ---
+[2025-11-18 20:31:09] 🔄 Changes detected!
+[2025-11-18 20:31:09] 📝 Changes detected. Committing...
