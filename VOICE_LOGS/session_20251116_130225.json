@@ -29248,16 +29248,38 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-18T20:31:22.754040",
+      "type": "stt",
+      "data": {
+        "text": "at work",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-18T20:31:58.690447",
+      "type": "stt",
+      "data": {
+        "text": "call pancake johnson you better shut up",
+        "chars": 39,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 105,
-    "stt_events": 2229,
+    "stt_events": 2231,
     "commands_processed": 37,
     "errors": 370,
     "total_chars_spoken": 7004,
-    "total_chars_heard": 74994,
+    "total_chars_heard": 75040,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-18T20:29:44.871530"
+  "last_updated": "2025-11-18T20:31:58.690465"
 }
