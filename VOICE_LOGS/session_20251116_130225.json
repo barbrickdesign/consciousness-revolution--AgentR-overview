@@ -36749,16 +36749,291 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T20:46:23.992827",
+      "type": "stt",
+      "data": {
+        "text": "identification",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:46:31.103827",
+      "type": "stt",
+      "data": {
+        "text": "pull up new device",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:46:36.793181",
+      "type": "stt",
+      "data": {
+        "text": "this is my",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:46:57.590439",
+      "type": "stt",
+      "data": {
+        "text": "too",
+        "chars": 3,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:47:19.764446",
+      "type": "stt",
+      "data": {
+        "text": "be careful",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:47:55.080683",
+      "type": "stt",
+      "data": {
+        "text": "64 identification",
+        "chars": 17,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:48:03.844926",
+      "type": "stt",
+      "data": {
+        "text": "device identification so i think maybe we should",
+        "chars": 48,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:48:17.771066",
+      "type": "stt",
+      "data": {
+        "text": "okay here is my",
+        "chars": 15,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:48:29.809906",
+      "type": "stt",
+      "data": {
+        "text": "d w r e k s",
+        "chars": 11,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:48:34.151814",
+      "type": "stt",
+      "data": {
+        "text": "this is for",
+        "chars": 11,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:48:40.742335",
+      "type": "stt",
+      "data": {
+        "text": "okay let's get",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:48:43.450266",
+      "type": "stt",
+      "data": {
+        "text": "pi",
+        "chars": 2,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:48:50.113544",
+      "type": "stt",
+      "data": {
+        "text": "go to settings",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:48:59.557647",
+      "type": "stt",
+      "data": {
+        "text": "so did you just copy",
+        "chars": 20,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:49:05.497358",
+      "type": "stt",
+      "data": {
+        "text": "connections",
+        "chars": 11,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:49:12.143449",
+      "type": "stt",
+      "data": {
+        "text": "did you put will you put both of these",
+        "chars": 38,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:49:22.350487",
+      "type": "stt",
+      "data": {
+        "text": "credentials",
+        "chars": 11,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:49:26.963972",
+      "type": "stt",
+      "data": {
+        "text": "i need to ask the second one is the api",
+        "chars": 39,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:49:45.008916",
+      "type": "stt",
+      "data": {
+        "text": "a password manager that actually you can",
+        "chars": 40,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:50:19.082238",
+      "type": "stt",
+      "data": {
+        "text": "also says not to share your",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:50:45.694291",
+      "type": "stt",
+      "data": {
+        "text": "sink thing device id",
+        "chars": 20,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:50:48.612078",
+      "type": "stt",
+      "data": {
+        "text": "looks like we're doing right now",
+        "chars": 32,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:50:56.513280",
+      "type": "stt",
+      "data": {
+        "text": "okay so go to",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:51:06.498685",
+      "type": "stt",
+      "data": {
+        "text": "insync thing web ui go to show id",
+        "chars": 33,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:51:11.394472",
+      "type": "stt",
+      "data": {
+        "text": "this computer wants that",
+        "chars": 24,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 117,
-    "stt_events": 2873,
+    "stt_events": 2898,
     "commands_processed": 39,
     "errors": 401,
     "total_chars_spoken": 7528,
-    "total_chars_heard": 94990,
+    "total_chars_heard": 95485,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T20:46:15.646403"
+  "last_updated": "2025-11-19T20:51:11.394483"
 }

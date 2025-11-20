@@ -1312,3 +1312,53 @@
 
 [2025-11-19 20:46:15] [COMMANDER] obd original same thing look it's actually detecting
 
+[2025-11-19 20:46:24] [COMMANDER] identification
+
+[2025-11-19 20:46:31] [COMMANDER] pull up new device
+
+[2025-11-19 20:46:36] [COMMANDER] this is my
+
+[2025-11-19 20:46:57] [COMMANDER] too
+
+[2025-11-19 20:47:19] [COMMANDER] be careful
+
+[2025-11-19 20:47:55] [COMMANDER] 64 identification
+
+[2025-11-19 20:48:03] [COMMANDER] device identification so i think maybe we should
+
+[2025-11-19 20:48:17] [COMMANDER] okay here is my
+
+[2025-11-19 20:48:29] [COMMANDER] d w r e k s
+
+[2025-11-19 20:48:34] [COMMANDER] this is for
+
+[2025-11-19 20:48:40] [COMMANDER] okay let's get
+
+[2025-11-19 20:48:43] [COMMANDER] pi
+
+[2025-11-19 20:48:50] [COMMANDER] go to settings
+
+[2025-11-19 20:48:59] [COMMANDER] so did you just copy
+
+[2025-11-19 20:49:05] [COMMANDER] connections
+
+[2025-11-19 20:49:12] [COMMANDER] did you put will you put both of these
+
+[2025-11-19 20:49:22] [COMMANDER] credentials
+
+[2025-11-19 20:49:27] [COMMANDER] i need to ask the second one is the api
+
+[2025-11-19 20:49:45] [COMMANDER] a password manager that actually you can
+
+[2025-11-19 20:50:19] [COMMANDER] also says not to share your
+
+[2025-11-19 20:50:45] [COMMANDER] sink thing device id
+
+[2025-11-19 20:50:48] [COMMANDER] looks like we're doing right now
+
+[2025-11-19 20:50:56] [COMMANDER] okay so go to
+
+[2025-11-19 20:51:06] [COMMANDER] insync thing web ui go to show id
+
+[2025-11-19 20:51:11] [COMMANDER] this computer wants that
+
