@@ -38857,16 +38857,291 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T21:26:54.312509",
+      "type": "stt",
+      "data": {
+        "text": "okay we",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:27:00.252874",
+      "type": "stt",
+      "data": {
+        "text": "made a new folder let's try to communicate again",
+        "chars": 48,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:27:07.141921",
+      "type": "stt",
+      "data": {
+        "text": "okay why you back in there cuz",
+        "chars": 30,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:27:39.044870",
+      "type": "stt",
+      "data": {
+        "text": "control",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:27:47.521193",
+      "type": "stt",
+      "data": {
+        "text": "control me right there",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:27:53.898880",
+      "type": "stt",
+      "data": {
+        "text": "okay so we got two",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:28:02.329668",
+      "type": "stt",
+      "data": {
+        "text": "okay it looks like",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:28:15.761187",
+      "type": "stt",
+      "data": {
+        "text": "i'm going to delete",
+        "chars": 19,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:28:30.417309",
+      "type": "stt",
+      "data": {
+        "text": "okay will you send",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:28:36.633758",
+      "type": "stt",
+      "data": {
+        "text": "looks like we have two let's just use the new one",
+        "chars": 49,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:28:44.837720",
+      "type": "stt",
+      "data": {
+        "text": "can you check response",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:28:53.605564",
+      "type": "stt",
+      "data": {
+        "text": "we just got to delete we got to delete one i'm going to delete the jetpack",
+        "chars": 74,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:29:00.046108",
+      "type": "stt",
+      "data": {
+        "text": "just keep keep the other one",
+        "chars": 28,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:29:03.875891",
+      "type": "stt",
+      "data": {
+        "text": "okay how do we",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:29:07.547777",
+      "type": "stt",
+      "data": {
+        "text": "sync",
+        "chars": 4,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:29:24.769100",
+      "type": "stt",
+      "data": {
+        "text": "so we need to check the folders now",
+        "chars": 35,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:29:31.855820",
+      "type": "stt",
+      "data": {
+        "text": "palms",
+        "chars": 5,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:29:47.320140",
+      "type": "stt",
+      "data": {
+        "text": "can we respond on this",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:30:09.428939",
+      "type": "stt",
+      "data": {
+        "text": "how long to the sink thing file",
+        "chars": 31,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:30:53.938657",
+      "type": "stt",
+      "data": {
+        "text": "so what i'm trying to do is ask it is how basically we can get",
+        "chars": 62,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:30:57.056574",
+      "type": "stt",
+      "data": {
+        "text": "through each other",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:31:07.312141",
+      "type": "stt",
+      "data": {
+        "text": "i need the computers to talk and wear an inch away we don't",
+        "chars": 59,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:31:26.057616",
+      "type": "stt",
+      "data": {
+        "text": "response immediately",
+        "chars": 20,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:31:34.727412",
+      "type": "stt",
+      "data": {
+        "text": "the first way",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:31:37.789184",
+      "type": "stt",
+      "data": {
+        "text": "if he has responded",
+        "chars": 19,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 119,
-    "stt_events": 3062,
+    "stt_events": 3087,
     "commands_processed": 39,
     "errors": 402,
     "total_chars_spoken": 7577,
-    "total_chars_heard": 99508,
+    "total_chars_heard": 100170,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T21:26:39.608319"
+  "last_updated": "2025-11-19T21:31:37.789196"
 }
