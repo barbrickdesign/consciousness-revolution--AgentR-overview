@@ -35506,16 +35506,148 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T20:11:05.894514",
+      "type": "stt",
+      "data": {
+        "text": "i could probably share",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:11:12.074353",
+      "type": "stt",
+      "data": {
+        "text": "file to your drop",
+        "chars": 17,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:11:17.195793",
+      "type": "stt",
+      "data": {
+        "text": "let's download the screen",
+        "chars": 25,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:11:27.118945",
+      "type": "stt",
+      "data": {
+        "text": "hey so dropbox is not send",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:11:33.218321",
+      "type": "stt",
+      "data": {
+        "text": "maybe we need to download the computer",
+        "chars": 38,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:13:13.542960",
+      "type": "stt",
+      "data": {
+        "text": "what do we think the best",
+        "chars": 25,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:14:21.145660",
+      "type": "stt",
+      "data": {
+        "text": "we're going to go to",
+        "chars": 20,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:14:25.279619",
+      "type": "stt",
+      "data": {
+        "text": "backslash downloads",
+        "chars": 19,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:14:43.324142",
+      "type": "stt",
+      "data": {
+        "text": "what do you think about an",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:14:55.871640",
+      "type": "stt",
+      "data": {
+        "text": "the version of you below is saying",
+        "chars": 34,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:15:49.561650",
+      "type": "stt",
+      "data": {
+        "text": "i'm trying to do number two right",
+        "chars": 33,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:15:56.200526",
+      "type": "stt",
+      "data": {
+        "text": "i was just saying the version of you below is saying that we should do",
+        "chars": 70,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 117,
-    "stt_events": 2760,
+    "stt_events": 2772,
     "commands_processed": 39,
     "errors": 401,
     "total_chars_spoken": 7528,
-    "total_chars_heard": 91618,
+    "total_chars_heard": 91973,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T20:10:35.107529"
+  "last_updated": "2025-11-19T20:15:56.200538"
 }
