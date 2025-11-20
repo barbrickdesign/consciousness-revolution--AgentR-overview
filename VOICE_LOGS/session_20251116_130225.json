@@ -37024,16 +37024,335 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T20:51:30.838846",
+      "type": "stt",
+      "data": {
+        "text": "2 w",
+        "chars": 3,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:51:37.800305",
+      "type": "stt",
+      "data": {
+        "text": "is the identification",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:51:40.880197",
+      "type": "stt",
+      "data": {
+        "text": "see that's not",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:51:47.642307",
+      "type": "stt",
+      "data": {
+        "text": "sing sing",
+        "chars": 9,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:51:55.080946",
+      "type": "stt",
+      "data": {
+        "text": "click on click on settings right there and see what kind of numbers",
+        "chars": 67,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:52:06.274907",
+      "type": "stt",
+      "data": {
+        "text": "free actions was the dui connection",
+        "chars": 35,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:52:31.497439",
+      "type": "stt",
+      "data": {
+        "text": "we haven't open here",
+        "chars": 20,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:52:39.461056",
+      "type": "stt",
+      "data": {
+        "text": "are we both have apis",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:52:42.770977",
+      "type": "stt",
+      "data": {
+        "text": "what are difference",
+        "chars": 19,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:52:48.202739",
+      "type": "stt",
+      "data": {
+        "text": "for safe keep",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:52:57.111173",
+      "type": "stt",
+      "data": {
+        "text": "what what other numbers do",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:53:00.201006",
+      "type": "stt",
+      "data": {
+        "text": "do we need",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:53:03.091609",
+      "type": "stt",
+      "data": {
+        "text": "sink",
+        "chars": 4,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:53:28.379989",
+      "type": "stt",
+      "data": {
+        "text": "we're connected",
+        "chars": 15,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:53:35.825750",
+      "type": "stt",
+      "data": {
+        "text": "a computer say they're",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:53:57.026864",
+      "type": "stt",
+      "data": {
+        "text": "add device",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:54:10.320990",
+      "type": "stt",
+      "data": {
+        "text": "okay",
+        "chars": 4,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:54:15.841191",
+      "type": "stt",
+      "data": {
+        "text": "whatsapp share a folder on either computer",
+        "chars": 42,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:54:46.516583",
+      "type": "stt",
+      "data": {
+        "text": "no",
+        "chars": 2,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:54:57.848652",
+      "type": "stt",
+      "data": {
+        "text": "edit folder defaults edit screen",
+        "chars": 32,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:55:02.574554",
+      "type": "stt",
+      "data": {
+        "text": "about",
+        "chars": 5,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:55:06.694650",
+      "type": "stt",
+      "data": {
+        "text": "when i want to",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:55:11.500830",
+      "type": "stt",
+      "data": {
+        "text": "sync things with other computers",
+        "chars": 32,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:55:16.314750",
+      "type": "stt",
+      "data": {
+        "text": "true connections",
+        "chars": 16,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:55:27.019034",
+      "type": "stt",
+      "data": {
+        "text": "okay i have edit folder default",
+        "chars": 31,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:55:32.360832",
+      "type": "stt",
+      "data": {
+        "text": "what is the spot will you take a screenshot",
+        "chars": 43,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:55:39.671175",
+      "type": "stt",
+      "data": {
+        "text": "oh wait it has a sharing section",
+        "chars": 32,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:55:50.573446",
+      "type": "stt",
+      "data": {
+        "text": "if untrust",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:56:14.183327",
+      "type": "stt",
+      "data": {
+        "text": "to sync your 100x platform",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 117,
-    "stt_events": 2898,
+    "stt_events": 2927,
     "commands_processed": 39,
     "errors": 401,
     "total_chars_spoken": 7528,
-    "total_chars_heard": 95485,
+    "total_chars_heard": 96083,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T20:51:11.394483"
+  "last_updated": "2025-11-19T20:56:14.183338"
 }
