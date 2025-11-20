@@ -43161,16 +43161,346 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T22:57:27.355984",
+      "type": "stt",
+      "data": {
+        "text": "does it need to sound agent",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:57:41.768461",
+      "type": "stt",
+      "data": {
+        "text": "do we need to get offline agents immediately should we find somewhere that actually has use",
+        "chars": 91,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:57:46.416044",
+      "type": "stt",
+      "data": {
+        "text": "jibber jabber",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:57:49.468168",
+      "type": "stt",
+      "data": {
+        "text": "what's on my computer somewhere",
+        "chars": 31,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:57:52.326230",
+      "type": "stt",
+      "data": {
+        "text": "did we lost our",
+        "chars": 15,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:58:07.385791",
+      "type": "stt",
+      "data": {
+        "text": "you're a fucking hilarious dude",
+        "chars": 31,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:58:35.663330",
+      "type": "stt",
+      "data": {
+        "text": "they call him 4.5 yeah",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:58:46.305714",
+      "type": "stt",
+      "data": {
+        "text": "it's going to take over the world",
+        "chars": 33,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:58:50.605768",
+      "type": "stt",
+      "data": {
+        "text": "watch it to still all",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:59:07.625975",
+      "type": "stt",
+      "data": {
+        "text": "information in my",
+        "chars": 17,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:59:36.211758",
+      "type": "stt",
+      "data": {
+        "text": "he's never been useful",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:59:39.734196",
+      "type": "stt",
+      "data": {
+        "text": "i mean",
+        "chars": 6,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:59:43.106664",
+      "type": "stt",
+      "data": {
+        "text": "okay so the whole idea is",
+        "chars": 25,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:59:48.256421",
+      "type": "stt",
+      "data": {
+        "text": "anything up and we can create an autonomous system",
+        "chars": 50,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:59:50.776997",
+      "type": "stt",
+      "data": {
+        "text": "how do we use",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:59:53.708401",
+      "type": "stt",
+      "data": {
+        "text": "because",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:59:59.155954",
+      "type": "stt",
+      "data": {
+        "text": "how do i get him to wake you up",
+        "chars": 31,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:00:09.434522",
+      "type": "stt",
+      "data": {
+        "text": "i think you guys need to be typing into each other's boxes",
+        "chars": 58,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:00:13.535967",
+      "type": "stt",
+      "data": {
+        "text": "when you're done you like tag the next day",
+        "chars": 42,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:00:45.768767",
+      "type": "stt",
+      "data": {
+        "text": "will you open up o l l",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:00:56.122481",
+      "type": "stt",
+      "data": {
+        "text": "and start looking at offline units to download for this laptop",
+        "chars": 62,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:00:58.724826",
+      "type": "stt",
+      "data": {
+        "text": "r1",
+        "chars": 2,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:01:20.608269",
+      "type": "stt",
+      "data": {
+        "text": "yeah let's make him super useful",
+        "chars": 32,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:01:29.807905",
+      "type": "stt",
+      "data": {
+        "text": "and then i need a c-3po",
+        "chars": 23,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:01:38.863232",
+      "type": "stt",
+      "data": {
+        "text": "will windows k is for cast",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:01:49.743236",
+      "type": "stt",
+      "data": {
+        "text": "cast cast your fucking screen on somewhere",
+        "chars": 42,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:01:52.809388",
+      "type": "stt",
+      "data": {
+        "text": "airplay",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:01:58.879354",
+      "type": "stt",
+      "data": {
+        "text": "what the fuck that's cool",
+        "chars": 25,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:02:04.718133",
+      "type": "stt",
+      "data": {
+        "text": "when does chaos trying to figure out how to do that for me",
+        "chars": 58,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:02:20.721525",
+      "type": "stt",
+      "data": {
+        "text": "you fucking bird dude who let the bird",
+        "chars": 38,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 123,
-    "stt_events": 3448,
+    "stt_events": 3478,
     "commands_processed": 39,
     "errors": 404,
     "total_chars_spoken": 7675,
-    "total_chars_heard": 111154,
+    "total_chars_heard": 112046,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T22:57:22.677257"
+  "last_updated": "2025-11-19T23:02:20.721537"
 }
