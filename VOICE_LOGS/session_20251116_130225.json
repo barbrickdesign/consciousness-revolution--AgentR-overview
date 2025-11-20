@@ -34252,16 +34252,412 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T19:40:49.143812",
+      "type": "stt",
+      "data": {
+        "text": "let's check on the cyclotron let's check all the analytics let's add",
+        "chars": 68,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:40:55.145902",
+      "type": "stt",
+      "data": {
+        "text": "maybe a important handful",
+        "chars": 25,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:40:59.259701",
+      "type": "stt",
+      "data": {
+        "text": "i'm over at od",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:41:10.988340",
+      "type": "stt",
+      "data": {
+        "text": "somebody made that",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:41:16.466183",
+      "type": "stt",
+      "data": {
+        "text": "we made a new repository that says community",
+        "chars": 44,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:41:23.955826",
+      "type": "stt",
+      "data": {
+        "text": "does it have a new function",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:41:28.430359",
+      "type": "stt",
+      "data": {
+        "text": "did you just delete it then no",
+        "chars": 30,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:41:31.595938",
+      "type": "stt",
+      "data": {
+        "text": "making weird stuff",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:41:58.986079",
+      "type": "stt",
+      "data": {
+        "text": "this is the repository",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:42:09.259187",
+      "type": "stt",
+      "data": {
+        "text": "next click on this right here it's the main project",
+        "chars": 51,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:42:12.345974",
+      "type": "stt",
+      "data": {
+        "text": "can i talk to your a",
+        "chars": 20,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:42:26.575883",
+      "type": "stt",
+      "data": {
+        "text": "that's the main project",
+        "chars": 23,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:42:33.307427",
+      "type": "stt",
+      "data": {
+        "text": "but so if i go like this",
+        "chars": 24,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:42:49.435990",
+      "type": "stt",
+      "data": {
+        "text": "help you you fart the system",
+        "chars": 28,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:42:59.015728",
+      "type": "stt",
+      "data": {
+        "text": "project making copies",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:43:03.675819",
+      "type": "stt",
+      "data": {
+        "text": "what's the point of copy",
+        "chars": 24,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:43:23.905886",
+      "type": "stt",
+      "data": {
+        "text": "i had my fucking i had clogged",
+        "chars": 30,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:43:29.687475",
+      "type": "stt",
+      "data": {
+        "text": "you can just popped up",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:43:37.475828",
+      "type": "stt",
+      "data": {
+        "text": "josh's confused he started a new",
+        "chars": 32,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:43:41.535844",
+      "type": "stt",
+      "data": {
+        "text": "secret seven domains hid",
+        "chars": 24,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:43:50.778451",
+      "type": "stt",
+      "data": {
+        "text": "we got to figure out how to give direction",
+        "chars": 42,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:43:53.505872",
+      "type": "stt",
+      "data": {
+        "text": "make an extra",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:44:00.377054",
+      "type": "stt",
+      "data": {
+        "text": "we should be able to communicate with like headsets",
+        "chars": 51,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:44:05.616282",
+      "type": "stt",
+      "data": {
+        "text": "let's start with text boxes",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:44:09.798936",
+      "type": "stt",
+      "data": {
+        "text": "and then we need",
+        "chars": 16,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:44:18.928108",
+      "type": "stt",
+      "data": {
+        "text": "deleting and adding whole new things",
+        "chars": 36,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:44:26.415829",
+      "type": "stt",
+      "data": {
+        "text": "let's see what kind of tools get hub has for monitoring",
+        "chars": 55,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:44:31.168143",
+      "type": "stt",
+      "data": {
+        "text": "what if we need to rewind the system",
+        "chars": 36,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:44:36.796217",
+      "type": "stt",
+      "data": {
+        "text": "cuz i'm just now kind of realizing",
+        "chars": 34,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:45:01.726622",
+      "type": "stt",
+      "data": {
+        "text": "i'm sitting here next to josh",
+        "chars": 29,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:45:14.592837",
+      "type": "stt",
+      "data": {
+        "text": "let's get the",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:45:18.905906",
+      "type": "stt",
+      "data": {
+        "text": "where is the door for the seven domains",
+        "chars": 39,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:45:24.235932",
+      "type": "stt",
+      "data": {
+        "text": "has it been pushed to railway",
+        "chars": 29,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:45:28.244949",
+      "type": "stt",
+      "data": {
+        "text": "how far is it sitting in gith",
+        "chars": 29,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:45:32.385856",
+      "type": "stt",
+      "data": {
+        "text": "respiratory unpublished",
+        "chars": 23,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T19:45:48.914850",
+      "type": "stt",
+      "data": {
+        "text": "that's all in this file",
+        "chars": 23,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 117,
-    "stt_events": 2646,
+    "stt_events": 2682,
     "commands_processed": 39,
     "errors": 401,
     "total_chars_spoken": 7528,
-    "total_chars_heard": 88135,
+    "total_chars_heard": 89195,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T19:40:41.701565"
+  "last_updated": "2025-11-19T19:45:48.914865"
 }
