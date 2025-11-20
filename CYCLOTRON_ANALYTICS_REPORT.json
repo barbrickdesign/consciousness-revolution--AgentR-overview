@@ -1,0 +1,170 @@
+{
+  "generated_at": "2025-11-19T20:29:42.162489",
+  "basic_stats": {
+    "total_atoms": 463,
+    "total_size_bytes": 6364235,
+    "avg_atom_size": 13745.647948164147,
+    "computers": [
+      "dwrekscpu"
+    ]
+  },
+  "source_breakdown": {
+    "trinity": 370,
+    "deployment": 78,
+    "brain": 15
+  },
+  "file_types": {
+    ".md": 147,
+    ".json": 113,
+    ".py": 84,
+    ".html": 46,
+    ".txt": 43,
+    ".bat": 23,
+    ".js": 7
+  },
+  "size_distribution": {
+    "tiny (< 1KB)": 74,
+    "small (1-10KB)": 256,
+    "medium (10-50KB)": 121,
+    "large (50-100KB)": 6,
+    "huge (> 100KB)": 6
+  },
+  "federation_health": {
+    "dropbox_exists": true,
+    "federation_exists": true,
+    "atoms_dir_exists": true,
+    "indices_dir_exists": true,
+    "index_file_exists": true,
+    "overall_score": 100.0
+  },
+  "disk_usage": {
+    "total_bytes": 3069956,
+    "total_kb": 2998.0,
+    "total_mb": 2.93,
+    "file_count": 3
+  },
+  "recent_atoms": [
+    {
+      "file": "WATCH_FOR_PHONE.bat",
+      "type": "trinity",
+      "size": 761,
+      "time": "2025-11-19T05:25:07"
+    },
+    {
+      "file": "STOP_AUTONOMOUS_MODE.bat",
+      "type": "trinity",
+      "size": 587,
+      "time": "2025-11-19T05:25:07"
+    },
+    {
+      "file": "START_TWILIO_WEBHOOK.bat",
+      "type": "trinity",
+      "size": 520,
+      "time": "2025-11-19T05:25:07"
+    },
+    {
+      "file": "START_TRINITY_3_PANEL.bat",
+      "type": "trinity",
+      "size": 1245,
+      "time": "2025-11-19T05:25:07"
+    },
+    {
+      "file": "START_RECURSIVE_WAKE_NOW.bat",
+      "type": "trinity",
+      "size": 566,
+      "time": "2025-11-19T05:25:07"
+    },
+    {
+      "file": "START_COORDINATION_MONITOR.bat",
+      "type": "trinity",
+      "size": 114,
+      "time": "2025-11-19T05:25:07"
+    },
+    {
+      "file": "START_CONTINUOUS_MONITORING.bat",
+      "type": "trinity",
+      "size": 398,
+      "time": "2025-11-19T05:25:07"
+    },
+    {
+      "file": "START_AUTONOMOUS_MODE.bat",
+      "type": "trinity",
+      "size": 1841,
+      "time": "2025-11-19T05:25:07"
+    },
+    {
+      "file": "START_ALL_AUTONOMOUS_SYSTEMS.bat",
+      "type": "trinity",
+      "size": 2145,
+      "time": "2025-11-19T05:25:07"
+    },
+    {
+      "file": "OPEN_COMMAND_CENTER.bat",
+      "type": "trinity",
+      "size": 181,
+      "time": "2025-11-19T05:25:07"
+    }
+  ],
+  "largest_atoms": [
+    {
+      "file": "PROTOCOL_LIBRARY_INDEX.json",
+      "type": "trinity",
+      "size": 1131960,
+      "size_kb": 1105.43
+    },
+    {
+      "file": "session_20251116_130225.json",
+      "type": "deployment",
+      "size": 749769,
+      "size_kb": 732.2
+    },
+    {
+      "file": "cyclotron_atoms.json",
+      "type": "trinity",
+      "size": 260618,
+      "size_kb": 254.51
+    },
+    {
+      "file": "package-lock.json",
+      "type": "deployment",
+      "size": 245757,
+      "size_kb": 240.0
+    },
+    {
+      "file": "wake_log.json",
+      "type": "trinity",
+      "size": 200666,
+      "size_kb": 195.96
+    },
+    {
+      "file": "TRINITY_HEALTH_LOG.json",
+      "type": "trinity",
+      "size": 117716,
+      "size_kb": 114.96
+    },
+    {
+      "file": "index.json",
+      "type": "deployment",
+      "size": 95818,
+      "size_kb": 93.57
+    },
+    {
+      "file": "atoms_20251119.json",
+      "type": "deployment",
+      "size": 88969,
+      "size_kb": 86.88
+    },
+    {
+      "file": "atoms_20251118.json",
+      "type": "deployment",
+      "size": 86492,
+      "size_kb": 84.46
+    },
+    {
+      "file": "operator_log.json",
+      "type": "trinity",
+      "size": 68421,
+      "size_kb": 66.82
+    }
+  ]
+}

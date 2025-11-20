@@ -36067,16 +36067,192 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T20:26:30.388658",
+      "type": "stt",
+      "data": {
+        "text": "protocol listening address",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:26:40.736668",
+      "type": "stt",
+      "data": {
+        "text": "sync protocol listening to address",
+        "chars": 34,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:26:45.126729",
+      "type": "stt",
+      "data": {
+        "text": "i think this is the address",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:26:53.253370",
+      "type": "stt",
+      "data": {
+        "text": "this is your address for",
+        "chars": 24,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:26:57.926862",
+      "type": "stt",
+      "data": {
+        "text": "everything sinks to that one address",
+        "chars": 36,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:27:02.839003",
+      "type": "stt",
+      "data": {
+        "text": "i don't quite understand but",
+        "chars": 28,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:27:16.872969",
+      "type": "stt",
+      "data": {
+        "text": "sync protocol listening address",
+        "chars": 31,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:27:38.323769",
+      "type": "stt",
+      "data": {
+        "text": "http relay",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:27:46.784560",
+      "type": "stt",
+      "data": {
+        "text": "conscious revolution",
+        "chars": 20,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:27:58.844458",
+      "type": "stt",
+      "data": {
+        "text": "i wonder if there's any",
+        "chars": 23,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:28:49.089869",
+      "type": "stt",
+      "data": {
+        "text": "i lost",
+        "chars": 6,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:29:42.694126",
+      "type": "stt",
+      "data": {
+        "text": "now you're going to be able to see my screen",
+        "chars": 44,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:30:07.891085",
+      "type": "stt",
+      "data": {
+        "text": "amazing",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:30:25.158780",
+      "type": "stt",
+      "data": {
+        "text": "yes yes yes yes yes yes",
+        "chars": 23,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:30:37.907057",
+      "type": "stt",
+      "data": {
+        "text": "dude and then",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:30:57.522869",
+      "type": "stt",
+      "data": {
+        "text": "we can we can remote",
+        "chars": 20,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 117,
-    "stt_events": 2811,
+    "stt_events": 2827,
     "commands_processed": 39,
     "errors": 401,
     "total_chars_spoken": 7528,
-    "total_chars_heard": 93217,
+    "total_chars_heard": 93589,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T20:25:34.907933"
+  "last_updated": "2025-11-19T20:30:57.522885"
 }
