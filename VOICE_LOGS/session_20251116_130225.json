@@ -43997,16 +43997,181 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T23:12:47.116286",
+      "type": "stt",
+      "data": {
+        "text": "so when you're doing shit you want to be looking at this and seeing like",
+        "chars": 72,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:13:25.832991",
+      "type": "stt",
+      "data": {
+        "text": "remind me that was already in performance mode",
+        "chars": 46,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:13:43.983100",
+      "type": "stt",
+      "data": {
+        "text": "on battery oh you don't",
+        "chars": 23,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:14:18.601323",
+      "type": "stt",
+      "data": {
+        "text": "dude it's using all the ram where right there",
+        "chars": 45,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:14:23.155324",
+      "type": "stt",
+      "data": {
+        "text": "we got to upgrade the ram",
+        "chars": 25,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:14:26.846239",
+      "type": "stt",
+      "data": {
+        "text": "where does it show that at",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:14:33.966321",
+      "type": "stt",
+      "data": {
+        "text": "the ram on this rug strix",
+        "chars": 25,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:14:40.418485",
+      "type": "stt",
+      "data": {
+        "text": "nine out of 31.4 gigabytes",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:14:57.969652",
+      "type": "stt",
+      "data": {
+        "text": "did you send him a smaller one or what",
+        "chars": 38,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:15:06.433706",
+      "type": "stt",
+      "data": {
+        "text": "what do you mean",
+        "chars": 16,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:16:07.412221",
+      "type": "stt",
+      "data": {
+        "text": "jibber jabber in somewhere",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:16:45.068529",
+      "type": "stt",
+      "data": {
+        "text": "it doesn't like all the",
+        "chars": 23,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:16:54.006493",
+      "type": "stt",
+      "data": {
+        "text": "well we found the",
+        "chars": 17,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:17:17.628733",
+      "type": "stt",
+      "data": {
+        "text": "what is this",
+        "chars": 12,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T23:17:27.377274",
+      "type": "stt",
+      "data": {
+        "text": "fucking control pc settings remotely with your phone",
+        "chars": 52,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 123,
-    "stt_events": 3524,
+    "stt_events": 3539,
     "commands_processed": 39,
     "errors": 404,
     "total_chars_spoken": 7675,
-    "total_chars_heard": 113387,
+    "total_chars_heard": 113859,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T23:12:29.608449"
+  "last_updated": "2025-11-19T23:17:27.377286"
 }
