@@ -38087,16 +38087,291 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T21:06:31.000999",
+      "type": "stt",
+      "data": {
+        "text": "okay grab that api and put it into your ai",
+        "chars": 42,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:06:36.033043",
+      "type": "stt",
+      "data": {
+        "text": "communications",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:07:09.279515",
+      "type": "stt",
+      "data": {
+        "text": "okay can you open that thing and then click the ad",
+        "chars": 50,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:07:19.943575",
+      "type": "stt",
+      "data": {
+        "text": "83884",
+        "chars": 5,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:07:32.241752",
+      "type": "stt",
+      "data": {
+        "text": "obedience",
+        "chars": 9,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:07:41.611585",
+      "type": "stt",
+      "data": {
+        "text": "how are",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:07:56.108696",
+      "type": "stt",
+      "data": {
+        "text": "already",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:08:10.235993",
+      "type": "stt",
+      "data": {
+        "text": "ai can import scripts and",
+        "chars": 25,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:08:32.310352",
+      "type": "stt",
+      "data": {
+        "text": "so i'm going to go to the",
+        "chars": 25,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:08:43.974955",
+      "type": "stt",
+      "data": {
+        "text": "okay so it gave you an h",
+        "chars": 24,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:08:55.662646",
+      "type": "stt",
+      "data": {
+        "text": "i see you have consciousness sink folders but no test",
+        "chars": 53,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:09:02.958886",
+      "type": "stt",
+      "data": {
+        "text": "let's create sink fold",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:09:35.963037",
+      "type": "stt",
+      "data": {
+        "text": "how do you take a screenshot of this i think",
+        "chars": 44,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:09:38.694279",
+      "type": "stt",
+      "data": {
+        "text": "new spot",
+        "chars": 8,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:10:07.659028",
+      "type": "stt",
+      "data": {
+        "text": "what do you mean you can't take",
+        "chars": 31,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:10:13.291695",
+      "type": "stt",
+      "data": {
+        "text": "will you make sure your booted up",
+        "chars": 33,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:10:17.485208",
+      "type": "stt",
+      "data": {
+        "text": "cars have the screenshot protocols in",
+        "chars": 37,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:10:23.761658",
+      "type": "stt",
+      "data": {
+        "text": "how to screenshot we're using the python pillow react",
+        "chars": 53,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:10:28.461648",
+      "type": "stt",
+      "data": {
+        "text": "it's like gui auto",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:10:58.029616",
+      "type": "stt",
+      "data": {
+        "text": "i think so",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:11:02.905397",
+      "type": "stt",
+      "data": {
+        "text": "new folder add",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:11:16.921441",
+      "type": "stt",
+      "data": {
+        "text": "what folder okay so we got to ask",
+        "chars": 33,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:11:24.704379",
+      "type": "stt",
+      "data": {
+        "text": "okay so",
+        "chars": 7,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:11:27.991520",
+      "type": "stt",
+      "data": {
+        "text": "i accepted it",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:11:31.953610",
+      "type": "stt",
+      "data": {
+        "text": "you have the api",
+        "chars": 16,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 119,
-    "stt_events": 2992,
+    "stt_events": 3017,
     "commands_processed": 39,
     "errors": 402,
     "total_chars_spoken": 7577,
-    "total_chars_heard": 97807,
+    "total_chars_heard": 98407,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T21:06:01.250572"
+  "last_updated": "2025-11-19T21:11:31.953622"
 }
