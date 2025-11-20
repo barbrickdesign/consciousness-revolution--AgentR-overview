@@ -39506,16 +39506,269 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T21:36:55.875986",
+      "type": "stt",
+      "data": {
+        "text": "maybe we should fire some data back and forth on the computers and try out the controls",
+        "chars": 87,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:37:00.622049",
+      "type": "stt",
+      "data": {
+        "text": "you're going to check",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:37:08.258030",
+      "type": "stt",
+      "data": {
+        "text": "can i sync",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:37:11.826012",
+      "type": "stt",
+      "data": {
+        "text": "send him a message",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:37:20.912321",
+      "type": "stt",
+      "data": {
+        "text": "can i sync and send a message to him",
+        "chars": 36,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:37:24.009004",
+      "type": "stt",
+      "data": {
+        "text": "right here",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:38:23.517813",
+      "type": "stt",
+      "data": {
+        "text": "three instances of the term",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:38:30.427692",
+      "type": "stt",
+      "data": {
+        "text": "on at least two",
+        "chars": 15,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:38:38.362786",
+      "type": "stt",
+      "data": {
+        "text": "depending on what you suggest we should probably follow some sort of geometrical shape",
+        "chars": 86,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:38:44.655106",
+      "type": "stt",
+      "data": {
+        "text": "top is small but if we make the interfaces rides",
+        "chars": 48,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:38:55.891123",
+      "type": "stt",
+      "data": {
+        "text": "and then i think we're going to have a fifth one that oversees it all",
+        "chars": 69,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:38:59.714356",
+      "type": "stt",
+      "data": {
+        "text": "possibly",
+        "chars": 8,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:39:15.539165",
+      "type": "stt",
+      "data": {
+        "text": "my powershell to his",
+        "chars": 20,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:39:20.518840",
+      "type": "stt",
+      "data": {
+        "text": "ai agents",
+        "chars": 9,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:39:29.661185",
+      "type": "stt",
+      "data": {
+        "text": "it just needs to check",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:39:36.817209",
+      "type": "stt",
+      "data": {
+        "text": "derek wants her capability",
+        "chars": 26,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:39:43.173445",
+      "type": "stt",
+      "data": {
+        "text": "tell based on what i know about your computer",
+        "chars": 45,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:40:05.906974",
+      "type": "stt",
+      "data": {
+        "text": "turn my lights back",
+        "chars": 19,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:40:10.941305",
+      "type": "stt",
+      "data": {
+        "text": "call brenda",
+        "chars": 11,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:40:17.137082",
+      "type": "stt",
+      "data": {
+        "text": "hey let's play with our new capabilities let's check the",
+        "chars": 56,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:40:43.267774",
+      "type": "stt",
+      "data": {
+        "text": "rasputin's recipe",
+        "chars": 17,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:41:23.367573",
+      "type": "stt",
+      "data": {
+        "text": "blackhawk",
+        "chars": 9,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T21:41:42.395677",
+      "type": "stt",
+      "data": {
+        "text": "look in drive",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 119,
-    "stt_events": 3121,
+    "stt_events": 3144,
     "commands_processed": 39,
     "errors": 402,
     "total_chars_spoken": 7577,
-    "total_chars_heard": 101539,
+    "total_chars_heard": 102221,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T21:36:42.227840"
+  "last_updated": "2025-11-19T21:41:42.395693"
 }
