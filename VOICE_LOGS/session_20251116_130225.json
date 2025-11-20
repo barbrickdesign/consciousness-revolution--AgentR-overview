@@ -35869,16 +35869,214 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T20:21:18.581508",
+      "type": "stt",
+      "data": {
+        "text": "use file",
+        "chars": 8,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:21:26.139634",
+      "type": "stt",
+      "data": {
+        "text": "this is where you can get a key from somebody",
+        "chars": 45,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:21:48.086708",
+      "type": "stt",
+      "data": {
+        "text": "we're just going to try it for this week while we're trying to figure",
+        "chars": 69,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:22:01.806420",
+      "type": "stt",
+      "data": {
+        "text": "what it was telling me",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:22:06.010905",
+      "type": "stt",
+      "data": {
+        "text": "the english",
+        "chars": 11,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:22:13.410765",
+      "type": "stt",
+      "data": {
+        "text": "basically",
+        "chars": 9,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:23:01.785105",
+      "type": "stt",
+      "data": {
+        "text": "it sounds like",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:23:09.282669",
+      "type": "stt",
+      "data": {
+        "text": "all you do is you show your id",
+        "chars": 30,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:23:22.913298",
+      "type": "stt",
+      "data": {
+        "text": "with this i'm going to be able to hook",
+        "chars": 38,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:23:49.039001",
+      "type": "stt",
+      "data": {
+        "text": "adam downloaded on both computers",
+        "chars": 33,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:23:53.372017",
+      "type": "stt",
+      "data": {
+        "text": "so how do we do this",
+        "chars": 20,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:24:03.251929",
+      "type": "stt",
+      "data": {
+        "text": "check into it and see if we need to get like a business account",
+        "chars": 63,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:24:06.142719",
+      "type": "stt",
+      "data": {
+        "text": "each one is",
+        "chars": 11,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:24:28.292948",
+      "type": "stt",
+      "data": {
+        "text": "we are at",
+        "chars": 9,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:25:02.781954",
+      "type": "stt",
+      "data": {
+        "text": "both computers look at any desk",
+        "chars": 31,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:25:06.046543",
+      "type": "stt",
+      "data": {
+        "text": "what is your",
+        "chars": 12,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:25:31.250012",
+      "type": "stt",
+      "data": {
+        "text": "i didn't see it install i think it's still stuck in the install",
+        "chars": 63,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:25:34.907917",
+      "type": "stt",
+      "data": {
+        "text": "the exe files",
+        "chars": 13,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 117,
-    "stt_events": 2793,
+    "stt_events": 2811,
     "commands_processed": 39,
     "errors": 401,
     "total_chars_spoken": 7528,
-    "total_chars_heard": 92716,
+    "total_chars_heard": 93217,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T20:21:01.052151"
+  "last_updated": "2025-11-19T20:25:34.907933"
 }
