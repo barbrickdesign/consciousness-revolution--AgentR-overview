@@ -36353,16 +36353,214 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T20:37:11.995441",
+      "type": "stt",
+      "data": {
+        "text": "what is the other thing",
+        "chars": 23,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:37:49.337007",
+      "type": "stt",
+      "data": {
+        "text": "is it continuous file synchronization",
+        "chars": 37,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:38:01.877035",
+      "type": "stt",
+      "data": {
+        "text": "i'm going to read",
+        "chars": 17,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:38:19.592123",
+      "type": "stt",
+      "data": {
+        "text": "what the fuc",
+        "chars": 12,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:38:25.491657",
+      "type": "stt",
+      "data": {
+        "text": "look at the getting started to run",
+        "chars": 34,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:38:48.855206",
+      "type": "stt",
+      "data": {
+        "text": "okay i got the sinking window open",
+        "chars": 34,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:39:13.636793",
+      "type": "stt",
+      "data": {
+        "text": "it's a sinking file",
+        "chars": 19,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:39:21.661754",
+      "type": "stt",
+      "data": {
+        "text": "open it up i think we need to go check out the",
+        "chars": 46,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:39:31.388296",
+      "type": "stt",
+      "data": {
+        "text": "getting started",
+        "chars": 15,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:39:37.860651",
+      "type": "stt",
+      "data": {
+        "text": "do you have new screenshot capabilities",
+        "chars": 39,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:39:44.916289",
+      "type": "stt",
+      "data": {
+        "text": "will you double check and make sure you got pattern theory 7 no man's boot up protocols",
+        "chars": 87,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:39:49.004407",
+      "type": "stt",
+      "data": {
+        "text": "if not they'll be in the getting",
+        "chars": 32,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:40:06.630012",
+      "type": "stt",
+      "data": {
+        "text": "okay i got the",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:40:20.358964",
+      "type": "stt",
+      "data": {
+        "text": "what happened i just need to go read text messages",
+        "chars": 50,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:40:33.420742",
+      "type": "stt",
+      "data": {
+        "text": "i need to go focus",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:40:46.451190",
+      "type": "stt",
+      "data": {
+        "text": "did my sinking file go",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:40:50.898523",
+      "type": "stt",
+      "data": {
+        "text": "dance center dashboard",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T20:41:10.189940",
+      "type": "stt",
+      "data": {
+        "text": "no not you",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 117,
-    "stt_events": 2837,
+    "stt_events": 2855,
     "commands_processed": 39,
     "errors": 401,
     "total_chars_spoken": 7528,
-    "total_chars_heard": 93982,
+    "total_chars_heard": 94513,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T20:33:41.769064"
+  "last_updated": "2025-11-19T20:41:10.189958"
 }
