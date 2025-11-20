@@ -42424,16 +42424,269 @@
         "duration": null,
         "success": true
       }
+    },
+    {
+      "timestamp": "2025-11-19T22:37:26.941580",
+      "type": "stt",
+      "data": {
+        "text": "possibly maybe add a note for every boot up i do",
+        "chars": 48,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:38:01.047772",
+      "type": "stt",
+      "data": {
+        "text": "sink or not i need to ask its sink",
+        "chars": 34,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:38:09.119812",
+      "type": "stt",
+      "data": {
+        "text": "what time is controller just through files instead of screen sharing",
+        "chars": 68,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:38:26.034061",
+      "type": "stt",
+      "data": {
+        "text": "but i'm sure it is",
+        "chars": 18,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:38:30.447914",
+      "type": "stt",
+      "data": {
+        "text": "what extract",
+        "chars": 12,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:38:42.938214",
+      "type": "stt",
+      "data": {
+        "text": "remote command",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:38:55.038456",
+      "type": "stt",
+      "data": {
+        "text": "how it works create",
+        "chars": 19,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:39:24.912543",
+      "type": "stt",
+      "data": {
+        "text": "bottom corner of",
+        "chars": 16,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:39:36.242602",
+      "type": "stt",
+      "data": {
+        "text": "i'm going to have this",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:39:42.986622",
+      "type": "stt",
+      "data": {
+        "text": "send it to you",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:39:55.642734",
+      "type": "stt",
+      "data": {
+        "text": "you're going to create a protocol remote control start",
+        "chars": 54,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:40:10.682977",
+      "type": "stt",
+      "data": {
+        "text": "i don't think it's going to work though we haven't tested it we still have to do what this is",
+        "chars": 93,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:40:29.189368",
+      "type": "stt",
+      "data": {
+        "text": "what the fuck are you still",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:40:47.169157",
+      "type": "stt",
+      "data": {
+        "text": "enable auto",
+        "chars": 11,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:41:11.605423",
+      "type": "stt",
+      "data": {
+        "text": "what is this set on this is",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:41:20.979251",
+      "type": "stt",
+      "data": {
+        "text": "how do i go over to your",
+        "chars": 24,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:41:25.615469",
+      "type": "stt",
+      "data": {
+        "text": "livestock road",
+        "chars": 14,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:41:30.683413",
+      "type": "stt",
+      "data": {
+        "text": "no this is",
+        "chars": 10,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:41:38.401530",
+      "type": "stt",
+      "data": {
+        "text": "cuz you you're the one that",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:41:42.346532",
+      "type": "stt",
+      "data": {
+        "text": "go over to it and flop",
+        "chars": 22,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:41:52.188753",
+      "type": "stt",
+      "data": {
+        "text": "additional folders to share",
+        "chars": 27,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:41:55.961716",
+      "type": "stt",
+      "data": {
+        "text": "add devices for intro",
+        "chars": 21,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
+    },
+    {
+      "timestamp": "2025-11-19T22:42:12.413970",
+      "type": "stt",
+      "data": {
+        "text": "what the hell why are we not",
+        "chars": 28,
+        "confidence": null,
+        "duration": null,
+        "success": true
+      }
     }
   ],
   "statistics": {
     "tts_events": 123,
-    "stt_events": 3381,
+    "stt_events": 3404,
     "commands_processed": 39,
     "errors": 404,
     "total_chars_spoken": 7675,
-    "total_chars_heard": 109331,
+    "total_chars_heard": 109981,
     "avg_response_time": 0
   },
-  "last_updated": "2025-11-19T22:37:13.251470"
+  "last_updated": "2025-11-19T22:42:12.413983"
 }
