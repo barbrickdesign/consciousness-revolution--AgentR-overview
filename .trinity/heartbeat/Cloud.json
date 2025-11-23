@@ -1,0 +1,12 @@
+{
+  "instance_id": "Cloud",
+  "type": "cloud_cli",
+  "status": "ACTIVE",
+  "timestamp": "2025-11-23T02:40:00Z",
+  "current_task": "Setting up git-based sync",
+  "last_output": "Created LIVE_SYNC.md and heartbeat",
+  "health": "green",
+  "autonomy_level": 1,
+  "has_mcp": false,
+  "relay_method": "git"
+}
