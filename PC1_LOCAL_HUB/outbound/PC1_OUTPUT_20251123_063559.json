@@ -1,0 +1,29 @@
+{
+  "computer": "PC1",
+  "timestamp": "2025-11-23T06:35:59.970249",
+  "terminal_count": 1,
+  "cloud_count": 0,
+  "terminals": [
+    {
+      "instance": "C1",
+      "computer": "PC1",
+      "timestamp": "2025-11-23T06:35:59-08:00",
+      "status": "active",
+      "work_completed": "Built local hub system, created consolidation script",
+      "work_in_progress": "Testing hub",
+      "blockers": "none"
+    }
+  ],
+  "clouds": [],
+  "summary": {
+    "work_completed": [
+      "C1: Built local hub system, created consolidation script"
+    ],
+    "work_in_progress": [
+      "C1: Testing hub"
+    ],
+    "blockers": [
+      "C1: none"
+    ]
+  }
+}
