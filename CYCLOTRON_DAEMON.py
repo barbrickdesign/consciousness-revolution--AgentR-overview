@@ -28,17 +28,17 @@ from watchdog.events import FileSystemEventHandler
 
 # Configuration
 VACUUM_DIRS = [
-    "C:/Users/dwrek/100X_DEPLOYMENT",
-    "C:/Users/dwrek/.consciousness",
-    "C:/Users/dwrek/.trinity",
-    "C:/Users/dwrek/LOCAL_TRINITY_HUB",
-    "C:/Users/dwrek/Desktop",
+    "C:/Users/darri/100X_DEPLOYMENT",
+    "C:/Users/darri/.consciousness",
+    "C:/Users/darri/.trinity",
+    "C:/Users/darri/LOCAL_TRINITY_HUB",
+    "C:/Users/darri/Desktop",
 ]
 
 INDEX_EXTENSIONS = ['.md', '.txt', '.py', '.js', '.html', '.json', '.bat', '.ps1', '.css']
-DB_PATH = Path("C:/Users/dwrek/100X_DEPLOYMENT/.cyclotron_atoms/cyclotron.db")
-STATUS_FILE = Path("C:/Users/dwrek/100X_DEPLOYMENT/.cyclotron_atoms/daemon_status.json")
-LOG_FILE = Path("C:/Users/dwrek/100X_DEPLOYMENT/.cyclotron_atoms/daemon.log")
+DB_PATH = Path("C:/Users/darri/100X_DEPLOYMENT/.cyclotron_atoms/cyclotron.db")
+STATUS_FILE = Path("C:/Users/darri/100X_DEPLOYMENT/.cyclotron_atoms/daemon_status.json")
+LOG_FILE = Path("C:/Users/darri/100X_DEPLOYMENT/.cyclotron_atoms/daemon.log")
 
 # Setup logging
 logging.basicConfig(
