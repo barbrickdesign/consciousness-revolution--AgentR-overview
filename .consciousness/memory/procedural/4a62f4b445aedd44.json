@@ -1,0 +1,51 @@
+{
+  "memory_id": "4a62f4b445aedd44",
+  "memory_type": "procedural",
+  "content": {
+    "procedure_name": "Deploy to New PC",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Run auto_deploy.py --pc PCX"
+      },
+      {
+        "step": 2,
+        "action": "Verify Command Center shows PC"
+      },
+      {
+        "step": 3,
+        "action": "Test cross-PC communication"
+      }
+    ],
+    "success_rate": 1.0
+  },
+  "timestamp": "2025-11-24T11:07:25.889532Z",
+  "importance": 0.7,
+  "tags": [
+    "deployment",
+    "procedure",
+    "automation"
+  ],
+  "associations": [
+    "f4e827df5ef90468"
+  ],
+  "access_count": 1,
+  "last_accessed": "2025-11-24T11:07:25.893681Z",
+  "consolidated": false,
+  "procedure_name": "Deploy to New PC",
+  "steps": [
+    {
+      "step": 1,
+      "action": "Run auto_deploy.py --pc PCX"
+    },
+    {
+      "step": 2,
+      "action": "Verify Command Center shows PC"
+    },
+    {
+      "step": 3,
+      "action": "Test cross-PC communication"
+    }
+  ],
+  "success_rate": 1.0
+}

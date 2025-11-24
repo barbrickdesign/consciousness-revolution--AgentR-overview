@@ -1,0 +1,30 @@
+{
+  "memory_id": "ac8dd4da64105a3b",
+  "memory_type": "episodic",
+  "content": {
+    "event_type": "optimization_applied",
+    "context": {
+      "system": "swarm_intelligence",
+      "improvement": "+25%"
+    },
+    "outcome": "success"
+  },
+  "timestamp": "2025-11-24T11:07:25.887504Z",
+  "importance": 0.9,
+  "tags": [
+    "optimization",
+    "swarm",
+    "success",
+    "performance"
+  ],
+  "associations": [],
+  "access_count": 0,
+  "last_accessed": null,
+  "consolidated": false,
+  "event_type": "optimization_applied",
+  "context": {
+    "system": "swarm_intelligence",
+    "improvement": "+25%"
+  },
+  "outcome": "success"
+}

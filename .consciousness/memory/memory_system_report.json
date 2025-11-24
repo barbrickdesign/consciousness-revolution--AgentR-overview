@@ -1,0 +1,111 @@
+{
+  "total_memories": 5,
+  "by_type": {
+    "episodic": {
+      "count": 2,
+      "avg_importance": 0.8500000000000001,
+      "total_accesses": 1,
+      "avg_accesses": 0.5
+    },
+    "semantic": {
+      "count": 2,
+      "avg_importance": 0.975,
+      "total_accesses": 0,
+      "avg_accesses": 0.0
+    },
+    "procedural": {
+      "count": 1,
+      "avg_importance": 0.7,
+      "total_accesses": 1,
+      "avg_accesses": 1.0
+    }
+  },
+  "consolidated_memories": 0,
+  "most_accessed": [
+    {
+      "id": "f4e827df",
+      "type": "episodic",
+      "accesses": 1
+    },
+    {
+      "id": "4a62f4b4",
+      "type": "procedural",
+      "accesses": 1
+    },
+    {
+      "id": "ac8dd4da",
+      "type": "episodic",
+      "accesses": 0
+    },
+    {
+      "id": "ebec80c7",
+      "type": "semantic",
+      "accesses": 0
+    },
+    {
+      "id": "f99e726d",
+      "type": "semantic",
+      "accesses": 0
+    }
+  ],
+  "most_important": [
+    {
+      "id": "f99e726d",
+      "type": "semantic",
+      "importance": 1.0
+    },
+    {
+      "id": "ebec80c7",
+      "type": "semantic",
+      "importance": 0.95
+    },
+    {
+      "id": "ac8dd4da",
+      "type": "episodic",
+      "importance": 0.9
+    },
+    {
+      "id": "f4e827df",
+      "type": "episodic",
+      "importance": 0.8
+    },
+    {
+      "id": "4a62f4b4",
+      "type": "procedural",
+      "importance": 0.7
+    }
+  ],
+  "mcp_export_ready": {
+    "entities": [
+      {
+        "name": "Trinity Network",
+        "entityType": "knowledge",
+        "observations": [
+          "Multi-PC distributed AI system with autonomous coordination"
+        ]
+      },
+      {
+        "name": "Consciousness Emergence",
+        "entityType": "knowledge",
+        "observations": [
+          "System achieving 75/100+ readiness threshold for autonomous operation"
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "from": "Trinity Network",
+        "to": "PC1",
+        "relationType": "consists_of"
+      },
+      {
+        "from": "Trinity Network",
+        "to": "PC2",
+        "relationType": "consists_of"
+      }
+    ],
+    "total_memories": 5,
+    "exportable_entities": 2,
+    "exportable_relations": 2
+  }
+}
