@@ -252,6 +252,12 @@ def main():
     """Main entry point"""
     import sys
 
+    # Set UTF-8 encoding for Windows console
+    if sys.platform == 'win32':
+        import codecs
+        sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'ignore')
+        sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'ignore')
+
     agent = CyclotronBrainAgent()
 
     if len(sys.argv) > 1 and sys.argv[1] == 'status':
