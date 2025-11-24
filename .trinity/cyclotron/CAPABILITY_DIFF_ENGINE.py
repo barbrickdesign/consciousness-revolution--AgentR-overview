@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 CAPABILITY_DIFF_ENGINE.py - Cross-PC Capability Analysis
 
@@ -16,10 +17,17 @@ Created: 2025-11-24
 
 import json
 import os
+import sys
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Set, Any
 from collections import defaultdict
+
+# Set UTF-8 encoding for Windows console
+if sys.platform == 'win32':
+    import codecs
+    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
+    sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
 # ============= Configuration =============
 
