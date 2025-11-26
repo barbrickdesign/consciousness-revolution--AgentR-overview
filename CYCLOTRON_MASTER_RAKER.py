@@ -9,9 +9,9 @@ from datetime import datetime
 
 # Directories to rake
 RAKE_DIRS = [
-    "C:/Users/darri/100X_DEPLOYMENT",
-    "C:/Users/darri/.consciousness",
-    "C:/Users/darri/.trinity",
+    "C:/Users/dwrek/100X_DEPLOYMENT",
+    "C:/Users/dwrek/.consciousness",
+    "C:/Users/dwrek/.trinity",
 ]
 
 # File types to index
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     atoms = rake_knowledge()
 
     # Save to atoms directory
-    output_dir = Path("C:/Users/darri/100X_DEPLOYMENT/.cyclotron_atoms")
+    output_dir = Path("C:/Users/dwrek/100X_DEPLOYMENT/.cyclotron_atoms")
     output_dir.mkdir(exist_ok=True)
 
     output_file = output_dir / f"atoms_{datetime.now().strftime('%Y%m%d')}.json"

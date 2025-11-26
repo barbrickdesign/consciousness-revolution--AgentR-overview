@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araya Beta - AI Assistant with Manipulation Immunity</title>
+    <meta name="description" content="Be among the first to experience Araya - an AI assistant trained on Pattern Theory with built-in manipulation immunity.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .signup-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 50px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .beta-badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        .intro h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .features {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .features h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #2c3e50;
+        }
+
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .pricing {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .pricing-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .pricing-detail {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .trial-notice {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .trial-notice strong {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+        }
+
+        .signup-form {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .signup-button {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .signup-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .signup-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .terms {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .terms a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .limited-spots {
+            background: #ff6b6b;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .status-message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @media (max-width: 768px) {
+            .signup-container {
+                padding: 30px;
+            }
+
+            .logo h1 {
+                font-size: 2.5rem;
+            }
+
+            .pricing-amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="logo">
+            <h1>ARAYA</h1>
+            <span class="beta-badge">BETA ACCESS</span>
+        </div>
+
+        <div class="intro">
+            <h2>AI Assistant with Manipulation Immunity</h2>
+            <p>Be among the first to experience an AI trained on Pattern Theory - designed to detect manipulation and see truth.</p>
+        </div>
+
+        <div class="limited-spots">
+            ⚡ Limited to 50 beta testers - Only 10 spots available in December
+        </div>
+
+        <div class="features">
+            <h3>What You Get as a Beta Tester:</h3>
+            <ul>
+                <li>Full access to Araya AI Assistant</li>
+                <li>Pattern Theory integration</li>
+                <li>Manipulation detection in conversations</li>
+                <li>Communication analysis tools</li>
+                <li>Priority support</li>
+                <li>Influence on product development</li>
+                <li>Lifetime beta pricing guarantee</li>
+            </ul>
+        </div>
+
+        <div class="trial-notice">
+            <strong>🎁 7-Day Free Trial</strong>
+            <p style="margin-top: 10px;">Try Araya risk-free for 7 days. Cancel anytime during the trial - no charge.</p>
+        </div>
+
+        <div class="pricing">
+            <div>Beta Access</div>
+            <div class="pricing-amount">$20</div>
+            <div class="pricing-detail">per month • cancel anytime</div>
+        </div>
+
+        <div id="status-message" class="status-message"></div>
+
+        <form id="signup-form" class="signup-form">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+                <label for="use-case">What will you use Araya for?</label>
+                <input type="text" id="use-case" name="use-case" placeholder="Business, personal, education, etc.">
+            </div>
+
+            <button type="submit" id="signup-button" class="signup-button">
+                Start 7-Day Free Trial
+            </button>
+        </form>
+
+        <div class="terms">
+            By signing up, you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.
+            You'll be charged $20/month after the 7-day trial. Cancel anytime.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const button = document.getElementById('signup-button');
+            const statusMessage = document.getElementById('status-message');
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const useCase = document.getElementById('use-case').value;
+
+            // Disable button
+            button.disabled = true;
+            button.textContent = 'Processing...';
+
+            // Hide any previous messages
+            statusMessage.style.display = 'none';
+
+            try {
+                // Save signup info to database (optional)
+                await fetch('/.netlify/functions/save-beta-signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email,
+                        name,
+                        useCase,
+                        signupDate: new Date().toISOString()
+                    })
+                });
+
+                // Create Stripe checkout session
+                const response = await fetch('/.netlify/functions/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        priceId: 'price_ArayaBeta2025', // Replace with actual Stripe price ID
+                        successUrl: window.location.origin + '/araya/welcome',
+                        cancelUrl: window.location.origin + '/araya-beta-signup.html',
+                        customerEmail: email,
+                        metadata: {
+                            name: name,
+                            useCase: useCase
+                        }
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.url;
+                } else {
+                    throw new Error('No checkout URL returned');
+                }
+            } catch (error) {
+                console.error('Signup error:', error);
+
+                // Show error message
+                statusMessage.textContent = 'Error processing signup. Please try again or contact support@consciousnessrevolution.io';
+                statusMessage.className = 'status-message error';
+                statusMessage.style.display = 'block';
+
+                // Re-enable button
+                button.disabled = false;
+                button.textContent = 'Start 7-Day Free Trial';
+            }
+        });
+
+        // Track page views
+        console.log('Araya Beta Signup page loaded');
+
+        // Optional: Add analytics tracking here
+        // gtag('event', 'page_view', { page_title: 'Araya Beta Signup' });
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "id": "BUG-006",
+  "title": "No L10 meeting cadence",
+  "description": "ST5 - Meetings not scheduled or tracked",
+  "priority": "low",
+  "status": "resolved",
+  "created": "2025-11-24T04:41:00.924193",
+  "resolved": "2025-11-24T07:07:46.290091",
+  "resolution": "EOS L10 tools exist in .planning/traction (agenda, prep, scorecard)"
+}

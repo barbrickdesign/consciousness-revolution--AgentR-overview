@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Recognition Course - See Through Manipulation</title>
+    <meta name="description" content="Learn to detect manipulation patterns and see truth. Protect yourself, your business, and your family from destructive communication.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+        }
+
+        .hero .price {
+            font-size: 1.2rem;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .problem h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .problem-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ff6b6b;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .solution h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .solution-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .curriculum h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .module {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 5px solid #667eea;
+        }
+
+        .module h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .module ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .module li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .module li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .benefits h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .benefit h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        /* Guarantee Section */
+        .guarantee {
+            background: #fff3cd;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .guarantee h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .guarantee-content {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .pricing-box {
+            max-width: 500px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .pricing-amount {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .pricing-features li {
+            list-style: none;
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .faq h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .modules, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Stop Being Manipulated</h1>
+            <p class="subtitle">Learn to detect manipulation patterns and see truth in every conversation</p>
+            <button id="enroll-button" class="cta-button">Enroll Now - Transform Your Life</button>
+            <p class="price">One-Time Investment: $997</p>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2>The Hidden Enemy Destroying Your Life</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>🎯 Manipulation is Everywhere</h3>
+                    <p>From politicians to advertisers, from toxic relationships to business deals - destructive communication patterns are designed to control you without your awareness.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>💔 You're Losing What Matters</h3>
+                    <p>Relationships crumble. Businesses fail. Children suffer. All because you can't see the patterns destroying everything you've built.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>⚠️ Time is Running Out</h3>
+                    <p>Every day you wait, the manipulation deepens. Your family, your business, your future - all at risk from patterns you can't even see.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <h2>There is a Way Out</h2>
+            <div class="solution-content">
+                <p><strong>Pattern Recognition</strong> is the skill that changes everything. When you can see the patterns of manipulation, you become immune to them.</p>
+                <p style="margin-top: 20px;">This isn't theory. This is battle-tested knowledge from someone who has identified and documented the core patterns that destroy lives, businesses, and families.</p>
+                <p style="margin-top: 20px;">Learn once. Protected forever.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum">
+        <div class="container">
+            <h2>What You'll Master</h2>
+            <div class="modules">
+                <div class="module">
+                    <h3>Module 1: Foundation</h3>
+                    <ul>
+                        <li>The 10 core manipulation patterns</li>
+                        <li>How to spot them instantly</li>
+                        <li>Pattern Theory fundamentals</li>
+                        <li>Truth signal detection</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <h3>Module 2: Personal Protection</h3>
+                    <ul>
+                        <li>Recognize toxic relationships</li>
+                        <li>Protect your children</li>
+                        <li>Family communication healing</li>
+                        <li>Build manipulation immunity</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <h3>Module 3: Business Defense</h3>
+                    <ul>
+                        <li>Spot bad deals before signing</li>
+                        <li>Identify dishonest partners</li>
+                        <li>Protect your company</li>
+                        <li>Negotiate with confidence</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <h3>Module 4: Advanced Patterns</h3>
+                    <ul>
+                        <li>Media manipulation tactics</li>
+                        <li>Political deception patterns</li>
+                        <li>Corporate propaganda</li>
+                        <li>Cultural programming</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <h3>Module 5: Real-World Application</h3>
+                    <ul>
+                        <li>Analyze real conversations</li>
+                        <li>Practice pattern detection</li>
+                        <li>Build your own tools</li>
+                        <li>Teach others to see</li>
+                    </ul>
+                </div>
+                <div class="module">
+                    <h3>Module 6: Mastery</h3>
+                    <ul>
+                        <li>Create consciousness elevation</li>
+                        <li>Become pattern-proof</li>
+                        <li>Help others awaken</li>
+                        <li>Change your world</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Transform Every Area of Your Life</h2>
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <div class="benefit-icon">💼</div>
+                    <h3>Business Protection</h3>
+                    <p>Never sign a bad deal again</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Family Safety</h3>
+                    <p>Protect your children from manipulation</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Financial Security</h3>
+                    <p>Spot scams and save money</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Mental Clarity</h3>
+                    <p>See truth in every situation</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Confidence</h3>
+                    <p>Make decisions with certainty</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Immunity</h3>
+                    <p>Become manipulation-proof forever</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Success Stories</h2>
+            <div class="testimonial">
+                <p class="testimonial-text">"This course saved my business. I was about to sign a contract that would have bankrupted me. Pattern Recognition helped me see the manipulation tactics and walk away. Best $997 I ever spent."</p>
+                <p class="testimonial-author">- Sarah M., Business Owner</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"My relationship with my teenage daughter was destroyed. After learning these patterns, I could finally see what was happening. We're closer now than we've been in years."</p>
+                <p class="testimonial-author">- Michael K., Father of Three</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"I thought I was smart enough to avoid manipulation. I was wrong. This course opened my eyes to patterns I'd been blind to my entire life. It's like gaining a superpower."</p>
+                <p class="testimonial-author">- Jennifer L., Executive</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee">
+        <div class="container">
+            <h2>🎯 100% Satisfaction Guarantee</h2>
+            <div class="guarantee-content">
+                <p>Complete the first module. If you don't immediately start seeing manipulation patterns you've been blind to your entire life, email us for a full refund. No questions asked.</p>
+                <p style="margin-top: 20px;"><strong>You risk nothing. The only risk is staying blind.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2>Invest in Your Future</h2>
+            <div class="pricing-box">
+                <h3>Complete Pattern Recognition Course</h3>
+                <div class="pricing-amount">$997</div>
+                <p>One-time payment. Lifetime access.</p>
+                <ul class="pricing-features">
+                    <li>6 comprehensive modules</li>
+                    <li>Lifetime access to all content</li>
+                    <li>Future updates included</li>
+                    <li>Private community access</li>
+                    <li>Email support</li>
+                    <li>Certificate of completion</li>
+                    <li>100% money-back guarantee</li>
+                </ul>
+                <button id="enroll-button-2" class="cta-button">Enroll Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">Is this course right for me?</div>
+                <div class="faq-answer">If you're in business, raising children, in relationships, or simply want to protect yourself from manipulation - this course is for you. The patterns affect everyone.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How long does it take to complete?</div>
+                <div class="faq-answer">Most students complete the core content in 4-6 weeks. But you have lifetime access, so learn at your own pace.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What if I don't have time right now?</div>
+                <div class="faq-answer">You have lifetime access. Enroll now, start when you're ready. The content will be waiting for you.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is there a payment plan?</div>
+                <div class="faq-answer">Currently, we offer one-time payment only to keep the course accessible without ongoing commitments.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What if I'm not satisfied?</div>
+                <div class="faq-answer">100% money-back guarantee. Complete the first module, and if you're not seeing real patterns, we'll refund you immediately.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Consciousness Revolution. All rights reserved.</p>
+            <p>Questions? Email: support@consciousnessrevolution.io</p>
+        </div>
+    </footer>
+
+    <script>
+        // Stripe Checkout Integration
+        async function startCheckout() {
+            try {
+                const response = await fetch('/.netlify/functions/create-checkout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        priceId: 'price_PatternCourse2025', // Replace with actual Stripe price ID
+                        successUrl: window.location.origin + '/course/welcome',
+                        cancelUrl: window.location.origin + '/pattern-recognition-course.html'
+                    })
+                });
+
+                const { url } = await response.json();
+
+                if (url) {
+                    window.location.href = url;
+                } else {
+                    alert('Error creating checkout session. Please try again or contact support.');
+                }
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Error processing payment. Please try again or contact support@consciousnessrevolution.io');
+            }
+        }
+
+        // Add event listeners to all enroll buttons
+        document.getElementById('enroll-button').addEventListener('click', startCheckout);
+        document.getElementById('enroll-button-2').addEventListener('click', startCheckout);
+
+        // Track page views (optional - add your analytics here)
+        console.log('Pattern Recognition Course page loaded');
+    </script>
+</body>
+</html>

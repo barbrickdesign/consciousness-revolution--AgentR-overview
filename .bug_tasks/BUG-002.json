@@ -1,0 +1,10 @@
+{
+  "id": "BUG-002",
+  "title": "No automated scorecard",
+  "description": "ST1 - Manual tracking unsustainable",
+  "priority": "high",
+  "status": "resolved",
+  "created": "2025-11-24T04:41:00.920840",
+  "resolved": "2025-11-24T04:41:19.946020",
+  "resolution": "Fixed by SCORECARD_AUTOMATION.py - automated metrics collection"
+}

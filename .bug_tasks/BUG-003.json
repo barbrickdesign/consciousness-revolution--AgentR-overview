@@ -1,0 +1,10 @@
+{
+  "id": "BUG-003",
+  "title": "Trinity A2A protocol missing",
+  "description": "ST2 - Communication not standardized",
+  "priority": "medium",
+  "status": "resolved",
+  "created": "2025-11-24T04:41:00.921074",
+  "resolved": "2025-11-24T04:41:59.264499",
+  "resolution": "Trinity MCP server operational - 65 messages sent this session"
+}

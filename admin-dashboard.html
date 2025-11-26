@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Consciousness Revolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .stat-card .label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-card .value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .change {
+            font-size: 14px;
+            color: #22c55e;
+        }
+
+        .stat-card .change.negative {
+            color: #ef4444;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .user-table th {
+            background: #f9fafb;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .user-table td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+        }
+
+        .user-table tr:hover {
+            background: #f9fafb;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge.inactive {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge.pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge.paid {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-right: 5px;
+            transition: background 0.2s;
+        }
+
+        .action-btn:hover {
+            background: #5568d3;
+        }
+
+        .action-btn.danger {
+            background: #ef4444;
+        }
+
+        .action-btn.danger:hover {
+            background: #dc2626;
+        }
+
+        .funnel-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .funnel-stage {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .funnel-bar {
+            flex: 1;
+            height: 40px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .funnel-label {
+            min-width: 150px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .funnel-count {
+            margin-left: auto;
+            background: rgba(255,255,255,0.3);
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        .email-sequence {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .email-row {
+            display: grid;
+            grid-template-columns: 40px 200px 1fr 100px 100px 120px;
+            gap: 15px;
+            align-items: center;
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .email-num {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .email-title {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .email-metric {
+            text-align: center;
+        }
+
+        .email-metric .label {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .email-metric .value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .filter-btn:hover {
+            border-color: #667eea;
+        }
+
+        .export-btn {
+            padding: 10px 20px;
+            background: #22c55e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .export-btn:hover {
+            background: #16a34a;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .email-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 Beta Launch Dashboard</h1>
+        <p class="subtitle">Consciousness Revolution - Real-time monitoring and management</p>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="label">Total Signups</div>
+            <div class="value" id="totalSignups">0</div>
+            <div class="change" id="signupsChange">+0 today</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">Active Users</div>
+            <div class="value" id="activeUsers">0</div>
+            <div class="change" id="activeChange">0% of total</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">Paying Customers</div>
+            <div class="value" id="payingCustomers">0</div>
+            <div class="change" id="payingChange">$0 MRR</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">Conversion Rate</div>
+            <div class="value" id="conversionRate">0%</div>
+            <div class="change" id="conversionTarget">Target: 5-7%</div>
+        </div>
+    </div>
+
+    <!-- Conversion Funnel -->
+    <div class="section">
+        <h2>📊 Conversion Funnel</h2>
+        <div class="funnel-chart">
+            <div class="funnel-stage">
+                <div class="funnel-label">1. Signups</div>
+                <div class="funnel-bar" style="width: 100%;">
+                    <span>100%</span>
+                    <span class="funnel-count" id="funnel-signups">0 users</span>
+                </div>
+            </div>
+            <div class="funnel-stage">
+                <div class="funnel-label">2. Email Verified</div>
+                <div class="funnel-bar" style="width: 85%;">
+                    <span>85%</span>
+                    <span class="funnel-count" id="funnel-verified">0 users</span>
+                </div>
+            </div>
+            <div class="funnel-stage">
+                <div class="funnel-label">3. Logged In</div>
+                <div class="funnel-bar" style="width: 70%;">
+                    <span>70%</span>
+                    <span class="funnel-count" id="funnel-login">0 users</span>
+                </div>
+            </div>
+            <div class="funnel-stage">
+                <div class="funnel-label">4. Active (Used Tool)</div>
+                <div class="funnel-bar" style="width: 50%;">
+                    <span>50%</span>
+                    <span class="funnel-count" id="funnel-active">0 users</span>
+                </div>
+            </div>
+            <div class="funnel-stage">
+                <div class="funnel-label">5. Engaged (7-day)</div>
+                <div class="funnel-bar" style="width: 35%;">
+                    <span>35%</span>
+                    <span class="funnel-count" id="funnel-engaged">0 users</span>
+                </div>
+            </div>
+            <div class="funnel-stage">
+                <div class="funnel-label">6. Paying</div>
+                <div class="funnel-bar" style="width: 7%;">
+                    <span>7%</span>
+                    <span class="funnel-count" id="funnel-paying">0 users</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Sequence Performance -->
+    <div class="section">
+        <h2>📧 Email Sequence Performance</h2>
+        <div class="email-sequence">
+            <div class="email-row" style="background: #e5e7eb; font-weight: bold;">
+                <div>#</div>
+                <div>Email</div>
+                <div>Subject</div>
+                <div class="email-metric">
+                    <div class="label">SENT</div>
+                </div>
+                <div class="email-metric">
+                    <div class="label">OPEN %</div>
+                </div>
+                <div class="email-metric">
+                    <div class="label">CLICK %</div>
+                </div>
+            </div>
+
+            <div class="email-row">
+                <div class="email-num">1</div>
+                <div class="email-title">Welcome</div>
+                <div>Welcome to Consciousness Revolution! 🧠</div>
+                <div class="email-metric"><div class="value" id="email1-sent">0</div></div>
+                <div class="email-metric"><div class="value" id="email1-open">0%</div></div>
+                <div class="email-metric"><div class="value" id="email1-click">0%</div></div>
+            </div>
+
+            <div class="email-row">
+                <div class="email-num">2</div>
+                <div class="email-title">Quick Win</div>
+                <div>Your first pattern recognized! 🎯</div>
+                <div class="email-metric"><div class="value" id="email2-sent">0</div></div>
+                <div class="email-metric"><div class="value" id="email2-open">0%</div></div>
+                <div class="email-metric"><div class="value" id="email2-click">0%</div></div>
+            </div>
+
+            <div class="email-row">
+                <div class="email-num">3</div>
+                <div class="email-title">Case Study</div>
+                <div>How Sarah went manipulation-immune in 7 days</div>
+                <div class="email-metric"><div class="value" id="email3-sent">0</div></div>
+                <div class="email-metric"><div class="value" id="email3-open">0%</div></div>
+                <div class="email-metric"><div class="value" id="email3-click">0%</div></div>
+            </div>
+
+            <div class="email-row">
+                <div class="email-num">4</div>
+                <div class="email-title">Value Bomb</div>
+                <div>3 manipulation patterns destroying builders</div>
+                <div class="email-metric"><div class="value" id="email4-sent">0</div></div>
+                <div class="email-metric"><div class="value" id="email4-open">0%</div></div>
+                <div class="email-metric"><div class="value" id="email4-click">0%</div></div>
+            </div>
+
+            <div class="email-row">
+                <div class="email-num">5</div>
+                <div class="email-title">Community</div>
+                <div>You're invited: Weekly Consciousness Call</div>
+                <div class="email-metric"><div class="value" id="email5-sent">0</div></div>
+                <div class="email-metric"><div class="value" id="email5-open">0%</div></div>
+                <div class="email-metric"><div class="value" id="email5-click">0%</div></div>
+            </div>
+
+            <div class="email-row">
+                <div class="email-num">6</div>
+                <div class="email-title">Upgrade Offer</div>
+                <div>Ready to go deeper? $5/mo special</div>
+                <div class="email-metric"><div class="value" id="email6-sent">0</div></div>
+                <div class="email-metric"><div class="value" id="email6-open">0%</div></div>
+                <div class="email-metric"><div class="value" id="email6-click">0%</div></div>
+            </div>
+
+            <div class="email-row">
+                <div class="email-num">7</div>
+                <div class="email-title">Referral</div>
+                <div>Invite 3 friends → Get 3 months free</div>
+                <div class="email-metric"><div class="value" id="email7-sent">0</div></div>
+                <div class="email-metric"><div class="value" id="email7-open">0%</div></div>
+                <div class="email-metric"><div class="value" id="email7-click">0%</div></div>
+            </div>
+
+            <div class="email-row">
+                <div class="email-num">8</div>
+                <div class="email-title">Re-engagement</div>
+                <div>We miss you! Here's $5 to come back</div>
+                <div class="email-metric"><div class="value" id="email8-sent">0</div></div>
+                <div class="email-metric"><div class="value" id="email8-open">0%</div></div>
+                <div class="email-metric"><div class="value" id="email8-click">0%</div></div>
+            </div>
+
+            <div class="email-row">
+                <div class="email-num">9</div>
+                <div class="email-title">Status Check</div>
+                <div>Your beta access status (action required)</div>
+                <div class="email-metric"><div class="value" id="email9-sent">0</div></div>
+                <div class="email-metric"><div class="value" id="email9-open">0%</div></div>
+                <div class="email-metric"><div class="value" id="email9-click">0%</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Management -->
+    <div class="section">
+        <h2>👥 User Management</h2>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All Users</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="inactive">Inactive</button>
+            <button class="filter-btn" data-filter="paying">Paying</button>
+            <button class="filter-btn" data-filter="pending">Pending Verification</button>
+            <button class="export-btn" onclick="exportUsers()">📥 Export CSV</button>
+        </div>
+
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Signup Date</th>
+                    <th>Status</th>
+                    <th>Tier</th>
+                    <th>Email Stage</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <!-- Users will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Load users from localStorage (temporary until backend)
+        function loadUsers() {
+            const signups = JSON.parse(localStorage.getItem('betaSignups') || '[]');
+
+            // Update stats
+            document.getElementById('totalSignups').textContent = signups.length;
+
+            // Calculate active users (logged in within 7 days)
+            const weekAgo = new Date(Date.now() - 7*24*60*60*1000);
+            const activeUsers = signups.filter(u =>
+                u.lastLogin && new Date(u.lastLogin) > weekAgo
+            ).length;
+            document.getElementById('activeUsers').textContent = activeUsers;
+
+            // Calculate paying customers
+            const payingUsers = signups.filter(u => u.tier && u.tier !== 'free').length;
+            document.getElementById('payingCustomers').textContent = payingUsers;
+
+            // Calculate MRR
+            const mrr = payingUsers * 5; // Assuming $5/mo beta pricing
+            document.getElementById('payingChange').textContent = `$${mrr} MRR`;
+
+            // Calculate conversion rate
+            const conversionRate = signups.length > 0
+                ? ((payingUsers / signups.length) * 100).toFixed(1)
+                : 0;
+            document.getElementById('conversionRate').textContent = `${conversionRate}%`;
+
+            // Update active percentage
+            const activePercent = signups.length > 0
+                ? ((activeUsers / signups.length) * 100).toFixed(0)
+                : 0;
+            document.getElementById('activeChange').textContent = `${activePercent}% of total`;
+
+            // Update funnel
+            updateFunnel(signups);
+
+            // Populate user table
+            populateUserTable(signups);
+        }
+
+        function updateFunnel(signups) {
+            const total = signups.length;
+
+            // Calculate each stage (using projected percentages for now)
+            const verified = Math.floor(total * 0.85);
+            const loggedIn = Math.floor(total * 0.70);
+            const active = Math.floor(total * 0.50);
+            const engaged = Math.floor(total * 0.35);
+            const paying = signups.filter(u => u.tier && u.tier !== 'free').length;
+
+            document.getElementById('funnel-signups').textContent = `${total} users`;
+            document.getElementById('funnel-verified').textContent = `${verified} users`;
+            document.getElementById('funnel-login').textContent = `${loggedIn} users`;
+            document.getElementById('funnel-active').textContent = `${active} users`;
+            document.getElementById('funnel-engaged').textContent = `${engaged} users`;
+            document.getElementById('funnel-paying').textContent = `${paying} users`;
+        }
+
+        function populateUserTable(signups) {
+            const tbody = document.getElementById('userTableBody');
+
+            if (signups.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 40px; color: #666;">
+                            No signups yet. Launch beta to start tracking users!
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = signups.map((user, index) => {
+                const signupDate = new Date(user.signupDate || Date.now()).toLocaleDateString();
+                const status = user.verified ? 'active' : 'pending';
+                const tier = user.tier || 'free';
+                const emailStage = user.emailStage || 1;
+
+                return `
+                    <tr>
+                        <td>${user.name || 'N/A'}</td>
+                        <td>${user.email}</td>
+                        <td>${signupDate}</td>
+                        <td><span class="badge ${status}">${status}</span></td>
+                        <td><span class="badge ${tier === 'free' ? 'pending' : 'paid'}">${tier}</span></td>
+                        <td>Email ${emailStage}/9</td>
+                        <td>
+                            <button class="action-btn" onclick="viewUser(${index})">View</button>
+                            <button class="action-btn" onclick="emailUser(${index})">Email</button>
+                            <button class="action-btn danger" onclick="deleteUser(${index})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function viewUser(index) {
+            const signups = JSON.parse(localStorage.getItem('betaSignups') || '[]');
+            const user = signups[index];
+            alert(`User Details:\n\nName: ${user.name}\nEmail: ${user.email}\nSignup: ${new Date(user.signupDate).toLocaleString()}\nStatus: ${user.verified ? 'Active' : 'Pending'}\nTier: ${user.tier || 'Free'}`);
+        }
+
+        function emailUser(index) {
+            const signups = JSON.parse(localStorage.getItem('betaSignups') || '[]');
+            const user = signups[index];
+            window.location.href = `mailto:${user.email}`;
+        }
+
+        function deleteUser(index) {
+            if (!confirm('Are you sure you want to delete this user?')) return;
+
+            const signups = JSON.parse(localStorage.getItem('betaSignups') || '[]');
+            signups.splice(index, 1);
+            localStorage.setItem('betaSignups', JSON.stringify(signups));
+            loadUsers();
+        }
+
+        function exportUsers() {
+            const signups = JSON.parse(localStorage.getItem('betaSignups') || '[]');
+
+            // Create CSV
+            const headers = ['Name', 'Email', 'Signup Date', 'Status', 'Tier'];
+            const rows = signups.map(u => [
+                u.name || '',
+                u.email || '',
+                u.signupDate || '',
+                u.verified ? 'Active' : 'Pending',
+                u.tier || 'free'
+            ]);
+
+            const csv = [headers, ...rows].map(row => row.join(',')).join('\n');
+
+            // Download
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `beta-users-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+                const signups = JSON.parse(localStorage.getItem('betaSignups') || '[]');
+
+                let filtered = signups;
+                if (filter === 'active') {
+                    const weekAgo = new Date(Date.now() - 7*24*60*60*1000);
+                    filtered = signups.filter(u => u.lastLogin && new Date(u.lastLogin) > weekAgo);
+                } else if (filter === 'inactive') {
+                    const weekAgo = new Date(Date.now() - 7*24*60*60*1000);
+                    filtered = signups.filter(u => !u.lastLogin || new Date(u.lastLogin) <= weekAgo);
+                } else if (filter === 'paying') {
+                    filtered = signups.filter(u => u.tier && u.tier !== 'free');
+                } else if (filter === 'pending') {
+                    filtered = signups.filter(u => !u.verified);
+                }
+
+                populateUserTable(filtered);
+            });
+        });
+
+        // Auto-refresh every 30 seconds
+        setInterval(loadUsers, 30000);
+
+        // Initial load
+        loadUsers();
+
+        // Add sample data for testing (remove in production)
+        if (localStorage.getItem('betaSignups') === null) {
+            const sampleUsers = [
+                {
+                    name: 'John Builder',
+                    email: 'john@example.com',
+                    signupDate: new Date().toISOString(),
+                    verified: true,
+                    tier: 'free',
+                    emailStage: 3,
+                    lastLogin: new Date().toISOString()
+                }
+            ];
+            localStorage.setItem('betaSignups', JSON.stringify(sampleUsers));
+            loadUsers();
+        }
+    </script>
+</body>
+</html>

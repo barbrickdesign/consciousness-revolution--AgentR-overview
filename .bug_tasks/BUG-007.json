@@ -1,0 +1,10 @@
+{
+  "id": "BUG-007",
+  "title": "API cost tracking missing",
+  "description": "LT1 - No optimization or monitoring",
+  "priority": "medium",
+  "status": "resolved",
+  "created": "2025-11-24T04:41:00.924446",
+  "resolved": "2025-11-24T07:07:46.289559",
+  "resolution": "Built ANALYTICS_COLLECTOR.py + analytics_dashboard.html for monitoring"
+}

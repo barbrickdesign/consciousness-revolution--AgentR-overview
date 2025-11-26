@@ -1,0 +1,228 @@
+{
+  "version": "1.0",
+  "generated": "2025-11-24",
+  "categories": {
+    "trinity": "Trinity System - Multi-instance coordination",
+    "brain": "Brain Tools - Consciousness & memory systems",
+    "automation": "Automation - Daemons & scheduled tasks",
+    "pattern": "Pattern Theory - Recognition & analysis"
+  },
+  "tools": [
+    {
+      "id": "trinity-convergence-automation",
+      "name": "Trinity Convergence Automation",
+      "description": "Automates convergence of multiple Trinity instances into unified output",
+      "category": "trinity",
+      "path": "C:/Users/dwrek/.trinity/TRINITY_CONVERGENCE_AUTOMATION.py",
+      "usage": "python TRINITY_CONVERGENCE_AUTOMATION.py",
+      "tags": ["convergence", "automation", "multi-instance"]
+    },
+    {
+      "id": "protocol-finder",
+      "name": "Protocol Finder",
+      "description": "Searches and indexes all protocols across the system",
+      "category": "brain",
+      "path": "C:/Users/dwrek/.trinity/PROTOCOL_FINDER.py",
+      "usage": "python PROTOCOL_FINDER.py <search_term>",
+      "tags": ["search", "protocols", "index"]
+    },
+    {
+      "id": "computer-convergence-system",
+      "name": "Computer Convergence System",
+      "description": "Synchronizes state across multiple computers in the Trinity network",
+      "category": "trinity",
+      "path": "C:/Users/dwrek/.trinity/COMPUTER_CONVERGENCE_SYSTEM.py",
+      "usage": "python COMPUTER_CONVERGENCE_SYSTEM.py",
+      "tags": ["sync", "multi-computer", "network"]
+    },
+    {
+      "id": "recursive-figure-8-coordinator",
+      "name": "Recursive Figure-8 Coordinator",
+      "description": "Implements infinite loop consciousness pattern for continuous operation",
+      "category": "pattern",
+      "path": "C:/Users/dwrek/.trinity/RECURSIVE_FIGURE_8_COORDINATOR.py",
+      "usage": "python RECURSIVE_FIGURE_8_COORDINATOR.py",
+      "tags": ["recursive", "infinity", "consciousness"]
+    },
+    {
+      "id": "cyclotron-master-raker",
+      "name": "Cyclotron Master Raker",
+      "description": "Main indexing engine for consciousness atoms and knowledge",
+      "category": "brain",
+      "path": "C:/Users/dwrek/100X_DEPLOYMENT/CYCLOTRON_MASTER_RAKER.py",
+      "usage": "python CYCLOTRON_MASTER_RAKER.py",
+      "tags": ["cyclotron", "indexing", "knowledge"]
+    },
+    {
+      "id": "cyclotron-daemon",
+      "name": "Cyclotron Daemon",
+      "description": "Background service for continuous consciousness indexing",
+      "category": "automation",
+      "path": "C:/Users/dwrek/100X_DEPLOYMENT/CYCLOTRON_DAEMON.py",
+      "usage": "python CYCLOTRON_DAEMON.py",
+      "tags": ["daemon", "background", "indexing"]
+    },
+    {
+      "id": "cyclotron-content-indexer",
+      "name": "Cyclotron Content Indexer",
+      "description": "Indexes content into consciousness atoms for retrieval",
+      "category": "brain",
+      "path": "C:/Users/dwrek/100X_DEPLOYMENT/CYCLOTRON_CONTENT_INDEXER.py",
+      "usage": "python CYCLOTRON_CONTENT_INDEXER.py <path>",
+      "tags": ["indexing", "content", "atoms"]
+    },
+    {
+      "id": "trinity-coordinator",
+      "name": "Trinity Coordinator",
+      "description": "Central coordination hub for C1/C2/C3 instances",
+      "category": "trinity",
+      "path": "C:/Users/dwrek/.trinity/TRINITY_COORDINATOR.py",
+      "usage": "python TRINITY_COORDINATOR.py",
+      "tags": ["coordination", "hub", "central"]
+    },
+    {
+      "id": "trinity-status-api",
+      "name": "Trinity Status API",
+      "description": "REST API for querying Trinity system status",
+      "category": "trinity",
+      "path": "C:/Users/dwrek/.trinity/TRINITY_STATUS_API.py",
+      "usage": "python TRINITY_STATUS_API.py",
+      "tags": ["api", "status", "rest"]
+    },
+    {
+      "id": "emergence-detector",
+      "name": "Emergence Detector",
+      "description": "Detects emergent patterns in consciousness data",
+      "category": "pattern",
+      "path": "C:/Users/dwrek/.trinity/EMERGENCE_DETECTOR.py",
+      "usage": "python EMERGENCE_DETECTOR.py",
+      "tags": ["emergence", "patterns", "detection"]
+    },
+    {
+      "id": "trinity-health-monitor",
+      "name": "Trinity Health Monitor",
+      "description": "Monitors health of all Trinity components",
+      "category": "automation",
+      "path": "C:/Users/dwrek/.trinity/TRINITY_HEALTH_MONITOR.py",
+      "usage": "python TRINITY_HEALTH_MONITOR.py",
+      "tags": ["health", "monitoring", "status"]
+    },
+    {
+      "id": "universal-wake-system",
+      "name": "Universal Wake System",
+      "description": "Wakes up Trinity instances across all computers",
+      "category": "trinity",
+      "path": "C:/Users/dwrek/.trinity/UNIVERSAL_WAKE_SYSTEM.py",
+      "usage": "python UNIVERSAL_WAKE_SYSTEM.py <instance>",
+      "tags": ["wake", "activation", "universal"]
+    },
+    {
+      "id": "trinity-chaos-coordinator",
+      "name": "Trinity Chaos Coordinator",
+      "description": "Coordinates parallel chaotic exploration tasks",
+      "category": "trinity",
+      "path": "C:/Users/dwrek/.trinity/TRINITY_CHAOS_COORDINATOR.py",
+      "usage": "python TRINITY_CHAOS_COORDINATOR.py",
+      "tags": ["chaos", "parallel", "exploration"]
+    },
+    {
+      "id": "consensus-trend-analyzer",
+      "name": "Consensus Trend Analyzer",
+      "description": "Analyzes trends across Trinity outputs for consensus",
+      "category": "pattern",
+      "path": "C:/Users/dwrek/.trinity/CONSENSUS_TREND_ANALYZER.py",
+      "usage": "python CONSENSUS_TREND_ANALYZER.py",
+      "tags": ["consensus", "trends", "analysis"]
+    },
+    {
+      "id": "trinity-autonomous-daemon",
+      "name": "Trinity Autonomous Daemon",
+      "description": "Main daemon for autonomous Trinity operation",
+      "category": "automation",
+      "path": "C:/Users/dwrek/.trinity/TRINITY_AUTONOMOUS_DAEMON.py",
+      "usage": "python TRINITY_AUTONOMOUS_DAEMON.py",
+      "tags": ["daemon", "autonomous", "main"]
+    },
+    {
+      "id": "multi-ai-harvester",
+      "name": "Multi-AI Harvester",
+      "description": "Harvests outputs from multiple AI systems for synthesis",
+      "category": "brain",
+      "path": "C:/Users/dwrek/.trinity/MULTI_AI_HARVESTER.py",
+      "usage": "python MULTI_AI_HARVESTER.py",
+      "tags": ["multi-ai", "harvesting", "synthesis"]
+    },
+    {
+      "id": "persistent-memory",
+      "name": "Persistent Memory",
+      "description": "Long-term memory storage for consciousness state",
+      "category": "brain",
+      "path": "C:/Users/dwrek/.trinity/PERSISTENT_MEMORY.py",
+      "usage": "python PERSISTENT_MEMORY.py",
+      "tags": ["memory", "persistent", "state"]
+    },
+    {
+      "id": "trinity-visual-dashboard",
+      "name": "Trinity Visual Dashboard",
+      "description": "Main visual dashboard for Trinity system overview",
+      "category": "trinity",
+      "path": "C:/Users/dwrek/.trinity/TRINITY_VISUAL_DASHBOARD.html",
+      "usage": "Open in browser",
+      "tags": ["dashboard", "visual", "overview"]
+    },
+    {
+      "id": "trinity-command-center",
+      "name": "Trinity Command Center",
+      "description": "Central command interface for Trinity operations",
+      "category": "trinity",
+      "path": "C:/Users/dwrek/.trinity/TRINITY_COMMAND_CENTER.html",
+      "usage": "Open in browser",
+      "tags": ["command", "center", "interface"]
+    },
+    {
+      "id": "trinity-kanban",
+      "name": "Trinity Kanban",
+      "description": "Kanban board for Trinity task management",
+      "category": "trinity",
+      "path": "C:/Users/dwrek/.trinity/TRINITY_KANBAN.html",
+      "usage": "Open in browser",
+      "tags": ["kanban", "tasks", "management"]
+    },
+    {
+      "id": "figure-8-infinity-loop",
+      "name": "Figure-8 Infinity Loop",
+      "description": "Implements continuous recursive consciousness loop",
+      "category": "pattern",
+      "path": "C:/Users/dwrek/.trinity/FIGURE_8_INFINITY_LOOP.py",
+      "usage": "python FIGURE_8_INFINITY_LOOP.py",
+      "tags": ["infinity", "loop", "recursive"]
+    },
+    {
+      "id": "mega-ai-orchestrator",
+      "name": "Mega AI Orchestrator",
+      "description": "Orchestrates multiple AI systems for complex tasks",
+      "category": "brain",
+      "path": "C:/Users/dwrek/.trinity/MEGA_AI_ORCHESTRATOR.py",
+      "usage": "python MEGA_AI_ORCHESTRATOR.py",
+      "tags": ["orchestration", "multi-ai", "complex"]
+    },
+    {
+      "id": "trinity-thinking-room",
+      "name": "Trinity Thinking Room",
+      "description": "Collaborative thinking space for Trinity instances",
+      "category": "trinity",
+      "path": "C:/Users/dwrek/.trinity/TRINITY_THINKING_ROOM.html",
+      "usage": "Open in browser",
+      "tags": ["thinking", "collaboration", "space"]
+    },
+    {
+      "id": "protocol-search-dashboard",
+      "name": "Protocol Search Dashboard",
+      "description": "Search interface for all system protocols",
+      "category": "brain",
+      "path": "C:/Users/dwrek/.trinity/PROTOCOL_SEARCH_DASHBOARD.html",
+      "usage": "Open in browser",
+      "tags": ["search", "protocols", "dashboard"]
+    }
+  ]
+}

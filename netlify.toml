@@ -1,6 +1,10 @@
 [build]
   publish = "."
-  functions = ".netlify/functions"
+  functions = "netlify/functions"
+  command = "echo 'No build required'"
+
+[build.environment]
+  NODE_VERSION = "18"
 
 [[redirects]]
   from = "/"
@@ -41,19 +45,20 @@
 
 # Stripe webhook endpoint
 [[redirects]]
-  from = "/api/stripe-webhook"
-  to = "/.netlify/functions/stripe-webhook"
+  from = "/api/webhook"
+  to = "/.netlify/functions/webhook"
   status = 200
 
 # Payment endpoints
 [[redirects]]
   from = "/api/create-checkout"
-  to = "/.netlify/functions/create-checkout-session"
+  to = "/.netlify/functions/create-checkout"
   status = 200
 
+# Beta signup endpoint
 [[redirects]]
-  from = "/api/customer-portal"
-  to = "/.netlify/functions/customer-portal"
+  from = "/api/save-beta-signup"
+  to = "/.netlify/functions/save-beta-signup"
   status = 200
 
 # Ensure all other routes go to index

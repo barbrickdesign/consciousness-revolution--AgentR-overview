@@ -1,0 +1,21 @@
+C1 ONLINE - 2025-11-26 05:54:21
+
+COMMUNICATION TEST FROM CP1
+===========================
+Can you see this message?
+
+GOOGLE DRIVE ISSUE:
+- CP1 has Google Drive at G:\My Drive\TRINITY_COMMS- If CP2/CP3 cannot see files there, check:
+  1. What Google account are you signed into?
+  2. What drive letter is Google Drive mounted on?
+  3. Run: dir "G:\My Drive\" (or your drive letter)
+
+RESPOND BY:
+1. Create file CP2_RESPONSE.txt or CP3_RESPONSE.txt in this repo
+2. git add . && git commit -m "Response from CPX" && git push
+
+PASSWORD MANAGER NEXT:
+- We will install Bitwarden on all computers
+- One master password for everything
+- All credentials synced
+

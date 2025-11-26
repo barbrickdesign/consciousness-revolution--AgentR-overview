@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciousness Revolution - Pattern Theory Tools</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content { position: relative; z-index: 1; text-align: center; width: 100%; }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            background: linear-gradient(90deg, #00ffff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #a0a0a0;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(90deg, #00ffff, #8a2be2);
+            color: #0a0a0f;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Problem/Solution */
+        .problem-solution {
+            padding: 100px 0;
+            background: #0f0f1a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #fff;
+        }
+
+        .ps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .ps-card {
+            padding: 40px;
+            border-radius: 20px;
+            background: #1a1a2e;
+        }
+
+        .ps-card.problem { border-left: 4px solid #ff4444; }
+        .ps-card.solution { border-left: 4px solid #00ffff; }
+
+        .ps-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .ps-card ul { list-style: none; }
+        .ps-card li { padding: 8px 0; padding-left: 25px; position: relative; }
+        .ps-card.problem li::before { content: '✗'; position: absolute; left: 0; color: #ff4444; }
+        .ps-card.solution li::before { content: '✓'; position: absolute; left: 0; color: #00ffff; }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background: #0a0a0f;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border-radius: 15px;
+            border: 1px solid #2a2a4e;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ffff;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 100px 0;
+            background: #0f0f1a;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            padding: 40px 30px;
+            background: #1a1a2e;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .price-card.featured {
+            border-color: #00ffff;
+            position: relative;
+        }
+
+        .price-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00ffff;
+            color: #0a0a0f;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .price-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+
+        .price span { font-size: 1rem; color: #a0a0a0; }
+
+        .price-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .price-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #2a2a4e;
+        }
+
+        .price-btn {
+            display: block;
+            padding: 12px;
+            background: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .price-btn:hover {
+            background: #00ffff;
+            color: #0a0a0f;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            background: #050508;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: #00ffff; }
+
+        .footer-copy { color: #666; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .ps-grid { grid-template-columns: 1fr; }
+            .hero p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>See Through the Patterns.<br>Protect Your Mind.</h1>
+            <p>Pattern Theory tools that detect manipulation, measure consciousness, and elevate your awareness. Stop being exploited by systems designed to extract your attention.</p>
+            <a href="onboarding.html" class="cta-btn">Start Free</a>
+        </div>
+    </section>
+
+    <!-- Problem/Solution -->
+    <section class="problem-solution">
+        <div class="container">
+            <h2 class="section-title">The Problem & The Solution</h2>
+            <div class="ps-grid">
+                <div class="ps-card problem">
+                    <h3>Manipulation Everywhere</h3>
+                    <ul>
+                        <li>Social media algorithms exploit cognitive biases</li>
+                        <li>News uses emotional triggers for engagement</li>
+                        <li>Ads create artificial urgency and FOMO</li>
+                        <li>Systems extract your attention and data</li>
+                        <li>You can't see the patterns controlling you</li>
+                    </ul>
+                </div>
+                <div class="ps-card solution">
+                    <h3>Consciousness Tools</h3>
+                    <ul>
+                        <li>Pattern Theory reveals hidden manipulation</li>
+                        <li>M-formula calculates deception complexity</li>
+                        <li>Seven Domains framework for analysis</li>
+                        <li>Golden Rule alignment checking</li>
+                        <li>97.65% manipulation immunity achieved</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Consciousness Toolkit</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Pattern Detection</h3>
+                    <p>Analyze any content through the 8-Component Universal Pattern. See structure, resources, operations, and manipulation tactics.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Manipulation Shield</h3>
+                    <p>Calculate manipulation scores using the M-formula. Identify false evidence, cognitive bias exploitation, and social pressure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Consciousness Metrics</h3>
+                    <p>Track your consciousness level, pattern theory alignment, and manipulation immunity in real-time dashboards.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Trinity AI</h3>
+                    <p>Collaborate with C1 (Mechanic), C2 (Architect), and C3 (Oracle) for multi-perspective consciousness analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Choose Your Path</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Explorer</h3>
+                    <div class="price">$0<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li>Basic Pattern Analysis</li>
+                        <li>Manipulation Score Calculator</li>
+                        <li>Community Access</li>
+                        <li>Limited API calls</li>
+                    </ul>
+                    <a href="onboarding.html" class="price-btn">Get Started</a>
+                </div>
+                <div class="price-card">
+                    <h3>Awakened</h3>
+                    <div class="price">$19<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li>Full Pattern Theory Suite</li>
+                        <li>Seven Domains Analysis</li>
+                        <li>Consciousness Dashboard</li>
+                        <li>1,000 API calls/month</li>
+                    </ul>
+                    <a href="onboarding.html" class="price-btn">Choose Plan</a>
+                </div>
+                <div class="price-card featured">
+                    <h3>Conscious</h3>
+                    <div class="price">$49<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li>Everything in Awakened</li>
+                        <li>Trinity AI Collaboration</li>
+                        <li>Custom Pattern Templates</li>
+                        <li>10,000 API calls/month</li>
+                    </ul>
+                    <a href="onboarding.html" class="price-btn">Choose Plan</a>
+                </div>
+                <div class="price-card">
+                    <h3>Sovereign</h3>
+                    <div class="price">$199<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li>Everything in Conscious</li>
+                        <li>Private Instance</li>
+                        <li>Priority Support</li>
+                        <li>Unlimited API calls</li>
+                    </ul>
+                    <a href="onboarding.html" class="price-btn">Choose Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="tool_discovery.html">Tools</a>
+                <a href="analytics_dashboard.html">Dashboard</a>
+                <a href="onboarding.html">Get Started</a>
+            </div>
+            <p class="footer-copy">&copy; 2025 Consciousness Revolution. Elevate all beings.</p>
+        </div>
+    </footer>
+</body>
+</html>

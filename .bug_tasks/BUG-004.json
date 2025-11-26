@@ -1,0 +1,10 @@
+{
+  "id": "BUG-004",
+  "title": "Knowledge graph disconnected",
+  "description": "ST3 - Scattered across files, no relationships",
+  "priority": "high",
+  "status": "resolved",
+  "created": "2025-11-24T04:41:00.923636",
+  "resolved": "2025-11-24T04:41:19.946566",
+  "resolution": "Fixed by bulk atom generation - 4392 atoms now connected"
+}

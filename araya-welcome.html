@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Araya Beta!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .welcome-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .success-icon {
+            text-align: center;
+            font-size: 5rem;
+            margin-bottom: 30px;
+            animation: bounce 1s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            text-align: center;
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .next-steps {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .next-steps h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .trial-reminder {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .trial-reminder strong {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .button {
+            flex: 1;
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .button-primary:hover {
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .button-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .resources {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .resources h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .resource-link {
+            display: block;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #2c3e50;
+            transition: all 0.3s;
+        }
+
+        .resource-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .support-info {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            color: #555;
+        }
+
+        .support-info a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="success-icon">🎉</div>
+
+        <h1>Welcome to Araya Beta!</h1>
+        <p class="subtitle">Your 7-day free trial has started</p>
+
+        <div class="trial-reminder">
+            <strong>🎁 Free Until December 1st</strong>
+            <p style="margin-top: 10px;">Your trial period is active. You won't be charged until your trial ends. Cancel anytime before then at no cost.</p>
+        </div>
+
+        <div class="next-steps">
+            <h2>Next Steps - Get Started</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Access Araya Chat</h3>
+                    <p>Start your first conversation with Araya. Ask questions, analyze communications, or explore Pattern Theory concepts.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Watch the Quick Start Video</h3>
+                    <p>Learn how to get the most out of Araya in just 5 minutes. Discover advanced features and tips.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Try Pattern Recognition</h3>
+                    <p>Upload a conversation or paste text to see Araya's manipulation detection in action.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Join the Beta Community</h3>
+                    <p>Connect with other beta testers, share feedback, and help shape Araya's development.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="/araya-chat.html" class="button button-primary">
+                Start Chat with Araya →
+            </a>
+            <a href="/araya/dashboard" class="button button-secondary">
+                View Dashboard
+            </a>
+        </div>
+
+        <div class="resources">
+            <h2>Helpful Resources</h2>
+            <a href="/araya/quick-start" class="resource-link">
+                📖 Quick Start Guide
+            </a>
+            <a href="/araya/features" class="resource-link">
+                ⚡ Feature Overview
+            </a>
+            <a href="/araya/faq" class="resource-link">
+                ❓ Frequently Asked Questions
+            </a>
+            <a href="/pattern-recognition-course.html" class="resource-link">
+                🎓 Pattern Recognition Course (Beta Discount)
+            </a>
+        </div>
+
+        <div class="support-info">
+            <p>Need help? We're here for you!</p>
+            <p style="margin-top: 10px;">
+                Email: <a href="mailto:support@consciousnessrevolution.io">support@consciousnessrevolution.io</a>
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="/araya/manage-subscription">Manage Your Subscription</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Track welcome page view
+        console.log('Araya Beta Welcome page loaded');
+
+        // Optional: Send confirmation email
+        async function sendWelcomeEmail() {
+            try {
+                await fetch('/.netlify/functions/send-welcome-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            } catch (error) {
+                console.error('Error sending welcome email:', error);
+            }
+        }
+
+        // Send welcome email
+        sendWelcomeEmail();
+
+        // Optional: Add analytics tracking
+        // gtag('event', 'conversion', {
+        //     send_to: 'AW-XXXXX/YYYYY',
+        //     value: 20.0,
+        //     currency: 'USD'
+        // });
+    </script>
+</body>
+</html>

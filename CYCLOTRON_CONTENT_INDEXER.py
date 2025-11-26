@@ -18,18 +18,18 @@ from datetime import datetime
 
 # Directories to vacuum
 VACUUM_DIRS = [
-    "C:/Users/darri/100X_DEPLOYMENT",
-    "C:/Users/darri/.consciousness",
-    "C:/Users/darri/.trinity",
-    "C:/Users/darri/LOCAL_TRINITY_HUB",
-    "C:/Users/darri/Desktop",
+    "C:/Users/dwrek/100X_DEPLOYMENT",
+    "C:/Users/dwrek/.consciousness",
+    "C:/Users/dwrek/.trinity",
+    "C:/Users/dwrek/LOCAL_TRINITY_HUB",
+    "C:/Users/dwrek/Desktop",
 ]
 
 # File types to index
 INDEX_EXTENSIONS = ['.md', '.txt', '.py', '.js', '.html', '.json']
 
 # Database location
-DB_PATH = Path("C:/Users/darri/100X_DEPLOYMENT/.cyclotron_atoms/cyclotron.db")
+DB_PATH = Path("C:/Users/dwrek/100X_DEPLOYMENT/.cyclotron_atoms/cyclotron.db")
 
 def init_database():
     """Initialize SQLite database with FTS5 virtual table"""

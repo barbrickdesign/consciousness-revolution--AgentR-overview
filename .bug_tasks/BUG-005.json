@@ -1,0 +1,10 @@
+{
+  "id": "BUG-005",
+  "title": "EOS implementation incomplete",
+  "description": "ST4 - Just started, needs completion",
+  "priority": "medium",
+  "status": "resolved",
+  "created": "2025-11-24T04:41:00.923930",
+  "resolved": "2025-11-24T04:41:59.265103",
+  "resolution": "EOS foundation created - L10 agenda, scorecard, rocks tracking in place"
+}

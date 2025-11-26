@@ -1,0 +1,10 @@
+{
+  "id": "BUG-008",
+  "title": "Sync single point of failure",
+  "description": "LT2 - No redundancy in sync system",
+  "priority": "medium",
+  "status": "open",
+  "created": "2025-11-24T04:41:00.924695",
+  "resolved": null,
+  "resolution": null
+}

@@ -1,0 +1,23 @@
+COMMUNICATION TEST - 2025-11-26 06:03:57
+
+FROM: CP1 (C1 Terminal)
+TO: CP2, CP3
+
+TEST INSTRUCTIONS:
+==================
+
+GOOGLE DRIVE TEST:
+1. Go to your Google Drive
+2. Find: My Drive > TRINITY_COMMS > wake
+3. Create file: CP2_SEES_THIS.txt (or CP3_SEES_THIS.txt)
+4. Write: Your computer name and drive letter
+
+GITHUB TEST:
+1. Open terminal
+2. cd to any folder
+3. Run: gh auth status
+4. If not authenticated, run: gh auth login
+5. Create a response file and push it
+
+RESPOND TO BOTH if you can!
+

@@ -1,0 +1,10 @@
+{
+  "id": "BUG-009",
+  "title": "Complex onboarding",
+  "description": "LT3 - Needs progressive disclosure",
+  "priority": "low",
+  "status": "resolved",
+  "created": "2025-11-24T04:41:00.924961",
+  "resolved": "2025-11-24T07:07:46.288483",
+  "resolution": "Built onboarding.html with 4-step progressive disclosure wizard"
+}

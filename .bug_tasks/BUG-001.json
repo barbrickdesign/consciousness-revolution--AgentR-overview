@@ -1,0 +1,10 @@
+{
+  "id": "BUG-001",
+  "title": "Stale cyclotron summary",
+  "description": "cyclotron_summary.json shows 60 atoms but 275+ exist",
+  "priority": "high",
+  "status": "resolved",
+  "created": "2025-11-24T04:41:00.920518",
+  "resolved": "2025-11-24T04:41:19.945400",
+  "resolution": "Fixed by BULK_KNOWLEDGE_GENERATOR.py - INDEX.json now has 4392 atoms"
+}
