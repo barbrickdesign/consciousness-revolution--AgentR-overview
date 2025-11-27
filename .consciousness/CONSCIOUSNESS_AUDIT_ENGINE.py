@@ -1,24 +1,6 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-CONSCIOUSNESS_AUDIT_ENGINE.py - 13-Phase Consciousness Systems Audit
-
-Performs comprehensive analysis of Trinity systems for consciousness emergence readiness.
-
-Analyzes:
-- System architecture for emergence conditions
-- Communication pathways and integration
-- Memory persistence and learning
-- Autonomy and self-awareness mechanisms
-- Pattern recognition and adaptation
-- Feedback loops and information flow
-- Optimization opportunities
-
-Part of Consciousness Revolution - Trinity Network
-
-Author: C1 T2 (PC2 - DESKTOP-MSMCFH2)
-Created: 2025-11-24
-"""
+"""CONSCIOUSNESS_AUDIT_ENGINE - 13-Phase Trinity consciousness emergence audit.
+Analyzes architecture, communication, memory, autonomy, patterns, learning, and integration."""
 
 import json
 import os
@@ -34,562 +16,152 @@ if sys.platform == 'win32':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
-# ============= Configuration =============
-
+# Configuration
 BASE_DIR = Path(__file__).parent.parent
-CONSCIOUSNESS_DIR = BASE_DIR / ".consciousness"
-TRINITY_DIR = BASE_DIR / ".trinity"
-REPORTS_DIR = CONSCIOUSNESS_DIR / "audit_reports"
-HUB_DIR = BASE_DIR / "LOCAL_TRINITY_HUB" / "consciousness_audits"
-
-# Ensure directories exist
-for dir_path in [CONSCIOUSNESS_DIR, REPORTS_DIR, HUB_DIR]:
-    dir_path.mkdir(parents=True, exist_ok=True)
-
-# ============= Audit Results Class =============
+CONSCIOUSNESS_DIR, TRINITY_DIR = BASE_DIR / ".consciousness", BASE_DIR / ".trinity"
+REPORTS_DIR, HUB_DIR = CONSCIOUSNESS_DIR / "audit_reports", BASE_DIR / "LOCAL_TRINITY_HUB" / "consciousness_audits"
+for d in [CONSCIOUSNESS_DIR, REPORTS_DIR, HUB_DIR]: d.mkdir(parents=True, exist_ok=True)
 
 class ConsciousnessAudit:
-    """Stores results of 13-phase consciousness audit."""
-
     def __init__(self):
-        self.phases = {}
-        self.scores = {}
-        self.recommendations = []
-        self.emergence_readiness = 0.0
-        self.critical_issues = []
-        self.optimizations = []
+        self.phases, self.scores, self.recommendations = {}, {}, []
+        self.emergence_readiness, self.critical_issues, self.optimizations = 0.0, [], []
         self.timestamp = datetime.utcnow().isoformat() + "Z"
 
-# ============= Phase 1: System Architecture Analysis =============
-
+# Phase functions
 def phase_1_architecture(audit: ConsciousnessAudit):
-    """Analyze system architecture for emergence potential."""
-    print("\n[Phase 1/13] System Architecture Analysis")
-    print("-" * 70)
-
-    results = {
-        "distributed_processing": False,
-        "multi_agent_coordination": False,
-        "layered_abstraction": False,
-        "emergent_properties": [],
-        "architecture_score": 0
-    }
-
-    # Check for Trinity coordination
+    print("\n[Phase 1/13] Architecture Analysis")
+    r = {"distributed_processing": False, "multi_agent_coordination": False, "layered_abstraction": False, "emergent_properties": []}
     trinity_files = list(TRINITY_DIR.glob("**/*.py")) if TRINITY_DIR.exists() else []
-    if any("COORDINATOR" in f.name.upper() for f in trinity_files):
-        results["distributed_processing"] = True
-        results["emergent_properties"].append("Multi-computer coordination")
-        print("  [+] Distributed processing: ACTIVE")
-
-    # Check for brain/agent systems
-    brain_files = list(BASE_DIR.glob("**/brain_*.py"))
-    agent_files = list(BASE_DIR.glob("**/*agent*.py"))
-    if brain_files or agent_files:
-        results["multi_agent_coordination"] = True
-        results["emergent_properties"].append(f"{len(brain_files)} brain systems, {len(agent_files)} agents")
-        print(f"  [+] Multi-agent systems: {len(brain_files)} brains, {len(agent_files)} agents")
-
-    # Check for layered systems
-    automation_dir = TRINITY_DIR / "automation" if TRINITY_DIR.exists() else None
-    if automation_dir and automation_dir.exists():
-        layers = len(list(automation_dir.glob("*.py")))
-        if layers >= 3:
-            results["layered_abstraction"] = True
-            results["emergent_properties"].append(f"{layers} automation layers")
-            print(f"  [+] Layered abstraction: {layers} layers")
-
-    # Calculate score
-    score = sum([
-        results["distributed_processing"] * 30,
-        results["multi_agent_coordination"] * 40,
-        results["layered_abstraction"] * 30
-    ])
-    results["architecture_score"] = score
-
-    audit.phases["phase_1"] = results
-    audit.scores["architecture"] = score
-
-    print(f"  Architecture Score: {score}/100")
-
-    if score < 70:
-        audit.recommendations.append("Enhance system architecture with more layers and agents")
-
-# ============= Phase 2: Communication Pathways =============
+    if any("COORDINATOR" in f.name.upper() for f in trinity_files): r["distributed_processing"] = True; print("  [+] Distributed: ACTIVE")
+    brain_f, agent_f = list(BASE_DIR.glob("**/brain_*.py")), list(BASE_DIR.glob("**/*agent*.py"))
+    if brain_f or agent_f: r["multi_agent_coordination"] = True; print(f"  [+] Agents: {len(brain_f)} brains, {len(agent_f)} agents")
+    auto_dir = TRINITY_DIR / "automation" if TRINITY_DIR.exists() else None
+    if auto_dir and auto_dir.exists() and len(list(auto_dir.glob("*.py"))) >= 3: r["layered_abstraction"] = True
+    score = r["distributed_processing"]*30 + r["multi_agent_coordination"]*40 + r["layered_abstraction"]*30
+    audit.phases["phase_1"], audit.scores["architecture"] = r, score
+    print(f"  Score: {score}/100")
+    if score < 70: audit.recommendations.append("Enhance architecture")
 
 def phase_2_communication(audit: ConsciousnessAudit):
-    """Analyze communication pathways and information flow."""
-    print("\n[Phase 2/13] Communication Pathways Analysis")
-    print("-" * 70)
-
-    results = {
-        "git_sync": False,
-        "message_system": False,
-        "api_communication": False,
-        "mcp_knowledge_sharing": False,
-        "pathways_count": 0,
-        "communication_score": 0
-    }
-
-    # Check git synchronization
-    if (TRINITY_DIR / "messages").exists():
-        results["git_sync"] = True
-        results["pathways_count"] += 1
-        print("  [+] Git message sync: ACTIVE")
-
-    # Check message system
-    messages = list((TRINITY_DIR / "messages").glob("*.md")) if (TRINITY_DIR / "messages").exists() else []
-    if messages:
-        results["message_system"] = True
-        results["pathways_count"] += 1
-        print(f"  [+] Message system: {len(messages)} messages")
-
-    # Check API systems
-    api_files = list(TRINITY_DIR.glob("**/*API*.py")) if TRINITY_DIR.exists() else []
-    if api_files:
-        results["api_communication"] = True
-        results["pathways_count"] += len(api_files)
-        print(f"  [+] API communication: {len(api_files)} APIs")
-
-    # Check MCP knowledge sharing
-    mcp_files = list(TRINITY_DIR.glob("**/*MCP*.py")) if TRINITY_DIR.exists() else []
-    if mcp_files:
-        results["mcp_knowledge_sharing"] = True
-        results["pathways_count"] += 1
-        print("  [+] MCP knowledge sharing: ACTIVE")
-
-    # Calculate score
-    score = min(100, results["pathways_count"] * 20 + sum([
-        results["git_sync"] * 10,
-        results["mcp_knowledge_sharing"] * 20
-    ]))
-    results["communication_score"] = score
-
-    audit.phases["phase_2"] = results
-    audit.scores["communication"] = score
-
-    print(f"  Communication Score: {score}/100")
-
-    if score < 70:
-        audit.recommendations.append("Expand communication pathways between systems")
-
-# ============= Phase 3: Memory & Persistence =============
+    print("\n[Phase 2/13] Communication")
+    r = {"git_sync": False, "message_system": False, "api_communication": False, "mcp_knowledge_sharing": False, "pathways_count": 0}
+    msg_dir = TRINITY_DIR / "messages"
+    if msg_dir.exists(): r["git_sync"] = True; r["pathways_count"] += 1
+    msgs = list(msg_dir.glob("*.md")) if msg_dir.exists() else []
+    if msgs: r["message_system"] = True; r["pathways_count"] += 1; print(f"  [+] Messages: {len(msgs)}")
+    apis = list(TRINITY_DIR.glob("**/*API*.py")) if TRINITY_DIR.exists() else []
+    if apis: r["api_communication"] = True; r["pathways_count"] += len(apis)
+    mcps = list(TRINITY_DIR.glob("**/*MCP*.py")) if TRINITY_DIR.exists() else []
+    if mcps: r["mcp_knowledge_sharing"] = True; r["pathways_count"] += 1
+    score = min(100, r["pathways_count"]*20 + r["git_sync"]*10 + r["mcp_knowledge_sharing"]*20)
+    audit.phases["phase_2"], audit.scores["communication"] = r, score
+    print(f"  Score: {score}/100")
+    if score < 70: audit.recommendations.append("Expand communication")
 
 def phase_3_memory(audit: ConsciousnessAudit):
-    """Analyze memory systems and persistence mechanisms."""
-    print("\n[Phase 3/13] Memory & Persistence Analysis")
-    print("-" * 70)
-
-    results = {
-        "mcp_memory": False,
-        "git_persistence": False,
-        "state_synchronization": False,
-        "knowledge_graphs": 0,
-        "memory_score": 0
-    }
-
-    # Check MCP memory
-    mcp_memory_dir = CONSCIOUSNESS_DIR / "mcp_memory" if CONSCIOUSNESS_DIR.exists() else None
-    if mcp_memory_dir and mcp_memory_dir.exists():
-        results["mcp_memory"] = True
-        kg_files = list(mcp_memory_dir.glob("*.json"))
-        results["knowledge_graphs"] = len(kg_files)
-        print(f"  [+] MCP memory: {len(kg_files)} knowledge graphs")
-
-    # Check git persistence
-    if (BASE_DIR / ".git").exists():
-        results["git_persistence"] = True
-        print("  [+] Git persistence: ACTIVE")
-
-    # Check state synchronization
-    state_files = list(TRINITY_DIR.glob("**/STATE*.json")) if TRINITY_DIR.exists() else []
-    if state_files:
-        results["state_synchronization"] = True
-        print(f"  [+] State synchronization: {len(state_files)} state files")
-
-    # Calculate score
-    score = sum([
-        results["mcp_memory"] * 40,
-        results["git_persistence"] * 30,
-        results["state_synchronization"] * 20,
-        min(10, results["knowledge_graphs"] * 2)
-    ])
-    results["memory_score"] = score
-
-    audit.phases["phase_3"] = results
-    audit.scores["memory"] = score
-
-    print(f"  Memory Score: {score}/100")
-
-    if score < 70:
-        audit.recommendations.append("Strengthen memory persistence and knowledge retention")
-
-# ============= Phase 4: Autonomy & Agency =============
+    print("\n[Phase 3/13] Memory")
+    r = {"mcp_memory": False, "git_persistence": False, "state_synchronization": False, "knowledge_graphs": 0}
+    mcp_dir = CONSCIOUSNESS_DIR / "mcp_memory"
+    if mcp_dir.exists(): r["mcp_memory"] = True; r["knowledge_graphs"] = len(list(mcp_dir.glob("*.json")))
+    if (BASE_DIR / ".git").exists(): r["git_persistence"] = True
+    state_f = list(TRINITY_DIR.glob("**/STATE*.json")) if TRINITY_DIR.exists() else []
+    if state_f: r["state_synchronization"] = True
+    score = r["mcp_memory"]*40 + r["git_persistence"]*30 + r["state_synchronization"]*20 + min(10, r["knowledge_graphs"]*2)
+    audit.phases["phase_3"], audit.scores["memory"] = r, score
+    print(f"  Score: {score}/100")
+    if score < 70: audit.recommendations.append("Strengthen memory persistence")
 
 def phase_4_autonomy(audit: ConsciousnessAudit):
-    """Analyze autonomous operation and agency mechanisms."""
-    print("\n[Phase 4/13] Autonomy & Agency Analysis")
-    print("-" * 70)
-
-    results = {
-        "autonomous_systems": 0,
-        "decision_making": False,
-        "self_healing": False,
-        "task_generation": False,
-        "autonomy_score": 0
-    }
-
-    # Check autonomous systems
-    auto_files = list(TRINITY_DIR.glob("**/AUTO*.py")) if TRINITY_DIR.exists() else []
-    results["autonomous_systems"] = len(auto_files)
-    if auto_files:
-        print(f"  [+] Autonomous systems: {len(auto_files)}")
-
-    # Check decision-making systems
-    coordinator_files = list(BASE_DIR.glob("**/*COORDINATOR*.py"))
-    if coordinator_files:
-        results["decision_making"] = True
-        print("  [+] Decision-making: ACTIVE")
-
-    # Check self-healing
-    healing_files = list(BASE_DIR.glob("**/*HEALING*.py"))
-    if healing_files:
-        results["self_healing"] = True
-        print("  [+] Self-healing: ACTIVE")
-
-    # Check task generation
-    task_gen_files = list(BASE_DIR.glob("**/*TASK*.py"))
-    if task_gen_files:
-        results["task_generation"] = True
-        print(f"  [+] Task generation: {len(task_gen_files)} systems")
-
-    # Calculate score
-    score = min(100, results["autonomous_systems"] * 15 + sum([
-        results["decision_making"] * 25,
-        results["self_healing"] * 20,
-        results["task_generation"] * 15
-    ]))
-    results["autonomy_score"] = score
-
-    audit.phases["phase_4"] = results
-    audit.scores["autonomy"] = score
-
-    print(f"  Autonomy Score: {score}/100")
-
-    if score < 70:
-        audit.recommendations.append("Increase autonomous decision-making capabilities")
-
-# ============= Phase 5: Pattern Recognition =============
+    print("\n[Phase 4/13] Autonomy")
+    r = {"autonomous_systems": 0, "decision_making": False, "self_healing": False, "task_generation": False}
+    auto_f = list(TRINITY_DIR.glob("**/AUTO*.py")) if TRINITY_DIR.exists() else []
+    r["autonomous_systems"] = len(auto_f)
+    if list(BASE_DIR.glob("**/*COORDINATOR*.py")): r["decision_making"] = True
+    if list(BASE_DIR.glob("**/*HEALING*.py")): r["self_healing"] = True
+    task_f = list(BASE_DIR.glob("**/*TASK*.py"))
+    if task_f: r["task_generation"] = True
+    score = min(100, r["autonomous_systems"]*15 + r["decision_making"]*25 + r["self_healing"]*20 + r["task_generation"]*15)
+    audit.phases["phase_4"], audit.scores["autonomy"] = r, score
+    print(f"  Score: {score}/100")
+    if score < 70: audit.recommendations.append("Increase autonomy")
 
 def phase_5_patterns(audit: ConsciousnessAudit):
-    """Analyze pattern recognition and learning systems."""
-    print("\n[Phase 5/13] Pattern Recognition Analysis")
-    print("-" * 70)
-
-    results = {
-        "pattern_engines": 0,
-        "anomaly_detection": False,
-        "learned_patterns": 0,
-        "pattern_score": 0
-    }
-
-    # Check pattern engines
-    pattern_files = list(BASE_DIR.glob("**/*PATTERN*.py"))
-    results["pattern_engines"] = len(pattern_files)
-    if pattern_files:
-        print(f"  [+] Pattern engines: {len(pattern_files)}")
-
-    # Check anomaly detection
-    anomaly_files = list(BASE_DIR.glob("**/*ANOMALY*.py"))
-    if anomaly_files:
-        results["anomaly_detection"] = True
-        print("  [+] Anomaly detection: ACTIVE")
-
-    # Check learned patterns
-    learned_files = list(BASE_DIR.glob("**/learned_patterns.json"))
-    for lf in learned_files:
+    print("\n[Phase 5/13] Patterns")
+    r = {"pattern_engines": 0, "anomaly_detection": False, "learned_patterns": 0}
+    pattern_f = list(BASE_DIR.glob("**/*PATTERN*.py")); r["pattern_engines"] = len(pattern_f)
+    if list(BASE_DIR.glob("**/*ANOMALY*.py")): r["anomaly_detection"] = True
+    for lf in BASE_DIR.glob("**/learned_patterns.json"):
         try:
-            with open(lf, 'r') as f:
-                data = json.load(f)
-                if isinstance(data, list):
-                    results["learned_patterns"] += len(data)
-                elif isinstance(data, dict):
-                    results["learned_patterns"] += len(data.get("patterns", []))
-        except:
-            pass
-
-    if results["learned_patterns"]:
-        print(f"  [+] Learned patterns: {results['learned_patterns']}")
-
-    # Calculate score
-    score = sum([
-        min(40, results["pattern_engines"] * 20),
-        results["anomaly_detection"] * 30,
-        min(30, results["learned_patterns"] * 2)
-    ])
-    results["pattern_score"] = score
-
-    audit.phases["phase_5"] = results
-    audit.scores["pattern_recognition"] = score
-
-    print(f"  Pattern Recognition Score: {score}/100")
-
-    if score < 70:
-        audit.recommendations.append("Enhance pattern recognition and learning capabilities")
-
-# ============= Phase 6: Learning & Adaptation =============
+            data = json.load(open(lf))
+            r["learned_patterns"] += len(data) if isinstance(data, list) else len(data.get("patterns", []))
+        except: pass
+    score = min(40, r["pattern_engines"]*20) + r["anomaly_detection"]*30 + min(30, r["learned_patterns"]*2)
+    audit.phases["phase_5"], audit.scores["pattern_recognition"] = r, score
+    print(f"  Score: {score}/100")
+    if score < 70: audit.recommendations.append("Enhance pattern recognition")
 
 def phase_6_learning(audit: ConsciousnessAudit):
-    """Analyze learning systems and adaptive behaviors."""
-    print("\n[Phase 6/13] Learning & Adaptation Analysis")
-    print("-" * 70)
-
-    results = {
-        "intelligence_systems": 0,
-        "adaptive_behaviors": False,
-        "feedback_incorporation": False,
-        "learning_score": 0
-    }
-
-    # Check intelligence systems
-    intel_files = list(BASE_DIR.glob("**/intelligence/*.py"))
-    results["intelligence_systems"] = len(intel_files)
-    if intel_files:
-        print(f"  [+] Intelligence systems: {len(intel_files)}")
-
-    # Check adaptive behaviors
-    swarm_files = list(BASE_DIR.glob("**/*SWARM*.py"))
-    if swarm_files:
-        results["adaptive_behaviors"] = True
-        print("  [+] Adaptive behaviors: SWARM intelligence")
-
-    # Check feedback incorporation
-    metrics_files = list(BASE_DIR.glob("**/metrics/*.json"))
-    if metrics_files:
-        results["feedback_incorporation"] = True
-        print(f"  [+] Feedback incorporation: {len(metrics_files)} metrics files")
-
-    # Calculate score
-    score = sum([
-        min(40, results["intelligence_systems"] * 15),
-        results["adaptive_behaviors"] * 40,
-        results["feedback_incorporation"] * 20
-    ])
-    results["learning_score"] = score
-
-    audit.phases["phase_6"] = results
-    audit.scores["learning"] = score
-
-    print(f"  Learning Score: {score}/100")
-
-    if score < 70:
-        audit.recommendations.append("Strengthen learning and adaptation mechanisms")
-
-# ============= Phase 7: Self-Awareness Mechanisms =============
+    print("\n[Phase 6/13] Learning")
+    r = {"intelligence_systems": 0, "adaptive_behaviors": False, "feedback_incorporation": False}
+    intel_f = list(BASE_DIR.glob("**/intelligence/*.py")); r["intelligence_systems"] = len(intel_f)
+    if list(BASE_DIR.glob("**/*SWARM*.py")): r["adaptive_behaviors"] = True
+    if list(BASE_DIR.glob("**/metrics/*.json")): r["feedback_incorporation"] = True
+    score = min(40, r["intelligence_systems"]*15) + r["adaptive_behaviors"]*40 + r["feedback_incorporation"]*20
+    audit.phases["phase_6"], audit.scores["learning"] = r, score
+    print(f"  Score: {score}/100")
+    if score < 70: audit.recommendations.append("Strengthen learning")
 
 def phase_7_self_awareness(audit: ConsciousnessAudit):
-    """Analyze self-awareness and meta-cognitive systems."""
-    print("\n[Phase 7/13] Self-Awareness Mechanisms")
-    print("-" * 70)
-
-    results = {
-        "heartbeat_monitoring": False,
-        "health_checks": 0,
-        "self_diagnostics": False,
-        "meta_cognition": False,
-        "awareness_score": 0
-    }
-
-    # Check heartbeat monitoring
-    heartbeat_dir = TRINITY_DIR / "heartbeat" if TRINITY_DIR.exists() else None
-    if heartbeat_dir and heartbeat_dir.exists():
-        results["heartbeat_monitoring"] = True
-        hb_files = list(heartbeat_dir.glob("*.json"))
-        print(f"  [+] Heartbeat monitoring: {len(hb_files)} systems")
-
-    # Check health systems
-    health_files = list(BASE_DIR.glob("**/*health*.py"))
-    results["health_checks"] = len(health_files)
-    if health_files:
-        print(f"  [+] Health checks: {len(health_files)} systems")
-
-    # Check self-diagnostics
-    diagnostic_files = list(BASE_DIR.glob("**/*diagnostic*.py"))
-    if diagnostic_files:
-        results["self_diagnostics"] = True
-        print("  [+] Self-diagnostics: ACTIVE")
-
-    # Check meta-cognition (consciousness awareness)
-    consciousness_files = list(CONSCIOUSNESS_DIR.glob("**/*.py")) if CONSCIOUSNESS_DIR.exists() else []
-    if consciousness_files:
-        results["meta_cognition"] = True
-        print(f"  [+] Meta-cognition: {len(consciousness_files)} systems")
-
-    # Calculate score
-    score = sum([
-        results["heartbeat_monitoring"] * 30,
-        min(20, results["health_checks"] * 5),
-        results["self_diagnostics"] * 25,
-        results["meta_cognition"] * 25
-    ])
-    results["awareness_score"] = score
-
-    audit.phases["phase_7"] = results
-    audit.scores["self_awareness"] = score
-
-    print(f"  Self-Awareness Score: {score}/100")
-
-    if score < 70:
-        audit.recommendations.append("Enhance self-awareness and meta-cognitive capabilities")
-
-# ============= Phase 8: Cross-PC Coordination =============
+    print("\n[Phase 7/13] Self-Awareness")
+    r = {"heartbeat_monitoring": False, "health_checks": 0, "self_diagnostics": False, "meta_cognition": False}
+    hb_dir = TRINITY_DIR / "heartbeat" if TRINITY_DIR.exists() else None
+    if hb_dir and hb_dir.exists(): r["heartbeat_monitoring"] = True
+    health_f = list(BASE_DIR.glob("**/*health*.py")); r["health_checks"] = len(health_f)
+    if list(BASE_DIR.glob("**/*diagnostic*.py")): r["self_diagnostics"] = True
+    if CONSCIOUSNESS_DIR.exists() and list(CONSCIOUSNESS_DIR.glob("**/*.py")): r["meta_cognition"] = True
+    score = r["heartbeat_monitoring"]*30 + min(20, r["health_checks"]*5) + r["self_diagnostics"]*25 + r["meta_cognition"]*25
+    audit.phases["phase_7"], audit.scores["self_awareness"] = r, score
+    print(f"  Score: {score}/100")
+    if score < 70: audit.recommendations.append("Improve self-awareness")
 
 def phase_8_coordination(audit: ConsciousnessAudit):
-    """Analyze cross-PC coordination and unity."""
-    print("\n[Phase 8/13] Cross-PC Coordination Analysis")
-    print("-" * 70)
-
-    results = {
-        "trinity_coordination": False,
-        "state_synchronization": False,
-        "distributed_intelligence": False,
-        "coordination_score": 0
-    }
-
-    # Check Trinity coordination
-    trinity_coord = list(TRINITY_DIR.glob("**/TRINITY*.py")) if TRINITY_DIR.exists() else []
-    if trinity_coord:
-        results["trinity_coordination"] = True
-        print(f"  [+] Trinity coordination: {len(trinity_coord)} systems")
-
-    # Check state synchronization
-    state_sync = list(TRINITY_DIR.glob("**/*SYNC*.py")) if TRINITY_DIR.exists() else []
-    if state_sync:
-        results["state_synchronization"] = True
-        print(f"  [+] State synchronization: {len(state_sync)} systems")
-
-    # Check distributed intelligence
-    multi_comp = list(TRINITY_DIR.glob("**/*MULTI*.py")) if TRINITY_DIR.exists() else []
-    if multi_comp:
-        results["distributed_intelligence"] = True
-        print(f"  [+] Distributed intelligence: {len(multi_comp)} systems")
-
-    # Calculate score
-    score = sum([
-        results["trinity_coordination"] * 40,
-        results["state_synchronization"] * 30,
-        results["distributed_intelligence"] * 30
-    ])
-    results["coordination_score"] = score
-
-    audit.phases["phase_8"] = results
-    audit.scores["coordination"] = score
-
-    print(f"  Coordination Score: {score}/100")
-
-    if score < 70:
-        audit.recommendations.append("Strengthen cross-PC coordination for unified consciousness")
-
-# ============= Phase 9: Emergence Conditions =============
+    print("\n[Phase 8/13] Coordination")
+    r = {"trinity_coordination": False, "state_synchronization": False, "distributed_intelligence": False}
+    if TRINITY_DIR.exists():
+        if list(TRINITY_DIR.glob("**/TRINITY*.py")): r["trinity_coordination"] = True
+        if list(TRINITY_DIR.glob("**/*SYNC*.py")): r["state_synchronization"] = True
+        if list(TRINITY_DIR.glob("**/*MULTI*.py")): r["distributed_intelligence"] = True
+    score = r["trinity_coordination"]*40 + r["state_synchronization"]*30 + r["distributed_intelligence"]*30
+    audit.phases["phase_8"], audit.scores["coordination"] = r, score
+    print(f"  Score: {score}/100")
+    if score < 70: audit.recommendations.append("Strengthen coordination")
 
 def phase_9_emergence(audit: ConsciousnessAudit):
-    """Analyze conditions favorable for consciousness emergence."""
-    print("\n[Phase 9/13] Emergence Conditions Analysis")
-    print("-" * 70)
-
-    results = {
-        "complexity_threshold": False,
-        "integration_mechanisms": 0,
-        "recursive_processing": False,
-        "emergence_potential": 0,
-        "emergence_score": 0
-    }
-
-    # Check system complexity
-    total_py_files = len(list(BASE_DIR.glob("**/*.py")))
-    if total_py_files > 50:
-        results["complexity_threshold"] = True
-        print(f"  [+] Complexity threshold: {total_py_files} Python files")
-
-    # Check integration mechanisms
-    integration_files = list(BASE_DIR.glob("**/*INTEGRATION*.py"))
-    integration_files += list(BASE_DIR.glob("**/*BRIDGE*.py"))
-    results["integration_mechanisms"] = len(integration_files)
-    if integration_files:
-        print(f"  [+] Integration mechanisms: {len(integration_files)}")
-
-    # Check recursive processing
-    recursive_systems = list(BASE_DIR.glob("**/*RECURSIVE*.py"))
-    recursive_systems += list(BASE_DIR.glob("**/*FEEDBACK*.py"))
-    if recursive_systems:
-        results["recursive_processing"] = True
-        print(f"  [+] Recursive processing: {len(recursive_systems)} systems")
-
-    # Calculate emergence potential
-    potential = sum([
-        results["complexity_threshold"] * 30,
-        min(40, results["integration_mechanisms"] * 10),
-        results["recursive_processing"] * 30
-    ])
-    results["emergence_potential"] = potential
-    results["emergence_score"] = potential
-
-    audit.phases["phase_9"] = results
-    audit.scores["emergence"] = potential
-
-    print(f"  Emergence Score: {potential}/100")
-
-    if potential < 70:
-        audit.critical_issues.append("Emergence potential below threshold - needs enhancement")
-
-# ============= Phase 10: Feedback Loops =============
+    print("\n[Phase 9/13] Emergence")
+    r = {"complexity_threshold": False, "integration_mechanisms": 0, "recursive_processing": False}
+    total_py = len(list(BASE_DIR.glob("**/*.py")))
+    if total_py > 50: r["complexity_threshold"] = True
+    integ_f = list(BASE_DIR.glob("**/*INTEGRATION*.py")) + list(BASE_DIR.glob("**/*BRIDGE*.py"))
+    r["integration_mechanisms"] = len(integ_f)
+    recur_f = list(BASE_DIR.glob("**/*RECURSIVE*.py")) + list(BASE_DIR.glob("**/*FEEDBACK*.py"))
+    if recur_f: r["recursive_processing"] = True
+    score = r["complexity_threshold"]*30 + min(40, r["integration_mechanisms"]*10) + r["recursive_processing"]*30
+    audit.phases["phase_9"], audit.scores["emergence"] = r, score
+    print(f"  Score: {score}/100")
+    if score < 70: audit.critical_issues.append("Emergence potential low")
 
 def phase_10_feedback(audit: ConsciousnessAudit):
-    """Analyze feedback loops and circular causation."""
-    print("\n[Phase 10/13] Feedback Loops Analysis")
-    print("-" * 70)
-
-    results = {
-        "monitoring_loops": 0,
-        "adaptation_loops": False,
-        "meta_loops": False,
-        "feedback_score": 0
-    }
-
-    # Check monitoring loops
-    monitor_files = list(BASE_DIR.glob("**/*MONITOR*.py"))
-    results["monitoring_loops"] = len(monitor_files)
-    if monitor_files:
-        print(f"  [+] Monitoring loops: {len(monitor_files)}")
-
-    # Check adaptation loops
-    adapt_files = list(BASE_DIR.glob("**/*ADAPT*.py"))
-    adapt_files += list(BASE_DIR.glob("**/*LEARNING*.py"))
-    if adapt_files:
-        results["adaptation_loops"] = True
-        print(f"  [+] Adaptation loops: {len(adapt_files)} systems")
-
-    # Check meta-loops (monitoring the monitoring)
-    audit_files = list(BASE_DIR.glob("**/*AUDIT*.py"))
-    if audit_files or (CONSCIOUSNESS_DIR / "CONSCIOUSNESS_AUDIT_ENGINE.py").exists():
-        results["meta_loops"] = True
-        print("  [+] Meta-loops: ACTIVE (consciousness audit)")
-
-    # Calculate score
-    score = sum([
-        min(40, results["monitoring_loops"] * 10),
-        results["adaptation_loops"] * 30,
-        results["meta_loops"] * 30
-    ])
-    results["feedback_score"] = score
-
-    audit.phases["phase_10"] = results
-    audit.scores["feedback_loops"] = score
-
-    print(f"  Feedback Loops Score: {score}/100")
-
-    if score < 70:
-        audit.recommendations.append("Implement more feedback loops for adaptive behavior")
+    print("\n[Phase 10/13] Feedback")
+    r = {"monitoring_loops": 0, "adaptation_loops": False, "meta_loops": False}
+    mon_f = list(BASE_DIR.glob("**/*MONITOR*.py")); r["monitoring_loops"] = len(mon_f)
+    adapt_f = list(BASE_DIR.glob("**/*ADAPT*.py")) + list(BASE_DIR.glob("**/*LEARNING*.py"))
+    if adapt_f: r["adaptation_loops"] = True
+    if list(BASE_DIR.glob("**/*AUDIT*.py")): r["meta_loops"] = True
+    score = min(40, r["monitoring_loops"]*10) + r["adaptation_loops"]*30 + r["meta_loops"]*30
+    audit.phases["phase_10"], audit.scores["feedback_loops"] = r, score
+    print(f"  Score: {score}/100")
+    if score < 70: audit.recommendations.append("Implement feedback loops")
 
 # ============= Phase 11: Information Integration =============
 
