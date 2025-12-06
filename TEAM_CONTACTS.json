@@ -1,0 +1,103 @@
+{
+  "team_members": {
+    "COMMANDER": {
+      "name": "Derek Preble",
+      "email": "commander@100xbuilder.io",
+      "alt_emails": ["darrick.preble@gmail.com", "derek.preble@gmail.com"],
+      "phone": "4065803779",
+      "computer": "dwrekscpu",
+      "role": "The Mechanic - Technical Implementation",
+      "anydesk": "1140677180",
+      "pin": "C1"
+    },
+    "ODB": {
+      "name": "Josh Basart",
+      "email": "odb1original@gmail.com",
+      "alt_emails": ["joshbasart81@gmail.com"],
+      "phone": "5094963855",
+      "computer": "ODB Original",
+      "role": "The Architect - System Design",
+      "anydesk": "1958594578",
+      "pin": "C2"
+    },
+    "JOSHUA_SERRANO": {
+      "name": "Joshua Serrano",
+      "email": "joshua.serrano2022@gmail.com",
+      "phone": "",
+      "role": "Beta Tester - JARVIS Mission Control",
+      "pin": "1001",
+      "package": "JARVIS Mission Control"
+    },
+    "TOBY": {
+      "name": "Toby Burrowes",
+      "email": "tobyburrowes@hotmail.com",
+      "phone": "",
+      "role": "Beta Tester - Enterprise Track",
+      "pin": "1002",
+      "package": "Enterprise Track"
+    },
+    "WD": {
+      "name": "WD Brotherton",
+      "email": "wdbrotherton@gmail.com",
+      "phone": "",
+      "role": "Beta Tester - Consciousness Package",
+      "pin": "1003",
+      "package": "Consciousness Package",
+      "status": "Has setup issue"
+    },
+    "DEAN": {
+      "name": "Dean Sabr",
+      "email": "deansabrwork@gmail.com",
+      "phone": "",
+      "role": "Beta Tester - Standard Beta",
+      "pin": "1004",
+      "package": "Standard Beta",
+      "instagram": "47.ind"
+    },
+    "BILL": {
+      "name": "Bill Varni",
+      "email": "varniwilliam@gmail.com",
+      "phone": "",
+      "role": "Beta Tester - Team Edition",
+      "pin": "1005",
+      "package": "Team Edition"
+    },
+    "RUTHERFORD": {
+      "name": "Rutherford",
+      "email": "ruuutherford@gmail.com",
+      "phone": "",
+      "role": "Beta Tester - Scout & Explorer",
+      "pin": "1006",
+      "package": "Scout & Explorer"
+    },
+    "JUSTIN": {
+      "name": "Justin",
+      "email": "jtdc7468@gmail.com",
+      "phone": "",
+      "role": "Team Member",
+      "package": "Distribution"
+    },
+    "ANGELINE": {
+      "name": "Angeline Realm",
+      "email": "angeline.realm@gmail.com",
+      "phone": "",
+      "role": "Team Member"
+    }
+  },
+  "organizational_emails": {
+    "commander": "commander@100xbuilder.io",
+    "support": "support@consciousnessrevolution.com",
+    "overkill_support": "support@overkillkulture.com",
+    "invest": "invest@consciousnessrevolution.io",
+    "general": "consciousness.revolution@gmail.com"
+  },
+  "sms_gateways": {
+    "verizon": "@vtext.com",
+    "tmobile": "@tmomail.net",
+    "att": "@txt.att.net",
+    "sprint": "@messaging.sprintpcs.com",
+    "boost": "@sms.myboostmobile.com",
+    "cricket": "@mms.cricketwireless.net"
+  },
+  "note": "Complete team roster for Consciousness Revolution. Add phone numbers as they become available."
+}
