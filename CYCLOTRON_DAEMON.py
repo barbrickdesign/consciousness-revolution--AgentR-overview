@@ -212,7 +212,6 @@ class CyclotronIndexer:
             'db_path': str(DB_PATH)
         }
 
-
 class CyclotronHandler(FileSystemEventHandler):
     """Watchdog event handler for file changes"""
 
@@ -257,7 +256,6 @@ class CyclotronHandler(FileSystemEventHandler):
         if self.indexer.index_file(event.dest_path):
             logger.info(f"Moved file: {event.src_path} -> {event.dest_path}")
 
-
 def save_status(indexer, running=True):
     """Save daemon status to file"""
     status = indexer.get_stats()
@@ -267,7 +265,6 @@ def save_status(indexer, running=True):
 
     with open(STATUS_FILE, 'w') as f:
         json.dump(status, f, indent=2)
-
 
 def show_status():
     """Display current daemon status"""
@@ -291,7 +288,6 @@ def show_status():
     print(f"Last Update: {status.get('updated', 'N/A')}")
     print(f"Database: {status.get('db_path', 'N/A')}")
     print("=" * 32)
-
 
 def run_daemon():
     """Run the daemon with file watching"""
@@ -330,7 +326,6 @@ def run_daemon():
 
     observer.join()
     logger.info("Daemon stopped")
-
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

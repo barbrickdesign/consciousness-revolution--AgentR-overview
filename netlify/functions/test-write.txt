@@ -1,0 +1,12 @@
+// Araya Conscious Chat API
+// Netlify Serverless Function - Your AI Ally with Memory
+// Uses DeepSeek (primary) or OpenAI (fallback)
+// NOW WITH CYCLOTRON BRAIN CONNECTION (124k+ atoms)
+// NOW WITH NAME EXTRACTION - Araya remembers people by name!
+
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_ANON_KEY;
+const DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1";
+const OPENAI_BASE_URL = "https://api.openai.com/v1";

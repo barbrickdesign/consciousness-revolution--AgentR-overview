@@ -1,0 +1,111 @@
+{
+  "version": "1.0",
+  "created": "2025-12-28",
+  "last_updated": "2025-12-28",
+
+  "DEADLINES": {
+    "description": "Critical dates that cannot be missed",
+    "dates": [
+      {
+        "date": "2026-01-25",
+        "event": "Jason Notice Default Deadline",
+        "days_notice": 60,
+        "action": "All diocese notices sent - waiting for responses",
+        "priority": "HIGH"
+      }
+    ]
+  },
+
+  "HIGH_DOLLAR_TASKS": {
+    "description": "Tasks with direct revenue or financial impact",
+    "tasks": [
+      {
+        "task": "Test Stripe subscription flow - Araya $47/mo",
+        "potential_value": "$47/mo per subscriber",
+        "status": "READY",
+        "blocker": "Human needs to test purchase",
+        "priority": 10
+      },
+      {
+        "task": "Josh Bogart Equipment Recovery",
+        "potential_value": "$1500+ (laptop + iPhone)",
+        "status": "ACTIVE CASE",
+        "blocker": "Send certified demand letter",
+        "priority": 9
+      },
+      {
+        "task": "Regenerate Twilio API Keys",
+        "potential_value": "SMS notifications for bugs/sales",
+        "status": "BLOCKED",
+        "blocker": "Human action at console.twilio.com",
+        "priority": 7
+      }
+    ]
+  },
+
+  "CRITICAL_BLOCKERS": {
+    "description": "Things blocking other things",
+    "blockers": [
+      {
+        "blocker": "ARAYA backends not running",
+        "blocks": "Live file editing",
+        "fix": "Start ARAYA_BRIDGE (5002) + FILE_WRITER (5001)"
+      },
+      {
+        "blocker": "Twilio compromised",
+        "blocks": "SMS alerts",
+        "fix": "Regen API keys"
+      }
+    ]
+  },
+
+  "HUMAN_REQUIRED": {
+    "description": "Tasks only a human can do",
+    "tasks": [
+      {
+        "task": "Preserve video evidence from Dec 27 Josh Bogart encounter",
+        "urgency": "HIGH",
+        "reason": "Evidence for equipment recovery case"
+      },
+      {
+        "task": "Send certified demand letter to Josh Bogart",
+        "urgency": "HIGH",
+        "reason": "Legal paper trail"
+      },
+      {
+        "task": "Test Stripe subscription with real card",
+        "urgency": "MEDIUM",
+        "reason": "Verify revenue flow works"
+      },
+      {
+        "task": "Regenerate Twilio API keys",
+        "urgency": "MEDIUM",
+        "reason": "SMS notifications broken"
+      }
+    ]
+  },
+
+  "SYSTEM_HEALTH": {
+    "cyclotron_atoms": 138699,
+    "mcp_servers": 15,
+    "abilities": 982,
+    "git_repos_active": 2,
+    "last_deploy": "2025-12-30",
+    "website_status": "ONLINE"
+  },
+
+  "PRIORITIES_TODAY": [
+    "Test Stripe subscription flow at subscribe.html",
+    "Josh Bogart equipment case - send certified demand letter",
+    "Regenerate Twilio API keys"
+  ],
+
+  "RECENT_WINS": [
+    "subscribe.html LIVE - subscription page deployed Dec 30",
+    "OVERKORE_BOOT system complete - full command center",
+    "AUTONOMY_ENGINE built - self-healing AI",
+    "ARAYA fix deployed - real Claude responses",
+    "7 Domains tooling mapped - 35 tools",
+    "Trinity convergence complete - 381:1 Builder ratio"
+  ]
+}

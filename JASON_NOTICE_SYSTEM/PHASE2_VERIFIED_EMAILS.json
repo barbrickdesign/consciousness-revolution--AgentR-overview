@@ -1,0 +1,1768 @@
+{
+  "scraped": true,
+  "total": 176,
+  "verified": 48,
+  "guessed": 121,
+  "errors": 7,
+  "dioceses": [
+    {
+      "name": "Archdiocese for Military Services",
+      "domain": "milarch.org",
+      "guessed_email": "info@milarch.org",
+      "found_emails": [
+        "Capodanno@milarch.org",
+        "Tribunal@milarch.org",
+        "Webmaster@milarch.org",
+        "evangresources@milarch.org",
+        "gencounsel@milarch.org",
+        "webmaster@milarch.org",
+        "vocations@milarch.org",
+        "archbishop@milarch.org",
+        "faithformation@milarch.org",
+        "judicialvicar@milarch.org",
+        "tribunal@milarch.org",
+        "sysadmin@milarch.org",
+        "gmcaggianelli@milarch.org",
+        "tspcoord@milarch.org",
+        "jcoffey@milarch.org",
+        "cfo@milarch.org",
+        "YouthMinistry@milarch.org",
+        "advancement@milarch.org",
+        "wmuhm@milarch.org",
+        "support@milarch.org",
+        "vac@milarch.org",
+        "jredmond@milarch.org",
+        "vcsacrec@milarch.org",
+        "nbuckon@milarch.org",
+        "vicargeneral@milarch.org",
+        "Chancellor@milarch.org",
+        "contracts@milarch.org",
+        "VicarGeneral@milarch.org",
+        "discipleshiptrainer@milarch.org",
+        "evangelization@milarch.org",
+        "jamaya@milarch.org",
+        "publicaffairs@milarch.org",
+        "chancellor@milarch.org",
+        "Support@milarch.org",
+        "vicechanva@milarch.org",
+        "Certificates@milarch.org",
+        "yamissionary@milarch.org",
+        "administration@milarch.org",
+        "frspencer@milarch.org",
+        "vicechancellor@milarch.org",
+        "Catechist@milarch.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "Capodanno@milarch.org"
+    },
+    {
+      "name": "Archdiocese of Atlanta",
+      "domain": "archatl.com",
+      "guessed_email": "info@archatl.com",
+      "found_emails": [
+        "jhanten@archatl.com",
+        "ahailey@archatl.com",
+        "ppoloche@archatl.com"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "jhanten@archatl.com"
+    },
+    {
+      "name": "Archdiocese of Indianapolis",
+      "domain": "archindy.org",
+      "guessed_email": "info@archindy.org",
+      "found_emails": [
+        "webmaster@archindy.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "webmaster@archindy.org"
+    },
+    {
+      "name": "Archdiocese of Kansas City in Kansas",
+      "domain": "archkck.org",
+      "guessed_email": "info@archkck.org",
+      "found_emails": [
+        "Assistantabailey@archkck.org",
+        "DahlstrandConsultantjdahlstrand@archkck.org",
+        "dnearmyer@archkck.org",
+        "Consultantelopez@archkck.org",
+        "jdahlstrand@archkck.org",
+        "abailey@archkck.org",
+        "NearmyerDirectordnearmyer@archkck.org",
+        "archkck@archkck.org",
+        "elopez@archkck.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "Assistantabailey@archkck.org"
+    },
+    {
+      "name": "Archdiocese of Louisville",
+      "domain": "archlou.org",
+      "guessed_email": "info@archlou.org",
+      "found_emails": [
+        "charities@archlou.org",
+        "chancery@archlou.org",
+        "pastoralcenter@archlou.org",
+        "cec@archlou.org",
+        "flaget@archlou.org",
+        "cemeteries@archlou.org",
+        "maloney@archlou.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "charities@archlou.org"
+    },
+    {
+      "name": "Archdiocese of Milwaukee",
+      "domain": "archmil.org",
+      "guessed_email": "info@archmil.org",
+      "found_emails": [
+        "communication@archmil.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "communication@archmil.org"
+    },
+    {
+      "name": "Archdiocese of New York",
+      "domain": "archny.org",
+      "guessed_email": "info@archny.org",
+      "found_emails": [
+        "safe@archny.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "safe@archny.org"
+    },
+    {
+      "name": "Archdiocese of Newark",
+      "domain": "rcan.org",
+      "guessed_email": "info@rcan.org",
+      "found_emails": [
+        "information@rcan.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "information@rcan.org"
+    },
+    {
+      "name": "Archdiocese of San Antonio",
+      "domain": "archsa.org",
+      "guessed_email": "info@archsa.org",
+      "found_emails": [
+        "tcpaper@archsa.org",
+        "logan.underdown@archsa.org",
+        "kristina.vidaurri@archsa.org",
+        "lily.gutierrez@archsa.org",
+        "dolores.romo@archsa.org",
+        "jhopkins@archsa.org",
+        "smartinez@archsa.org",
+        "wayne.romo@archsa.org",
+        "tribunal@archsa.org",
+        "michelle.flores@archsa.org",
+        "helpdesk@archsa.org",
+        "Tomichan.Moonnanappillil@archsa.org",
+        "camino@archsa.org",
+        "krikor.chahin@archsa.org",
+        "paul.stadelman@archsa.org",
+        "michelle.garcia@archsa.org",
+        "norma.alvarado@archsa.org",
+        "melissa.byrd@archsa.org",
+        "assembly@archsa.org",
+        "godfrey.mwansa@archsa.org",
+        "yolanda.lopez@archsa.org",
+        "amy.conner@archsa.org",
+        "lauren.stadelman@archsa.org",
+        "leonard.broniak@archsa.org",
+        "juancarlos.rodriguez@archsa.org",
+        "ElizabethAnn.Vasquez@archsa.org",
+        "communications@archsa.org",
+        "officeofthearchbishop@archsa.org",
+        "linda.ramirez@archsa.org",
+        "amy.rubio@archsa.org",
+        "vocations@archsa.org",
+        "sarah.lawrence@archsa.org",
+        "alma.mendoza@archsa.org",
+        "majo.aguilera@archsa.org",
+        "celeste.martinez@archsa.org",
+        "jordan.mcmorrough@archsa.org",
+        "claire.meixner@archsa.org",
+        "Veronica.Nino@archsa.org",
+        "enroll@archsa.org",
+        "jorge.flores@archsa.org",
+        "andrea.mullins@archsa.org",
+        "yenisse.ramirez@archsa.org",
+        "ovase@archsa.org",
+        "pastoralministries@archsa.org",
+        "yessica.marval@archsa.org",
+        "mike.pawelek@archsa.org",
+        "janet.mefrige@archsa.org",
+        "isaac.huron@archsa.org",
+        "maria.losoya@archsa.org",
+        "esperanza.sanchez@archsa.org",
+        "gemma.abonge@archsa.org",
+        "CTSA15@archsa.org",
+        "daryl.swanson@archsa.org",
+        "anna.luna@archsa.org",
+        "tiana.lafaele@archsa.org",
+        "lydia.washington@archsa.org",
+        "barry.edwards@archsa.org",
+        "albina.martinez@archsa.org",
+        "parishlife@archsa.org",
+        "natalie.cura@archsa.org",
+        "appeal@archsa.org",
+        "xavier.ramirez@archsa.org",
+        "gina.wilson@archsa.org",
+        "Alejandro.Orbezo@archsa.org",
+        "erica.jasso@archsa.org",
+        "Alejandra.Lozano@archsa.org",
+        "archive@archsa.org",
+        "ogilvie.martinez@archsa.org",
+        "Jeanette.Reyes@archsa.org",
+        "veronica.markland@archsa.org",
+        "toni.ramirez@archsa.org",
+        "diego.castellanos@archsa.org",
+        "sam.friesenhahn@archsa.org",
+        "zita.branch@archsa.org",
+        "michael.contreras@archsa.org",
+        "kevin.gibson@archsa.org",
+        "carmen.vidal@archsa.org",
+        "elsa.astorga@archsa.org",
+        "eric.allen@archsa.org",
+        "christopher.palmer@archsa.org",
+        "rebecca.villarreal@archsa.org",
+        "elsa.mcdonald@archsa.org",
+        "jennifer.rodriguez@archsa.org",
+        "esther.sotelo@archsa.org",
+        "delia.thomas@archsa.org",
+        "sharon.menezes@archsa.org",
+        "linda.cruz@archsa.org",
+        "maria.baez@archsa.org",
+        "nora.mozingo@archsa.org",
+        "maria.lloyd@archsa.org",
+        "brian.garcia@archsa.org",
+        "martha.ross@archsa.org",
+        "tracy.wernli@archsa.org",
+        "melissa.penarodriguez@archsa.org",
+        "valerie.perez@archsa.org",
+        "mandy.franco@archsa.org",
+        "hopeforfuture@archsa.org",
+        "rebecca.simmons@archsa.org",
+        "irene.garcia@archsa.org",
+        "evelyn.villegas@archsa.org",
+        "HR@archsa.org",
+        "ruben.hinojosa@archsa.org",
+        "patricia.vasquez@archsa.org",
+        "denise.marantes@archsa.org",
+        "charles.ramirez@archsa.org",
+        "developmentoffice@archsa.org",
+        "daniel.oubre@archsa.org",
+        "jose.caballero@archsa.org",
+        "synodality@archsa.org",
+        "maria.l.rodriguez@archsa.org",
+        "lori.peery@archsa.org",
+        "adrian.cepeda@archsa.org",
+        "jazmin.villamil@archsa.org",
+        "deborah.montez@archsa.org",
+        "irma.ortiz@archsa.org",
+        "joshua.mitchener@archsa.org",
+        "anacecilia.montalvo@archsa.org",
+        "yesenia.ramirez@archsa.org",
+        "Roel.Quiroga@archsa.org",
+        "kim.gonzalez@archsa.org",
+        "clergy.office@archsa.org",
+        "chana.finch@archsa.org",
+        "michelle.weekley@archsa.org",
+        "cyo@archsa.org",
+        "isabel.benitez@archsa.org",
+        "todd.bloomer@archsa.org",
+        "blanca.gonzalez@archsa.org",
+        "nick.lopez@archsa.org",
+        "website@archsa.org",
+        "cathleen.carroll@archsa.org",
+        "pablo.garcia@archsa.org",
+        "max.saavedra@archsa.org",
+        "joan.martinez@archsa.org",
+        "kathryn.sauceda@archsa.org",
+        "gabrielle.shelsea@archsa.org",
+        "laura.ruiz@archsa.org",
+        "grace.rodriguez@archsa.org",
+        "gary.comalander@archsa.org",
+        "ademola.elliotte@archsa.org",
+        "margaret.perales@archsa.org",
+        "laura.melghem@archsa.org",
+        "jason.alvarez@archsa.org",
+        "yolanda.deimel@archsa.org",
+        "marina.olivares@archsa.org",
+        "norma.ferdin@archsa.org",
+        "arturo.ramos@archsa.org",
+        "erik.armenta@archsa.org",
+        "virginia.mata@archsa.org",
+        "marti.west@archsa.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "tcpaper@archsa.org"
+    },
+    {
+      "name": "Archdiocese of St. Louis",
+      "domain": "archstl.org",
+      "guessed_email": "info@archstl.org",
+      "found_emails": [
+        "tribunal@archstl.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "tribunal@archstl.org"
+    },
+    {
+      "name": "Archdiocese of St. Paul and Minneapolis",
+      "domain": "archspm.org",
+      "guessed_email": "info@archspm.org",
+      "found_emails": [
+        "careers@archspm.org",
+        "hello@archspm.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "careers@archspm.org"
+    },
+    {
+      "name": "Diocese of Alexandria",
+      "domain": "diocesealex.org",
+      "guessed_email": "info@diocesealex.org",
+      "found_emails": [
+        "dcnjlavergne@diocesealex.org.Tuesday",
+        "dcnjlavergne@diocesealex.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "dcnjlavergne@diocesealex.org.Tuesday"
+    },
+    {
+      "name": "Diocese of Arlington",
+      "domain": "arlingtondiocese.org",
+      "guessed_email": "info@arlingtondiocese.org",
+      "found_emails": [
+        "communications@arlingtondiocese.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "communications@arlingtondiocese.org"
+    },
+    {
+      "name": "Diocese of Burlington",
+      "domain": "vermontcatholic.org",
+      "guessed_email": "info@vermontcatholic.org",
+      "found_emails": [
+        "info@vermontcatholic.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "info@vermontcatholic.org"
+    },
+    {
+      "name": "Diocese of Camden",
+      "domain": "camdendiocese.org",
+      "guessed_email": "info@camdendiocese.org",
+      "found_emails": [
+        "reportabuse@camdendiocese.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "reportabuse@camdendiocese.org"
+    },
+    {
+      "name": "Diocese of Charleston",
+      "domain": "charlestondiocese.org",
+      "guessed_email": "info@charlestondiocese.org",
+      "found_emails": [
+        "vicargeneralwilson@charlestondiocese.org",
+        "vicargeneraldroze@charlestondiocese.org",
+        "ocyp@charlestondiocese.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "vicargeneralwilson@charlestondiocese.org"
+    },
+    {
+      "name": "Diocese of Cleveland",
+      "domain": "dioceseofcleveland.org",
+      "guessed_email": "info@dioceseofcleveland.org",
+      "found_emails": [
+        "response_services@dioceseofcleveland.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "response_services@dioceseofcleveland.org"
+    },
+    {
+      "name": "Diocese of Colorado Springs",
+      "domain": "diocs.org",
+      "guessed_email": "info@diocs.org",
+      "found_emails": [
+        "jbachta@diocs.org",
+        "rmiller@diocs.org",
+        "tpressley@diocs.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "jbachta@diocs.org"
+    },
+    {
+      "name": "Diocese of Des Moines",
+      "domain": "dmdiocese.org",
+      "guessed_email": "info@dmdiocese.org",
+      "found_emails": [
+        "communications@dmdiocese.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "communications@dmdiocese.org"
+    },
+    {
+      "name": "Diocese of Gaylord",
+      "domain": "dioceseofgaylord.org",
+      "guessed_email": "info@dioceseofgaylord.org",
+      "found_emails": [
+        "communications@dioceseofgaylord.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "communications@dioceseofgaylord.org"
+    },
+    {
+      "name": "Diocese of Great Falls-Billings",
+      "domain": "diocesegfb.org",
+      "guessed_email": "info@diocesegfb.org",
+      "found_emails": [
+        "chancery@diocesegfb.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "chancery@diocesegfb.org"
+    },
+    {
+      "name": "Diocese of Jefferson City",
+      "domain": "diojeffcity.org",
+      "guessed_email": "info@diojeffcity.org",
+      "found_emails": [
+        "communication@diojeffcity.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "communication@diojeffcity.org"
+    },
+    {
+      "name": "Diocese of La Crosse",
+      "domain": "diolc.org",
+      "guessed_email": "info@diolc.org",
+      "found_emails": [
+        "info@diolc.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "info@diolc.org"
+    },
+    {
+      "name": "Diocese of Lexington",
+      "domain": "cdlex.org",
+      "guessed_email": "info@cdlex.org",
+      "found_emails": [
+        "communications@cdlex.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "communications@cdlex.org"
+    },
+    {
+      "name": "Diocese of Little Rock",
+      "domain": "dolr.org",
+      "guessed_email": "info@dolr.org",
+      "found_emails": [
+        "jverkampruthven@dolr.org",
+        "dbrady@dolr.org",
+        "sdavid@dolr.org",
+        "acrawford@dolr.org",
+        "mizquierdo@dolr.org",
+        "cphillips@dolr.org",
+        "epohlmeier@dolr.org",
+        "mglover@dolr.org",
+        "aharris@dolr.org",
+        "preaves@dolr.org",
+        "lgottsponer@dolr.org",
+        "mespinoza@dolr.org",
+        "dlee@dolr.org",
+        "jhebert@dolr.org",
+        "tlittle@dolr.org",
+        "dhook@dolr.org",
+        "plattanzi@dolr.org",
+        "thall@dolr.org",
+        "mvelazquez@dolr.org",
+        "ereha@dolr.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "jverkampruthven@dolr.org"
+    },
+    {
+      "name": "Diocese of Memphis",
+      "domain": "cdom.org",
+      "guessed_email": "info@cdom.org",
+      "found_emails": [
+        "fwt.editor@cc.cdom.org",
+        "officeof.communications@cc.cdom.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "fwt.editor@cc.cdom.org"
+    },
+    {
+      "name": "Diocese of Metuchen",
+      "domain": "diometuchen.org",
+      "guessed_email": "info@diometuchen.org",
+      "found_emails": [
+        "communications@diometuchen.org",
+        "magnese@diometuchen.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "communications@diometuchen.org"
+    },
+    {
+      "name": "Diocese of Nashville",
+      "domain": "dioceseofnashville.com",
+      "guessed_email": "info@dioceseofnashville.com",
+      "found_emails": [
+        "Jason.Liuzzi@dioceseofnashville.com",
+        "jason.liuzzi@dioceseofnashville.com",
+        "julie.perrey@dioceseofnashville.com",
+        "tribunal@dioceseofnashville.com",
+        "jim.casey@dioceseofnashville.com",
+        "john.roberts@dioceseofnashville.com",
+        "patti.neal@dioceseofnashville.com",
+        "eliana.rejas@dioceseofnashville.com",
+        "shana.druffner@dioceseofnashville.com",
+        "christina.pineda@dioceseofnashville.com",
+        "john.smestad@dioceseofnashville.com",
+        "greg.pope@dioceseofnashville.com",
+        "brad.peper@dioceseofnashville.com",
+        "ashley.linville@dioceseofnashville.com",
+        "kristen.rainey@dioceseofnashville.com",
+        "renee.szefcyk@dioceseofnashville.com",
+        "john.hammond@dioceseofnashville.com",
+        "erica.beatey@dioceseofnashville.com",
+        "shawanda.williams@dioceseofnashville.com"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "Jason.Liuzzi@dioceseofnashville.com"
+    },
+    {
+      "name": "Diocese of New Ulm",
+      "domain": "dnu.org",
+      "guessed_email": "info@dnu.org",
+      "found_emails": [
+        "dnu@dnu.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "dnu@dnu.org"
+    },
+    {
+      "name": "Diocese of Ogdensburg",
+      "domain": "rcdony.org",
+      "guessed_email": "info@rcdony.org",
+      "found_emails": [
+        "slalone@rcdony.org",
+        "tpratt@rcdony.org",
+        "ifawcett@rcdony.org",
+        "cminer@rcdony.org",
+        "kdonahue@rcdony.org",
+        "elyng@rcdony.org",
+        "ksnover@rcdony.org",
+        "rgrizzuto@rcdony.org",
+        "mmashaw@rcdony.org",
+        "bcollins@rcdony.org",
+        "startaglia@rcdony.org",
+        "ecoughlin@rcdony.org",
+        "mryan@rcdony.org",
+        "kobrien@rcdony.org",
+        "kdonaldson@rcdony.org",
+        "kmastellon@rcdony.org",
+        "rreynolds@rcdony.org",
+        "amichael@rcdony.org",
+        "mcaughey@rcdony.org",
+        "jgrizzuto@rcdony.org",
+        "jdrollette@rcdony.org",
+        "asoltero@rcdony.org",
+        "gkimble@rcdony.org",
+        "mrocker@rcdony.org",
+        "Schoolsasoltero@rcdony.org",
+        "info@rcdony.org",
+        "kruddy@rcdony.org",
+        "jmorrison@rcdony.org",
+        "mdonders@rcdony.org",
+        "jhargrave@rcdony.org",
+        "ggiroux@rcdony.org",
+        "pgarrison@rcdony.org",
+        "jcrowley@rcdony.org",
+        "lcarney@rcdony.org",
+        "crussell@rcdony.org",
+        "mconger@rcdony.org",
+        "vlalonde@rcdony.org",
+        "cward@rcdony.org",
+        "ccarrara@rcdony.org",
+        "hladouceur@rcdony.org",
+        "dfargo@rcdony.org",
+        "jimmorrison@rcdony.org",
+        "bstitt@rcdony.org",
+        "vmathews@rcdony.org",
+        "apietropaoli@rcdony.org",
+        "soltero@rcdony.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "slalone@rcdony.org"
+    },
+    {
+      "name": "Diocese of Orlando",
+      "domain": "orlandodiocese.org",
+      "guessed_email": "info@orlandodiocese.org",
+      "found_emails": [
+        "jkuhn@orlandodiocese.org",
+        "jgassman@orlandodiocese.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "jkuhn@orlandodiocese.org"
+    },
+    {
+      "name": "Diocese of Peoria",
+      "domain": "cdop.org",
+      "guessed_email": "info@cdop.org",
+      "found_emails": [
+        "communications@cdop.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "communications@cdop.org"
+    },
+    {
+      "name": "Diocese of Rockville Centre",
+      "domain": "drvc.org",
+      "guessed_email": "info@drvc.org",
+      "found_emails": [
+        "webmaster@drvc.org",
+        "cprotection@drvc.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "webmaster@drvc.org"
+    },
+    {
+      "name": "Diocese of San Bernardino",
+      "domain": "sbdiocese.org",
+      "guessed_email": "info@sbdiocese.org",
+      "found_emails": [
+        "info@sbdiocese.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "info@sbdiocese.org"
+    },
+    {
+      "name": "Diocese of San Diego",
+      "domain": "sdcatholic.org",
+      "guessed_email": "info@sdcatholic.org",
+      "found_emails": [
+        "mgalvan@sdcatholic.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "mgalvan@sdcatholic.org"
+    },
+    {
+      "name": "Diocese of San Jose",
+      "domain": "dsj.org",
+      "guessed_email": "info@dsj.org",
+      "found_emails": [
+        "stewardship@dsj.org",
+        "david.flores@dsj.org",
+        "veronica.duluk@dsj.org",
+        "%20ellen.hess@dsj.org",
+        "communications@dsj.org",
+        "kevin.bernaga@dsj.org",
+        "michael.carson@dsj.org",
+        "%20rosio.gonzalez@dsj.org",
+        "olga.islas@dsj.org",
+        "jose.soto@dsj.org",
+        "servicedesk@dsj.org",
+        "irma.g.alarconderangel@dsj.org",
+        "hr@dsj.org",
+        "%20education@dsj.org",
+        "%20weric.piczon@dsj.org",
+        "stephen.milligan@dsj.org",
+        "Perla.Amarotellez@dsj.org",
+        "anthony.gonzalez@dsj.org",
+        "joseph.benedict@dsj.org",
+        "valleycatholic@dsj.org",
+        "anabella.estrada@dsj.org",
+        "jeff.fernandez@dsj.org",
+        "andres.ligot@dsj.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "stewardship@dsj.org"
+    },
+    {
+      "name": "Diocese of Scranton",
+      "domain": "dioceseofscranton.org",
+      "guessed_email": "info@dioceseofscranton.org",
+      "found_emails": [
+        "info@dioceseofscranton.org",
+        "mmcaliney@dioceseofscranton.org",
+        "jmyerski@dioceseofscranton.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "info@dioceseofscranton.org"
+    },
+    {
+      "name": "Diocese of Shreveport",
+      "domain": "dioshpt.org",
+      "guessed_email": "info@dioshpt.org",
+      "found_emails": [
+        "tstroud@dioshpt.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "tstroud@dioshpt.org"
+    },
+    {
+      "name": "Diocese of Spokane",
+      "domain": "dioceseofspokane.org",
+      "guessed_email": "info@dioceseofspokane.org",
+      "found_emails": [
+        "support@dioceseofspokane.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "support@dioceseofspokane.org"
+    },
+    {
+      "name": "Diocese of Springfield in Illinois",
+      "domain": "dio.org",
+      "guessed_email": "info@dio.org",
+      "found_emails": [
+        "webmaster@dio.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "webmaster@dio.org"
+    },
+    {
+      "name": "Diocese of St. Augustine",
+      "domain": "dosafl.com",
+      "guessed_email": "info@dosafl.com",
+      "found_emails": [
+        "diocese@dosafl.com"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "diocese@dosafl.com"
+    },
+    {
+      "name": "Diocese of St. Cloud",
+      "domain": "stcdio.org",
+      "guessed_email": "info@stcdio.org",
+      "found_emails": [
+        "communications@gw.stcdio.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "communications@gw.stcdio.org"
+    },
+    {
+      "name": "Diocese of Toledo",
+      "domain": "toledodiocese.org",
+      "guessed_email": "info@toledodiocese.org",
+      "found_emails": [
+        "communications@toledodiocese.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "communications@toledodiocese.org"
+    },
+    {
+      "name": "Diocese of Tyler",
+      "domain": "dioceseoftyler.org",
+      "guessed_email": "info@dioceseoftyler.org",
+      "found_emails": [
+        "mgarcia@dioceseoftyler.org",
+        "djohnston@dioceseoftyler.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "mgarcia@dioceseoftyler.org"
+    },
+    {
+      "name": "Diocese of Venice",
+      "domain": "dioceseofvenice.org",
+      "guessed_email": "info@dioceseofvenice.org",
+      "found_emails": [
+        "contactus@dioceseofvenice.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "contactus@dioceseofvenice.org"
+    },
+    {
+      "name": "Diocese of Wheeling-Charleston",
+      "domain": "dwc.org",
+      "guessed_email": "info@dwc.org",
+      "found_emails": [
+        "tbishop@dwc.org",
+        "dbreiding@dwc.org",
+        "kshaffer@dwc.org",
+        "tribunal@dwc.org",
+        "mpaczewski@dwc.org",
+        "kstillion@dwc.org",
+        "kmuenze@dwc.org",
+        "kbenson@dwc.org",
+        "jlink@dwc.org",
+        "kstaley@dwc.org",
+        "kbarton@dwc.org",
+        "tgreenwood@dwc.org",
+        "kalbers@dwc.org",
+        "rwickham@dwc.org",
+        "cprascik@dwc.org",
+        "sgoudy@dwc.org",
+        "crowan@dwc.org",
+        "jmercer@dwc.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "tbishop@dwc.org"
+    },
+    {
+      "name": "Diocese of Wichita",
+      "domain": "catholicdioceseofwichita.org",
+      "guessed_email": "info@catholicdioceseofwichita.org",
+      "found_emails": [
+        "krugd@catholicdioceseofwichita.org",
+        "ronnfeldta@catholicdioceseofwichita.org",
+        "spellmang@catholicdioceseofwichita.org",
+        "nolanm@catholicdioceseofwichita.org",
+        "schmidtl@catholicdioceseofwichita.org",
+        "gerickel@catholicdioceseofwichita.org",
+        "samourj@catholicdioceseofwichita.org",
+        "totustuus@catholicdioceseofwichita.org",
+        "frjirak@catholicdioceseofwichita.org",
+        "walkerj@catholicdioceseofwichita.org",
+        "poiriern@catholicdioceseofwichita.org",
+        "wescottm@catholicdioceseofwichita.org",
+        "hernandeza@catholicdioceseofwichita.org",
+        "martinc@catholicdioceseofwichita.org",
+        "azizj@catholicdioceseofwichita.org",
+        "beckiusj@catholicdioceseofwichita.org",
+        "nemecheks@catholicdioceseofwichita.org",
+        "seilert@catholicdioceseofwichita.org",
+        "toombsb@catholicdioceseofwichita.org",
+        "brandy@catholicdioceseofwichita.org",
+        "hotzej@catholicdioceseofwichita.org",
+        "holmesb@catholicdioceseofwichita.org",
+        "carters@catholicdioceseofwichita.org",
+        "phelpsr@catholicdioceseofwichita.org",
+        "kingl@catholicdioceseofwichita.org",
+        "walker@catholicdioceseofwichita.org",
+        "purcellr@catholicdioceseofwichita.org",
+        "webbr@catholicdioceseofwichita.org",
+        "knappb@catholicdioceseofwichita.org",
+        "barnardc@catholicdioceseofwichita.org",
+        "arnoldc@catholicdioceseofwichita.org",
+        "padillak@catholicdioceseofwichita.org",
+        "keisera@catholicdioceseofwichita.org",
+        "realml@catholicdioceseofwichita.org",
+        "winslowt@catholicdioceseofwichita.org",
+        "wallerm@catholicdioceseofwichita.org",
+        "eatonj@catholicdioceseofwichita.org",
+        "finkeldeij@catholicdioceseofwichita.org",
+        "criggs@catholicdioceseofwichita.org",
+        "spencert@catholicdioceseofwichita.org",
+        "lopezj@catholicdioceseofwichita.org",
+        "vettelm@catholicdioceseofwichita.org",
+        "torkelsond@catholicdioceseofwichita.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "krugd@catholicdioceseofwichita.org"
+    },
+    {
+      "name": "Diocese of Wilmington",
+      "domain": "cdow.org",
+      "guessed_email": "info@cdow.org",
+      "found_emails": [
+        "mwallen@cdow.org",
+        "info@cdow.org",
+        "triddell@cdow.org",
+        "religioused@cdow.org"
+      ],
+      "status": "VERIFIED",
+      "verified_email": "mwallen@cdow.org"
+    },
+    {
+      "name": "Archdiocese of Anchorage-Juneau",
+      "domain": "aoaj.org",
+      "guessed_email": "info@aoaj.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Baltimore",
+      "domain": "archbalt.org",
+      "guessed_email": "info@archbalt.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Boston",
+      "domain": "bostoncatholic.org",
+      "guessed_email": "info@bostoncatholic.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Chicago",
+      "domain": "archchicago.org",
+      "guessed_email": "info@archchicago.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Cincinnati",
+      "domain": "catholiccincinnati.org",
+      "guessed_email": "info@catholiccincinnati.org",
+      "found_emails": [],
+      "status": "ERROR: HTTPSConnectionPool(host='cath"
+    },
+    {
+      "name": "Archdiocese of Denver",
+      "domain": "archden.org",
+      "guessed_email": "info@archden.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Detroit",
+      "domain": "aod.org",
+      "guessed_email": "info@aod.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Dubuque",
+      "domain": "dbqarch.org",
+      "guessed_email": "info@dbqarch.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Galveston-Houston",
+      "domain": "archgh.org",
+      "guessed_email": "info@archgh.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Hartford",
+      "domain": "archdioceseofhartford.org",
+      "guessed_email": "info@archdioceseofhartford.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Las Vegas",
+      "domain": "lvcatholic.org",
+      "guessed_email": "info@lvcatholic.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Los Angeles",
+      "domain": "lacatholics.org",
+      "guessed_email": "info@lacatholics.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Miami",
+      "domain": "miamiarch.org",
+      "guessed_email": "info@miamiarch.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Mobile",
+      "domain": "mobarch.org",
+      "guessed_email": "info@mobarch.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of New Orleans",
+      "domain": "arch-no.org",
+      "guessed_email": "info@arch-no.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Oklahoma City",
+      "domain": "archokc.org",
+      "guessed_email": "info@archokc.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Omaha",
+      "domain": "archomaha.org",
+      "guessed_email": "info@archomaha.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Philadelphia",
+      "domain": "archphila.org",
+      "guessed_email": "info@archphila.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Portland in Oregon",
+      "domain": "archdpdx.org",
+      "guessed_email": "info@archdpdx.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of San Francisco",
+      "domain": "sfarchdiocese.org",
+      "guessed_email": "info@sfarchdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Santa Fe",
+      "domain": "archdiosf.org",
+      "guessed_email": "info@archdiosf.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Seattle",
+      "domain": "seattlearchdiocese.org",
+      "guessed_email": "info@seattlearchdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Archdiocese of Washington",
+      "domain": "adw.org",
+      "guessed_email": "info@adw.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Albany",
+      "domain": "rcda.org",
+      "guessed_email": "info@rcda.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Allentown",
+      "domain": "allentowndiocese.org",
+      "guessed_email": "info@allentowndiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Altoona-Johnstown",
+      "domain": "ajdiocese.org",
+      "guessed_email": "info@ajdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Amarillo",
+      "domain": "amarillodiocese.org",
+      "guessed_email": "info@amarillodiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Austin",
+      "domain": "austindiocese.org",
+      "guessed_email": "info@austindiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Baker",
+      "domain": "dioceseofbaker.org",
+      "guessed_email": "info@dioceseofbaker.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Baton Rouge",
+      "domain": "diobr.org",
+      "guessed_email": "info@diobr.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Beaumont",
+      "domain": "dioceseofbmt.org",
+      "guessed_email": "info@dioceseofbmt.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Belleville",
+      "domain": "diobelle.org",
+      "guessed_email": "info@diobelle.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Biloxi",
+      "domain": "biloxidiocese.org",
+      "guessed_email": "info@biloxidiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Birmingham",
+      "domain": "bhmdiocese.org",
+      "guessed_email": "info@bhmdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Bismarck",
+      "domain": "bismarckdiocese.com",
+      "guessed_email": "info@bismarckdiocese.com",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Boise",
+      "domain": "catholicidaho.org",
+      "guessed_email": "info@catholicidaho.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Bridgeport",
+      "domain": "bridgeportdiocese.com",
+      "guessed_email": "info@bridgeportdiocese.com",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Brooklyn",
+      "domain": "dioceseofbrooklyn.org",
+      "guessed_email": "info@dioceseofbrooklyn.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Brownsville",
+      "domain": "cdob.org",
+      "guessed_email": "info@cdob.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Buffalo",
+      "domain": "buffalodiocese.org",
+      "guessed_email": "info@buffalodiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Charlotte",
+      "domain": "charlottediocese.org",
+      "guessed_email": "info@charlottediocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Cheyenne",
+      "domain": "dcwy.org",
+      "guessed_email": "info@dcwy.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Columbus",
+      "domain": "colsdioc.org",
+      "guessed_email": "info@colsdioc.org",
+      "found_emails": [],
+      "status": "ERROR: HTTPSConnectionPool(host='cols"
+    },
+    {
+      "name": "Diocese of Corpus Christi",
+      "domain": "diocesecc.org",
+      "guessed_email": "info@diocesecc.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Covington",
+      "domain": "covingtondiocese.org",
+      "guessed_email": "info@covingtondiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Crookston",
+      "domain": "crookston.org",
+      "guessed_email": "info@crookston.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Dallas",
+      "domain": "cathdal.org",
+      "guessed_email": "info@cathdal.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Davenport",
+      "domain": "davenportdiocese.org",
+      "guessed_email": "info@davenportdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Dodge City",
+      "domain": "dcdiocese.org",
+      "guessed_email": "info@dcdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Duluth",
+      "domain": "dioceseduluth.org",
+      "guessed_email": "info@dioceseduluth.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of El Paso",
+      "domain": "elpasodiocese.org",
+      "guessed_email": "info@elpasodiocese.org",
+      "found_emails": [],
+      "status": "ERROR: HTTPSConnectionPool(host='elpa"
+    },
+    {
+      "name": "Diocese of Erie",
+      "domain": "eriercd.org",
+      "guessed_email": "info@eriercd.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Evansville",
+      "domain": "evdio.org",
+      "guessed_email": "info@evdio.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Fairbanks",
+      "domain": "dioceseoffairbanks.org",
+      "guessed_email": "info@dioceseoffairbanks.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Fall River",
+      "domain": "fallriverdiocese.org",
+      "guessed_email": "info@fallriverdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Fargo",
+      "domain": "fargodiocese.org",
+      "guessed_email": "info@fargodiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Fort Wayne-South Bend",
+      "domain": "diocesefwsb.org",
+      "guessed_email": "info@diocesefwsb.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Fort Worth",
+      "domain": "fwdioc.org",
+      "guessed_email": "info@fwdioc.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Fresno",
+      "domain": "dioceseoffresno.org",
+      "guessed_email": "info@dioceseoffresno.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Gallup",
+      "domain": "dioceseofgallup.org",
+      "guessed_email": "info@dioceseofgallup.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Gary",
+      "domain": "dcgary.org",
+      "guessed_email": "info@dcgary.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Grand Island",
+      "domain": "gidiocese.org",
+      "guessed_email": "info@gidiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Grand Rapids",
+      "domain": "grdiocese.org",
+      "guessed_email": "info@grdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Green Bay",
+      "domain": "gbdioc.org",
+      "guessed_email": "info@gbdioc.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Greensburg",
+      "domain": "dioceseofgreensburg.org",
+      "guessed_email": "info@dioceseofgreensburg.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Harrisburg",
+      "domain": "hbgdiocese.org",
+      "guessed_email": "info@hbgdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Helena",
+      "domain": "diocesehelena.org",
+      "guessed_email": "info@diocesehelena.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Honolulu",
+      "domain": "catholichawaii.org",
+      "guessed_email": "info@catholichawaii.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Houma-Thibodaux",
+      "domain": "htdiocese.org",
+      "guessed_email": "info@htdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Jackson",
+      "domain": "jacksondiocese.org",
+      "guessed_email": "info@jacksondiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Joliet",
+      "domain": "dioceseofjoliet.org",
+      "guessed_email": "info@dioceseofjoliet.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Kalamazoo",
+      "domain": "dioceseofkalamazoo.org",
+      "guessed_email": "info@dioceseofkalamazoo.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Kansas City-St. Joseph",
+      "domain": "kcsjcatholic.org",
+      "guessed_email": "info@kcsjcatholic.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Knoxville",
+      "domain": "dioknox.org",
+      "guessed_email": "info@dioknox.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Lafayette in Indiana",
+      "domain": "dol-in.org",
+      "guessed_email": "info@dol-in.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Lafayette in Louisiana",
+      "domain": "diolaf.org",
+      "guessed_email": "info@diolaf.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Lake Charles",
+      "domain": "lcdiocese.org",
+      "guessed_email": "info@lcdiocese.org",
+      "found_emails": [],
+      "status": "ERROR: HTTPSConnectionPool(host='lcdi"
+    },
+    {
+      "name": "Diocese of Lansing",
+      "domain": "dioceseoflansing.org",
+      "guessed_email": "info@dioceseoflansing.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Laredo",
+      "domain": "dioceseoflaredo.org",
+      "guessed_email": "info@dioceseoflaredo.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Las Cruces",
+      "domain": "rcdlc.org",
+      "guessed_email": "info@rcdlc.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Lincoln",
+      "domain": "dioceseoflincoln.org",
+      "guessed_email": "info@dioceseoflincoln.org",
+      "found_emails": [],
+      "status": "ERROR: HTTPSConnectionPool(host='dioc"
+    },
+    {
+      "name": "Diocese of Lubbock",
+      "domain": "catholiclubbock.org",
+      "guessed_email": "info@catholiclubbock.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Madison",
+      "domain": "madisondiocese.org",
+      "guessed_email": "info@madisondiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Manchester",
+      "domain": "catholicnh.org",
+      "guessed_email": "info@catholicnh.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Marquette",
+      "domain": "dioceseofmarquette.org",
+      "guessed_email": "info@dioceseofmarquette.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Monterey",
+      "domain": "dioceseofmonterey.org",
+      "guessed_email": "info@dioceseofmonterey.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Norwich",
+      "domain": "norwichdiocese.org",
+      "guessed_email": "info@norwichdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Oakland",
+      "domain": "oakdiocese.org",
+      "guessed_email": "info@oakdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Orange",
+      "domain": "rcbo.org",
+      "guessed_email": "info@rcbo.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Owensboro",
+      "domain": "rcdok.org",
+      "guessed_email": "info@rcdok.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Palm Beach",
+      "domain": "diocesepb.org",
+      "guessed_email": "info@diocesepb.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Paterson",
+      "domain": "patersondiocese.org",
+      "guessed_email": "info@patersondiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Pensacola-Tallahassee",
+      "domain": "ptdiocese.org",
+      "guessed_email": "info@ptdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Phoenix",
+      "domain": "diocesephoenix.org",
+      "guessed_email": "info@diocesephoenix.org",
+      "found_emails": [],
+      "status": "ERROR: HTTPSConnectionPool(host='dioc"
+    },
+    {
+      "name": "Diocese of Pittsburgh",
+      "domain": "diopitt.org",
+      "guessed_email": "info@diopitt.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Portland in Maine",
+      "domain": "portlanddiocese.net",
+      "guessed_email": "info@portlanddiocese.net",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Providence",
+      "domain": "dioceseofprovidence.org",
+      "guessed_email": "info@dioceseofprovidence.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Pueblo",
+      "domain": "dioceseofpueblo.org",
+      "guessed_email": "info@dioceseofpueblo.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Raleigh",
+      "domain": "dioceseofraleigh.org",
+      "guessed_email": "info@dioceseofraleigh.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Rapid City",
+      "domain": "rapidcitydiocese.org",
+      "guessed_email": "info@rapidcitydiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Reno",
+      "domain": "dioceseofreno.org",
+      "guessed_email": "info@dioceseofreno.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Richmond",
+      "domain": "richmonddiocese.org",
+      "guessed_email": "info@richmonddiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Rochester",
+      "domain": "dor.org",
+      "guessed_email": "info@dor.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Rockford",
+      "domain": "rockforddiocese.org",
+      "guessed_email": "info@rockforddiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Sacramento",
+      "domain": "scd.org",
+      "guessed_email": "info@scd.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Saginaw",
+      "domain": "saginaw.org",
+      "guessed_email": "info@saginaw.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Salina",
+      "domain": "salinadiocese.org",
+      "guessed_email": "info@salinadiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Salt Lake City",
+      "domain": "utahcatholicdiocese.org",
+      "guessed_email": "info@utahcatholicdiocese.org",
+      "found_emails": [],
+      "status": "ERROR: HTTPSConnectionPool(host='utah"
+    },
+    {
+      "name": "Diocese of San Angelo",
+      "domain": "sanangelodiocese.org",
+      "guessed_email": "info@sanangelodiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Santa Rosa",
+      "domain": "srdiocese.org",
+      "guessed_email": "info@srdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Savannah",
+      "domain": "diosav.org",
+      "guessed_email": "info@diosav.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Sioux City",
+      "domain": "scdiocese.org",
+      "guessed_email": "info@scdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Sioux Falls",
+      "domain": "sfcatholic.org",
+      "guessed_email": "info@sfcatholic.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Springfield MA",
+      "domain": "diospringfield.org",
+      "guessed_email": "info@diospringfield.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Springfield-Cape Girardeau",
+      "domain": "dioscg.org",
+      "guessed_email": "info@dioscg.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of St. Petersburg",
+      "domain": "dosp.org",
+      "guessed_email": "info@dosp.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Steubenville",
+      "domain": "diosteub.org",
+      "guessed_email": "info@diosteub.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Stockton",
+      "domain": "stocktondiocese.org",
+      "guessed_email": "info@stocktondiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Superior",
+      "domain": "catholicdos.org",
+      "guessed_email": "info@catholicdos.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Syracuse",
+      "domain": "syracusediocese.org",
+      "guessed_email": "info@syracusediocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Trenton",
+      "domain": "dioceseoftrenton.org",
+      "guessed_email": "info@dioceseoftrenton.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Tucson",
+      "domain": "diocesetucson.org",
+      "guessed_email": "info@diocesetucson.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Tulsa",
+      "domain": "dioceseoftulsa.org",
+      "guessed_email": "info@dioceseoftulsa.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Victoria",
+      "domain": "victoriadiocese.org",
+      "guessed_email": "info@victoriadiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Winona-Rochester",
+      "domain": "dow.org",
+      "guessed_email": "info@dow.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Worcester",
+      "domain": "worcesterdiocese.org",
+      "guessed_email": "info@worcesterdiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Yakima",
+      "domain": "yakimadiocese.org",
+      "guessed_email": "info@yakimadiocese.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    },
+    {
+      "name": "Diocese of Youngstown",
+      "domain": "doy.org",
+      "guessed_email": "info@doy.org",
+      "found_emails": [],
+      "status": "GUESSED"
+    }
+  ]
+}

@@ -20,10 +20,23 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
+            position: relative;
         }
 
         .header h1 { font-size: 28px; margin-bottom: 8px; }
         .header p { opacity: 0.6; font-size: 14px; }
+
+        .glyph-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(255,215,0,0.2);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 11px;
+            color: #FFD700;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
 
         .input-section {
             background: rgba(255, 255, 255, 0.05);
@@ -57,6 +70,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .detect-btn:hover {
@@ -145,6 +159,12 @@
             margin-bottom: 6px;
         }
 
+        .tactic-axis {
+            font-size: 11px;
+            color: #FFD700;
+            margin-bottom: 6px;
+        }
+
         .tactic-quote {
             font-size: 11px;
             padding: 8px;
@@ -157,6 +177,7 @@
             background: rgba(46, 204, 113, 0.1);
             border-radius: 16px;
             padding: 24px;
+            margin-bottom: 20px;
         }
 
         .defense h3 {
@@ -170,6 +191,66 @@
             padding: 6px 0;
         }
 
+        /* GLYPH Analysis Section */
+        .glyph-output {
+            display: none;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(255,215,0,0.1);
+            border: 1px solid #FFD700;
+            border-radius: 12px;
+        }
+
+        .glyph-output.active { display: block; }
+
+        .glyph-output h4 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .glyph-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .glyph-notation {
+            font-family: monospace;
+            color: #4ECDC4;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .glyph-scores {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .truth-score { color: #4ECDC4; }
+        .deceit-score { color: #FF6B6B; }
+
+        .axis-breakdown {
+            margin-top: 15px;
+        }
+
+        .axis-item {
+            background: rgba(255,107,107,0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
+        .axis-defense-item {
+            background: rgba(78,205,196,0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
         footer {
             text-align: center;
             margin-top: 30px;
@@ -177,19 +258,30 @@
             opacity: 0.4;
         }
 
+        footer a { color: #667eea; }
+
         @media (max-width: 480px) {
             .header h1 { font-size: 22px; }
             .text-input { height: 100px; font-size: 14px; }
             .detect-btn { padding: 14px; font-size: 14px; }
             .tactic { flex-direction: column; align-items: flex-start; }
             .tactic-icon { font-size: 20px; }
+            .glyph-badge { position: static; margin-bottom: 10px; display: inline-block; }
+            .glyph-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+    <!-- GLYPH 12D+ Backbone -->
+    <script src="/js/glyph/glyph-base60.js"></script>
+    <script src="/js/glyph/glyph-symbols.js"></script>
+    <script src="/js/glyph/glyph-patterns.js"></script>
+    <script src="/js/glyph/glyph-core.js"></script>
+
     <div class="container">
         <div class="header">
-            <h1>Influence Detector</h1>
+            <div class="glyph-badge">⟐ GLYPH 12D+ POWERED</div>
+            <h1>🎯 Influence Detector</h1>
             <p>Detect psychological influence tactics in ads, marketing, and pitches</p>
         </div>
 
@@ -207,124 +299,292 @@
                 <div style="font-size: 12px; opacity: 0.6;" id="riskDesc">-</div>
             </div>
 
+            <!-- GLYPH Analysis Section -->
+            <div class="glyph-output" id="glyphOutput">
+                <h4>⟐ GLYPH 12D+ Analysis</h4>
+                <div class="glyph-grid">
+                    <div>
+                        <strong>Notation:</strong>
+                        <div class="glyph-notation" id="glyphNotation"></div>
+                    </div>
+                    <div>
+                        <strong>Frequency:</strong>
+                        <span id="glyphFrequency"></span>
+                    </div>
+                </div>
+                <div style="margin-top: 15px;">
+                    <strong>Truth/Deceit Ratio:</strong>
+                    <div class="glyph-scores">
+                        <span class="truth-score">Truth: <span id="glyphTruth">0</span>%</span>
+                        <span class="deceit-score">Deceit: <span id="glyphDeceit">0</span>%</span>
+                    </div>
+                </div>
+                <div class="axis-breakdown" id="axisBreakdown"></div>
+                <div class="axis-breakdown" id="axisDefenses"></div>
+            </div>
+
             <div class="tactics-found">
                 <h3>Influence Tactics Detected</h3>
                 <div id="tacticsList"></div>
             </div>
 
             <div class="defense">
-                <h3>Defense Strategies</h3>
+                <h3>🛡️ Defense Strategies</h3>
                 <div id="defenseList"></div>
             </div>
         </div>
 
         <footer>
-            Pattern Theory • <a href="consciousness-tools.html" style="color: #667eea;">More Tools</a>
+            Pattern Theory • <a href="consciousness-tools.html">More Tools</a>
         </footer>
     </div>
 
     <script>
-        const TACTICS = [
+        // ═══════════════════════════════════════════════════════════════
+        // GLYPH 12D+ 6D Axis System
+        // ═══════════════════════════════════════════════════════════════
+        let GLYPH_AXES = {
+            A: { name: 'Vertical (Power)', positive: 'Up', negative: 'Down', desc: 'Power dynamics and coercion' },
+            B: { name: 'Horizontal (Social)', positive: 'Right', negative: 'Left', desc: 'Relationship leverage' },
+            C: { name: 'Depth (Reality)', positive: 'Front', negative: 'Back', desc: 'Reality distortion' },
+            D: { name: 'Temporal', positive: 'Future', negative: 'Past', desc: 'Time-based leverage' },
+            E: { name: 'Energy', positive: 'Potential', negative: 'Kinetic', desc: 'Emotional energy manipulation' },
+            F: { name: 'Observer', positive: 'Subject', negative: 'Object', desc: 'Self-perception attack' }
+        };
+
+        // Axis-Specific Defenses
+        let AXIS_DEFENSES = {
+            A: 'Power coercion detected → Assert: "I decide what I do"',
+            B: 'Relationship leverage → "I can care and still say no"',
+            C: 'Reality distortion → "My experience is valid"',
+            D: 'Time leverage → "I am not bound by artificial deadlines"',
+            E: 'Emotional manipulation → "Your urgency is not my emergency"',
+            F: 'Identity attack → "I know who I am and what I need"'
+        };
+
+        // ═══════════════════════════════════════════════════════════════
+        // INFLUENCE TACTICS with GLYPH 6D Axis Mapping
+        // ═══════════════════════════════════════════════════════════════
+        let TACTICS = [
             {
                 name: "Scarcity",
                 icon: "⏳",
                 markers: ["limited", "only", "few left", "running out", "last chance", "exclusive"],
                 desc: "Creating artificial scarcity to trigger fear of missing out",
-                defense: "Ask: Will this really be unavailable, or is this a sales tactic?"
+                defense: "Ask: Will this really be unavailable, or is this a sales tactic?",
+                glyphAxis: 'A',
+                severity: 1.8,
+                axisDesc: 'Power axis - manufactured resource control'
             },
             {
                 name: "Urgency",
                 icon: "⏰",
                 markers: ["act now", "today only", "expires", "don't wait", "immediately", "hurry"],
                 desc: "Pressuring immediate action to bypass careful thinking",
-                defense: "Sleep on it. Real opportunities don't disappear overnight."
+                defense: "Sleep on it. Real opportunities don't disappear overnight.",
+                glyphAxis: 'D',
+                severity: 2.0,
+                axisDesc: 'Temporal axis - artificial time constraint'
             },
             {
                 name: "Social Proof",
                 icon: "👥",
                 markers: ["everyone", "thousands", "bestselling", "most popular", "join", "people are"],
                 desc: "Using crowd behavior to imply you should follow",
-                defense: "Others' choices don't determine what's right for you."
+                defense: "Others' choices don't determine what's right for you.",
+                glyphAxis: 'B',
+                severity: 1.5,
+                axisDesc: 'Social axis - herd mentality leverage'
             },
             {
                 name: "Authority",
                 icon: "🎓",
                 markers: ["expert", "doctor", "studies show", "research", "proven", "certified"],
                 desc: "Leveraging authority figures to increase trust",
-                defense: "Verify credentials and check if the 'authority' is relevant."
+                defense: "Verify credentials and check if the 'authority' is relevant.",
+                glyphAxis: 'A',
+                severity: 1.7,
+                axisDesc: 'Power axis - authority position leverage'
             },
             {
                 name: "Reciprocity",
                 icon: "🎁",
                 markers: ["free", "gift", "bonus", "complimentary", "no cost", "on us"],
                 desc: "Giving something to create obligation to give back",
-                defense: "A 'gift' with strings attached isn't really free."
+                defense: "A 'gift' with strings attached isn't really free.",
+                glyphAxis: 'B',
+                severity: 1.6,
+                axisDesc: 'Social axis - artificial debt creation'
             },
             {
                 name: "Liking",
                 icon: "😊",
                 markers: ["friend", "like you", "people like us", "we", "together", "community"],
                 desc: "Building rapport to increase compliance",
-                defense: "Separate how you feel about the person from the offer itself."
+                defense: "Separate how you feel about the person from the offer itself.",
+                glyphAxis: 'B',
+                severity: 1.4,
+                axisDesc: 'Social axis - rapport manipulation'
             },
             {
                 name: "Fear Appeal",
                 icon: "😱",
                 markers: ["risk", "danger", "before it's too late", "don't miss", "lose", "fail"],
                 desc: "Using fear to motivate action",
-                defense: "Fear-based decisions are rarely good decisions. Calm down first."
+                defense: "Fear-based decisions are rarely good decisions. Calm down first.",
+                glyphAxis: 'E',
+                severity: 2.2,
+                axisDesc: 'Energy axis - fear energy weaponization'
             },
             {
                 name: "Anchoring",
                 icon: "⚓",
                 markers: ["was $", "normally", "compare", "value", "save", "discount"],
                 desc: "Setting high reference point to make offer seem better",
-                defense: "Judge value independently, not compared to inflated 'original' prices."
+                defense: "Judge value independently, not compared to inflated 'original' prices.",
+                glyphAxis: 'C',
+                severity: 1.5,
+                axisDesc: 'Reality axis - price perception distortion'
             },
             {
                 name: "Commitment",
                 icon: "🤝",
                 markers: ["you agreed", "you said", "consistent", "promise", "committed"],
                 desc: "Using past commitments to push for more",
-                defense: "You can change your mind when you have new information."
+                defense: "You can change your mind when you have new information.",
+                glyphAxis: 'D',
+                severity: 1.8,
+                axisDesc: 'Temporal axis - past commitment leverage'
             },
             {
                 name: "Future Pacing",
                 icon: "🔮",
                 markers: ["imagine", "picture yourself", "what if", "when you", "you'll be"],
                 desc: "Having you imagine positive outcomes to create desire",
-                defense: "Imagination isn't evidence. Ask for real case studies."
+                defense: "Imagination isn't evidence. Ask for real case studies.",
+                glyphAxis: 'D',
+                severity: 1.7,
+                axisDesc: 'Temporal axis - future imagination manipulation'
             }
         ];
 
+        // ═══════════════════════════════════════════════════════════════
+        // GLYPH Analysis Functions
+        // ═══════════════════════════════════════════════════════════════
+        function generateGlyphAnalysis(text, found, axesHit) {
+            // Use GlyphPatterns if loaded
+            if (typeof GlyphPatterns !== 'undefined') {
+                let analysis = GlyphPatterns.analyze(text);
+                return {
+                    notation: analysis.glyphNotation,
+                    truthScore: analysis.scores.truth,
+                    deceitScore: analysis.scores.deceit,
+                    frequency: analysis.frequency,
+                    dominant: analysis.dominant
+                };
+            }
+
+            // Fallback generation
+            let totalSeverity = found.reduce(function(sum, t) { return sum + t.severity; }, 0);
+            let deceitScore = Math.min(100, Math.round(totalSeverity * 10));
+            let truthScore = 100 - deceitScore;
+
+            // Solfeggio frequency mapping
+            var frequency;
+            if (deceitScore > 60) {
+                frequency = 396; // Liberation - high deceit
+            } else if (deceitScore > 30) {
+                frequency = 417; // Change - moderate
+            } else {
+                frequency = 528; // DNA Repair - safe
+            }
+
+            let notation = '\u27d0' + (found.length > 0 ? '\u2717' : '\u2713') + ':' + truthScore + ':' + axesHit.size + 'D\u2192' + frequency + 'Hz\u27d0';
+
+            return {
+                notation: notation,
+                truthScore: truthScore,
+                deceitScore: deceitScore,
+                frequency: frequency,
+                dominant: deceitScore > truthScore ? 'deceit' : 'truth'
+            };
+        }
+
+        function displayGlyphOutput(analysis, axesHit) {
+            document.getElementById('glyphOutput').classList.add('active');
+            document.getElementById('glyphNotation').textContent = analysis.notation;
+            document.getElementById('glyphTruth').textContent = analysis.truthScore;
+            document.getElementById('glyphDeceit').textContent = analysis.deceitScore;
+
+            // Frequency with color
+            let freqColors = { 396: '#FF6B6B', 417: '#FFD700', 528: '#4ECDC4' };
+            let freqNames = { 396: 'Liberation (Danger)', 417: 'Change (Caution)', 528: 'DNA Repair (Safe)' };
+            document.getElementById('glyphFrequency').innerHTML =
+                '<span style="color: ' + (freqColors[analysis.frequency] || '#FFF') + '">' +
+                analysis.frequency + 'Hz - ' + (freqNames[analysis.frequency] || 'Unknown') +
+                '</span>';
+
+            // Axis breakdown
+            let axesArray = Array.from(axesHit);
+            if (axesArray.length > 0) {
+                let axisHtml = '<strong style="display:block;margin-bottom:8px;">6D Coordinate Attack Surface:</strong>';
+                axesArray.forEach(function(axis) {
+                    axisHtml += '<div class="axis-item"><strong>Axis ' + axis + '</strong>: ' +
+                        GLYPH_AXES[axis].name + ' - ' + GLYPH_AXES[axis].desc + '</div>';
+                });
+                document.getElementById('axisBreakdown').innerHTML = axisHtml;
+
+                // Axis defenses
+                let defenseHtml = '<strong style="display:block;margin-bottom:8px;margin-top:15px;">Axis-Specific Defenses:</strong>';
+                axesArray.forEach(function(axis) {
+                    defenseHtml += '<div class="axis-defense-item">' + AXIS_DEFENSES[axis] + '</div>';
+                });
+                document.getElementById('axisDefenses').innerHTML = defenseHtml;
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // MAIN DETECTION FUNCTION
+        // ═══════════════════════════════════════════════════════════════
         function detect() {
-            const text = document.getElementById('input').value.trim();
+            let text = document.getElementById('input').value.trim();
             if (!text) return;
 
-            const lower = text.toLowerCase();
-            const found = [];
+            let lower = text.toLowerCase();
+            let found = [];
+            let axesHit = new Set();
 
-            TACTICS.forEach(t => {
-                const matched = t.markers.filter(m => lower.includes(m));
+            TACTICS.forEach(function(t) {
+                let matched = t.markers.filter(function(m) { return lower.includes(m); });
                 if (matched.length > 0) {
                     // Find context
-                    const marker = matched[0];
-                    const idx = lower.indexOf(marker);
-                    const start = Math.max(0, idx - 20);
-                    const end = Math.min(text.length, idx + marker.length + 30);
-                    const context = text.slice(start, end);
+                    let marker = matched[0];
+                    let idx = lower.indexOf(marker);
+                    let start = Math.max(0, idx - 20);
+                    let end = Math.min(text.length, idx + marker.length + 30);
+                    let context = text.slice(start, end);
 
-                    found.push({
-                        ...t,
-                        matched,
+                    let tacticResult = {
+                        name: t.name,
+                        icon: t.icon,
+                        desc: t.desc,
+                        defense: t.defense,
+                        glyphAxis: t.glyphAxis,
+                        severity: t.severity,
+                        axisDesc: t.axisDesc,
+                        matched: matched,
                         context: (start > 0 ? '...' : '') + context + (end < text.length ? '...' : '')
-                    });
+                    };
+
+                    found.push(tacticResult);
+                    axesHit.add(t.glyphAxis);
                 }
             });
 
-            // Calculate risk
-            const riskScore = Math.min(100, found.length * 15);
-            let riskClass, riskText, riskDesc;
+            // Calculate risk using GLYPH severity weights
+            let totalSeverity = found.reduce(function(sum, t) { return sum + t.severity; }, 0);
+            let riskScore = Math.min(100, Math.round(totalSeverity * 10));
+            var riskClass, riskText, riskDesc;
 
             if (riskScore >= 60) {
                 riskClass = 'risk-high';
@@ -343,33 +603,40 @@
             // Update UI
             document.getElementById('riskLabel').textContent = riskText;
             document.getElementById('riskDesc').textContent = riskDesc;
-            const fill = document.getElementById('riskFill');
+            let fill = document.getElementById('riskFill');
             fill.style.width = riskScore + '%';
             fill.className = 'risk-fill ' + riskClass;
 
-            // Tactics list
+            // Tactics list with GLYPH axis info
             document.getElementById('tacticsList').innerHTML = found.length > 0
-                ? found.map(t => `
-                    <div class="tactic">
-                        <span class="tactic-icon">${t.icon}</span>
-                        <div class="tactic-info">
-                            <div class="tactic-name">${t.name}</div>
-                            <div class="tactic-desc">${t.desc}</div>
-                            <div class="tactic-quote">"${t.context}"</div>
-                        </div>
-                    </div>
-                `).join('')
+                ? found.map(function(t) {
+                    return '<div class="tactic">' +
+                        '<span class="tactic-icon">' + t.icon + '</span>' +
+                        '<div class="tactic-info">' +
+                            '<div class="tactic-name">' + t.name + '</div>' +
+                            '<div class="tactic-desc">' + t.desc + '</div>' +
+                            '<div class="tactic-axis">⟐ Axis ' + t.glyphAxis + ': ' + t.axisDesc + '</div>' +
+                            '<div class="tactic-quote">"' + t.context + '"</div>' +
+                        '</div>' +
+                    '</div>';
+                }).join('')
                 : '<div style="opacity: 0.5;">No major influence tactics detected</div>';
 
             // Defense strategies
-            const defenses = found.length > 0
-                ? found.map(t => `<div class="defense-item">• ${t.defense}</div>`).join('')
-                : '<div class="defense-item">• Content appears straightforward</div>';
+            let defenses = found.length > 0
+                ? found.map(function(t) { return '<div class="defense-item">\u2022 ' + t.defense + '</div>'; }).join('')
+                : '<div class="defense-item">\u2022 Content appears straightforward</div>';
 
             document.getElementById('defenseList').innerHTML = defenses;
+
+            // Generate and display GLYPH analysis
+            let glyphAnalysis = generateGlyphAnalysis(text, found, axesHit);
+            displayGlyphOutput(glyphAnalysis, axesHit);
 
             document.getElementById('results').classList.add('active');
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

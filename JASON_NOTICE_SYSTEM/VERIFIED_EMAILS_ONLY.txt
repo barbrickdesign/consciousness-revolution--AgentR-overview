@@ -1,0 +1,63 @@
+VERIFIED DIOCESE EMAILS - READY TO SEND
+Generated: December 27, 2025
+Total: 53 verified emails
+============================================================
+
+PHASE 1 - PRIORITY (11 manually verified)
+------------------------------------------------------------
+  nuntiususa@nuntiususa.org                     Apostolic Nunciature (US)
+  communications@usccb.org                      USCCB Headquarters
+  info@la-archdiocese.org                       Archdiocese of Los Angeles
+  communications@archny.org                     Archdiocese of New York
+  info@archchicago.org                          Archdiocese of Chicago
+  communications@archphila.org                  Archdiocese of Philadelphia
+  communications@rcab.org                       Archdiocese of Boston
+  info@sfarchdiocese.org                        Archdiocese of San Francisco
+  info@seattlearch.org                          Archdiocese of Seattle
+  info@archdioceseofanchorage.org               Archdiocese of Anchorage-Juneau
+  info@archdpdx.org                             Archdiocese of Portland
+
+PHASE 2 - SCRAPED FROM WEBSITES
+------------------------------------------------------------
+  Capodanno@milarch.org                         Archdiocese for Military Services
+  jhanten@archatl.com                           Archdiocese of Atlanta
+  Assistantabailey@archkck.org                  Archdiocese of Kansas City in Kansas
+  charities@archlou.org                         Archdiocese of Louisville
+  communication@archmil.org                     Archdiocese of Milwaukee
+  safe@archny.org                               Archdiocese of New York
+  information@rcan.org                          Archdiocese of Newark
+  tcpaper@archsa.org                            Archdiocese of San Antonio
+  tribunal@archstl.org                          Archdiocese of St. Louis
+  communications@arlingtondiocese.org           Diocese of Arlington
+  info@vermontcatholic.org                      Diocese of Burlington
+  vicargeneralwilson@charlestondiocese.org      Diocese of Charleston
+  response_services@dioceseofcleveland.org      Diocese of Cleveland
+  jbachta@diocs.org                             Diocese of Colorado Springs
+  communications@dmdiocese.org                  Diocese of Des Moines
+  communications@dioceseofgaylord.org           Diocese of Gaylord
+  chancery@diocesegfb.org                       Diocese of Great Falls-Billings
+  communication@diojeffcity.org                 Diocese of Jefferson City
+  info@diolc.org                                Diocese of La Crosse
+  communications@cdlex.org                      Diocese of Lexington
+  jverkampruthven@dolr.org                      Diocese of Little Rock
+  fwt.editor@cc.cdom.org                        Diocese of Memphis
+  communications@diometuchen.org                Diocese of Metuchen
+  Jason.Liuzzi@dioceseofnashville.com           Diocese of Nashville
+  dnu@dnu.org                                   Diocese of New Ulm
+  slalone@rcdony.org                            Diocese of Ogdensburg
+  jkuhn@orlandodiocese.org                      Diocese of Orlando
+  communications@cdop.org                       Diocese of Peoria
+  info@sbdiocese.org                            Diocese of San Bernardino
+  mgalvan@sdcatholic.org                        Diocese of San Diego
+  stewardship@dsj.org                           Diocese of San Jose
+  info@dioceseofscranton.org                    Diocese of Scranton
+  tstroud@dioshpt.org                           Diocese of Shreveport
+  support@dioceseofspokane.org                  Diocese of Spokane
+  diocese@dosafl.com                            Diocese of St. Augustine
+  communications@gw.stcdio.org                  Diocese of St. Cloud
+  communications@toledodiocese.org              Diocese of Toledo
+  mgarcia@dioceseoftyler.org                    Diocese of Tyler
+  contactus@dioceseofvenice.org                 Diocese of Venice
+  tbishop@dwc.org                               Diocese of Wheeling-Charleston
+  krugd@catholicdioceseofwichita.org            Diocese of Wichita
+  mwallen@cdow.org                              Diocese of Wilmington

@@ -335,7 +335,7 @@
 
             if (amount === 0 || !selections.timeWanted || !selections.emotion ||
                 !selections.pressure || !selections.emergency) {
-                alert('Please fill in all fields');
+                console.warn('Please fill in all fields');
                 return;
             }
 
@@ -486,5 +486,7 @@
             return rules.slice(0, 4);
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

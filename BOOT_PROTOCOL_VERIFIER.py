@@ -266,12 +266,10 @@ class BootVerifier:
         else:
             return {'status': 'PASS', 'vars': len(required) + len(optional)}
 
-
 def main():
     """Run boot verification"""
     verifier = BootVerifier()
     verifier.verify_all()
-
 
 if __name__ == '__main__':
     main()

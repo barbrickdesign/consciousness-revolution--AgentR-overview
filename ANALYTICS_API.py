@@ -21,7 +21,6 @@ CYCLOTRON_DIR = BASE_DIR / ".consciousness" / "cyclotron_core"
 DEPLOYMENT_DIR = BASE_DIR / "100X_DEPLOYMENT"
 HISTORY_FILE = DEPLOYMENT_DIR / "analytics_history.json"
 
-
 def load_json_file(filepath):
     """Safely load a JSON file."""
     try:
@@ -31,14 +30,12 @@ def load_json_file(filepath):
         print(f"Error loading {filepath}: {e}")
         return None
 
-
 def count_atoms():
     """Count knowledge atoms in cyclotron."""
     atoms_dir = CYCLOTRON_DIR / "atoms"
     if atoms_dir.exists():
         return len(list(atoms_dir.glob("*.json")))
     return 0
-
 
 def get_current_metrics():
     """Get all current consciousness metrics."""
@@ -95,7 +92,6 @@ def get_current_metrics():
 
     return metrics
 
-
 def get_history():
     """Get historical metrics for the last 7 days."""
     if HISTORY_FILE.exists():
@@ -117,13 +113,11 @@ def get_history():
         })
     return history
 
-
 @app.route('/api/analytics', methods=['GET'])
 def get_analytics():
     """Get all current analytics metrics."""
     metrics = get_current_metrics()
     return jsonify(metrics)
-
 
 @app.route('/api/analytics/history', methods=['GET'])
 def get_analytics_history():
@@ -133,7 +127,6 @@ def get_analytics_history():
         "history": history,
         "days": 7
     })
-
 
 @app.route('/api/analytics/summary', methods=['GET'])
 def get_summary():
@@ -146,12 +139,10 @@ def get_summary():
         "atoms": metrics["atom_count"]
     })
 
-
 @app.route('/health', methods=['GET'])
 def health_check():
     """Health check endpoint."""
     return jsonify({"status": "healthy", "service": "analytics-api"})
-
 
 if __name__ == '__main__':
     print("=" * 50)

@@ -23,14 +23,12 @@ SCAN_PATHS = [
 
 CATALOG_PATH = Path("C:/Users/dwrek/100X_DEPLOYMENT/tools_catalog.json")
 
-
 def load_catalog():
     """Load tool catalog from JSON file"""
     if CATALOG_PATH.exists():
         with open(CATALOG_PATH, 'r', encoding='utf-8') as f:
             return json.load(f)
     return {"tools": [], "categories": {}}
-
 
 def extract_tool_info(file_path):
     """Extract tool metadata from file"""
@@ -79,7 +77,6 @@ def extract_tool_info(file_path):
         "tags": [category, path.suffix[1:]]
     }
 
-
 def scan_tools():
     """Scan filesystem for all tools"""
     tools = []
@@ -105,7 +102,6 @@ def scan_tools():
 
     return tools
 
-
 @app.route('/api/tools', methods=['GET'])
 def get_all_tools():
     """GET /api/tools - List all tools with metadata"""
@@ -116,7 +112,6 @@ def get_all_tools():
         "categories": catalog.get('categories', {}),
         "tools": catalog.get('tools', [])
     })
-
 
 @app.route('/api/tools/search', methods=['GET'])
 def search_tools():
@@ -141,7 +136,6 @@ def search_tools():
         "tools": results
     })
 
-
 @app.route('/api/tools/category/<category>', methods=['GET'])
 def get_tools_by_category(category):
     """GET /api/tools/category/:cat - Filter by category"""
@@ -155,7 +149,6 @@ def get_tools_by_category(category):
         "count": len(results),
         "tools": results
     })
-
 
 @app.route('/api/tools/scan', methods=['POST'])
 def scan_and_update():
@@ -183,12 +176,10 @@ def scan_and_update():
         "count": len(tools)
     })
 
-
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """Health check endpoint"""
     return jsonify({"status": "healthy", "service": "tool-discovery-api"})
-
 
 if __name__ == '__main__':
     print("=" * 50)

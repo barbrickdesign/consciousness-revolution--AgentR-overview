@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLYPH Real-Time Scorer</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --border: #333;
+            --text: #e0e0e0;
+            --gold: #ffd700;
+            --green: #00ff88;
+            --red: #ff4444;
+            --blue: #4488ff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 15px 20px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 { color: var(--gold); font-size: 1.3em; }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+        }
+
+        .pulse {
+            width: 10px;
+            height: 10px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .input-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        textarea {
+            flex: 1;
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            padding: 20px;
+            font-size: 16px;
+            font-family: inherit;
+            resize: none;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .results-area {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .score-meter {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .meter-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            margin-bottom: 8px;
+        }
+
+        .meter-bar {
+            height: 20px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .meter-fill {
+            height: 100%;
+            transition: width 0.3s, background 0.3s;
+            border-radius: 10px;
+        }
+
+        .meter-fill.truth { background: linear-gradient(90deg, var(--green), #00cc66); }
+        .meter-fill.deceit { background: linear-gradient(90deg, var(--red), #cc0000); }
+        .meter-fill.neutral { background: linear-gradient(90deg, var(--blue), #0066cc); }
+
+        .big-score {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .score-number {
+            font-size: 4em;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .score-number.high { color: var(--green); }
+        .score-number.medium { color: var(--gold); }
+        .score-number.low { color: var(--red); }
+
+        .score-status {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #888;
+        }
+
+        .notation-display {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            text-align: center;
+            color: var(--gold);
+            word-break: break-all;
+        }
+
+        .frequency-display {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .freq-icon {
+            font-size: 2em;
+        }
+
+        .freq-info {
+            flex: 1;
+        }
+
+        .freq-hz {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .freq-name {
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        .pattern-alerts {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .pattern-alerts h3 {
+            font-size: 0.9em;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .alert-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            margin-bottom: 5px;
+            background: rgba(255,68,68,0.1);
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        .alert-item.manipulation {
+            background: rgba(255,0,0,0.15);
+            border: 1px solid var(--red);
+        }
+
+        .word-count {
+            text-align: center;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        @media (max-width: 800px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .results-area {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GLYPH Real-Time Scorer</h1>
+        <div class="live-indicator">
+            <span class="pulse"></span>
+            <span>LIVE ANALYSIS</span>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="input-area">
+            <textarea id="textInput" placeholder="Start typing or paste text...
+
+Analysis happens in real-time as you type.
+
+The GLYPH system measures:
+- Truth vs Deceit balance
+- Consciousness level (0-100)
+- Manipulation patterns
+- Solfeggio frequency alignment
+- 6D coordinate mapping"></textarea>
+        </div>
+
+        <div class="results-area">
+            <div class="big-score">
+                <div class="score-number high" id="mainScore">--</div>
+                <div class="score-status" id="scoreStatus">Start typing...</div>
+            </div>
+
+            <div class="score-meter">
+                <div class="meter-label">
+                    <span>Truth</span>
+                    <span id="truthPercent">--%</span>
+                </div>
+                <div class="meter-bar">
+                    <div class="meter-fill truth" id="truthBar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="score-meter">
+                <div class="meter-label">
+                    <span>Deceit</span>
+                    <span id="deceitPercent">--%</span>
+                </div>
+                <div class="meter-bar">
+                    <div class="meter-fill deceit" id="deceitBar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="notation-display" id="glyphNotation">
+                &#x27D0; GLYPH Notation &#x27D0;
+            </div>
+
+            <div class="frequency-display">
+                <div class="freq-icon">&#x266A;</div>
+                <div class="freq-info">
+                    <div class="freq-hz" id="freqHz">--- Hz</div>
+                    <div class="freq-name" id="freqName">Waiting...</div>
+                </div>
+            </div>
+
+            <div class="pattern-alerts" id="alerts">
+                <h3>Pattern Alerts</h3>
+                <div id="alertList">
+                    <div style="color: #666; font-size: 0.85em;">No patterns detected yet</div>
+                </div>
+            </div>
+
+            <div class="word-count" id="wordCount">0 words | 0 characters</div>
+        </div>
+    </div>
+
+    <!-- Load GLYPH Modules -->
+    <script src="js/glyph/glyph-symbols.js"></script>
+    <script src="js/glyph/glyph-base60.js"></script>
+    <script src="js/glyph/glyph-patterns.js"></script>
+    <script src="js/glyph/glyph-core.js"></script>
+
+    <script>
+        const textInput = document.getElementById('textInput');
+        const mainScore = document.getElementById('mainScore');
+        const scoreStatus = document.getElementById('scoreStatus');
+        const truthPercent = document.getElementById('truthPercent');
+        const deceitPercent = document.getElementById('deceitPercent');
+        const truthBar = document.getElementById('truthBar');
+        const deceitBar = document.getElementById('deceitBar');
+        const glyphNotation = document.getElementById('glyphNotation');
+        const freqHz = document.getElementById('freqHz');
+        const freqName = document.getElementById('freqName');
+        const alertList = document.getElementById('alertList');
+        const wordCount = document.getElementById('wordCount');
+
+        // Debounce function
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        // Main analysis function
+        function analyzeText() {
+            const text = textInput.value.trim();
+
+            // Update word count
+            const words = text ? text.split(/\s+/).length : 0;
+            wordCount.textContent = `${words} words | ${text.length} characters`;
+
+            if (!text || text.length < 10) {
+                mainScore.textContent = '--';
+                mainScore.className = 'score-number';
+                scoreStatus.textContent = 'Need more text...';
+                truthPercent.textContent = '--%';
+                deceitPercent.textContent = '--%';
+                truthBar.style.width = '0%';
+                deceitBar.style.width = '0%';
+                glyphNotation.textContent = '\u27D0 GLYPH Notation \u27D0';
+                freqHz.textContent = '--- Hz';
+                freqName.textContent = 'Waiting...';
+                alertList.innerHTML = '<div style="color: #666; font-size: 0.85em;">Need more text to analyze</div>';
+                return;
+            }
+
+            // Run GLYPH analysis
+            const analysis = GLYPH.analyze(text);
+            const consciousness = GlyphPatterns.getConsciousnessLevel(analysis.scores.truth);
+            const freqInfo = GlyphBase60.frequency.SOLFEGGIO[analysis.frequency] || { name: 'Unknown' };
+
+            // Update main score
+            mainScore.textContent = analysis.scores.truth;
+            mainScore.className = 'score-number ' +
+                (analysis.scores.truth >= 70 ? 'high' :
+                 analysis.scores.truth >= 40 ? 'medium' : 'low');
+
+            scoreStatus.textContent = consciousness.level + ' - ' + consciousness.description;
+
+            // Update meters
+            truthPercent.textContent = analysis.scores.truth + '%';
+            deceitPercent.textContent = analysis.scores.deceit + '%';
+            truthBar.style.width = analysis.scores.truth + '%';
+            deceitBar.style.width = analysis.scores.deceit + '%';
+
+            // Update notation
+            glyphNotation.textContent = analysis.glyphNotation;
+
+            // Update frequency
+            freqHz.textContent = analysis.frequency + ' Hz';
+            freqName.textContent = freqInfo.name + ' Frequency';
+
+            // Update alerts
+            let alerts = '';
+
+            // Manipulation patterns first (most critical)
+            for (const manip of analysis.patterns.manipulation) {
+                alerts += `
+                    <div class="alert-item manipulation">
+                        <span>&#x26A0;</span>
+                        <span><strong>${manip.type.replace('_', ' ').toUpperCase()}</strong>: ${manip.markers.join(', ')}</span>
+                    </div>
+                `;
+            }
+
+            // 15-degree turns
+            for (const turn of analysis.patterns.turns) {
+                alerts += `
+                    <div class="alert-item">
+                        <span>${turn.symbol}</span>
+                        <span>Pivot: "${turn.marker}"</span>
+                    </div>
+                `;
+            }
+
+            // Top deceit markers
+            const topDeceit = analysis.patterns.deceit.slice(0, 3);
+            for (const d of topDeceit) {
+                alerts += `
+                    <div class="alert-item">
+                        <span>&#x2717;</span>
+                        <span>Deceit: "${d.marker}"</span>
+                    </div>
+                `;
+            }
+
+            if (!alerts) {
+                if (analysis.scores.truth >= 70) {
+                    alerts = '<div style="color: var(--green); font-size: 0.9em;">&#x2713; High truth signal - Clean communication</div>';
+                } else {
+                    alerts = '<div style="color: #666; font-size: 0.85em;">No major patterns detected</div>';
+                }
+            }
+
+            alertList.innerHTML = alerts;
+        }
+
+        // Attach real-time analysis
+        textInput.addEventListener('input', debounce(analyzeText, 150));
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof GLYPH !== 'undefined') {
+                console.log('GLYPH Real-Time Scorer Ready:', GLYPH.init());
+            } else {
+                console.error('GLYPH modules not loaded');
+            }
+        });
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

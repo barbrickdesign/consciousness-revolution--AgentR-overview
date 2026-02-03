@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Cockpit - Consciousness Revolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #00ffaa;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .user-status {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #00ffaa;
+            box-shadow: 0 0 30px rgba(0, 255, 170, 0.2);
+        }
+
+        .user-status h2 {
+            color: #00ffaa;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .level-0 { background: #333; color: #888; }
+        .level-1 { background: #2d5a2d; color: #88ff88; }
+        .level-2 { background: #4a4a2d; color: #ffff88; }
+        .level-3 { background: #4a2d4a; color: #ff88ff; }
+        .level-4 { background: #2d2d5a; color: #8888ff; border: 2px solid gold; }
+
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .tier-card {
+            background: #1a1a2e;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card.current {
+            border-color: #00ffaa;
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+        }
+
+        .tier-card.locked {
+            opacity: 0.5;
+            filter: grayscale(50%);
+        }
+
+        .tier-card.locked::before {
+            content: "LOCKED";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 2em;
+            font-weight: bold;
+            color: rgba(255, 0, 0, 0.3);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .tier-card.unlocked {
+            border-color: #00aa77;
+        }
+
+        .tier-card h3 {
+            color: #00ffaa;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tier-card .level-num {
+            background: #333;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.8em;
+        }
+
+        .tier-card ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .tier-card ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tier-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .tier-card ul li::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .tier-card.unlocked ul li::before,
+        .tier-card.current ul li::before {
+            background: #00ffaa;
+        }
+
+        .tier-card.locked ul li::before {
+            background: #555;
+        }
+
+        .requirements {
+            background: #0a0a0a;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .requirements h4 {
+            color: #ffaa00;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .requirements ul li::before {
+            background: #ffaa00 !important;
+        }
+
+        .progress-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d1a4a 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #4a2d6a;
+        }
+
+        .progress-section h2 {
+            color: #aa88ff;
+            margin-bottom: 20px;
+        }
+
+        .task-list {
+            list-style: none;
+        }
+
+        .task-list li {
+            background: #0a0a0a;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #333;
+        }
+
+        .task-list li.completed {
+            border-color: #00aa77;
+            background: rgba(0, 170, 119, 0.1);
+        }
+
+        .task-list li.completed::before {
+            content: "CHECK";
+            color: #00ffaa;
+            font-weight: bold;
+        }
+
+        .task-list li.pending::before {
+            content: "PENDING";
+            color: #ffaa00;
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ffaa 0%, #00aa77 100%);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 170, 0.3);
+        }
+
+        .btn-secondary {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        .btn-secondary:hover {
+            background: #444;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .warning-box {
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid #ff4444;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box h3 {
+            color: #ff4444;
+            margin-bottom: 10px;
+        }
+
+        .access-denied {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .access-denied h2 {
+            color: #ff4444;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background: #0a0a0a;
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .stat-box .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00ffaa;
+        }
+
+        .stat-box .label {
+            color: #888;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            .tier-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TEAM COCKPIT</h1>
+            <p>Consciousness Revolution - Role Management System</p>
+        </header>
+
+        <div class="user-status" id="userStatus">
+            <h2>
+                Your Status: <span class="level-badge" id="levelBadge">Loading...</span>
+            </h2>
+            <div class="stats-row">
+                <div class="stat-box">
+                    <div class="value" id="tasksCompleted">0</div>
+                    <div class="label">Tasks Completed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="value" id="daysActive">0</div>
+                    <div class="label">Days Active</div>
+                </div>
+                <div class="stat-box">
+                    <div class="value" id="nextLevel">-</div>
+                    <div class="label">Next Level At</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: #00ffaa; margin-bottom: 20px;">Access Tiers</h2>
+
+        <div class="tier-grid" id="tierGrid">
+            <!-- Tier cards will be populated by JavaScript -->
+        </div>
+
+        <div class="progress-section" id="progressSection">
+            <h2>Your Progress to Next Level</h2>
+            <div id="levelUpTasks">
+                <!-- Tasks populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="ONBOARDING_GATE.html" class="btn btn-primary" id="startOnboarding">Start Onboarding</a>
+            <a href="TEAM_AGREEMENT.html" class="btn btn-secondary" id="viewAgreement">View Agreement</a>
+            <button class="btn btn-secondary" onclick="resetProgress()">Reset Progress (Dev)</button>
+        </div>
+
+        <div class="warning-box">
+            <h3>IMPORTANT: Access Rules</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li>You CANNOT skip levels - complete all requirements at your current level first</li>
+                <li>All work created belongs to Consciousness Revolution LLC</li>
+                <li>Backend access, credentials, and deployment rights are COMMANDER-only (Level 4)</li>
+                <li>Violation of access boundaries = immediate removal</li>
+                <li>Level ups are reviewed and approved by Commander</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>Consciousness Revolution &copy; 2025 | Pattern: 3 &rarr; 7 &rarr; 13 &rarr; &infin;</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tier definitions
+        const TIERS = [
+            {
+                level: 0,
+                name: "VISITOR",
+                description: "Browse and explore",
+                abilities: [
+                    "View public website",
+                    "Read documentation",
+                    "Use public tools",
+                    "Join mailing list"
+                ],
+                requirements: [
+                    "None - Default access"
+                ],
+                tasksNeeded: 0
+            },
+            {
+                level: 1,
+                name: "APPRENTICE",
+                description: "Learn and practice",
+                abilities: [
+                    "Use all public tools",
+                    "Access learning materials",
+                    "Submit feedback",
+                    "Join community discussions",
+                    "Complete training tasks"
+                ],
+                requirements: [
+                    "Complete onboarding gate",
+                    "Sign team agreement",
+                    "Complete first task"
+                ],
+                tasksNeeded: 1
+            },
+            {
+                level: 2,
+                name: "BUILDER",
+                description: "Create and contribute",
+                abilities: [
+                    "All Apprentice abilities",
+                    "Submit content for review",
+                    "Create documentation",
+                    "Suggest improvements",
+                    "Access builder resources",
+                    "Collaborate on projects"
+                ],
+                requirements: [
+                    "Complete 5 tasks successfully",
+                    "30 days active",
+                    "Commander approval"
+                ],
+                tasksNeeded: 5
+            },
+            {
+                level: 3,
+                name: "OPERATOR",
+                description: "Deploy and manage",
+                abilities: [
+                    "All Builder abilities",
+                    "Deploy approved content",
+                    "Access staging environment",
+                    "Review submissions",
+                    "Mentor apprentices",
+                    "Limited admin functions"
+                ],
+                requirements: [
+                    "Complete 20 tasks successfully",
+                    "90 days active",
+                    "Demonstrated trust",
+                    "Commander approval"
+                ],
+                tasksNeeded: 20
+            },
+            {
+                level: 4,
+                name: "COMMANDER",
+                description: "Full authority",
+                abilities: [
+                    "Full system access",
+                    "Backend access",
+                    "Credential management",
+                    "Production deployment",
+                    "User management",
+                    "Financial access",
+                    "Strategic decisions"
+                ],
+                requirements: [
+                    "Derek Preble only",
+                    "Not assignable"
+                ],
+                tasksNeeded: -1
+            }
+        ];
+
+        // Initialize or get user data
+        function getUserData() {
+            const data = localStorage.getItem('teamCockpitUser');
+            if (data) {
+                return JSON.parse(data);
+            }
+            return {
+                level: 0,
+                tasksCompleted: 0,
+                agreementSigned: false,
+                onboardingComplete: false,
+                firstLogin: new Date().toISOString(),
+                tasks: []
+            };
+        }
+
+        function saveUserData(data) {
+            localStorage.setItem('teamCockpitUser', JSON.stringify(data));
+        }
+
+        function calculateDaysActive(firstLogin) {
+            const start = new Date(firstLogin);
+            const now = new Date();
+            const diff = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+            return diff;
+        }
+
+        function renderTiers(userData) {
+            const grid = document.getElementById('tierGrid');
+            grid.innerHTML = '';
+
+            TIERS.forEach(tier => {
+                const card = document.createElement('div');
+                card.className = 'tier-card';
+
+                if (tier.level === userData.level) {
+                    card.classList.add('current');
+                } else if (tier.level < userData.level) {
+                    card.classList.add('unlocked');
+                } else {
+                    card.classList.add('locked');
+                }
+
+                card.innerHTML = `
+                    <h3>
+                        <span class="level-num">LVL ${tier.level}</span>
+                        ${tier.name}
+                    </h3>
+                    <p style="color: #888; margin-bottom: 15px;">${tier.description}</p>
+                    <ul>
+                        ${tier.abilities.map(a => `<li>${a}</li>`).join('')}
+                    </ul>
+                    ${tier.level > userData.level ? `
+                        <div class="requirements">
+                            <h4>Requirements to Unlock:</h4>
+                            <ul>
+                                ${tier.requirements.map(r => `<li>${r}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function renderProgress(userData) {
+            const section = document.getElementById('progressSection');
+            const currentTier = TIERS[userData.level];
+            const nextTier = TIERS[userData.level + 1];
+
+            if (!nextTier || nextTier.level === 4) {
+                section.innerHTML = `
+                    <h2>Maximum Level Reached</h2>
+                    <p style="color: #888;">You have reached the highest available level. Level 4 (Commander) is reserved for Derek Preble only.</p>
+                `;
+                return;
+            }
+
+            const tasksHtml = nextTier.requirements.map((req, i) => {
+                const isComplete = userData.tasksCompleted >= nextTier.tasksNeeded;
+                return `<li class="${isComplete ? 'completed' : 'pending'}">${req}</li>`;
+            }).join('');
+
+            section.innerHTML = `
+                <h2>Progress to Level ${nextTier.level}: ${nextTier.name}</h2>
+                <ul class="task-list">
+                    ${tasksHtml}
+                </ul>
+                <p style="margin-top: 20px; color: #888;">
+                    Tasks completed: ${userData.tasksCompleted} / ${nextTier.tasksNeeded}
+                </p>
+            `;
+        }
+
+        function renderUserStatus(userData) {
+            const badge = document.getElementById('levelBadge');
+            const currentTier = TIERS[userData.level];
+            const nextTier = TIERS[userData.level + 1];
+
+            badge.textContent = `Level ${userData.level}: ${currentTier.name}`;
+            badge.className = `level-badge level-${userData.level}`;
+
+            document.getElementById('tasksCompleted').textContent = userData.tasksCompleted;
+            document.getElementById('daysActive').textContent = calculateDaysActive(userData.firstLogin);
+            document.getElementById('nextLevel').textContent = nextTier ? `${nextTier.tasksNeeded} tasks` : 'MAX';
+
+            // Update button states
+            const onboardingBtn = document.getElementById('startOnboarding');
+            if (userData.onboardingComplete) {
+                onboardingBtn.textContent = 'Onboarding Complete';
+                onboardingBtn.style.opacity = '0.5';
+            }
+        }
+
+        function resetProgress() {
+            if (confirm('Reset all progress? This cannot be undone.')) {
+                localStorage.removeItem('teamCockpitUser');
+                location.reload();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            const userData = getUserData();
+            renderUserStatus(userData);
+            renderTiers(userData);
+            renderProgress(userData);
+        });
+    </script>
+    <script src="/js/bug-widget.js"></script>
+</body>
+</html>

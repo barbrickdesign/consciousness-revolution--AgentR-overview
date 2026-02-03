@@ -174,7 +174,7 @@
         async function analyzePatterns() {
             const text = document.getElementById('patternText').value;
             if (!text.trim()) {
-                alert('Enter text to analyze');
+                console.warn('Enter text to analyze');
                 return;
             }
 
@@ -230,5 +230,7 @@
             }
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

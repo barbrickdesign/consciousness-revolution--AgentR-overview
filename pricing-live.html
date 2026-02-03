@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Consciousness Revolution</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.3em;
+            margin-bottom: 60px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #667eea;
+        }
+
+        .pricing-card.featured::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: #667eea;
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .price {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .price-amount {
+            font-size: 4em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .price-interval {
+            font-size: 1.2em;
+            color: #999;
+        }
+
+        .features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .features li::before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+
+        .emergency-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .emergency-card .card-title,
+        .emergency-card .card-description,
+        .emergency-card .features li {
+            color: white;
+        }
+
+        .emergency-card .price-amount {
+            color: white;
+        }
+
+        .emergency-card .features li::before {
+            color: white;
+        }
+
+        .emergency-card .cta-button {
+            background: white;
+            color: #f5576c;
+        }
+
+        .guarantee {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            font-size: 1.2em;
+        }
+
+        .guarantee strong {
+            display: block;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Your Path to Consciousness</h1>
+        <p class="subtitle">Transform your reality. Master the patterns. Join the revolution.</p>
+
+        <div class="pricing-grid">
+            <!-- FOUNDING MEMBER -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h2 class="card-title">Founding Member</h2>
+                    <p class="card-description">Lifetime founding member rate. Lock in this price forever.</p>
+                </div>
+
+                <div class="price">
+                    <div class="price-amount">$47</div>
+                    <div class="price-interval">/month</div>
+                </div>
+
+                <ul class="features">
+                    <li>Full platform access</li>
+                    <li>All consciousness tools</li>
+                    <li>Pattern recognition training</li>
+                    <li>7 Domain assessment</li>
+                    <li>Community access</li>
+                    <li>Monthly training calls</li>
+                    <li>Lifetime rate guarantee</li>
+                </ul>
+
+                <button class="cta-button" onclick="checkout('price_1Si4sWIBd71iNToyQiR5WRY5')">
+                    Join Now
+                </button>
+            </div>
+
+            <!-- PATTERN TOOLS PRO -->
+            <div class="pricing-card featured">
+                <div class="card-header">
+                    <h2 class="card-title">Pattern Tools Pro</h2>
+                    <p class="card-description">Everything in Founding Member plus priority support and advanced training.</p>
+                </div>
+
+                <div class="price">
+                    <div class="price-amount">$99</div>
+                    <div class="price-interval">/month</div>
+                </div>
+
+                <ul class="features">
+                    <li>Everything in Founding Member</li>
+                    <li>Priority support (24hr response)</li>
+                    <li>Advanced pattern workshops</li>
+                    <li>1-on-1 quarterly sessions</li>
+                    <li>Custom tool configuration</li>
+                    <li>Early access to new features</li>
+                    <li>Expert community channel</li>
+                </ul>
+
+                <button class="cta-button" onclick="checkout('price_1Si4szIBd71iNToyZghCXYaE')">
+                    Upgrade to Pro
+                </button>
+            </div>
+
+            <!-- EMERGENCY CONSULTING -->
+            <div class="pricing-card emergency-card">
+                <div class="card-header">
+                    <h2 class="card-title">Emergency Session</h2>
+                    <p class="card-description">Need immediate help? Book a 1-hour emergency consultation.</p>
+                </div>
+
+                <div class="price">
+                    <div class="price-amount">$500</div>
+                    <div class="price-interval">one-time</div>
+                </div>
+
+                <ul class="features">
+                    <li>1 hour private session</li>
+                    <li>Immediate pattern analysis</li>
+                    <li>Custom manipulation plan</li>
+                    <li>Follow-up resources</li>
+                    <li>Recording provided</li>
+                    <li>Next-day scheduling</li>
+                </ul>
+
+                <button class="cta-button" onclick="checkout('price_1Si4tKIBd71iNToyUtO6McaO')">
+                    Book Emergency Session
+                </button>
+            </div>
+        </div>
+
+        <div class="guarantee">
+            <strong>30-Day Money-Back Guarantee</strong>
+            If you don't see patterns you couldn't see before within 30 days, we'll refund you completely.
+        </div>
+    </div>
+
+    <script>
+        // Initialize Stripe
+        const stripe = Stripe('pk_live_51SF4PSIBd71iNToykS4kDyC4WI02jFkipcCa2qTcIX1W69IsBXAEToehdXNeP8sd5pxuEurtRjbQpNnGBtaWkLgj00uC5iVtae');
+
+        async function checkout(priceId) {
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Loading...';
+            btn.disabled = true;
+
+            try {
+                // Call Netlify function
+                const response = await fetch('/.netlify/functions/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        price_id: priceId,
+                        success_url: window.location.origin + '/success.html?session_id={CHECKOUT_SESSION_ID}',
+                        cancel_url: window.location.origin + '/pricing-live.html'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.url;
+                } else if (data.sessionId) {
+                    const { error } = await stripe.redirectToCheckout({ sessionId: data.sessionId });
+                    if (error) {
+                        throw new Error(error.message);
+                    }
+                } else {
+                    throw new Error(data.error || 'Failed to create checkout');
+                }
+
+            } catch (error) {
+                console.error('Checkout error:', error);
+                console.warn('Payment system loading. Please try again in a moment.');
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // Alternative: Use direct Stripe Payment Links (no backend required)
+        // Create these at: https://dashboard.stripe.com/payment-links
+        /*
+        function checkoutDirect(productType) {
+            const paymentLinks = {
+                'founding': 'https://buy.stripe.com/YOUR_LINK_HERE',
+                'pro': 'https://buy.stripe.com/YOUR_LINK_HERE',
+                'emergency': 'https://buy.stripe.com/YOUR_LINK_HERE'
+            };
+
+            window.location.href = paymentLinks[productType];
+        }
+        */
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

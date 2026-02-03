@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triangulation Detector | Pattern Theory</title>
+    <title>Triangulation Detector | Pattern Theory + GLYPH 12D+</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,6 +24,17 @@
 
         .header h1 { font-size: 24px; margin-bottom: 8px; }
         .header p { opacity: 0.6; font-size: 13px; }
+
+        .glyph-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
 
         .input-section {
             background: rgba(255, 255, 255, 0.05);
@@ -57,6 +68,11 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .detect-btn:hover {
+            transform: translateY(-2px);
         }
 
         .results {
@@ -96,6 +112,134 @@
             opacity: 0.7;
         }
 
+        /* GLYPH Section */
+        .glyph-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .glyph-section h3 {
+            font-size: 14px;
+            color: #FFD700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glyph-notation {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .glyph-scores {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .glyph-score {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .glyph-score-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .glyph-score-label {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .truth-score .glyph-score-value { color: #2ecc71; }
+        .deceit-score .glyph-score-value { color: #e74c3c; }
+
+        .frequency-display {
+            text-align: center;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .frequency-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .consciousness-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .consciousness-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e74c3c 0%, #f1c40f 50%, #2ecc71 100%);
+            transition: width 0.5s ease;
+        }
+
+        .axis-breakdown {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .axis-breakdown h4 {
+            font-size: 12px;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        .axis-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 11px;
+        }
+
+        .axis-letter {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .axis-name {
+            flex: 1;
+            opacity: 0.7;
+        }
+
+        .axis-hits {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
         .tactics {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
@@ -116,12 +260,40 @@
             border-left: 3px solid #e74c3c;
         }
 
+        .tactic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
         .tactic-name {
             font-size: 13px;
             font-weight: bold;
             color: #e74c3c;
-            margin-bottom: 4px;
         }
+
+        .tactic-meta {
+            display: flex;
+            gap: 6px;
+        }
+
+        .axis-tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+        }
+
+        .severity-tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .severity-high { background: rgba(231, 76, 60, 0.2); color: #e74c3c; }
+        .severity-medium { background: rgba(241, 196, 15, 0.2); color: #f1c40f; }
 
         .tactic-desc {
             font-size: 12px;
@@ -178,18 +350,30 @@
             font-size: 11px;
             opacity: 0.4;
         }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
+    <!-- GLYPH Backbone Modules -->
+    <script src="js/glyph/glyph-base60.js"></script>
+    <script src="js/glyph/glyph-symbols.js"></script>
+    <script src="js/glyph/glyph-patterns.js"></script>
+    <script src="js/glyph/glyph-core.js"></script>
+
     <div class="container">
         <div class="header">
-            <h1>Triangulation Detector</h1>
+            <h1>🔺 Triangulation Detector</h1>
             <p>Identify when a third party is used to manipulate</p>
+            <span class="glyph-badge">⟐ GLYPH 12D+ POWERED</span>
         </div>
 
         <div class="input-section">
             <textarea class="text-input" id="input" placeholder="Describe what they said about another person, or how they brought someone else into your conflict..."></textarea>
-            <button class="detect-btn" onclick="detect()">Detect Triangulation</button>
+            <button class="detect-btn" onclick="detect()">⟐ Detect Triangulation</button>
         </div>
 
         <div class="results" id="results">
@@ -199,13 +383,44 @@
                 <div class="verdict-desc" id="verdictDesc">-</div>
             </div>
 
+            <!-- GLYPH Analysis Section -->
+            <div class="glyph-section">
+                <h3>⟐ GLYPH Analysis</h3>
+                <div class="glyph-notation" id="glyphNotation">⟐ awaiting analysis ⟐</div>
+
+                <div class="glyph-scores">
+                    <div class="glyph-score truth-score">
+                        <div class="glyph-score-value" id="truthScore">-</div>
+                        <div class="glyph-score-label">Truth Signal</div>
+                    </div>
+                    <div class="glyph-score deceit-score">
+                        <div class="glyph-score-value" id="deceitScore">-</div>
+                        <div class="glyph-score-label">Deceit Signal</div>
+                    </div>
+                </div>
+
+                <div class="frequency-display">
+                    <div class="frequency-value" id="frequencyValue">- Hz</div>
+                    <div class="glyph-score-label">Solfeggio Frequency</div>
+                </div>
+
+                <div class="consciousness-bar">
+                    <div class="consciousness-fill" id="consciousnessBar" style="width: 50%"></div>
+                </div>
+
+                <div class="axis-breakdown" id="axisBreakdown">
+                    <h4>6D Axis Breakdown</h4>
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
             <div class="tactics">
-                <h3>Triangulation Tactics</h3>
+                <h3>🔺 Triangulation Tactics</h3>
                 <div id="tacticsList"></div>
             </div>
 
             <div class="defense">
-                <h3>How to Counter</h3>
+                <h3>🛡️ How to Counter</h3>
                 <div id="defenseList"></div>
             </div>
 
@@ -216,40 +431,72 @@
         </div>
 
         <footer>
-            Pattern Theory • <a href="consciousness-tools.html" style="color: #667eea;">More Tools</a>
+            Pattern Theory × GLYPH 12D+ • <a href="consciousness-tools.html">More Tools</a>
         </footer>
     </div>
 
     <script>
+        // Triangulation tactics with GLYPH axis mappings
         const TRIANGULATION_TACTICS = {
             'Comparison to Ex': {
                 markers: ['my ex', 'ex would', 'ex never', 'ex always', 'previous', 'last partner'],
-                desc: 'Using past relationships to create competition/insecurity'
+                desc: 'Using past relationships to create competition/insecurity',
+                glyphAxis: 'B', // Social comparison
+                severity: 2.2,
+                axisDesc: 'Social competition induction'
             },
             'Third Party Agreement': {
                 markers: ['everyone agrees', 'they all think', 'everyone says', 'my friends say', 'people think'],
-                desc: 'Claiming others agree to strengthen their position'
+                desc: 'Claiming others agree to strengthen their position',
+                glyphAxis: 'F', // Observer manipulation
+                severity: 2.4,
+                axisDesc: 'False consensus construction'
             },
             'Secret Information': {
                 markers: ['told me about you', 'said that you', 'heard that you', 'they mentioned'],
-                desc: 'Bringing in outside "information" about you'
+                desc: 'Bringing in outside "information" about you',
+                glyphAxis: 'C', // Reality/Truth distortion
+                severity: 2.5,
+                axisDesc: 'Third-party reality injection'
             },
             'Jealousy Induction': {
                 markers: ['interested in me', 'flirting with', 'attracted to', 'paying attention', 'complimenting'],
-                desc: 'Mentioning others\' interest to provoke jealousy'
+                desc: 'Mentioning others\' interest to provoke jealousy',
+                glyphAxis: 'E', // Energy manipulation
+                severity: 2.3,
+                axisDesc: 'Emotional energy hijack'
             },
             'Flying Monkeys': {
                 markers: ['told them', 'they agree', 'on my side', 'support me', 'believe me'],
-                desc: 'Recruiting others to their cause against you'
+                desc: 'Recruiting others to their cause against you',
+                glyphAxis: 'B', // Social alliance building
+                severity: 2.6,
+                axisDesc: 'Social army mobilization'
             },
             'Comparison Shame': {
                 markers: ['unlike you', 'better than you', 'would never', 'not like you', 'at least they'],
-                desc: 'Using others to make you feel inadequate'
+                desc: 'Using others to make you feel inadequate',
+                glyphAxis: 'A', // Ego/Self-worth attack
+                severity: 2.4,
+                axisDesc: 'Vertical status diminishment'
             },
             'Messenger Manipulation': {
                 markers: ['tell them', 'let them know', 'pass this on', 'make sure they know'],
-                desc: 'Using you as messenger to another person'
+                desc: 'Using you as messenger to another person',
+                glyphAxis: 'F', // Object/Subject swap
+                severity: 2.0,
+                axisDesc: 'Observer role weaponization'
             }
+        };
+
+        // GLYPH Axis Definitions
+        const GLYPH_AXES = {
+            A: { name: 'Vertical', meaning: 'Ego/Self-Worth', color: '#FF6B6B' },
+            B: { name: 'Horizontal', meaning: 'Social/Alliances', color: '#4ECDC4' },
+            C: { name: 'Depth', meaning: 'Reality/Truth', color: '#45B7D1' },
+            D: { name: 'Temporal', meaning: 'Time/History', color: '#96CEB4' },
+            E: { name: 'Energy', meaning: 'Emotion/Intensity', color: '#FFEAA7' },
+            F: { name: 'Observer', meaning: 'Third Party', color: '#DDA0DD' }
         };
 
         function detect() {
@@ -258,16 +505,37 @@
 
             const lower = text.toLowerCase();
             const found = [];
+            const axisHits = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+            let severityTotal = 0;
 
             // Check tactics
             Object.entries(TRIANGULATION_TACTICS).forEach(([name, data]) => {
                 if (data.markers.some(m => lower.includes(m))) {
-                    found.push({ name, desc: data.desc });
+                    found.push({
+                        name,
+                        desc: data.desc,
+                        axis: data.glyphAxis,
+                        severity: data.severity,
+                        axisDesc: data.axisDesc
+                    });
+                    axisHits[data.glyphAxis]++;
+                    severityTotal += data.severity;
                 }
             });
 
+            // GLYPH Pattern Analysis
+            let glyphResult = null;
+            if (typeof GlyphPatterns !== 'undefined') {
+                glyphResult = GlyphPatterns.analyze(text, { detectManipulation: true });
+            } else {
+                glyphResult = generateFallbackGlyph(found, axisHits, severityTotal);
+            }
+
             // Calculate likelihood
             let icon, label, desc, labelClass;
+            const totalTactics = Object.keys(TRIANGULATION_TACTICS).length;
+            const percentage = Math.round((found.length / totalTactics) * 100);
+
             if (found.length === 0) {
                 icon = '✅';
                 label = 'UNCLEAR';
@@ -286,9 +554,7 @@
             }
 
             // Generate defense
-            const defense = generateDefense(found);
-
-            // Generate truths
+            const defense = generateDefense(found, axisHits);
             const truths = generateTruths(found);
 
             // Render results
@@ -298,13 +564,32 @@
             labelEl.className = 'verdict-label ' + labelClass;
             document.getElementById('verdictDesc').textContent = desc;
 
+            // Render GLYPH section
+            document.getElementById('glyphNotation').textContent = glyphResult.glyphNotation || '⟐ analysis complete ⟐';
+            document.getElementById('truthScore').textContent = (glyphResult.scores?.truth || (100 - percentage)) + '%';
+            document.getElementById('deceitScore').textContent = (glyphResult.scores?.deceit || percentage) + '%';
+            document.getElementById('frequencyValue').textContent = glyphResult.frequency + ' Hz';
+            document.getElementById('consciousnessBar').style.width = (100 - percentage) + '%';
+
+            // Render axis breakdown
+            renderAxisBreakdown(axisHits);
+
             if (found.length > 0) {
-                document.getElementById('tacticsList').innerHTML = found.map(t => `
-                    <div class="tactic">
-                        <div class="tactic-name">${t.name}</div>
-                        <div class="tactic-desc">${t.desc}</div>
-                    </div>
-                `).join('');
+                document.getElementById('tacticsList').innerHTML = found.map(t => {
+                    const severityClass = t.severity >= 2.4 ? 'severity-high' : 'severity-medium';
+                    return `
+                        <div class="tactic">
+                            <div class="tactic-header">
+                                <div class="tactic-name">${t.name}</div>
+                                <div class="tactic-meta">
+                                    <span class="axis-tag" title="${t.axisDesc}">${t.axis}</span>
+                                    <span class="severity-tag ${severityClass}">${t.severity.toFixed(1)}</span>
+                                </div>
+                            </div>
+                            <div class="tactic-desc">${t.desc}</div>
+                        </div>
+                    `;
+                }).join('');
             } else {
                 document.getElementById('tacticsList').innerHTML =
                     '<div class="no-tactics">✓ No clear triangulation patterns</div>';
@@ -321,8 +606,60 @@
             document.getElementById('results').classList.add('active');
         }
 
-        function generateDefense(found) {
+        function generateFallbackGlyph(found, axisHits, severityTotal) {
+            const percentage = found.length > 0 ? Math.min(100, Math.round(severityTotal * 15)) : 0;
+            const dominant = percentage > 50 ? '✗' : percentage > 20 ? '☉' : '✓';
+
+            let frequency;
+            if (percentage > 50) {
+                frequency = 396; // Liberation needed
+            } else if (percentage > 20) {
+                frequency = 417; // Change/awareness
+            } else {
+                frequency = 528; // Clear/healthy
+            }
+
+            const activeAxes = Object.entries(axisHits)
+                .filter(([_, count]) => count > 0)
+                .map(([axis, count]) => `${axis}${count}`)
+                .join(':');
+
+            return {
+                glyphNotation: `⟐${dominant}:${100 - percentage}:${activeAxes || 'clear'}→${frequency}Hz⟐`,
+                scores: { truth: 100 - percentage, deceit: percentage },
+                frequency: frequency,
+                dominant: percentage > 50 ? 'deceit' : percentage > 20 ? 'neutral' : 'truth'
+            };
+        }
+
+        function renderAxisBreakdown(axisHits) {
+            const container = document.getElementById('axisBreakdown');
+            let html = '<h4>6D Axis Breakdown</h4>';
+
+            Object.entries(GLYPH_AXES).forEach(([axis, info]) => {
+                const hits = axisHits[axis] || 0;
+                html += `
+                    <div class="axis-item">
+                        <div class="axis-letter" style="color: ${info.color}; border-color: ${info.color}">${axis}</div>
+                        <span class="axis-name">${info.name} (${info.meaning})</span>
+                        ${hits > 0 ? `<span class="axis-hits">${hits} hit${hits > 1 ? 's' : ''}</span>` : '<span style="opacity: 0.3">0</span>'}
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function generateDefense(found, axisHits) {
             const defense = [];
+
+            // Axis-specific defenses
+            if (axisHits.B > 1) {
+                defense.push('SOCIAL AXIS: Don\'t engage in alliance wars - stay direct');
+            }
+            if (axisHits.F > 0) {
+                defense.push('OBSERVER AXIS: Verify third-party claims directly');
+            }
 
             if (found.some(t => t.name === 'Third Party Agreement')) {
                 defense.push('"I\'d like to hear their opinion directly"');
@@ -336,9 +673,8 @@
 
             defense.push('Refuse to discuss the third party - stay on the direct issue');
             defense.push('Don\'t take the bait to compete or defend');
-            defense.push('Trust actions over reported words');
 
-            return defense.slice(0, 4);
+            return defense.slice(0, 5);
         }
 
         function generateTruths(found) {
@@ -356,6 +692,15 @@
 
             return truths.slice(0, 4);
         }
+
+        // Log GLYPH status
+        if (typeof GLYPH !== 'undefined') {
+            console.log('GLYPH 12D+ backbone loaded:', GLYPH.VERSION);
+        } else {
+            console.log('GLYPH modules not loaded - using fallback mode');
+        }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

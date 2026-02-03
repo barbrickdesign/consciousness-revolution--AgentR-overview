@@ -9,7 +9,9 @@
     "deploy": "netlify deploy --prod"
   },
   "dependencies": {
-    "stripe": "^14.8.0"
+    "@supabase/supabase-js": "^2.90.1",
+    "nodemailer": "^7.0.12",
+    "stripe": "^14.25.0"
   },
   "devDependencies": {
     "netlify-cli": "^17.10.1"

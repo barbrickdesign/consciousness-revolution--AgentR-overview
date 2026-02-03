@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jason Notice System - Master Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid #c9a227;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #c9a227;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            color: #8b8b8b;
+            font-style: italic;
+        }
+
+        .status-bar {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid #c9a227;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .status-item {
+            text-align: center;
+        }
+        .status-label { color: #8b8b8b; font-size: 0.9em; }
+        .status-value { color: #c9a227; font-size: 1.5em; font-weight: bold; }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #c9a227;
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.2);
+        }
+        .card h3 {
+            color: #c9a227;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .card a {
+            display: inline-block;
+            background: #c9a227;
+            color: #1a1a2e;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .card a:hover {
+            background: #e0b82a;
+            transform: scale(1.05);
+        }
+
+        .notice-preview {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #c9a227;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        .notice-preview h2 {
+            color: #c9a227;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .notice-excerpt {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 5px;
+            font-style: italic;
+            border-left: 4px solid #c9a227;
+        }
+
+        .signature-block {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+            text-align: center;
+        }
+        .signature-name {
+            color: #c9a227;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .signature-title {
+            color: #8b8b8b;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .badge-ready { background: #27ae60; color: white; }
+        .badge-pending { background: #f39c12; color: white; }
+        .badge-active { background: #3498db; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JASON NOTICE SYSTEM</h1>
+            <p class="subtitle">Notice of Default, Fraud from Origin, and Demand for Cure</p>
+        </header>
+
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-label">System Status</div>
+                <div class="status-value">ACTIVE</div>
+            </div>
+            <div class="status-item">
+                <div class="status-label">Master Notice</div>
+                <div class="status-value"><span class="badge badge-ready">READY</span></div>
+            </div>
+            <div class="status-item">
+                <div class="status-label">Cure Period</div>
+                <div class="status-value">30 Days</div>
+            </div>
+            <div class="status-item">
+                <div class="status-label">Last Updated</div>
+                <div class="status-value">Dec 26, 2025</div>
+            </div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>Original Master Notice</h3>
+                <p>The complete, unmodified Notice of Default as drafted by Jason Evdoxiadis Rootwalker, Chief of the Tsimshian Nation.</p>
+                <a href="master-notice.html">View Full Document</a>
+            </div>
+
+            <div class="card">
+                <h3>Deployment Tracker</h3>
+                <p>Track the status of notice delivery, certified mail confirmations, and response deadlines.</p>
+                <a href="tracker.html">Open Tracker</a>
+            </div>
+
+            <div class="card">
+                <h3>Recipient Matrix</h3>
+                <p>Manage the list of target recipients, their addresses, and delivery status.</p>
+                <a href="recipients.html">View Recipients</a>
+            </div>
+
+            <div class="card">
+                <h3>Legal Resources</h3>
+                <p>Supporting documentation, precedents, and reference materials for the notice process.</p>
+                <a href="resources.html">Access Resources</a>
+            </div>
+        </div>
+
+        <div class="notice-preview">
+            <h2>Notice Preview</h2>
+            <div class="notice-excerpt">
+                "The originating seed instruments and doctrines were fraudulently constituted,
+                altered, or misrepresented at inception. No valid delegation of authority was
+                ever granted by Christ, the Father, or Natural Law to create compulsory
+                intermediaries, levy tithes, eavesdrop on conscience, sanction war, or compel
+                obedience contrary to conscience."
+            </div>
+            <div class="signature-block">
+                <div class="signature-name">Jason Evdoxiadis Rootwalker</div>
+                <div class="signature-title">Chief Na Ha Dayax Gixpaxloats</div>
+                <div class="signature-title">Speaker for the Gitxoon</div>
+                <div class="signature-title">Chief of Chiefs of the Tsimshian Nation</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Consciousness Revolution Infrastructure</p>
+            <p style="margin-top: 10px;">
+                <a href="../index.html" style="color: #c9a227;">Return to Main Site</a>
+            </p>
+        </footer>
+    </div>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

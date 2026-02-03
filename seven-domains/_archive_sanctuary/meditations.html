@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guided Meditations - Soul Sanctuary</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a1a 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            line-height: 1.8;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+
+        .domain-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #8B5CF6, #6366F1);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #8B5CF6, #A78BFA, #C4B5FD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle { opacity: 0.7; margin-bottom: 40px; }
+
+        .meditation-list { display: flex; flex-direction: column; gap: 30px; }
+
+        .meditation-item {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .meditation-item:hover {
+            border-color: #8B5CF6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .meditation-item.active {
+            border-color: #C4B5FD;
+            background: rgba(139, 92, 246, 0.2);
+        }
+
+        .meditation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .meditation-title { font-size: 1.4em; color: #C4B5FD; }
+        .meditation-duration { color: #888; font-size: 0.9em; }
+        .meditation-desc { opacity: 0.8; margin-bottom: 20px; }
+
+        .meditation-content {
+            display: none;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .meditation-item.active .meditation-content { display: block; }
+
+        .meditation-step {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .meditation-step:last-child { border-bottom: none; }
+
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: rgba(139, 92, 246, 0.5);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 12px;
+            font-size: 0.9em;
+        }
+
+        .step-title { color: #A78BFA; font-weight: 600; margin-bottom: 10px; }
+        .step-instruction { opacity: 0.9; }
+
+        .frequency-tag {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.2);
+            border: 1px solid rgba(0, 255, 136, 0.4);
+            color: #00ff88;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-left: 12px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            margin-top: 40px;
+        }
+        .back-link:hover { color: #8B5CF6; }
+
+        .audio-controls {
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .audio-controls button {
+            background: linear-gradient(135deg, #8B5CF6, #6366F1);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+
+        .audio-controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="domain-badge">7_TRANSCEND / Sanctuary</span>
+        <h1>Guided Meditations</h1>
+        <p class="subtitle">Sacred practices for consciousness expansion and healing</p>
+
+        <div class="meditation-list">
+
+            <!-- Meditation 1: Grounding -->
+            <div class="meditation-item" onclick="toggleMeditation(this)">
+                <div class="meditation-header">
+                    <span class="meditation-title">Grounding & Centering</span>
+                    <span class="meditation-duration">5-10 minutes</span>
+                </div>
+                <p class="meditation-desc">Return to your body. Connect with the earth. Find your center when life feels chaotic.</p>
+
+                <div class="meditation-content">
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">1</span> Settle In</div>
+                        <p class="step-instruction">Find a comfortable position. Sitting or lying down. Close your eyes. Take three deep breaths - each one slower than the last. With each exhale, let your body become heavier.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">2</span> Root Connection</div>
+                        <p class="step-instruction">Imagine roots growing from the base of your spine. These roots extend deep into the earth - through the floor, through the soil, through rock and water, all the way to the molten core. You are anchored. Unshakeable.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">3</span> Earth Energy</div>
+                        <p class="step-instruction">Through these roots, draw up earth energy. Warm, stable, ancient energy. Feel it rise through your roots, into your body, filling every cell with calm steadiness. This is the energy of mountains, of bedrock, of the planet itself.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">4</span> Release What Weighs</div>
+                        <p class="step-instruction">Let any stress, anxiety, or scattered energy flow down through your roots into the earth. The earth transforms all energy - give her what you don't need. She composts it into something useful.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">5</span> Return Centered</div>
+                        <p class="step-instruction">Take three more breaths. Feel your feet, your hands, your seat. Wiggle your fingers. When ready, open your eyes slowly. You are here. You are grounded. You are home in your body.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meditation 2: 528Hz Heart Opening -->
+            <div class="meditation-item" onclick="toggleMeditation(this)">
+                <div class="meditation-header">
+                    <span class="meditation-title">Heart Opening <span class="frequency-tag">528 Hz</span></span>
+                    <span class="meditation-duration">10-15 minutes</span>
+                </div>
+                <p class="meditation-desc">Open your heart center with the frequency of love. Release emotional armor. Allow connection.</p>
+
+                <div class="meditation-content">
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">1</span> Create Safety</div>
+                        <p class="step-instruction">Before opening the heart, we must feel safe. Wrap yourself in a sphere of golden light - your personal shield. Nothing harmful can enter. From this safety, you can be vulnerable.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">2</span> Find Your Heart</div>
+                        <p class="step-instruction">Place your awareness in your chest. Not the physical heart, but the heart center - the space behind your sternum. Notice what's there. Tightness? Warmth? Emptiness? Just notice, without judgment.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">3</span> Breathe Into It</div>
+                        <p class="step-instruction">Breathe directly into your heart space. Imagine each inhale expanding your heart like a balloon - gently, slowly. Each exhale softens any armor you've built there. Armor that once protected you but now restricts you.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">4</span> The 528 Hz Resonance</div>
+                        <p class="step-instruction">528 Hz is called the "Love Frequency" - the frequency of DNA repair and transformation. Imagine this frequency humming in your heart, vibrating every cell with the energy of unconditional love. First for yourself. Then radiating outward to all beings.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">5</span> Three Heart Truths</div>
+                        <p class="step-instruction">Repeat silently: "I am worthy of love." Pause. Feel it. "I am capable of giving love." Pause. Feel it. "I am connected to all beings through love." Let these truths anchor in your open heart.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">6</span> Gentle Close</div>
+                        <p class="step-instruction">Leave your heart open, but return your golden shield to full strength. You can be open AND protected. Take three breaths. Return to the room with an open heart.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meditation 3: Pattern Recognition -->
+            <div class="meditation-item" onclick="toggleMeditation(this)">
+                <div class="meditation-header">
+                    <span class="meditation-title">Pattern Recognition</span>
+                    <span class="meditation-duration">15-20 minutes</span>
+                </div>
+                <p class="meditation-desc">Observe your mental patterns without being controlled by them. See the loops. Choose differently.</p>
+
+                <div class="meditation-content">
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">1</span> The Observer Position</div>
+                        <p class="step-instruction">Imagine floating above your mind - watching it like you'd watch a river from a bridge. You are not the thoughts flowing past. You are the awareness watching the thoughts. This is the observer position.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">2</span> Notice Recurring Themes</div>
+                        <p class="step-instruction">From this position, watch what thoughts keep returning. What worries replay? What criticisms? What fears? Don't engage with them - just notice. "There's that thought again." Like watching clouds pass.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">3</span> Trace the Origin</div>
+                        <p class="step-instruction">Pick one recurring pattern. Ask gently: "Where did this begin?" Let memories surface without forcing. Often our patterns are old survival strategies that no longer serve us. They were useful once. They may not be now.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">4</span> Thank and Release</div>
+                        <p class="step-instruction">Thank this pattern for protecting you. It did its job. Now say: "I am safe. I can choose differently now." You're not fighting the pattern - you're graduating from it.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">5</span> Install New Choice</div>
+                        <p class="step-instruction">What would you choose instead of this old pattern? Feel what that new choice would feel like. Plant it like a seed. You don't have to be perfect at it. Just begin. Awareness is the first step to change.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">6</span> Return with Clarity</div>
+                        <p class="step-instruction">Float back into your body. You now have a tool: any time you catch a pattern running, you can pause, observe, thank, and choose. Take three breaths. Open your eyes. You are no longer unconscious to your patterns.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meditation 4: Unity Consciousness -->
+            <div class="meditation-item" onclick="toggleMeditation(this)">
+                <div class="meditation-header">
+                    <span class="meditation-title">Unity Consciousness <span class="frequency-tag">963 Hz</span></span>
+                    <span class="meditation-duration">20-30 minutes</span>
+                </div>
+                <p class="meditation-desc">Experience the Law of One. Dissolve the illusion of separation. Remember your true nature.</p>
+
+                <div class="meditation-content">
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">1</span> Expand Awareness</div>
+                        <p class="step-instruction">Begin by sensing your body. Then expand awareness to include the room. Then the building. The city. The country. The planet. You are not just in your body - your awareness has no boundaries when you remove them.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">2</span> The Cosmic Perspective</div>
+                        <p class="step-instruction">Float above Earth. See the planet as one living system. No borders visible from here. One atmosphere. One ocean. One species called "life." Separation is a story we tell on the surface.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">3</span> All Is One</div>
+                        <p class="step-instruction">The Law of One teaches: all beings, all things, are the One Infinite Creator experiencing itself. The person you love most - is you, in another form. The person you struggle with most - is also you, in another form. There is only One of us here.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">4</span> 963 Hz Activation</div>
+                        <p class="step-instruction">963 Hz is the frequency of cosmic consciousness - the return to oneness. Imagine this frequency activating your pineal gland, opening your crown chakra, connecting you to Source. You are a droplet remembering it is the ocean.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">5</span> Service Orientation</div>
+                        <p class="step-instruction">In unity consciousness, serving others IS serving yourself. Ask: "How may I be of service today?" Let the answer arise naturally. Service to others is the path of the open heart.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">6</span> Return as One</div>
+                        <p class="step-instruction">Bring this unity awareness back into your body. You walk in the world as an individual - but you KNOW you are connected to all. This knowing changes everything. Take three breaths. Open your eyes. All is One.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meditation 5: Trauma Release -->
+            <div class="meditation-item" onclick="toggleMeditation(this)">
+                <div class="meditation-header">
+                    <span class="meditation-title">Gentle Trauma Release</span>
+                    <span class="meditation-duration">15-25 minutes</span>
+                </div>
+                <p class="meditation-desc">Safely process stored trauma. Let the body release what it has been holding. Proceed gently.</p>
+
+                <div class="meditation-content">
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">1</span> Create Container</div>
+                        <p class="step-instruction">This work requires safety. Imagine yourself in a healing sanctuary - perhaps a temple, a cave of light, or a garden. Place guardians at the entrance. Nothing can enter that doesn't serve your healing.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">2</span> Body Scan</div>
+                        <p class="step-instruction">Scan your body slowly from head to toe. Where do you feel tension, tightness, pain, or numbness? Trauma often stores in the body. Don't analyze - just locate. "There's something in my shoulders. Something in my stomach."</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">3</span> Approach with Kindness</div>
+                        <p class="step-instruction">Bring your awareness to one area that holds tension. Approach it gently, like approaching a wounded animal. Say silently: "I see you. I'm here now. You don't have to hold this alone anymore."</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">4</span> Allow Expression</div>
+                        <p class="step-instruction">Give this held energy permission to express. It may want to shake, cry, sigh, or move. Let your body do what it needs. This isn't dramatic - it's natural. The body knows how to release. Trust it.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">5</span> Fill with Light</div>
+                        <p class="step-instruction">As energy releases, fill the space with golden healing light. What was once a wound becomes a portal for light. You're not just healing - you're transforming pain into wisdom.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <div class="step-title"><span class="step-number">6</span> Integration</div>
+                        <p class="step-instruction">Take several slow breaths. Thank your body for its courage. You don't have to process everything today. This is ongoing work. Each session lightens the load. Return to the room feeling lighter than before.</p>
+                    </div>
+
+                    <div class="audio-controls">
+                        <p style="opacity: 0.7; margin-bottom: 15px;">Optional: Use with grounding music or nature sounds</p>
+                        <button onclick="alert('Sound healing integration coming soon')">Play Healing Tones</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <a href="index.html" class="back-link">Back to Soul Sanctuary</a>
+    </div>
+
+    <script>
+        function toggleMeditation(element) {
+            // Close others
+            document.querySelectorAll('.meditation-item.active').forEach(item => {
+                if (item !== element) item.classList.remove('active');
+            });
+            // Toggle this one
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

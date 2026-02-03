@@ -20,7 +20,6 @@ HISTORY_FILE = DEPLOYMENT_DIR / "analytics_history.json"
 # Collection interval (5 minutes)
 COLLECTION_INTERVAL = 300
 
-
 def load_json_file(filepath):
     """Safely load a JSON file."""
     try:
@@ -29,7 +28,6 @@ def load_json_file(filepath):
     except Exception as e:
         print(f"Error loading {filepath}: {e}")
         return None
-
 
 def save_json_file(filepath, data):
     """Safely save a JSON file."""
@@ -42,14 +40,12 @@ def save_json_file(filepath, data):
         print(f"Error saving {filepath}: {e}")
         return False
 
-
 def count_atoms():
     """Count knowledge atoms in cyclotron."""
     atoms_dir = CYCLOTRON_DIR / "atoms"
     if atoms_dir.exists():
         return len(list(atoms_dir.glob("*.json")))
     return 0
-
 
 def collect_metrics():
     """Collect current system metrics."""
@@ -88,7 +84,6 @@ def collect_metrics():
 
     return metrics
 
-
 def update_history(new_metrics):
     """Add new metrics to history file."""
     history = []
@@ -108,7 +103,6 @@ def update_history(new_metrics):
     # Save updated history
     save_json_file(HISTORY_FILE, history)
     return len(history)
-
 
 def run_collector():
     """Main collector loop."""
@@ -144,7 +138,6 @@ def run_collector():
         # Wait for next collection
         print(f"\nNext collection in {COLLECTION_INTERVAL} seconds...")
         time.sleep(COLLECTION_INTERVAL)
-
 
 if __name__ == '__main__':
     run_collector()

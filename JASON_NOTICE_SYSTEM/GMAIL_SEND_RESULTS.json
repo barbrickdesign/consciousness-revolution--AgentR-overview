@@ -1,0 +1,245 @@
+{
+  "started": "2025-12-27T21:44:47.784501",
+  "sender": "darrick.preble@gmail.com",
+  "total": 59,
+  "sent": [
+    {
+      "email": "nuntiususa@nuntiususa.org",
+      "time": "2025-12-27T21:44:56.709792"
+    },
+    {
+      "email": "communications@usccb.org",
+      "time": "2025-12-27T21:45:01.390577"
+    },
+    {
+      "email": "info@la-archdiocese.org",
+      "time": "2025-12-27T21:45:06.787324"
+    },
+    {
+      "email": "communications@archny.org",
+      "time": "2025-12-27T21:45:11.490360"
+    },
+    {
+      "email": "info@archchicago.org",
+      "time": "2025-12-27T21:45:17.916714"
+    },
+    {
+      "email": "communications@archphila.org",
+      "time": "2025-12-27T21:45:24.951423"
+    },
+    {
+      "email": "communications@rcab.org",
+      "time": "2025-12-27T21:45:31.104651"
+    },
+    {
+      "email": "info@sfarchdiocese.org",
+      "time": "2025-12-27T21:45:35.964570"
+    },
+    {
+      "email": "info@seattlearch.org",
+      "time": "2025-12-27T21:45:42.321849"
+    },
+    {
+      "email": "info@archdioceseofanchorage.org",
+      "time": "2025-12-27T21:45:47.618953"
+    },
+    {
+      "email": "info@archdpdx.org",
+      "time": "2025-12-27T21:45:52.775626"
+    },
+    {
+      "email": "Capodanno@milarch.org",
+      "time": "2025-12-27T21:45:57.555993"
+    },
+    {
+      "email": "jhanten@archatl.com",
+      "time": "2025-12-27T21:46:03.242258"
+    },
+    {
+      "email": "Assistantabailey@archkck.org",
+      "time": "2025-12-27T21:46:09.082753"
+    },
+    {
+      "email": "charities@archlou.org",
+      "time": "2025-12-27T21:46:16.136303"
+    },
+    {
+      "email": "communication@archmil.org",
+      "time": "2025-12-27T21:46:21.189103"
+    },
+    {
+      "email": "safe@archny.org",
+      "time": "2025-12-27T21:46:26.495443"
+    },
+    {
+      "email": "information@rcan.org",
+      "time": "2025-12-27T21:46:31.458704"
+    },
+    {
+      "email": "tcpaper@archsa.org",
+      "time": "2025-12-27T21:46:37.837606"
+    },
+    {
+      "email": "tribunal@archstl.org",
+      "time": "2025-12-27T21:46:43.591972"
+    },
+    {
+      "email": "communications@arlingtondiocese.org",
+      "time": "2025-12-27T21:46:48.280792"
+    },
+    {
+      "email": "info@vermontcatholic.org",
+      "time": "2025-12-27T21:46:53.356748"
+    },
+    {
+      "email": "vicargeneralwilson@charlestondiocese.org",
+      "time": "2025-12-27T21:46:58.248823"
+    },
+    {
+      "email": "response_services@dioceseofcleveland.org",
+      "time": "2025-12-27T21:47:03.146628"
+    },
+    {
+      "email": "jbachta@diocs.org",
+      "time": "2025-12-27T21:47:08.270446"
+    },
+    {
+      "email": "communications@dmdiocese.org",
+      "time": "2025-12-27T21:47:13.691290"
+    },
+    {
+      "email": "communications@dioceseofgaylord.org",
+      "time": "2025-12-27T21:47:19.866496"
+    },
+    {
+      "email": "chancery@diocesegfb.org",
+      "time": "2025-12-27T21:47:26.199794"
+    },
+    {
+      "email": "communication@diojeffcity.org",
+      "time": "2025-12-27T21:47:31.903839"
+    },
+    {
+      "email": "info@diolc.org",
+      "time": "2025-12-27T21:47:38.810479"
+    },
+    {
+      "email": "communications@cdlex.org",
+      "time": "2025-12-27T21:47:45.443600"
+    },
+    {
+      "email": "jverkampruthven@dolr.org",
+      "time": "2025-12-27T21:47:50.494368"
+    },
+    {
+      "email": "fwt.editor@cc.cdom.org",
+      "time": "2025-12-27T21:47:55.219374"
+    },
+    {
+      "email": "communications@diometuchen.org",
+      "time": "2025-12-27T21:48:01.238571"
+    },
+    {
+      "email": "Jason.Liuzzi@dioceseofnashville.com",
+      "time": "2025-12-27T21:48:07.168358"
+    },
+    {
+      "email": "dnu@dnu.org",
+      "time": "2025-12-27T21:48:13.264223"
+    },
+    {
+      "email": "slalone@rcdony.org",
+      "time": "2025-12-27T21:48:18.065125"
+    },
+    {
+      "email": "jkuhn@orlandodiocese.org",
+      "time": "2025-12-27T21:48:23.421529"
+    },
+    {
+      "email": "communications@cdop.org",
+      "time": "2025-12-27T21:48:29.874650"
+    },
+    {
+      "email": "info@sbdiocese.org",
+      "time": "2025-12-27T21:48:35.279369"
+    },
+    {
+      "email": "mgalvan@sdcatholic.org",
+      "time": "2025-12-27T21:48:40.311592"
+    },
+    {
+      "email": "stewardship@dsj.org",
+      "time": "2025-12-27T21:48:46.117386"
+    },
+    {
+      "email": "info@dioceseofscranton.org",
+      "time": "2025-12-27T21:48:52.803738"
+    },
+    {
+      "email": "tstroud@dioshpt.org",
+      "time": "2025-12-27T21:48:59.073708"
+    },
+    {
+      "email": "support@dioceseofspokane.org",
+      "time": "2025-12-27T21:49:09.597281"
+    },
+    {
+      "email": "diocese@dosafl.com",
+      "time": "2025-12-27T21:49:18.331699"
+    },
+    {
+      "email": "communications@gw.stcdio.org",
+      "time": "2025-12-27T21:49:26.903505"
+    },
+    {
+      "email": "communications@toledodiocese.org",
+      "time": "2025-12-27T21:49:33.650920"
+    },
+    {
+      "email": "mgarcia@dioceseoftyler.org",
+      "time": "2025-12-27T21:49:39.446016"
+    },
+    {
+      "email": "contactus@dioceseofvenice.org",
+      "time": "2025-12-27T21:49:45.305017"
+    },
+    {
+      "email": "tbishop@dwc.org",
+      "time": "2025-12-27T21:49:50.569885"
+    },
+    {
+      "email": "krugd@catholicdioceseofwichita.org",
+      "time": "2025-12-27T21:49:56.277817"
+    },
+    {
+      "email": "mwallen@cdow.org",
+      "time": "2025-12-27T21:50:02.075037"
+    },
+    {
+      "email": "ecumenical.patriarchate@gmail.com",
+      "time": "2025-12-27T21:50:08.314327"
+    },
+    {
+      "email": "ovcs@patriarchia.ru",
+      "time": "2025-12-27T21:50:15.246203"
+    },
+    {
+      "email": "communications@goarch.org",
+      "time": "2025-12-27T21:50:20.998474"
+    },
+    {
+      "email": "archdiocese@antiochian.org",
+      "time": "2025-12-27T21:50:26.114562"
+    },
+    {
+      "email": "info@oca.org",
+      "time": "2025-12-27T21:50:31.326522"
+    },
+    {
+      "email": "serborth@aol.com",
+      "time": "2025-12-27T21:50:36.630527"
+    }
+  ],
+  "failed": [],
+  "completed": "2025-12-27T21:50:36.630547"
+}

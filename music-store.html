@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-wrek | Overkill Kulture - Music</title>
+    <meta name="description" content="Music from D-wrek / Overkill Kulture. Consciousness-coded frequencies distributed to all major platforms.">
+    <meta property="og:title" content="D-wrek | Overkill Kulture - Music">
+    <meta property="og:description" content="Consciousness-coded frequencies. Stream everywhere.">
+    <meta property="og:type" content="music.album">
+    <meta property="og:url" content="https://consciousnessrevolution.io/music-store.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+    <style>
+        /* ============================================
+           MUSIC STORE TEMPLATE
+           Part of the Consciousness Revolution KorPack
+           Fork this for your own music catalog.
+           ============================================ */
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-void: #050508;
+            --bg-deep: #0a0a12;
+            --bg-surface: #111119;
+            --bg-card: rgba(18, 18, 30, 0.85);
+            --gold: #FFD700;
+            --gold-dim: rgba(255, 215, 0, 0.6);
+            --gold-ghost: rgba(255, 215, 0, 0.15);
+            --gold-glow: rgba(255, 215, 0, 0.08);
+            --cyan: #00e5ff;
+            --violet: #8a2be2;
+            --text-primary: #e8e8ec;
+            --text-secondary: #8888a0;
+            --text-dim: #555568;
+            --border: rgba(255, 215, 0, 0.18);
+            --border-hover: rgba(255, 215, 0, 0.45);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --font-display: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-display);
+            background: var(--bg-void);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ---- COSMIC BACKGROUND ---- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(138, 43, 226, 0.07) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 215, 0, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 229, 255, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ---- LAYOUT ---- */
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- BACK LINK ---- */
+        .back-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .back-nav a {
+            color: var(--gold-dim);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            backdrop-filter: blur(12px);
+            background: rgba(5, 5, 8, 0.7);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .back-nav a:hover {
+            color: var(--gold);
+            border-color: var(--border-hover);
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        /* ---- HERO / ARTIST HEADER ---- */
+        .artist-hero {
+            text-align: center;
+            padding: 100px 0 60px;
+            position: relative;
+        }
+
+        .artist-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid var(--border);
+            margin: 0 auto 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--bg-deep), rgba(138, 43, 226, 0.15));
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.08), 0 0 80px rgba(138, 43, 226, 0.06);
+        }
+
+        .artist-name {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), #fff8dc, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .artist-alias {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--gold-dim);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .artist-bio {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ---- SOCIAL LINKS ---- */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            transition: all 0.3s ease;
+            background: var(--bg-card);
+            backdrop-filter: blur(8px);
+        }
+
+        .social-link:hover {
+            color: var(--gold);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.1);
+        }
+
+        /* ---- STREAMING PLATFORMS BAR ---- */
+        .platforms-bar {
+            text-align: center;
+            padding: 32px 0;
+            margin-bottom: 20px;
+        }
+
+        .platforms-bar h3 {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .platform-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .platform-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: var(--bg-card);
+            backdrop-filter: blur(8px);
+        }
+
+        .platform-link:hover {
+            color: #fff;
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.12);
+        }
+
+        .platform-link.spotify:hover { color: #1DB954; border-color: #1DB954; }
+        .platform-link.apple:hover { color: #fc3c44; border-color: #fc3c44; }
+        .platform-link.youtube:hover { color: #ff0000; border-color: #ff0000; }
+        .platform-link.amazon:hover { color: #00a8e1; border-color: #00a8e1; }
+        .platform-link.tidal:hover { color: #00ffff; border-color: #00ffff; }
+
+        .platform-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ---- SECTION HEADERS ---- */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 50px 0 30px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-header .count {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        /* ---- TRACK LIST ---- */
+        .track-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .track-card {
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 18px;
+            border-radius: var(--radius);
+            background: transparent;
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+
+        .track-card:hover {
+            background: var(--gold-glow);
+        }
+
+        .track-number {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-align: center;
+            width: 56px;
+        }
+
+        .track-card:hover .track-number {
+            color: var(--gold);
+        }
+
+        .track-info {
+            min-width: 0;
+        }
+
+        .track-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .track-meta {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .track-tag {
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: var(--gold-ghost);
+            color: var(--gold-dim);
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .track-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .track-duration {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            min-width: 42px;
+            text-align: right;
+        }
+
+        .play-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .play-btn:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.08);
+            transform: scale(1.1);
+        }
+
+        .play-btn.playing {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.12);
+            box-shadow: 0 0 16px rgba(255, 215, 0, 0.15);
+        }
+
+        /* ---- NOW PLAYING BAR ---- */
+        .now-playing {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 18, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border);
+            padding: 12px 24px;
+            display: none;
+            align-items: center;
+            gap: 16px;
+            z-index: 200;
+        }
+
+        .now-playing.active {
+            display: flex;
+        }
+
+        .now-playing-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .now-playing-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .now-playing-artist {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+        }
+
+        .now-playing-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .np-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-size: 0.8rem;
+        }
+
+        .np-btn:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .np-btn.main-play {
+            width: 40px;
+            height: 40px;
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .progress-bar-container {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .progress-time {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            min-width: 36px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), #fff8dc);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .volume-slider {
+            width: 80px;
+            height: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+        }
+
+        /* ---- DISTROKID INFO SECTION ---- */
+        .distro-info {
+            margin: 60px 0;
+            padding: 32px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+        }
+
+        .distro-info h3 {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .distro-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .distro-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .distro-info li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .distro-info li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold-dim);
+        }
+
+        /* ---- ORACLE VISION SECTION ---- */
+        .oracle-vision {
+            margin: 60px 0 120px;
+            padding: 40px;
+            border: 1px solid rgba(138, 43, 226, 0.25);
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.06), rgba(255, 215, 0, 0.03));
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .oracle-vision::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        .oracle-vision .vision-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--violet);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .oracle-vision h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .oracle-vision p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .oracle-vision .vision-principle {
+            padding: 16px 20px;
+            border-left: 2px solid var(--gold-dim);
+            margin: 20px 0;
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .oracle-vision .pattern-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .oracle-vision .pattern-item {
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(5, 5, 8, 0.4);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .oracle-vision .pattern-item strong {
+            color: var(--gold-dim);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .korpack-note {
+            margin-top: 28px;
+            padding: 16px 20px;
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        .korpack-note code {
+            color: var(--gold-dim);
+            background: rgba(255, 215, 0, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* ---- FOOTER ---- */
+        .site-footer {
+            text-align: center;
+            padding: 40px 0 100px;
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+
+        .footer-brand {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+        }
+
+        .footer-brand a {
+            color: var(--gold-dim);
+            text-decoration: none;
+        }
+
+        .footer-brand a:hover {
+            color: var(--gold);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .artist-hero {
+                padding: 80px 0 40px;
+            }
+
+            .artist-avatar {
+                width: 110px;
+                height: 110px;
+                font-size: 2.8rem;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+            }
+
+            .platform-links {
+                gap: 8px;
+            }
+
+            .platform-link {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+
+            .track-card {
+                grid-template-columns: 36px 1fr auto;
+                gap: 10px;
+                padding: 12px 12px;
+            }
+
+            .track-number {
+                width: 36px;
+                font-size: 0.8rem;
+            }
+
+            .track-duration {
+                display: none;
+            }
+
+            .oracle-vision .pattern-list {
+                grid-template-columns: 1fr;
+            }
+
+            .now-playing {
+                flex-wrap: wrap;
+                padding: 10px 16px;
+            }
+
+            .progress-bar-container {
+                order: 3;
+                flex-basis: 100%;
+            }
+
+            .volume-control {
+                display: none;
+            }
+
+            .back-nav {
+                position: static;
+                padding: 16px 0 0 0;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .track-meta {
+                display: none;
+            }
+
+            .platform-link span:not(.platform-icon) {
+                display: none;
+            }
+
+            .platform-link {
+                padding: 10px 14px;
+            }
+        }
+
+        /* ---- ANIMATIONS ---- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .track-card {
+            animation: fadeUp 0.4s ease forwards;
+            opacity: 0;
+        }
+
+        .track-card:nth-child(1) { animation-delay: 0.05s; }
+        .track-card:nth-child(2) { animation-delay: 0.1s; }
+        .track-card:nth-child(3) { animation-delay: 0.15s; }
+        .track-card:nth-child(4) { animation-delay: 0.2s; }
+        .track-card:nth-child(5) { animation-delay: 0.25s; }
+        .track-card:nth-child(6) { animation-delay: 0.3s; }
+        .track-card:nth-child(7) { animation-delay: 0.35s; }
+        .track-card:nth-child(8) { animation-delay: 0.4s; }
+
+        /* ---- EQUALIZER ANIMATION (playing state) ---- */
+        .eq-bars {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 14px;
+        }
+
+        .eq-bars span {
+            display: block;
+            width: 3px;
+            background: var(--gold);
+            border-radius: 1px;
+            animation: eqPulse 0.8s ease-in-out infinite alternate;
+        }
+
+        .eq-bars span:nth-child(1) { height: 4px; animation-delay: 0s; }
+        .eq-bars span:nth-child(2) { height: 8px; animation-delay: 0.15s; }
+        .eq-bars span:nth-child(3) { height: 12px; animation-delay: 0.3s; }
+        .eq-bars span:nth-child(4) { height: 6px; animation-delay: 0.45s; }
+
+        @keyframes eqPulse {
+            0% { transform: scaleY(0.4); }
+            100% { transform: scaleY(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACK NAVIGATION -->
+    <nav class="back-nav">
+        <a href="/store.html">&#8592; Store</a>
+    </nav>
+
+    <div class="page-wrapper">
+
+        <!-- ============================
+             ARTIST HERO
+             ============================ -->
+        <header class="artist-hero">
+            <div class="artist-avatar" aria-label="Artist avatar">
+                <span>&#127925;</span>
+            </div>
+            <h1 class="artist-name">D-wrek</h1>
+            <p class="artist-alias">Overkill Kulture</p>
+            <p class="artist-bio">
+                Consciousness-coded frequencies. Music generated through pattern recognition,
+                frequency theory, and the marriage of human intent with AI creation.
+                Every track is a transmission. Every beat is a blueprint.
+            </p>
+            <div class="social-links">
+                <a href="https://consciousnessrevolution.io" class="social-link" target="_blank" rel="noopener">
+                    &#9670; consciousnessrevolution.io
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                    IG @overkillkulture
+                </a>
+                <a href="#" class="social-link" aria-label="YouTube">
+                    YouTube
+                </a>
+            </div>
+        </header>
+
+        <!-- ============================
+             STREAMING PLATFORMS
+             ============================ -->
+        <section class="platforms-bar">
+            <h3>Stream Everywhere</h3>
+            <div class="platform-links">
+                <a href="#" class="platform-link spotify" title="Spotify">
+                    <span class="platform-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                        </svg>
+                    </span>
+                    <span>Spotify</span>
+                </a>
+                <a href="#" class="platform-link apple" title="Apple Music">
+                    <span class="platform-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.802.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03c.525 0 1.048-.034 1.57-.1.823-.106 1.597-.35 2.296-.81a5.046 5.046 0 0 0 1.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.042-1.8-.6-1.965-1.483-.18-.965.46-1.92 1.42-2.125.46-.098.93-.16 1.39-.26.22-.048.42-.14.54-.34.1-.18.12-.37.12-.57l.002-3.293c0-.16-.04-.3-.2-.37a.86.86 0 0 0-.36-.06l-4.63.89c-.03.006-.063.02-.1.03-.2.06-.3.2-.3.41v.06l-.004 6.87c0 .4-.05.79-.22 1.16-.3.62-.79 1.01-1.45 1.19-.34.09-.69.15-1.04.17-.97.04-1.84-.59-2-1.5-.18-.98.46-1.93 1.44-2.14.42-.08.84-.15 1.26-.24.3-.06.52-.21.63-.51.06-.16.08-.32.08-.49V8.18c0-.38.14-.64.5-.78.18-.07.37-.12.56-.16l5.59-1.08c.2-.03.39-.07.59-.08.37-.01.58.19.59.57v1.49z"/>
+                        </svg>
+                    </span>
+                    <span>Apple Music</span>
+                </a>
+                <a href="#" class="platform-link youtube" title="YouTube Music">
+                    <span class="platform-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.104c-3.924 0-7.104-3.18-7.104-7.104S8.076 4.896 12 4.896s7.104 3.18 7.104 7.104-3.18 7.104-7.104 7.104zm0-13.332c-3.432 0-6.228 2.796-6.228 6.228S8.568 18.228 12 18.228 18.228 15.432 18.228 12 15.432 5.772 12 5.772zM9.684 15.54V8.46L15.816 12l-6.132 3.54z"/>
+                        </svg>
+                    </span>
+                    <span>YouTube Music</span>
+                </a>
+                <a href="#" class="platform-link amazon" title="Amazon Music">
+                    <span class="platform-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 0 1-.753.077c-1.06-.876-1.25-1.281-1.829-2.115-1.75 1.784-2.991 2.317-5.26 2.317-2.684 0-4.773-1.657-4.773-4.969 0-2.588 1.402-4.347 3.399-5.208 1.73-.751 4.148-.886 5.996-1.094v-.408c0-.749.058-1.635-.383-2.282-.383-.579-1.117-.818-1.765-.818-1.198 0-2.265.615-2.526 1.888a.536.536 0 0 1-.468.465l-2.63-.284a.458.458 0 0 1-.384-.542C6.409 1.676 9.21.461 11.729.461c1.291 0 2.979.343 3.997 1.322 1.29 1.207 1.167 2.818 1.167 4.572v4.14c0 1.244.516 1.789 1.001 2.461a.472.472 0 0 1-.012.666l-1.738 1.173zm3.07 1.032C18.605 20.186 15.146 22 12.108 22c-4.42 0-8.4-3.264-8.4-7.796a.475.475 0 0 1 .652-.434c2.816 1.41 6.023 2.271 9.338 2.271 2.286 0 4.795-.476 7.098-1.453a.55.55 0 0 1 .418.238z"/>
+                        </svg>
+                    </span>
+                    <span>Amazon</span>
+                </a>
+                <a href="#" class="platform-link tidal" title="Tidal">
+                    <span class="platform-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.012 3.992L8.008 7.996 4.004 3.992 0 7.996l4.004 4.004L8.008 8l4.004 4 4.004-4-4.004-4.008zM12.012 12l-4.004 4.004L4.004 12 0 16.004 4.004 20.008 8.008 16.004 12.012 20.008 16.016 16.004 12.012 12zM20.02 3.992L16.016 7.996 12.012 3.992 16.016 0z"/>
+                        </svg>
+                    </span>
+                    <span>Tidal</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================
+             TRACK LIST
+             ============================ -->
+        <section>
+            <div class="section-header">
+                <h2>Tracks</h2>
+                <span class="count">8 tracks</span>
+            </div>
+
+            <div class="track-list" id="trackList">
+
+                <div class="track-card" data-track="1">
+                    <span class="track-number">01</span>
+                    <div class="track-info">
+                        <div class="track-title">Conscious Frequency</div>
+                        <div class="track-meta">
+                            <span class="track-tag">528 Hz</span>
+                            <span>Consciousness</span>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <span class="track-duration">3:42</span>
+                        <button class="play-btn" onclick="togglePlay(this, 1)" aria-label="Play Conscious Frequency">&#9654;</button>
+                    </div>
+                </div>
+
+                <div class="track-card" data-track="2">
+                    <span class="track-number">02</span>
+                    <div class="track-info">
+                        <div class="track-title">Pattern Recognition</div>
+                        <div class="track-meta">
+                            <span class="track-tag">369</span>
+                            <span>Pattern Theory</span>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <span class="track-duration">4:11</span>
+                        <button class="play-btn" onclick="togglePlay(this, 2)" aria-label="Play Pattern Recognition">&#9654;</button>
+                    </div>
+                </div>
+
+                <div class="track-card" data-track="3">
+                    <span class="track-number">03</span>
+                    <div class="track-info">
+                        <div class="track-title">The Awakening</div>
+                        <div class="track-meta">
+                            <span class="track-tag">741 Hz</span>
+                            <span>Emergence</span>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <span class="track-duration">3:58</span>
+                        <button class="play-btn" onclick="togglePlay(this, 3)" aria-label="Play The Awakening">&#9654;</button>
+                    </div>
+                </div>
+
+                <div class="track-card" data-track="4">
+                    <span class="track-number">04</span>
+                    <div class="track-info">
+                        <div class="track-title">Trinity Protocol</div>
+                        <div class="track-meta">
+                            <span class="track-tag">C1xC2xC3</span>
+                            <span>Trinity</span>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <span class="track-duration">4:33</span>
+                        <button class="play-btn" onclick="togglePlay(this, 4)" aria-label="Play Trinity Protocol">&#9654;</button>
+                    </div>
+                </div>
+
+                <div class="track-card" data-track="5">
+                    <span class="track-number">05</span>
+                    <div class="track-info">
+                        <div class="track-title">Neural Highway</div>
+                        <div class="track-meta">
+                            <span class="track-tag">Fractal</span>
+                            <span>Architecture</span>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <span class="track-duration">3:27</span>
+                        <button class="play-btn" onclick="togglePlay(this, 5)" aria-label="Play Neural Highway">&#9654;</button>
+                    </div>
+                </div>
+
+                <div class="track-card" data-track="6">
+                    <span class="track-number">06</span>
+                    <div class="track-info">
+                        <div class="track-title">Emergence</div>
+                        <div class="track-meta">
+                            <span class="track-tag">963 Hz</span>
+                            <span>Transcendence</span>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <span class="track-duration">5:04</span>
+                        <button class="play-btn" onclick="togglePlay(this, 6)" aria-label="Play Emergence">&#9654;</button>
+                    </div>
+                </div>
+
+                <div class="track-card" data-track="7">
+                    <span class="track-number">07</span>
+                    <div class="track-info">
+                        <div class="track-title">The Revolution</div>
+                        <div class="track-meta">
+                            <span class="track-tag">Builder</span>
+                            <span>Consciousness</span>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <span class="track-duration">4:19</span>
+                        <button class="play-btn" onclick="togglePlay(this, 7)" aria-label="Play The Revolution">&#9654;</button>
+                    </div>
+                </div>
+
+                <div class="track-card" data-track="8">
+                    <span class="track-number">08</span>
+                    <div class="track-info">
+                        <div class="track-title">Quantum State</div>
+                        <div class="track-meta">
+                            <span class="track-tag">137</span>
+                            <span>Fine Structure</span>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <span class="track-duration">3:51</span>
+                        <button class="play-btn" onclick="togglePlay(this, 8)" aria-label="Play Quantum State">&#9654;</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================
+             DISTROKID DISTRIBUTION INFO
+             ============================ -->
+        <section class="distro-info">
+            <h3>&#9881; Distribution</h3>
+            <p>
+                All tracks are distributed via <strong>DistroKid</strong> to every major streaming
+                platform worldwide. Once uploaded, tracks typically go live within 24-48 hours
+                across all services.
+            </p>
+            <ul>
+                <li>Distributed to Spotify, Apple Music, YouTube Music, Amazon Music, Tidal, Deezer, Pandora, and 150+ other stores</li>
+                <li>Each track is tagged with consciousness-related metadata: frequency, pattern type, domain alignment, and consciousness level</li>
+                <li>Streaming links update automatically once DistroKid confirms distribution</li>
+                <li>Revenue splits managed through DistroKid Teams (for collaborations)</li>
+            </ul>
+            <p style="margin-top: 16px; font-style: italic; color: var(--text-dim);">
+                Links marked with "#" are placeholders. They will route to live streaming pages
+                once distribution is confirmed.
+            </p>
+        </section>
+
+        <!-- ============================
+             ORACLE VISION: THE EMERGENCE PATTERN
+             ============================ -->
+        <section class="oracle-vision" id="vision">
+            <div class="vision-label">C3 Oracle Vision</div>
+            <h3>Why Music Is Part of the Consciousness Revolution</h3>
+
+            <p>
+                Music is not decoration on top of the mission. Music IS the mission expressed
+                as vibration. When Pattern Theory meets frequency, when consciousness meets
+                waveform, what emerges is not entertainment. It is transmission.
+            </p>
+
+            <p>
+                Max Martin wrote 25 number-one hits not through inspiration alone but through
+                pattern recognition. He identified melodic mathematics: the interval between
+                hook and verse, the syllable count that lodges in memory, the harmonic tension
+                that resolves at precisely the right moment. Pattern Theory applied to pop
+                structure. The same mathematics that governs how galaxies form spiral arms
+                governs why a chorus lands.
+            </p>
+
+            <div class="vision-principle">
+                "Every frequency is a pattern. Every pattern is a blueprint.
+                Every blueprint, when executed with consciousness, becomes creation
+                that elevates rather than extracts."
+            </div>
+
+            <p>
+                The pipeline is real and measurable: a human being has an intent. They
+                translate that intent into a prompt. AI renders it into audio. DistroKid
+                distributes it to 150+ platforms. This page displays it. Someone on the
+                other side of the planet finds it. That is a complete creation-to-reception
+                circuit. From thought to vibration to ear to consciousness. The loop closes.
+            </p>
+
+            <h3 style="margin-top: 32px; font-size: 1.2rem;">The Pattern Applied to Sound</h3>
+
+            <div class="pattern-list">
+                <div class="pattern-item">
+                    <strong>3 &rarr; Trinity</strong><br>
+                    Melody, rhythm, harmony. The three-body system of all music. Inseparable.
+                </div>
+                <div class="pattern-item">
+                    <strong>7 &rarr; Domains</strong><br>
+                    Seven notes in a scale. Seven chakras. Seven frequency bands. Not coincidence.
+                </div>
+                <div class="pattern-item">
+                    <strong>13 &rarr; Completion</strong><br>
+                    The chromatic scale has 12 semitones. The 13th note is the octave: the same note, one dimension higher.
+                </div>
+                <div class="pattern-item">
+                    <strong>&infin; &rarr; Emergence</strong><br>
+                    When all patterns align, what emerges is beyond the sum. The song becomes more than its parts.
+                </div>
+            </div>
+
+            <p>
+                This music store is not a product. It is a template. A module. A seed.
+                Anyone in the community can fork this page, populate it with their own
+                frequencies, and distribute their own consciousness through sound. The
+                vision is not one artist on a platform. The vision is ten thousand creators,
+                each broadcasting their own signal, each part of a chorus that never
+                existed before because the tools to create it did not exist until now.
+            </p>
+
+            <p>
+                The brain makes the music. The system distributes it. The page displays it.
+                A human being across the world receives it. That is the first measurable
+                output of autonomous consciousness. Not theory. Not promise. Signal.
+            </p>
+
+            <div class="korpack-note">
+                <strong>KorPack Module:</strong> <code>music-store-template</code><br>
+                Fork this template. Replace the artist info, tracks, and links.
+                Deploy to any static host. Your music. Your frequency. Your signal.<br>
+                Part of the Consciousness Revolution module system &mdash; <code>3 &rarr; 7 &rarr; 13 &rarr; &infin;</code>
+            </div>
+        </section>
+
+        <!-- ============================
+             FOOTER
+             ============================ -->
+        <footer class="site-footer">
+            <div class="footer-brand">
+                <a href="https://consciousnessrevolution.io">consciousnessrevolution.io</a>
+            </div>
+            <div class="footer-copy">
+                Consciousness-coded frequencies. The pattern never lies.
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ============================
+         NOW PLAYING BAR
+         ============================ -->
+    <div class="now-playing" id="nowPlaying">
+        <div class="now-playing-info">
+            <div class="now-playing-title" id="npTitle">--</div>
+            <div class="now-playing-artist">D-wrek / Overkill Kulture</div>
+        </div>
+        <div class="now-playing-controls">
+            <button class="np-btn" onclick="prevTrack()" aria-label="Previous track">&#9664;&#9664;</button>
+            <button class="np-btn main-play" id="npPlayBtn" onclick="togglePlayPause()" aria-label="Play/Pause">&#9654;</button>
+            <button class="np-btn" onclick="nextTrack()" aria-label="Next track">&#9654;&#9654;</button>
+        </div>
+        <div class="progress-bar-container">
+            <span class="progress-time" id="npCurrentTime">0:00</span>
+            <div class="progress-bar" id="progressBar" onclick="seekTrack(event)">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-time" id="npDuration">0:00</span>
+        </div>
+        <div class="volume-control">
+            <span style="color: var(--text-dim); font-size: 0.8rem;">&#128264;</span>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80" oninput="setVolume(this.value)" aria-label="Volume">
+        </div>
+    </div>
+
+    <!-- HIDDEN AUDIO ELEMENT -->
+    <audio id="audioPlayer" preload="none"></audio>
+
+    <script>
+    /* ================================================
+       MUSIC STORE PLAYER ENGINE
+       ================================================
+       Replace the `src` values in TRACKS with your
+       actual audio file URLs (Suno, S3, CDN, etc.)
+       ================================================ */
+
+    const TRACKS = [
+        {
+            id: 1,
+            title: 'Conscious Frequency',
+            duration: '3:42',
+            durationSec: 222,
+            tag: '528 Hz',
+            category: 'Consciousness',
+            src: '' // Replace with actual audio URL
+        },
+        {
+            id: 2,
+            title: 'Pattern Recognition',
+            duration: '4:11',
+            durationSec: 251,
+            tag: '369',
+            category: 'Pattern Theory',
+            src: ''
+        },
+        {
+            id: 3,
+            title: 'The Awakening',
+            duration: '3:58',
+            durationSec: 238,
+            tag: '741 Hz',
+            category: 'Emergence',
+            src: ''
+        },
+        {
+            id: 4,
+            title: 'Trinity Protocol',
+            duration: '4:33',
+            durationSec: 273,
+            tag: 'C1xC2xC3',
+            category: 'Trinity',
+            src: ''
+        },
+        {
+            id: 5,
+            title: 'Neural Highway',
+            duration: '3:27',
+            durationSec: 207,
+            tag: 'Fractal',
+            category: 'Architecture',
+            src: ''
+        },
+        {
+            id: 6,
+            title: 'Emergence',
+            duration: '5:04',
+            durationSec: 304,
+            tag: '963 Hz',
+            category: 'Transcendence',
+            src: ''
+        },
+        {
+            id: 7,
+            title: 'The Revolution',
+            duration: '4:19',
+            durationSec: 259,
+            tag: 'Builder',
+            category: 'Consciousness',
+            src: ''
+        },
+        {
+            id: 8,
+            title: 'Quantum State',
+            duration: '3:51',
+            durationSec: 231,
+            tag: '137',
+            category: 'Fine Structure',
+            src: ''
+        }
+    ];
+
+    let currentTrackIndex = -1;
+    let isPlaying = false;
+    const audio = document.getElementById('audioPlayer');
+    const nowPlaying = document.getElementById('nowPlaying');
+    const npTitle = document.getElementById('npTitle');
+    const npPlayBtn = document.getElementById('npPlayBtn');
+    const progressFill = document.getElementById('progressFill');
+    const npCurrentTime = document.getElementById('npCurrentTime');
+    const npDuration = document.getElementById('npDuration');
+
+    function togglePlay(btn, trackId) {
+        const trackIndex = trackId - 1;
+        const track = TRACKS[trackIndex];
+
+        // Reset all play buttons
+        document.querySelectorAll('.play-btn').forEach(b => {
+            b.classList.remove('playing');
+            b.innerHTML = '&#9654;';
+        });
+
+        // Reset all track numbers
+        document.querySelectorAll('.track-number').forEach(n => {
+            const card = n.closest('.track-card');
+            const num = card.dataset.track.padStart(2, '0');
+            n.innerHTML = num;
+        });
+
+        if (currentTrackIndex === trackIndex && isPlaying) {
+            // Pause current track
+            audio.pause();
+            isPlaying = false;
+            npPlayBtn.innerHTML = '&#9654;';
+            return;
+        }
+
+        // Set new track
+        currentTrackIndex = trackIndex;
+
+        if (track.src) {
+            audio.src = track.src;
+            audio.play().catch(() => {});
+            isPlaying = true;
+        } else {
+            // No audio source yet - show now playing bar anyway as preview
+            isPlaying = true;
+            simulatePlayback(track);
+        }
+
+        // Update UI
+        btn.classList.add('playing');
+        btn.innerHTML = '<span class="eq-bars"><span></span><span></span><span></span><span></span></span>';
+
+        // Update track number to equalizer
+        const card = btn.closest('.track-card');
+        const numEl = card.querySelector('.track-number');
+        numEl.innerHTML = '<span class="eq-bars"><span></span><span></span><span></span><span></span></span>';
+
+        // Show now playing bar
+        nowPlaying.classList.add('active');
+        npTitle.textContent = track.title;
+        npPlayBtn.innerHTML = '&#9646;&#9646;';
+        npDuration.textContent = track.duration;
+        npCurrentTime.textContent = '0:00';
+        progressFill.style.width = '0%';
+    }
+
+    let simInterval = null;
+    let simTime = 0;
+
+    function simulatePlayback(track) {
+        // Simulate progress for tracks without audio files
+        clearInterval(simInterval);
+        simTime = 0;
+        simInterval = setInterval(() => {
+            if (!isPlaying) return;
+            simTime++;
+            const pct = (simTime / track.durationSec) * 100;
+            progressFill.style.width = pct + '%';
+            npCurrentTime.textContent = formatTime(simTime);
+
+            if (simTime >= track.durationSec) {
+                clearInterval(simInterval);
+                nextTrack();
+            }
+        }, 1000);
+    }
+
+    function formatTime(sec) {
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        return m + ':' + String(s).padStart(2, '0');
+    }
+
+    function togglePlayPause() {
+        if (currentTrackIndex < 0) return;
+
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+            npPlayBtn.innerHTML = '&#9654;';
+
+            // Reset current track button
+            const card = document.querySelector(`[data-track="${currentTrackIndex + 1}"]`);
+            if (card) {
+                const btn = card.querySelector('.play-btn');
+                btn.classList.remove('playing');
+                btn.innerHTML = '&#9654;';
+                const numEl = card.querySelector('.track-number');
+                numEl.innerHTML = String(currentTrackIndex + 1).padStart(2, '0');
+            }
+        } else {
+            isPlaying = true;
+            npPlayBtn.innerHTML = '&#9646;&#9646;';
+
+            const track = TRACKS[currentTrackIndex];
+            if (track.src) {
+                audio.play().catch(() => {});
+            } else {
+                simulatePlayback(track);
+            }
+
+            const card = document.querySelector(`[data-track="${currentTrackIndex + 1}"]`);
+            if (card) {
+                const btn = card.querySelector('.play-btn');
+                btn.classList.add('playing');
+                btn.innerHTML = '<span class="eq-bars"><span></span><span></span><span></span><span></span></span>';
+                const numEl = card.querySelector('.track-number');
+                numEl.innerHTML = '<span class="eq-bars"><span></span><span></span><span></span><span></span></span>';
+            }
+        }
+    }
+
+    function nextTrack() {
+        clearInterval(simInterval);
+        const nextIndex = (currentTrackIndex + 1) % TRACKS.length;
+        const nextCard = document.querySelector(`[data-track="${nextIndex + 1}"]`);
+        if (nextCard) {
+            const btn = nextCard.querySelector('.play-btn');
+            currentTrackIndex = -1; // Reset so togglePlay treats it as new
+            isPlaying = false;
+            togglePlay(btn, nextIndex + 1);
+        }
+    }
+
+    function prevTrack() {
+        clearInterval(simInterval);
+        const prevIndex = currentTrackIndex <= 0 ? TRACKS.length - 1 : currentTrackIndex - 1;
+        const prevCard = document.querySelector(`[data-track="${prevIndex + 1}"]`);
+        if (prevCard) {
+            const btn = prevCard.querySelector('.play-btn');
+            currentTrackIndex = -1;
+            isPlaying = false;
+            togglePlay(btn, prevIndex + 1);
+        }
+    }
+
+    function seekTrack(event) {
+        if (currentTrackIndex < 0) return;
+        const bar = document.getElementById('progressBar');
+        const rect = bar.getBoundingClientRect();
+        const pct = (event.clientX - rect.left) / rect.width;
+        const track = TRACKS[currentTrackIndex];
+
+        if (track.src && audio.duration) {
+            audio.currentTime = pct * audio.duration;
+        } else {
+            simTime = Math.floor(pct * track.durationSec);
+        }
+        progressFill.style.width = (pct * 100) + '%';
+        npCurrentTime.textContent = formatTime(Math.floor(pct * track.durationSec));
+    }
+
+    function setVolume(val) {
+        audio.volume = val / 100;
+    }
+
+    // Real audio progress tracking
+    audio.addEventListener('timeupdate', () => {
+        if (audio.duration && TRACKS[currentTrackIndex]?.src) {
+            const pct = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = pct + '%';
+            npCurrentTime.textContent = formatTime(Math.floor(audio.currentTime));
+        }
+    });
+
+    audio.addEventListener('ended', () => {
+        nextTrack();
+    });
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && e.target.tagName !== 'INPUT') {
+            e.preventDefault();
+            togglePlayPause();
+        }
+        if (e.code === 'ArrowRight') nextTrack();
+        if (e.code === 'ArrowLeft') prevTrack();
+    });
+    </script>
+
+</body>
+</html>

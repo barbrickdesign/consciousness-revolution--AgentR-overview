@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Builder Dashboard | Consciousness Revolution</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #141420;
+            --bg-card: #1a1a2e;
+            --accent-primary: #00d4ff;
+            --accent-secondary: #7b2cbf;
+            --accent-gold: #ffd700;
+            --accent-green: #00ff88;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8b8;
+            --border-color: rgba(0, 212, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .connect-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .status-pending {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .status-not-connected {
+            background: rgba(255, 100, 100, 0.2);
+            color: #ff6464;
+            border: 1px solid #ff6464;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-value.money {
+            color: var(--accent-green);
+        }
+
+        .stat-value.count {
+            color: var(--accent-primary);
+        }
+
+        .stat-change {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .stat-change.positive {
+            color: var(--accent-green);
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h2 {
+            font-size: 1.25rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Creations List */
+        .creation-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: var(--bg-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .creation-item:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(4px);
+        }
+
+        .creation-info {
+            flex: 1;
+        }
+
+        .creation-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .creation-meta {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .creation-stats {
+            text-align: right;
+        }
+
+        .creation-revenue {
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        .creation-sales {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .visibility-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+        }
+
+        .visibility-marketplace {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--accent-primary);
+        }
+
+        .visibility-private {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        /* Revenue Stream */
+        .revenue-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .revenue-item:last-child {
+            border-bottom: none;
+        }
+
+        .revenue-type {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .revenue-sale {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--accent-green);
+        }
+
+        .revenue-downstream {
+            background: rgba(123, 44, 191, 0.2);
+            color: var(--accent-secondary);
+        }
+
+        .revenue-amount {
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Connect CTA */
+        .connect-cta {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 44, 191, 0.1));
+            border: 2px solid var(--accent-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .connect-cta h3 {
+            margin-bottom: 1rem;
+        }
+
+        .connect-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Downstream Section */
+        .downstream-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .downstream-chain {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--accent-secondary);
+        }
+
+        .downstream-info {
+            flex: 1;
+        }
+
+        .downstream-creation {
+            font-weight: 500;
+        }
+
+        .downstream-source {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <div class="header">
+            <h1>Builder Dashboard</h1>
+            <div class="connect-status">
+                <span id="connectStatus" class="status-badge status-not-connected">
+                    Not Connected
+                </span>
+                <button id="connectBtn" class="btn btn-primary">
+                    Set Up Payouts
+                </button>
+            </div>
+        </div>
+
+        <!-- Connect CTA (shown when not connected) -->
+        <div id="connectCTA" class="connect-cta" style="display: none;">
+            <h3>Start Earning from Your Creations</h3>
+            <p>Connect your Stripe account to receive payouts when your creations sell on the marketplace.</p>
+            <button onclick="setupStripeConnect()" class="btn btn-primary">
+                Connect Stripe Account
+            </button>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Available Balance</div>
+                <div id="availableBalance" class="stat-value money">$0.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Lifetime Earnings</div>
+                <div id="lifetimeEarnings" class="stat-value money">$0.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Downstream Earnings</div>
+                <div id="downstreamEarnings" class="stat-value money">$0.00</div>
+                <div class="stat-change positive">From derivative works</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Sales</div>
+                <div id="totalSales" class="stat-value count">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Marketplace Creations</div>
+                <div id="marketplaceCreations" class="stat-value count">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Last 30 Days</div>
+                <div id="last30Days" class="stat-value money">$0.00</div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <button class="btn btn-outline" onclick="window.location.href='/korpak-wizard.html'">
+                + New Creation
+            </button>
+            <button class="btn btn-outline" onclick="window.location.href='/marketplace.html'">
+                Browse Marketplace
+            </button>
+            <button id="requestPayoutBtn" class="btn btn-primary" style="display: none;">
+                Request Payout
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-grid">
+            <!-- Creations Column -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Your Creations</h2>
+                    <button class="btn btn-outline" onclick="window.location.href='/korpak-wizard.html'">
+                        + New
+                    </button>
+                </div>
+                <div class="card-body" id="creationsList">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        <p>Loading creations...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Column -->
+            <div>
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <div class="card-header">
+                        <h2>Recent Revenue</h2>
+                    </div>
+                    <div class="card-body" id="revenueList">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Downstream Earnings</h2>
+                    </div>
+                    <div class="card-body" id="downstreamList">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE = '/.netlify/functions';
+
+        // Get foundation_id from localStorage or URL
+        function getFoundationId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('foundation_id') ||
+                   localStorage.getItem('foundation_id') ||
+                   'demo-foundation-id';
+        }
+
+        // Format currency
+        function formatCurrency(cents) {
+            return '$' + (cents / 100).toFixed(2);
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        // Load dashboard data
+        async function loadDashboard() {
+            const foundationId = getFoundationId();
+
+            try {
+                const response = await fetch(
+                    `${API_BASE}/builder-dashboard-api?foundation_id=${foundationId}`
+                );
+                const data = await response.json();
+
+                if (data.success) {
+                    renderDashboard(data);
+                } else {
+                    showError(data.error);
+                }
+            } catch (error) {
+                console.error('Failed to load dashboard:', error);
+                showDemoData();
+            }
+        }
+
+        // Render dashboard with data
+        function renderDashboard(data) {
+            const { balance, creations, recent_revenue, downstream_earnings, stats, time_metrics } = data;
+
+            // Update connect status
+            updateConnectStatus(balance.stripe_connect_status);
+
+            // Update stats
+            document.getElementById('availableBalance').textContent =
+                formatCurrency(balance.available_balance_cents);
+            document.getElementById('lifetimeEarnings').textContent =
+                formatCurrency(balance.lifetime_earnings_cents);
+            document.getElementById('downstreamEarnings').textContent =
+                formatCurrency(balance.lifetime_downstream_cents);
+            document.getElementById('totalSales').textContent = stats.total_sales;
+            document.getElementById('marketplaceCreations').textContent = stats.marketplace_creations;
+            document.getElementById('last30Days').textContent =
+                formatCurrency(time_metrics.revenue_30_days);
+
+            // Render creations
+            renderCreations(creations);
+
+            // Render revenue
+            renderRevenue(recent_revenue);
+
+            // Render downstream
+            renderDownstream(downstream_earnings);
+        }
+
+        // Update connect status UI
+        function updateConnectStatus(status) {
+            const badge = document.getElementById('connectStatus');
+            const btn = document.getElementById('connectBtn');
+            const cta = document.getElementById('connectCTA');
+            const payoutBtn = document.getElementById('requestPayoutBtn');
+
+            badge.className = 'status-badge';
+
+            switch (status) {
+                case 'active':
+                    badge.classList.add('status-active');
+                    badge.textContent = 'Payouts Active';
+                    btn.style.display = 'none';
+                    cta.style.display = 'none';
+                    payoutBtn.style.display = 'block';
+                    break;
+                case 'pending':
+                    badge.classList.add('status-pending');
+                    badge.textContent = 'Setup Pending';
+                    btn.textContent = 'Complete Setup';
+                    cta.style.display = 'none';
+                    break;
+                default:
+                    badge.classList.add('status-not-connected');
+                    badge.textContent = 'Not Connected';
+                    btn.textContent = 'Set Up Payouts';
+                    cta.style.display = 'block';
+            }
+        }
+
+        // Render creations list
+        function renderCreations(creations) {
+            const container = document.getElementById('creationsList');
+
+            if (!creations || creations.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">+</div>
+                        <p>No creations yet</p>
+                        <button class="btn btn-primary" onclick="window.location.href='/korpak-wizard.html'">
+                            Create Your First
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = creations.map(creation => `
+                <div class="creation-item">
+                    <div class="creation-info">
+                        <div class="creation-name">
+                            ${creation.name}
+                            <span class="visibility-badge visibility-${creation.visibility}">
+                                ${creation.visibility}
+                            </span>
+                        </div>
+                        <div class="creation-meta">
+                            ${creation.type} | ${formatDate(creation.created_at)}
+                        </div>
+                    </div>
+                    <div class="creation-stats">
+                        <div class="creation-revenue">${formatCurrency(creation.total_revenue_cents || 0)}</div>
+                        <div class="creation-sales">${creation.total_sales || 0} sales</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render revenue list
+        function renderRevenue(revenue) {
+            const container = document.getElementById('revenueList');
+
+            if (!revenue || revenue.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <p>No revenue yet</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = revenue.slice(0, 10).map(event => `
+                <div class="revenue-item">
+                    <div>
+                        <span class="revenue-type revenue-${event.event_type}">
+                            ${event.event_type}
+                        </span>
+                        <span style="margin-left: 0.5rem; color: var(--text-secondary); font-size: 0.875rem;">
+                            ${formatDate(event.created_at)}
+                        </span>
+                    </div>
+                    <div class="revenue-amount">
+                        +${formatCurrency(event.builder_amount_cents)}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render downstream earnings
+        function renderDownstream(downstream) {
+            const container = document.getElementById('downstreamList');
+
+            if (!downstream || downstream.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <p>No downstream earnings yet</p>
+                        <small>Earn passive income when others build on your work</small>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = downstream.slice(0, 5).map(d => `
+                <div class="downstream-item">
+                    <div class="downstream-chain">&#8618;</div>
+                    <div class="downstream-info">
+                        <div class="downstream-creation">
+                            ${d.builder_creations?.name || 'Unknown creation'}
+                        </div>
+                        <div class="downstream-source">
+                            Built from your work
+                        </div>
+                    </div>
+                    <div class="revenue-amount">
+                        +${formatCurrency(d.amount_cents)}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Setup Stripe Connect
+        async function setupStripeConnect() {
+            const foundationId = getFoundationId();
+            const email = localStorage.getItem('user_email') || prompt('Enter your email:');
+
+            if (!email) return;
+
+            try {
+                const response = await fetch(`${API_BASE}/create-connect-account`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        foundation_id: foundationId,
+                        email: email
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.onboarding_url) {
+                    window.location.href = data.onboarding_url;
+                } else {
+                    console.warn(data.error || 'Failed to create account');
+                }
+            } catch (error) {
+                console.error('Connect setup failed:', error);
+                console.warn('Failed to set up payouts. Please try again.');
+            }
+        }
+
+        // Show demo data when API not available
+        function showDemoData() {
+            renderDashboard({
+                balance: {
+                    available_balance_cents: 12500,
+                    pending_balance_cents: 2500,
+                    lifetime_earnings_cents: 45000,
+                    lifetime_downstream_cents: 3500,
+                    stripe_connect_status: 'active'
+                },
+                creations: [
+                    {
+                        id: '1',
+                        name: 'Pattern Detection Module',
+                        type: 'module',
+                        visibility: 'marketplace',
+                        total_sales: 12,
+                        total_revenue_cents: 23400,
+                        created_at: '2025-12-15'
+                    },
+                    {
+                        id: '2',
+                        name: 'Consciousness Scanner',
+                        type: 'ability',
+                        visibility: 'marketplace',
+                        total_sales: 8,
+                        total_revenue_cents: 15600,
+                        created_at: '2025-12-20'
+                    },
+                    {
+                        id: '3',
+                        name: 'My Private Workflow',
+                        type: 'workflow',
+                        visibility: 'private',
+                        total_sales: 0,
+                        total_revenue_cents: 0,
+                        created_at: '2025-12-22'
+                    }
+                ],
+                recent_revenue: [
+                    { event_type: 'sale', builder_amount_cents: 1560, created_at: '2026-01-09' },
+                    { event_type: 'sale', builder_amount_cents: 1950, created_at: '2026-01-08' },
+                    { event_type: 'downstream', builder_amount_cents: 350, created_at: '2026-01-07' }
+                ],
+                downstream_earnings: [
+                    {
+                        amount_cents: 350,
+                        builder_creations: { name: 'Enhanced Pattern Module' },
+                        created_at: '2026-01-07'
+                    }
+                ],
+                stats: {
+                    total_creations: 3,
+                    marketplace_creations: 2,
+                    private_creations: 1,
+                    total_sales: 20,
+                    total_revenue: 39000,
+                    average_rating: 4.5
+                },
+                time_metrics: {
+                    revenue_30_days: 15000,
+                    revenue_7_days: 3860,
+                    sales_30_days: 8,
+                    sales_7_days: 2
+                }
+            });
+        }
+
+        // Show error
+        function showError(message) {
+            document.getElementById('creationsList').innerHTML = `
+                <div class="empty-state">
+                    <p>Error: ${message}</p>
+                </div>
+            `;
+        }
+
+        // Event listeners
+        document.getElementById('connectBtn').addEventListener('click', setupStripeConnect);
+
+        // Check URL for connect success
+        if (window.location.search.includes('connected=true')) {
+            console.warn('Stripe account connected successfully! You can now receive payouts.');
+            window.history.replaceState({}, '', window.location.pathname);
+        }
+
+        // Load on page load
+        document.addEventListener('DOMContentLoaded', loadDashboard);
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

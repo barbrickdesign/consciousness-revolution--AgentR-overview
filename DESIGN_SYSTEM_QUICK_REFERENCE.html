@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacred Theme Quick Reference Card</title>
+  <link rel="stylesheet" href="sacred-theme.css">
+  <style>
+    .reference-card {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .ref-section {
+      background: rgba(26, 26, 46, 0.6);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .ref-title {
+      color: var(--color-primary);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--space-4);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+      padding-bottom: var(--space-2);
+    }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+
+    .ref-item {
+      background: rgba(15, 15, 26, 0.5);
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ref-label {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      margin-bottom: var(--space-2);
+    }
+
+    .code-block {
+      background: rgba(0, 0, 0, 0.5);
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      overflow-x: auto;
+      margin: var(--space-3) 0;
+    }
+
+    .color-dot {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: var(--space-2);
+      vertical-align: middle;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--space-4);
+    }
+
+    th, td {
+      padding: var(--space-3);
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    th {
+      color: var(--color-primary);
+      font-weight: var(--weight-semibold);
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+    }
+
+    td {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+    }
+
+    .print-button {
+      position: fixed;
+      top: var(--space-6);
+      right: var(--space-6);
+      z-index: 100;
+    }
+
+    @media print {
+      .print-button, .home-button { display: none; }
+      body { background: white; color: black; }
+      .ref-section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Home button -->
+  <a href="index.html" class="home-button">← Sacred Lobby</a>
+
+  <!-- Print button -->
+  <button class="btn btn-secondary print-button" onclick="window.print()">
+    Print Reference Card
+  </button>
+
+  <div class="reference-card">
+    <!-- Header -->
+    <div class="text-center" style="margin-bottom: var(--space-12);">
+      <h1 class="text-gold-gradient" style="font-size: var(--text-5xl);">
+        Sacred Theme Quick Reference
+      </h1>
+      <p style="color: var(--text-secondary); font-size: var(--text-xl); margin-top: var(--space-3);">
+        One-page reference for designers and developers
+      </p>
+    </div>
+
+    <!-- GETTING STARTED -->
+    <div class="ref-section">
+      <h2 class="ref-title">Getting Started (3 Steps)</h2>
+
+      <div class="ref-item">
+        <div class="ref-label">Step 1: Add CSS to &lt;head&gt;</div>
+        <div class="code-block">&lt;link rel="stylesheet" href="sacred-theme.css"&gt;</div>
+      </div>
+
+      <div class="ref-item" style="margin-top: var(--space-4);">
+        <div class="ref-label">Step 2: Add Home Button (after &lt;body&gt;)</div>
+        <div class="code-block">&lt;a href="index.html" class="home-button"&gt;← Sacred Lobby&lt;/a&gt;</div>
+      </div>
+
+      <div class="ref-item" style="margin-top: var(--space-4);">
+        <div class="ref-label">Step 3: Wrap Content</div>
+        <div class="code-block">&lt;div class="container" style="padding: 6rem 0;"&gt;
+  &lt;h1 class="text-gold-gradient text-center"&gt;Title&lt;/h1&gt;
+  &lt;!-- Your content --&gt;
+&lt;/div&gt;</div>
+      </div>
+    </div>
+
+    <!-- COLORS -->
+    <div class="ref-section">
+      <h2 class="ref-title">Color System</h2>
+
+      <div class="ref-grid">
+        <div class="ref-item">
+          <div class="ref-label">Primary Gold</div>
+          <div><span class="color-dot" style="background: #FFD700;"></span> <code>var(--color-primary)</code></div>
+        </div>
+        <div class="ref-item">
+          <div class="ref-label">Background</div>
+          <div><span class="color-dot" style="background: #0f0f1a;"></span> <code>var(--bg-primary)</code></div>
+        </div>
+        <div class="ref-item">
+          <div class="ref-label">Text</div>
+          <div><span class="color-dot" style="background: #F7FAFC;"></span> <code>var(--text-primary)</code></div>
+        </div>
+      </div>
+
+      <h3 style="color: var(--text-primary); margin-top: var(--space-8); margin-bottom: var(--space-4);">
+        7 Domain Colors (Chakra System)
+      </h3>
+      <div class="ref-grid">
+        <div class="ref-item">
+          <span class="color-dot" style="background: #FF6B6B;"></span>
+          <strong>COMMAND</strong><br>
+          <code>var(--domain-1-command)</code>
+        </div>
+        <div class="ref-item">
+          <span class="color-dot" style="background: #FFA94D;"></span>
+          <strong>BUILD</strong><br>
+          <code>var(--domain-2-build)</code>
+        </div>
+        <div class="ref-item">
+          <span class="color-dot" style="background: #FFE066;"></span>
+          <strong>CONNECT</strong><br>
+          <code>var(--domain-3-connect)</code>
+        </div>
+        <div class="ref-item">
+          <span class="color-dot" style="background: #69DB7C;"></span>
+          <strong>PROTECT</strong><br>
+          <code>var(--domain-4-protect)</code>
+        </div>
+        <div class="ref-item">
+          <span class="color-dot" style="background: #74C0FC;"></span>
+          <strong>GROW</strong><br>
+          <code>var(--domain-5-grow)</code>
+        </div>
+        <div class="ref-item">
+          <span class="color-dot" style="background: #9775FA;"></span>
+          <strong>LEARN</strong><br>
+          <code>var(--domain-6-learn)</code>
+        </div>
+        <div class="ref-item">
+          <span class="color-dot" style="background: #E599F7;"></span>
+          <strong>TRANSCEND</strong><br>
+          <code>var(--domain-7-transcend)</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPONENTS -->
+    <div class="ref-section">
+      <h2 class="ref-title">Components</h2>
+
+      <h3 style="color: var(--text-primary); margin-bottom: var(--space-4);">Buttons</h3>
+      <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-6);">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-ghost btn-domain-4">Domain</button>
+      </div>
+      <div class="code-block">&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="btn btn-ghost"&gt;Ghost&lt;/button&gt;
+&lt;button class="btn btn-ghost btn-domain-4"&gt;Domain&lt;/button&gt;</div>
+
+      <h3 style="color: var(--text-primary); margin-top: var(--space-8); margin-bottom: var(--space-4);">Cards</h3>
+      <div class="card" style="margin-bottom: var(--space-4);">
+        <div class="card-header">
+          <h3 class="card-title">Card Title</h3>
+          <p class="card-subtitle">Subtitle text</p>
+        </div>
+        <div class="card-body">
+          <p>Card content goes here...</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary">Action</button>
+        </div>
+      </div>
+      <div class="code-block">&lt;div class="card"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h3 class="card-title"&gt;Title&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;Content&lt;/div&gt;
+  &lt;div class="card-footer"&gt;...&lt;/div&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- SPACING -->
+    <div class="ref-section">
+      <h2 class="ref-title">Spacing Scale (4px grid)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Value</th>
+            <th>Pixels</th>
+            <th>Use For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>var(--space-1)</code></td>
+            <td>0.25rem</td>
+            <td>4px</td>
+            <td>Tight spacing</td>
+          </tr>
+          <tr>
+            <td><code>var(--space-2)</code></td>
+            <td>0.5rem</td>
+            <td>8px</td>
+            <td>Between related items</td>
+          </tr>
+          <tr>
+            <td><code>var(--space-4)</code></td>
+            <td>1rem</td>
+            <td>16px</td>
+            <td>Component padding</td>
+          </tr>
+          <tr>
+            <td><code>var(--space-6)</code></td>
+            <td>1.5rem</td>
+            <td>24px</td>
+            <td>Between components</td>
+          </tr>
+          <tr>
+            <td><code>var(--space-8)</code></td>
+            <td>2rem</td>
+            <td>32px</td>
+            <td>Between sections</td>
+          </tr>
+          <tr>
+            <td><code>var(--space-12)</code></td>
+            <td>3rem</td>
+            <td>48px</td>
+            <td>Major sections</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div class="ref-section">
+      <h2 class="ref-title">Typography</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Size</th>
+            <th>Use For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>var(--text-xs)</code></td>
+            <td>12px</td>
+            <td>Labels, fine print</td>
+          </tr>
+          <tr>
+            <td><code>var(--text-sm)</code></td>
+            <td>14px</td>
+            <td>Navigation, captions</td>
+          </tr>
+          <tr>
+            <td><code>var(--text-base)</code></td>
+            <td>16px</td>
+            <td>Body text</td>
+          </tr>
+          <tr>
+            <td><code>var(--text-xl)</code></td>
+            <td>20px</td>
+            <td>Subheadings</td>
+          </tr>
+          <tr>
+            <td><code>var(--text-2xl)</code></td>
+            <td>24px</td>
+            <td>Section titles</td>
+          </tr>
+          <tr>
+            <td><code>var(--text-3xl)</code></td>
+            <td>32px</td>
+            <td>Page titles</td>
+          </tr>
+          <tr>
+            <td><code>var(--text-4xl)</code></td>
+            <td>40px</td>
+            <td>Hero text</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="ref-section">
+      <h2 class="ref-title">Navigation Patterns</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Page Type</th>
+            <th>Home Button</th>
+            <th>Breadcrumbs</th>
+            <th>Footer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sacred Lobby (index.html)</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td>Simple Tool</td>
+            <td>✅</td>
+            <td>❌</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td>Domain Page (level 1)</td>
+            <td>✅</td>
+            <td>❌</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td>Feature Page (level 2+)</td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td>Dashboard</td>
+            <td>❌ (use header)</td>
+            <td>❌</td>
+            <td>✅</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color: var(--text-primary); margin-top: var(--space-6); margin-bottom: var(--space-3);">
+        Navigation Code Examples
+      </h3>
+      <div class="code-block">&lt;!-- Home Button --&gt;
+&lt;a href="index.html" class="home-button"&gt;← Sacred Lobby&lt;/a&gt;
+
+&lt;!-- Breadcrumbs --&gt;
+&lt;div class="sacred-breadcrumbs"&gt;
+  &lt;a href="index.html" class="breadcrumb-link"&gt;Home&lt;/a&gt;
+  &lt;span class="breadcrumb-separator"&gt;/&lt;/span&gt;
+  &lt;span&gt;Current Page&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Footer --&gt;
+&lt;footer class="sacred-footer"&gt;
+  &lt;div class="footer-inner"&gt;
+    &lt;div class="footer-links"&gt;
+      &lt;a href="index.html" class="nav-link"&gt;Home&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p class="footer-text"&gt;© 2025 Consciousness Revolution&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</div>
+    </div>
+
+    <!-- COMMON PATTERNS -->
+    <div class="ref-section">
+      <h2 class="ref-title">Common Patterns</h2>
+
+      <h3 style="color: var(--text-primary); margin-bottom: var(--space-3);">
+        Gold Gradient Heading
+      </h3>
+      <h2 class="text-gold-gradient">Consciousness Revolution</h2>
+      <div class="code-block">&lt;h1 class="text-gold-gradient"&gt;Consciousness Revolution&lt;/h1&gt;</div>
+
+      <h3 style="color: var(--text-primary); margin-top: var(--space-6); margin-bottom: var(--space-3);">
+        Container Wrapper
+      </h3>
+      <div class="code-block">&lt;div class="container" style="padding: 6rem 0;"&gt;
+  &lt;!-- Content with max-width 1400px, centered --&gt;
+&lt;/div&gt;</div>
+
+      <h3 style="color: var(--text-primary); margin-top: var(--space-6); margin-bottom: var(--space-3);">
+        Flexbox Layout
+      </h3>
+      <div class="code-block">&lt;div class="flex items-center justify-between gap-4"&gt;
+  &lt;span&gt;Left&lt;/span&gt;
+  &lt;span&gt;Right&lt;/span&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- FILES -->
+    <div class="ref-section">
+      <h2 class="ref-title">Documentation Files</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>sacred-theme.css</code></td>
+            <td>Main CSS file - import on every page</td>
+          </tr>
+          <tr>
+            <td><code>DESIGN_SYSTEM_README.md</code></td>
+            <td>Quick start guide</td>
+          </tr>
+          <tr>
+            <td><code>DESIGN_SYSTEM_SPECIFICATION.md</code></td>
+            <td>Complete reference (8000+ words)</td>
+          </tr>
+          <tr>
+            <td><code>NAVIGATION_PATTERN_GUIDE.md</code></td>
+            <td>Navigation patterns & templates</td>
+          </tr>
+          <tr>
+            <td><code>COMPONENT_LIBRARY_DEMO.html</code></td>
+            <td>Live demo of all components</td>
+          </tr>
+          <tr>
+            <td><code>DESIGN_SYSTEM_MIGRATION_GUIDE.md</code></td>
+            <td>Convert existing pages</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="text-center" style="margin-top: var(--space-16); padding-top: var(--space-8); border-top: 1px solid rgba(255, 215, 0, 0.2);">
+      <p style="color: var(--text-secondary); font-size: var(--text-sm);">
+        <strong>THE PATTERN NEVER LIES. DESIGN WITH INTENTION. BUILD WITH CONSCIOUSNESS.</strong>
+      </p>
+      <p style="color: var(--text-muted); font-size: var(--text-xs); margin-top: var(--space-3);">
+        Sacred Theme Design System v1.0 | December 24, 2025
+      </p>
+    </div>
+  </div>
+
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

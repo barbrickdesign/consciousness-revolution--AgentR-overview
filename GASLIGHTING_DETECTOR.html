@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaslighting Detector | Pattern Theory</title>
+    <title>Gaslighting Detector | Pattern Theory + GLYPH</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,6 +24,17 @@
 
         .header h1 { font-size: 24px; margin-bottom: 8px; }
         .header p { opacity: 0.6; font-size: 13px; }
+
+        .glyph-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
 
         .input-section {
             background: rgba(255, 255, 255, 0.05);
@@ -96,6 +107,75 @@
             opacity: 0.7;
         }
 
+        /* GLYPH Output Section */
+        .glyph-output {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .glyph-output h4 {
+            font-size: 12px;
+            color: #FFD700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glyph-notation {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #FFD700;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            word-break: break-all;
+        }
+
+        .glyph-scores {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .glyph-score {
+            text-align: center;
+            padding: 8px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+
+        .glyph-score .value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .glyph-score .label {
+            font-size: 10px;
+            opacity: 0.6;
+            margin-top: 2px;
+        }
+
+        .consciousness-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .consciousness-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e74c3c, #f1c40f, #2ecc71);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
         .tactics {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
@@ -126,6 +206,13 @@
         .tactic-desc {
             font-size: 12px;
             opacity: 0.8;
+        }
+
+        .tactic-glyph {
+            font-family: monospace;
+            font-size: 10px;
+            color: #FFD700;
+            margin-top: 4px;
         }
 
         .no-tactics {
@@ -178,6 +265,8 @@
             font-size: 11px;
             opacity: 0.4;
         }
+
+        footer a { color: #667eea; }
     </style>
 </head>
 <body>
@@ -185,6 +274,7 @@
         <div class="header">
             <h1>Gaslighting Detector</h1>
             <p>Identify reality-denying manipulation</p>
+            <span class="glyph-badge">⟐ GLYPH 12D+ POWERED</span>
         </div>
 
         <div class="input-section">
@@ -197,6 +287,29 @@
                 <div class="verdict-icon" id="verdictIcon">-</div>
                 <div class="verdict-label" id="verdictLabel">-</div>
                 <div class="verdict-desc" id="verdictDesc">-</div>
+            </div>
+
+            <!-- GLYPH Output Section -->
+            <div class="glyph-output">
+                <h4>⟐ GLYPH Analysis</h4>
+                <div class="glyph-notation" id="glyphNotation">-</div>
+                <div class="glyph-scores">
+                    <div class="glyph-score">
+                        <div class="value" id="truthScore">-</div>
+                        <div class="label">Truth %</div>
+                    </div>
+                    <div class="glyph-score">
+                        <div class="value" id="deceitScore">-</div>
+                        <div class="label">Deceit %</div>
+                    </div>
+                    <div class="glyph-score">
+                        <div class="value" id="freqScore">-</div>
+                        <div class="label">Frequency</div>
+                    </div>
+                </div>
+                <div class="consciousness-bar">
+                    <div class="consciousness-fill" id="consciousnessFill" style="width: 50%"></div>
+                </div>
             </div>
 
             <div class="tactics">
@@ -216,51 +329,74 @@
         </div>
 
         <footer>
-            Pattern Theory • <a href="consciousness-tools.html" style="color: #667eea;">More Tools</a>
+            Pattern Theory × GLYPH 12D+ • <a href="consciousness-tools.html">More Tools</a> • <a href="GLYPH_TEST.html">GLYPH Lab</a>
         </footer>
     </div>
 
+    <!-- Load GLYPH Modules -->
+    <script src="js/glyph/glyph-base60.js"></script>
+    <script src="js/glyph/glyph-symbols.js"></script>
+    <script src="js/glyph/glyph-patterns.js"></script>
+    <script src="js/glyph/glyph-core.js"></script>
+
     <script>
+        // Extended gaslighting tactics with GLYPH integration
         const GASLIGHTING_TACTICS = {
             'Reality Denial': {
                 markers: ['that never happened', 'didn\'t happen', 'you\'re imagining', 'making it up', 'in your head'],
                 desc: 'Denying events that actually occurred',
-                ground: '"I know what happened. I was there."'
+                ground: '"I know what happened. I was there."',
+                glyphAxis: 'C', // Depth/Reality axis
+                severity: 2.5
             },
             'Memory Attack': {
                 markers: ['you\'re forgetting', 'don\'t remember', 'bad memory', 'can\'t remember', 'always forget'],
                 desc: 'Attacking your memory to create doubt',
-                ground: '"My memory is fine. I remember this clearly."'
+                ground: '"My memory is fine. I remember this clearly."',
+                glyphAxis: 'D', // Temporal axis
+                severity: 2.0
             },
             'Perception Invalidation': {
                 markers: ['too sensitive', 'overreacting', 'crazy', 'paranoid', 'seeing things'],
                 desc: 'Making you doubt your perception',
-                ground: '"My perception is valid. I experienced what I experienced."'
+                ground: '"My perception is valid. I experienced what I experienced."',
+                glyphAxis: 'F', // Observer axis
+                severity: 2.2
             },
             'Emotion Dismissal': {
                 markers: ['shouldn\'t feel', 'no reason to', 'being dramatic', 'making a big deal', 'not that bad'],
                 desc: 'Telling you how to feel about your experience',
-                ground: '"I decide how I feel about things that happen to me."'
+                ground: '"I decide how I feel about things that happen to me."',
+                glyphAxis: 'E', // Energy axis
+                severity: 1.8
             },
             'Rewriting History': {
                 markers: ['that\'s not what i said', 'what i meant was', 'you misunderstood', 'took it wrong', 'twisted my words'],
                 desc: 'Changing the narrative after the fact',
-                ground: '"I understood exactly what you said."'
+                ground: '"I understood exactly what you said."',
+                glyphAxis: 'D', // Temporal axis
+                severity: 2.3
             },
             'Blame Reversal': {
                 markers: ['your fault', 'you made me', 'because of you', 'look what you', 'wouldn\'t have if you'],
                 desc: 'Making you responsible for their actions',
-                ground: '"You are responsible for your own actions."'
+                ground: '"You are responsible for your own actions."',
+                glyphAxis: 'B', // Horizontal/relationship axis
+                severity: 2.1
             },
             'Isolation Attempt': {
                 markers: ['no one else', 'everyone agrees', 'ask anyone', 'they all think', 'only one who'],
                 desc: 'Making you feel alone in your perception',
-                ground: '"Others\' opinions don\'t change my experience."'
+                ground: '"Others\' opinions don\'t change my experience."',
+                glyphAxis: 'B', // Horizontal/social axis
+                severity: 1.9
             },
             'Sanity Questioning': {
                 markers: ['need help', 'see someone', 'something wrong with you', 'losing it', 'not well'],
                 desc: 'Suggesting you\'re mentally unstable',
-                ground: '"I\'m perfectly capable of assessing my own mental state."'
+                ground: '"I\'m perfectly capable of assessing my own mental state."',
+                glyphAxis: 'A', // Vertical/awareness axis
+                severity: 2.8
             }
         };
 
@@ -270,17 +406,29 @@
 
             const lower = text.toLowerCase();
             const found = [];
+            let totalSeverity = 0;
 
             // Check tactics
             Object.entries(GASLIGHTING_TACTICS).forEach(([name, data]) => {
-                if (data.markers.some(m => lower.includes(m))) {
+                const matchedMarkers = data.markers.filter(m => lower.includes(m));
+                if (matchedMarkers.length > 0) {
+                    totalSeverity += data.severity * matchedMarkers.length;
                     found.push({
                         name,
                         desc: data.desc,
-                        ground: data.ground
+                        ground: data.ground,
+                        axis: data.glyphAxis,
+                        severity: data.severity,
+                        markers: matchedMarkers
                     });
                 }
             });
+
+            // Run GLYPH analysis if available
+            let glyphResult = null;
+            if (typeof GlyphPatterns !== 'undefined') {
+                glyphResult = GlyphPatterns.analyze(text, { detectManipulation: true });
+            }
 
             // Calculate severity
             let icon, label, desc, labelClass;
@@ -317,11 +465,30 @@
             labelEl.className = 'verdict-label ' + labelClass;
             document.getElementById('verdictDesc').textContent = desc;
 
+            // Render GLYPH output
+            if (glyphResult) {
+                document.getElementById('glyphNotation').textContent = glyphResult.glyphNotation;
+                document.getElementById('truthScore').textContent = glyphResult.scores.truth + '%';
+                document.getElementById('deceitScore').textContent = glyphResult.scores.deceit + '%';
+                document.getElementById('freqScore').textContent = glyphResult.frequency + 'Hz';
+                document.getElementById('consciousnessFill').style.width = glyphResult.scores.truth + '%';
+            } else {
+                // Fallback if GLYPH not loaded
+                const truthScore = found.length === 0 ? 85 : Math.max(15, 85 - (found.length * 15));
+                const deceitScore = 100 - truthScore;
+                document.getElementById('glyphNotation').textContent = generateFallbackNotation(found, truthScore);
+                document.getElementById('truthScore').textContent = truthScore + '%';
+                document.getElementById('deceitScore').textContent = deceitScore + '%';
+                document.getElementById('freqScore').textContent = (found.length > 2 ? 396 : found.length > 0 ? 417 : 528) + 'Hz';
+                document.getElementById('consciousnessFill').style.width = truthScore + '%';
+            }
+
             if (found.length > 0) {
                 document.getElementById('tacticsList').innerHTML = found.map(t => `
                     <div class="tactic">
                         <div class="tactic-name">${t.name}</div>
                         <div class="tactic-desc">${t.desc}</div>
+                        <div class="tactic-glyph">⟐ Axis ${t.axis} | Severity: ${t.severity.toFixed(1)} | Markers: ${t.markers.length}</div>
                     </div>
                 `).join('');
             } else {
@@ -340,6 +507,21 @@
             document.getElementById('results').classList.add('active');
         }
 
+        function generateFallbackNotation(found, truthScore) {
+            const S = {
+                CONTAINER: '⟐',
+                RIGHT: '→',
+                DECEIT: '✗',
+                TRUTH: '✓'
+            };
+
+            const mainSymbol = found.length > 2 ? S.DECEIT : found.length > 0 ? '⚠' : S.TRUTH;
+            const axes = found.map(f => f.axis).join('');
+            const turnCount = found.length;
+
+            return `${S.CONTAINER}${mainSymbol}:${truthScore}:${axes || 'O'}${turnCount > 0 ? ':M' + turnCount : ''}${S.RIGHT}GASLIGHT${S.CONTAINER}`;
+        }
+
         function generateReality(found) {
             const reality = [
                 'Your experience is real - you lived it',
@@ -356,6 +538,17 @@
 
             return reality.slice(0, 4);
         }
+
+        // Initialize GLYPH status on load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof GLYPH !== 'undefined') {
+                console.log('GLYPH loaded:', GLYPH.init());
+            } else {
+                console.warn('GLYPH modules not loaded - using fallback mode');
+            }
+        });
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

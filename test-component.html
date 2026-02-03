@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Component - Dashboard Module</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #f4f4f4;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        /* Test Component Card */
+        .test-component {
+            background: rgba(26, 26, 46, 0.8);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .test-component:hover {
+            border-color: rgba(0, 255, 136, 0.6);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .test-component h2 {
+            color: #00ff88;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.success {
+            background: #00ff88;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
+        .status-indicator.warning {
+            background: #ffaa00;
+            box-shadow: 0 0 10px #ffaa00;
+        }
+
+        .status-indicator.error {
+            background: #ff4444;
+            box-shadow: 0 0 10px #ff4444;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #00ff88;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00ff88;
+        }
+
+        .metric-unit {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-left: 0.25rem;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            border-color: #00ff88;
+            color: #00ff88;
+        }
+
+        .btn-primary:hover {
+            background: rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border-color: #00ccff;
+            color: #00ccff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 204, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 204, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            border-color: #ff4444;
+            color: #ff4444;
+        }
+
+        .btn-danger:hover {
+            background: rgba(255, 68, 68, 0.1);
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Test Log */
+        .test-log {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .log-entry {
+            padding: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .log-timestamp {
+            color: rgba(255, 255, 255, 0.4);
+            min-width: 80px;
+        }
+
+        .log-message {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .log-success {
+            color: #00ff88;
+        }
+
+        .log-error {
+            color: #ff4444;
+        }
+
+        .log-warning {
+            color: #ffaa00;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-top: 1.5rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00ccff);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            margin-top: 1.5rem;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table th {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tr:hover {
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .data-table td {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Status Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            border: 1px solid #00ff88;
+        }
+
+        .badge-warning {
+            background: rgba(255, 170, 0, 0.2);
+            color: #ffaa00;
+            border: 1px solid #ffaa00;
+        }
+
+        .badge-error {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff4444;
+            border: 1px solid #ff4444;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 8px;
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 255, 136, 0.2);
+            transform: translateX(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <a href="SEVEN_DOMAINS_DASHBOARD.html" class="back-button">← Back to Dashboard</a>
+
+    <div class="container">
+        <div class="header">
+            <h1>🧪 Test Component</h1>
+            <p>Modular Dashboard Component for Testing & Integration</p>
+        </div>
+
+        <!-- System Status Component -->
+        <div class="test-component">
+            <h2>
+                <span class="status-indicator success"></span>
+                System Status
+            </h2>
+
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">Uptime</div>
+                    <div class="metric-value">99.8<span class="metric-unit">%</span></div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Active Users</div>
+                    <div class="metric-value">1,247</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Response Time</div>
+                    <div class="metric-value">127<span class="metric-unit">ms</span></div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">CPU Usage</div>
+                    <div class="metric-value">34<span class="metric-unit">%</span></div>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>System Health</span>
+                    <span>98%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 98%"></div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="runTest()">Run Test</button>
+                <button class="btn btn-secondary" onclick="refreshData()">Refresh</button>
+                <button class="btn btn-danger" onclick="clearLog()">Clear Log</button>
+            </div>
+        </div>
+
+        <!-- Data Component -->
+        <div class="test-component">
+            <h2>
+                <span class="status-indicator success"></span>
+                Recent Activity
+            </h2>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Event</th>
+                        <th>Status</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody id="activityTable">
+                    <tr>
+                        <td>12:34:56</td>
+                        <td>System Boot</td>
+                        <td><span class="badge badge-success">Success</span></td>
+                        <td>2.3s</td>
+                    </tr>
+                    <tr>
+                        <td>12:35:12</td>
+                        <td>API Test</td>
+                        <td><span class="badge badge-success">Success</span></td>
+                        <td>0.4s</td>
+                    </tr>
+                    <tr>
+                        <td>12:35:45</td>
+                        <td>Database Query</td>
+                        <td><span class="badge badge-warning">Slow</span></td>
+                        <td>1.8s</td>
+                    </tr>
+                    <tr>
+                        <td>12:36:02</td>
+                        <td>Cache Refresh</td>
+                        <td><span class="badge badge-success">Success</span></td>
+                        <td>0.2s</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Test Log Component -->
+        <div class="test-component">
+            <h2>
+                <span class="status-indicator success"></span>
+                Test Log
+            </h2>
+
+            <div class="test-log" id="testLog">
+                <div class="log-entry">
+                    <div class="log-timestamp">12:34:56</div>
+                    <div class="log-message log-success">✓ Component initialized</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-timestamp">12:35:01</div>
+                    <div class="log-message log-success">✓ Connection established</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-timestamp">12:35:12</div>
+                    <div class="log-message log-success">✓ All tests passed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Test Runner
+        function runTest() {
+            logMessage('Starting test suite...', 'success');
+
+            setTimeout(() => {
+                logMessage('Testing API endpoints...', 'success');
+            }, 500);
+
+            setTimeout(() => {
+                logMessage('Validating data structures...', 'success');
+            }, 1000);
+
+            setTimeout(() => {
+                logMessage('Running integration tests...', 'success');
+            }, 1500);
+
+            setTimeout(() => {
+                logMessage('All tests passed! ✓', 'success');
+                addActivity('Test Suite', 'Success', '2.1s');
+            }, 2000);
+        }
+
+        // Refresh Data
+        function refreshData() {
+            logMessage('Refreshing data...', 'success');
+
+            // Simulate data refresh
+            const metrics = document.querySelectorAll('.metric-value');
+            metrics.forEach(metric => {
+                const currentValue = parseFloat(metric.textContent);
+                const newValue = currentValue + (Math.random() * 10 - 5);
+                metric.textContent = Math.max(0, newValue).toFixed(1);
+            });
+
+            setTimeout(() => {
+                logMessage('Data refreshed successfully', 'success');
+                addActivity('Data Refresh', 'Success', '0.3s');
+            }, 500);
+        }
+
+        // Clear Log
+        function clearLog() {
+            const log = document.getElementById('testLog');
+            log.innerHTML = '';
+            logMessage('Log cleared', 'success');
+        }
+
+        // Log Message
+        function logMessage(message, type = 'success') {
+            const log = document.getElementById('testLog');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+
+            const timestamp = new Date().toLocaleTimeString();
+
+            entry.innerHTML = `
+                <div class="log-timestamp">${timestamp}</div>
+                <div class="log-message log-${type}">${message}</div>
+            `;
+
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        // Add Activity
+        function addActivity(event, status, duration) {
+            const table = document.getElementById('activityTable');
+            const row = document.createElement('tr');
+
+            const timestamp = new Date().toLocaleTimeString();
+            const statusClass = status === 'Success' ? 'success' : 'warning';
+
+            row.innerHTML = `
+                <td>${timestamp}</td>
+                <td>${event}</td>
+                <td><span class="badge badge-${statusClass}">${status}</span></td>
+                <td>${duration}</td>
+            `;
+
+            table.insertBefore(row, table.firstChild);
+
+            // Keep only last 10 entries
+            if (table.children.length > 10) {
+                table.removeChild(table.lastChild);
+            }
+        }
+
+        // Auto-update metrics
+        setInterval(() => {
+            const progress = document.querySelector('.progress-fill');
+            const currentWidth = parseFloat(progress.style.width);
+            const newWidth = Math.min(100, Math.max(0, currentWidth + (Math.random() * 4 - 2)));
+            progress.style.width = newWidth + '%';
+
+            const progressLabel = document.querySelector('.progress-label span:last-child');
+            progressLabel.textContent = Math.round(newWidth) + '%';
+        }, 3000);
+
+        // Initialize
+        logMessage('Test component loaded', 'success');
+        logMessage('Ready for testing', 'success');
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

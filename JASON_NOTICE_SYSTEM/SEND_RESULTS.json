@@ -1,0 +1,22 @@
+{
+  "started": "2025-12-27T21:07:50.968472",
+  "mode": "test",
+  "sender": "darrickpreble@protonmail.com",
+  "total": 3,
+  "sent": [
+    {
+      "email": "darrick.preble@gmail.com",
+      "time": "2025-12-27T21:08:41.016042"
+    },
+    {
+      "email": "evdoxiadisj@gmail.com",
+      "time": "2025-12-27T21:09:19.606069"
+    },
+    {
+      "email": "ericadavis2011@gmail.com",
+      "time": "2025-12-27T21:09:58.069843"
+    }
+  ],
+  "failed": [],
+  "completed": "2025-12-27T21:09:58.069927"
+}

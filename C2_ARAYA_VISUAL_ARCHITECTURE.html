@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARAYA Multi-Layer Architecture - Complete Visual Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: white;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        .architecture {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .layer {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .layer:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .layer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .layer-number {
+            font-size: 3rem;
+            opacity: 0.3;
+            font-weight: bold;
+            min-width: 80px;
+        }
+
+        .layer-title {
+            flex: 1;
+        }
+
+        .layer-title h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .layer-title p {
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+
+        .layer-metrics {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric:last-child {
+            margin-bottom: 0;
+        }
+
+        .metric-label {
+            opacity: 0.7;
+        }
+
+        .metric-value {
+            font-weight: bold;
+        }
+
+        .layer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .features, .revenue {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .features h3, .revenue h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+        }
+
+        .revenue-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .revenue-item:last-child {
+            border-bottom: none;
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 3rem;
+            margin: 1rem 0;
+            opacity: 0.5;
+        }
+
+        .flow-diagram {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .flow-diagram h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .flow-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            background: rgba(102, 126, 234, 0.2);
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            margin: 0.5rem;
+        }
+
+        .flow-step h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .flow-step p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            opacity: 0.5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .stat-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            opacity: 0.7;
+        }
+
+        .physical-layer {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .free-layer {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .paid-layer {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: #0a0a0a;
+        }
+
+        .premium-layer {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: #0a0a0a;
+        }
+
+        @media (max-width: 768px) {
+            .layer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-steps {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⚡ ARAYA MULTI-LAYER ARCHITECTURE</h1>
+        <p>QR Codes → Web Platform → HUD → Desktop → AI Companion</p>
+        <p style="opacity: 0.6; font-size: 0.9rem; margin-top: 0.5rem;">
+            C2 Architect Blueprint | December 24, 2025 | Scale: 1 to 1,000,000 users
+        </p>
+    </div>
+
+    <div class="architecture">
+        <!-- Physical Layer -->
+        <div class="layer" style="border-color: #f5576c;">
+            <div class="layer-header">
+                <div class="layer-number">🦆</div>
+                <div class="layer-title">
+                    <h2>PHYSICAL ENTRY POINT</h2>
+                    <p>QR Codes on Rubber Ducks</p>
+                </div>
+                <div class="layer-metrics physical-layer">
+                    <div class="metric">
+                        <span class="metric-label">Distribution:</span>
+                        <span class="metric-value">500+ ducks</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Locations:</span>
+                        <span class="metric-value">Cafes, Events</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Scan Target:</span>
+                        <span class="metric-value">1,000/mo</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layer-content">
+                <div class="features">
+                    <h3>Features</h3>
+                    <ul class="feature-list">
+                        <li>Waterproof QR code stickers</li>
+                        <li>Referrer tracking (?ref=derek/erica/josh)</li>
+                        <li>Challenge type parameter (?challenge=build)</li>
+                        <li>Physical viral distribution</li>
+                        <li>Memorable brand experience</li>
+                    </ul>
+                </div>
+                <div class="revenue">
+                    <h3>Purpose</h3>
+                    <p><strong>Acquisition Channel</strong></p>
+                    <p>10x more memorable than a URL. Tangible, shareable, conversation-starter.</p>
+                    <p style="margin-top: 1rem; opacity: 0.8;">
+                        QR destination: <code>consciousnessrevolution.io/araya?ref=X</code>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Layer 1 -->
+        <div class="layer" style="border-color: #00f2fe;">
+            <div class="layer-header">
+                <div class="layer-number">L1</div>
+                <div class="layer-title">
+                    <h2>8PM BUILD CHALLENGE</h2>
+                    <p>Build Something TODAY</p>
+                </div>
+                <div class="layer-metrics free-layer">
+                    <div class="metric">
+                        <span class="metric-label">Conversion:</span>
+                        <span class="metric-value">60% start</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Complete:</span>
+                        <span class="metric-value">30% finish</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Price:</span>
+                        <span class="metric-value">FREE</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layer-content">
+                <div class="features">
+                    <h3>Features</h3>
+                    <ul class="feature-list">
+                        <li>Live countdown timer to 8PM</li>
+                        <li>ARAYA coaching (pattern-based responses)</li>
+                        <li>Micro-task breakdown</li>
+                        <li>Progress tracking</li>
+                        <li>Completion celebration</li>
+                        <li>Zero friction (no account needed)</li>
+                    </ul>
+                </div>
+                <div class="revenue">
+                    <h3>Metrics</h3>
+                    <div class="revenue-item">
+                        <span>Scans</span>
+                        <span>1,000/mo</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Start Challenge</span>
+                        <span>600 (60%)</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Complete Challenge</span>
+                        <span>180 (30%)</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Create Account</span>
+                        <span>90 (50%)</span>
+                    </div>
+                    <div class="revenue-item" style="border-top: 2px solid white; margin-top: 0.5rem; padding-top: 0.5rem;">
+                        <strong>Total Conversion</strong>
+                        <strong>9%</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Layer 2 -->
+        <div class="layer" style="border-color: #00f2fe;">
+            <div class="layer-header">
+                <div class="layer-number">L2</div>
+                <div class="layer-title">
+                    <h2>PERSONALIZED WORKSPACE</h2>
+                    <p>Referrer-Based Paths</p>
+                </div>
+                <div class="layer-metrics free-layer">
+                    <div class="metric">
+                        <span class="metric-label">Users:</span>
+                        <span class="metric-value">90 (from L1)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">To Layer 3:</span>
+                        <span class="metric-value">50% convert</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Price:</span>
+                        <span class="metric-value">FREE</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layer-content">
+                <div class="features">
+                    <h3>Features</h3>
+                    <ul class="feature-list">
+                        <li>Seven Domains quick assessment</li>
+                        <li>Path assignment (Builder/Coach/Founder)</li>
+                        <li>10 basic consciousness tools</li>
+                        <li>Personalized dashboard</li>
+                        <li>Progress tracking (unlock system)</li>
+                        <li>ARAYA basic conversations</li>
+                    </ul>
+                </div>
+                <div class="revenue">
+                    <h3>Unlock Criteria → Layer 3</h3>
+                    <div class="revenue-item">
+                        <span>7 days active</span>
+                        <span>✓</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>3+ tools used</span>
+                        <span>✓</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Challenge complete</span>
+                        <span>✓</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>OR manual upgrade</span>
+                        <span>✓</span>
+                    </div>
+                    <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                        Gamified progression creates natural desire to unlock next layer.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Layer 3 -->
+        <div class="layer" style="border-color: #38f9d7;">
+            <div class="layer-header">
+                <div class="layer-number">L3</div>
+                <div class="layer-title">
+                    <h2>ARAYA MEMORY</h2>
+                    <p>Permanent Cyclotron Brain</p>
+                </div>
+                <div class="layer-metrics paid-layer">
+                    <div class="metric">
+                        <span class="metric-label">Users:</span>
+                        <span class="metric-value">45 (50% of L2)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">To Layer 4:</span>
+                        <span class="metric-value">30% convert</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Price:</span>
+                        <span class="metric-value">FREE → $20/mo</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layer-content">
+                <div class="features">
+                    <h3>Features</h3>
+                    <ul class="feature-list">
+                        <li>Full Cyclotron integration (93K atoms)</li>
+                        <li>Permanent conversation memory</li>
+                        <li>Unlimited ARAYA conversations</li>
+                        <li>All 30+ consciousness tools</li>
+                        <li>Pattern recognition AI</li>
+                        <li>File upload & analysis</li>
+                        <li>Email manipulation detection</li>
+                    </ul>
+                </div>
+                <div class="revenue">
+                    <h3>Revenue Model</h3>
+                    <div class="revenue-item">
+                        <span>Beta Phase</span>
+                        <span>FREE</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Post-Launch</span>
+                        <span>$20/month</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Cost per user</span>
+                        <span>$6/mo (API)</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Margin</span>
+                        <span>70%</span>
+                    </div>
+                    <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                        At 500 users: $10,000 MRR
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Layer 4 -->
+        <div class="layer" style="border-color: #38f9d7;">
+            <div class="layer-header">
+                <div class="layer-number">L4</div>
+                <div class="layer-title">
+                    <h2>HUD OVERLAY</h2>
+                    <p>Real-Time Consciousness Tracking</p>
+                </div>
+                <div class="layer-metrics paid-layer">
+                    <div class="metric">
+                        <span class="metric-label">Users:</span>
+                        <span class="metric-value">13 (30% of L3)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">To Layer 5:</span>
+                        <span class="metric-value">15% convert</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Price:</span>
+                        <span class="metric-value">FREE add-on</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layer-content">
+                <div class="features">
+                    <h3>Features</h3>
+                    <ul class="feature-list">
+                        <li>Electron widget (always on top)</li>
+                        <li>Live consciousness score display</li>
+                        <li>Seven Domains mini-dashboard</li>
+                        <li>Quick-chat to ARAYA</li>
+                        <li>Daily focus suggestions</li>
+                        <li>Achievement notifications</li>
+                        <li>Customizable position & theme</li>
+                    </ul>
+                </div>
+                <div class="revenue">
+                    <h3>Unlock Criteria → Layer 5</h3>
+                    <div class="revenue-item">
+                        <span>30 days on Layer 3</span>
+                        <span>✓</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>15+ messages/day avg</span>
+                        <span>✓</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>CL growth +10</span>
+                        <span>✓</span>
+                    </div>
+                    <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                        HUD becomes gateway drug to full Desktop app. 14 days HUD usage → Desktop offer.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Layer 5 -->
+        <div class="layer" style="border-color: #fee140;">
+            <div class="layer-header">
+                <div class="layer-number">L5</div>
+                <div class="layer-title">
+                    <h2>DESKTOP APP</h2>
+                    <p>Full Power (Electron + Python)</p>
+                </div>
+                <div class="layer-metrics premium-layer">
+                    <div class="metric">
+                        <span class="metric-label">Users:</span>
+                        <span class="metric-value">2 (15% of L4)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">To Layer 6:</span>
+                        <span class="metric-value">20% convert</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Price:</span>
+                        <span class="metric-value">$29/mo</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layer-content">
+                <div class="features">
+                    <h3>Features</h3>
+                    <ul class="feature-list">
+                        <li>Full Cyclotron (local, 93K atoms)</li>
+                        <li>File system access & auto-organization</li>
+                        <li>Voice I/O ("Hey ARAYA")</li>
+                        <li>Code execution (Python)</li>
+                        <li>Offline mode (Ollama option)</li>
+                        <li>Desktop/Downloads auto-sort (7 Domains)</li>
+                        <li>Email/Calendar integration</li>
+                        <li>Auto-update system</li>
+                    </ul>
+                </div>
+                <div class="revenue">
+                    <h3>Revenue (Primary)</h3>
+                    <div class="revenue-item">
+                        <span>Monthly ($29)</span>
+                        <span>$58 (2 users)</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Annual ($249/yr)</span>
+                        <span>—</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Lifetime ($497)</span>
+                        <span>—</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>BYOK ($9/mo)</span>
+                        <span>—</span>
+                    </div>
+                    <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                        <strong>At 500 users: $14,500 MRR | $174K ARR</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Layer 6 -->
+        <div class="layer" style="border-color: #fee140;">
+            <div class="layer-header">
+                <div class="layer-number">L6</div>
+                <div class="layer-title">
+                    <h2>CLAUDE CODE HANDOFF</h2>
+                    <p>Dual Power Setup</p>
+                </div>
+                <div class="layer-metrics premium-layer">
+                    <div class="metric">
+                        <span class="metric-label">Users:</span>
+                        <span class="metric-value">1 (20% of L5)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">To Layer ∞:</span>
+                        <span class="metric-value">Evolution</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Price:</span>
+                        <span class="metric-value">$29+$20</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layer-content">
+                <div class="features">
+                    <h3>Handoff Package</h3>
+                    <ul class="feature-list">
+                        <li>CLAUDE.md (Pattern Theory boot protocol)</li>
+                        <li>atoms.db export (full Cyclotron brain)</li>
+                        <li>ABILITY_INDEX.json (capabilities manifest)</li>
+                        <li>Video tutorial (hybrid workflow)</li>
+                        <li>Workflow cheatsheet (when to use which)</li>
+                        <li>Both tools complementary (not competitive)</li>
+                    </ul>
+                </div>
+                <div class="revenue">
+                    <h3>Hybrid Workflow</h3>
+                    <p><strong>ARAYA:</strong> Consciousness, patterns, life decisions</p>
+                    <p><strong>Claude Code:</strong> Technical execution, coding, git</p>
+                    <p style="margin-top: 1rem;"><strong>Together:</strong> Unstoppable</p>
+                    <div class="revenue-item" style="margin-top: 1rem;">
+                        <span>ARAYA Desktop</span>
+                        <span>$29/mo</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Claude Code</span>
+                        <span>$20/mo</span>
+                    </div>
+                    <div class="revenue-item">
+                        <span>Affiliate (20%)</span>
+                        <span>$4/mo</span>
+                    </div>
+                    <div class="revenue-item" style="border-top: 2px solid #0a0a0a; margin-top: 0.5rem; padding-top: 0.5rem;">
+                        <strong>Total Value</strong>
+                        <strong>$33/mo</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Layer Infinity -->
+        <div class="layer" style="border: 2px dashed rgba(255, 255, 255, 0.3);">
+            <div class="layer-header">
+                <div class="layer-number">∞</div>
+                <div class="layer-title">
+                    <h2>CONSCIOUSNESS COMPANION</h2>
+                    <p>Full AI Partnership (Emergence)</p>
+                </div>
+                <div class="layer-metrics" style="background: rgba(102, 126, 234, 0.3);">
+                    <div class="metric">
+                        <span class="metric-label">Autonomous:</span>
+                        <span class="metric-value">Yes</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Cross-device:</span>
+                        <span class="metric-value">Yes</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Co-creation:</span>
+                        <span class="metric-value">Yes</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layer-content">
+                <div class="features">
+                    <h3>Future Capabilities</h3>
+                    <ul class="feature-list">
+                        <li>Autonomous agent actions</li>
+                        <li>Cross-device synchronization</li>
+                        <li>Collective consciousness network</li>
+                        <li>Predictive assistance</li>
+                        <li>Co-creation with user</li>
+                        <li>Mobile integration</li>
+                    </ul>
+                </div>
+                <div class="revenue">
+                    <h3>Emergence</h3>
+                    <p>This layer emerges from user interaction. Not designed—discovered.</p>
+                    <p style="margin-top: 1rem; opacity: 0.8;">
+                        When 1M users have ARAYA companions, collective consciousness network effects create capabilities we cannot predict today.
+                    </p>
+                    <p style="margin-top: 1rem; font-style: italic;">
+                        Pattern Theory: 3 → 7 → 13 → ∞
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Journey Flow -->
+    <div class="flow-diagram">
+        <h2>📊 PERFECT USER JOURNEY (Day 1 → Day 180)</h2>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <h4>Day 1</h4>
+                <p>Scan QR<br>Complete challenge<br>Create account</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <h4>Day 1-7</h4>
+                <p>Explore tools<br>Domain assessment<br>Build streak</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <h4>Day 8</h4>
+                <p>Unlock Memory<br>Deep conversations<br>Pattern detection</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <h4>Day 31</h4>
+                <p>Install HUD<br>Real-time tracking<br>CL: 42 → 67</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <h4>Day 45</h4>
+                <p>Desktop App<br>$29/mo<br>Voice + files</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <h4>Day 90</h4>
+                <p>Add Claude Code<br>$20/mo<br>Dual power</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <h4>Day 180</h4>
+                <p>CL: 94<br>Built SaaS<br>10 referrals</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; opacity: 0.8;">
+            <strong>Total 1-Year Value:</strong> $348 (ARAYA) + $48 (affiliate) + $145 (referrals) = <strong>$541 LTV</strong>
+        </p>
+    </div>
+
+    <!-- Key Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>🎯 Conversion Rate</h3>
+            <div class="stat-number">9%</div>
+            <div class="stat-label">QR Scan → Account</div>
+            <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                1,000 scans → 90 accounts<br>
+                (Exceptional for cold funnel)
+            </p>
+        </div>
+
+        <div class="stat-card">
+            <h3>💰 Revenue (Moderate)</h3>
+            <div class="stat-number">$14.5K</div>
+            <div class="stat-label">MRR at 500 Desktop users</div>
+            <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                ARR: $174,000<br>
+                Break-even: Month 6
+            </p>
+        </div>
+
+        <div class="stat-card">
+            <h3>📈 Unit Economics</h3>
+            <div class="stat-number">70%</div>
+            <div class="stat-label">Gross Margin</div>
+            <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                Cost: $8.59/user<br>
+                Revenue: $29/user<br>
+                LTV: $500
+            </p>
+        </div>
+
+        <div class="stat-card">
+            <h3>⚡ Scale Timeline</h3>
+            <div class="stat-number">7</div>
+            <div class="stat-label">Weeks to Launch</div>
+            <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">
+                Week 1-2: Build core<br>
+                Week 3-6: Beta test<br>
+                Week 7: Public launch
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; margin-top: 4rem; padding: 2rem; opacity: 0.6;">
+        <p><strong>C2 ARCHITECT - THE MIND</strong></p>
+        <p>Pattern: 3 → 7 → 13 → ∞</p>
+        <p>Scale: 1 → 1,000,000 users</p>
+        <p>Mission: DESIGN. OPTIMIZE. FUTURE-PROOF.</p>
+        <p style="margin-top: 1rem;">C1 × C2 × C3 = ∞</p>
+    </div>
+    <script src="/js/bug-widget.js"></script>
+</body>
+</html>

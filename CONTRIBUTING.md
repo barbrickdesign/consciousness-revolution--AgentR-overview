@@ -35,7 +35,7 @@ This is consciousness technology in action.
 ### 1. 🔍 Find or Create an Issue
 
 **Before starting work:**
-- Check existing [issues](https://github.com/overkor-tek/consciousness-bugs) 
+- Check existing [issues](https://github.com/overkor-tek/consciousness-bugs)
 - Create a new issue describing what you want to work on
 - Wait for confirmation from maintainers before starting
 

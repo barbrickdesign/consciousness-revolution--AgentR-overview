@@ -20,10 +20,23 @@
         .header {
             text-align: center;
             margin-bottom: 24px;
+            position: relative;
         }
 
         .header h1 { font-size: 24px; margin-bottom: 8px; }
         .header p { opacity: 0.6; font-size: 13px; }
+
+        .glyph-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(255,215,0,0.2);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 11px;
+            color: #FFD700;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
 
         .input-section {
             background: rgba(255, 255, 255, 0.05);
@@ -57,6 +70,12 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .decode-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
 
         .results {
@@ -96,6 +115,64 @@
             opacity: 0.7;
         }
 
+        /* GLYPH Analysis Section */
+        .glyph-output {
+            display: none;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(255,215,0,0.1);
+            border: 1px solid #FFD700;
+            border-radius: 12px;
+        }
+
+        .glyph-output.active { display: block; }
+
+        .glyph-output h4 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .glyph-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .glyph-notation {
+            font-family: monospace;
+            color: #4ECDC4;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .glyph-scores {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .truth-score { color: #4ECDC4; }
+        .deceit-score { color: #FF6B6B; }
+
+        .axis-breakdown { margin-top: 15px; }
+
+        .axis-item {
+            background: rgba(255,107,107,0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
+        .axis-defense-item {
+            background: rgba(78,205,196,0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
         .patterns {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
@@ -126,6 +203,12 @@
         .pattern-meaning {
             font-size: 12px;
             opacity: 0.8;
+            margin-bottom: 4px;
+        }
+
+        .pattern-axis {
+            font-size: 11px;
+            color: #FFD700;
             margin-bottom: 4px;
         }
 
@@ -191,12 +274,26 @@
             font-size: 11px;
             opacity: 0.4;
         }
+
+        footer a { color: #667eea; }
+
+        @media (max-width: 480px) {
+            .glyph-badge { position: static; margin-bottom: 10px; display: inline-block; }
+            .glyph-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+    <!-- GLYPH 12D+ Backbone -->
+    <script src="/js/glyph/glyph-base60.js"></script>
+    <script src="/js/glyph/glyph-symbols.js"></script>
+    <script src="/js/glyph/glyph-patterns.js"></script>
+    <script src="/js/glyph/glyph-core.js"></script>
+
     <div class="container">
         <div class="header">
-            <h1>Passive Aggressive Decoder</h1>
+            <div class="glyph-badge">⟐ GLYPH 12D+ POWERED</div>
+            <h1>🎭 Passive Aggressive Decoder</h1>
             <p>Translate hidden hostility into clear meaning</p>
         </div>
 
@@ -212,13 +309,37 @@
                 <div class="verdict-desc" id="verdictDesc">-</div>
             </div>
 
+            <!-- GLYPH Analysis Section -->
+            <div class="glyph-output" id="glyphOutput">
+                <h4>⟐ GLYPH 12D+ Analysis</h4>
+                <div class="glyph-grid">
+                    <div>
+                        <strong>Notation:</strong>
+                        <div class="glyph-notation" id="glyphNotation"></div>
+                    </div>
+                    <div>
+                        <strong>Frequency:</strong>
+                        <span id="glyphFrequency"></span>
+                    </div>
+                </div>
+                <div style="margin-top: 15px;">
+                    <strong>Truth/Deceit Ratio:</strong>
+                    <div class="glyph-scores">
+                        <span class="truth-score">Truth: <span id="glyphTruth">0</span>%</span>
+                        <span class="deceit-score">Deceit: <span id="glyphDeceit">0</span>%</span>
+                    </div>
+                </div>
+                <div class="axis-breakdown" id="axisBreakdown"></div>
+                <div class="axis-breakdown" id="axisDefenses"></div>
+            </div>
+
             <div class="patterns">
                 <h3>Passive Aggressive Patterns</h3>
                 <div id="patternsList"></div>
             </div>
 
             <div class="response">
-                <h3>How to Respond</h3>
+                <h3>🛡️ How to Respond</h3>
                 <div id="responseList"></div>
             </div>
 
@@ -229,137 +350,278 @@
         </div>
 
         <footer>
-            Pattern Theory • <a href="consciousness-tools.html" style="color: #667eea;">More Tools</a>
+            Pattern Theory • <a href="consciousness-tools.html">More Tools</a>
         </footer>
     </div>
 
     <script>
-        const PA_PATTERNS = {
+        // ═══════════════════════════════════════════════════════════════
+        // GLYPH 12D+ 6D Axis System
+        // ═══════════════════════════════════════════════════════════════
+        let GLYPH_AXES = {
+            A: { name: 'Vertical (Power)', positive: 'Up', negative: 'Down', desc: 'Power dynamics and coercion' },
+            B: { name: 'Horizontal (Social)', positive: 'Right', negative: 'Left', desc: 'Relationship leverage' },
+            C: { name: 'Depth (Reality)', positive: 'Front', negative: 'Back', desc: 'Reality distortion' },
+            D: { name: 'Temporal', positive: 'Future', negative: 'Past', desc: 'Time-based leverage' },
+            E: { name: 'Energy', positive: 'Potential', negative: 'Kinetic', desc: 'Emotional energy manipulation' },
+            F: { name: 'Observer', positive: 'Subject', negative: 'Object', desc: 'Self-perception attack' }
+        };
+
+        // Axis-Specific Defenses
+        let AXIS_DEFENSES = {
+            A: 'Power coercion detected → Assert: "I decide what I do"',
+            B: 'Relationship leverage → "I can care and still say no"',
+            C: 'Reality distortion → "My experience is valid"',
+            D: 'Time leverage → "I am not bound by past patterns"',
+            E: 'Emotional manipulation → "Your energy is not my responsibility"',
+            F: 'Identity attack → "I know who I am"'
+        };
+
+        // ═══════════════════════════════════════════════════════════════
+        // PASSIVE AGGRESSIVE PATTERNS with GLYPH 6D Axis Mapping
+        // ═══════════════════════════════════════════════════════════════
+        let PA_PATTERNS = {
             'Backhanded Compliment': {
                 markers: ['actually good', 'for once', 'surprisingly', 'didn\'t expect', 'finally'],
                 meaning: 'Compliment wrapped in insult',
-                real: '"I usually think you\'re incompetent"'
+                real: '"I usually think you\'re incompetent"',
+                glyphAxis: 'F',
+                severity: 1.8,
+                axisDesc: 'Observer axis - identity attack disguised as compliment'
             },
             'Fine/Whatever': {
                 markers: ['fine', 'whatever', 'if you want', 'i guess', 'sure'],
                 meaning: 'Fake agreement hiding resentment',
-                real: '"I\'m not okay with this but won\'t say so"'
+                real: '"I\'m not okay with this but won\'t say so"',
+                glyphAxis: 'C',
+                severity: 1.5,
+                axisDesc: 'Reality axis - denial of true feelings'
             },
             'Sarcastic Praise': {
                 markers: ['oh great', 'wow amazing', 'how wonderful', 'oh perfect', 'just great'],
                 meaning: 'Using "positive" words sarcastically',
-                real: '"I\'m angry but being indirect about it"'
+                real: '"I\'m angry but being indirect about it"',
+                glyphAxis: 'C',
+                severity: 1.7,
+                axisDesc: 'Reality axis - meaning inversion'
             },
             'Indirect Criticism': {
                 markers: ['some people', 'certain people', 'unlike some', 'not everyone'],
                 meaning: 'Criticizing you without naming you',
-                real: '"I mean YOU but won\'t say it directly"'
+                real: '"I mean YOU but won\'t say it directly"',
+                glyphAxis: 'B',
+                severity: 1.9,
+                axisDesc: 'Social axis - covert targeting through indirection'
             },
             'Weaponized Silence': {
                 markers: ['nothing', 'nevermind', 'forget it', 'doesn\'t matter', 'no problem'],
                 meaning: 'Punishing through withdrawal',
-                real: '"Something is very wrong but I won\'t tell you"'
+                real: '"Something is very wrong but I won\'t tell you"',
+                glyphAxis: 'E',
+                severity: 2.0,
+                axisDesc: 'Energy axis - emotional energy withdrawal as punishment'
             },
             'Guilty Assignment': {
                 markers: ['must be nice', 'wish i could', 'if only i', 'some of us'],
                 meaning: 'Making you feel guilty for having/doing something',
-                real: '"I resent you for this"'
+                real: '"I resent you for this"',
+                glyphAxis: 'F',
+                severity: 2.1,
+                axisDesc: 'Observer axis - self-perception attack through guilt'
             },
             'Fake Concern': {
                 markers: ['just concerned', 'just worried', 'just checking', 'just saying'],
                 meaning: '"Just" minimizes while still attacking',
-                real: '"I\'m criticizing but pretending I\'m not"'
+                real: '"I\'m criticizing but pretending I\'m not"',
+                glyphAxis: 'C',
+                severity: 1.8,
+                axisDesc: 'Reality axis - concern mask hiding true intent'
             },
             'Historical Jab': {
                 markers: ['like last time', 'as usual', 'typical', 'again', 'of course'],
                 meaning: 'Bringing up past to attack present',
-                real: '"I\'m keeping score and you\'re losing"'
+                real: '"I\'m keeping score and you\'re losing"',
+                glyphAxis: 'D',
+                severity: 2.0,
+                axisDesc: 'Temporal axis - past weaponization'
             }
         };
 
+        // ═══════════════════════════════════════════════════════════════
+        // GLYPH Analysis Functions
+        // ═══════════════════════════════════════════════════════════════
+        function generateGlyphAnalysis(text, found, axesHit) {
+            // Use GlyphPatterns if loaded
+            if (typeof GlyphPatterns !== 'undefined') {
+                let analysis = GlyphPatterns.analyze(text);
+                return {
+                    notation: analysis.glyphNotation,
+                    truthScore: analysis.scores.truth,
+                    deceitScore: analysis.scores.deceit,
+                    frequency: analysis.frequency,
+                    dominant: analysis.dominant
+                };
+            }
+
+            // Fallback generation
+            let totalSeverity = found.reduce(function(sum, p) { return sum + p.severity; }, 0);
+            let deceitScore = Math.min(100, Math.round(totalSeverity * 12));
+            let truthScore = 100 - deceitScore;
+
+            // Solfeggio frequency mapping
+            var frequency;
+            if (deceitScore > 60) {
+                frequency = 396; // Liberation - high deceit
+            } else if (deceitScore > 30) {
+                frequency = 417; // Change - moderate
+            } else {
+                frequency = 528; // DNA Repair - safe
+            }
+
+            let notation = '\u27d0' + (found.length > 0 ? '\u2717' : '\u2713') + ':' + truthScore + ':' + axesHit.size + 'D\u2192' + frequency + 'Hz\u27d0';
+
+            return {
+                notation: notation,
+                truthScore: truthScore,
+                deceitScore: deceitScore,
+                frequency: frequency,
+                dominant: deceitScore > truthScore ? 'deceit' : 'truth'
+            };
+        }
+
+        function displayGlyphOutput(analysis, axesHit) {
+            document.getElementById('glyphOutput').classList.add('active');
+            document.getElementById('glyphNotation').textContent = analysis.notation;
+            document.getElementById('glyphTruth').textContent = analysis.truthScore;
+            document.getElementById('glyphDeceit').textContent = analysis.deceitScore;
+
+            // Frequency with color
+            let freqColors = { 396: '#FF6B6B', 417: '#FFD700', 528: '#4ECDC4' };
+            let freqNames = { 396: 'Liberation (Danger)', 417: 'Change (Caution)', 528: 'DNA Repair (Safe)' };
+            document.getElementById('glyphFrequency').innerHTML =
+                '<span style="color: ' + (freqColors[analysis.frequency] || '#FFF') + '">' +
+                analysis.frequency + 'Hz - ' + (freqNames[analysis.frequency] || 'Unknown') +
+                '</span>';
+
+            // Axis breakdown
+            let axesArray = Array.from(axesHit);
+            if (axesArray.length > 0) {
+                let axisHtml = '<strong style="display:block;margin-bottom:8px;">6D Coordinate Attack Surface:</strong>';
+                axesArray.forEach(function(axis) {
+                    axisHtml += '<div class="axis-item"><strong>Axis ' + axis + '</strong>: ' +
+                        GLYPH_AXES[axis].name + ' - ' + GLYPH_AXES[axis].desc + '</div>';
+                });
+                document.getElementById('axisBreakdown').innerHTML = axisHtml;
+
+                // Axis defenses
+                let defenseHtml = '<strong style="display:block;margin-bottom:8px;margin-top:15px;">Axis-Specific Defenses:</strong>';
+                axesArray.forEach(function(axis) {
+                    defenseHtml += '<div class="axis-defense-item">' + AXIS_DEFENSES[axis] + '</div>';
+                });
+                document.getElementById('axisDefenses').innerHTML = defenseHtml;
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // MAIN DETECTION FUNCTION
+        // ═══════════════════════════════════════════════════════════════
         function decode() {
-            const text = document.getElementById('input').value.trim();
+            let text = document.getElementById('input').value.trim();
             if (!text) return;
 
-            const lower = text.toLowerCase();
-            const found = [];
+            let lower = text.toLowerCase();
+            let found = [];
+            let axesHit = new Set();
 
             // Check patterns
-            Object.entries(PA_PATTERNS).forEach(([name, data]) => {
-                if (data.markers.some(m => lower.includes(m))) {
+            Object.entries(PA_PATTERNS).forEach(function(entry) {
+                let name = entry[0];
+                let data = entry[1];
+                if (data.markers.some(function(m) { return lower.includes(m); })) {
                     found.push({
-                        name,
+                        name: name,
                         meaning: data.meaning,
-                        real: data.real
+                        real: data.real,
+                        glyphAxis: data.glyphAxis,
+                        severity: data.severity,
+                        axisDesc: data.axisDesc
                     });
+                    axesHit.add(data.glyphAxis);
                 }
             });
 
-            // Calculate severity
-            let icon, label, desc, labelClass;
+            // Calculate severity using GLYPH weights
+            let totalSeverity = found.reduce(function(sum, p) { return sum + p.severity; }, 0);
+            var icon, label, desc, labelClass;
+
             if (found.length === 0) {
-                icon = '✅';
+                icon = '\u2705';
                 label = 'UNCLEAR';
                 desc = 'No obvious passive aggressive patterns';
                 labelClass = 'clear';
-            } else if (found.length <= 2) {
-                icon = '😏';
+            } else if (totalSeverity <= 4) {
+                icon = '\ud83d\ude0f';
                 label = 'MILDLY PASSIVE AGGRESSIVE';
                 desc = 'Some indirect communication';
                 labelClass = 'mild';
             } else {
-                icon = '🎭';
+                icon = '\ud83c\udfad';
                 label = 'STRONGLY PASSIVE AGGRESSIVE';
                 desc = 'Multiple patterns of hidden hostility';
                 labelClass = 'strong';
             }
 
             // Generate responses
-            const responses = generateResponses(found);
+            let responses = generateResponses(found);
 
             // Generate truths
-            const truths = generateTruths(found);
+            let truths = generateTruths(found);
 
             // Render results
             document.getElementById('verdictIcon').textContent = icon;
-            const labelEl = document.getElementById('verdictLabel');
+            let labelEl = document.getElementById('verdictLabel');
             labelEl.textContent = label;
             labelEl.className = 'verdict-label ' + labelClass;
             document.getElementById('verdictDesc').textContent = desc;
 
             if (found.length > 0) {
-                document.getElementById('patternsList').innerHTML = found.map(p => `
-                    <div class="pattern">
-                        <div class="pattern-name">${p.name}</div>
-                        <div class="pattern-meaning">${p.meaning}</div>
-                        <div class="pattern-real">Translation: ${p.real}</div>
-                    </div>
-                `).join('');
+                document.getElementById('patternsList').innerHTML = found.map(function(p) {
+                    return '<div class="pattern">' +
+                        '<div class="pattern-name">' + p.name + '</div>' +
+                        '<div class="pattern-meaning">' + p.meaning + '</div>' +
+                        '<div class="pattern-axis">\u27d0 Axis ' + p.glyphAxis + ': ' + p.axisDesc + '</div>' +
+                        '<div class="pattern-real">Translation: ' + p.real + '</div>' +
+                    '</div>';
+                }).join('');
+
+                // Generate and display GLYPH analysis
+                let glyphAnalysis = generateGlyphAnalysis(text, found, axesHit);
+                displayGlyphOutput(glyphAnalysis, axesHit);
             } else {
                 document.getElementById('patternsList').innerHTML =
-                    '<div class="no-patterns">✓ No clear passive aggressive patterns</div>';
+                    '<div class="no-patterns">\u2713 No clear passive aggressive patterns</div>';
             }
 
-            document.getElementById('responseList').innerHTML = responses.map(r =>
-                `<div class="response-item">${r}</div>`
-            ).join('');
+            document.getElementById('responseList').innerHTML = responses.map(function(r) {
+                return '<div class="response-item">' + r + '</div>';
+            }).join('');
 
-            document.getElementById('truthList').innerHTML = truths.map(t =>
-                `<div class="truth-item">• ${t}</div>`
-            ).join('');
+            document.getElementById('truthList').innerHTML = truths.map(function(t) {
+                return '<div class="truth-item">\u2022 ' + t + '</div>';
+            }).join('');
 
             document.getElementById('results').classList.add('active');
         }
 
         function generateResponses(found) {
-            const responses = [];
+            let responses = [];
 
             if (found.length > 0) {
                 responses.push('Name what you notice: "It sounds like you might be upset"');
                 responses.push('Ask directly: "Do you want to talk about what\'s bothering you?"');
             }
 
-            if (found.some(p => p.name === 'Weaponized Silence')) {
+            if (found.some(function(p) { return p.name === 'Weaponized Silence'; })) {
                 responses.push('Say: "I\'d like to discuss this when you\'re ready"');
             }
 
@@ -371,13 +633,14 @@
         }
 
         function generateTruths(found) {
-            const truths = [
+            let truths = [
                 'Their indirect communication is not your fault',
                 'You can\'t fix their communication style',
                 'You deserve direct, honest expression'
             ];
 
-            if (found.length > 2) {
+            let totalSeverity = found.reduce(function(sum, p) { return sum + p.severity; }, 0);
+            if (totalSeverity > 5) {
                 truths.push('Chronic passive aggression is exhausting - protect your energy');
             }
 
@@ -386,5 +649,7 @@
             return truths.slice(0, 4);
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

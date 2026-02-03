@@ -32,13 +32,11 @@ Open terminal/command prompt:
 git clone https://github.com/overkor-tek/consciousness-revolution.git
 cd consciousness-revolution
 
-
 ⚡ STEP 2: Read the Start Guide
 
 Open: START_HERE_BETA_TESTERS.md
 
 Everything you need is in there.
-
 
 ⚡ STEP 3: Run the System (1 minute)
 
@@ -53,7 +51,6 @@ Opens:
 - 6 AI brain agents
 - Dashboard in browser
 
-
 ⚡ STEP 4: Build Something (2 minutes)
 
 Three paths:
@@ -61,7 +58,6 @@ Three paths:
 A) Use what's there - improve existing systems
 B) Build new - check JEDI_AI_DASHBOARD.html for ideas
 C) Fix bugs - https://github.com/overkor-tek/consciousness-bugs
-
 
 ═══════════════════════════════════════════════════════════
 
@@ -72,7 +68,6 @@ Text Commander: 406-580-3779
 
 Check: SYSTEM_COMPLETE_READ_THIS.md in the repo
 Search knowledge: Run CYCLOTRON_COMPLETE_SYSTEM.py
-
 
 ═══════════════════════════════════════════════════════════
 
@@ -88,7 +83,6 @@ Current Systems:
 ✅ 7 Domains framework
 
 You're early. Shape the future.
-
 
 ═══════════════════════════════════════════════════════════
 
@@ -108,7 +102,6 @@ HARD (1 week):
 - Implement KORPAK system
 - Build module library
 - Create Trinity Chat interface
-
 
 ═══════════════════════════════════════════════════════════
 
@@ -176,7 +169,6 @@ def send_email():
         print(f"❌ Error sending email: {e}")
         return False
 
-
 def create_manual_instructions():
     """Create manual email instructions"""
 
@@ -200,7 +192,6 @@ def create_manual_instructions():
     print()
     print("6. Send!")
     print()
-
 
 if __name__ == '__main__':
     print()

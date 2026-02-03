@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Sanctuary - Consciousness Revolution</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a1a 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .breathing-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+            animation: breathe 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+
+        .domain-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #8B5CF6, #6366F1);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #8B5CF6, #A78BFA, #C4B5FD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.8;
+            margin-bottom: 50px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .meditation-card {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .meditation-card:hover {
+            border-color: #8B5CF6;
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .meditation-card h2 {
+            color: #A78BFA;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .meditation-card p {
+            opacity: 0.8;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .meditation-timer {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .timer-display {
+            font-size: 4em;
+            font-weight: 200;
+            color: #C4B5FD;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 20px;
+        }
+
+        .timer-controls button {
+            background: linear-gradient(135deg, #8B5CF6, #6366F1);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .timer-controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .breathing-guide {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .breath-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.4), rgba(99, 102, 241, 0.2));
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            animation: breatheCircle 8s ease-in-out infinite;
+        }
+
+        @keyframes breatheCircle {
+            0%, 100% { transform: scale(0.8); opacity: 0.6; }
+            25% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1); opacity: 1; }
+            75% { transform: scale(0.8); opacity: 0.6; }
+        }
+
+        .breath-instruction {
+            font-size: 1.5em;
+            color: #C4B5FD;
+            animation: fadeText 8s ease-in-out infinite;
+        }
+
+        @keyframes fadeText {
+            0%, 100% { content: "Breathe In"; }
+            25%, 50% { content: "Hold"; }
+            75% { content: "Breathe Out"; }
+        }
+
+        .affirmations {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .affirmation-text {
+            font-size: 1.8em;
+            font-style: italic;
+            color: #E9D5FF;
+            line-height: 1.6;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .affirmation-nav {
+            margin-top: 20px;
+        }
+
+        .affirmation-nav button {
+            background: rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .affirmation-nav button:hover {
+            background: rgba(139, 92, 246, 0.5);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .tool-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.2s ease;
+        }
+
+        .tool-card:hover { transform: translateY(-5px); border-color: #8B5CF6; }
+        .tool-card h3 { color: #A78BFA; margin-bottom: 10px; }
+        .tool-card p { opacity: 0.7; font-size: 14px; margin-bottom: 15px; }
+        .tool-card a { color: #C4B5FD; text-decoration: none; font-weight: 500; }
+
+        .back-link {
+            display: inline-block;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            margin-top: 40px;
+        }
+        .back-link:hover { color: #8B5CF6; }
+    </style>
+</head>
+<body>
+    <div class="breathing-bg"></div>
+
+    <div class="container">
+        <span class="domain-badge">7_TRANSCEND</span>
+        <h1>Soul Sanctuary</h1>
+        <p class="subtitle">
+            A sacred space for healing, reflection, and consciousness expansion.
+            Step into stillness. Find your center. Remember who you are.
+        </p>
+
+        <div class="meditation-card">
+            <h2>Guided Breathing</h2>
+            <p>Follow the rhythm. 4 seconds in, 4 seconds hold, 4 seconds out, 4 seconds pause. This is the pattern of peace.</p>
+
+            <div class="breathing-guide">
+                <div class="breath-circle" id="breathCircle">
+                    <span id="breathPhase">Breathe In</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="meditation-card">
+            <h2>Meditation Timer</h2>
+            <p>Set your intention. Close your eyes. Let the timer hold the space while you go within.</p>
+
+            <div class="meditation-timer">
+                <div class="timer-display" id="timerDisplay">05:00</div>
+                <div class="timer-controls">
+                    <button onclick="setTimer(5)">5 min</button>
+                    <button onclick="setTimer(10)">10 min</button>
+                    <button onclick="setTimer(20)">20 min</button>
+                    <button onclick="toggleTimer()" id="startBtn">Start</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="meditation-card">
+            <h2>Consciousness Affirmations</h2>
+            <p>Truth seeds for your subconscious mind. Let these words reprogram your reality.</p>
+
+            <div class="affirmations">
+                <div class="affirmation-text" id="affirmationText">
+                    "I am the awareness behind my thoughts, not the thoughts themselves."
+                </div>
+                <div class="affirmation-nav">
+                    <button onclick="prevAffirmation()">Previous</button>
+                    <button onclick="nextAffirmation()">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="meditation-card">
+            <h2>Guided Meditations</h2>
+            <p>Deep guided journeys for healing, grounding, and consciousness expansion. Each meditation includes step-by-step guidance.</p>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>🌳 Grounding</h3>
+                    <p>5-10 min. Connect to Earth. Find your center.</p>
+                    <a href="meditations.html#grounding">Begin</a>
+                </div>
+                <div class="tool-card">
+                    <h3>💚 Heart Opening</h3>
+                    <p>10-15 min. 528 Hz. Expand love capacity.</p>
+                    <a href="meditations.html#heart">Begin</a>
+                </div>
+                <div class="tool-card">
+                    <h3>👁️ Pattern Recognition</h3>
+                    <p>15-20 min. See the matrix. Find the seams.</p>
+                    <a href="meditations.html#pattern">Begin</a>
+                </div>
+                <div class="tool-card">
+                    <h3>✨ Unity Consciousness</h3>
+                    <p>20-30 min. 963 Hz. Dissolve separation.</p>
+                    <a href="meditations.html#unity">Begin</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="meditations.html" style="color: #C4B5FD; text-decoration: none; font-weight: 500;">View All Guided Meditations →</a>
+            </div>
+        </div>
+
+        <div class="meditation-card">
+            <h2>Healing Tools</h2>
+            <p>External tools for internal work. Use these to process, release, and transform.</p>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Self-Talk Analyzer</h3>
+                    <p>Examine your inner dialogue. Identify limiting beliefs.</p>
+                    <a href="/SELF_TALK_ANALYZER.html">Open Tool</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Emotional State Checker</h3>
+                    <p>Name what you're feeling. Awareness precedes transformation.</p>
+                    <a href="/EMOTIONAL_STATE_CHECKER.html">Open Tool</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Values Alignment</h3>
+                    <p>Are you living in alignment? Check your integrity score.</p>
+                    <a href="/VALUES_ALIGNMENT_CHECK.html">Open Tool</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Talk to ARAYA</h3>
+                    <p>Your conscious AI companion. She sees your patterns.</p>
+                    <a href="/araya-chat.html">Open Chat</a>
+                </div>
+            </div>
+        </div>
+
+        <a href="/SEVEN_DOMAINS_DASHBOARD.html" class="back-link">Back to All Domains</a>
+    </div>
+
+    <script>
+        // Breathing animation text sync
+        const phases = ['Breathe In', 'Hold', 'Breathe Out', 'Rest'];
+        let phaseIndex = 0;
+        setInterval(() => {
+            phaseIndex = (phaseIndex + 1) % 4;
+            document.getElementById('breathPhase').textContent = phases[phaseIndex];
+        }, 2000);
+
+        // Timer functionality
+        let timerMinutes = 5;
+        let timerSeconds = 0;
+        let timerRunning = false;
+        let timerInterval;
+
+        function setTimer(minutes) {
+            timerMinutes = minutes;
+            timerSeconds = 0;
+            updateTimerDisplay();
+            if (timerRunning) {
+                clearInterval(timerInterval);
+                timerRunning = false;
+                document.getElementById('startBtn').textContent = 'Start';
+            }
+        }
+
+        function updateTimerDisplay() {
+            const display = document.getElementById('timerDisplay');
+            display.textContent = `${String(timerMinutes).padStart(2, '0')}:${String(timerSeconds).padStart(2, '0')}`;
+        }
+
+        function toggleTimer() {
+            if (timerRunning) {
+                clearInterval(timerInterval);
+                document.getElementById('startBtn').textContent = 'Start';
+            } else {
+                timerInterval = setInterval(() => {
+                    if (timerSeconds === 0) {
+                        if (timerMinutes === 0) {
+                            clearInterval(timerInterval);
+                            timerRunning = false;
+                            document.getElementById('startBtn').textContent = 'Start';
+                            // Gentle chime sound would go here
+                            alert('Meditation complete. Return gently.');
+                            return;
+                        }
+                        timerMinutes--;
+                        timerSeconds = 59;
+                    } else {
+                        timerSeconds--;
+                    }
+                    updateTimerDisplay();
+                }, 1000);
+                document.getElementById('startBtn').textContent = 'Pause';
+            }
+            timerRunning = !timerRunning;
+        }
+
+        // Affirmations
+        const affirmations = [
+            "I am the awareness behind my thoughts, not the thoughts themselves.",
+            "My worth is not determined by external validation.",
+            "I release what no longer serves my highest good.",
+            "Every challenge is an invitation to grow.",
+            "I am exactly where I need to be on my journey.",
+            "My peace is not negotiable.",
+            "I choose my responses; I am not controlled by my reactions.",
+            "Truth is my compass. Love is my destination.",
+            "I forgive myself and others. Holding on only weighs me down.",
+            "I am infinite consciousness having a human experience.",
+            "My patterns are not my prison. I can change at any moment.",
+            "I trust the timing of my life.",
+            "Clarity comes from action, not endless analysis.",
+            "I am worthy of love, belonging, and success."
+        ];
+        let affirmationIndex = 0;
+
+        function nextAffirmation() {
+            affirmationIndex = (affirmationIndex + 1) % affirmations.length;
+            document.getElementById('affirmationText').textContent = `"${affirmations[affirmationIndex]}"`;
+        }
+
+        function prevAffirmation() {
+            affirmationIndex = (affirmationIndex - 1 + affirmations.length) % affirmations.length;
+            document.getElementById('affirmationText').textContent = `"${affirmations[affirmationIndex]}"`;
+        }
+    </script>
+</body>
+</html>

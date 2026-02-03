@@ -20,10 +20,23 @@
         .header {
             text-align: center;
             margin-bottom: 24px;
+            position: relative;
         }
 
         .header h1 { font-size: 24px; margin-bottom: 8px; }
         .header p { opacity: 0.6; font-size: 13px; }
+
+        .glyph-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(255, 215, 0, 0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #FFD700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
 
         .input-section {
             background: rgba(255, 255, 255, 0.05);
@@ -57,6 +70,12 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .decode-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
         }
 
         .results {
@@ -128,6 +147,16 @@
             opacity: 0.8;
         }
 
+        .bind-axis {
+            font-size: 11px;
+            color: #FFD700;
+            margin-top: 6px;
+            padding: 4px 8px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 4px;
+            display: inline-block;
+        }
+
         .no-bind {
             text-align: center;
             padding: 20px;
@@ -159,6 +188,7 @@
             background: rgba(102, 126, 234, 0.1);
             border-radius: 12px;
             padding: 16px;
+            margin-bottom: 20px;
         }
 
         .truth h4 {
@@ -172,17 +202,101 @@
             padding: 4px 0;
         }
 
+        /* GLYPH Output Section */
+        .glyph-output {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .glyph-output h3 {
+            color: #FFD700;
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glyph-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .glyph-notation {
+            font-family: 'Courier New', monospace;
+            color: #4ECDC4;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 6px;
+        }
+
+        .glyph-frequency {
+            margin-top: 6px;
+        }
+
+        .truth-deceit-bar {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .truth-score { color: #4ECDC4; }
+        .deceit-score { color: #FF6B6B; }
+
+        .axis-breakdown {
+            margin-top: 16px;
+        }
+
+        .axis-item {
+            background: rgba(255, 107, 107, 0.15);
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .axis-item strong { color: #FF6B6B; }
+
+        .axis-defenses {
+            margin-top: 16px;
+        }
+
+        .defense-item {
+            background: rgba(78, 205, 196, 0.15);
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: #4ECDC4;
+        }
+
         footer {
             text-align: center;
             margin-top: 30px;
             font-size: 11px;
             opacity: 0.4;
         }
+
+        footer a { color: #667eea; text-decoration: none; }
     </style>
 </head>
 <body>
+    <!-- GLYPH 12D+ Backbone -->
+    <script src="/js/glyph/glyph-base60.js"></script>
+    <script src="/js/glyph/glyph-symbols.js"></script>
+    <script src="/js/glyph/glyph-patterns.js"></script>
+    <script src="/js/glyph/glyph-core.js"></script>
+
     <div class="container">
         <div class="header">
+            <div class="glyph-badge">GLYPH 12D+</div>
             <h1>Double Bind Decoder</h1>
             <p>Identify no-win situations and find the exit</p>
         </div>
@@ -204,6 +318,33 @@
                 <div id="analysisList"></div>
             </div>
 
+            <!-- GLYPH Analysis Section -->
+            <div class="glyph-output" id="glyphOutput" style="display: none;">
+                <h3><span style="font-size: 18px;">&#x27D0;</span> GLYPH 12D+ Analysis</h3>
+
+                <div class="glyph-grid">
+                    <div>
+                        <strong>Notation:</strong>
+                        <div class="glyph-notation" id="glyphNotation"></div>
+                    </div>
+                    <div>
+                        <strong>Frequency:</strong>
+                        <div class="glyph-frequency" id="glyphFrequency"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <strong>Truth/Deceit Ratio:</strong>
+                    <div class="truth-deceit-bar">
+                        <span class="truth-score">Truth: <span id="glyphTruth">0</span>%</span>
+                        <span class="deceit-score">Deceit: <span id="glyphDeceit">0</span>%</span>
+                    </div>
+                </div>
+
+                <div class="axis-breakdown" id="axisBreakdown"></div>
+                <div class="axis-defenses" id="axisDefenses"></div>
+            </div>
+
             <div class="escape">
                 <h3>How to Escape the Bind</h3>
                 <div id="escapeList"></div>
@@ -216,41 +357,80 @@
         </div>
 
         <footer>
-            Pattern Theory • <a href="consciousness-tools.html" style="color: #667eea;">More Tools</a>
+            Pattern Theory | <a href="consciousness-tools.html">More Tools</a>
         </footer>
     </div>
 
     <script>
+        // 6D Axis System
+        const GLYPH_AXES = {
+            A: { name: 'Vertical (Power)', positive: 'Up', negative: 'Down', desc: 'Power dynamics and coercion' },
+            B: { name: 'Horizontal (Social)', positive: 'Right', negative: 'Left', desc: 'Relationship leverage' },
+            C: { name: 'Depth (Reality)', positive: 'Front', negative: 'Back', desc: 'Reality distortion' },
+            D: { name: 'Temporal', positive: 'Future', negative: 'Past', desc: 'Time-based leverage' },
+            E: { name: 'Energy', positive: 'Potential', negative: 'Kinetic', desc: 'Emotional energy manipulation' },
+            F: { name: 'Observer', positive: 'Subject', negative: 'Object', desc: 'Self-perception attack' }
+        };
+
+        // Axis-specific defenses
+        const AXIS_DEFENSES = {
+            A: 'Power coercion detected - Assert: "I decide what I do"',
+            B: 'Relationship leverage - "I can care and still say no"',
+            C: 'Reality distortion - "My experience is valid"',
+            D: 'Time manipulation - "I am not bound by their timeline"',
+            E: 'Emotional manipulation - "Your feelings do not control me"',
+            F: 'Identity attack - "I know who I am"'
+        };
+
+        // Double Bind patterns mapped to 6D axes
         const DOUBLE_BINDS = {
             'Contradictory Demands': {
                 markers: ['but also', 'but then', 'either way', 'no matter what', 'can\'t win'],
                 desc: 'Impossible to satisfy conflicting requirements',
-                escape: 'Name the contradiction directly: "You\'re asking for X and not-X simultaneously"'
+                escape: 'Name the contradiction directly: "You\'re asking for X and not-X simultaneously"',
+                glyphAxis: 'C',
+                severity: 2.2,
+                axisDesc: 'Reality axis - logical impossibility that warps perception'
             },
             'Damned Either Way': {
                 markers: ['if i do', 'if i don\'t', 'damned if', 'wrong either way', 'both choices'],
                 desc: 'All options lead to punishment',
-                escape: 'Choose based on YOUR values, not their reaction'
+                escape: 'Choose based on YOUR values, not their reaction',
+                glyphAxis: 'D',
+                severity: 2.3,
+                axisDesc: 'Temporal axis - all future paths lead to punishment'
             },
             'Moving Goalposts': {
                 markers: ['still not', 'not good enough', 'should have', 'could have done more', 'never enough'],
                 desc: 'Standards change to ensure you always fail',
-                escape: 'Stop chasing approval that won\'t come - define your own success'
+                escape: 'Stop chasing approval that won\'t come - define your own success',
+                glyphAxis: 'D',
+                severity: 2.1,
+                axisDesc: 'Temporal axis - past achievements invalidated, future success impossible'
             },
             'Emotional Trap': {
                 markers: ['if you loved', 'if you cared', 'real friend would', 'good person would'],
                 desc: 'Using emotions to force impossible choice',
-                escape: 'Loving someone doesn\'t mean abandoning your boundaries'
+                escape: 'Loving someone doesn\'t mean abandoning your boundaries',
+                glyphAxis: 'E',
+                severity: 2.4,
+                axisDesc: 'Energy axis - emotional energy weaponized against you'
             },
             'Loyalty Test': {
                 markers: ['prove', 'show me', 'prove your', 'how can i trust', 'demonstrate'],
                 desc: 'Endless proof demanded that\'s never enough',
-                escape: 'Healthy relationships don\'t require constant proof'
+                escape: 'Healthy relationships don\'t require constant proof',
+                glyphAxis: 'F',
+                severity: 2.0,
+                axisDesc: 'Observer axis - identity questioned, self-perception under attack'
             },
             'False Binary': {
                 markers: ['either', 'or else', 'only option', 'choice is', 'have to choose'],
                 desc: 'Presenting only two options when more exist',
-                escape: 'Look for the third, fourth, fifth option they\'re hiding'
+                escape: 'Look for the third, fourth, fifth option they\'re hiding',
+                glyphAxis: 'C',
+                severity: 2.1,
+                axisDesc: 'Reality axis - reality artificially constrained to trap you'
             }
         };
 
@@ -260,34 +440,41 @@
 
             const lower = text.toLowerCase();
             const found = [];
+            const axesHit = new Set();
+            let totalSeverity = 0;
 
-            // Check patterns
+            // Check patterns with GLYPH axis mapping
             Object.entries(DOUBLE_BINDS).forEach(([name, data]) => {
                 if (data.markers.some(m => lower.includes(m))) {
                     found.push({
                         name,
                         desc: data.desc,
-                        escape: data.escape
+                        escape: data.escape,
+                        glyphAxis: data.glyphAxis,
+                        severity: data.severity,
+                        axisDesc: data.axisDesc
                     });
+                    axesHit.add(data.glyphAxis);
+                    totalSeverity += data.severity;
                 }
             });
 
-            // Calculate severity
+            // Calculate severity using GLYPH scoring
             let icon, label, desc, labelClass;
             if (found.length === 0) {
                 icon = '✅';
                 label = 'NO DOUBLE BIND DETECTED';
                 desc = 'Situation appears to have viable options';
                 labelClass = 'clear';
-            } else if (found.length <= 2) {
+            } else if (totalSeverity < 4.5) {
                 icon = '⚠️';
                 label = 'POTENTIAL TRAP';
-                desc = `${found.length} bind pattern(s) - examine options carefully`;
+                desc = `${found.length} bind pattern(s) - severity ${totalSeverity.toFixed(1)}`;
                 labelClass = 'trap';
             } else {
                 icon = '🔴';
                 label = 'DOUBLE BIND DETECTED';
-                desc = 'Designed to trap you - look for the exit';
+                desc = `Severity ${totalSeverity.toFixed(1)} - designed to trap you`;
                 labelClass = 'bind';
             }
 
@@ -312,6 +499,7 @@
                     <div class="bind-type">
                         <div class="bind-name">${b.name}</div>
                         <div class="bind-desc">${b.desc}</div>
+                        <div class="bind-axis">Axis ${b.glyphAxis}: ${b.axisDesc}</div>
                     </div>
                 `).join('');
             } else {
@@ -326,6 +514,10 @@
             document.getElementById('truthList').innerHTML = truths.map(t =>
                 `<div class="truth-item">• ${t}</div>`
             ).join('');
+
+            // Generate GLYPH analysis
+            const glyphAnalysis = generateGlyphAnalysis(text, found, Array.from(axesHit), totalSeverity);
+            displayGlyphOutput(glyphAnalysis, Array.from(axesHit));
 
             document.getElementById('results').classList.add('active');
         }
@@ -346,6 +538,100 @@
 
             return truths.slice(0, 4);
         }
+
+        function generateGlyphAnalysis(text, found, axesHit, totalSeverity) {
+            // Use GlyphPatterns if loaded
+            if (typeof GlyphPatterns !== 'undefined') {
+                try {
+                    const analysis = GlyphPatterns.analyze(text);
+                    return {
+                        notation: analysis.glyphNotation || generateFallbackNotation(found, axesHit, totalSeverity),
+                        truthScore: analysis.scores ? analysis.scores.truth : calculateTruthScore(totalSeverity),
+                        deceitScore: analysis.scores ? analysis.scores.deceit : calculateDeceitScore(totalSeverity),
+                        frequency: analysis.frequency || mapToFrequency(totalSeverity),
+                        dominant: analysis.dominant || (totalSeverity > 4 ? 'deceit' : 'truth')
+                    };
+                } catch (e) {
+                    console.log('GLYPH fallback mode');
+                }
+            }
+
+            // Fallback generation
+            const deceitScore = calculateDeceitScore(totalSeverity);
+            const truthScore = calculateTruthScore(totalSeverity);
+            const frequency = mapToFrequency(totalSeverity);
+
+            return {
+                notation: generateFallbackNotation(found, axesHit, totalSeverity),
+                truthScore,
+                deceitScore,
+                frequency,
+                dominant: deceitScore > truthScore ? 'deceit' : 'truth'
+            };
+        }
+
+        function calculateDeceitScore(totalSeverity) {
+            // Double binds are inherently deceptive - high severity = high deceit
+            return Math.min(95, Math.round(30 + (totalSeverity * 12)));
+        }
+
+        function calculateTruthScore(totalSeverity) {
+            return Math.max(5, 100 - calculateDeceitScore(totalSeverity));
+        }
+
+        function mapToFrequency(totalSeverity) {
+            if (totalSeverity > 6) return 396;  // High threat
+            if (totalSeverity > 3) return 417;  // Medium threat
+            return 528;  // Low/no threat
+        }
+
+        function generateFallbackNotation(found, axesHit, totalSeverity) {
+            const status = found.length > 0 ? '✗' : '✓';
+            const truthScore = calculateTruthScore(totalSeverity);
+            const freq = mapToFrequency(totalSeverity);
+            return `⟐${status}:${truthScore}:${axesHit.length}D→${freq}Hz⟐`;
+        }
+
+        function displayGlyphOutput(analysis, axesHit) {
+            document.getElementById('glyphOutput').style.display = 'block';
+            document.getElementById('glyphNotation').textContent = analysis.notation;
+            document.getElementById('glyphTruth').textContent = analysis.truthScore;
+            document.getElementById('glyphDeceit').textContent = analysis.deceitScore;
+
+            // Frequency with color
+            const freqColors = { 396: '#FF6B6B', 417: '#FFD700', 528: '#4ECDC4' };
+            const freqNames = { 396: 'Liberation (Danger)', 417: 'Change (Caution)', 528: 'DNA Repair (Safe)' };
+            document.getElementById('glyphFrequency').innerHTML =
+                `<span style="color: ${freqColors[analysis.frequency] || '#FFF'}">
+                    ${analysis.frequency}Hz - ${freqNames[analysis.frequency] || 'Unknown'}
+                </span>`;
+
+            // Axis breakdown
+            if (axesHit.length > 0) {
+                const axisHtml = axesHit.map(axis =>
+                    `<div class="axis-item">
+                        <strong>Axis ${axis}</strong>: ${GLYPH_AXES[axis].name} - ${GLYPH_AXES[axis].desc}
+                    </div>`
+                ).join('');
+                document.getElementById('axisBreakdown').innerHTML =
+                    `<strong style="display: block; margin-bottom: 8px;">6D Coordinate Attack Surface:</strong>${axisHtml}`;
+            } else {
+                document.getElementById('axisBreakdown').innerHTML = '';
+            }
+
+            // Axis defenses
+            if (axesHit.length > 0) {
+                const defenseHtml = axesHit.map(axis =>
+                    `<div class="defense-item">${AXIS_DEFENSES[axis]}</div>`
+                ).join('');
+                document.getElementById('axisDefenses').innerHTML =
+                    `<strong style="display: block; margin-bottom: 8px; color: #4ECDC4;">Axis-Specific Defenses:</strong>${defenseHtml}`;
+            } else {
+                document.getElementById('axisDefenses').innerHTML = '';
+            }
+        }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

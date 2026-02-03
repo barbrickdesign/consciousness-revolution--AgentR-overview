@@ -39,7 +39,6 @@ def get_engine():
         engine = SemanticVectorEngine()
     return engine
 
-
 @app.route('/health', methods=['GET'])
 def health():
     """Health check"""
@@ -53,7 +52,6 @@ def health():
         })
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
-
 
 @app.route('/api/semantic', methods=['GET'])
 def semantic_search():
@@ -76,7 +74,6 @@ def semantic_search():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-
 @app.route('/api/similar', methods=['GET'])
 def find_similar():
     """Find files similar to a given file"""
@@ -97,7 +94,6 @@ def find_similar():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 @app.route('/api/clusters', methods=['GET'])
 def get_clusters():
@@ -124,7 +120,6 @@ def get_clusters():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-
 @app.route('/api/stats', methods=['GET'])
 def get_stats():
     """Get engine statistics"""
@@ -134,7 +129,6 @@ def get_stats():
         return jsonify(stats)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 @app.route('/api/ask', methods=['GET'])
 def ask_semantic():
@@ -165,7 +159,6 @@ def ask_semantic():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 if __name__ == '__main__':
     print("Starting Cyclotron Semantic API on port 6670...")

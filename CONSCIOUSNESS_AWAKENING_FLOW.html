@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciousness Awakening Flow | Pattern Theory</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* FLOW CONTAINER */
+        .flow-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* PROGRESS BAR */
+        .progress-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .progress-track {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #4ECDC4 100%);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .progress-step {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .progress-percent {
+            color: #4ECDC4;
+        }
+
+        /* STEP SCREENS */
+        .step-screen {
+            min-height: 100vh;
+            padding: 80px 20px 40px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .step-screen.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-content {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .step-icon {
+            font-size: 72px;
+            margin-bottom: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .step-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .step-subtitle {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        /* INSIGHT CARDS */
+        .insight-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 16px 0;
+            border-left: 4px solid #667eea;
+            text-align: left;
+        }
+
+        .insight-card h4 {
+            color: #4ECDC4;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .insight-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* CHOICE BUTTONS */
+        .choice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .choice-btn {
+            padding: 20px;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .choice-btn:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .choice-btn.selected {
+            border-color: #4ECDC4;
+            background: rgba(78, 205, 196, 0.2);
+        }
+
+        .choice-emoji {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .choice-text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* NAVIGATION */
+        .nav-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+            width: 100%;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 16px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-btn.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .nav-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-btn.secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .nav-btn.secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* QUIZ SECTION */
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 24px 0;
+            text-align: left;
+        }
+
+        .quiz-option {
+            padding: 16px 20px;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .quiz-option:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: #2ecc71;
+            background: rgba(46, 204, 113, 0.2);
+        }
+
+        .quiz-option.incorrect {
+            border-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.2);
+        }
+
+        .quiz-option.selected {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        /* PRACTICE AREA */
+        .practice-area {
+            width: 100%;
+            margin: 24px 0;
+        }
+
+        .practice-input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 14px;
+            resize: none;
+            height: 100px;
+            margin-bottom: 16px;
+        }
+
+        .practice-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .practice-input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+
+        .analyze-btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #4ECDC4 0%, #44a08d 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        /* RESULTS PANEL */
+        .results-panel {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .results-panel.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        .result-value {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .result-value.good { color: #2ecc71; }
+        .result-value.bad { color: #e74c3c; }
+        .result-value.neutral { color: #f1c40f; }
+
+        /* TOOL LINK CARDS */
+        .tool-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .tool-link {
+            padding: 16px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tool-link:hover {
+            transform: translateY(-3px);
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .tool-link-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .tool-link-name {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* COMPLETION SCREEN */
+        .completion-badge {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin: 0 auto 24px;
+            box-shadow: 0 0 40px rgba(102, 126, 234, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+            to { box-shadow: 0 0 60px rgba(102, 126, 234, 0.7); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4ECDC4;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            opacity: 0.6;
+            text-transform: uppercase;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 480px) {
+            .step-icon { font-size: 48px; }
+            .step-title { font-size: 24px; }
+            .step-subtitle { font-size: 14px; }
+            .choice-grid { grid-template-columns: 1fr; }
+            .nav-buttons { flex-direction: column; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <!-- PROGRESS HEADER -->
+        <div class="progress-header">
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="progress-info">
+                <span class="progress-step" id="progressStep">Step 1 of 7</span>
+                <span class="progress-percent" id="progressPercent">0%</span>
+            </div>
+        </div>
+
+        <!-- STEP 1: WELCOME -->
+        <div class="step-screen active" id="step1">
+            <div class="step-content">
+                <div class="step-icon">🌅</div>
+                <h1 class="step-title">Begin Your Awakening</h1>
+                <p class="step-subtitle">This guided flow will take you from first awareness to manipulation immunity. 7 steps. 10 minutes. One transformation.</p>
+
+                <div class="insight-card">
+                    <h4>What You Will Learn</h4>
+                    <p>Pattern Theory is a mathematical framework with 92.2% accuracy for detecting truth vs. deceit. You will learn to see what others miss.</p>
+                </div>
+
+                <div class="choice-grid">
+                    <button class="choice-btn" onclick="selectReason(this, 'relationship')">
+                        <div class="choice-emoji">💔</div>
+                        <div class="choice-text">Relationship Issues</div>
+                    </button>
+                    <button class="choice-btn" onclick="selectReason(this, 'business')">
+                        <div class="choice-emoji">💼</div>
+                        <div class="choice-text">Business/Work</div>
+                    </button>
+                    <button class="choice-btn" onclick="selectReason(this, 'family')">
+                        <div class="choice-emoji">👨‍👩‍👧</div>
+                        <div class="choice-text">Family Dynamics</div>
+                    </button>
+                    <button class="choice-btn" onclick="selectReason(this, 'general')">
+                        <div class="choice-emoji">🔍</div>
+                        <div class="choice-text">General Awareness</div>
+                    </button>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="nav-btn primary" onclick="nextStep()" id="step1Next" disabled>Begin Journey</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2: FIRST LESSON -->
+        <div class="step-screen" id="step2">
+            <div class="step-content">
+                <div class="step-icon">🎯</div>
+                <h1 class="step-title">The 15 Degree Rule</h1>
+                <p class="step-subtitle">Manipulation never comes at you head-on. It always approaches at an angle - around 15 degrees off-center.</p>
+
+                <div class="insight-card">
+                    <h4>Pattern Theory Insight</h4>
+                    <p>When someone's words don't quite match their actions, or their request feels slightly "off" - you're detecting the 15 degree angle. Trust that instinct.</p>
+                </div>
+
+                <div class="insight-card">
+                    <h4>Real Example</h4>
+                    <p>"I'm only saying this because I care about you..." followed by criticism. The caring frame (0°) masks the attack (15° off).</p>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="nav-btn secondary" onclick="prevStep()">Back</button>
+                    <button class="nav-btn primary" onclick="nextStep()">I Understand</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3: QUIZ -->
+        <div class="step-screen" id="step3">
+            <div class="step-content">
+                <div class="step-icon">🧪</div>
+                <h1 class="step-title">Test Your Detection</h1>
+                <p class="step-subtitle">Which statement contains a manipulation pattern?</p>
+
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">
+                        "I disagree with your decision and here's why..."
+                    </button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">
+                        "I need time to think about this before responding."
+                    </button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">
+                        "If you really loved me, you wouldn't question this."
+                    </button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">
+                        "I made a mistake and I apologize."
+                    </button>
+                </div>
+
+                <div class="results-panel" id="quizResult">
+                    <div class="result-row">
+                        <span class="result-label">Pattern Detected</span>
+                        <span class="result-value bad" id="quizPattern">Emotional Blackmail</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">The Angle</span>
+                        <span class="result-value neutral">"Love" masks the control demand</span>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="nav-btn secondary" onclick="prevStep()">Back</button>
+                    <button class="nav-btn primary" onclick="nextStep()" id="step3Next" disabled>Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 4: PRACTICE -->
+        <div class="step-screen" id="step4">
+            <div class="step-content">
+                <div class="step-icon">🔬</div>
+                <h1 class="step-title">Live Practice</h1>
+                <p class="step-subtitle">Paste something real from your life - a text, email, or conversation that felt "off". Let's analyze it together.</p>
+
+                <div class="practice-area">
+                    <textarea class="practice-input" id="practiceInput" placeholder="Paste the message or conversation here...
+
+Example: 'You're being too sensitive. That never happened. Everyone else thinks you're overreacting.'"></textarea>
+                    <button class="analyze-btn" onclick="analyzeText()">Analyze for Patterns</button>
+                </div>
+
+                <div class="results-panel" id="practiceResult">
+                    <div class="result-row">
+                        <span class="result-label">Overall Assessment</span>
+                        <span class="result-value" id="overallScore">-</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Patterns Detected</span>
+                        <span class="result-value" id="patternsFound">-</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Consciousness Level</span>
+                        <span class="result-value" id="consciousnessLevel">-</span>
+                    </div>
+                    <div id="patternDetails" style="margin-top: 12px; font-size: 12px; opacity: 0.8;"></div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="nav-btn secondary" onclick="prevStep()">Back</button>
+                    <button class="nav-btn primary" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 5: THE FORMULA -->
+        <div class="step-screen" id="step5">
+            <div class="step-content">
+                <div class="step-icon">📐</div>
+                <h1 class="step-title">The Manipulation Formula</h1>
+                <p class="step-subtitle">Every manipulation follows a mathematical pattern. Once you see it, you can never unsee it.</p>
+
+                <div class="insight-card">
+                    <h4>The Formula</h4>
+                    <p style="font-family: monospace; font-size: 16px; color: #4ECDC4;">
+                        M = (FE × CB × SR × CD × PE) × DC
+                    </p>
+                </div>
+
+                <div class="insight-card">
+                    <h4>Decoded</h4>
+                    <p>
+                        <strong>FE</strong> = False Equivalence (making unequal things seem equal)<br>
+                        <strong>CB</strong> = Cognitive Bypass (bypassing your logic)<br>
+                        <strong>SR</strong> = Social Reinforcement (using others against you)<br>
+                        <strong>CD</strong> = Chronic Doubt (keeping you uncertain)<br>
+                        <strong>PE</strong> = Persistent Erosion (slow constant attack)<br>
+                        <strong>DC</strong> = Distraction Constant (keeping you off-balance)
+                    </p>
+                </div>
+
+                <div class="insight-card">
+                    <h4>Your Defense</h4>
+                    <p>Break ANY single factor and the manipulation fails. That's why Pattern Theory works - you only need to catch ONE element.</p>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="nav-btn secondary" onclick="prevStep()">Back</button>
+                    <button class="nav-btn primary" onclick="nextStep()">I See It Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 6: YOUR TOOLKIT -->
+        <div class="step-screen" id="step6">
+            <div class="step-content">
+                <div class="step-icon">🛡️</div>
+                <h1 class="step-title">Your Defense Toolkit</h1>
+                <p class="step-subtitle">Based on your focus area, here are the tools that will help you most. Bookmark them.</p>
+
+                <div class="tool-links" id="toolLinks">
+                    <!-- Populated by JS based on user selection -->
+                </div>
+
+                <div class="insight-card">
+                    <h4>Pro Tip</h4>
+                    <p>Use these tools whenever something feels "off". The more you practice, the faster your detection becomes. Most users achieve manipulation immunity within 30 days of daily use.</p>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="nav-btn secondary" onclick="prevStep()">Back</button>
+                    <button class="nav-btn primary" onclick="nextStep()">Complete Journey</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 7: COMPLETION -->
+        <div class="step-screen" id="step7">
+            <div class="step-content">
+                <div class="completion-badge">🎓</div>
+                <h1 class="step-title">Awakening Complete</h1>
+                <p class="step-subtitle">You've taken the first step toward manipulation immunity. The patterns are now visible to you.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="finalScore">100%</div>
+                        <div class="stat-label">Flow Complete</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="patternsLearned">6</div>
+                        <div class="stat-label">Patterns Learned</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="timeSpent">-</div>
+                        <div class="stat-label">Minutes</div>
+                    </div>
+                </div>
+
+                <div class="insight-card">
+                    <h4>Your Next Steps</h4>
+                    <p>1. Use your toolkit daily<br>
+                       2. Practice the Reality Check on everything<br>
+                       3. Track patterns in a journal<br>
+                       4. Return for the full course when ready</p>
+                </div>
+
+                <div class="nav-buttons">
+                    <a href="consciousness-tools.html" class="nav-btn primary" style="text-decoration: none; text-align: center;">
+                        Explore All Tools
+                    </a>
+                    <a href="course-dashboard.html" class="nav-btn secondary" style="text-decoration: none; text-align: center;">
+                        Start Full Course
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // FLOW STATE
+        const flowState = {
+            currentStep: 1,
+            totalSteps: 7,
+            userReason: null,
+            quizCorrect: false,
+            startTime: Date.now(),
+            patternsAnalyzed: 0
+        };
+
+        // PATTERN DETECTION ENGINE
+        const MANIPULATION_PATTERNS = {
+            gaslighting: {
+                markers: ['never happened', 'imagining', 'crazy', 'too sensitive', 'overreacting', 'making it up'],
+                name: 'Gaslighting',
+                severity: 'high'
+            },
+            emotionalBlackmail: {
+                markers: ['if you loved', 'if you cared', 'real friend would', 'good person would', 'should feel'],
+                name: 'Emotional Blackmail',
+                severity: 'high'
+            },
+            guiltTripping: {
+                markers: ['after everything', 'for you', 'all i do', 'you owe', 'ungrateful'],
+                name: 'Guilt Tripping',
+                severity: 'medium'
+            },
+            loveBombing: {
+                markers: ['soulmate', 'never felt this', 'perfect for me', 'meant to be', 'destiny'],
+                name: 'Love Bombing',
+                severity: 'medium'
+            },
+            triangulation: {
+                markers: ['everyone thinks', 'they all say', 'others agree', 'no one else', 'only you'],
+                name: 'Triangulation',
+                severity: 'high'
+            },
+            futureFaking: {
+                markers: ['one day', 'when we', 'promise', 'soon', 'eventually', 'gonna'],
+                name: 'Future Faking',
+                severity: 'medium'
+            },
+            wordSalad: {
+                markers: ['but what about', 'that\'s not', 'you always', 'you never', 'typical'],
+                name: 'Word Salad / Deflection',
+                severity: 'medium'
+            },
+            pressureTactics: {
+                markers: ['now or never', 'last chance', 'won\'t wait', 'running out', 'urgent'],
+                name: 'Pressure Tactics',
+                severity: 'high'
+            }
+        };
+
+        const TOOL_RECOMMENDATIONS = {
+            relationship: [
+                { icon: '💔', name: 'Gaslighting Detector', url: 'GASLIGHTING_DETECTOR.html' },
+                { icon: '💕', name: 'Love Bombing Detector', url: 'LOVE_BOMBING_DETECTOR.html' },
+                { icon: '😢', name: 'Emotional Blackmail', url: 'EMOTIONAL_BLACKMAIL_DETECTOR.html' },
+                { icon: '🔺', name: 'Triangulation Detector', url: 'TRIANGULATION_DETECTOR.html' },
+                { icon: '🔮', name: 'Future Faking Detector', url: 'FUTURE_FAKING_DETECTOR.html' },
+                { icon: '🚪', name: 'Hoovering Detector', url: 'HOOVERING_DETECTOR.html' }
+            ],
+            business: [
+                { icon: '📊', name: 'Sales Pitch Detector', url: 'SALES_PITCH_DETECTOR.html' },
+                { icon: '⏰', name: 'Pressure Detector', url: 'PRESSURE_DETECTOR.html' },
+                { icon: '🎯', name: 'Influence Detector', url: 'INFLUENCE_DETECTOR.html' },
+                { icon: '🔍', name: 'Reality Check', url: 'REALITY_CHECK.html' },
+                { icon: '⚖️', name: 'Decision Matrix', url: 'DECISION_MATRIX.html' },
+                { icon: '📰', name: 'News Bias Detector', url: 'NEWS_BIAS_DETECTOR.html' }
+            ],
+            family: [
+                { icon: '😔', name: 'Guilt Trip Detector', url: 'GUILT_TRIP_DETECTOR.html' },
+                { icon: '💔', name: 'Gaslighting Detector', url: 'GASLIGHTING_DETECTOR.html' },
+                { icon: '🎭', name: 'Passive Aggressive', url: 'PASSIVE_AGGRESSIVE_DECODER.html' },
+                { icon: '🔺', name: 'Triangulation', url: 'TRIANGULATION_DETECTOR.html' },
+                { icon: '🎯', name: 'Projection Detector', url: 'PROJECTION_DETECTOR.html' },
+                { icon: '🚧', name: 'Boundary Setter', url: 'BOUNDARY_SETTER.html' }
+            ],
+            general: [
+                { icon: '🔍', name: 'Reality Check', url: 'REALITY_CHECK.html' },
+                { icon: '📚', name: 'Pattern Library', url: 'PATTERN_LIBRARY.html' },
+                { icon: '🧪', name: 'Belief Checker', url: 'BELIEF_CHECKER.html' },
+                { icon: '📰', name: 'News Bias', url: 'NEWS_BIAS_DETECTOR.html' },
+                { icon: '🎯', name: 'Influence Detector', url: 'INFLUENCE_DETECTOR.html' },
+                { icon: '⚖️', name: 'Decision Matrix', url: 'DECISION_MATRIX.html' }
+            ]
+        };
+
+        // NAVIGATION
+        function updateProgress() {
+            const percent = Math.round((flowState.currentStep / flowState.totalSteps) * 100);
+            document.getElementById('progressFill').style.width = percent + '%';
+            document.getElementById('progressStep').textContent = `Step ${flowState.currentStep} of ${flowState.totalSteps}`;
+            document.getElementById('progressPercent').textContent = percent + '%';
+        }
+
+        function showStep(stepNum) {
+            document.querySelectorAll('.step-screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + stepNum).classList.add('active');
+            flowState.currentStep = stepNum;
+            updateProgress();
+
+            // Special handling for step 6
+            if (stepNum === 6) {
+                populateToolLinks();
+            }
+
+            // Special handling for step 7
+            if (stepNum === 7) {
+                const elapsed = Math.round((Date.now() - flowState.startTime) / 60000);
+                document.getElementById('timeSpent').textContent = elapsed || '1';
+            }
+        }
+
+        function nextStep() {
+            if (flowState.currentStep < flowState.totalSteps) {
+                showStep(flowState.currentStep + 1);
+            }
+        }
+
+        function prevStep() {
+            if (flowState.currentStep > 1) {
+                showStep(flowState.currentStep - 1);
+            }
+        }
+
+        // STEP 1: REASON SELECTION
+        function selectReason(btn, reason) {
+            document.querySelectorAll('#step1 .choice-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            flowState.userReason = reason;
+            document.getElementById('step1Next').disabled = false;
+        }
+
+        // STEP 3: QUIZ
+        function checkAnswer(btn, isCorrect) {
+            const options = document.querySelectorAll('#step3 .quiz-option');
+            options.forEach(o => {
+                o.disabled = true;
+                o.classList.remove('selected');
+            });
+
+            if (isCorrect) {
+                btn.classList.add('correct');
+                flowState.quizCorrect = true;
+                document.getElementById('quizPattern').textContent = 'Emotional Blackmail';
+            } else {
+                btn.classList.add('incorrect');
+                // Highlight correct answer
+                options[2].classList.add('correct');
+            }
+
+            document.getElementById('quizResult').classList.add('active');
+            document.getElementById('step3Next').disabled = false;
+        }
+
+        // STEP 4: ANALYSIS
+        function analyzeText() {
+            const text = document.getElementById('practiceInput').value.trim();
+            if (!text) return;
+
+            const lower = text.toLowerCase();
+            const foundPatterns = [];
+
+            // Check for patterns
+            Object.entries(MANIPULATION_PATTERNS).forEach(([key, data]) => {
+                if (data.markers.some(m => lower.includes(m))) {
+                    foundPatterns.push(data);
+                }
+            });
+
+            flowState.patternsAnalyzed++;
+
+            // Calculate scores
+            const overallScore = foundPatterns.length === 0 ? 'CLEAR' :
+                                 foundPatterns.length <= 2 ? 'CAUTION' : 'DANGER';
+
+            const scoreClass = overallScore === 'CLEAR' ? 'good' :
+                              overallScore === 'CAUTION' ? 'neutral' : 'bad';
+
+            const consciousness = foundPatterns.length === 0 ? 'High (Healthy)' :
+                                 foundPatterns.length <= 2 ? 'Medium (Alert)' : 'Low (Manipulative)';
+
+            // Update UI
+            const overallEl = document.getElementById('overallScore');
+            overallEl.textContent = overallScore;
+            overallEl.className = 'result-value ' + scoreClass;
+
+            document.getElementById('patternsFound').textContent =
+                foundPatterns.length > 0 ? foundPatterns.length : 'None';
+            document.getElementById('patternsFound').className =
+                'result-value ' + (foundPatterns.length === 0 ? 'good' : 'bad');
+
+            document.getElementById('consciousnessLevel').textContent = consciousness;
+
+            // Pattern details
+            if (foundPatterns.length > 0) {
+                document.getElementById('patternDetails').innerHTML =
+                    '<strong>Patterns found:</strong><br>' +
+                    foundPatterns.map(p => `• ${p.name} (${p.severity} severity)`).join('<br>');
+            } else {
+                document.getElementById('patternDetails').innerHTML =
+                    '<span style="color: #2ecc71;">No manipulation patterns detected. This appears to be healthy communication.</span>';
+            }
+
+            document.getElementById('practiceResult').classList.add('active');
+        }
+
+        // STEP 6: TOOL LINKS
+        function populateToolLinks() {
+            const reason = flowState.userReason || 'general';
+            const tools = TOOL_RECOMMENDATIONS[reason];
+
+            const container = document.getElementById('toolLinks');
+            container.innerHTML = tools.map(t => `
+                <a href="${t.url}" class="tool-link" target="_blank">
+                    <div class="tool-link-icon">${t.icon}</div>
+                    <div class="tool-link-name">${t.name}</div>
+                </a>
+            `).join('');
+        }
+
+        // INIT
+        updateProgress();
+
+        // Save progress to localStorage
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('awakeningFlowState', JSON.stringify({
+                step: flowState.currentStep,
+                reason: flowState.userReason,
+                timestamp: Date.now()
+            }));
+        });
+
+        // Resume if recent session
+        const saved = localStorage.getItem('awakeningFlowState');
+        if (saved) {
+            const data = JSON.parse(saved);
+            // Only resume if less than 1 hour old
+            if (Date.now() - data.timestamp < 3600000 && data.step > 1) {
+                if (confirm('Resume from where you left off?')) {
+                    flowState.userReason = data.reason;
+                    showStep(data.step);
+                }
+            }
+        }
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

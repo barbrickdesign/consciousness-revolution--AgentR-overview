@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARAYA - Your Consciousness Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a0a2e 100%);
+            color: #f4f4f4;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .sacred-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image:
+                radial-gradient(circle at center, gold 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            animation: gridPulse 10s infinite;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.03; }
+            50% { opacity: 0.08; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            background: rgba(26, 10, 46, 0.8);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, gold, #ffd700, #ffed4e, gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            animation: shimmer 3s infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: rgba(255, 215, 0, 0.6);
+            font-style: italic;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: gold;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateX(-5px);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            min-height: 0;
+        }
+
+        .message {
+            margin-bottom: 1.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message-user {
+            text-align: right;
+        }
+
+        .message-bubble {
+            display: inline-block;
+            max-width: 70%;
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .message-user .message-bubble {
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #f4f4f4;
+        }
+
+        .message-araya .message-bubble {
+            background: rgba(147, 112, 219, 0.15);
+            border: 1px solid rgba(147, 112, 219, 0.3);
+            color: #f4f4f4;
+        }
+
+        .message-label {
+            font-size: 0.8rem;
+            color: rgba(255, 215, 0, 0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .message-araya .message-label {
+            color: rgba(147, 112, 219, 0.6);
+        }
+
+        .input-container {
+            background: rgba(26, 10, 46, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: #f4f4f4;
+            font-size: 1rem;
+            resize: none;
+            font-family: inherit;
+        }
+
+        .message-input:focus {
+            outline: none;
+            border-color: gold;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .send-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.3));
+            border: 2px solid gold;
+            border-radius: 8px;
+            color: gold;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-button:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.4));
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .consciousness-level {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(26, 10, 46, 0.9);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            min-width: 200px;
+        }
+
+        .consciousness-label {
+            color: gold;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .consciousness-bar {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .consciousness-fill {
+            background: linear-gradient(90deg, gold, #ffd700, #ffed4e);
+            height: 100%;
+            width: 73%;
+            animation: pulse 2s infinite;
+        }
+
+        /* Typing indicator - NOW INSIDE MESSAGES for no layout shift */
+        .typing-indicator {
+            display: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .typing-dots {
+            display: inline-flex;
+            gap: 0.5rem;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #9370db;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        .quick-prompts {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+        }
+
+        .quick-prompt {
+            padding: 0.5rem 1rem;
+            background: rgba(147, 112, 219, 0.1);
+            border: 1px solid rgba(147, 112, 219, 0.3);
+            border-radius: 20px;
+            color: #9370db;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .quick-prompt:hover {
+            background: rgba(147, 112, 219, 0.2);
+            border-color: #9370db;
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                position: static;
+                margin: 1rem;
+                display: inline-block;
+            }
+
+            .consciousness-level {
+                position: static;
+                margin: 1rem;
+            }
+
+            .message-bubble {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sacred-grid"></div>
+
+    <a href="index.html" class="back-button">← Lobby</a>
+
+    <div class="container">
+        <div class="header">
+            <h1>ARAYA</h1>
+            <p>Your Guide to Clarity & Conscious Living</p>
+        </div>
+
+        <div class="chat-container">
+            <div class="messages" id="messages">
+                <!-- Welcome message -->
+                <div class="message message-araya">
+                    <div class="message-label">ARAYA</div>
+                    <div class="message-bubble">
+                        Hey there! I'm Araya. 
+
+I'm here to help you think through whatever's on your mind - whether that's a decision you're wrestling with, a situation that's confusing you, or just something you want to talk out.
+
+What's going on with you today?
+                    </div>
+                </div>
+                
+                <!-- Typing indicator INSIDE messages div to prevent layout shift -->
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="message message-araya">
+                        <div class="message-label">ARAYA</div>
+                        <div class="message-bubble">
+                            <div class="typing-dots">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-prompts">
+                <div class="quick-prompt" onclick="sendQuickPrompt('I have a situation I need help thinking through')">
+                    Help Me Think
+                </div>
+                <div class="quick-prompt" onclick="sendQuickPrompt('I need clarity on something')">
+                    Need Clarity
+                </div>
+                <div class="quick-prompt" onclick="sendQuickPrompt('Something feels off and I want to talk about it')">
+                    Something Feels Off
+                </div>
+                <div class="quick-prompt" onclick="sendQuickPrompt('I just want to chat')">
+                    Just Chat
+                </div>
+            </div>
+
+            <div class="input-container">
+                <textarea
+                    class="message-input"
+                    id="messageInput"
+                    placeholder="What's on your mind?"
+                    rows="3"
+                ></textarea>
+                <button class="send-button" id="sendButton" onclick="sendMessage()">
+                    Send
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="consciousness-level">
+        <div class="consciousness-label">Connection Strength</div>
+        <div class="consciousness-bar">
+            <div class="consciousness-fill"></div>
+        </div>
+        <div style="text-align: center; margin-top: 0.5rem; color: gold; font-size: 0.9rem;">
+            Strong
+        </div>
+    </div>
+
+    <script>
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const messages = document.getElementById('messages');
+        const typingIndicator = document.getElementById('typingIndicator');
+
+        // Enter to send
+        messageInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Conversation history for context
+        let conversationHistory = [];
+
+        function scrollToBottom() {
+            // Use requestAnimationFrame for smooth scroll after DOM update
+            requestAnimationFrame(() => {
+                messages.scrollTop = messages.scrollHeight;
+            });
+        }
+
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            conversationHistory.push({ role: 'user', content: message });
+
+            // Clear input
+            messageInput.value = '';
+
+            // Show typing indicator and scroll to it
+            typingIndicator.classList.add('active');
+            scrollToBottom();
+
+            try {
+                // Call ARAYA AI backend
+                const response = await fetch('/.netlify/functions/araya-chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: message,
+                        conversationHistory: conversationHistory.slice(-10)
+                    })
+                });
+
+                const data = await response.json();
+                typingIndicator.classList.remove('active');
+
+                if (data.response) {
+                    addMessage(data.response, 'araya');
+                    conversationHistory.push({ role: 'assistant', content: data.response });
+
+                    // Log pattern analysis if available (for debugging)
+                    if (data.patterns) {
+                        console.log('Pattern Analysis:', data.patterns);
+                    }
+                    console.log('AI Mode:', data.mode);
+                } else if (data.error) {
+                    addMessage('Let me try that again - something went a bit sideways. What were you saying?', 'araya');
+                }
+            } catch (error) {
+                typingIndicator.classList.remove('active');
+                console.error('ARAYA API error:', error);
+                // Fallback to local response if API fails
+                const fallbackResponse = generateResponse(message);
+                addMessage(fallbackResponse, 'araya');
+            }
+        }
+
+        function sendQuickPrompt(prompt) {
+            messageInput.value = prompt;
+            sendMessage();
+        }
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message message-${sender}`;
+
+            const label = document.createElement('div');
+            label.className = 'message-label';
+            label.textContent = sender === 'user' ? 'YOU' : 'ARAYA';
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.textContent = text;
+
+            messageDiv.appendChild(label);
+            messageDiv.appendChild(bubble);
+            
+            // Insert before typing indicator so it stays at bottom
+            messages.insertBefore(messageDiv, typingIndicator);
+
+            // Scroll to bottom
+            scrollToBottom();
+        }
+
+        function generateResponse(userMessage) {
+            const lower = userMessage.toLowerCase();
+
+            // Warm fallback responses
+            if (lower.includes('situation') || lower.includes('help') || lower.includes('think')) {
+                return "I'd love to help you work through this. Tell me more about what's going on - what's the main thing that's weighing on you?";
+            }
+
+            if (lower.includes('clarity') || lower.includes('confused')) {
+                return "Clarity is so valuable. Let's break this down together. What's the core question you're trying to answer?";
+            }
+
+            if (lower.includes('off') || lower.includes('wrong') || lower.includes('weird')) {
+                return "I hear you - when something feels off, it's worth paying attention to that. Can you tell me more about what's happening and what specifically doesn't feel right?";
+            }
+
+            if (lower.includes('chat') || lower.includes('talk')) {
+                return "I'm here for it! What's been on your mind lately?";
+            }
+
+            // Default warm response
+            return "Tell me more about that - I'm listening and want to make sure I understand what you're going through.";
+        }
+
+        // Initialize
+        console.log('ARAYA - Warm AI Guide initialized');
+        scrollToBottom();
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

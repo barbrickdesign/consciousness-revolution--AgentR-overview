@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Library Demo - Sacred Theme</title>
+  <link rel="stylesheet" href="sacred-theme.css">
+  <style>
+    /* Demo-specific styles */
+    .demo-section {
+      margin-bottom: var(--space-16);
+      padding: var(--space-8);
+      background: rgba(26, 26, 46, 0.3);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    .demo-section h2 {
+      color: var(--color-primary);
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-6);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+      padding-bottom: var(--space-3);
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-6);
+    }
+
+    .demo-item {
+      padding: var(--space-4);
+      background: rgba(15, 15, 26, 0.5);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .demo-label {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+
+    .color-swatch {
+      width: 100%;
+      height: 60px;
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+    }
+
+    code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      color: var(--color-primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Ambient particles -->
+  <div class="particles">
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 3s;"></div>
+  </div>
+
+  <!-- Home button -->
+  <a href="index.html" class="home-button">← Sacred Lobby</a>
+
+  <!-- Main content -->
+  <div class="container" style="padding: 6rem 0;">
+
+    <!-- Header -->
+    <div class="text-center" style="margin-bottom: var(--space-16);">
+      <h1 class="text-gold-gradient" style="font-size: var(--text-5xl); margin-bottom: var(--space-4);">
+        Sacred Theme Component Library
+      </h1>
+      <p style="font-size: var(--text-xl); color: var(--text-secondary); letter-spacing: var(--tracking-wide);">
+        Complete design system demonstration
+      </p>
+    </div>
+
+    <!-- COLORS -->
+    <section class="demo-section">
+      <h2>Color System</h2>
+
+      <h3 style="color: var(--text-primary); margin: var(--space-8) 0 var(--space-4);">Primary Colors</h3>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <span class="demo-label">Primary Gold</span>
+          <div class="color-swatch" style="background: var(--color-primary); color: var(--bg-primary);">
+            #FFD700
+          </div>
+          <code>var(--color-primary)</code>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">Primary Light</span>
+          <div class="color-swatch" style="background: var(--color-primary-light); color: var(--bg-primary);">
+            #FFA500
+          </div>
+          <code>var(--color-primary-light)</code>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">Gold Gradient</span>
+          <div class="color-swatch" style="background: var(--color-primary-gradient); color: var(--bg-primary);">
+            Gradient
+          </div>
+          <code>var(--color-primary-gradient)</code>
+        </div>
+      </div>
+
+      <h3 style="color: var(--text-primary); margin: var(--space-8) 0 var(--space-4);">7 Domain Colors (Chakra System)</h3>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <span class="demo-label">1. COMMAND (Root)</span>
+          <div class="color-swatch" style="background: var(--domain-1-command);">Red</div>
+          <code>var(--domain-1-command)</code>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">2. BUILD (Sacral)</span>
+          <div class="color-swatch" style="background: var(--domain-2-build);">Orange</div>
+          <code>var(--domain-2-build)</code>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">3. CONNECT (Solar)</span>
+          <div class="color-swatch" style="background: var(--domain-3-connect); color: var(--bg-primary);">Yellow</div>
+          <code>var(--domain-3-connect)</code>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">4. PROTECT (Heart)</span>
+          <div class="color-swatch" style="background: var(--domain-4-protect);">Green</div>
+          <code>var(--domain-4-protect)</code>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">5. GROW (Throat)</span>
+          <div class="color-swatch" style="background: var(--domain-5-grow);">Blue</div>
+          <code>var(--domain-5-grow)</code>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">6. LEARN (Third Eye)</span>
+          <div class="color-swatch" style="background: var(--domain-6-learn);">Indigo</div>
+          <code>var(--domain-6-learn)</code>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">7. TRANSCEND (Crown)</span>
+          <div class="color-swatch" style="background: var(--domain-7-transcend);">Violet</div>
+          <code>var(--domain-7-transcend)</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUTTONS -->
+    <section class="demo-section">
+      <h2>Buttons</h2>
+
+      <div class="flex gap-4" style="flex-wrap: wrap; margin-bottom: var(--space-6);">
+        <button class="btn btn-primary">Primary Button</button>
+        <button class="btn btn-secondary">Secondary Button</button>
+        <button class="btn btn-ghost">Ghost Button</button>
+      </div>
+
+      <h3 style="color: var(--text-primary); margin: var(--space-6) 0 var(--space-4);">Domain-Colored Buttons</h3>
+      <div class="flex gap-4" style="flex-wrap: wrap;">
+        <button class="btn btn-ghost btn-domain-1">Command</button>
+        <button class="btn btn-ghost btn-domain-2">Build</button>
+        <button class="btn btn-ghost btn-domain-3">Connect</button>
+        <button class="btn btn-ghost btn-domain-4">Protect</button>
+        <button class="btn btn-ghost btn-domain-5">Grow</button>
+        <button class="btn btn-ghost btn-domain-6">Learn</button>
+        <button class="btn btn-ghost btn-domain-7">Transcend</button>
+      </div>
+
+      <div style="margin-top: var(--space-6); padding: var(--space-4); background: rgba(0,0,0,0.3); border-radius: var(--radius-md);">
+        <code style="display: block; margin-bottom: var(--space-2);">
+          &lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+        </code>
+        <code style="display: block; margin-bottom: var(--space-2);">
+          &lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+        </code>
+        <code style="display: block;">
+          &lt;button class="btn btn-ghost btn-domain-1"&gt;Command&lt;/button&gt;
+        </code>
+      </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="demo-section">
+      <h2>Cards</h2>
+
+      <div class="demo-grid">
+        <!-- Basic Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Basic Card</h3>
+            <p class="card-subtitle">Standard card component</p>
+          </div>
+          <div class="card-body">
+            <p>This is a standard card with header, body, and footer sections. Use for general content blocks.</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-secondary">Action</button>
+          </div>
+        </div>
+
+        <!-- Domain-colored Cards -->
+        <div class="card card-domain-4">
+          <div class="card-header">
+            <h3 class="card-title">PROTECT Domain</h3>
+            <p class="card-subtitle">Domain 4 - Heart Chakra</p>
+          </div>
+          <div class="card-body">
+            <p>Domain-colored cards use themed border colors from the chakra system.</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-ghost btn-domain-4">Protect</button>
+          </div>
+        </div>
+
+        <div class="card card-domain-7">
+          <div class="card-header">
+            <h3 class="card-title">TRANSCEND Domain</h3>
+            <p class="card-subtitle">Domain 7 - Crown Chakra</p>
+          </div>
+          <div class="card-body">
+            <p>Violet border represents the crown chakra and highest consciousness.</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-ghost btn-domain-7">Transcend</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-6); padding: var(--space-4); background: rgba(0,0,0,0.3); border-radius: var(--radius-md);">
+        <code style="display: block; white-space: pre; overflow-x: auto;">
+&lt;div class="card"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h3 class="card-title"&gt;Title&lt;/h3&gt;
+    &lt;p class="card-subtitle"&gt;Subtitle&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;Content&lt;/div&gt;
+  &lt;div class="card-footer"&gt;
+    &lt;button class="btn btn-secondary"&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+        </code>
+      </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <section class="demo-section">
+      <h2>Navigation Components</h2>
+
+      <h3 style="color: var(--text-primary); margin-bottom: var(--space-4);">Navigation Links</h3>
+      <nav class="sacred-nav" style="margin-bottom: var(--space-8);">
+        <a href="#" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" class="nav-link active">Active Page</a>
+        <a href="#" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" class="nav-link">Page 2</a>
+        <a href="#" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" class="nav-link">Page 3</a>
+        <a href="#" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" class="nav-link">Page 4</a>
+      </nav>
+
+      <h3 style="color: var(--text-primary); margin-bottom: var(--space-4);">Breadcrumbs</h3>
+      <div class="sacred-breadcrumbs" style="margin-bottom: var(--space-8);">
+        <a href="#" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#" class="breadcrumb-link">Domain</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>Current Page</span>
+      </div>
+
+      <h3 style="color: var(--text-primary); margin-bottom: var(--space-4);">Home Button (Fixed Position)</h3>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+        See top-left corner of this page ↖
+      </p>
+
+      <div style="margin-top: var(--space-6); padding: var(--space-4); background: rgba(0,0,0,0.3); border-radius: var(--radius-md);">
+        <code style="display: block; margin-bottom: var(--space-2);">
+          &lt;a href="index.html" class="home-button"&gt;← Sacred Lobby&lt;/a&gt;
+        </code>
+        <code style="display: block;">
+          &lt;nav class="sacred-nav"&gt;...&lt;/nav&gt;
+        </code>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section class="demo-section">
+      <h2>Typography</h2>
+
+      <div style="margin-bottom: var(--space-8);">
+        <h1 class="text-gold-gradient" style="font-size: var(--text-5xl); margin-bottom: var(--space-3);">
+          Hero Text (text-5xl)
+        </h1>
+        <h2 style="font-size: var(--text-4xl); margin-bottom: var(--space-3);">
+          Heading 2 (text-4xl)
+        </h2>
+        <h3 style="font-size: var(--text-3xl); margin-bottom: var(--space-3);">
+          Heading 3 (text-3xl)
+        </h3>
+        <h4 style="font-size: var(--text-2xl); margin-bottom: var(--space-3);">
+          Heading 4 (text-2xl)
+        </h4>
+        <p style="font-size: var(--text-xl); margin-bottom: var(--space-3);">
+          Large body text (text-xl)
+        </p>
+        <p style="font-size: var(--text-base); margin-bottom: var(--space-3);">
+          Standard body text (text-base) - This is the default paragraph text size.
+        </p>
+        <p style="font-size: var(--text-sm); color: var(--text-secondary);">
+          Small text (text-sm) - Used for captions and secondary information.
+        </p>
+      </div>
+
+      <h3 style="color: var(--text-primary); margin: var(--space-6) 0 var(--space-4);">Text Utilities</h3>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <span class="demo-label">Gold Gradient</span>
+          <p class="text-gold-gradient" style="font-size: var(--text-2xl); font-weight: var(--weight-bold);">
+            Consciousness Revolution
+          </p>
+          <code>.text-gold-gradient</code>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">Text Transform</span>
+          <p class="text-uppercase">uppercase text</p>
+          <p class="text-capitalize">capitalize each word</p>
+          <code>.text-uppercase</code><br>
+          <code>.text-capitalize</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACING -->
+    <section class="demo-section">
+      <h2>Spacing System</h2>
+
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">
+        All spacing based on 4px grid system. Use CSS variables for consistent spacing.
+      </p>
+
+      <div class="demo-grid">
+        <div class="demo-item">
+          <span class="demo-label">space-1 (4px)</span>
+          <div style="height: var(--space-1); background: var(--color-primary);"></div>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">space-2 (8px)</span>
+          <div style="height: var(--space-2); background: var(--color-primary);"></div>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">space-4 (16px)</span>
+          <div style="height: var(--space-4); background: var(--color-primary);"></div>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">space-6 (24px)</span>
+          <div style="height: var(--space-6); background: var(--color-primary);"></div>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">space-8 (32px)</span>
+          <div style="height: var(--space-8); background: var(--color-primary);"></div>
+        </div>
+        <div class="demo-item">
+          <span class="demo-label">space-12 (48px)</span>
+          <div style="height: var(--space-12); background: var(--color-primary);"></div>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-6); padding: var(--space-4); background: rgba(0,0,0,0.3); border-radius: var(--radius-md);">
+        <code>padding: var(--space-6);</code><br>
+        <code>margin-bottom: var(--space-8);</code><br>
+        <code>gap: var(--space-4);</code>
+      </div>
+    </section>
+
+    <!-- LAYOUT -->
+    <section class="demo-section">
+      <h2>Layout Utilities</h2>
+
+      <h3 style="color: var(--text-primary); margin-bottom: var(--space-4);">Containers</h3>
+      <div class="demo-item" style="margin-bottom: var(--space-6);">
+        <span class="demo-label">Standard Container (1400px max)</span>
+        <div class="container" style="background: rgba(255, 215, 0, 0.1); padding: var(--space-4); border-radius: var(--radius-md);">
+          <code>.container</code> - Max-width 1400px, auto margins
+        </div>
+      </div>
+
+      <div class="demo-item" style="margin-bottom: var(--space-6);">
+        <span class="demo-label">Small Container (800px max)</span>
+        <div class="container-sm" style="background: rgba(255, 215, 0, 0.1); padding: var(--space-4); border-radius: var(--radius-md);">
+          <code>.container-sm</code> - Max-width 800px, for text-heavy pages
+        </div>
+      </div>
+
+      <h3 style="color: var(--text-primary); margin-bottom: var(--space-4);">Flexbox Utilities</h3>
+      <div class="demo-item">
+        <span class="demo-label">Flex Row with Gap</span>
+        <div class="flex items-center gap-4" style="background: rgba(255, 215, 0, 0.1); padding: var(--space-4); border-radius: var(--radius-md); margin-bottom: var(--space-4);">
+          <div style="padding: var(--space-3); background: var(--bg-secondary); border-radius: var(--radius-md);">Item 1</div>
+          <div style="padding: var(--space-3); background: var(--bg-secondary); border-radius: var(--radius-md);">Item 2</div>
+          <div style="padding: var(--space-3); background: var(--bg-secondary); border-radius: var(--radius-md);">Item 3</div>
+        </div>
+        <code>.flex .items-center .gap-4</code>
+      </div>
+    </section>
+
+    <!-- SACRED GEOMETRY -->
+    <section class="demo-section">
+      <h2>Sacred Geometry Elements</h2>
+
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">
+        See the main lobby (index.html) for full Flower of Life and portal system.
+      </p>
+
+      <div class="demo-grid">
+        <div class="demo-item text-center">
+          <span class="demo-label">Metatron's Cube</span>
+          <svg class="metatron" viewBox="0 0 100 100" style="width: 100px; height: 100px; margin: var(--space-4) auto;">
+            <polygon points="50,5 93,27 93,73 50,95 7,73 7,27" fill="none" stroke="#FFD700" stroke-width="1"/>
+            <line x1="50" y1="5" x2="50" y2="95" stroke="#FFD700" stroke-width="0.5"/>
+            <line x1="7" y1="27" x2="93" y2="73" stroke="#FFD700" stroke-width="0.5"/>
+            <line x1="93" y1="27" x2="7" y2="73" stroke="#FFD700" stroke-width="0.5"/>
+            <polygon points="50,25 72,37 72,63 50,75 28,63 28,37" fill="none" stroke="#FFD700" stroke-width="1"/>
+            <circle cx="50" cy="50" r="12" fill="none" stroke="#FFD700" stroke-width="1"/>
+          </svg>
+          <code>.metatron</code>
+        </div>
+
+        <div class="demo-item text-center">
+          <span class="demo-label">Domain Portal Shape</span>
+          <svg viewBox="0 0 100 100" style="width: 60px; height: 60px; margin: var(--space-4) auto; stroke: var(--domain-2-build);">
+            <polygon points="50,10 90,75 10,75" fill="none" stroke="currentColor" stroke-width="3"/>
+            <polygon points="50,90 10,25 90,25" fill="none" stroke="currentColor" stroke-width="3"/>
+          </svg>
+          <code>.portal-shape</code>
+        </div>
+
+        <div class="demo-item text-center">
+          <span class="demo-label">Ambient Particle</span>
+          <div style="width: 60px; height: 60px; margin: var(--space-4) auto; background: rgba(255, 215, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+            <div class="particle" style="position: static; width: 8px; height: 8px; animation: none;"></div>
+          </div>
+          <code>.particle</code>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="sacred-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html" class="nav-link">Sacred Lobby</a>
+        <a href="DESIGN_SYSTEM_SPECIFICATION.md" class="nav-link">Full Documentation</a>
+        <a href="araya-chat.html" class="nav-link">Ask Araya</a>
+      </div>
+      <p class="footer-text">
+        © 2025 Consciousness Revolution. Sacred Theme Design System v1.0
+      </p>
+    </div>
+  </footer>
+
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

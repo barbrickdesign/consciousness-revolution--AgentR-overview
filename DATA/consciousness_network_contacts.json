@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-12-30",
+    "purpose": "Consciousness Creator Network - Outreach Tracking",
+    "updated_by": "C1_MECHANIC"
+  },
+  "pillars": {
+    "new_media_network": {
+      "description": "Decentralized truth-based media infrastructure",
+      "status": "building",
+      "key_asset": "7000+ pages research (exotic tech, consciousness, black budget)"
+    },
+    "new_economic_system": {
+      "description": "Value exchange beyond fiat - contribution-based",
+      "status": "conceptual",
+      "key_asset": "Pattern Theory framework"
+    },
+    "new_communities": {
+      "description": "Physical/digital conscious communities",
+      "status": "planning",
+      "key_asset": "7 Domain organizational structure"
+    },
+    "connect_to_others": {
+      "description": "Bridge builders worldwide",
+      "status": "active_outreach",
+      "key_asset": "consciousnessrevolution.io platform"
+    }
+  },
+  "tier_1_targets": [
+    {
+      "handle": "@lifebythor",
+      "name": "Thor",
+      "platform": "instagram",
+      "followers": 598000,
+      "niche": "awakening, consciousness, sacred knowledge",
+      "content_style": "provocative questions, ancient wisdom, anti-establishment",
+      "outreach_status": "not_contacted",
+      "priority": "HIGH",
+      "alignment_score": 95,
+      "notes": "Perfect alignment with consciousness revolution message. Uses similar language around awakening.",
+      "dm_approach": "peer_to_peer",
+      "best_hook": "Research archive collaboration"
+    },
+    {
+      "handle": "@wildmindscommunity",
+      "name": "WildMinds Community",
+      "platform": "instagram",
+      "followers": 921000,
+      "niche": "alternative thinking, questioning reality, community building",
+      "content_style": "community-driven, open discussion, free thinking",
+      "outreach_status": "not_contacted",
+      "priority": "HIGH",
+      "alignment_score": 90,
+      "notes": "Community focus aligns with New Communities pillar. Could be distribution partner.",
+      "dm_approach": "collaboration_proposal",
+      "best_hook": "Community infrastructure partnership"
+    },
+    {
+      "handle": "@IamKristianbell",
+      "name": "Kristian Bell",
+      "platform": "instagram",
+      "followers": 2400,
+      "niche": "consciousness, spiritual awakening",
+      "content_style": "personal journey, authentic sharing",
+      "outreach_status": "not_contacted",
+      "priority": "MEDIUM",
+      "alignment_score": 85,
+      "notes": "Smaller but engaged audience. Good for grassroots building.",
+      "dm_approach": "mutual_support",
+      "best_hook": "Consciousness tools collaboration"
+    },
+    {
+      "handle": "@thecaitawakening1",
+      "name": "Cait Awakening",
+      "platform": "instagram",
+      "followers": null,
+      "niche": "awakening journey, spiritual growth",
+      "content_style": "personal transformation content",
+      "outreach_status": "not_contacted",
+      "priority": "MEDIUM",
+      "alignment_score": 80,
+      "notes": "Authentic awakening content creator",
+      "dm_approach": "shared_mission",
+      "best_hook": "Platform for awakening community"
+    }
+  ],
+  "tier_2_targets": [],
+  "outreach_log": [],
+  "response_tracking": {
+    "total_sent": 0,
+    "responses": 0,
+    "conversations": 0,
+    "collaborations": 0
+  }
+}

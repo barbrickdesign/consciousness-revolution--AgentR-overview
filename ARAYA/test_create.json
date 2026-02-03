@@ -1,0 +1,5 @@
+{
+  "file_path": "ARAYA/TEST_FILES/welcome.html",
+  "action": "write",
+  "content": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome</title>\n</head>\n<body>\n    <h1>Welcome to ARAYA Testing</h1>\n    <p>This file was created by ARAYA's live editing system.</p>\n    <p><a href=\"test-page.html\">Go to Test Page</a></p>\n</body>\n</html>"
+}

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outreach Tracker | Consciousness Network</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --text-primary: #e8e6e3;
+            --text-secondary: #9ca3af;
+            --accent-gold: #d4af37;
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-yellow: #eab308;
+            --border-color: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .pipeline {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .pipeline-stage {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            min-height: 300px;
+        }
+
+        .stage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stage-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .stage-count {
+            background: var(--bg-secondary);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        .contact-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-gold);
+        }
+
+        .contact-item.priority-high { border-left: 3px solid var(--accent-red); }
+        .contact-item.priority-medium { border-left: 3px solid var(--accent-yellow); }
+        .contact-item.priority-low { border-left: 3px solid var(--accent-green); }
+
+        .contact-handle {
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-bottom: 4px;
+        }
+
+        .contact-meta {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active { display: flex; }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .template-preview {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .log-section {
+            margin-top: 30px;
+        }
+
+        .log-section h3 {
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+        }
+
+        .log-entry {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .log-entry .timestamp {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 1024px) {
+            .pipeline { grid-template-columns: 1fr; }
+            .stats-bar { flex-wrap: wrap; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>OUTREACH TRACKER</h1>
+            <div class="stats-bar">
+                <div class="stat">
+                    <div class="stat-value" id="total-contacts">4</div>
+                    <div class="stat-label">Total Targets</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="pending-count">4</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="contacted-count">0</div>
+                    <div class="stat-label">Contacted</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="response-rate">0%</div>
+                    <div class="stat-label">Response Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="total-reach">1.52M</div>
+                    <div class="stat-label">Total Reach</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="action-bar">
+            <button class="btn btn-primary" onclick="openAddContact()">+ Add Contact</button>
+            <button class="btn btn-secondary" onclick="openLogOutreach()">Log Outreach</button>
+            <button class="btn btn-secondary" onclick="exportData()">Export Data</button>
+            <button class="btn btn-secondary" onclick="location.href='network-portal.html'">Network Portal</button>
+        </div>
+
+        <div class="pipeline">
+            <div class="pipeline-stage" id="stage-pending">
+                <div class="stage-header">
+                    <span class="stage-title">PENDING</span>
+                    <span class="stage-count">4</span>
+                </div>
+                <div class="stage-items">
+                    <div class="contact-item priority-high" onclick="openContact('lifebythor')">
+                        <div class="contact-handle">@lifebythor</div>
+                        <div class="contact-meta">598K | 95% align</div>
+                    </div>
+                    <div class="contact-item priority-high" onclick="openContact('wildmindscommunity')">
+                        <div class="contact-handle">@wildmindscommunity</div>
+                        <div class="contact-meta">921K | 90% align</div>
+                    </div>
+                    <div class="contact-item priority-medium" onclick="openContact('IamKristianbell')">
+                        <div class="contact-handle">@IamKristianbell</div>
+                        <div class="contact-meta">2.4K | 85% align</div>
+                    </div>
+                    <div class="contact-item priority-medium" onclick="openContact('thecaitawakening1')">
+                        <div class="contact-handle">@thecaitawakening1</div>
+                        <div class="contact-meta">TBD | 80% align</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pipeline-stage" id="stage-contacted">
+                <div class="stage-header">
+                    <span class="stage-title">CONTACTED</span>
+                    <span class="stage-count">0</span>
+                </div>
+                <div class="stage-items"></div>
+            </div>
+
+            <div class="pipeline-stage" id="stage-responded">
+                <div class="stage-header">
+                    <span class="stage-title">RESPONDED</span>
+                    <span class="stage-count">0</span>
+                </div>
+                <div class="stage-items"></div>
+            </div>
+
+            <div class="pipeline-stage" id="stage-conversation">
+                <div class="stage-header">
+                    <span class="stage-title">IN CONVERSATION</span>
+                    <span class="stage-count">0</span>
+                </div>
+                <div class="stage-items"></div>
+            </div>
+
+            <div class="pipeline-stage" id="stage-connected">
+                <div class="stage-header">
+                    <span class="stage-title">CONNECTED</span>
+                    <span class="stage-count">0</span>
+                </div>
+                <div class="stage-items"></div>
+            </div>
+        </div>
+
+        <div class="log-section">
+            <h3>ACTIVITY LOG</h3>
+            <div id="activity-log">
+                <div class="log-entry">
+                    <span>System initialized - 4 targets loaded</span>
+                    <span class="timestamp">Dec 30, 2025</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Detail Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalContactHandle">@handle</h3>
+                <button class="close-btn" onclick="closeModal('contactModal')">&times;</button>
+            </div>
+            <div id="contactDetails"></div>
+            <div style="margin-top: 20px;">
+                <h4 style="color: var(--accent-gold); margin-bottom: 10px;">DM Template:</h4>
+                <div class="template-preview" id="dmTemplate"></div>
+            </div>
+            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                <button class="btn btn-primary" onclick="copyTemplate()">Copy Template</button>
+                <button class="btn btn-secondary" onclick="markContacted()">Mark Contacted</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Log Outreach Modal -->
+    <div class="modal" id="logModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Log Outreach</h3>
+                <button class="close-btn" onclick="closeModal('logModal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label>Contact</label>
+                <select id="logContact">
+                    <option value="lifebythor">@lifebythor</option>
+                    <option value="wildmindscommunity">@wildmindscommunity</option>
+                    <option value="IamKristianbell">@IamKristianbell</option>
+                    <option value="thecaitawakening1">@thecaitawakening1</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Action</label>
+                <select id="logAction">
+                    <option value="dm_sent">DM Sent</option>
+                    <option value="response_received">Response Received</option>
+                    <option value="follow_up_sent">Follow-up Sent</option>
+                    <option value="call_scheduled">Call Scheduled</option>
+                    <option value="connected">Connected</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="logNotes" placeholder="Details of the interaction..."></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="submitLog()">Log Activity</button>
+        </div>
+    </div>
+
+    <script>
+        // Contact data
+        const contacts = {
+            'lifebythor': {
+                handle: '@lifebythor',
+                name: 'Thor',
+                followers: 598000,
+                niche: 'Awakening, consciousness, sacred knowledge',
+                alignment: 95,
+                priority: 'HIGH',
+                status: 'pending',
+                dmTemplate: `Thor - Been following your work. You're asking the questions most are afraid to even think.
+
+I've spent 8 years compiling 7,000+ pages of research on the topics you cover - exotic tech, consciousness programs, the stuff that got buried. Not looking to sell anything.
+
+Building something called consciousnessrevolution.io - a platform for people doing this work to connect and share without the usual gatekeepers.
+
+Curious if you'd want access to the research archive. Could be useful for your content.
+
+No agenda beyond connecting with people who see what's happening.
+
+- Derek`
+            },
+            'wildmindscommunity': {
+                handle: '@wildmindscommunity',
+                name: 'WildMinds Community',
+                followers: 921000,
+                niche: 'Alternative thinking, free community',
+                alignment: 90,
+                priority: 'HIGH',
+                status: 'pending',
+                dmTemplate: `WildMinds team -
+
+Your community represents exactly what I'm trying to build infrastructure for. 921K people thinking differently is powerful - but scattered.
+
+I've built consciousnessrevolution.io as open-source community infrastructure. Pattern recognition tools, consciousness training, connection systems.
+
+Not asking you to promote anything. Asking if you'd want to explore how your community could use the tools.
+
+The vision: decentralized communities with their own media, economics, and physical spaces. You've already proven the community part works.
+
+Would a 15-minute call make sense? Or I can send details async.
+
+- Derek (consciousnessrevolution.io)`
+            },
+            'IamKristianbell': {
+                handle: '@IamKristianbell',
+                name: 'Kristian Bell',
+                followers: 2400,
+                niche: 'Consciousness, spiritual awakening',
+                alignment: 85,
+                priority: 'MEDIUM',
+                status: 'pending',
+                dmTemplate: `Kristian -
+
+Your content resonates. Real awakening journey, not performative spirituality.
+
+Building a platform for consciousness creators - tools, training, community connection. We're early but growing.
+
+Smaller accounts like yours often get drowned out by the algorithm. What if there was infrastructure that amplified authentic voices instead of suppressing them?
+
+That's what consciousnessrevolution.io is becoming.
+
+Would love to have you as an early member. No cost, no catch - just building the network one real person at a time.
+
+Let me know if you'd want to check it out.
+
+- Derek`
+            },
+            'thecaitawakening1': {
+                handle: '@thecaitawakening1',
+                name: 'Cait Awakening',
+                followers: null,
+                niche: 'Awakening journey, transformation',
+                alignment: 80,
+                priority: 'MEDIUM',
+                status: 'pending',
+                dmTemplate: `Cait -
+
+Your awakening journey content is real. That's rare.
+
+I'm building a platform for people like you - consciousnessrevolution.io. Pattern recognition tools, consciousness training, community of people who get it.
+
+The goal: give awakening creators infrastructure that doesn't require selling out or playing algorithm games.
+
+You seem like someone who'd want to be part of building something rather than just using it. Am I reading that right?
+
+Would love to connect if so.
+
+- Derek`
+            }
+        };
+
+        let activityLog = [{
+            action: 'System initialized - 4 targets loaded',
+            timestamp: new Date().toLocaleString()
+        }];
+
+        let currentContact = null;
+
+        function openContact(handle) {
+            currentContact = handle;
+            const contact = contacts[handle];
+            document.getElementById('modalContactHandle').textContent = contact.handle;
+            document.getElementById('contactDetails').innerHTML = `
+                <p><strong>Name:</strong> ${contact.name}</p>
+                <p><strong>Followers:</strong> ${contact.followers ? contact.followers.toLocaleString() : 'TBD'}</p>
+                <p><strong>Niche:</strong> ${contact.niche}</p>
+                <p><strong>Alignment:</strong> ${contact.alignment}%</p>
+                <p><strong>Priority:</strong> ${contact.priority}</p>
+                <p><strong>Status:</strong> ${contact.status.toUpperCase()}</p>
+            `;
+            document.getElementById('dmTemplate').textContent = contact.dmTemplate;
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function copyTemplate() {
+            const template = document.getElementById('dmTemplate').textContent;
+            navigator.clipboard.writeText(template);
+            console.warn('Template copied to clipboard!');
+        }
+
+        function markContacted() {
+            if (currentContact) {
+                contacts[currentContact].status = 'contacted';
+                logActivity(`DM sent to ${contacts[currentContact].handle}`);
+                updatePipeline();
+                closeModal('contactModal');
+            }
+        }
+
+        function openLogOutreach() {
+            document.getElementById('logModal').classList.add('active');
+        }
+
+        function submitLog() {
+            const contact = document.getElementById('logContact').value;
+            const action = document.getElementById('logAction').value;
+            const notes = document.getElementById('logNotes').value;
+
+            logActivity(`${action.replace(/_/g, ' ')} - ${contacts[contact].handle}: ${notes}`);
+
+            if (action === 'dm_sent') contacts[contact].status = 'contacted';
+            if (action === 'response_received') contacts[contact].status = 'responded';
+            if (action === 'connected') contacts[contact].status = 'connected';
+
+            updatePipeline();
+            closeModal('logModal');
+            document.getElementById('logNotes').value = '';
+        }
+
+        function logActivity(message) {
+            activityLog.unshift({
+                action: message,
+                timestamp: new Date().toLocaleString()
+            });
+            renderLog();
+        }
+
+        function renderLog() {
+            const logEl = document.getElementById('activity-log');
+            logEl.innerHTML = activityLog.slice(0, 10).map(entry => `
+                <div class="log-entry">
+                    <span>${entry.action}</span>
+                    <span class="timestamp">${entry.timestamp}</span>
+                </div>
+            `).join('');
+        }
+
+        function updatePipeline() {
+            // Update stats
+            const statuses = Object.values(contacts).map(c => c.status);
+            document.getElementById('pending-count').textContent = statuses.filter(s => s === 'pending').length;
+            document.getElementById('contacted-count').textContent = statuses.filter(s => s !== 'pending').length;
+
+            // Move cards between stages (simplified - in production would re-render DOM)
+            console.log('Pipeline updated');
+        }
+
+        function exportData() {
+            const data = {
+                contacts: contacts,
+                activityLog: activityLog,
+                exportDate: new Date().toISOString()
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'outreach_data_' + new Date().toISOString().split('T')[0] + '.json';
+            a.click();
+        }
+
+        function openAddContact() {
+            console.warn('Add Contact feature - Coming soon. For now, edit consciousness_network_contacts.json directly.');
+        }
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

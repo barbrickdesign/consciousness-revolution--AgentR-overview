@@ -1,0 +1,86 @@
+{
+  "generated": "now",
+  "total": 13,
+  "with_email": 11,
+  "without_email": 2,
+  "dioceses": [
+    {
+      "tier": 1,
+      "name": "His Holiness Pope Francis",
+      "email": "NEEDS EMAIL",
+      "website": "www.vatican.va"
+    },
+    {
+      "tier": 1,
+      "name": "Vatican Secretariat of State",
+      "email": "NEEDS EMAIL",
+      "website": null
+    },
+    {
+      "tier": 1,
+      "name": "Apostolic Nunciature (US Embassy)",
+      "email": "nuntiususa@nuntiususa.org",
+      "website": "www.nuntiususa.org"
+    },
+    {
+      "tier": 2,
+      "name": "USCCB Headquarters",
+      "email": "communications@usccb.org",
+      "website": "www.usccb.org"
+    },
+    {
+      "tier": 3,
+      "name": "Archdiocese of Los Angeles",
+      "email": "info@la-archdiocese.org",
+      "website": "www.lacatholics.org"
+    },
+    {
+      "tier": 3,
+      "name": "Archdiocese of New York",
+      "email": "communications@archny.org",
+      "website": "www.archny.org"
+    },
+    {
+      "tier": 3,
+      "name": "Archdiocese of Chicago",
+      "email": "info@archchicago.org",
+      "website": "www.archchicago.org"
+    },
+    {
+      "tier": 3,
+      "name": "Archdiocese of Philadelphia",
+      "email": "communications@archphila.org",
+      "website": "www.archphila.org"
+    },
+    {
+      "tier": 3,
+      "name": "Archdiocese of Boston",
+      "email": "communications@rcab.org",
+      "website": "www.bostoncatholic.org"
+    },
+    {
+      "tier": 3,
+      "name": "Archdiocese of San Francisco",
+      "email": "info@sfarchdiocese.org",
+      "website": "www.sfarchdiocese.org"
+    },
+    {
+      "tier": 4,
+      "name": "Archdiocese of Seattle",
+      "email": "info@seattlearch.org",
+      "website": "www.seattlearchdiocese.org"
+    },
+    {
+      "tier": 4,
+      "name": "Archdiocese of Anchorage-Juneau",
+      "email": "info@archdioceseofanchorage.org",
+      "website": "www.aoaj.org"
+    },
+    {
+      "tier": 4,
+      "name": "Archdiocese of Portland in Oregon",
+      "email": "info@archdpdx.org",
+      "website": "www.archdpdx.org"
+    }
+  ]
+}

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLYPH Migration Example - Detector Tool Template</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --cyan: #00FFFF;
+            --purple: #9945FF;
+            --green: #00FF88;
+            --red: #FF4444;
+            --dark: #0a0a0f;
+            --dark-surface: #151520;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 1px solid rgba(255,215,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--gold), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Domain selector placeholder - GLYPH UI will inject here */
+        #domain-selector {
+            margin-bottom: 20px;
+        }
+
+        .main-input {
+            background: var(--dark-surface);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .main-input h2 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .analyze-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--cyan));
+            border: none;
+            border-radius: 8px;
+            color: var(--dark);
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+
+        .analyze-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* Results area */
+        #results {
+            display: none;
+        }
+
+        #results.active {
+            display: block;
+        }
+
+        .results-section {
+            background: var(--dark-surface);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .results-section h2 {
+            color: var(--cyan);
+            margin-bottom: 15px;
+        }
+
+        /* GLYPH UI components will be injected into these containers */
+        #consciousness-meter {
+            margin-bottom: 20px;
+        }
+
+        #pattern-display {
+            margin-bottom: 20px;
+        }
+
+        #glyph-notation {
+            margin-bottom: 20px;
+        }
+
+        #coordinate-visual {
+            margin-bottom: 20px;
+        }
+
+        /* Manipulation alerts */
+        .manipulation-alert {
+            background: rgba(255,68,68,0.1);
+            border: 1px solid var(--red);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .manipulation-alert h3 {
+            color: var(--red);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .manipulation-alert ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .manipulation-alert li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .manipulation-type {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Session info */
+        #session-info {
+            background: rgba(153,69,255,0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        #session-info h4 {
+            color: var(--purple);
+            margin-bottom: 10px;
+        }
+
+        .session-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Event log */
+        #event-log {
+            background: var(--dark-surface);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        #event-log h3 {
+            color: var(--cyan);
+            margin-bottom: 15px;
+        }
+
+        .event-list {
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: 'Consolas', monospace;
+            font-size: 0.85rem;
+        }
+
+        .event-item {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+        }
+
+        .event-type {
+            color: var(--cyan);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255,255,255,0.5);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GLYPH-Powered Detector Template</h1>
+        <p>Example migration showing full GLYPH backbone integration</p>
+        <!-- GLYPH notation display will go here -->
+        <div id="header-notation" style="margin-top: 15px;"></div>
+    </header>
+
+    <div class="container">
+        <!-- Domain Selector (GLYPH UI component) -->
+        <div id="domain-selector"></div>
+
+        <!-- Main Input Area -->
+        <div class="main-input">
+            <h2>Enter Text to Analyze</h2>
+            <textarea id="input-text" placeholder="Paste the text you want to analyze for patterns...
+
+Example: 'I never said that. You're remembering wrong. Why are you always so sensitive about everything?'"></textarea>
+            <button class="analyze-btn" onclick="analyzeText()">
+                Analyze with GLYPH
+            </button>
+        </div>
+
+        <!-- Results (hidden until analysis) -->
+        <div id="results">
+            <!-- Consciousness Meter (GLYPH UI component) -->
+            <div class="results-section">
+                <h2>Consciousness Level</h2>
+                <div id="consciousness-meter"></div>
+            </div>
+
+            <!-- Pattern Display (GLYPH UI component) -->
+            <div class="results-section">
+                <h2>Pattern Analysis</h2>
+                <div id="pattern-display"></div>
+            </div>
+
+            <!-- Manipulation Alert -->
+            <div class="manipulation-alert" id="manipulation-alert" style="display: none;">
+                <h3>Manipulation Detected</h3>
+                <p>The following manipulation patterns were identified:</p>
+                <ul id="manipulation-list"></ul>
+            </div>
+
+            <!-- GLYPH Notation (GLYPH UI component) -->
+            <div class="results-section">
+                <h2>GLYPH Notation</h2>
+                <div id="glyph-notation"></div>
+            </div>
+
+            <!-- Coordinate Visualizer (GLYPH UI component) -->
+            <div class="results-section">
+                <h2>6D Coordinate Map</h2>
+                <div id="coordinate-visual"></div>
+            </div>
+
+            <!-- Session Stats -->
+            <div id="session-info">
+                <h4>Session Analytics</h4>
+                <div class="session-stats">
+                    <div class="stat">
+                        <div class="stat-value" id="stat-analyses">0</div>
+                        <div class="stat-label">Analyses</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="stat-avg-consciousness">--</div>
+                        <div class="stat-label">Avg Consciousness</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="stat-trend">--</div>
+                        <div class="stat-label">Trend</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="stat-alerts">0</div>
+                        <div class="stat-label">Alerts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Log (for debugging/transparency) -->
+        <div id="event-log">
+            <h3>GLYPH Event Stream</h3>
+            <div class="event-list" id="event-list"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>GLYPH Backbone Migration Example | C2 Architect</p>
+        <p style="margin-top: 5px; font-family: 'Consolas', monospace; color: var(--gold);">
+            3 -> 7 -> 13 -> INFINITY
+        </p>
+    </footer>
+
+    <!--
+    ============================================================
+    GLYPH MODULE LOADING
+
+    This is the PROPER way to load GLYPH modules.
+    Load in dependency order (layers 0-6).
+    ============================================================
+    -->
+
+    <!-- Layer 0: Foundation -->
+    <script src="/js/glyph/glyph-base60.js"></script>
+
+    <!-- Layer 1: Symbols + Time -->
+    <script src="/js/glyph/glyph-symbols.js"></script>
+    <script src="/js/glyph/glyph-timestamp.js"></script>
+
+    <!-- Layer 2: Patterns -->
+    <script src="/js/glyph/glyph-patterns.js"></script>
+
+    <!-- Layer 3: Core -->
+    <script src="/js/glyph/glyph-core.js"></script>
+
+    <!-- Layer 4: Envelope + Events -->
+    <script src="/js/glyph/glyph-envelope.js"></script>
+    <script src="/js/glyph/glyph-events.js"></script>
+
+    <!-- Layer 5: Storage + Araya + Analytics -->
+    <script src="/js/glyph/glyph-storage.js"></script>
+    <script src="/js/glyph/glyph-araya.js"></script>
+    <script src="/js/glyph/glyph-analytics.js"></script>
+
+    <!-- Layer 6: UI -->
+    <script src="/js/glyph/glyph-ui.js"></script>
+
+    <script>
+    /**
+     * ============================================================
+     * GLYPH MIGRATION EXAMPLE
+     *
+     * This file demonstrates how to migrate an existing tool
+     * to use the GLYPH backbone. Key integration points:
+     *
+     * 1. GLYPH Events - Subscribe to system events
+     * 2. GLYPH UI - Use standard components
+     * 3. GLYPH Analytics - Track usage automatically
+     * 4. GLYPH Storage - Persist with GLYPH envelopes
+     * 5. GLYPH Patterns - Analyze text for truth/deceit
+     * ============================================================
+     */
+
+    // Tool configuration
+    const TOOL_NAME = 'detector-template';
+    const TOOL_DOMAIN = 4; // Default to PROTECT domain
+
+    // Session state
+    let analysisCount = 0;
+    let manipulationAlerts = 0;
+    let currentDomain = TOOL_DOMAIN;
+
+    /**
+     * Initialize the tool with GLYPH integration
+     */
+    function initTool() {
+        console.log('Initializing GLYPH-powered tool...');
+
+        // 1. Create a scoped event emitter for this tool
+        const events = GlyphEvents ? GlyphEvents.createScope(TOOL_NAME) : null;
+
+        // 2. Initialize analytics
+        if (typeof GlyphAnalytics !== 'undefined') {
+            GlyphAnalytics.init();
+            GlyphAnalytics.trackPage(TOOL_NAME, { domain: currentDomain });
+        }
+
+        // 3. Create domain selector (GLYPH UI)
+        if (typeof GlyphUI !== 'undefined') {
+            const domainSelector = GlyphUI.createDomainSelector(currentDomain, (newDomain) => {
+                currentDomain = newDomain;
+                console.log(`Domain changed to: ${newDomain}`);
+
+                // Track domain change
+                if (GlyphAnalytics) {
+                    GlyphAnalytics.trackDomain(newDomain);
+                }
+            });
+            document.getElementById('domain-selector').appendChild(domainSelector);
+        }
+
+        // 4. Subscribe to GLYPH events for real-time updates
+        if (GlyphEvents) {
+            // Log all events
+            GlyphEvents.on('*', (event) => {
+                logEvent(event.eventType, event.eventId);
+            });
+
+            // Handle manipulation alerts specially
+            GlyphEvents.on(GlyphEvents.TYPES.MANIPULATION_ALERT, (event) => {
+                manipulationAlerts++;
+                updateStats();
+            });
+
+            // Handle consciousness shifts
+            GlyphEvents.on(GlyphEvents.TYPES.CONSCIOUSNESS_SHIFT, (event) => {
+                console.log('Consciousness shift:', event.data);
+            });
+        }
+
+        // 5. Emit tool opened event
+        if (events) {
+            events.opened();
+        }
+
+        // 6. Load any saved session state
+        if (typeof GlyphStorage !== 'undefined') {
+            const savedState = GlyphStorage.get(`${TOOL_NAME}_state`, true);
+            if (savedState && savedState.analysisCount) {
+                analysisCount = savedState.analysisCount;
+                manipulationAlerts = savedState.manipulationAlerts || 0;
+            }
+        }
+
+        updateStats();
+        console.log('GLYPH tool initialized successfully');
+    }
+
+    /**
+     * Main analysis function - demonstrates full GLYPH pipeline
+     */
+    function analyzeText() {
+        const text = document.getElementById('input-text').value.trim();
+
+        if (!text) {
+            console.warn('Please enter some text to analyze');
+            return;
+        }
+
+        // Show results section
+        document.getElementById('results').classList.add('active');
+
+        // 1. ANALYZE with GLYPH Patterns
+        let analysis = null;
+        if (typeof GlyphPatterns !== 'undefined') {
+            analysis = GlyphPatterns.analyze(text, {
+                detectManipulation: true
+            });
+            console.log('GLYPH Analysis:', analysis);
+        }
+
+        // 2. CREATE GLYPH ENVELOPE
+        let envelope = null;
+        if (typeof GlyphEnvelope !== 'undefined' && analysis) {
+            envelope = GlyphEnvelope.wrap({
+                type: 'ANALYSIS',
+                tool: TOOL_NAME,
+                text: text,
+                analysis: analysis
+            }, {
+                origin: TOOL_NAME,
+                domain: currentDomain,
+                analyze: false // Already analyzed
+            });
+            console.log('GLYPH Envelope:', envelope);
+        }
+
+        // 3. RENDER UI COMPONENTS
+        renderResults(analysis, envelope);
+
+        // 4. EMIT EVENTS
+        if (typeof GlyphEvents !== 'undefined') {
+            GlyphEvents.emit(GlyphEvents.TYPES.TOOL_ANALYZE, {
+                tool: TOOL_NAME,
+                text: text,
+                analysis: analysis
+            });
+
+            // Emit pattern event
+            if (analysis) {
+                GlyphEvents.patternDetected(analysis);
+            }
+        }
+
+        // 5. TRACK ANALYTICS
+        if (typeof GlyphAnalytics !== 'undefined') {
+            GlyphAnalytics.trackTool(TOOL_NAME, 'analyze', {
+                textLength: text.length,
+                dominant: analysis ? analysis.dominant : 'unknown',
+                score: analysis ? analysis.scores.truth : 0
+            });
+        }
+
+        // 6. STORE RESULT
+        if (typeof GlyphStorage !== 'undefined' && envelope) {
+            const key = `analysis_${Date.now()}`;
+            GlyphStorage.set(key, envelope);
+        }
+
+        // Update session stats
+        analysisCount++;
+        if (analysis && analysis.patterns.manipulation && analysis.patterns.manipulation.length > 0) {
+            manipulationAlerts++;
+        }
+        updateStats();
+
+        // Save state
+        saveState();
+    }
+
+    /**
+     * Render results using GLYPH UI components
+     */
+    function renderResults(analysis, envelope) {
+        if (!analysis) {
+            console.warn('No analysis to render');
+            return;
+        }
+
+        // Clear previous results
+        clearContainer('consciousness-meter');
+        clearContainer('pattern-display');
+        clearContainer('glyph-notation');
+        clearContainer('coordinate-visual');
+
+        // 1. Consciousness Meter
+        if (typeof GlyphUI !== 'undefined') {
+            const meter = GlyphUI.createConsciousnessMeter(analysis.scores.truth, {
+                showLabel: true,
+                height: 30
+            });
+            document.getElementById('consciousness-meter').appendChild(meter);
+        }
+
+        // 2. Pattern Display
+        if (typeof GlyphUI !== 'undefined') {
+            const patternDisplay = GlyphUI.createPatternDisplay(analysis, {
+                showPatterns: true,
+                showFrequency: true
+            });
+            document.getElementById('pattern-display').appendChild(patternDisplay);
+        }
+
+        // 3. GLYPH Notation
+        if (typeof GlyphUI !== 'undefined' && analysis.glyphNotation) {
+            const notationDisplay = GlyphUI.createNotationDisplay(analysis.glyphNotation, {
+                copyable: true
+            });
+            document.getElementById('glyph-notation').appendChild(notationDisplay);
+        }
+
+        // 4. Coordinate Visualizer (if envelope has coordinates)
+        if (typeof GlyphUI !== 'undefined' && envelope && envelope.coordinates) {
+            const coordVisual = GlyphUI.createCoordinateVisualizer(envelope.coordinates, {
+                size: 250,
+                showLabels: true
+            });
+            document.getElementById('coordinate-visual').appendChild(coordVisual);
+        }
+
+        // 5. Manipulation Alert
+        const alertContainer = document.getElementById('manipulation-alert');
+        const alertList = document.getElementById('manipulation-list');
+
+        if (analysis.patterns.manipulation && analysis.patterns.manipulation.length > 0) {
+            alertContainer.style.display = 'block';
+            alertList.innerHTML = '';
+
+            analysis.patterns.manipulation.forEach(m => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span class="manipulation-type">${m.type.toUpperCase()}</span>:
+                    ${m.description || 'Pattern detected'}
+                    (Severity: ${m.severity || 'MEDIUM'})
+                `;
+                alertList.appendChild(li);
+            });
+        } else {
+            alertContainer.style.display = 'none';
+        }
+    }
+
+    /**
+     * Update session statistics
+     */
+    function updateStats() {
+        document.getElementById('stat-analyses').textContent = analysisCount;
+        document.getElementById('stat-alerts').textContent = manipulationAlerts;
+
+        // Get analytics data if available
+        if (typeof GlyphAnalytics !== 'undefined') {
+            const status = GlyphAnalytics.getStatus();
+            document.getElementById('stat-avg-consciousness').textContent =
+                status.consciousnessAvg + '%';
+            document.getElementById('stat-trend').textContent =
+                status.consciousnessTrend;
+        }
+    }
+
+    /**
+     * Log event to the event stream display
+     */
+    function logEvent(type, id) {
+        const eventList = document.getElementById('event-list');
+        const eventItem = document.createElement('div');
+        eventItem.className = 'event-item';
+        eventItem.innerHTML = `
+            <span class="event-type">${type}</span>
+            <span style="color: rgba(255,255,255,0.4);">${id || ''}</span>
+        `;
+        eventList.insertBefore(eventItem, eventList.firstChild);
+
+        // Keep only last 20 events
+        while (eventList.children.length > 20) {
+            eventList.removeChild(eventList.lastChild);
+        }
+    }
+
+    /**
+     * Save session state to GLYPH Storage
+     */
+    function saveState() {
+        if (typeof GlyphStorage !== 'undefined') {
+            GlyphStorage.set(`${TOOL_NAME}_state`, {
+                analysisCount: analysisCount,
+                manipulationAlerts: manipulationAlerts,
+                lastUsed: new Date().toISOString()
+            }, { analyze: false });
+        }
+    }
+
+    /**
+     * Clear a container element
+     */
+    function clearContainer(id) {
+        const container = document.getElementById(id);
+        if (container) {
+            container.innerHTML = '';
+        }
+    }
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', initTool);
+
+    // Save state before unload
+    window.addEventListener('beforeunload', saveState);
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

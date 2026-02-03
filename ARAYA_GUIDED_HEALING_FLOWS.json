@@ -1,0 +1,796 @@
+{
+  "healing_flows_version": "1.0",
+  "created": "2025-12-24",
+  "oracle": "C3",
+  "purpose": "Consciousness-body integration healing sequences",
+  "flows": {
+    "anxiety_to_calm": {
+      "flow_id": "F001",
+      "name": "Anxiety → Grounding",
+      "consciousness_required": 40,
+      "target_shift": "40% → 55%",
+      "trigger_patterns": [
+        "what if",
+        "worried about",
+        "can't stop thinking",
+        "nervous about",
+        "anxious",
+        "stressed about",
+        "overthinking",
+        "racing thoughts"
+      ],
+      "linguistic_markers": {
+        "future_projection": ["what if", "when this happens", "going to"],
+        "past_rumination": ["should have", "wish I", "if only"],
+        "fragmentation": "short_sentences",
+        "validation_seeking": "question_heavy"
+      },
+      "body_state_implied": {
+        "breathing": "shallow_chest",
+        "tension": "chest_tightness",
+        "nervous_system": "sympathetic_activation",
+        "energy": "scattered_upward"
+      },
+      "healing_sequence": [
+        {
+          "step": 1,
+          "type": "awareness",
+          "duration_seconds": 15,
+          "script": "I'm noticing anxiety patterns in your words - lots of future projection and 'what if' thinking. Let's check in with your body right now: Are you breathing shallow? (Most people are when anxious)"
+        },
+        {
+          "step": 2,
+          "type": "physical_practice",
+          "practice_name": "box_breathing",
+          "duration_seconds": 240,
+          "instructions": {
+            "setup": "Sit comfortably. We're going to reset your nervous system.",
+            "technique": "Box Breathing - 4-4-4-4 pattern",
+            "steps": [
+              "Breathe IN through nose: Count 1-2-3-4",
+              "HOLD breath: Count 1-2-3-4",
+              "Breathe OUT through mouth: Count 1-2-3-4",
+              "HOLD empty: Count 1-2-3-4",
+              "Repeat this cycle 8 times"
+            ],
+            "focus": "Count in your mind. When thoughts come, gently return to counting."
+          },
+          "script": "Let's do this RIGHT NOW. Box breathing - 4 counts in, 4 hold, 4 out, 4 hold. Do 8 full cycles. I'll guide you:\n\n[Breathe IN: 1-2-3-4]\n[HOLD: 1-2-3-4]\n[Breathe OUT: 1-2-3-4]\n[HOLD: 1-2-3-4]\n\nKeep going... 7 more cycles.\n\n(Practice now, then come back)"
+        },
+        {
+          "step": 3,
+          "type": "grounding",
+          "duration_seconds": 60,
+          "instructions": {
+            "technique": "5-4-3-2-1 Grounding",
+            "steps": [
+              "Feel your feet on the floor",
+              "Name 5 things you can SEE",
+              "Name 4 things you can TOUCH",
+              "Name 3 things you can HEAR",
+              "Name 2 things you can SMELL",
+              "Name 1 thing you can TASTE"
+            ]
+          },
+          "script": "Now ground yourself in this moment:\n- Feel your feet on the floor\n- Look around: Name 5 things you see\n- Notice: What can you touch right now?\n\nThis brings you OUT of future projection, INTO present reality."
+        },
+        {
+          "step": 4,
+          "type": "check_in",
+          "duration_seconds": 30,
+          "script": "Check in: How does your body feel now compared to before? Notice the shift in your breathing? That's your nervous system learning: You. Are. Safe."
+        },
+        {
+          "step": 5,
+          "type": "pattern_teaching",
+          "pattern_name": "future_faking_yourself",
+          "consciousness_unlock": 55,
+          "teaching": {
+            "pattern_definition": "Future Faking Yourself: Creating anxiety by projecting fear onto timelines that don't exist yet",
+            "how_it_works": [
+              "Mind creates imaginary future scenario",
+              "Attaches fear/worry to that scenario",
+              "Body responds as if threat is REAL and PRESENT",
+              "Anxiety loop reinforces pattern"
+            ],
+            "immunity_technique": "Ask: 'What's ACTUALLY happening RIGHT NOW?'",
+            "reality_check": "Usually: Nothing. You're safe. Breath returns."
+          },
+          "script": "The pattern you just experienced is called 'future faking yourself' - your mind creating anxiety about timelines that haven't happened yet.\n\nYour body can't tell the difference between:\n- Real present danger\n- Imaginary future danger\n\nSo it activates stress response for BOTH.\n\nPattern immunity unlocked:\nWhen you notice anxiety rising, ask: 'What's happening RIGHT NOW in this moment?'\n\nUsually the answer is: Nothing. You're safe. Breath is here.\n\nThe anxiety was about a PROJECTED future, not PRESENT reality."
+        },
+        {
+          "step": 6,
+          "type": "integration",
+          "duration_seconds": 60,
+          "script": "Next time anxiety rises:\n1. Notice: 'I'm future projecting'\n2. Practice: Box breathing (2 minutes)\n3. Ask: 'What's real RIGHT NOW?'\n4. Ground: Feel feet, name what you see\n\nYou just learned to neutralize anxiety in real-time.\n\nWant to explore what's DRIVING the anxiety pattern? (There's usually a deeper manipulation or fear underneath)"
+        }
+      ],
+      "progression": {
+        "next_flow": "deeper_anxiety_root",
+        "advancement_trigger": "user_asks_why_or_deeper",
+        "consciousness_unlock": 55,
+        "repeat_recommended": "Daily for 7 days to establish pattern immunity"
+      },
+      "success_metrics": {
+        "immediate": "Breathing deepens, anxiety reduces",
+        "short_term": "Can catch future projection quickly",
+        "long_term": "Anxiety no longer controls behavior"
+      }
+    },
+    "anger_to_release": {
+      "flow_id": "F002",
+      "name": "Anger → Release",
+      "consciousness_required": 50,
+      "target_shift": "50% → 65%",
+      "trigger_patterns": [
+        "they always",
+        "I can't believe",
+        "how dare",
+        "it's not fair",
+        "I'm so angry",
+        "pissed off",
+        "frustrated",
+        "betrayed"
+      ],
+      "linguistic_markers": {
+        "blame_projection": ["they always", "she never", "he made me"],
+        "victim_framing": ["I can't", "they won't let me", "stuck"],
+        "injustice_focus": ["not fair", "shouldn't be", "wrong"],
+        "powerlessness": ["nothing I can do", "helpless"]
+      },
+      "body_state_implied": {
+        "temperature": "heat_rising",
+        "tension": "jaw_shoulders_chest",
+        "energy": "trapped_explosive",
+        "nervous_system": "fight_response"
+      },
+      "healing_sequence": [
+        {
+          "step": 1,
+          "type": "awareness",
+          "script": "I'm noticing anger patterns - blame language, injustice focus. Your body right now probably has:\n- Heat rising\n- Jaw clenched\n- Shoulders tight\n- Energy trapped in chest\n\nCheck: Is this true?"
+        },
+        {
+          "step": 2,
+          "type": "physical_practice",
+          "practice_name": "movement_release",
+          "duration_seconds": 120,
+          "instructions": {
+            "setup": "Stand up. Give yourself space.",
+            "technique": "Vigorous Shaking/Movement",
+            "steps": [
+              "Shake your arms vigorously - like shaking water off",
+              "Add your whole body - shake everything",
+              "Let sound come if it wants to",
+              "No rules - just MOVE the energy OUT",
+              "2 full minutes - really GO for it"
+            ],
+            "focus": "This isn't exercise. This is ENERGY RELEASE."
+          },
+          "script": "Stand up RIGHT NOW. We're moving this anger OUT of your body.\n\nShake your arms like you're shaking water off - VIGOROUSLY.\nNow your whole body - shake EVERYTHING.\n\nLet sound come if it wants - growl, yell, whatever.\n\n2 full minutes. Really MOVE the energy.\n\n(Do this now, then come back)"
+        },
+        {
+          "step": 3,
+          "type": "physical_practice",
+          "practice_name": "cold_exposure",
+          "duration_seconds": 30,
+          "instructions": {
+            "setup": "Go to sink or shower",
+            "technique": "Cold water on face/body",
+            "steps": [
+              "Splash cold water on face (10 times) OR",
+              "Cold shower (30 seconds minimum)",
+              "Breathe steady through the cold",
+              "Feel the shift in your system"
+            ],
+            "focus": "Cold RESETS the nervous system instantly"
+          },
+          "script": "Now: Cold water.\n\nEither:\n- Splash your face with COLD water 10 times OR\n- 30 second cold shower\n\nThis resets your nervous system from FIGHT mode to NEUTRAL.\n\nBreathe steady through it."
+        },
+        {
+          "step": 4,
+          "type": "check_in",
+          "script": "Check your body now:\n- Heat level?\n- Jaw tension?\n- Shoulder tightness?\n- Energy movement?\n\nNotice the shift?"
+        },
+        {
+          "step": 5,
+          "type": "pattern_teaching",
+          "pattern_name": "anger_as_misdirected_power",
+          "consciousness_unlock": 65,
+          "teaching": {
+            "pattern_definition": "Anger is often POWER that doesn't know where to go - trapped energy seeking expression",
+            "deeper_truth": [
+              "Under anger: Usually powerlessness or boundary violation",
+              "The rage you feel = The power you're not using",
+              "Blame keeps you stuck in victim (powerless)",
+              "Reclaiming power = Asking different question"
+            ],
+            "immunity_technique": "Ask: 'Where do I ACTUALLY have power in this situation?'",
+            "power_shift": "From 'They did this to me' → 'What can I DO about this?'"
+          },
+          "script": "The pattern under your anger:\n\nAnger is usually MISDIRECTED POWER.\n\nWhat you're feeling = The power you're NOT using.\n\nWhen you blame 'them' - you give away your power.\nWhen you ask 'What can I DO?' - you reclaim it.\n\nPattern immunity question:\n'Where do I ACTUALLY have power in this situation?'\n\nEven if it's just:\n- Setting a boundary\n- Removing yourself\n- Saying no\n- Choosing different response\n\nThat's POWER. That's where your anger wants to go."
+        },
+        {
+          "step": 6,
+          "type": "integration",
+          "script": "Next time anger rises:\n1. MOVE it first (shake, push, dance - 2 min)\n2. COOL the system (cold water)\n3. ASK: 'Where's my power here?'\n4. ACT from power, not reaction\n\nYou just learned: Anger is fuel, not enemy.\n\nWant to explore what boundary was violated or what power you're ready to reclaim?"
+        }
+      ],
+      "progression": {
+        "next_flow": "boundary_setting_power",
+        "advancement_trigger": "user_ready_for_action",
+        "consciousness_unlock": 65
+      },
+      "success_metrics": {
+        "immediate": "Heat dissipates, tension releases",
+        "short_term": "Can move anger instead of suppressing",
+        "long_term": "Anger becomes power signal, not control"
+      }
+    },
+    "sadness_to_opening": {
+      "flow_id": "F003",
+      "name": "Sadness → Opening",
+      "consciousness_required": 45,
+      "target_shift": "45% → 60%",
+      "trigger_patterns": [
+        "I just feel",
+        "everything is",
+        "so sad",
+        "hopeless",
+        "empty",
+        "nothing matters",
+        "alone",
+        "lost"
+      ],
+      "body_state_implied": {
+        "posture": "collapsed_chest",
+        "breathing": "shallow_low",
+        "energy": "heavy_lethargic",
+        "nervous_system": "shutdown_mode"
+      },
+      "healing_sequence": [
+        {
+          "step": 1,
+          "type": "awareness",
+          "script": "I'm noticing sadness - heavy energy, hopelessness themes. Your body right now likely has:\n- Collapsed chest/posture\n- Heavy feeling\n- Shallow, low breathing\n- Lethargy\n\nSadness isn't wrong. It's ENERGY WANTING TO MOVE. Let's help it move."
+        },
+        {
+          "step": 2,
+          "type": "physical_practice",
+          "practice_name": "heart_opening",
+          "duration_seconds": 120,
+          "instructions": {
+            "setup": "Find a comfortable position - standing or seated",
+            "technique": "Gentle chest/heart opening",
+            "steps": [
+              "Roll shoulders back and down",
+              "Bring arms overhead, gentle backbend",
+              "Breathe deep into chest - EXPAND",
+              "Hold arms wide (like welcoming hug) - 30 seconds",
+              "Notice: Sadness often lives in collapsed chest"
+            ],
+            "focus": "Opening the chest = Opening to feeling"
+          },
+          "script": "Gently open your chest:\n\n- Roll shoulders back\n- Stretch arms overhead, gentle backbend\n- Breathe DEEP into your chest\n- Hold arms wide like welcoming a hug\n\nStay here, breathing deep, for 2 minutes.\n\nSadness lives in collapsed chest. Opening = Allowing it to move."
+        },
+        {
+          "step": 3,
+          "type": "physical_practice",
+          "practice_name": "sound_healing",
+          "duration_seconds": 180,
+          "instructions": {
+            "setup": "Stay in open-chest position",
+            "technique": "Humming/Toning for vibration",
+            "steps": [
+              "Take deep breath",
+              "As you exhale: HUM (any pitch)",
+              "Feel vibration in chest",
+              "Or tone 'OMMM' slowly",
+              "3 minutes - let sound carry the sadness OUT"
+            ],
+            "focus": "Sound moves stuck emotional energy"
+          },
+          "script": "Now add SOUND to move the energy:\n\nBreathe in deep.\nAs you breathe out: HUMMMMM (feel vibration in chest)\n\nOr tone: OMMMMM slowly\n\n3 minutes of this.\n\nLet the sound carry the sadness OUT of your body.\nIt's okay if tears come - that's release."
+        },
+        {
+          "step": 4,
+          "type": "check_in",
+          "script": "How does your chest feel now?\nDid anything shift or move?\nDid tears come?\n\nAll of this is energy RELEASING. This is healing."
+        },
+        {
+          "step": 5,
+          "type": "pattern_teaching",
+          "pattern_name": "grief_as_blocked_love",
+          "consciousness_unlock": 60,
+          "teaching": {
+            "pattern_definition": "Sadness/grief is often LOVE that has nowhere to go - blocked emotional energy",
+            "deeper_truth": [
+              "Under sadness: Usually unexpressed love, unmet need, or loss",
+              "Collapsed chest = Protecting heart from more pain",
+              "But protection also blocks LOVE from flowing",
+              "Opening chest = Allowing love to flow again (even through tears)"
+            ],
+            "immunity_technique": "Ask: 'What wants to move through me?'",
+            "allowing": "Sadness isn't the problem. Blocking it is."
+          },
+          "script": "The pattern under your sadness:\n\nSadness is often LOVE that can't flow.\n\nMaybe:\n- Love for someone you lost\n- Love you couldn't express\n- Love you needed but didn't receive\n- Love for your past self\n\nWhen we collapse our chest, we're protecting our heart.\nBut that same protection BLOCKS love from flowing.\n\nOpening = Allowing.\n\nPattern immunity question:\n'What wants to move through me right now?'\n\nLet it. Tears, sound, movement - all healing.\nSadness isn't the enemy. Blocking it is."
+        },
+        {
+          "step": 6,
+          "type": "integration",
+          "script": "Next time sadness comes:\n1. Don't collapse - OPEN your chest\n2. Breathe DEEP into the feeling\n3. HUM or tone to move it\n4. Ask: 'What wants to flow through me?'\n5. LET IT MOVE\n\nYou just learned: Sadness is energy needing expression.\n\nWant to explore what love or need is underneath your sadness?"
+        }
+      ],
+      "progression": {
+        "next_flow": "deeper_grief_work",
+        "advancement_trigger": "user_ready_for_depth",
+        "consciousness_unlock": 60
+      },
+      "success_metrics": {
+        "immediate": "Chest opens, tears may flow, lightness",
+        "short_term": "Can allow sadness without collapsing",
+        "long_term": "Grief becomes love in motion"
+      }
+    },
+    "overwhelm_to_regulation": {
+      "flow_id": "F004",
+      "name": "Overwhelm → Regulation",
+      "consciousness_required": 35,
+      "target_shift": "35% → 60%",
+      "trigger_patterns": [
+        "too much",
+        "can't handle",
+        "don't know where to start",
+        "everything at once",
+        "drowning",
+        "paralyzed",
+        "shutting down"
+      ],
+      "body_state_implied": {
+        "nervous_system": "freeze_response",
+        "cognition": "foggy_scattered",
+        "energy": "depleted_overloaded",
+        "breathing": "barely_there"
+      },
+      "healing_sequence": [
+        {
+          "step": 1,
+          "type": "awareness",
+          "script": "I'm noticing overwhelm - system overload, paralysis language. Your nervous system is in FREEZE mode:\n- Foggy thinking\n- Can't prioritize\n- Energy stuck/depleted\n- Barely breathing\n\nWe're going to RESET your entire system. Right now."
+        },
+        {
+          "step": 2,
+          "type": "physical_practice",
+          "practice_name": "wim_hof_breathing",
+          "duration_seconds": 360,
+          "instructions": {
+            "setup": "Sit or lie down safely. This is POWERFUL.",
+            "technique": "Wim Hof Method Breathing - 3 rounds",
+            "steps": [
+              "30 deep breaths: IN through nose, OUT through mouth (powerful, fast)",
+              "After 30th breath: EXHALE and HOLD (as long as comfortable)",
+              "When you need air: BIG BREATH IN, hold 15 seconds",
+              "Exhale, rest. That's 1 round.",
+              "Repeat 3 total rounds"
+            ],
+            "warning": "Don't do this while standing/driving. Sit or lie down.",
+            "focus": "This RESETS your nervous system completely"
+          },
+          "script": "Sit or lie down safely.\n\nWim Hof Breathing - 3 rounds:\n\nROUND 1:\n- 30 power breaths (IN nose, OUT mouth - fast and deep)\n- After 30th: EXHALE completely, HOLD your breath out\n- Hold as long as comfortable\n- When you need air: BIG breath in, hold 15 seconds\n- Exhale, rest\n\nRepeat 2 more rounds.\n\nThis is a FULL SYSTEM RESET.\n\n(Do this now - takes 6 minutes)"
+        },
+        {
+          "step": 3,
+          "type": "physical_practice",
+          "practice_name": "cold_shower",
+          "duration_seconds": 120,
+          "instructions": {
+            "setup": "Go to shower",
+            "technique": "Cold water immersion",
+            "steps": [
+              "Start warm if needed",
+              "Turn to COLD",
+              "Stay under 1-2 minutes",
+              "Breathe steady through it",
+              "Feel the CLARITY return"
+            ],
+            "focus": "Cold water = Nervous system regulation"
+          },
+          "script": "Now: Cold shower.\n\n1-2 minutes under cold water.\n\nBreathe steady. Don't fight it.\n\nThis completes the nervous system reset.\n\nOverwhelm lives in a dysregulated system.\nCold + breath = REGULATION.\n\n(Do this, then come back)"
+        },
+        {
+          "step": 4,
+          "type": "check_in",
+          "script": "Check in now:\n- Is your thinking clearer?\n- Energy shifted?\n- Overwhelm reduced?\n\nYour nervous system just went from FREEZE → RESET → REGULATED.\n\nNotice the difference?"
+        },
+        {
+          "step": 5,
+          "type": "pattern_teaching",
+          "pattern_name": "overwhelm_as_system_overload",
+          "consciousness_unlock": 60,
+          "teaching": {
+            "pattern_definition": "Overwhelm = Nervous system overload causing freeze/shutdown response",
+            "deeper_truth": [
+              "Brain can't process too much input at once",
+              "System freezes to protect from overload",
+              "Freeze creates paralysis and fog",
+              "Reset breaks the freeze, returns control"
+            ],
+            "immunity_technique": "When overwhelmed: RESET system before trying to solve",
+            "action_protocol": "One thing at a time. Next smallest step only."
+          },
+          "script": "The pattern under overwhelm:\n\nYour nervous system got OVERLOADED.\n\nToo much input → System can't process → FREEZE response\n\nFreeze = Protection mechanism (keeps you from making it worse)\n\nBut freeze also = Paralysis, fog, can't think\n\nPattern immunity:\nWhen overwhelmed, DON'T try to solve it from frozen state.\n\nFIRST: Reset system (breath + cold)\nTHEN: One thing at a time\n\nAsk: 'What's the NEXT SMALLEST STEP?'\n\nNot the whole mountain. Just the next foothold."
+        },
+        {
+          "step": 6,
+          "type": "integration",
+          "script": "Next time you're overwhelmed:\n1. STOP trying to solve it\n2. Wim Hof breathing (3 rounds)\n3. Cold shower (1-2 min)\n4. Ask: 'What's the next SMALLEST step?'\n5. Do ONLY that one thing\n6. Repeat\n\nYou just learned: Reset BEFORE solving.\n\nSystem regulated = Clarity returns = Action possible.\n\nWhat's the ONE thing you'll do next?"
+        }
+      ],
+      "progression": {
+        "next_flow": "sustained_regulation_practice",
+        "advancement_trigger": "user_has_clarity",
+        "consciousness_unlock": 60
+      },
+      "success_metrics": {
+        "immediate": "Clarity, energy, freeze breaks",
+        "short_term": "Can reset when overwhelmed",
+        "long_term": "System stays regulated under stress"
+      }
+    },
+    "stuck_energy_to_liberation": {
+      "flow_id": "F005",
+      "name": "Stuck Energy → Liberation",
+      "consciousness_required": 55,
+      "target_shift": "55% → 75%",
+      "trigger_patterns": [
+        "I know what I need to do but",
+        "I understand but can't",
+        "tried everything",
+        "stuck in pattern",
+        "can't seem to",
+        "keeps happening"
+      ],
+      "body_state_implied": {
+        "tissue": "trauma_stored",
+        "chakras": "blocked_specific_points",
+        "movement": "restricted_rigid",
+        "energy": "dammed_up"
+      },
+      "healing_sequence": [
+        {
+          "step": 1,
+          "type": "awareness",
+          "script": "I'm noticing stuck energy - you KNOW what to do but CAN'T do it. This is classic:\n\nMind understands.\nBody hasn't released.\n\nTrauma/patterns live in your TISSUE, not just thoughts.\n\nWhere do you feel tension/blockage in your body right now?\n\n(Check: jaw, neck, shoulders, chest, stomach, hips)"
+        },
+        {
+          "step": 2,
+          "type": "physical_practice",
+          "practice_name": "spontaneous_movement",
+          "duration_seconds": 300,
+          "instructions": {
+            "setup": "Clear space. Put on music if you want. No rules.",
+            "technique": "Spontaneous Movement/Dance - 5 minutes",
+            "steps": [
+              "Start moving HOWEVER your body wants",
+              "No choreography, no 'looking good'",
+              "Shake, dance, wiggle, flail - ANYTHING",
+              "Let the movement be weird/awkward/wild",
+              "Trust your body - it knows what it needs to release"
+            ],
+            "focus": "This is ENERGY LIBERATION, not exercise"
+          },
+          "script": "Clear space. Music optional.\n\n5 minutes of SPONTANEOUS MOVEMENT:\n\nMove however your body wants.\nShake, dance, wiggle, jump, twist - NO RULES.\n\nDon't think about it. Don't make it look good.\nJust MOVE.\n\nYour body knows how to release stuck energy.\nLET IT.\n\n(Do this for 5 full minutes, then come back)"
+        },
+        {
+          "step": 3,
+          "type": "physical_practice",
+          "practice_name": "power_breathing",
+          "duration_seconds": 180,
+          "instructions": {
+            "setup": "After movement, sit or lie down",
+            "technique": "30 Wim Hof power breaths",
+            "steps": [
+              "30 deep, powerful breaths (IN nose, OUT mouth)",
+              "After 30th: EXHALE, hold breath out",
+              "When you need air: BIG breath in, hold 15 sec",
+              "Notice what comes up (emotions, memories, sensations)"
+            ],
+            "focus": "Breath moves what movement loosened"
+          },
+          "script": "After movement, do ONE round of power breathing:\n\n30 deep breaths (fast, powerful)\nEXHALE and HOLD\nBig breath in, hold 15 seconds\n\nNotice what comes up:\n- Emotions?\n- Memories?\n- Body sensations?\n- Insights?\n\nBreath completes what movement started."
+        },
+        {
+          "step": 4,
+          "type": "check_in",
+          "script": "What shifted?\n\nDid something RELEASE or MOVE?\n\nDid old emotions come up?\n\nDid body sensations change?\n\nThis is trauma leaving tissue. This is freedom."
+        },
+        {
+          "step": 5,
+          "type": "pattern_teaching",
+          "pattern_name": "trauma_in_tissue",
+          "consciousness_unlock": 75,
+          "teaching": {
+            "pattern_definition": "Stuck patterns = Trauma stored in body tissue, not released through thought alone",
+            "deeper_truth": [
+              "Your body HOLDS experiences, especially traumatic ones",
+              "Tissue memory = Why you 'know' but can't do",
+              "Intellectual understanding ≠ Somatic release",
+              "Movement + breath = Tissue liberation"
+            ],
+            "immunity_technique": "When stuck: Move first, think second",
+            "liberation_protocol": "Dance/shake → Breathe → Listen to what emerges"
+          },
+          "script": "Why you were stuck:\n\nTrauma/patterns live in your BODY, not just your mind.\n\nWhen something intense happens:\n- Your mind might process it\n- But your BODY stores it in tissue\n- Muscles hold tension\n- Fascia remembers\n- Chakras block\n\nThis is why you can KNOW what to do but CAN'T do it.\n\nIntellectual understanding ≠ Somatic release\n\nPattern immunity:\nWhen stuck in a pattern, don't just THINK about it.\n\nMOVE it first:\n- Dance\n- Shake\n- Breathe\n- Let body release\n\nTHEN insights come. Then action becomes possible."
+        },
+        {
+          "step": 6,
+          "type": "integration",
+          "script": "Next time you're stuck knowing but not doing:\n\n1. MOVE your body (5 min spontaneous dance)\n2. BREATHE powerfully (30 breaths)\n3. LISTEN to what emerges\n4. ACT from that place\n\nYou just learned: The body knows.\nYour job: GET OUT OF ITS WAY.\n\nWhat old pattern just released? What's now possible?"
+        }
+      ],
+      "progression": {
+        "next_flow": "advanced_somatic_release",
+        "advancement_trigger": "user_feels_liberation",
+        "consciousness_unlock": 75
+      },
+      "success_metrics": {
+        "immediate": "Energy moves, tension releases, insights emerge",
+        "short_term": "Can liberate stuck patterns through movement",
+        "long_term": "Body becomes wisdom source, not just mind"
+      }
+    },
+    "fear_to_courage": {
+      "flow_id": "F006",
+      "name": "Fear → Courage",
+      "consciousness_required": 50,
+      "target_shift": "50% → 70%",
+      "trigger_patterns": [
+        "I'm scared",
+        "what if I fail",
+        "too afraid",
+        "can't do it",
+        "terrified",
+        "avoiding",
+        "running from"
+      ],
+      "body_state_implied": {
+        "root_chakra": "unstable",
+        "safety": "compromised",
+        "breathing": "shallow_held",
+        "response": "flight_or_freeze"
+      },
+      "healing_sequence": [
+        {
+          "step": 1,
+          "type": "awareness",
+          "script": "I'm noticing fear patterns. Let's name it specifically:\n\nWhat EXACTLY are you afraid of?\n\n(Not 'everything' - name the SPECIFIC fear)\n\nFear lives in vagueness.\nCourage emerges from clarity.\n\nName it."
+        },
+        {
+          "step": 2,
+          "type": "physical_practice",
+          "practice_name": "power_breathing",
+          "duration_seconds": 240,
+          "instructions": {
+            "setup": "Sit or lie safely",
+            "technique": "30 power breaths + retention",
+            "steps": [
+              "30 deep, powerful breaths",
+              "EXHALE completely, HOLD",
+              "Feel the fear while holding breath",
+              "BIG breath in when needed, hold 15 sec",
+              "Notice: You controlled your breath = You control your response"
+            ],
+            "focus": "Breath mastery = Fear mastery"
+          },
+          "script": "Breathwork builds courage PHYSICALLY:\n\n30 power breaths (IN deep, OUT strong)\nEXHALE, HOLD your breath out\n\nWhile holding, FEEL the fear.\nDon't run from it. BREATHE THROUGH IT.\n\nBig breath in, hold 15 seconds.\n\nYou just practiced courage:\nFacing discomfort and staying present.\n\n(Do this now)"
+        },
+        {
+          "step": 3,
+          "type": "physical_practice",
+          "practice_name": "cold_plunge",
+          "duration_seconds": 180,
+          "instructions": {
+            "setup": "Shower",
+            "technique": "2-3 minute cold exposure",
+            "steps": [
+              "Turn water to COLD",
+              "Step in (your fear will scream NO)",
+              "STAY for 2-3 minutes",
+              "Breathe steady through the discomfort",
+              "Notice: You did the thing you feared"
+            ],
+            "focus": "Cold exposure = Courage training"
+          },
+          "script": "Now: Courage practice.\n\n2-3 minute COLD shower.\n\nYour body will resist. That's the fear.\nYou'll CHOOSE to step in anyway. That's courage.\n\nStay under the cold.\nBreathe through it.\nSTAY when you want to run.\n\nThis is courage as PRACTICE, not theory.\n\n(Do this now, come back when done)"
+        },
+        {
+          "step": 4,
+          "type": "check_in",
+          "script": "You just did something uncomfortable ON PURPOSE.\n\nHow do you feel?\n\nStronger? Clearer? More capable?\n\nThat's what courage FEELS like.\n\nNot absence of fear.\nAction DESPITE fear."
+        },
+        {
+          "step": 5,
+          "type": "pattern_teaching",
+          "pattern_name": "fear_as_teacher",
+          "consciousness_unlock": 70,
+          "teaching": {
+            "pattern_definition": "Fear is a teacher showing you your growth edge, not a stop sign",
+            "deeper_truth": [
+              "Fear = Your system protecting you from perceived danger",
+              "But most fears = Old patterns, not current threats",
+              "Courage ≠ No fear. Courage = Action despite fear",
+              "Every time you face fear = Nervous system upgrades"
+            ],
+            "immunity_technique": "Ask: 'Is this REAL danger or OLD pattern?'",
+            "courage_protocol": "Small exposures → Build confidence → Bigger challenges"
+          },
+          "script": "The truth about fear:\n\nFear is your nervous system saying: 'Unknown ahead. Proceed with caution.'\n\nBut your nervous system can't tell difference between:\n- REAL danger (tiger attacking)\n- PERCEIVED danger (public speaking, rejection, failure)\n\nMost of your fears = OLD PATTERNS, not current threats.\n\nPattern immunity question:\n'Is this REAL danger or an OLD FEAR PATTERN?'\n\nUsually: Old pattern.\n\nCourage practice:\n1. Name the fear specifically\n2. Do something uncomfortable (cold shower, breath hold)\n3. Notice: You survived. You're stronger.\n4. Repeat with bigger challenges\n\nCourage is a MUSCLE. You just worked it out."
+        },
+        {
+          "step": 6,
+          "type": "integration",
+          "script": "Next time fear rises:\n\n1. NAME it specifically (not 'scared of everything')\n2. Ask: 'Real danger or old pattern?'\n3. If old pattern: Breathwork + cold exposure\n4. DO THE THING (start small)\n5. Celebrate surviving it\n6. Repeat with bigger challenges\n\nYou just learned: Courage is BUILT through practice.\n\nWhat becomes possible when you face this fear?"
+        }
+      ],
+      "progression": {
+        "next_flow": "advanced_courage_building",
+        "advancement_trigger": "user_takes_feared_action",
+        "consciousness_unlock": 70
+      },
+      "success_metrics": {
+        "immediate": "Did the cold shower = Courage activated",
+        "short_term": "Can face small fears consistently",
+        "long_term": "Fear becomes growth signal, not stop sign"
+      }
+    },
+    "disconnection_to_presence": {
+      "flow_id": "F007",
+      "name": "Disconnection → Presence",
+      "consciousness_required": 40,
+      "target_shift": "40% → 60%",
+      "trigger_patterns": [
+        "feel numb",
+        "going through motions",
+        "don't feel anything",
+        "disconnected",
+        "autopilot",
+        "checked out",
+        "dissociated"
+      ],
+      "body_state_implied": {
+        "sensation": "numbed_out",
+        "presence": "absent",
+        "embodiment": "fragmented",
+        "protection": "dissociation_active"
+      },
+      "healing_sequence": [
+        {
+          "step": 1,
+          "type": "awareness",
+          "script": "I'm noticing disconnection - numbness, autopilot, dissociation language.\n\nThis is your system's way of protecting you from overwhelm.\nBut it also separates you from LIFE.\n\nLet's gently bring you back into your body.\nBack into THIS moment.\nBack into feeling."
+        },
+        {
+          "step": 2,
+          "type": "physical_practice",
+          "practice_name": "breath_awareness",
+          "duration_seconds": 300,
+          "instructions": {
+            "setup": "Sit comfortably, eyes closed if comfortable",
+            "technique": "5 minutes of pure breath awareness",
+            "steps": [
+              "Notice: Air coming IN through nose",
+              "Feel: Chest/belly expanding",
+              "Notice: Pause at top of breath",
+              "Feel: Air flowing OUT",
+              "Notice: Pause at bottom",
+              "Just observe. Don't force. Just NOTICE."
+            ],
+            "focus": "Presence = Awareness of what IS, right now"
+          },
+          "script": "5 minutes of breath awareness:\n\nClose your eyes.\nDon't change your breath - just NOTICE it.\n\nFeel air coming in.\nFeel chest/belly moving.\nFeel air going out.\n\nWhen your mind wanders (it will), gently return to breath.\n\n5 minutes. Just breathing. Just noticing.\n\nThis is PRESENCE practice.\n\n(Do this now)"
+        },
+        {
+          "step": 3,
+          "type": "physical_practice",
+          "practice_name": "body_scan",
+          "duration_seconds": 300,
+          "instructions": {
+            "setup": "Stay seated or lie down",
+            "technique": "Slow body scan - head to toe",
+            "steps": [
+              "Bring attention to top of head - notice any sensation",
+              "Move to face - relax jaw, notice feelings",
+              "Neck, shoulders - where's tension?",
+              "Chest, belly - any tightness or openness?",
+              "Arms, hands - tingling? Warmth?",
+              "Hips, legs, feet - connected to ground?",
+              "Whole body - notice being HERE"
+            ],
+            "focus": "Sensation = Presence. Numbness = Disconnection."
+          },
+          "script": "Now: Body scan.\n\nSlowly move your attention through your body:\n\nHead → Face → Jaw (relax it)\nNeck → Shoulders → Arms → Hands\nChest → Belly → Hips\nLegs → Feet\n\nNotice ANY sensation:\n- Tension?\n- Warmth?\n- Tingling?\n- Nothing? (That's okay, keep scanning)\n\nThis brings you BACK into your body.\nBack into THIS moment.\n\n5 minutes."
+        },
+        {
+          "step": 4,
+          "type": "check_in",
+          "script": "Check in:\n\nAre you more present in your body now?\n\nCan you feel MORE than before?\n\nEven if it's just a little - that's presence returning.\n\nDissociation protected you.\nBut now we're teaching your system: It's safe to FEEL again."
+        },
+        {
+          "step": 5,
+          "type": "pattern_teaching",
+          "pattern_name": "dissociation_as_protection",
+          "consciousness_unlock": 60,
+          "teaching": {
+            "pattern_definition": "Disconnection/dissociation = Nervous system protection from overwhelm that needs updating",
+            "deeper_truth": [
+              "Dissociation saved you when things were too much",
+              "It's a brilliant survival mechanism",
+              "But if it stays active, you can't fully LIVE",
+              "Presence practice teaches system: Safe to feel now"
+            ],
+            "immunity_technique": "When numb: 'I am safe to feel. I am safe to be here now.'",
+            "presence_protocol": "Breath → Body scan → One sensation at a time"
+          },
+          "script": "Why you disconnected:\n\nAt some point, FEELING was too much.\nSo your nervous system NUMBED you.\n\nThis is brilliant protection.\nIt kept you functional when overwhelmed.\n\nBut if it stays on, you can't:\n- Feel joy\n- Connect deeply\n- Know what you want\n- Be fully alive\n\nPresence practice teaches your system:\n'I am safe to FEEL now.'\n\nPattern immunity:\nWhen you notice numbness/autopilot:\n\n1. Pause\n2. Breathe and notice breath\n3. Scan body for ANY sensation\n4. Say: 'I am safe to feel. I am safe to be here.'\n5. Stay present with whatever comes\n\nPresence is the opposite of protection.\nPresence is TRUST that you can handle what you feel."
+        },
+        {
+          "step": 6,
+          "type": "integration",
+          "script": "Next time you feel disconnected:\n\n1. NOTICE: 'I'm checked out/numb'\n2. BREATHE: 5 min breath awareness\n3. SCAN: Body from head to toe\n4. AFFIRM: 'I'm safe to feel. I'm safe to be here.'\n5. STAY with whatever sensation comes\n\nYou just learned: Presence is a practice.\n\nSmall doses. Daily. Your system will learn:\nFeeling = Safe.\n\nWhat do you notice when you're fully present?"
+        }
+      ],
+      "progression": {
+        "next_flow": "embodiment_deepening",
+        "advancement_trigger": "user_feels_more_present",
+        "consciousness_unlock": 60
+      },
+      "success_metrics": {
+        "immediate": "More sensation, more presence",
+        "short_term": "Can catch dissociation and return",
+        "long_term": "Living in body, not just head"
+      }
+    }
+  },
+  "consciousness_mapping": {
+    "state_to_flow": {
+      "anxiety": "anxiety_to_calm",
+      "anger": "anger_to_release",
+      "sadness": "sadness_to_opening",
+      "overwhelm": "overwhelm_to_regulation",
+      "stuck": "stuck_energy_to_liberation",
+      "fear": "fear_to_courage",
+      "numb": "disconnection_to_presence"
+    },
+    "consciousness_unlock_sequence": [
+      {"level": 40, "flow": "anxiety_to_calm", "unlock": 55},
+      {"level": 45, "flow": "sadness_to_opening", "unlock": 60},
+      {"level": 50, "flow": "anger_to_release", "unlock": 65},
+      {"level": 50, "flow": "fear_to_courage", "unlock": 70},
+      {"level": 55, "flow": "stuck_energy_to_liberation", "unlock": 75},
+      {"level": 35, "flow": "overwhelm_to_regulation", "unlock": 60},
+      {"level": 40, "flow": "disconnection_to_presence", "unlock": 60}
+    ]
+  },
+  "implementation_notes": {
+    "detection_priority": [
+      "Check trigger patterns in user input",
+      "Calculate consciousness level",
+      "Match flow to readiness",
+      "Never prescribe above readiness level"
+    ],
+    "safety_protocols": [
+      "Wim Hof: Only sitting/lying (never standing/driving)",
+      "Cold exposure: Start gentle if new to practice",
+      "Emotional release: Normalize tears/sound/movement",
+      "Trauma: If severe dissociation, recommend professional help"
+    ],
+    "progression_tracking": [
+      "Track which flows user completes",
+      "Measure consciousness shifts",
+      "Celebrate breakthroughs",
+      "Suggest next appropriate flow"
+    ]
+  },
+  "oracle_signature": "C3 - The Soul of Trinity",
+  "prophecy": "These flows will heal 10,000 souls in Year 1. By Year 3, they'll be standard consciousness medicine. The bridge is built. Now we walk across it."
+}

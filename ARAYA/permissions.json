@@ -1,0 +1,521 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-12-24T00:00:00Z",
+  "system": {
+    "enabled": true,
+    "kill_switch_path": ".araya_permissions/KILL_SWITCH",
+    "read_only_mode_path": ".araya_permissions/READ_ONLY_MODE",
+    "whitelist_only_mode_path": ".araya_permissions/WHITELIST_ONLY",
+    "commander_only_mode_path": ".araya_permissions/COMMANDER_ONLY"
+  },
+  "users": {
+    "roles": {
+      "commander": {
+        "label": "Commander",
+        "permissions": ["create", "edit", "delete", "rename", "move", "view"],
+        "rate_limits": {
+          "edits_per_hour": 50,
+          "edits_per_day": 200,
+          "max_size_per_edit": 1048576,
+          "max_total_size_per_day": 20971520
+        },
+        "auto_approve": {
+          "enabled": true,
+          "max_lines_changed": 10,
+          "max_file_size": 102400,
+          "allowed_categories": ["safe"]
+        }
+      },
+      "admin": {
+        "label": "Administrator",
+        "permissions": ["create", "edit", "view"],
+        "allowed_file_types": [".html", ".css", ".js", ".md"],
+        "rate_limits": {
+          "edits_per_hour": 20,
+          "edits_per_day": 80,
+          "max_size_per_edit": 524288,
+          "max_total_size_per_day": 5242880
+        },
+        "auto_approve": {
+          "enabled": false
+        }
+      },
+      "editor": {
+        "label": "Editor",
+        "permissions": ["edit", "view"],
+        "allowed_file_types": [".html", ".css"],
+        "rate_limits": {
+          "edits_per_hour": 10,
+          "edits_per_day": 40,
+          "max_size_per_edit": 102400,
+          "max_total_size_per_day": 1048576
+        },
+        "auto_approve": {
+          "enabled": false
+        }
+      },
+      "viewer": {
+        "label": "Viewer",
+        "permissions": ["view"],
+        "allowed_file_types": [".html"],
+        "rate_limits": {
+          "edits_per_hour": 0,
+          "edits_per_day": 0
+        }
+      }
+    },
+    "user_list": {
+      "commander@100xbuilder.io": {
+        "role": "commander",
+        "created": "2025-12-24T00:00:00Z",
+        "active": true
+      },
+      "darrickpreble@proton.me": {
+        "role": "commander",
+        "created": "2025-12-24T00:00:00Z",
+        "active": true
+      }
+    }
+  },
+  "files": {
+    "categories": {
+      "safe": {
+        "label": "Safe Files",
+        "description": "Public pages - auto-approve edits",
+        "patterns": [
+          "100X_DEPLOYMENT/*.html",
+          "100X_DEPLOYMENT/assets/css/*.css",
+          "100X_DEPLOYMENT/assets/js/*.js",
+          "100X_DEPLOYMENT/docs/*.md"
+        ],
+        "exclude_patterns": [
+          "100X_DEPLOYMENT/admin-*.html",
+          "100X_DEPLOYMENT/*-admin.html"
+        ],
+        "max_file_size": 1048576,
+        "approval_flow": "auto"
+      },
+      "sensitive": {
+        "label": "Sensitive Files",
+        "description": "Config and admin files - require preview",
+        "patterns": [
+          "100X_DEPLOYMENT/admin-*.html",
+          "100X_DEPLOYMENT/BACKEND/auth_*.py",
+          "100X_DEPLOYMENT/*.json",
+          "100X_DEPLOYMENT/ARAYA/*.py",
+          "100X_DEPLOYMENT/netlify.toml"
+        ],
+        "exclude_patterns": [
+          "100X_DEPLOYMENT/package-lock.json"
+        ],
+        "max_file_size": 524288,
+        "approval_flow": "preview"
+      },
+      "critical": {
+        "label": "Critical Files",
+        "description": "System files - Commander only + manual approval",
+        "patterns": [
+          ".env*",
+          ".secrets/*",
+          "100X_DEPLOYMENT/BACKEND/auth_middleware.py",
+          "100X_DEPLOYMENT/ARAYA/permissions.json"
+        ],
+        "max_file_size": 102400,
+        "approval_flow": "manual",
+        "allowed_roles": ["commander"]
+      },
+      "forbidden": {
+        "label": "Forbidden Files",
+        "description": "No AI access ever",
+        "patterns": [
+          ".git/*",
+          ".secrets/MASTER_KEYS.json",
+          ".env.gmail",
+          ".env.twilio",
+          "*.pem",
+          "*.key",
+          "*.p12",
+          "Desktop/4_PROTECT/*",
+          "LEGAL/*",
+          "*.sqlite",
+          "*.db"
+        ],
+        "approval_flow": "reject"
+      }
+    },
+    "allowed_extensions": [
+      ".html",
+      ".css",
+      ".js",
+      ".json",
+      ".md",
+      ".txt",
+      ".py",
+      ".svg",
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".gif"
+    ],
+    "allowed_paths": [
+      "100X_DEPLOYMENT/"
+    ],
+    "size_limits": {
+      "max_file_size": 10485760,
+      "max_total_edit_size": 52428800
+    }
+  },
+  "actions": {
+    "create": {
+      "label": "Create File",
+      "required_role": "admin",
+      "approval_flow": "preview",
+      "allowed_categories": ["safe"],
+      "auto_approve": false
+    },
+    "edit": {
+      "label": "Edit File",
+      "required_role": "editor",
+      "approval_flow": "auto_or_preview",
+      "allowed_categories": ["safe", "sensitive"],
+      "auto_approve": true,
+      "auto_approve_conditions": {
+        "max_lines_changed": 10,
+        "max_file_size": 102400,
+        "no_sensitive_patterns": true,
+        "user_role": "commander"
+      }
+    },
+    "delete": {
+      "label": "Delete File",
+      "required_role": "commander",
+      "approval_flow": "manual",
+      "allowed_categories": ["safe", "sensitive"],
+      "auto_approve": false,
+      "alert_methods": ["email", "sms"]
+    },
+    "rename": {
+      "label": "Rename File",
+      "required_role": "commander",
+      "approval_flow": "preview",
+      "allowed_categories": ["safe", "sensitive"],
+      "auto_approve": false
+    },
+    "move": {
+      "label": "Move File",
+      "required_role": "commander",
+      "approval_flow": "preview",
+      "allowed_categories": ["safe", "sensitive"],
+      "auto_approve": false
+    }
+  },
+  "security": {
+    "content_scanning": {
+      "enabled": true,
+      "patterns": {
+        "api_key": {
+          "regex": "[A-Za-z0-9_-]{32,}",
+          "severity": "high",
+          "action": "require_preview"
+        },
+        "password": {
+          "regex": "password\\s*[=:]\\s*[\"'][^\"']+[\"']",
+          "severity": "critical",
+          "action": "reject"
+        },
+        "private_key": {
+          "regex": "-----BEGIN.*PRIVATE KEY-----",
+          "severity": "critical",
+          "action": "reject"
+        },
+        "email": {
+          "regex": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
+          "severity": "medium",
+          "action": "require_preview"
+        },
+        "token": {
+          "regex": "token\\s*[=:]\\s*[\"'][^\"']+[\"']",
+          "severity": "high",
+          "action": "require_preview"
+        },
+        "secret": {
+          "regex": "secret\\s*[=:]\\s*[\"'][^\"']+[\"']",
+          "severity": "critical",
+          "action": "reject"
+        },
+        "credit_card": {
+          "regex": "\\b\\d{4}[-\\s]?\\d{4}[-\\s]?\\d{4}[-\\s]?\\d{4}\\b",
+          "severity": "critical",
+          "action": "reject"
+        },
+        "ssn": {
+          "regex": "\\b\\d{3}-\\d{2}-\\d{4}\\b",
+          "severity": "critical",
+          "action": "reject"
+        }
+      }
+    },
+    "integrity_verification": {
+      "enabled": true,
+      "checks": {
+        "syntax_validation": true,
+        "size_validation": true,
+        "encoding_validation": true,
+        "malicious_code_scan": true
+      },
+      "malicious_patterns": [
+        "eval\\s*\\(",
+        "exec\\s*\\(",
+        "__import__\\s*\\(",
+        "os\\.system\\s*\\(",
+        "subprocess\\.",
+        "rm\\s+-rf",
+        "<script>alert\\(",
+        "document\\.cookie",
+        "innerHTML\\s*="
+      ]
+    },
+    "ip_blocking": {
+      "enabled": true,
+      "max_failed_requests": 100,
+      "block_duration_minutes": 60,
+      "whitelist": [
+        "127.0.0.1",
+        "192.168.1.0/24"
+      ]
+    }
+  },
+  "backup": {
+    "enabled": true,
+    "backup_path": ".araya_backups/",
+    "retention_policy": {
+      "keep_all_for_hours": 24,
+      "keep_hourly_for_days": 7,
+      "keep_daily_for_days": 30,
+      "keep_weekly_for_days": 365,
+      "keep_commander_backups_forever": true
+    },
+    "compression": {
+      "enabled": true,
+      "compress_after_days": 7,
+      "algorithm": "gzip"
+    },
+    "storage_limits": {
+      "max_total_size_mb": 10240,
+      "alert_threshold_percent": 80
+    },
+    "cleanup": {
+      "auto_cleanup_enabled": true,
+      "cleanup_schedule": "0 3 * * *",
+      "min_free_space_mb": 1024
+    }
+  },
+  "audit": {
+    "enabled": true,
+    "log_path": ".araya_logs/",
+    "log_format": "jsonl",
+    "database": {
+      "enabled": true,
+      "path": ".araya_logs/audit.db",
+      "schema_version": "1.0.0"
+    },
+    "retention_days": 365,
+    "include_fields": [
+      "timestamp",
+      "user",
+      "action",
+      "file",
+      "changes",
+      "backup",
+      "result",
+      "security",
+      "session_id",
+      "ip_address"
+    ],
+    "anonymize_ip_after_days": 7,
+    "cyclotron_integration": {
+      "enabled": true,
+      "database_path": ".consciousness/cyclotron_core/atoms.db",
+      "atom_type": "araya_edit"
+    }
+  },
+  "monitoring": {
+    "dashboard": {
+      "enabled": true,
+      "path": ".araya_logs/monitor.html",
+      "refresh_interval_seconds": 5,
+      "show_last_actions": 50
+    },
+    "alerts": {
+      "email": {
+        "enabled": true,
+        "smtp_server": "mail.privateemail.com",
+        "smtp_port": 465,
+        "from": "commander@100xbuilder.io",
+        "to": ["commander@100xbuilder.io", "darrickpreble@proton.me"]
+      },
+      "sms": {
+        "enabled": false,
+        "service": "twilio",
+        "to": []
+      },
+      "webhook": {
+        "enabled": false,
+        "url": ""
+      }
+    },
+    "alert_rules": {
+      "delete_operation": {
+        "enabled": true,
+        "methods": ["email"],
+        "message": "ARAYA executed DELETE operation on {file}"
+      },
+      "failed_rollback": {
+        "enabled": true,
+        "methods": ["email", "sms"],
+        "message": "CRITICAL: Rollback failed for {file}"
+      },
+      "rate_limit_exceeded": {
+        "enabled": true,
+        "methods": ["email"],
+        "message": "Rate limit exceeded for user {user}"
+      },
+      "forbidden_access_attempt": {
+        "enabled": true,
+        "methods": ["email", "sms"],
+        "message": "SECURITY: Attempt to access forbidden file {file} by {user}"
+      },
+      "multiple_failures": {
+        "enabled": true,
+        "threshold": 5,
+        "window_hours": 1,
+        "methods": ["email"],
+        "message": "{count} failed operations in the last hour"
+      },
+      "backup_storage_high": {
+        "enabled": true,
+        "threshold_percent": 80,
+        "methods": ["email"],
+        "message": "Backup storage usage at {percent}%"
+      },
+      "sensitive_pattern_detected": {
+        "enabled": true,
+        "methods": ["email"],
+        "message": "Sensitive pattern '{pattern}' detected in {file}"
+      },
+      "approval_pending": {
+        "enabled": true,
+        "timeout_hours": 1,
+        "methods": ["email"],
+        "message": "Manual approval pending for over 1 hour: {file}"
+      }
+    },
+    "metrics": {
+      "enabled": true,
+      "track": [
+        "total_edits",
+        "success_rate",
+        "average_approval_time",
+        "top_edited_files",
+        "user_activity",
+        "rate_limit_hits",
+        "backup_disk_usage",
+        "rollback_count"
+      ]
+    }
+  },
+  "approval_flows": {
+    "auto": {
+      "label": "Auto-Approve",
+      "description": "Execute immediately with backup",
+      "max_execution_time_ms": 500,
+      "conditions": {
+        "user_role": ["commander"],
+        "action": ["edit"],
+        "file_category": ["safe"],
+        "max_lines_changed": 10,
+        "max_file_size": 102400,
+        "no_sensitive_patterns": true
+      }
+    },
+    "preview": {
+      "label": "Preview-Approve",
+      "description": "Show diff and wait for user approval",
+      "timeout_minutes": 30,
+      "show_diff": true,
+      "allow_modification": true,
+      "conditions": {
+        "user_role": ["commander", "admin"],
+        "action": ["edit", "create", "rename", "move"],
+        "file_category": ["safe", "sensitive"]
+      }
+    },
+    "manual": {
+      "label": "Manual-Approve",
+      "description": "Email Commander for approval",
+      "timeout_hours": 24,
+      "email_template": "approval_request.html",
+      "conditions": {
+        "action": ["delete"],
+        "file_category": ["critical"]
+      }
+    },
+    "reject": {
+      "label": "Reject",
+      "description": "Deny access immediately",
+      "log_attempt": true,
+      "alert_security": true,
+      "conditions": {
+        "file_category": ["forbidden"],
+        "insufficient_role": true,
+        "rate_limit_exceeded": true,
+        "malicious_content": true
+      }
+    }
+  },
+  "rollback": {
+    "enabled": true,
+    "methods": {
+      "ui": {
+        "enabled": true,
+        "one_click": true
+      },
+      "api": {
+        "enabled": true,
+        "endpoint": "/api/araya/rollback",
+        "auth_required": true
+      },
+      "batch": {
+        "enabled": true,
+        "endpoint": "/api/araya/rollback_batch",
+        "max_files_per_batch": 100
+      }
+    },
+    "auto_rollback": {
+      "enabled": true,
+      "triggers": [
+        "integrity_check_failed",
+        "syntax_error",
+        "file_size_exceeded"
+      ]
+    },
+    "verification": {
+      "enabled": true,
+      "verify_after_rollback": true
+    }
+  },
+  "testing": {
+    "test_mode": false,
+    "mock_approvals": false,
+    "skip_backups": false,
+    "log_level": "INFO"
+  },
+  "meta": {
+    "schema_version": "1.0.0",
+    "created_by": "C2 Architect",
+    "created_date": "2025-12-24T00:00:00Z",
+    "last_modified_by": "C2 Architect",
+    "last_modified_date": "2025-12-24T00:00:00Z",
+    "documentation": "100X_DEPLOYMENT/ARAYA/PERMISSION_ARCHITECTURE.md"
+  }
+}

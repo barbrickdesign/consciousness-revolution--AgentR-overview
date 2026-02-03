@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Beta Tester Hub - Consciousness Revolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px 0 40px 0;
+        }
+
+        .beta-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            opacity: 0.8;
+            font-size: 16px;
+        }
+
+        .section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 24px;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            font-size: 20px;
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.2);
+            border: 2px solid #ffc107;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .warning-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffc107;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .action-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .action-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .action-card .icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .action-card h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .action-card p {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .primary-action {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+        }
+
+        .primary-action:hover {
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            opacity: 0.6;
+            font-size: 14px;
+        }
+
+        .status-good { color: #4ade80; }
+        .status-warn { color: #fbbf24; }
+        .status-bad { color: #f87171; }
+
+        @media (max-width: 500px) {
+            h1 { font-size: 26px; }
+            .section { padding: 20px; }
+            .action-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="beta-badge">BETA TESTER HUB</div>
+            <h1>Welcome, Tester!</h1>
+            <p class="subtitle">Thank you for helping us build something amazing</p>
+        </div>
+
+        <div class="warning-box">
+            <div class="warning-title">&#9888; What to Expect</div>
+            <p>This is a BETA product. Things may break. That's okay - when you find problems, tell us! Your feedback helps make this real.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">&#9989;</span>
+                What's Working
+            </div>
+            <ul class="checklist">
+                <li><span class="check-icon status-good">&#10004;</span> Talk to Araya (AI Assistant)</li>
+                <li><span class="check-icon status-good">&#10004;</span> Consciousness Tools (40+ patterns)</li>
+                <li><span class="check-icon status-good">&#10004;</span> Login & Signup</li>
+                <li><span class="check-icon status-good">&#10004;</span> Bug Reporting</li>
+                <li><span class="check-icon status-good">&#10004;</span> Payments (Stripe)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">&#9888;</span>
+                Known Issues (Don't Panic!)
+            </div>
+            <ul class="checklist">
+                <li><span class="check-icon status-warn">&#9888;</span> Some tools may load slowly</li>
+                <li><span class="check-icon status-warn">&#9888;</span> Mobile display may have quirks</li>
+                <li><span class="check-icon status-warn">&#9888;</span> Araya sometimes needs a refresh</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">&#128270;</span>
+                Please Test These
+            </div>
+            <ul class="checklist">
+                <li><span class="check-icon">1.</span> Create an account and log in</li>
+                <li><span class="check-icon">2.</span> Talk to Araya - ask her anything</li>
+                <li><span class="check-icon">3.</span> Try 3 different consciousness tools</li>
+                <li><span class="check-icon">4.</span> Report at least 1 bug (even if minor)</li>
+                <li><span class="check-icon">5.</span> Tell us your honest feedback</li>
+            </ul>
+        </div>
+
+        <div class="action-grid">
+            <a href="araya-chat.html" class="action-card primary-action">
+                <div class="icon">&#128172;</div>
+                <h3>Talk to Araya</h3>
+                <p>Start here!</p>
+            </a>
+
+            <a href="consciousness-tools.html" class="action-card">
+                <div class="icon">&#128736;</div>
+                <h3>Tools</h3>
+                <p>40+ patterns</p>
+            </a>
+
+            <a href="bugs.html" class="action-card">
+                <div class="icon">&#128029;</div>
+                <h3>Report Bug</h3>
+                <p>Help us improve</p>
+            </a>
+
+            <a href="welcome.html" class="action-card">
+                <div class="icon">&#127968;</div>
+                <h3>Dashboard</h3>
+                <p>Your home base</p>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>Questions? Talk to Araya or email darrickpreble@proton.me</p>
+            <p>Built with love by the Trinity</p>
+        </div>
+    </div>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

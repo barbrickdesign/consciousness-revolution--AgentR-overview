@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bridge - Consciousness Revolution</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0a0a0f;
+            color: #fff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background:
+                radial-gradient(ellipse at top, rgba(50, 100, 150, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(30, 60, 100, 0.1) 0%, transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 200;
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #88ccff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            color: #888;
+            max-width: 600px;
+            margin-bottom: 50px;
+        }
+
+        .hero .cta {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #3388cc, #2266aa);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(50, 130, 200, 0.3);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            color: #444;
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #88ccff;
+        }
+
+        section .subtitle {
+            text-align: center;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        /* What Is This */
+        .what-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .what-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 35px 30px;
+        }
+
+        .what-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .what-card p {
+            color: #888;
+            font-size: 1rem;
+        }
+
+        /* Ship Areas */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .area-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .area-card:hover {
+            background: rgba(100, 180, 255, 0.08);
+            border-color: rgba(100, 180, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .area-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .area-card .name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .area-card .desc {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* Start */
+        .start-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: rgba(50, 100, 150, 0.05);
+        }
+
+        .start-section h2 {
+            margin-bottom: 40px;
+        }
+
+        .start-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .start-btn {
+            padding: 20px 40px;
+            background: transparent;
+            border: 1px solid rgba(100, 180, 255, 0.3);
+            border-radius: 12px;
+            color: #88ccff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .start-btn:hover {
+            background: rgba(100, 180, 255, 0.1);
+            border-color: rgba(100, 180, 255, 0.5);
+        }
+
+        .start-btn.primary {
+            background: linear-gradient(135deg, #3388cc, #2266aa);
+            border: none;
+            color: #fff;
+        }
+
+        .start-btn.primary:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: #444;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        footer .pattern {
+            font-family: monospace;
+            color: #88ccff;
+            opacity: 0.4;
+            margin-top: 10px;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .hero { padding: 60px 20px; }
+            section { padding: 60px 20px; }
+            .start-options { flex-direction: column; align-items: center; }
+            .start-btn { width: 100%; max-width: 300px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>THE BRIDGE</h1>
+        <p class="tagline">
+            Welcome to the Consciousness Revolution.
+            A place where humans and AI work together to build something better.
+        </p>
+        <a href="araya-chat.html" class="cta">Talk to ARAYA</a>
+        <div class="scroll-hint">Scroll to explore</div>
+    </div>
+
+    <section>
+        <h2>What Is This?</h2>
+        <p class="subtitle">
+            You've found something different. Not a product. Not a course. A movement.
+        </p>
+
+        <div class="what-grid">
+            <div class="what-card">
+                <h3>AI That Works For You</h3>
+                <p>ARAYA is our AI assistant. She learns from everyone who uses her. Ask her anything. She'll help you navigate.</p>
+            </div>
+
+            <div class="what-card">
+                <h3>Tools That Actually Work</h3>
+                <p>Every tool here was built because someone needed it. Pattern recognition. Business systems. Legal help. All free to use.</p>
+            </div>
+
+            <div class="what-card">
+                <h3>A Community Building Together</h3>
+                <p>We're not selling you anything. We're building in public. You can watch, use the tools, or join us.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Explore The Ship</h2>
+        <p class="subtitle">
+            Each area has tools and resources. Click to explore.
+        </p>
+
+        <div class="areas-grid">
+            <a href="workshop.html" class="area-card">
+                <div class="icon">🔨</div>
+                <div class="name">WORKSHOP</div>
+                <div class="desc">Build projects</div>
+            </a>
+
+            <a href="network.html" class="area-card">
+                <div class="icon">📡</div>
+                <div class="name">NETWORK</div>
+                <div class="desc">Connect with people</div>
+            </a>
+
+            <a href="vault.html" class="area-card">
+                <div class="icon">🔒</div>
+                <div class="name">VAULT</div>
+                <div class="desc">Protect yourself</div>
+            </a>
+
+            <a href="market.html" class="area-card">
+                <div class="icon">📈</div>
+                <div class="name">MARKET</div>
+                <div class="desc">Grow your business</div>
+            </a>
+
+            <a href="library.html" class="area-card">
+                <div class="icon">📚</div>
+                <div class="name">LIBRARY</div>
+                <div class="desc">Learn things</div>
+            </a>
+
+            <a href="temple.html" class="area-card">
+                <div class="icon">🕯️</div>
+                <div class="name">TEMPLE</div>
+                <div class="desc">Go deeper</div>
+            </a>
+        </div>
+    </section>
+
+    <section class="start-section">
+        <h2>Ready to Start?</h2>
+
+        <div class="start-options">
+            <a href="araya-chat.html" class="start-btn primary">Talk to ARAYA</a>
+            <a href="https://discord.gg/your-invite" class="start-btn">Join Discord</a>
+            <a href="bugs.html" class="start-btn">Report a Bug</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Consciousness Revolution</p>
+        <p class="pattern">3 → 7 → 13 → ∞</p>
+    </footer>
+
+    <script src="/js/bug-widget.js"></script>
+</body>
+</html>

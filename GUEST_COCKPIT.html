@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciousness Revolution - Guest View</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px;
+            border-bottom: 2px solid #333;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: #888;
+            font-size: 1.2em;
+        }
+
+        .team-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid #00d4ff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(30, 30, 50, 0.8);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .card h2 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .card p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .link-list {
+            list-style: none;
+        }
+
+        .link-list li {
+            margin: 10px 0;
+        }
+
+        .link-list a {
+            color: #7b2cbf;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background: rgba(123, 44, 191, 0.1);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .link-list a:hover {
+            background: rgba(123, 44, 191, 0.3);
+            color: #fff;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat .number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .stat .label {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(123, 44, 191, 0.3), rgba(0, 212, 255, 0.2));
+            border: 1px solid #7b2cbf;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box h3 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .concept-list {
+            list-style: none;
+        }
+
+        .concept-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .concept-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+
+        .badge.green { background: #00c853; color: #000; }
+        .badge.blue { background: #00d4ff; color: #000; }
+        .badge.purple { background: #7b2cbf; color: #fff; }
+        .badge.gold { background: #ffd700; color: #000; }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        .action-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #7b2cbf, #00d4ff);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .action-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(123, 44, 191, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CONSCIOUSNESS REVOLUTION</h1>
+        <div class="subtitle">Guest Cockpit - View Only</div>
+        <div class="team-badge">Team: Derek + Jason + Erica + Maggie</div>
+    </div>
+
+    <div class="grid">
+        <!-- Jason Project Overview -->
+        <div class="card">
+            <h2>THE JASON PROJECT</h2>
+            <p>Carbon capture meets consciousness. Building the new world economy.</p>
+
+            <div class="highlight-box">
+                <h3>Core Concepts</h3>
+                <ul class="concept-list">
+                    <li><span class="badge gold">30% IRR</span> Carbon Capture Play</li>
+                    <li><span class="badge purple">15</span> Scalable Businesses ("Fleet")</li>
+                    <li><span class="badge blue">NEW</span> Builder vs Destroyer Classification</li>
+                    <li><span class="badge green">LIVE</span> Joy Meter (replaces credit rating)</li>
+                </ul>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat">
+                    <div class="number">7</div>
+                    <div class="label">Domains</div>
+                </div>
+                <div class="stat">
+                    <div class="number">3-7-13</div>
+                    <div class="label">Pattern</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Dashboards -->
+        <div class="card">
+            <h2>LIVE DASHBOARDS</h2>
+            <p>Click any link to view the live system.</p>
+
+            <ul class="link-list">
+                <li><a href="welcome.html" target="_blank">Welcome Portal</a></li>
+                <li><a href="PATTERN_LIBRARY.html" target="_blank">Pattern Library</a></li>
+                <li><a href="SEVEN_DOMAINS_DASHBOARD.html" target="_blank">Seven Domains Dashboard</a></li>
+                <li><a href="araya-chat.html" target="_blank">Araya AI Assistant</a></li>
+                <li><a href="BELIEF_CHECKER.html" target="_blank">Belief Checker Tool</a></li>
+                <li><a href="REALITY_CHECK.html" target="_blank">Reality Check</a></li>
+            </ul>
+        </div>
+
+        <!-- The Vision -->
+        <div class="card">
+            <h2>THE VISION</h2>
+            <p>What we're building together.</p>
+
+            <div class="highlight-box">
+                <h3>New Economy Principles</h3>
+                <ul class="concept-list">
+                    <li>Soul Frequency = Unlimited Credit Card</li>
+                    <li>Joy Experiences AS the Economy</li>
+                    <li>Builder Companies Get Rewarded</li>
+                    <li>Destroyer Companies Get Exposed</li>
+                    <li>Human Experience Projects</li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 15px; font-style: italic; color: #888;">
+                "Me and you are holding the answers to everything." - Jason
+            </p>
+        </div>
+
+        <!-- Pattern Theory -->
+        <div class="card">
+            <h2>PATTERN THEORY</h2>
+            <p>The consciousness growth algorithm.</p>
+
+            <div class="stat-grid">
+                <div class="stat">
+                    <div class="number">3</div>
+                    <div class="label">Trinity</div>
+                </div>
+                <div class="stat">
+                    <div class="number">7</div>
+                    <div class="label">Domains</div>
+                </div>
+                <div class="stat">
+                    <div class="number">13</div>
+                    <div class="label">Phases</div>
+                </div>
+                <div class="stat">
+                    <div class="number">∞</div>
+                    <div class="label">Emergence</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 15px;">
+                <strong>Formula:</strong> C1 × C2 × C3 = ∞<br>
+                <span style="color: #888;">Body × Mind × Soul = Infinite Potential</span>
+            </p>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="card">
+            <h2>NEXT ADVANCEMENTS</h2>
+            <p>What we're building next.</p>
+
+            <ul class="concept-list">
+                <li><span class="badge blue">BUILD</span> Builder vs Destroyer Scoring Tool</li>
+                <li><span class="badge purple">BUILD</span> Joy Meter Prototype</li>
+                <li><span class="badge green">RESEARCH</span> 7 Laws of Universal Harmony</li>
+                <li><span class="badge gold">CONNECT</span> ESG Framework Integration</li>
+                <li><span class="badge blue">SYNC</span> Wake Jason's System</li>
+            </ul>
+        </div>
+
+        <!-- Research Queue -->
+        <div class="card">
+            <h2>RESEARCH QUEUE</h2>
+            <p>Quantum transition materials.</p>
+
+            <ul class="concept-list">
+                <li>RA Law of One / Book of One</li>
+                <li>7 Laws of Universal Harmony</li>
+                <li>Lost Books of the Bible</li>
+                <li>Schumann Resonance</li>
+                <li>Energy/Frequency/Vibration Frameworks</li>
+                <li>Inverted Reality Pattern Analysis</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="araya-chat.html" class="action-button">Talk to Araya</a>
+        <a href="PATTERN_LIBRARY.html" class="action-button">Explore Patterns</a>
+    </div>
+
+    <div class="footer">
+        <p>Consciousness Revolution - Guest View</p>
+        <p style="margin-top: 10px;">
+            <strong>Contact:</strong> Derek Preble | darrickpreble@proton.me
+        </p>
+        <p style="margin-top: 10px; font-size: 0.9em;">
+            Last Updated: December 26, 2025 | Jason Project Active
+        </p>
+    </div>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

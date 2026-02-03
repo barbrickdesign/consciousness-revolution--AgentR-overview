@@ -85,13 +85,18 @@
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .submit-btn:hover {
+        .submit-btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
 
-        .submit-btn:active {
+        .submit-btn:active:not(:disabled) {
             transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
         .forgot-password {
@@ -182,7 +187,7 @@
                 <a href="forgot-password.html">Forgot password?</a>
             </div>
 
-            <button type="submit" class="submit-btn" style="margin-top: 20px;">Login →</button>
+            <button type="submit" class="submit-btn" style="margin-top: 20px;">Login</button>
         </form>
 
         <div class="signup-link">
@@ -208,9 +213,14 @@
                 password: document.getElementById('password').value
             };
 
+            // Disable button during submission
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Logging in...';
+            submitBtn.disabled = true;
+
             try {
-                // TODO: Replace with actual API endpoint
-                const response = await fetch('/api/login', {
+                const response = await fetch('/.netlify/functions/auth-login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -220,44 +230,35 @@
 
                 const data = await response.json();
 
-                if (response.ok) {
+                if (response.ok && data.success) {
                     successMessage.textContent = 'Login successful! Redirecting...';
                     successMessage.style.display = 'block';
 
-                    // Store session token
-                    localStorage.setItem('authToken', data.token);
+                    // Store session tokens securely
+                    localStorage.setItem('access_token', data.session.access_token);
+                    localStorage.setItem('refresh_token', data.session.refresh_token);
+                    localStorage.setItem('expires_at', data.session.expires_at);
+                    localStorage.setItem('user', JSON.stringify(data.user));
 
                     // Redirect to dashboard
                     setTimeout(() => {
                         window.location.href = 'dashboard.html';
                     }, 1000);
                 } else {
-                    errorMessage.textContent = data.message || 'Invalid email or password';
+                    errorMessage.textContent = data.error || 'Invalid email or password';
                     errorMessage.style.display = 'block';
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
                 }
             } catch (error) {
-                // For now, simulate success (no backend yet)
-                console.log('Login attempt:', formData);
-
-                // Check if user exists in localStorage
-                const signups = JSON.parse(localStorage.getItem('betaSignups') || '[]');
-                const user = signups.find(u => u.email === formData.email);
-
-                if (user) {
-                    successMessage.textContent = 'Login successful! Redirecting...';
-                    successMessage.style.display = 'block';
-
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-
-                    setTimeout(() => {
-                        window.location.href = 'dashboard.html';
-                    }, 1000);
-                } else {
-                    errorMessage.textContent = 'Account not found. Please sign up first.';
-                    errorMessage.style.display = 'block';
-                }
+                errorMessage.textContent = 'Connection error. Please try again.';
+                errorMessage.style.display = 'block';
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             }
         });
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

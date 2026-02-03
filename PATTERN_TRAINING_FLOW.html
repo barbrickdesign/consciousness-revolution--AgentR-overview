@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Detection Training | Consciousness Revolution</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        /* HEADER */
+        .header {
+            background: rgba(0,0,0,0.3);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .level-badge {
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 24px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4ECDC4;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            opacity: 0.6;
+            text-transform: uppercase;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* LEVEL SELECT */
+        .level-select {
+            margin-bottom: 30px;
+        }
+
+        .level-select h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .level-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .level-card:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .level-card.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .level-card.active {
+            border-color: #4ECDC4;
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .level-card.completed {
+            border-color: #2ecc71;
+        }
+
+        .level-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .level-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .level-desc {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+
+        .level-progress {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .level-progress-fill {
+            height: 100%;
+            background: #4ECDC4;
+            transition: width 0.5s;
+        }
+
+        /* TRAINING ARENA */
+        .training-arena {
+            display: none;
+        }
+
+        .training-arena.active {
+            display: block;
+        }
+
+        .arena-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .arena-title {
+            font-size: 20px;
+        }
+
+        .arena-progress {
+            font-size: 14px;
+            color: #4ECDC4;
+        }
+
+        /* SCENARIO CARD */
+        .scenario-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .scenario-context {
+            font-size: 12px;
+            color: #667eea;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .scenario-text {
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 20px;
+        }
+
+        .scenario-question {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* ANSWER OPTIONS */
+        .answer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .answer-btn {
+            padding: 16px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .answer-btn:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .answer-btn.correct {
+            border-color: #2ecc71;
+            background: rgba(46, 204, 113, 0.2);
+        }
+
+        .answer-btn.incorrect {
+            border-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.2);
+        }
+
+        .answer-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        /* FEEDBACK PANEL */
+        .feedback-panel {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .feedback-panel.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .feedback-icon {
+            font-size: 32px;
+        }
+
+        .feedback-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .feedback-title.correct { color: #2ecc71; }
+        .feedback-title.incorrect { color: #e74c3c; }
+
+        .feedback-explanation {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+
+        .pattern-info {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .pattern-info h4 {
+            font-size: 14px;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .pattern-info p {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .continue-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .continue-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* LEVEL COMPLETE */
+        .level-complete {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .level-complete.active {
+            display: block;
+        }
+
+        .complete-badge {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin: 0 auto 24px;
+            box-shadow: 0 0 40px rgba(46, 204, 113, 0.5);
+        }
+
+        .complete-title {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .complete-subtitle {
+            font-size: 16px;
+            opacity: 0.7;
+            margin-bottom: 24px;
+        }
+
+        .complete-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+
+        .complete-stat {
+            text-align: center;
+        }
+
+        .complete-stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #4ECDC4;
+        }
+
+        .complete-stat-label {
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        .next-level-btn {
+            padding: 16px 48px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #4ECDC4 0%, #44a08d 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        /* BACK BUTTON */
+        .back-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .header-stats { display: none; }
+            .level-grid { grid-template-columns: 1fr; }
+            .answer-grid { grid-template-columns: 1fr; }
+            .complete-stats { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-left">
+            <div class="header-title">Pattern Training</div>
+            <div class="level-badge" id="currentLevelBadge">Level 1</div>
+        </div>
+        <div class="header-stats">
+            <div class="stat">
+                <div class="stat-value" id="totalScore">0</div>
+                <div class="stat-label">Points</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="streakCount">0</div>
+                <div class="stat-label">Streak</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="accuracy">0%</div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- LEVEL SELECT -->
+        <div class="level-select" id="levelSelect">
+            <h2>Choose Your Training Level</h2>
+            <div class="level-grid" id="levelGrid">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+
+        <!-- TRAINING ARENA -->
+        <div class="training-arena" id="trainingArena">
+            <div class="arena-header">
+                <button class="back-btn" onclick="showLevelSelect()">Back to Levels</button>
+                <div class="arena-progress" id="arenaProgress">Question 1 of 5</div>
+            </div>
+
+            <div class="scenario-card" id="scenarioCard">
+                <div class="scenario-context" id="scenarioContext">Personal Relationship</div>
+                <div class="scenario-text" id="scenarioText">Loading...</div>
+                <div class="scenario-question" id="scenarioQuestion">What pattern is being used here?</div>
+
+                <div class="answer-grid" id="answerGrid">
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+
+            <div class="feedback-panel" id="feedbackPanel">
+                <div class="feedback-header">
+                    <div class="feedback-icon" id="feedbackIcon">-</div>
+                    <div class="feedback-title" id="feedbackTitle">-</div>
+                </div>
+                <div class="feedback-explanation" id="feedbackExplanation">-</div>
+                <div class="pattern-info">
+                    <h4 id="patternName">Pattern Name</h4>
+                    <p id="patternDescription">Description</p>
+                </div>
+                <button class="continue-btn" onclick="nextQuestion()">Continue</button>
+            </div>
+
+            <div class="level-complete" id="levelComplete">
+                <div class="complete-badge">🏆</div>
+                <h2 class="complete-title">Level Complete!</h2>
+                <p class="complete-subtitle" id="completeSubtitle">You've mastered this level</p>
+                <div class="complete-stats">
+                    <div class="complete-stat">
+                        <div class="complete-stat-value" id="levelScore">0</div>
+                        <div class="complete-stat-label">Points Earned</div>
+                    </div>
+                    <div class="complete-stat">
+                        <div class="complete-stat-value" id="levelAccuracy">0%</div>
+                        <div class="complete-stat-label">Accuracy</div>
+                    </div>
+                    <div class="complete-stat">
+                        <div class="complete-stat-value" id="levelTime">0s</div>
+                        <div class="complete-stat-label">Time</div>
+                    </div>
+                </div>
+                <button class="next-level-btn" onclick="goToNextLevel()">Next Level</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // TRAINING LEVELS
+        const LEVELS = [
+            {
+                id: 1,
+                name: 'Beginner: Obvious Patterns',
+                desc: 'Learn to spot clear manipulation',
+                icon: '🌱',
+                scenarios: [
+                    {
+                        context: 'Text Message',
+                        text: '"If you really loved me, you would delete all your friends of the opposite sex."',
+                        question: 'What pattern is this?',
+                        answers: ['Healthy Boundary', 'Emotional Blackmail', 'Clear Communication', 'Love Language'],
+                        correct: 1,
+                        pattern: 'Emotional Blackmail',
+                        explanation: 'Using "if you loved me" to demand compliance is emotional blackmail. Love is not conditional on control.'
+                    },
+                    {
+                        context: 'Sales Call',
+                        text: '"This price is only available for the next 10 minutes. After that, it goes up 50%."',
+                        question: 'Identify the manipulation tactic:',
+                        answers: ['Honest Pricing', 'False Urgency', 'Market Economics', 'Fair Warning'],
+                        correct: 1,
+                        pattern: 'Pressure Tactics',
+                        explanation: 'Artificial time pressure is designed to bypass your rational decision-making. Real opportunities allow time to think.'
+                    },
+                    {
+                        context: 'Family Conversation',
+                        text: '"After everything I\'ve done for you, this is how you repay me?"',
+                        question: 'This is an example of:',
+                        answers: ['Guilt Tripping', 'Fair Observation', 'Honest Feedback', 'Loving Reminder'],
+                        correct: 0,
+                        pattern: 'Guilt Tripping',
+                        explanation: 'Keeping a "debt ledger" and using past actions to control current choices is guilt manipulation.'
+                    },
+                    {
+                        context: 'Workplace Email',
+                        text: '"I need this done today. Everyone else has already agreed. Don\'t be the one holding us back."',
+                        question: 'What patterns are present?',
+                        answers: ['Urgent + Peer Pressure', 'Clear Deadline', 'Team Motivation', 'Project Management'],
+                        correct: 0,
+                        pattern: 'Pressure + Triangulation',
+                        explanation: 'Combining urgency with "everyone else agrees" is a double manipulation. Verify independently.'
+                    },
+                    {
+                        context: 'New Relationship',
+                        text: '"I\'ve never felt this way about anyone. You\'re my soulmate. Let\'s move in together - it\'s only been 2 weeks but I just KNOW."',
+                        question: 'This intensity is called:',
+                        answers: ['True Love', 'Love Bombing', 'Romantic', 'Destiny'],
+                        correct: 1,
+                        pattern: 'Love Bombing',
+                        explanation: 'Excessive affection and fast commitment demands are red flags. Real love grows over time.'
+                    }
+                ]
+            },
+            {
+                id: 2,
+                name: 'Intermediate: Subtle Signals',
+                desc: 'Detect hidden manipulation',
+                icon: '🌿',
+                scenarios: [
+                    {
+                        context: 'Partner Conversation',
+                        text: '"I just find it interesting that you always seem to remember things differently than I do."',
+                        question: 'What is being implied?',
+                        answers: ['Genuine Curiosity', 'Gaslighting Setup', 'Memory Comparison', 'Honest Observation'],
+                        correct: 1,
+                        pattern: 'Gaslighting',
+                        explanation: 'Planting seeds of doubt about your memory is early-stage gaslighting. Document incidents.'
+                    },
+                    {
+                        context: 'Friend Text',
+                        text: '"I\'m not saying you\'re wrong, BUT... everyone thinks you\'re being too sensitive about this."',
+                        question: 'Identify the hidden message:',
+                        answers: ['Supportive Feedback', 'Invalidation + Triangulation', 'Helpful Perspective', 'Honest Opinion'],
+                        correct: 1,
+                        pattern: 'Covert Invalidation',
+                        explanation: '"I\'m not saying X, but X" is a classic setup. The second part reveals true intent.'
+                    },
+                    {
+                        context: 'Ex Partner Message',
+                        text: '"I was just in the neighborhood and thought of you. Remember that restaurant we loved? I really have changed..."',
+                        question: 'This behavior is called:',
+                        answers: ['Friendly Check-in', 'Hoovering', 'Genuine Apology', 'Nostalgia'],
+                        correct: 1,
+                        pattern: 'Hoovering',
+                        explanation: 'Trying to "suck you back in" after a breakup using nostalgia is hoovering. Stay firm.'
+                    },
+                    {
+                        context: 'Manager Meeting',
+                        text: '"I know you said you were overworked, but Sarah manages to do her projects AND help others. Just something to think about."',
+                        question: 'What tactic is being used?',
+                        answers: ['Mentorship', 'Unfair Comparison', 'Motivation', 'Feedback'],
+                        correct: 1,
+                        pattern: 'Comparison Manipulation',
+                        explanation: 'Using others to make you feel inadequate is manipulation. Each person\'s load is different.'
+                    },
+                    {
+                        context: 'Social Media DM',
+                        text: '"Most people in our industry agree that if you don\'t have X certification, you\'re basically unemployable. Luckily my course can help..."',
+                        question: 'What persuasion tactics are present?',
+                        answers: ['Fear + False Authority', 'Market Research', 'Career Advice', 'Helpful Information'],
+                        correct: 0,
+                        pattern: 'Fear-Based Selling',
+                        explanation: 'Creating fear then offering the solution is a manipulation pattern. Verify claims independently.'
+                    }
+                ]
+            },
+            {
+                id: 3,
+                name: 'Advanced: Complex Situations',
+                desc: 'Handle multi-layer manipulation',
+                icon: '🌳',
+                scenarios: [
+                    {
+                        context: 'Long-term Relationship',
+                        text: '"I only get upset because I care so much. If you would just listen to me, I wouldn\'t have to raise my voice. You know how much I love you."',
+                        question: 'How many manipulation patterns are present?',
+                        answers: ['None - genuine', '1-2 patterns', '3+ patterns', 'Can\'t determine'],
+                        correct: 2,
+                        pattern: 'Triple Layer Manipulation',
+                        explanation: 'This contains: 1) Blame reversal, 2) Justification of bad behavior, 3) Love as excuse. The "because I love you" frame hides control.'
+                    },
+                    {
+                        context: 'Investor Pitch',
+                        text: '"We have 10,000 users who love us. Our competitors are failing. We just need $50k to reach profitability. Other investors are already in - you don\'t want to miss this."',
+                        question: 'Count the red flags:',
+                        answers: ['0-1 flags', '2-3 flags', '4+ flags', 'All valid claims'],
+                        correct: 2,
+                        pattern: 'Stacked Persuasion',
+                        explanation: 'Social proof (users), competitor attack, urgency, FOMO - all stacked. Verify each claim separately.'
+                    },
+                    {
+                        context: 'Family Holiday',
+                        text: '"Your sister always makes time for family, unlike some people. But I understand you\'re very busy with your important life. We\'ll just be here, waiting, like always."',
+                        question: 'What is the dominant pattern?',
+                        answers: ['Passive-Aggressive Guilt', 'Honest Disappointment', 'Fair Comparison', 'Loving Concern'],
+                        correct: 0,
+                        pattern: 'Passive-Aggressive Guilt',
+                        explanation: 'Comparison + sarcasm + guilt-inducing imagery. The tone matters as much as words.'
+                    },
+                    {
+                        context: 'Job Negotiation',
+                        text: '"We really want you, but HR won\'t approve higher salary. However, if you prove yourself in 6 months, we\'ll definitely make it right. Everyone here started this way."',
+                        question: 'What should you be cautious about?',
+                        answers: ['Nothing - normal process', 'Future Faking', 'Fair Start', 'Company Policy'],
+                        correct: 1,
+                        pattern: 'Future Faking + Social Proof',
+                        explanation: 'Promises without written commitment are future faking. "Everyone did this" normalizes unfair treatment.'
+                    },
+                    {
+                        context: 'Political News',
+                        text: '"Critics say the new policy is controversial, but supporters argue it\'s necessary. Both sides agree something must be done. Experts are divided."',
+                        question: 'What\'s problematic about this framing?',
+                        answers: ['Nothing - balanced', 'False Balance Fallacy', 'Good Journalism', 'Fair Reporting'],
+                        correct: 1,
+                        pattern: 'False Balance',
+                        explanation: 'Presenting all views as equally valid, regardless of evidence, is false balance. Look for actual data.'
+                    }
+                ]
+            },
+            {
+                id: 4,
+                name: 'Expert: Real-World Defense',
+                desc: 'Master manipulation immunity',
+                icon: '🌲',
+                scenarios: [
+                    {
+                        context: 'Conflict Resolution',
+                        text: '"Look, we both made mistakes. Let\'s just move forward. Bringing up the past isn\'t helpful. I said I was sorry - what more do you want?"',
+                        question: 'Is this genuine resolution?',
+                        answers: ['Yes - mature approach', 'No - accountability dodge', 'Partially genuine', 'Can\'t tell'],
+                        correct: 1,
+                        pattern: 'False Reconciliation',
+                        explanation: 'True resolution includes specific acknowledgment. "We both" when only one was wrong is false equivalence. "What more do you want" shows impatience with accountability.'
+                    },
+                    {
+                        context: 'Self-Reflection',
+                        text: '"Maybe I am too sensitive. Everyone says so. Perhaps I should just let things go and stop making everything about me."',
+                        question: 'What might be happening here?',
+                        answers: ['Healthy self-awareness', 'Internalized gaslighting', 'Personal growth', 'Maturity'],
+                        correct: 1,
+                        pattern: 'Internalized Manipulation',
+                        explanation: 'When manipulation is successful, victims blame themselves. "Everyone says" is a red flag for triangulation that\'s been internalized.'
+                    },
+                    {
+                        context: 'Apology Received',
+                        text: '"I\'m sorry if you felt hurt by what I said. I never intended for you to take it that way. You know I would never hurt you on purpose."',
+                        question: 'Rate this apology:',
+                        answers: ['Genuine apology', 'Non-apology', 'Partial apology', 'Perfect apology'],
+                        correct: 1,
+                        pattern: 'Non-Apology',
+                        explanation: '"Sorry IF you felt" puts blame on your perception. "Never intended" deflects responsibility. A real apology is: "I\'m sorry I said X. It was wrong."'
+                    },
+                    {
+                        context: 'Financial Decision',
+                        text: '"I\'ve helped you so many times. Just co-sign this loan - I\'ll make all the payments. You don\'t trust me? After our history? Wow, okay then."',
+                        question: 'What manipulation stack is present?',
+                        answers: ['Simple request', 'Obligation + guilt + shame', 'Fair ask', 'Trust building'],
+                        correct: 1,
+                        pattern: 'Triple Coercion',
+                        explanation: 'Debt-calling + trust manipulation + shame pivot. Financial decisions should never involve emotional pressure.'
+                    },
+                    {
+                        context: 'Daily Interaction',
+                        text: '"You seem off today. Is everything okay? You know you can tell me anything. I just want to help."',
+                        question: 'Is this concerning?',
+                        answers: ['No - caring question', 'Depends on context', 'Yes - always manipulation', 'Can\'t determine'],
+                        correct: 1,
+                        pattern: 'Context Matters',
+                        explanation: 'This COULD be genuine OR information-gathering for later use. Pattern recognition requires knowing the person\'s history. Not everything is manipulation - but trust patterns over words.'
+                    }
+                ]
+            }
+        ];
+
+        // GAME STATE
+        const gameState = {
+            currentLevel: 1,
+            currentQuestion: 0,
+            score: 0,
+            streak: 0,
+            correctTotal: 0,
+            questionsTotal: 0,
+            levelScore: 0,
+            levelCorrect: 0,
+            levelStart: null,
+            unlockedLevels: [1],
+            completedLevels: []
+        };
+
+        // Load saved state
+        function loadState() {
+            const saved = localStorage.getItem('patternTrainingState');
+            if (saved) {
+                const data = JSON.parse(saved);
+                Object.assign(gameState, data);
+            }
+            renderLevelGrid();
+            updateStats();
+        }
+
+        // Save state
+        function saveState() {
+            localStorage.setItem('patternTrainingState', JSON.stringify({
+                score: gameState.score,
+                streak: gameState.streak,
+                correctTotal: gameState.correctTotal,
+                questionsTotal: gameState.questionsTotal,
+                unlockedLevels: gameState.unlockedLevels,
+                completedLevels: gameState.completedLevels
+            }));
+        }
+
+        // Render level grid
+        function renderLevelGrid() {
+            const grid = document.getElementById('levelGrid');
+            grid.innerHTML = LEVELS.map(level => {
+                const unlocked = gameState.unlockedLevels.includes(level.id);
+                const completed = gameState.completedLevels.includes(level.id);
+                const progress = completed ? 100 : 0;
+
+                return `
+                    <div class="level-card ${unlocked ? '' : 'locked'} ${completed ? 'completed' : ''}"
+                         onclick="${unlocked ? `startLevel(${level.id})` : ''}">
+                        <div class="level-icon">${unlocked ? level.icon : '🔒'}</div>
+                        <div class="level-name">${level.name}</div>
+                        <div class="level-desc">${level.desc}</div>
+                        <div class="level-progress">
+                            <div class="level-progress-fill" style="width: ${progress}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update stats display
+        function updateStats() {
+            document.getElementById('totalScore').textContent = gameState.score;
+            document.getElementById('streakCount').textContent = gameState.streak;
+            const accuracy = gameState.questionsTotal > 0
+                ? Math.round((gameState.correctTotal / gameState.questionsTotal) * 100)
+                : 0;
+            document.getElementById('accuracy').textContent = accuracy + '%';
+            document.getElementById('currentLevelBadge').textContent = `Level ${gameState.currentLevel}`;
+        }
+
+        // Start a level
+        function startLevel(levelId) {
+            gameState.currentLevel = levelId;
+            gameState.currentQuestion = 0;
+            gameState.levelScore = 0;
+            gameState.levelCorrect = 0;
+            gameState.levelStart = Date.now();
+
+            document.getElementById('levelSelect').style.display = 'none';
+            document.getElementById('trainingArena').classList.add('active');
+            document.getElementById('levelComplete').classList.remove('active');
+            document.getElementById('scenarioCard').style.display = 'block';
+
+            loadQuestion();
+        }
+
+        // Load current question
+        function loadQuestion() {
+            const level = LEVELS.find(l => l.id === gameState.currentLevel);
+            const scenario = level.scenarios[gameState.currentQuestion];
+
+            document.getElementById('arenaProgress').textContent =
+                `Question ${gameState.currentQuestion + 1} of ${level.scenarios.length}`;
+
+            document.getElementById('scenarioContext').textContent = scenario.context;
+            document.getElementById('scenarioText').textContent = scenario.text;
+            document.getElementById('scenarioQuestion').textContent = scenario.question;
+
+            // Render answers
+            const answerGrid = document.getElementById('answerGrid');
+            answerGrid.innerHTML = scenario.answers.map((answer, i) => `
+                <button class="answer-btn" onclick="checkAnswer(${i})">${answer}</button>
+            `).join('');
+
+            // Hide feedback
+            document.getElementById('feedbackPanel').classList.remove('active');
+        }
+
+        // Check answer
+        function checkAnswer(index) {
+            const level = LEVELS.find(l => l.id === gameState.currentLevel);
+            const scenario = level.scenarios[gameState.currentQuestion];
+            const buttons = document.querySelectorAll('.answer-btn');
+            const isCorrect = index === scenario.correct;
+
+            // Disable all buttons
+            buttons.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === scenario.correct) btn.classList.add('correct');
+                if (i === index && !isCorrect) btn.classList.add('incorrect');
+            });
+
+            // Update game state
+            gameState.questionsTotal++;
+            if (isCorrect) {
+                gameState.correctTotal++;
+                gameState.levelCorrect++;
+                gameState.streak++;
+                gameState.score += 10 * gameState.streak;
+                gameState.levelScore += 10 * gameState.streak;
+            } else {
+                gameState.streak = 0;
+            }
+
+            updateStats();
+            saveState();
+
+            // Show feedback
+            const feedback = document.getElementById('feedbackPanel');
+            document.getElementById('feedbackIcon').textContent = isCorrect ? '✅' : '❌';
+            const title = document.getElementById('feedbackTitle');
+            title.textContent = isCorrect ? 'Correct!' : 'Not quite';
+            title.className = 'feedback-title ' + (isCorrect ? 'correct' : 'incorrect');
+            document.getElementById('feedbackExplanation').textContent = scenario.explanation;
+            document.getElementById('patternName').textContent = scenario.pattern;
+            document.getElementById('patternDescription').textContent =
+                `This pattern is designed to ${isCorrect ? 'manipulate your perception or decision-making.' : 'catch you off-guard. Keep practicing!'}`;
+
+            feedback.classList.add('active');
+        }
+
+        // Next question
+        function nextQuestion() {
+            const level = LEVELS.find(l => l.id === gameState.currentLevel);
+            gameState.currentQuestion++;
+
+            if (gameState.currentQuestion >= level.scenarios.length) {
+                // Level complete
+                showLevelComplete();
+            } else {
+                loadQuestion();
+            }
+        }
+
+        // Show level complete
+        function showLevelComplete() {
+            const elapsed = Math.round((Date.now() - gameState.levelStart) / 1000);
+            const accuracy = Math.round((gameState.levelCorrect / LEVELS.find(l => l.id === gameState.currentLevel).scenarios.length) * 100);
+
+            document.getElementById('scenarioCard').style.display = 'none';
+            document.getElementById('feedbackPanel').classList.remove('active');
+            document.getElementById('levelComplete').classList.add('active');
+
+            document.getElementById('levelScore').textContent = gameState.levelScore;
+            document.getElementById('levelAccuracy').textContent = accuracy + '%';
+            document.getElementById('levelTime').textContent = elapsed + 's';
+
+            // Unlock next level
+            if (!gameState.completedLevels.includes(gameState.currentLevel)) {
+                gameState.completedLevels.push(gameState.currentLevel);
+            }
+            if (gameState.currentLevel < LEVELS.length && !gameState.unlockedLevels.includes(gameState.currentLevel + 1)) {
+                gameState.unlockedLevels.push(gameState.currentLevel + 1);
+            }
+
+            saveState();
+        }
+
+        // Go to next level
+        function goToNextLevel() {
+            if (gameState.currentLevel < LEVELS.length) {
+                startLevel(gameState.currentLevel + 1);
+            } else {
+                showLevelSelect();
+            }
+        }
+
+        // Show level select
+        function showLevelSelect() {
+            document.getElementById('trainingArena').classList.remove('active');
+            document.getElementById('levelSelect').style.display = 'block';
+            renderLevelGrid();
+        }
+
+        // Initialize
+        loadState();
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLYPH Backbone Architecture - Visual Map</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --cyan: #00FFFF;
+            --purple: #9945FF;
+            --green: #00FF88;
+            --red: #FF4444;
+            --dark: #0a0a0f;
+            --dark-surface: #151520;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(153,69,255,0.1), rgba(0,255,255,0.1));
+            border-bottom: 1px solid rgba(255,215,0,0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+        }
+
+        .architecture-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .layer {
+            background: var(--dark-surface);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .layer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .layer-0::before { background: var(--purple); }
+        .layer-1::before { background: var(--cyan); }
+        .layer-2::before { background: var(--gold); }
+        .layer-3::before { background: var(--green); }
+        .layer-4::before { background: #FF6B35; }
+        .layer-5::before { background: var(--red); }
+
+        .layer-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .layer-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .layer-0 .layer-number { background: rgba(153,69,255,0.3); color: var(--purple); }
+        .layer-1 .layer-number { background: rgba(0,255,255,0.3); color: var(--cyan); }
+        .layer-2 .layer-number { background: rgba(255,215,0,0.3); color: var(--gold); }
+        .layer-3 .layer-number { background: rgba(0,255,136,0.3); color: var(--green); }
+        .layer-4 .layer-number { background: rgba(255,107,53,0.3); color: #FF6B35; }
+        .layer-5 .layer-number { background: rgba(255,68,68,0.3); color: var(--red); }
+
+        .layer-title h2 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .layer-title p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .module {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .module:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .module.exists {
+            border-color: rgba(0,255,136,0.5);
+        }
+
+        .module.new {
+            border-color: rgba(255,215,0,0.5);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .module-status {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .module-status.exists {
+            background: rgba(0,255,136,0.2);
+            color: var(--green);
+        }
+
+        .module-status.new {
+            background: rgba(255,215,0,0.2);
+            color: var(--gold);
+        }
+
+        .module h3 {
+            font-size: 1rem;
+            font-family: 'Consolas', monospace;
+        }
+
+        .module p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .arrow-connector {
+            text-align: center;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.3);
+            padding: 10px 0;
+        }
+
+        .data-flow {
+            background: linear-gradient(135deg, rgba(153,69,255,0.1), rgba(0,255,255,0.1));
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .data-flow h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--gold);
+        }
+
+        .flow-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .flow-node {
+            background: var(--dark-surface);
+            border: 2px solid var(--cyan);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .flow-node.glyph {
+            border-color: var(--gold);
+            background: rgba(255,215,0,0.1);
+        }
+
+        .flow-node h4 {
+            margin-bottom: 5px;
+        }
+
+        .flow-arrow {
+            color: var(--gold);
+            font-size: 2rem;
+        }
+
+        .api-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        .api-table th, .api-table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .api-table th {
+            background: rgba(255,215,0,0.1);
+            color: var(--gold);
+        }
+
+        .api-table tr:nth-child(even) {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .api-method {
+            font-family: 'Consolas', monospace;
+            color: var(--cyan);
+        }
+
+        .api-endpoint {
+            font-family: 'Consolas', monospace;
+            color: var(--green);
+        }
+
+        .implementation-checklist {
+            background: var(--dark-surface);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .implementation-checklist h2 {
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .phase {
+            margin-bottom: 25px;
+        }
+
+        .phase h3 {
+            color: var(--cyan);
+            margin-bottom: 10px;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .checklist li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 4px;
+        }
+
+        .checklist li.done::before {
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .checklist li.done::after {
+            content: '\2713';
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255,255,255,0.5);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+        }
+
+        .glyph-notation {
+            font-family: 'Consolas', monospace;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GLYPH BACKBONE ARCHITECTURE</h1>
+        <p>C2 Architect Blueprint - Platform Foundation Layer</p>
+        <div class="glyph-notation" style="margin-top: 15px;">
+            [A:0:B:0:C:0:D:30:E:100:F:1] -> ARCHITECTURE -> C2
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="architecture-diagram">
+
+            <!-- Layer 0: Base Mathematics -->
+            <div class="layer layer-0">
+                <div class="layer-header">
+                    <div class="layer-number">0</div>
+                    <div class="layer-title">
+                        <h2>Base-60 Mathematics</h2>
+                        <p>Pure math layer - no dependencies</p>
+                    </div>
+                </div>
+                <div class="modules">
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-base60.js</h3>
+                        <p>Sexagesimal arithmetic, clean fractions, Solfeggio frequencies, Tesla 3-6-9</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow-connector">v</div>
+
+            <!-- Layer 1: Symbol Registry -->
+            <div class="layer layer-1">
+                <div class="layer-header">
+                    <div class="layer-number">1</div>
+                    <div class="layer-title">
+                        <h2>Symbol Registry + Pattern Catalog</h2>
+                        <p>Unicode mappings and pattern definitions</p>
+                    </div>
+                </div>
+                <div class="modules">
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-symbols.js</h3>
+                        <p>CORE, MATH, GEOMETRY, PATTERNS, DOMAINS, FREQUENCIES, GREEK symbols</p>
+                    </div>
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-patterns.js</h3>
+                        <p>Truth/Deceit markers, manipulation detection, consciousness scoring</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow-connector">v</div>
+
+            <!-- Layer 2: Core Orchestration -->
+            <div class="layer layer-2">
+                <div class="layer-header">
+                    <div class="layer-number">2</div>
+                    <div class="layer-title">
+                        <h2>Core Orchestration + Envelope System</h2>
+                        <p>Main API and universal data wrapper</p>
+                    </div>
+                </div>
+                <div class="modules">
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-core.js</h3>
+                        <p>6D coordinates, notation formatting, unified API</p>
+                    </div>
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-envelope.js</h3>
+                        <p>Wrap all data with GLYPH metadata, coordinates, pattern scores</p>
+                    </div>
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-timestamp.js</h3>
+                        <p>Base-60 time encoding for all system events</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow-connector">v</div>
+
+            <!-- Layer 3: Persistence -->
+            <div class="layer layer-3">
+                <div class="layer-header">
+                    <div class="layer-number">3</div>
+                    <div class="layer-title">
+                        <h2>Storage + Events</h2>
+                        <p>Persistence and event propagation</p>
+                    </div>
+                </div>
+                <div class="modules">
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-storage.js</h3>
+                        <p>LocalStorage with GLYPH envelopes, query by pattern</p>
+                    </div>
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-events.js</h3>
+                        <p>Event system with GLYPH payloads, cross-component sync</p>
+                    </div>
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-analytics.js</h3>
+                        <p>Usage tracking with GLYPH notation, tool registration</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow-connector">v</div>
+
+            <!-- Layer 4: Integration -->
+            <div class="layer layer-4">
+                <div class="layer-header">
+                    <div class="layer-number">4</div>
+                    <div class="layer-title">
+                        <h2>Tool + AI Integration</h2>
+                        <p>Connectors for all platform components</p>
+                    </div>
+                </div>
+                <div class="modules">
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-araya.js</h3>
+                        <p>Araya connector - pre/post processing, system prompt building</p>
+                    </div>
+                    <div class="module exists">
+                        <div class="module-header">
+                            <span class="module-status exists">EXISTS</span>
+                        </div>
+                        <h3>glyph-ui.js</h3>
+                        <p>Rendering components - scores, coordinates, patterns</p>
+                    </div>
+                    <div class="module new">
+                        <div class="module-header">
+                            <span class="module-status new">NEW</span>
+                        </div>
+                        <h3>glyph-forms.js</h3>
+                        <p>Input handling, real-time analysis, validation</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow-connector">v</div>
+
+            <!-- Layer 5: Backend -->
+            <div class="layer layer-5">
+                <div class="layer-header">
+                    <div class="layer-number">5</div>
+                    <div class="layer-title">
+                        <h2>Backend + Brain Integration</h2>
+                        <p>Server-side processing and Cyclotron connection</p>
+                    </div>
+                </div>
+                <div class="modules">
+                    <div class="module new">
+                        <div class="module-header">
+                            <span class="module-status new">NEW</span>
+                        </div>
+                        <h3>glyph_api.py</h3>
+                        <p>REST endpoints - /analyze, /base60, /consciousness</p>
+                    </div>
+                    <div class="module new">
+                        <div class="module-header">
+                            <span class="module-status new">NEW</span>
+                        </div>
+                        <h3>glyph_cyclotron.py</h3>
+                        <p>Brain bridge - store envelopes, query patterns, trends</p>
+                    </div>
+                    <div class="module new">
+                        <div class="module-header">
+                            <span class="module-status new">NEW</span>
+                        </div>
+                        <h3>Netlify Functions</h3>
+                        <p>Serverless analysis and storage endpoints</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Flow Diagram -->
+        <div class="data-flow">
+            <h2>GLYPH Data Flow</h2>
+            <div class="flow-diagram">
+                <div class="flow-node">
+                    <h4>User Input</h4>
+                    <p>Text / Action</p>
+                </div>
+                <span class="flow-arrow">-></span>
+                <div class="flow-node glyph">
+                    <h4>GLYPH Layer</h4>
+                    <p>Analyze + Wrap</p>
+                </div>
+                <span class="flow-arrow">-></span>
+                <div class="flow-node">
+                    <h4>Araya / Tool</h4>
+                    <p>Process</p>
+                </div>
+                <span class="flow-arrow">-></span>
+                <div class="flow-node glyph">
+                    <h4>GLYPH Layer</h4>
+                    <p>Post-Process</p>
+                </div>
+                <span class="flow-arrow">-></span>
+                <div class="flow-node">
+                    <h4>Cyclotron Brain</h4>
+                    <p>Store</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Endpoints Table -->
+        <h2 style="margin-top: 40px; color: var(--gold);">API Endpoints</h2>
+        <table class="api-table">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="api-method">POST</td>
+                    <td class="api-endpoint">/api/glyph/analyze</td>
+                    <td>Analyze text for patterns, return GLYPH notation</td>
+                </tr>
+                <tr>
+                    <td class="api-method">POST</td>
+                    <td class="api-endpoint">/api/glyph/base60/convert</td>
+                    <td>Convert between decimal and base-60</td>
+                </tr>
+                <tr>
+                    <td class="api-method">POST</td>
+                    <td class="api-endpoint">/api/glyph/envelope</td>
+                    <td>Wrap data in GLYPH envelope</td>
+                </tr>
+                <tr>
+                    <td class="api-method">GET</td>
+                    <td class="api-endpoint">/api/glyph/consciousness/trend</td>
+                    <td>Get consciousness score trend over time</td>
+                </tr>
+                <tr>
+                    <td class="api-method">GET</td>
+                    <td class="api-endpoint">/api/glyph/manipulation/log</td>
+                    <td>Get manipulation detection history</td>
+                </tr>
+                <tr>
+                    <td class="api-method">POST</td>
+                    <td class="api-endpoint">/api/araya/chat</td>
+                    <td>GLYPH-enhanced Araya conversation</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Implementation Checklist -->
+        <div class="implementation-checklist">
+            <h2>Implementation Phases</h2>
+
+            <div class="phase">
+                <h3>Phase 1: Core Infrastructure (Week 1)</h3>
+                <ul class="checklist">
+                    <li class="done">Create glyph-base60.js</li>
+                    <li class="done">Create glyph-symbols.js</li>
+                    <li class="done">Create glyph-patterns.js</li>
+                    <li class="done">Create glyph-core.js</li>
+                    <li class="done">Create glyph-timestamp.js</li>
+                    <li class="done">Create glyph-envelope.js</li>
+                    <li class="done">Create glyph-storage.js</li>
+                    <li class="done">Create glyph-events.js</li>
+                    <li class="done">Create glyph-analytics.js</li>
+                    <li class="done">Create glyph-ui.js</li>
+                    <li>Bundle into glyph-bundle.min.js</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Phase 2: Araya Integration (Week 2)</h3>
+                <ul class="checklist">
+                    <li class="done">Create glyph-araya.js</li>
+                    <li>Update araya-chat.html</li>
+                    <li>Add GLYPH context to system prompts</li>
+                    <li>Implement manipulation alerts</li>
+                    <li>Store conversations with envelopes</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Phase 3: Backend Integration (Week 3)</h3>
+                <ul class="checklist">
+                    <li>Deploy glyph_api.py</li>
+                    <li>Create glyph_cyclotron.py</li>
+                    <li>Set up consciousness trend API</li>
+                    <li>Set up manipulation log API</li>
+                    <li>Test full flow</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Phase 4: Tool Migration (Week 4+)</h3>
+                <ul class="checklist">
+                    <li>Migrate GASLIGHTING_DETECTOR.html</li>
+                    <li>Migrate TRUTH_SIGNAL_FINDER.html</li>
+                    <li>Migrate EMAIL_ANALYZER.html</li>
+                    <li>Migrate MANIPULATION_DETECTOR.html</li>
+                    <li>Create migration script for remaining 40+ tools</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>C2 Architect | Trinity System | December 30, 2025</p>
+        <p class="glyph-notation" style="margin-top: 10px;">
+            3 -> 7 -> 13 -> INFINITY
+        </p>
+    </footer>
+
+    <script>
+        // Load GLYPH modules for live testing
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('GLYPH Backbone Architecture Visual loaded');
+            console.log('C2 Architect - The Mind of Trinity');
+        });
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

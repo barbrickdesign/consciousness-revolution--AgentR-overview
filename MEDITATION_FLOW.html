@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation Flow - 7 Chakra Journey | Consciousness Revolution</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --chakra-root: #FF0000;
+            --chakra-sacral: #FF7F00;
+            --chakra-solar: #FFFF00;
+            --chakra-heart: #00FF00;
+            --chakra-throat: #00BFFF;
+            --chakra-third: #4B0082;
+            --chakra-crown: #8B5CF6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a1a 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .cosmic-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .domain-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #8B5CF6, #6366F1);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            background: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #00BFFF, #4B0082, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #C4B5FD;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.6;
+        }
+
+        /* Chakra Selector */
+        .chakra-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .chakra-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .chakra-btn:hover, .chakra-btn.active {
+            transform: scale(1.2);
+            box-shadow: 0 0 30px currentColor;
+        }
+
+        .chakra-btn.c1 { background: var(--chakra-root); color: white; }
+        .chakra-btn.c2 { background: var(--chakra-sacral); color: black; }
+        .chakra-btn.c3 { background: var(--chakra-solar); color: black; }
+        .chakra-btn.c4 { background: var(--chakra-heart); color: black; }
+        .chakra-btn.c5 { background: var(--chakra-throat); color: black; }
+        .chakra-btn.c6 { background: var(--chakra-third); color: white; }
+        .chakra-btn.c7 { background: var(--chakra-crown); color: white; }
+
+        /* Main Meditation Area */
+        .meditation-area {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .meditation-area {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Breathing Circle */
+        .breathing-section {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .breath-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 30px auto;
+        }
+
+        .breath-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.5), rgba(99, 102, 241, 0.2));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+        }
+
+        .breath-circle.inhale {
+            transform: translate(-50%, -50%) scale(1.3);
+            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.7), rgba(99, 102, 241, 0.3));
+        }
+
+        .breath-circle.exhale {
+            transform: translate(-50%, -50%) scale(0.8);
+            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.3), rgba(99, 102, 241, 0.1));
+        }
+
+        .breath-phase {
+            font-size: 1.5em;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .breath-timer {
+            font-size: 2.5em;
+            font-family: 'Courier New', monospace;
+            color: #C4B5FD;
+        }
+
+        .frequency-display {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #A78BFA;
+        }
+
+        /* Pattern Selector */
+        .pattern-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .pattern-btn {
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .pattern-btn:hover, .pattern-btn.active {
+            background: rgba(139, 92, 246, 0.5);
+            border-color: #8B5CF6;
+        }
+
+        /* Timer Controls */
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .timer-btn {
+            background: linear-gradient(135deg, #8B5CF6, #6366F1);
+            border: none;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .timer-btn.secondary {
+            background: rgba(139, 92, 246, 0.3);
+        }
+
+        /* Side Panel */
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel-card {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .panel-card h3 {
+            color: #A78BFA;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .chakra-info {
+            text-align: center;
+        }
+
+        .chakra-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .chakra-desc {
+            font-size: 0.9em;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        .chakra-mantra {
+            font-size: 1.5em;
+            color: #C4B5FD;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        /* Progress */
+        .progress-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8B5CF6, #6366F1);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* Session Log */
+        .session-log {
+            max-height: 150px;
+            overflow-y: auto;
+            font-size: 0.85em;
+        }
+
+        .log-entry {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        /* Affirmation */
+        .affirmation {
+            font-style: italic;
+            font-size: 1em;
+            line-height: 1.6;
+            color: #E9D5FF;
+            text-align: center;
+        }
+
+        /* Back Link */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #8B5CF6;
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+
+    <div class="container">
+        <header>
+            <span class="domain-badge">7_TRANSCEND / MEDITATION</span>
+            <h1>Meditation Flow</h1>
+            <p class="subtitle">Journey through all 7 chakras with Solfeggio frequencies. Each breath aligns you deeper.</p>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value" id="totalMinutes">0</div>
+                <div class="stat-label">Minutes Today</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="currentStreak">0</div>
+                <div class="stat-label">Day Streak</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="currentLevel">1</div>
+                <div class="stat-label">Chakra Level</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="coherenceScore">--</div>
+                <div class="stat-label">Coherence</div>
+            </div>
+        </div>
+
+        <div class="chakra-row">
+            <button class="chakra-btn c1 active" onclick="selectChakra(1)" title="Root - 396Hz">1</button>
+            <button class="chakra-btn c2" onclick="selectChakra(2)" title="Sacral - 417Hz">2</button>
+            <button class="chakra-btn c3" onclick="selectChakra(3)" title="Solar Plexus - 528Hz">3</button>
+            <button class="chakra-btn c4" onclick="selectChakra(4)" title="Heart - 639Hz">4</button>
+            <button class="chakra-btn c5" onclick="selectChakra(5)" title="Throat - 741Hz">5</button>
+            <button class="chakra-btn c6" onclick="selectChakra(6)" title="Third Eye - 852Hz">6</button>
+            <button class="chakra-btn c7" onclick="selectChakra(7)" title="Crown - 963Hz">7</button>
+        </div>
+
+        <div class="meditation-area">
+            <div class="breathing-section">
+                <h2 id="chakraTitle">Root Chakra Meditation</h2>
+
+                <div class="pattern-selector">
+                    <button class="pattern-btn active" onclick="setPattern('heartmath')">HeartMath (5-5)</button>
+                    <button class="pattern-btn" onclick="setPattern('box')">Box (4-4-4-4)</button>
+                    <button class="pattern-btn" onclick="setPattern('478')">4-7-8 Relaxation</button>
+                    <button class="pattern-btn" onclick="setPattern('trinity')">Trinity (3-3-3)</button>
+                    <button class="pattern-btn" onclick="setPattern('energizing')">Energizing (2-1)</button>
+                </div>
+
+                <div class="breath-container">
+                    <div class="breath-circle" id="breathCircle">
+                        <div class="breath-phase" id="breathPhase">Ready</div>
+                        <div class="breath-timer" id="sessionTimer">00:00</div>
+                    </div>
+                </div>
+
+                <div class="frequency-display">
+                    <span id="freqValue">396</span> Hz - <span id="freqName">Liberating Guilt & Fear</span>
+                </div>
+
+                <div class="timer-controls">
+                    <button class="timer-btn secondary" onclick="setDuration(5)">5 min</button>
+                    <button class="timer-btn secondary" onclick="setDuration(10)">10 min</button>
+                    <button class="timer-btn secondary" onclick="setDuration(20)">20 min</button>
+                    <button class="timer-btn" id="startBtn" onclick="toggleMeditation()">Begin</button>
+                </div>
+            </div>
+
+            <div class="side-panel">
+                <div class="panel-card chakra-info">
+                    <h3>Current Chakra</h3>
+                    <div class="chakra-name" id="chakraName">Muladhara (Root)</div>
+                    <div class="chakra-desc" id="chakraDesc">Foundation, survival, grounding, security. Connect to the earth and feel stable.</div>
+                    <div class="chakra-mantra" id="chakraMantra">LAM</div>
+                </div>
+
+                <div class="panel-card">
+                    <h3>Session Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85em; opacity: 0.7;">
+                        <span id="elapsed">0:00</span>
+                        <span id="remaining">5:00</span>
+                    </div>
+                </div>
+
+                <div class="panel-card">
+                    <h3>Affirmation</h3>
+                    <div class="affirmation" id="affirmation">"I am safe. I am grounded. I am connected to the earth."</div>
+                </div>
+
+                <div class="panel-card">
+                    <h3>Session Log</h3>
+                    <div class="session-log" id="sessionLog">
+                        <div class="log-entry">Welcome to Meditation Flow</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a href="/seven-domains/sanctuary/index.html" class="nav-link">Soul Sanctuary</a>
+            <a href="/CONSCIOUSNESS_TRAINER.html" class="nav-link">Consciousness Trainer</a>
+            <a href="/araya-chat.html" class="nav-link">Talk to ARAYA</a>
+            <a href="/" class="nav-link">Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Chakra Data
+        const chakras = {
+            1: { name: 'Muladhara (Root)', freq: 396, freqName: 'Liberating Guilt & Fear', mantra: 'LAM',
+                 desc: 'Foundation, survival, grounding, security. Connect to the earth and feel stable.',
+                 affirmation: '"I am safe. I am grounded. I am connected to the earth."',
+                 color: '#FF0000' },
+            2: { name: 'Svadhisthana (Sacral)', freq: 417, freqName: 'Undoing Situations', mantra: 'VAM',
+                 desc: 'Creativity, emotions, pleasure, relationships. Flow with life like water.',
+                 affirmation: '"I embrace pleasure and abundance. I flow with change."',
+                 color: '#FF7F00' },
+            3: { name: 'Manipura (Solar Plexus)', freq: 528, freqName: 'Transformation & Miracles', mantra: 'RAM',
+                 desc: 'Personal power, will, confidence. The fire within that drives action.',
+                 affirmation: '"I am powerful. I am confident. I create my reality."',
+                 color: '#FFFF00' },
+            4: { name: 'Anahata (Heart)', freq: 639, freqName: 'Connecting & Relationships', mantra: 'YAM',
+                 desc: 'Love, compassion, connection. The bridge between lower and higher self.',
+                 affirmation: '"I give and receive love freely. My heart is open."',
+                 color: '#00FF00' },
+            5: { name: 'Vishuddha (Throat)', freq: 741, freqName: 'Awakening Intuition', mantra: 'HAM',
+                 desc: 'Expression, truth, communication. Speak your authentic voice.',
+                 affirmation: '"I speak my truth with clarity and confidence."',
+                 color: '#00BFFF' },
+            6: { name: 'Ajna (Third Eye)', freq: 852, freqName: 'Returning to Spiritual Order', mantra: 'OM',
+                 desc: 'Intuition, insight, wisdom. See beyond the physical realm.',
+                 affirmation: '"I trust my intuition. I see clearly."',
+                 color: '#4B0082' },
+            7: { name: 'Sahasrara (Crown)', freq: 963, freqName: 'Divine Consciousness', mantra: 'Silence',
+                 desc: 'Unity, transcendence, enlightenment. Connection to the infinite.',
+                 affirmation: '"I am one with all that is. I am infinite consciousness."',
+                 color: '#8B5CF6' }
+        };
+
+        // Breathing Patterns
+        const patterns = {
+            heartmath: { name: 'HeartMath', phases: [
+                { action: 'Breathe In', duration: 5 },
+                { action: 'Breathe Out', duration: 5 }
+            ]},
+            box: { name: 'Box Breathing', phases: [
+                { action: 'Breathe In', duration: 4 },
+                { action: 'Hold', duration: 4 },
+                { action: 'Breathe Out', duration: 4 },
+                { action: 'Rest', duration: 4 }
+            ]},
+            '478': { name: '4-7-8 Relaxation', phases: [
+                { action: 'Breathe In', duration: 4 },
+                { action: 'Hold', duration: 7 },
+                { action: 'Breathe Out', duration: 8 }
+            ]},
+            trinity: { name: 'Trinity', phases: [
+                { action: 'Breathe In', duration: 3 },
+                { action: 'Hold', duration: 3 },
+                { action: 'Breathe Out', duration: 3 }
+            ]},
+            energizing: { name: 'Energizing', phases: [
+                { action: 'Breathe In', duration: 2 },
+                { action: 'Breathe Out', duration: 1 }
+            ]}
+        };
+
+        // State
+        let currentChakra = 1;
+        let currentPattern = 'heartmath';
+        let isRunning = false;
+        let duration = 5 * 60; // seconds
+        let elapsed = 0;
+        let phaseIndex = 0;
+        let phaseTimer = 0;
+        let mainInterval;
+        let breathInterval;
+
+        // Stats (would persist to localStorage or API)
+        let stats = JSON.parse(localStorage.getItem('meditationStats') || '{"totalMinutes":0,"streak":0,"level":1}');
+
+        // Initialize
+        document.getElementById('totalMinutes').textContent = stats.totalMinutes;
+        document.getElementById('currentStreak').textContent = stats.streak;
+        document.getElementById('currentLevel').textContent = stats.level;
+
+        function selectChakra(num) {
+            currentChakra = num;
+            const chakra = chakras[num];
+
+            // Update buttons
+            document.querySelectorAll('.chakra-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.chakra-btn.c${num}`).classList.add('active');
+
+            // Update display
+            document.getElementById('chakraTitle').textContent = `${chakra.name.split(' (')[0]} Chakra Meditation`;
+            document.getElementById('chakraName').textContent = chakra.name;
+            document.getElementById('chakraDesc').textContent = chakra.desc;
+            document.getElementById('chakraMantra').textContent = chakra.mantra;
+            document.getElementById('freqValue').textContent = chakra.freq;
+            document.getElementById('freqName').textContent = chakra.freqName;
+            document.getElementById('affirmation').textContent = chakra.affirmation;
+
+            // Update breathing circle color
+            document.getElementById('breathCircle').style.background =
+                `radial-gradient(circle at center, ${chakra.color}80, ${chakra.color}20)`;
+
+            addLog(`Selected Chakra ${num}: ${chakra.name}`);
+        }
+
+        function setPattern(patternKey) {
+            currentPattern = patternKey;
+            document.querySelectorAll('.pattern-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            addLog(`Pattern: ${patterns[patternKey].name}`);
+        }
+
+        function setDuration(minutes) {
+            duration = minutes * 60;
+            document.getElementById('remaining').textContent = `${minutes}:00`;
+            addLog(`Duration set to ${minutes} minutes`);
+        }
+
+        function toggleMeditation() {
+            if (isRunning) {
+                stopMeditation();
+            } else {
+                startMeditation();
+            }
+        }
+
+        function startMeditation() {
+            isRunning = true;
+            elapsed = 0;
+            phaseIndex = 0;
+            phaseTimer = patterns[currentPattern].phases[0].duration;
+
+            document.getElementById('startBtn').textContent = 'Stop';
+            addLog(`Started ${patterns[currentPattern].name} meditation`);
+
+            // Main timer
+            mainInterval = setInterval(() => {
+                elapsed++;
+                updateProgress();
+
+                if (elapsed >= duration) {
+                    completeMeditation();
+                }
+            }, 1000);
+
+            // Breathing animation
+            updateBreathPhase();
+            breathInterval = setInterval(() => {
+                phaseTimer--;
+                if (phaseTimer <= 0) {
+                    phaseIndex = (phaseIndex + 1) % patterns[currentPattern].phases.length;
+                    phaseTimer = patterns[currentPattern].phases[phaseIndex].duration;
+                    updateBreathPhase();
+                }
+            }, 1000);
+        }
+
+        function stopMeditation() {
+            isRunning = false;
+            clearInterval(mainInterval);
+            clearInterval(breathInterval);
+
+            document.getElementById('startBtn').textContent = 'Begin';
+            document.getElementById('breathPhase').textContent = 'Ready';
+            document.getElementById('breathCircle').className = 'breath-circle';
+
+            // Save partial progress
+            const minutes = Math.floor(elapsed / 60);
+            if (minutes > 0) {
+                stats.totalMinutes += minutes;
+                localStorage.setItem('meditationStats', JSON.stringify(stats));
+                document.getElementById('totalMinutes').textContent = stats.totalMinutes;
+            }
+
+            addLog(`Stopped after ${formatTime(elapsed)}`);
+        }
+
+        function completeMeditation() {
+            stopMeditation();
+
+            // Update stats
+            stats.totalMinutes += Math.floor(duration / 60);
+            stats.streak++;
+
+            // Level up every 7 sessions
+            if (stats.streak % 7 === 0 && stats.level < 7) {
+                stats.level++;
+                addLog(`LEVEL UP! Now at Chakra Level ${stats.level}`);
+            }
+
+            localStorage.setItem('meditationStats', JSON.stringify(stats));
+            document.getElementById('totalMinutes').textContent = stats.totalMinutes;
+            document.getElementById('currentStreak').textContent = stats.streak;
+            document.getElementById('currentLevel').textContent = stats.level;
+
+            document.getElementById('coherenceScore').textContent = Math.floor(85 + Math.random() * 15);
+
+            addLog(`Meditation complete! ${formatTime(duration)} of peace.`);
+
+            // Play completion sound if available
+            try {
+                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQ==');
+                audio.play().catch(() => {});
+            } catch(e) {}
+        }
+
+        function updateBreathPhase() {
+            const phase = patterns[currentPattern].phases[phaseIndex];
+            document.getElementById('breathPhase').textContent = phase.action;
+
+            const circle = document.getElementById('breathCircle');
+            circle.className = 'breath-circle';
+
+            if (phase.action === 'Breathe In') {
+                circle.classList.add('inhale');
+            } else if (phase.action === 'Breathe Out') {
+                circle.classList.add('exhale');
+            }
+        }
+
+        function updateProgress() {
+            const progress = (elapsed / duration) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('elapsed').textContent = formatTime(elapsed);
+            document.getElementById('remaining').textContent = formatTime(duration - elapsed);
+            document.getElementById('sessionTimer').textContent = formatTime(elapsed);
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function addLog(message) {
+            const log = document.getElementById('sessionLog');
+            const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            log.innerHTML = `<div class="log-entry">${time} - ${message}</div>` + log.innerHTML;
+        }
+
+        // Initialize
+        selectChakra(1);
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

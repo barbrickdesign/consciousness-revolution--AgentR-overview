@@ -358,7 +358,7 @@ Example: Start a business that generates $10k/month"></textarea>
         function analyze() {
             const goal = document.getElementById('goal').value.trim();
             if (!goal) {
-                alert('Please enter your goal');
+                console.warn('Please enter your goal');
                 return;
             }
 
@@ -440,5 +440,7 @@ Example: Start a business that generates $10k/month"></textarea>
             document.getElementById('result').classList.add('active');
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

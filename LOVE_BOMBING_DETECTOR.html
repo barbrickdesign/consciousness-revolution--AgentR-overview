@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Bombing Detector | Pattern Theory</title>
+    <title>Love Bombing Detector | Pattern Theory + GLYPH 12D+</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -25,6 +25,17 @@
         .header h1 { font-size: 24px; margin-bottom: 8px; }
         .header p { opacity: 0.6; font-size: 13px; }
 
+        .glyph-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
         .check-section {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
@@ -45,6 +56,7 @@
             background: rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .check-item:hover {
@@ -65,6 +77,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .check-item.selected .check-box {
@@ -83,6 +96,30 @@
             flex: 1;
         }
 
+        .check-meta {
+            display: flex;
+            gap: 8px;
+            margin-left: 8px;
+        }
+
+        .axis-tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+        }
+
+        .severity-tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .severity-high { background: rgba(231, 76, 60, 0.2); color: #e74c3c; }
+        .severity-medium { background: rgba(241, 196, 15, 0.2); color: #f1c40f; }
+        .severity-low { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+
         .analyze-btn {
             width: 100%;
             padding: 14px;
@@ -94,6 +131,11 @@
             color: white;
             cursor: pointer;
             margin-top: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
         }
 
         .results {
@@ -137,6 +179,134 @@
             opacity: 0.7;
         }
 
+        /* GLYPH Output Section */
+        .glyph-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .glyph-section h3 {
+            font-size: 14px;
+            color: #FFD700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glyph-notation {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .glyph-scores {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .glyph-score {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .glyph-score-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .glyph-score-label {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .truth-score .glyph-score-value { color: #2ecc71; }
+        .deceit-score .glyph-score-value { color: #e74c3c; }
+
+        .frequency-display {
+            text-align: center;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .frequency-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .consciousness-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .consciousness-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e74c3c 0%, #f1c40f 50%, #2ecc71 100%);
+            transition: width 0.5s ease;
+        }
+
+        .axis-breakdown {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .axis-breakdown h4 {
+            font-size: 12px;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        .axis-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 11px;
+        }
+
+        .axis-letter {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .axis-name {
+            flex: 1;
+            opacity: 0.7;
+        }
+
+        .axis-hits {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
         .warning {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
@@ -155,6 +325,17 @@
             border-radius: 6px;
             margin-bottom: 8px;
             font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .warning-axis {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
         }
 
         .guidance {
@@ -206,19 +387,31 @@
             font-size: 11px;
             opacity: 0.4;
         }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
+    <!-- GLYPH Backbone Modules -->
+    <script src="js/glyph/glyph-base60.js"></script>
+    <script src="js/glyph/glyph-symbols.js"></script>
+    <script src="js/glyph/glyph-patterns.js"></script>
+    <script src="js/glyph/glyph-core.js"></script>
+
     <div class="container">
         <div class="header">
-            <h1>Love Bombing Detector</h1>
+            <h1>💕 Love Bombing Detector</h1>
             <p>Distinguish genuine affection from manipulation</p>
+            <span class="glyph-badge">⟐ GLYPH 12D+ POWERED</span>
         </div>
 
         <div class="check-section">
             <h3>Check signs that apply (early relationship stage):</h3>
             <div id="checksList"></div>
-            <button class="analyze-btn" onclick="analyze()">Analyze Behavior</button>
+            <button class="analyze-btn" onclick="analyze()">⟐ Analyze with GLYPH</button>
         </div>
 
         <div class="results" id="results">
@@ -228,13 +421,44 @@
                 <div class="verdict-desc" id="verdictDesc">-</div>
             </div>
 
+            <!-- GLYPH Analysis Section -->
+            <div class="glyph-section">
+                <h3>⟐ GLYPH Analysis</h3>
+                <div class="glyph-notation" id="glyphNotation">⟐ awaiting analysis ⟐</div>
+
+                <div class="glyph-scores">
+                    <div class="glyph-score truth-score">
+                        <div class="glyph-score-value" id="truthScore">-</div>
+                        <div class="glyph-score-label">Truth Signal</div>
+                    </div>
+                    <div class="glyph-score deceit-score">
+                        <div class="glyph-score-value" id="deceitScore">-</div>
+                        <div class="glyph-score-label">Deceit Signal</div>
+                    </div>
+                </div>
+
+                <div class="frequency-display">
+                    <div class="frequency-value" id="frequencyValue">- Hz</div>
+                    <div class="glyph-score-label">Solfeggio Frequency</div>
+                </div>
+
+                <div class="consciousness-bar">
+                    <div class="consciousness-fill" id="consciousnessBar" style="width: 50%"></div>
+                </div>
+
+                <div class="axis-breakdown" id="axisBreakdown">
+                    <h4>6D Axis Breakdown</h4>
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
             <div class="warning">
-                <h3>Warning Signs Present</h3>
+                <h3>⚠️ Warning Signs Present</h3>
                 <div id="warningList"></div>
             </div>
 
             <div class="guidance">
-                <h3>What to Do</h3>
+                <h3>🛡️ What to Do</h3>
                 <div id="guidanceList"></div>
             </div>
 
@@ -245,37 +469,128 @@
         </div>
 
         <footer>
-            Pattern Theory • <a href="consciousness-tools.html" style="color: #667eea;">More Tools</a>
+            Pattern Theory × GLYPH 12D+ • <a href="consciousness-tools.html">More Tools</a>
         </footer>
     </div>
 
     <script>
+        // Love bombing signs with GLYPH axis mappings
         const LOVE_BOMB_SIGNS = [
-            { text: 'Excessive compliments and flattery very early', weight: 2 },
-            { text: 'Says "I love you" or "soulmate" within days/weeks', weight: 3 },
-            { text: 'Constant texting/calling - upset if you don\'t respond fast', weight: 2 },
-            { text: 'Expensive gifts or grand gestures immediately', weight: 2 },
-            { text: 'Wants to be exclusive very quickly', weight: 2 },
-            { text: 'Says you\'re "different" from everyone else', weight: 1 },
-            { text: 'Future planning (moving in, marriage) very early', weight: 3 },
-            { text: 'Gets upset when you spend time with others', weight: 3 },
-            { text: 'Tries to meet all your needs so you "need" them', weight: 2 },
-            { text: 'Seems too good to be true', weight: 2 },
-            { text: 'Your friends/family express concern', weight: 2 },
-            { text: 'Dismisses or downplays your boundaries', weight: 3 }
+            {
+                text: 'Excessive compliments and flattery very early',
+                weight: 2,
+                glyphAxis: 'A', // Vertical - inflated awareness/ego
+                severity: 2.0,
+                axisDesc: 'Elevated false validation'
+            },
+            {
+                text: 'Says "I love you" or "soulmate" within days/weeks',
+                weight: 3,
+                glyphAxis: 'D', // Temporal - rushing timeline
+                severity: 2.5,
+                axisDesc: 'Timeline compression'
+            },
+            {
+                text: 'Constant texting/calling - upset if you don\'t respond fast',
+                weight: 2,
+                glyphAxis: 'E', // Energy - overwhelming pressure
+                severity: 2.2,
+                axisDesc: 'Energy overwhelm'
+            },
+            {
+                text: 'Expensive gifts or grand gestures immediately',
+                weight: 2,
+                glyphAxis: 'F', // Observer - creating debt/obligation
+                severity: 2.0,
+                axisDesc: 'Obligation creation'
+            },
+            {
+                text: 'Wants to be exclusive very quickly',
+                weight: 2,
+                glyphAxis: 'B', // Horizontal - social isolation
+                severity: 2.3,
+                axisDesc: 'Social constriction'
+            },
+            {
+                text: 'Says you\'re "different" from everyone else',
+                weight: 1,
+                glyphAxis: 'F', // Observer - subject elevation
+                severity: 1.5,
+                axisDesc: 'False uniqueness'
+            },
+            {
+                text: 'Future planning (moving in, marriage) very early',
+                weight: 3,
+                glyphAxis: 'D', // Temporal - future faking overlap
+                severity: 2.8,
+                axisDesc: 'Future timeline lock'
+            },
+            {
+                text: 'Gets upset when you spend time with others',
+                weight: 3,
+                glyphAxis: 'B', // Horizontal - isolating
+                severity: 2.7,
+                axisDesc: 'Social boundary violation'
+            },
+            {
+                text: 'Tries to meet all your needs so you "need" them',
+                weight: 2,
+                glyphAxis: 'E', // Energy - creating dependency
+                severity: 2.4,
+                axisDesc: 'Dependency engineering'
+            },
+            {
+                text: 'Seems too good to be true',
+                weight: 2,
+                glyphAxis: 'C', // Depth - reality distortion
+                severity: 2.0,
+                axisDesc: 'Reality misalignment'
+            },
+            {
+                text: 'Your friends/family express concern',
+                weight: 2,
+                glyphAxis: 'F', // Observer - external validation
+                severity: 2.5,
+                axisDesc: 'External observer signal'
+            },
+            {
+                text: 'Dismisses or downplays your boundaries',
+                weight: 3,
+                glyphAxis: 'B', // Horizontal - boundary violation
+                severity: 2.8,
+                axisDesc: 'Boundary dissolution'
+            }
         ];
+
+        // GLYPH Axis Definitions
+        const GLYPH_AXES = {
+            A: { name: 'Vertical', meaning: 'Awareness/Ego', color: '#FF6B6B' },
+            B: { name: 'Horizontal', meaning: 'Social/Boundaries', color: '#4ECDC4' },
+            C: { name: 'Depth', meaning: 'Reality/Truth', color: '#45B7D1' },
+            D: { name: 'Temporal', meaning: 'Time/Pacing', color: '#96CEB4' },
+            E: { name: 'Energy', meaning: 'Intensity/Pressure', color: '#FFEAA7' },
+            F: { name: 'Observer', meaning: 'Subject/Object', color: '#DDA0DD' }
+        };
 
         let selected = new Set();
 
-        // Render checks
+        // Render checks with GLYPH metadata
         function renderChecks() {
             const list = document.getElementById('checksList');
-            list.innerHTML = LOVE_BOMB_SIGNS.map((item, i) => `
-                <div class="check-item" data-index="${i}" onclick="toggleCheck(${i})">
-                    <div class="check-box"></div>
-                    <span class="check-text">${item.text}</span>
-                </div>
-            `).join('');
+            list.innerHTML = LOVE_BOMB_SIGNS.map((item, i) => {
+                const severityClass = item.severity >= 2.5 ? 'severity-high' :
+                                     item.severity >= 2.0 ? 'severity-medium' : 'severity-low';
+                return `
+                    <div class="check-item" data-index="${i}" onclick="toggleCheck(${i})">
+                        <div class="check-box"></div>
+                        <span class="check-text">${item.text}</span>
+                        <div class="check-meta">
+                            <span class="axis-tag">${item.glyphAxis}</span>
+                            <span class="severity-tag ${severityClass}">${item.severity.toFixed(1)}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         function toggleCheck(index) {
@@ -292,14 +607,36 @@
         function analyze() {
             // Calculate score
             let score = 0;
+            let severityTotal = 0;
             const warnings = [];
+            const axisHits = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+
             selected.forEach(i => {
-                score += LOVE_BOMB_SIGNS[i].weight;
-                warnings.push(LOVE_BOMB_SIGNS[i].text);
+                const sign = LOVE_BOMB_SIGNS[i];
+                score += sign.weight;
+                severityTotal += sign.severity;
+                warnings.push({
+                    text: sign.text,
+                    axis: sign.glyphAxis,
+                    axisDesc: sign.axisDesc,
+                    severity: sign.severity
+                });
+                axisHits[sign.glyphAxis]++;
             });
 
             const maxScore = LOVE_BOMB_SIGNS.reduce((sum, i) => sum + i.weight, 0);
             const percentage = Math.round((score / maxScore) * 100);
+
+            // GLYPH Pattern Analysis
+            let glyphResult = null;
+            const analysisText = warnings.map(w => w.text).join('. ');
+
+            if (typeof GlyphPatterns !== 'undefined') {
+                glyphResult = GlyphPatterns.analyze(analysisText, { detectManipulation: true });
+            } else {
+                // Fallback GLYPH-style analysis
+                glyphResult = generateFallbackGlyph(percentage, severityTotal, axisHits);
+            }
 
             // Determine level
             let level, label, desc, levelClass;
@@ -321,9 +658,7 @@
             }
 
             // Generate guidance
-            const guidance = generateGuidance(percentage);
-
-            // Generate reality checks
+            const guidance = generateGuidance(percentage, axisHits);
             const reality = generateReality(percentage);
 
             // Render results
@@ -333,9 +668,23 @@
             document.getElementById('verdictLabel').textContent = label;
             document.getElementById('verdictDesc').textContent = desc;
 
+            // Render GLYPH section
+            document.getElementById('glyphNotation').textContent = glyphResult.glyphNotation || '⟐ analysis complete ⟐';
+            document.getElementById('truthScore').textContent = glyphResult.scores?.truth || (100 - percentage) + '%';
+            document.getElementById('deceitScore').textContent = glyphResult.scores?.deceit || percentage + '%';
+            document.getElementById('frequencyValue').textContent = glyphResult.frequency + ' Hz';
+            document.getElementById('consciousnessBar').style.width = (100 - percentage) + '%';
+
+            // Render axis breakdown
+            renderAxisBreakdown(axisHits);
+
+            // Render warnings with axis info
             if (warnings.length > 0) {
-                document.getElementById('warningList').innerHTML = warnings.slice(0, 5).map(w =>
-                    `<div class="warning-item">⚠️ ${w}</div>`
+                document.getElementById('warningList').innerHTML = warnings.slice(0, 6).map(w =>
+                    `<div class="warning-item">
+                        <span>⚠️ ${w.text}</span>
+                        <span class="warning-axis" title="${w.axisDesc}">${w.axis}: ${GLYPH_AXES[w.axis].meaning}</span>
+                    </div>`
                 ).join('');
             } else {
                 document.getElementById('warningList').innerHTML =
@@ -353,8 +702,67 @@
             document.getElementById('results').classList.add('active');
         }
 
-        function generateGuidance(percentage) {
+        function generateFallbackGlyph(percentage, severityTotal, axisHits) {
+            // Generate GLYPH notation without the module
+            const dominant = percentage > 50 ? '✗' : percentage > 20 ? '☉' : '✓';
+            const truthScore = 100 - percentage;
+            const deceitScore = percentage;
+
+            // Determine frequency based on severity
+            let frequency;
+            if (percentage > 50) {
+                frequency = 396; // Liberation from fear
+            } else if (percentage > 20) {
+                frequency = 417; // Change/transformation needed
+            } else {
+                frequency = 528; // Love/DNA repair (healthy)
+            }
+
+            // Build axis string
+            const activeAxes = Object.entries(axisHits)
+                .filter(([_, count]) => count > 0)
+                .map(([axis, count]) => `${axis}${count}`)
+                .join(':');
+
+            return {
+                glyphNotation: `⟐${dominant}:${truthScore}:${activeAxes}→${frequency}Hz⟐`,
+                scores: { truth: truthScore, deceit: deceitScore },
+                frequency: frequency,
+                dominant: percentage > 50 ? 'deceit' : percentage > 20 ? 'neutral' : 'truth'
+            };
+        }
+
+        function renderAxisBreakdown(axisHits) {
+            const container = document.getElementById('axisBreakdown');
+            let html = '<h4>6D Axis Breakdown</h4>';
+
+            Object.entries(GLYPH_AXES).forEach(([axis, info]) => {
+                const hits = axisHits[axis] || 0;
+                html += `
+                    <div class="axis-item">
+                        <div class="axis-letter" style="color: ${info.color}; border-color: ${info.color}">${axis}</div>
+                        <span class="axis-name">${info.name} (${info.meaning})</span>
+                        ${hits > 0 ? `<span class="axis-hits">${hits} hit${hits > 1 ? 's' : ''}</span>` : '<span style="opacity: 0.3">0</span>'}
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function generateGuidance(percentage, axisHits) {
             const guidance = [];
+
+            // Axis-specific guidance
+            if (axisHits.D > 1) {
+                guidance.push('TIMELINE ALERT: They\'re compressing time - real love is patient');
+            }
+            if (axisHits.B > 1) {
+                guidance.push('ISOLATION PATTERN: They\'re restricting your social connections');
+            }
+            if (axisHits.E > 1) {
+                guidance.push('ENERGY OVERWHELM: The intensity is designed to bypass your thinking');
+            }
 
             if (percentage > 50) {
                 guidance.push('SLOW DOWN - resist the urgency they\'re creating');
@@ -366,7 +774,6 @@
             }
 
             guidance.push('Healthy relationships build gradually over time');
-            guidance.push('Pay attention to actions when they don\'t get what they want');
             guidance.push('Trust is earned through consistent behavior, not grand gestures');
 
             return guidance.slice(0, 5);
@@ -389,7 +796,17 @@
             return reality.slice(0, 4);
         }
 
+        // Initialize
         renderChecks();
+
+        // Log GLYPH status
+        if (typeof GLYPH !== 'undefined') {
+            console.log('GLYPH 12D+ backbone loaded:', GLYPH.VERSION);
+        } else {
+            console.log('GLYPH modules not loaded - using fallback mode');
+        }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

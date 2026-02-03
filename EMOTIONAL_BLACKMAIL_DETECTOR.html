@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emotional Blackmail Detector | Pattern Theory</title>
+    <title>Emotional Blackmail Detector | GLYPH 12D+ Pattern Theory</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,6 +24,17 @@
 
         .header h1 { font-size: 24px; margin-bottom: 8px; }
         .header p { opacity: 0.6; font-size: 13px; }
+
+        .glyph-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
 
         .input-section {
             background: rgba(255, 255, 255, 0.05);
@@ -96,6 +107,113 @@
             opacity: 0.7;
         }
 
+        .glyph-output {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .glyph-output h3 {
+            font-size: 14px;
+            color: #FFD700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glyph-notation {
+            font-family: monospace;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            word-break: break-all;
+            color: #4ECDC4;
+        }
+
+        .glyph-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .glyph-metric {
+            text-align: center;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .glyph-metric .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4ECDC4;
+        }
+
+        .glyph-metric .label {
+            font-size: 10px;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+
+        .axis-breakdown {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .axis-breakdown h3 {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: #FFD700;
+        }
+
+        .axis-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .axis-letter {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .axis-info {
+            flex: 1;
+        }
+
+        .axis-name {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .axis-desc {
+            font-size: 11px;
+            opacity: 0.6;
+        }
+
+        .axis-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
         .tactics {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
@@ -116,11 +234,25 @@
             border-left: 3px solid #e74c3c;
         }
 
+        .tactic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
         .tactic-name {
             font-size: 13px;
             font-weight: bold;
             color: #e74c3c;
-            margin-bottom: 4px;
+        }
+
+        .tactic-axis {
+            font-size: 11px;
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            padding: 2px 8px;
+            border-radius: 4px;
         }
 
         .tactic-desc {
@@ -155,6 +287,29 @@
             font-size: 12px;
         }
 
+        .axis-defense {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .axis-defense h4 {
+            font-size: 12px;
+            color: #4ECDC4;
+            margin-bottom: 8px;
+        }
+
+        .axis-defense-item {
+            font-size: 12px;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            margin-bottom: 6px;
+            border-left: 3px solid #4ECDC4;
+        }
+
         .defense {
             background: rgba(46, 204, 113, 0.1);
             border-radius: 12px;
@@ -181,10 +336,17 @@
     </style>
 </head>
 <body>
+    <!-- GLYPH Module Loader -->
+    <script src="/js/glyph/glyph-base60.js"></script>
+    <script src="/js/glyph/glyph-symbols.js"></script>
+    <script src="/js/glyph/glyph-patterns.js"></script>
+    <script src="/js/glyph/glyph-core.js"></script>
+
     <div class="container">
         <div class="header">
             <h1>Emotional Blackmail Detector</h1>
             <p>Identify FOG: Fear, Obligation, Guilt manipulation</p>
+            <div class="glyph-badge">⟐ GLYPH 12D+ POWERED</div>
         </div>
 
         <div class="input-section">
@@ -199,6 +361,30 @@
                 <div class="verdict-desc" id="verdictDesc">-</div>
             </div>
 
+            <div class="glyph-output">
+                <h3>⟐ GLYPH 12D+ Analysis</h3>
+                <div class="glyph-notation" id="glyphNotation">-</div>
+                <div class="glyph-metrics">
+                    <div class="glyph-metric">
+                        <div class="value" id="truthScore">-</div>
+                        <div class="label">Truth %</div>
+                    </div>
+                    <div class="glyph-metric">
+                        <div class="value" id="deceitScore">-</div>
+                        <div class="label">Deceit %</div>
+                    </div>
+                    <div class="glyph-metric">
+                        <div class="value" id="frequency">-</div>
+                        <div class="label">Frequency</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="axis-breakdown" id="axisBreakdown" style="display: none;">
+                <h3>6D Axis Breakdown</h3>
+                <div id="axisItems"></div>
+            </div>
+
             <div class="tactics">
                 <h3>Blackmail Tactics</h3>
                 <div id="tacticsList"></div>
@@ -209,6 +395,11 @@
                 <div id="fogList"></div>
             </div>
 
+            <div class="axis-defense" id="axisDefense" style="display: none;">
+                <h4>⟐ Axis-Specific Defenses</h4>
+                <div id="axisDefenseList"></div>
+            </div>
+
             <div class="defense">
                 <h4>How to Respond</h4>
                 <div id="defenseList"></div>
@@ -216,51 +407,96 @@
         </div>
 
         <footer>
-            Pattern Theory • <a href="consciousness-tools.html" style="color: #667eea;">More Tools</a>
+            GLYPH 12D+ Pattern Theory • <a href="consciousness-tools.html" style="color: #667eea;">More Tools</a>
         </footer>
     </div>
 
     <script>
+        // GLYPH 6D Axes definition
+        const GLYPH_AXES = {
+            A: { name: 'Vertical (Power)', positive: 'Up', negative: 'Down', desc: 'Power dynamics and coercion' },
+            B: { name: 'Horizontal (Social)', positive: 'Right', negative: 'Left', desc: 'Relationship leverage' },
+            C: { name: 'Depth (Reality)', positive: 'Front', negative: 'Back', desc: 'Reality distortion' },
+            D: { name: 'Temporal', positive: 'Future', negative: 'Past', desc: 'Time-based leverage' },
+            E: { name: 'Energy', positive: 'Potential', negative: 'Kinetic', desc: 'Emotional energy manipulation' },
+            F: { name: 'Observer', positive: 'Subject', negative: 'Object', desc: 'Self-perception attack' }
+        };
+
+        // Axis-specific defenses
+        const AXIS_DEFENSES = {
+            A: 'Power coercion detected → Assert sovereignty: "I decide what I do"',
+            B: 'Relationship leverage detected → Relationship ≠ compliance: "I can care and still say no"',
+            C: 'Reality distortion detected → Trust your perception: "My experience is valid"',
+            D: 'Past leverage detected → Past ≠ current debt: "I\'m not obligated by history"',
+            E: 'Emotional manipulation detected → Not your emergency: "Your feelings don\'t control my choices"',
+            F: 'Identity attack detected → You define you: "I know who I am"'
+        };
+
+        // Extended tactics with GLYPH axis mapping
         const BLACKMAIL_TACTICS = {
             'Threats': {
                 markers: ['if you don\'t', 'i\'ll leave', 'you\'ll lose', 'i\'ll tell', 'you\'ll regret', 'i\'ll hurt'],
                 desc: 'Direct or implied threats of negative consequences',
-                fog: 'Fear'
+                fog: 'Fear',
+                glyphAxis: 'A',
+                severity: 2.5,
+                axisDesc: 'Power axis assault - direct coercion'
             },
             'Self-Harm Threats': {
                 markers: ['hurt myself', 'kill myself', 'end it', 'not worth living', 'can\'t go on'],
                 desc: 'Threatening self-harm to control you - call 988 if serious',
-                fog: 'Fear'
+                fog: 'Fear',
+                glyphAxis: 'E',
+                severity: 3.0,
+                axisDesc: 'Energy axis - emotional hostage taking'
             },
             'Duty Appeals': {
                 markers: ['you owe me', 'after all i\'ve done', 'family should', 'you\'re supposed to', 'that\'s what partners do'],
                 desc: 'Appealing to obligation to override your choice',
-                fog: 'Obligation'
+                fog: 'Obligation',
+                glyphAxis: 'B',
+                severity: 2.0,
+                axisDesc: 'Social axis - relationship leverage'
             },
             'Shame Induction': {
                 markers: ['selfish', 'ungrateful', 'cruel', 'heartless', 'bad person', 'ashamed'],
                 desc: 'Making you feel defective for having boundaries',
-                fog: 'Guilt'
+                fog: 'Guilt',
+                glyphAxis: 'F',
+                severity: 2.2,
+                axisDesc: 'Observer axis - attacks self-perception'
             },
             'Historical Debt': {
                 markers: ['remember when', 'i always', 'i never', 'i gave up', 'sacrificed'],
                 desc: 'Citing past actions to create current debt',
-                fog: 'Obligation'
+                fog: 'Obligation',
+                glyphAxis: 'D',
+                severity: 1.8,
+                axisDesc: 'Temporal axis - past leverage'
             },
             'Victim Playing': {
                 markers: ['you\'re hurting me', 'how could you', 'can\'t believe you', 'so cruel to me'],
                 desc: 'Positioning themselves as victim of your boundaries',
-                fog: 'Guilt'
+                fog: 'Guilt',
+                glyphAxis: 'C',
+                severity: 2.0,
+                axisDesc: 'Depth axis - reality distortion'
             },
             'Silent Treatment': {
                 markers: ['won\'t talk', 'ignoring', 'dead to me', 'you\'ll see'],
                 desc: 'Withdrawing love/attention as punishment',
-                fog: 'Fear'
+                fog: 'Fear',
+                glyphAxis: 'B',
+                severity: 1.8,
+                axisDesc: 'Social axis - withdrawal manipulation'
             },
             'Love Withdrawal': {
                 markers: ['don\'t love me', 'if you loved me', 'proves you don\'t care', 'real love would'],
                 desc: 'Making love conditional on compliance',
-                fog: 'Fear'
+                fog: 'Fear',
+                glyphAxis: 'E',
+                severity: 2.2,
+                axisDesc: 'Energy axis - emotional energy manipulation'
             }
         };
 
@@ -271,12 +507,26 @@
             const lower = text.toLowerCase();
             const found = [];
             const fogTypes = new Set();
+            const axesHit = {};
 
-            // Check tactics
+            // Check tactics and track axis hits
             Object.entries(BLACKMAIL_TACTICS).forEach(([name, data]) => {
                 if (data.markers.some(m => lower.includes(m))) {
-                    found.push({ name, desc: data.desc, fog: data.fog });
+                    found.push({
+                        name,
+                        desc: data.desc,
+                        fog: data.fog,
+                        axis: data.glyphAxis,
+                        severity: data.severity,
+                        axisDesc: data.axisDesc
+                    });
                     fogTypes.add(data.fog);
+
+                    // Track axis intensity
+                    if (!axesHit[data.glyphAxis]) {
+                        axesHit[data.glyphAxis] = 0;
+                    }
+                    axesHit[data.glyphAxis] += data.severity;
                 }
             });
 
@@ -299,10 +549,16 @@
                 labelClass = 'blackmail';
             }
 
+            // Generate GLYPH analysis
+            const glyphResult = generateGlyphAnalysis(text, found, axesHit);
+
             // Generate FOG explanation
             const fogExplain = generateFOG(fogTypes);
 
-            // Generate defense
+            // Generate axis-specific defenses
+            const axisDefenses = generateAxisDefenses(axesHit);
+
+            // Generate general defense
             const defense = generateDefense(found);
 
             // Render results
@@ -312,10 +568,39 @@
             labelEl.className = 'verdict-label ' + labelClass;
             document.getElementById('verdictDesc').textContent = desc;
 
+            // GLYPH output
+            document.getElementById('glyphNotation').textContent = glyphResult.notation;
+            document.getElementById('truthScore').textContent = glyphResult.truthScore + '%';
+            document.getElementById('deceitScore').textContent = glyphResult.deceitScore + '%';
+            document.getElementById('frequency').textContent = glyphResult.frequency + ' Hz';
+
+            // Axis breakdown
+            if (Object.keys(axesHit).length > 0) {
+                document.getElementById('axisBreakdown').style.display = 'block';
+                document.getElementById('axisItems').innerHTML = Object.entries(axesHit)
+                    .sort((a, b) => b[1] - a[1])
+                    .map(([axis, value]) => `
+                        <div class="axis-item">
+                            <div class="axis-letter">${axis}</div>
+                            <div class="axis-info">
+                                <div class="axis-name">${GLYPH_AXES[axis].name}</div>
+                                <div class="axis-desc">${GLYPH_AXES[axis].desc}</div>
+                            </div>
+                            <div class="axis-value">${value.toFixed(1)}</div>
+                        </div>
+                    `).join('');
+            } else {
+                document.getElementById('axisBreakdown').style.display = 'none';
+            }
+
+            // Tactics list with axis info
             if (found.length > 0) {
                 document.getElementById('tacticsList').innerHTML = found.map(t => `
                     <div class="tactic">
-                        <div class="tactic-name">${t.name}</div>
+                        <div class="tactic-header">
+                            <div class="tactic-name">${t.name}</div>
+                            <div class="tactic-axis">Axis ${t.axis}: ${t.axisDesc}</div>
+                        </div>
                         <div class="tactic-desc">${t.desc}</div>
                     </div>
                 `).join('');
@@ -324,15 +609,67 @@
                     '<div class="no-tactics">✓ No clear blackmail patterns</div>';
             }
 
+            // FOG list
             document.getElementById('fogList').innerHTML = fogExplain.map(f =>
                 `<div class="fog-item">${f}</div>`
             ).join('');
 
+            // Axis-specific defenses
+            if (axisDefenses.length > 0) {
+                document.getElementById('axisDefense').style.display = 'block';
+                document.getElementById('axisDefenseList').innerHTML = axisDefenses.map(d =>
+                    `<div class="axis-defense-item">${d}</div>`
+                ).join('');
+            } else {
+                document.getElementById('axisDefense').style.display = 'none';
+            }
+
+            // General defenses
             document.getElementById('defenseList').innerHTML = defense.map(d =>
                 `<div class="defense-item">• ${d}</div>`
             ).join('');
 
             document.getElementById('results').classList.add('active');
+        }
+
+        function generateGlyphAnalysis(text, found, axesHit) {
+            // Try to use GLYPH modules if loaded
+            if (typeof GlyphPatterns !== 'undefined') {
+                const analysis = GlyphPatterns.analyze(text);
+                return {
+                    notation: analysis.glyphNotation,
+                    truthScore: analysis.scores.truth,
+                    deceitScore: analysis.scores.deceit,
+                    frequency: analysis.frequency
+                };
+            }
+
+            // Fallback: Generate GLYPH notation locally
+            const totalSeverity = found.reduce((sum, t) => sum + t.severity, 0);
+            const deceitScore = Math.min(95, Math.round(35 + totalSeverity * 8));
+            const truthScore = 100 - deceitScore;
+
+            // Frequency based on severity
+            let frequency = 528; // Default
+            if (deceitScore > 70) {
+                frequency = 396; // Liberation from fear (danger zone)
+            } else if (deceitScore > 50) {
+                frequency = 417; // Change (warning zone)
+            }
+
+            // Build GLYPH notation
+            const axisValues = Object.entries(axesHit)
+                .map(([axis, val]) => `${axis}:${Math.round(val * 10)}`)
+                .join(':');
+
+            const notation = `⟐${axisValues.length ? axisValues : 'CLEAR'}→FOG:${found.length}→${frequency}Hz⟐`;
+
+            return {
+                notation,
+                truthScore,
+                deceitScore,
+                frequency
+            };
         }
 
         function generateFOG(fogTypes) {
@@ -353,6 +690,18 @@
             }
 
             return explain;
+        }
+
+        function generateAxisDefenses(axesHit) {
+            const defenses = [];
+
+            Object.keys(axesHit)
+                .sort((a, b) => axesHit[b] - axesHit[a])
+                .forEach(axis => {
+                    defenses.push(AXIS_DEFENSES[axis]);
+                });
+
+            return defenses;
         }
 
         function generateDefense(found) {
@@ -376,5 +725,7 @@
             return defense.slice(0, 5);
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

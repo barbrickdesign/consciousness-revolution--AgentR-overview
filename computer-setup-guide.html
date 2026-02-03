@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Setup Guide - PROTECT Domain</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid #e94560;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        .progress-bar {
+            background: #2a2a4a;
+            border-radius: 20px;
+            height: 30px;
+            margin: 30px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 20px;
+        }
+
+        .progress-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .step-container {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e94560;
+        }
+
+        .step-container.completed {
+            border-left-color: #4ade80;
+            opacity: 0.7;
+        }
+
+        .step-container.active {
+            border-left-color: #fbbf24;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .step-number {
+            background: #e94560;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .step-container.completed .step-number {
+            background: #4ade80;
+        }
+
+        .step-content {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .step-container.active .step-content {
+            display: block;
+        }
+
+        .instruction {
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .instruction h4 {
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+
+        .instruction ol, .instruction ul {
+            padding-left: 20px;
+        }
+
+        .instruction li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #e94560;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 10px 15px;
+            background: rgba(0,0,0,0.2);
+            margin: 8px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .checklist li:hover {
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .checklist li.checked {
+            background: rgba(74, 222, 128, 0.1);
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #e94560;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .checklist li.checked .checkbox {
+            background: #4ade80;
+            border-color: #4ade80;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+            border: 1px solid #fbbf24;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .tip-box::before {
+            content: "TIP";
+            background: #fbbf24;
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+            border: 1px solid #ef4444;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .warning-box::before {
+            content: "IMPORTANT";
+            background: #ef4444;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .link-btn {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.2);
+            color: #e94560;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            margin: 5px 0;
+            transition: all 0.2s;
+        }
+
+        .link-btn:hover {
+            background: #e94560;
+            color: white;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(34, 197, 94, 0.05));
+            border: 2px solid #4ade80;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            display: none;
+        }
+
+        .summary-card h2 {
+            color: #4ade80;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .domain-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .domain-link {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .domain-link:hover {
+            background: #e94560;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .step-title { font-size: 1.2rem; }
+            .btn { width: 100%; margin: 5px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Computer Setup Guide</h1>
+            <p class="subtitle">PROTECT Domain - Secure Your Digital Life</p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-text" id="progressText">0% Complete</div>
+        </div>
+
+        <!-- Step 1: Password Manager -->
+        <div class="step-container active" data-step="1">
+            <div class="step-header">
+                <h3 class="step-title">Password Manager Setup</h3>
+                <div class="step-number">1</div>
+            </div>
+            <div class="step-content">
+                <p>A password manager is your digital vault. It stores ALL your passwords securely so you only need to remember ONE master password.</p>
+
+                <div class="instruction">
+                    <h4>Install Bitwarden (Free & Open Source)</h4>
+                    <ol>
+                        <li>Go to <a href="https://bitwarden.com/download/" target="_blank" class="link-btn">bitwarden.com/download</a></li>
+                        <li>Download for your platform (Windows, Mac, or phone)</li>
+                        <li>Create a free account with your email</li>
+                        <li>Set a STRONG master password (16+ characters, mix of everything)</li>
+                        <li>Install the browser extension for Chrome/Firefox/Edge</li>
+                    </ol>
+                </div>
+
+                <div class="tip-box">
+                    Your master password should be a passphrase like: "correct-horse-battery-staple-42!" - easy to remember, hard to crack.
+                </div>
+
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Downloaded Bitwarden</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Created account</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Set master password</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Installed browser extension</li>
+                </ul>
+
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-success" onclick="completeStep(1)">Mark Complete & Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: 2FA Authenticator -->
+        <div class="step-container" data-step="2">
+            <div class="step-header">
+                <h3 class="step-title">Two-Factor Authentication (2FA)</h3>
+                <div class="step-number">2</div>
+            </div>
+            <div class="step-content">
+                <p>2FA adds a second layer of security. Even if someone gets your password, they can't log in without your phone.</p>
+
+                <div class="instruction">
+                    <h4>Set Up Authenticator App</h4>
+                    <ol>
+                        <li>Download an authenticator app on your phone:
+                            <ul>
+                                <li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank" class="link-btn">Google Authenticator (Android)</a></li>
+                                <li><a href="https://apps.apple.com/app/google-authenticator/id388497605" target="_blank" class="link-btn">Google Authenticator (iPhone)</a></li>
+                                <li>Or use Microsoft Authenticator, Authy, etc.</li>
+                            </ul>
+                        </li>
+                        <li>Go to your most important accounts (Gmail, bank, social media)</li>
+                        <li>Find "Security" or "2FA" settings</li>
+                        <li>Scan the QR code with your authenticator app</li>
+                        <li>Save backup codes in Bitwarden!</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    ALWAYS save your backup codes. If you lose your phone without them, you could be locked out forever.
+                </div>
+
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Downloaded authenticator app</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Enabled 2FA on Gmail/Google</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Enabled 2FA on bank accounts</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Saved backup codes in Bitwarden</li>
+                </ul>
+
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-secondary" onclick="goToStep(1)">Back</button>
+                    <button class="btn btn-success" onclick="completeStep(2)">Mark Complete & Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Browser Organization -->
+        <div class="step-container" data-step="3">
+            <div class="step-header">
+                <h3 class="step-title">Browser Organization</h3>
+                <div class="step-number">3</div>
+            </div>
+            <div class="step-content">
+                <p>Your browser is your window to the internet. Let's organize it for maximum efficiency.</p>
+
+                <div class="instruction">
+                    <h4>Organize Bookmarks (7 Domains Style)</h4>
+                    <ol>
+                        <li>Open your bookmark manager (Ctrl+Shift+O in Chrome)</li>
+                        <li>Create 7 folders:
+                            <ul>
+                                <li><strong>1_COMMAND</strong> - Control panels, dashboards, admin</li>
+                                <li><strong>2_BUILD</strong> - Development, tools, projects</li>
+                                <li><strong>3_CONNECT</strong> - Email, social, communication</li>
+                                <li><strong>4_PROTECT</strong> - Security, banking, legal</li>
+                                <li><strong>5_GROW</strong> - Business, revenue, analytics</li>
+                                <li><strong>6_LEARN</strong> - Courses, docs, research</li>
+                                <li><strong>7_TRANSCEND</strong> - Meditation, consciousness, wellness</li>
+                            </ul>
+                        </li>
+                        <li>Sort all existing bookmarks into these folders</li>
+                        <li>Delete bookmarks you haven't used in 6 months</li>
+                    </ol>
+                </div>
+
+                <div class="tip-box">
+                    The 7 domains structure works everywhere - files, bookmarks, even physical spaces. Once you learn it, organization becomes automatic.
+                </div>
+
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Created 7 bookmark folders</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Sorted existing bookmarks</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Deleted old unused bookmarks</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Pinned most-used tabs</li>
+                </ul>
+
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-secondary" onclick="goToStep(2)">Back</button>
+                    <button class="btn btn-success" onclick="completeStep(3)">Mark Complete & Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: File Organization -->
+        <div class="step-container" data-step="4">
+            <div class="step-header">
+                <h3 class="step-title">File Organization</h3>
+                <div class="step-number">4</div>
+            </div>
+            <div class="step-content">
+                <p>Apply the same 7 domains structure to your files. Never lose a document again.</p>
+
+                <div class="instruction">
+                    <h4>Create 7 Domain Folders</h4>
+                    <ol>
+                        <li>Go to your Documents folder (or Desktop)</li>
+                        <li>Create these 7 folders:
+                            <ul>
+                                <li><strong>1_COMMAND</strong> - Daily tasks, checklists, status</li>
+                                <li><strong>2_BUILD</strong> - Projects, code, creative work</li>
+                                <li><strong>3_CONNECT</strong> - Contacts, letters, communications</li>
+                                <li><strong>4_PROTECT</strong> - Legal docs, insurance, security</li>
+                                <li><strong>5_GROW</strong> - Business plans, finances, investments</li>
+                                <li><strong>6_LEARN</strong> - Notes, courses, research</li>
+                                <li><strong>7_TRANSCEND</strong> - Journal, meditation, personal growth</li>
+                            </ul>
+                        </li>
+                        <li>Move existing files into appropriate folders</li>
+                        <li>Add a README.txt in each folder explaining what goes there</li>
+                    </ol>
+                </div>
+
+                <div class="tip-box">
+                    When you download a file, immediately move it to the right domain folder. This habit will save you hours of searching later.
+                </div>
+
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Created 7 domain folders</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Moved existing files</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Created README in each folder</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Cleaned up Desktop</li>
+                </ul>
+
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-secondary" onclick="goToStep(3)">Back</button>
+                    <button class="btn btn-success" onclick="completeStep(4)">Mark Complete & Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Passkeys -->
+        <div class="step-container" data-step="5">
+            <div class="step-header">
+                <h3 class="step-title">Passkey Setup</h3>
+                <div class="step-number">5</div>
+            </div>
+            <div class="step-content">
+                <p>Passkeys are the future of authentication - no passwords at all! They use your device's biometrics (fingerprint/face) to log you in securely.</p>
+
+                <div class="instruction">
+                    <h4>Set Up Passkeys on Key Accounts</h4>
+                    <ol>
+                        <li>Start with Google: <a href="https://myaccount.google.com/signinoptions/passkeys" target="_blank" class="link-btn">Google Passkeys</a></li>
+                        <li>Click "Create a passkey"</li>
+                        <li>Use your device's biometrics to confirm</li>
+                        <li>Repeat for: Microsoft, Apple, GitHub, Discord, etc.</li>
+                        <li>Bitwarden can also store passkeys in the vault!</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    Passkeys are tied to your device. Make sure you have backup access methods (2FA codes, backup email) before relying solely on passkeys.
+                </div>
+
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Created passkey for Google</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Created passkey for Microsoft</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Tested passkey login</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Kept backup 2FA active</li>
+                </ul>
+
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-secondary" onclick="goToStep(4)">Back</button>
+                    <button class="btn btn-success" onclick="completeStep(5)">Mark Complete & Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 6: Export/Backup -->
+        <div class="step-container" data-step="6">
+            <div class="step-header">
+                <h3 class="step-title">Export & Backup Passwords</h3>
+                <div class="step-number">6</div>
+            </div>
+            <div class="step-content">
+                <p>Don't let your passwords be trapped in one place. Regular backups ensure you never lose access.</p>
+
+                <div class="instruction">
+                    <h4>Export from Browser to Bitwarden</h4>
+                    <ol>
+                        <li>In Chrome: Settings > Passwords > Export passwords</li>
+                        <li>In Bitwarden: Tools > Import data</li>
+                        <li>Select "Chrome (csv)" as format</li>
+                        <li>Upload the exported file</li>
+                        <li>Verify all passwords imported correctly</li>
+                        <li>Delete the CSV file (it's unencrypted!)</li>
+                    </ol>
+                </div>
+
+                <div class="instruction">
+                    <h4>Create Encrypted Backup</h4>
+                    <ol>
+                        <li>In Bitwarden: Tools > Export vault</li>
+                        <li>Choose ".json (Encrypted)" format</li>
+                        <li>Save to a USB drive or secure cloud folder</li>
+                        <li>Store USB in a safe place (not near your computer)</li>
+                    </ol>
+                </div>
+
+                <div class="tip-box">
+                    Set a calendar reminder to backup your vault every 3 months. Future you will thank present you.
+                </div>
+
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Exported passwords from browser</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Imported into Bitwarden</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Created encrypted backup</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Deleted unencrypted exports</li>
+                </ul>
+
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-secondary" onclick="goToStep(5)">Back</button>
+                    <button class="btn btn-success" onclick="completeStep(6)">Mark Complete & Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 7: Taskbar/Tray Cleanup -->
+        <div class="step-container" data-step="7">
+            <div class="step-header">
+                <h3 class="step-title">Taskbar & System Tray Cleanup</h3>
+                <div class="step-number">7</div>
+            </div>
+            <div class="step-content">
+                <p>A clean taskbar means a clear mind. Remove the clutter and keep only what you use daily.</p>
+
+                <div class="instruction">
+                    <h4>Clean Up Taskbar (Windows)</h4>
+                    <ol>
+                        <li>Right-click taskbar > Taskbar settings</li>
+                        <li>Turn OFF: News & interests, Search box (use icon), Task view button</li>
+                        <li>Unpin apps you don't use daily</li>
+                        <li>Pin your 7 most-used apps (one per domain is ideal)</li>
+                    </ol>
+                </div>
+
+                <div class="instruction">
+                    <h4>Clean System Tray</h4>
+                    <ol>
+                        <li>Click the ^ arrow in system tray to see hidden icons</li>
+                        <li>Right-click programs you don't need running</li>
+                        <li>Choose "Exit" or "Quit" for unnecessary apps</li>
+                        <li>Go to Settings > Apps > Startup and disable unused apps</li>
+                    </ol>
+                </div>
+
+                <div class="tip-box">
+                    Less running = faster computer. If you haven't clicked an icon in a week, you probably don't need it running at startup.
+                </div>
+
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Cleaned up taskbar</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Removed unused system tray apps</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Disabled startup programs</li>
+                    <li onclick="toggleCheck(this)"><span class="checkbox"></span>Rebooted and verified faster startup</li>
+                </ul>
+
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-secondary" onclick="goToStep(6)">Back</button>
+                    <button class="btn btn-success" onclick="completeStep(7)">Complete Setup Guide!</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Completion Card -->
+        <div class="summary-card" id="completionCard">
+            <h2>Setup Complete!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">You've secured and organized your digital life. You are now protected.</p>
+
+            <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h3 style="color: #4ade80;">What You've Accomplished:</h3>
+                <ul style="list-style: none; padding: 0; text-align: left; max-width: 400px; margin: 15px auto;">
+                    <li style="padding: 8px 0;">Password Manager - All passwords secured</li>
+                    <li style="padding: 8px 0;">2FA - Extra security layer active</li>
+                    <li style="padding: 8px 0;">Bookmarks - Organized by domain</li>
+                    <li style="padding: 8px 0;">Files - 7 domain structure applied</li>
+                    <li style="padding: 8px 0;">Passkeys - Modern auth enabled</li>
+                    <li style="padding: 8px 0;">Backups - Recovery path secured</li>
+                    <li style="padding: 8px 0;">System - Clean and fast</li>
+                </ul>
+            </div>
+
+            <p style="color: #888; margin: 20px 0;">Explore other domains to continue your journey:</p>
+
+            <div class="domain-nav">
+                <a href="araya-domains.html" class="domain-link">ARAYA Hub</a>
+                <a href="seven-domains/command/index.html" class="domain-link">COMMAND</a>
+                <a href="seven-domains/build/index.html" class="domain-link">BUILD</a>
+                <a href="seven-domains/transcend/index.html" class="domain-link">TRANSCEND</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>PROTECT Domain - Consciousness Revolution</p>
+            <p style="margin-top: 10px;">Pattern Theory: When your digital life is organized, your mind is free to create.</p>
+        </footer>
+    </div>
+
+    <script>
+        let completedSteps = new Set();
+        const totalSteps = 7;
+
+        function updateProgress() {
+            const percent = Math.round((completedSteps.size / totalSteps) * 100);
+            document.getElementById('progressFill').style.width = percent + '%';
+            document.getElementById('progressText').textContent = percent + '% Complete';
+
+            // Save to localStorage
+            localStorage.setItem('computerSetupProgress', JSON.stringify([...completedSteps]));
+        }
+
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+            if (element.classList.contains('checked')) {
+                element.querySelector('.checkbox').innerHTML = '';
+            } else {
+                element.querySelector('.checkbox').innerHTML = '';
+            }
+        }
+
+        function goToStep(stepNum) {
+            document.querySelectorAll('.step-container').forEach(step => {
+                step.classList.remove('active');
+                if (parseInt(step.dataset.step) === stepNum) {
+                    step.classList.add('active');
+                    step.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        }
+
+        function completeStep(stepNum) {
+            const stepContainer = document.querySelector(`[data-step="${stepNum}"]`);
+            stepContainer.classList.remove('active');
+            stepContainer.classList.add('completed');
+            completedSteps.add(stepNum);
+            updateProgress();
+
+            if (stepNum < totalSteps) {
+                const nextStep = document.querySelector(`[data-step="${stepNum + 1}"]`);
+                nextStep.classList.add('active');
+                nextStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                // All complete!
+                document.getElementById('completionCard').style.display = 'block';
+                document.getElementById('completionCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Load saved progress
+        window.onload = function() {
+            const saved = localStorage.getItem('computerSetupProgress');
+            if (saved) {
+                completedSteps = new Set(JSON.parse(saved));
+                completedSteps.forEach(stepNum => {
+                    const step = document.querySelector(`[data-step="${stepNum}"]`);
+                    if (step) {
+                        step.classList.add('completed');
+                        step.classList.remove('active');
+                    }
+                });
+
+                // Find first incomplete step
+                for (let i = 1; i <= totalSteps; i++) {
+                    if (!completedSteps.has(i)) {
+                        document.querySelector(`[data-step="${i}"]`).classList.add('active');
+                        break;
+                    }
+                }
+
+                if (completedSteps.size === totalSteps) {
+                    document.getElementById('completionCard').style.display = 'block';
+                }
+
+                updateProgress();
+            }
+        };
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

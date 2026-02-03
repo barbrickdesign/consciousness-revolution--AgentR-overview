@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoovering Detector | Pattern Theory</title>
+    <title>Hoovering Detector | Pattern Theory + GLYPH 12D+</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,6 +24,17 @@
 
         .header h1 { font-size: 24px; margin-bottom: 8px; }
         .header p { opacity: 0.6; font-size: 13px; }
+
+        .glyph-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
 
         .input-section {
             background: rgba(255, 255, 255, 0.05);
@@ -102,6 +113,108 @@
             opacity: 0.7;
         }
 
+        /* GLYPH Output Section */
+        .glyph-output {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .glyph-output h3 {
+            font-size: 14px;
+            color: #FFD700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glyph-notation {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #FFD700;
+            margin-bottom: 16px;
+            word-break: break-all;
+        }
+
+        .glyph-scores {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .glyph-score-item {
+            text-align: center;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .glyph-score-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .glyph-score-value.truth { color: #2ecc71; }
+        .glyph-score-value.deceit { color: #e74c3c; }
+        .glyph-score-value.freq { color: #9b59b6; }
+
+        .glyph-score-label {
+            font-size: 10px;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+
+        .axis-breakdown {
+            margin-top: 16px;
+        }
+
+        .axis-breakdown h4 {
+            font-size: 12px;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        .axis-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .axis-item {
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+            border-left: 3px solid;
+        }
+
+        .axis-item.hit { opacity: 1; }
+        .axis-item.miss { opacity: 0.4; }
+
+        .axis-letter {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .axis-name {
+            font-size: 9px;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        .axis-hits {
+            font-size: 11px;
+            margin-top: 4px;
+            font-weight: bold;
+        }
+
         .tactics {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
@@ -122,11 +235,25 @@
             border-left: 3px solid #e74c3c;
         }
 
+        .tactic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
         .tactic-name {
             font-size: 13px;
             font-weight: bold;
             color: #e74c3c;
-            margin-bottom: 4px;
+        }
+
+        .tactic-axis {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
         }
 
         .tactic-desc {
@@ -166,6 +293,31 @@
             left: 0;
         }
 
+        /* Axis-specific defenses */
+        .axis-defense {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .axis-defense h4 {
+            font-size: 12px;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .axis-defense-item {
+            font-size: 11px;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .axis-defense-item:last-child {
+            border-bottom: none;
+        }
+
         .reminder {
             background: rgba(102, 126, 234, 0.1);
             border-radius: 12px;
@@ -189,13 +341,22 @@
             font-size: 11px;
             opacity: 0.4;
         }
+
+        footer a { color: #667eea; }
     </style>
 </head>
 <body>
+    <!-- GLYPH Module Loading -->
+    <script src="/js/glyph/glyph-base60.js"></script>
+    <script src="/js/glyph/glyph-symbols.js"></script>
+    <script src="/js/glyph/glyph-patterns.js"></script>
+    <script src="/js/glyph/glyph-core.js"></script>
+
     <div class="container">
         <div class="header">
-            <h1>Hoovering Detector</h1>
+            <h1>🧲 Hoovering Detector</h1>
             <p>Identify attempts to suck you back into toxic dynamics</p>
+            <div class="glyph-badge">⟐ GLYPH 12D+ POWERED</div>
         </div>
 
         <div class="input-section">
@@ -211,9 +372,38 @@
                 <div class="verdict-desc" id="verdictDesc">-</div>
             </div>
 
+            <!-- GLYPH 12D+ Analysis Output -->
+            <div class="glyph-output">
+                <h3>⟐ GLYPH 12D+ Analysis</h3>
+                <div class="glyph-notation" id="glyphNotation">-</div>
+                <div class="glyph-scores">
+                    <div class="glyph-score-item">
+                        <div class="glyph-score-value truth" id="truthScore">-</div>
+                        <div class="glyph-score-label">TRUTH</div>
+                    </div>
+                    <div class="glyph-score-item">
+                        <div class="glyph-score-value deceit" id="deceitScore">-</div>
+                        <div class="glyph-score-label">DECEIT</div>
+                    </div>
+                    <div class="glyph-score-item">
+                        <div class="glyph-score-value freq" id="freqScore">-</div>
+                        <div class="glyph-score-label">FREQUENCY</div>
+                    </div>
+                </div>
+                <div class="axis-breakdown">
+                    <h4>6D Axis Breakdown</h4>
+                    <div class="axis-grid" id="axisGrid"></div>
+                </div>
+            </div>
+
             <div class="tactics">
                 <h3>Hoovering Tactics</h3>
                 <div id="tacticsList"></div>
+            </div>
+
+            <div class="axis-defense" id="axisDefense" style="display: none;">
+                <h4>⟐ GLYPH Axis-Specific Defenses</h4>
+                <div id="axisDefenseList"></div>
             </div>
 
             <div class="protection">
@@ -228,43 +418,78 @@
         </div>
 
         <footer>
-            Pattern Theory • <a href="consciousness-tools.html" style="color: #667eea;">More Tools</a>
+            Pattern Theory + GLYPH 12D+ • <a href="consciousness-tools.html">More Tools</a>
         </footer>
     </div>
 
     <script>
+        // GLYPH 6D Axis Definitions
+        const GLYPH_AXES = {
+            A: { name: 'Vertical', meaning: 'Power/Control', color: '#FF6B6B' },
+            B: { name: 'Horizontal', meaning: 'Social/Relational', color: '#4ECDC4' },
+            C: { name: 'Depth', meaning: 'Reality/Truth', color: '#45B7D1' },
+            D: { name: 'Temporal', meaning: 'Time/Timing', color: '#96CEB4' },
+            E: { name: 'Energy', meaning: 'Intensity/Force', color: '#FFEAA7' },
+            F: { name: 'Observer', meaning: 'Subject/Object', color: '#DDA0DD' }
+        };
+
+        // Extended Hoovering Tactics with GLYPH metadata
         const HOOVERING_TACTICS = {
             'Sudden Niceness': {
                 markers: ['i miss you', 'thinking about you', 'been thinking', 'remember when', 'good times'],
-                desc: 'Unexpected affection after conflict/separation'
+                desc: 'Unexpected affection after conflict/separation',
+                glyphAxis: 'E', // Energy - sudden energy shift to lure back
+                severity: 2.0,
+                axisDesc: 'Energy bait - false warmth'
             },
             'Fake Emergency': {
                 markers: ['emergency', 'hospital', 'accident', 'sick', 'dying', 'urgent', 'need you'],
-                desc: 'Creating crisis to force contact'
+                desc: 'Creating crisis to force contact',
+                glyphAxis: 'C', // Depth - fabricating false reality
+                severity: 2.8,
+                axisDesc: 'Reality fabrication - crisis invention'
             },
             'Promise of Change': {
                 markers: ['i\'ve changed', 'different now', 'getting help', 'in therapy', 'realized', 'sorry'],
-                desc: 'Claiming transformation without evidence'
+                desc: 'Claiming transformation without evidence',
+                glyphAxis: 'D', // Temporal - future promises
+                severity: 2.3,
+                axisDesc: 'Temporal manipulation - unproven future'
             },
             'Guilt Appeal': {
                 markers: ['worried about you', 'just checking', 'care about you', 'thought you should know'],
-                desc: 'Using concern as excuse to reconnect'
+                desc: 'Using concern as excuse to reconnect',
+                glyphAxis: 'F', // Observer - manipulating your perspective
+                severity: 1.9,
+                axisDesc: 'Observer manipulation - false concern'
             },
             'Third Party': {
                 markers: ['friend told me', 'family said', 'heard that', 'someone mentioned'],
-                desc: 'Using others to justify contact'
+                desc: 'Using others to justify contact',
+                glyphAxis: 'B', // Horizontal - using social network
+                severity: 2.1,
+                axisDesc: 'Social axis exploitation'
             },
             'Special Occasion': {
                 markers: ['birthday', 'holiday', 'anniversary', 'new year', 'christmas'],
-                desc: 'Using events as excuse to reach out'
+                desc: 'Using events as excuse to reach out',
+                glyphAxis: 'D', // Temporal - time-based excuse
+                severity: 1.7,
+                axisDesc: 'Temporal excuse manufacture'
             },
             'Victim Playing': {
                 markers: ['so hurt', 'devastated', 'destroyed me', 'can\'t go on', 'nothing without you'],
-                desc: 'Making you feel responsible for their pain'
+                desc: 'Making you feel responsible for their pain',
+                glyphAxis: 'A', // Vertical - power reversal
+                severity: 2.5,
+                axisDesc: 'Vertical axis reversal - false victim'
             },
             'Minimizing Past': {
                 markers: ['wasn\'t that bad', 'misunderstanding', 'blown out of proportion', 'overreacted'],
-                desc: 'Downplaying the reasons you left'
+                desc: 'Downplaying the reasons you left',
+                glyphAxis: 'C', // Depth - reality distortion
+                severity: 2.4,
+                axisDesc: 'Depth corruption - history revision'
             }
         };
 
@@ -274,13 +499,33 @@
 
             const lower = text.toLowerCase();
             const found = [];
+            const axisHits = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+            let totalSeverity = 0;
 
-            // Check tactics
+            // Check tactics with GLYPH tracking
             Object.entries(HOOVERING_TACTICS).forEach(([name, data]) => {
-                if (data.markers.some(m => lower.includes(m))) {
-                    found.push({ name, desc: data.desc });
+                const matchedMarkers = data.markers.filter(m => lower.includes(m));
+                if (matchedMarkers.length > 0) {
+                    found.push({
+                        name,
+                        desc: data.desc,
+                        glyphAxis: data.glyphAxis,
+                        severity: data.severity,
+                        axisDesc: data.axisDesc,
+                        matchCount: matchedMarkers.length
+                    });
+                    axisHits[data.glyphAxis] += matchedMarkers.length;
+                    totalSeverity += data.severity * matchedMarkers.length;
                 }
             });
+
+            // GLYPH Pattern Analysis (use library or fallback)
+            let glyphAnalysis;
+            if (typeof GlyphPatterns !== 'undefined') {
+                glyphAnalysis = GlyphPatterns.analyze(text);
+            } else {
+                glyphAnalysis = generateFallbackGlyph(text, found, totalSeverity);
+            }
 
             // Calculate likelihood
             let icon, label, desc, labelClass;
@@ -295,17 +540,20 @@
                 desc = `${found.length} tactic(s) detected - proceed carefully`;
                 labelClass = 'caution';
             } else {
-                icon = '🚨';
+                icon = '🧲';
                 label = 'HOOVERING ATTEMPT';
                 desc = 'Multiple tactics to pull you back in';
                 labelClass = 'hoover';
             }
 
             // Generate protection
-            const protection = generateProtection(found);
+            const protection = generateProtection(found, axisHits);
 
             // Generate reminders
             const reminders = generateReminders(found);
+
+            // Generate axis-specific defenses
+            const axisDefenses = generateAxisDefenses(axisHits);
 
             // Render results
             document.getElementById('verdictIcon').textContent = icon;
@@ -314,16 +562,39 @@
             labelEl.className = 'verdict-label ' + labelClass;
             document.getElementById('verdictDesc').textContent = desc;
 
+            // Render GLYPH output
+            document.getElementById('glyphNotation').textContent = glyphAnalysis.glyphNotation || generateNotation(found, axisHits);
+            document.getElementById('truthScore').textContent = glyphAnalysis.scores?.truth || (100 - Math.min(95, totalSeverity * 10)) + '%';
+            document.getElementById('deceitScore').textContent = glyphAnalysis.scores?.deceit || Math.min(95, totalSeverity * 10) + '%';
+            document.getElementById('freqScore').textContent = (glyphAnalysis.frequency || getFrequency(found.length)) + 'Hz';
+
+            // Render axis breakdown
+            renderAxisBreakdown(axisHits);
+
+            // Render tactics with GLYPH info
             if (found.length > 0) {
                 document.getElementById('tacticsList').innerHTML = found.map(t => `
                     <div class="tactic">
-                        <div class="tactic-name">${t.name}</div>
+                        <div class="tactic-header">
+                            <div class="tactic-name">${t.name}</div>
+                            <div class="tactic-axis">Axis ${t.glyphAxis}: ${t.axisDesc}</div>
+                        </div>
                         <div class="tactic-desc">${t.desc}</div>
                     </div>
                 `).join('');
             } else {
                 document.getElementById('tacticsList').innerHTML =
                     '<div class="no-tactics">✓ No clear hoovering patterns</div>';
+            }
+
+            // Render axis defenses if any
+            if (axisDefenses.length > 0) {
+                document.getElementById('axisDefense').style.display = 'block';
+                document.getElementById('axisDefenseList').innerHTML = axisDefenses.map(d =>
+                    `<div class="axis-defense-item">⟐ ${d}</div>`
+                ).join('');
+            } else {
+                document.getElementById('axisDefense').style.display = 'none';
             }
 
             document.getElementById('protectionList').innerHTML = protection.map(p =>
@@ -337,7 +608,74 @@
             document.getElementById('results').classList.add('active');
         }
 
-        function generateProtection(found) {
+        function generateFallbackGlyph(text, found, severity) {
+            const truthScore = Math.max(5, 100 - Math.round(severity * 12));
+            const deceitScore = 100 - truthScore;
+
+            return {
+                glyphNotation: `⟐${found.length > 2 ? '🧲' : found.length > 0 ? '⚠' : '✓'}:${truthScore}→${getFrequency(found.length)}Hz⟐`,
+                scores: { truth: truthScore, deceit: deceitScore },
+                frequency: getFrequency(found.length),
+                dominant: found.length > 2 ? 'deceit' : found.length > 0 ? 'neutral' : 'truth'
+            };
+        }
+
+        function generateNotation(found, axisHits) {
+            const axes = Object.entries(axisHits)
+                .filter(([_, v]) => v > 0)
+                .map(([k, v]) => `${k}:${v}`)
+                .join(':');
+            const symbol = found.length > 2 ? '↻' : found.length > 0 ? '⧗' : '✓';
+            return `⟐${symbol}:${axes}→HOOVER→${getFrequency(found.length)}Hz⟐`;
+        }
+
+        function getFrequency(tacticCount) {
+            if (tacticCount === 0) return 528; // DNA Repair - healthy
+            if (tacticCount <= 2) return 417; // Change - caution
+            return 396; // Liberation from fear - danger
+        }
+
+        function renderAxisBreakdown(axisHits) {
+            const grid = document.getElementById('axisGrid');
+            grid.innerHTML = Object.entries(GLYPH_AXES).map(([letter, data]) => {
+                const hits = axisHits[letter];
+                const hitClass = hits > 0 ? 'hit' : 'miss';
+                return `
+                    <div class="axis-item ${hitClass}" style="border-color: ${data.color}">
+                        <div class="axis-letter" style="color: ${data.color}">${letter}</div>
+                        <div class="axis-name">${data.meaning}</div>
+                        <div class="axis-hits" style="color: ${hits > 0 ? data.color : '#666'}">${hits > 0 ? hits + ' hit' + (hits > 1 ? 's' : '') : '-'}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateAxisDefenses(axisHits) {
+            const defenses = [];
+
+            if (axisHits.E > 0) {
+                defenses.push('ENERGY AXIS: Sudden warmth is bait. Remember the cold before.');
+            }
+            if (axisHits.C > 0) {
+                defenses.push('DEPTH AXIS: Verify any "emergencies" through third parties. Reality check required.');
+            }
+            if (axisHits.D > 0) {
+                defenses.push('TEMPORAL AXIS: Change takes years of consistent action, not a single message.');
+            }
+            if (axisHits.A > 0) {
+                defenses.push('VERTICAL AXIS: Their pain is their responsibility. You are not their savior.');
+            }
+            if (axisHits.B > 0) {
+                defenses.push('SOCIAL AXIS: Flying monkeys detected. Maintain boundaries with all parties.');
+            }
+            if (axisHits.F > 0) {
+                defenses.push('OBSERVER AXIS: Their concern is about their needs, not yours.');
+            }
+
+            return defenses;
+        }
+
+        function generateProtection(found, axisHits) {
             const protection = [];
 
             if (found.some(t => t.name === 'Fake Emergency')) {
@@ -346,11 +684,13 @@
             if (found.some(t => t.name === 'Promise of Change')) {
                 protection.push('Change takes months/years to demonstrate - not messages');
             }
+            if (axisHits.C > 0) {
+                protection.push('Document everything - reality distortion detected');
+            }
 
             protection.push('You don\'t have to respond at all');
             protection.push('No response IS a response - silence is valid');
             protection.push('Block if needed - you owe no explanation');
-            protection.push('Screenshot and save in case you need documentation');
 
             return protection.slice(0, 5);
         }
@@ -371,5 +711,7 @@
             return reminders.slice(0, 4);
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

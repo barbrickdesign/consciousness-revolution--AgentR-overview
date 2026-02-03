@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVERKOR - One Entry Point</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+            color: #fff;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 30px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 48px;
+            background: linear-gradient(90deg, #ff0000, #ff6600, #ffff00, #00ff00, #0099ff, #6600ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header p { color: #666; margin-top: 10px; }
+
+        .dial {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,0,0,0.1);
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .dial h2 { color: #ff0000; font-size: 24px; }
+        .dial .focus { font-size: 36px; color: #fff; margin: 10px 0; }
+        .dial .countdown { color: #ff6600; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .domain {
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: block;
+        }
+        .domain:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .domain h3 { font-size: 14px; opacity: 0.8; margin-bottom: 5px; }
+        .domain .name { font-size: 20px; font-weight: bold; }
+
+        .d1 { background: linear-gradient(135deg, #ff0000, #cc0000); }
+        .d2 { background: linear-gradient(135deg, #ff6600, #cc5200); }
+        .d3 { background: linear-gradient(135deg, #ffcc00, #cc9900); color: #000; }
+        .d4 { background: linear-gradient(135deg, #00cc00, #009900); }
+        .d5 { background: linear-gradient(135deg, #0099ff, #0066cc); }
+        .d6 { background: linear-gradient(135deg, #6600ff, #4400aa); }
+        .d7 { background: linear-gradient(135deg, #ff00ff, #aa00aa); }
+
+        .quick-links {
+            background: #111;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .quick-links h3 { color: #00ff00; margin-bottom: 15px; }
+        .quick-links a {
+            display: inline-block;
+            background: #222;
+            color: #0099ff;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .quick-links a:hover { background: #333; }
+        .quick-links a.urgent {
+            background: #ff0000;
+            color: #fff;
+        }
+
+        .paths {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        .paths h3 { color: #00ff00; margin-bottom: 15px; font-family: 'Segoe UI', system-ui; }
+        .paths code {
+            display: block;
+            padding: 5px 0;
+            color: #888;
+        }
+        .paths code:hover { color: #fff; }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #333;
+            border-top: 1px solid #222;
+            margin-top: 30px;
+        }
+
+        .gold-docs {
+            background: linear-gradient(135deg, #aa8800, #665200);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .gold-docs h3 { color: #ffdd00; margin-bottom: 15px; }
+        .gold-docs a {
+            display: block;
+            color: #fff;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            margin: 5px 0;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .gold-docs a:hover { background: rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>OVERKOR</h1>
+        <p>One Entry Point → Fractal System → Everything</p>
+    </div>
+
+    <div class="dial">
+        <h2>CURRENT FOCUS</h2>
+        <div class="focus">⚖️ LEGAL - Dec 16 Hearing</div>
+        <div class="countdown" id="countdown"></div>
+        <div style="margin-top:15px; font-size:24px; color:#ffff00;">
+            📞 CALL: 509-455-4444 (Mari Luna)
+        </div>
+    </div>
+
+    <div class="gold-docs">
+        <h3>🏆 GOLD DOCUMENTS (Legal Priority)</h3>
+        <a href="file:///C:/Users/dwrek/LEGAL/KARLEE_21-3-00460-32/GOLD_DOC_1_COMPLETE_EVIDENCE_INVENTORY.md">📋 GOLD 1: Evidence Inventory (522MB found)</a>
+        <a href="file:///C:/Users/dwrek/LEGAL/KARLEE_21-3-00460-32/GOLD_DOC_2_COMPLETE_CASE_SUMMARY.md">📄 GOLD 2: Complete Case Summary</a>
+        <a href="file:///C:/Users/dwrek/LEGAL/KARLEE_21-3-00460-32/GOLD_DOC_3_ACTION_CHECKLIST.md">✅ GOLD 3: Action Checklist (Day by Day)</a>
+        <a href="file:///C:/Users/dwrek/LEGAL/KARLEE_21-3-00460-32/GOLD_DOC_4_CASE_LAW_AMMUNITION.md">⚔️ GOLD 4: Case Law Ammunition</a>
+        <a href="file:///C:/Users/dwrek/LEGAL/KARLEE_21-3-00460-32/MASTER_EVIDENCE_HUB.md">🎯 Master Evidence Hub</a>
+    </div>
+
+    <h3 style="color:#666; margin-bottom:15px;">THE 7 DOMAINS</h3>
+    <div class="grid">
+        <a class="domain d1" href="file:///C:/Users/dwrek/Desktop/1_COMMAND/">
+            <h3>1</h3>
+            <div class="name">COMMAND</div>
+            <div style="font-size:11px; opacity:0.7;">Control • Dashboards</div>
+        </a>
+        <a class="domain d2" href="file:///C:/Users/dwrek/Desktop/2_BUILD/">
+            <h3>2</h3>
+            <div class="name">BUILD</div>
+            <div style="font-size:11px; opacity:0.7;">Projects • Code</div>
+        </a>
+        <a class="domain d3" href="file:///C:/Users/dwrek/Desktop/3_CONNECT/">
+            <h3>3</h3>
+            <div class="name">CONNECT</div>
+            <div style="font-size:11px; opacity:0.7;">Communications</div>
+        </a>
+        <a class="domain d4" href="file:///C:/Users/dwrek/Desktop/4_PROTECT/">
+            <h3>4</h3>
+            <div class="name">PROTECT</div>
+            <div style="font-size:11px; opacity:0.7;">Legal • Security</div>
+        </a>
+        <a class="domain d5" href="file:///C:/Users/dwrek/Desktop/5_GROW/">
+            <h3>5</h3>
+            <div class="name">GROW</div>
+            <div style="font-size:11px; opacity:0.7;">Business • Revenue</div>
+        </a>
+        <a class="domain d6" href="file:///C:/Users/dwrek/Desktop/6_LEARN/">
+            <h3>6</h3>
+            <div class="name">LEARN</div>
+            <div style="font-size:11px; opacity:0.7;">Research • Docs</div>
+        </a>
+        <a class="domain d7" href="file:///C:/Users/dwrek/Desktop/7_TRANSCEND/">
+            <h3>7</h3>
+            <div class="name">TRANSCEND</div>
+            <div style="font-size:11px; opacity:0.7;">Consciousness</div>
+        </a>
+    </div>
+
+    <div class="quick-links">
+        <h3>⚡ QUICK ACCESS</h3>
+        <a href="file:///C:/Users/dwrek/LEGAL/KARLEE_21-3-00460-32/" class="urgent">📁 LEGAL CASE FOLDER</a>
+        <a href="file:///C:/Users/dwrek/Desktop/CURRENT_DASHBOARDS/">📊 Dashboards</a>
+        <a href="file:///C:/Users/dwrek/100X_DEPLOYMENT/">🚀 100X Platform</a>
+        <a href="file:///C:/Users/dwrek/_INCOMING/">📥 Incoming Scans</a>
+        <a href="file:///C:/Users/dwrek/KEYRING.md">🔑 KEYRING</a>
+        <a href="file:///C:/Users/dwrek/MASTER_BOOT.md">🔄 Boot Protocol</a>
+        <a href="file:///C:/Users/dwrek/DIRECTORY.md">🗺️ Full Directory</a>
+        <br><br>
+        <a href="https://conciousnessrevolution.io/legal-command.html">🌐 Live: Legal Dashboard</a>
+        <a href="https://conciousnessrevolution.io/workspace.html">🌐 Live: Workspace</a>
+        <a href="https://conciousnessrevolution.io/bugs.html">🌐 Live: Bug Tracker</a>
+    </div>
+
+    <div class="paths">
+        <h3>📍 KEY PATHS (Copy/Paste)</h3>
+        <code>C:\Users\dwrek\LEGAL\KARLEE_21-3-00460-32\</code>
+        <code>C:\Users\dwrek\Desktop\CURRENT_DASHBOARDS\</code>
+        <code>C:\Users\dwrek\100X_DEPLOYMENT\</code>
+        <code>C:\Users\dwrek\_INCOMING\</code>
+        <code>C:\Users\dwrek\Desktop\1_COMMAND\</code>
+    </div>
+
+    <div class="footer">
+        <p>OVERKOR v1.0 | One Entry Point | Fractal System</p>
+        <p style="margin-top:10px; color:#444;">Double-click this file anytime you're lost</p>
+    </div>
+
+    <script>
+        // Countdown to Dec 16
+        function updateCountdown() {
+            const hearing = new Date('2025-12-16T09:00:00');
+            const now = new Date();
+            const diff = hearing - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('countdown').textContent =
+                days + ' days, ' + hours + ' hours until hearing';
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

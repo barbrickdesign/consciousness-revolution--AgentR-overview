@@ -1,0 +1,2294 @@
+{
+  "generated": "2025-12-26",
+  "total_dioceses": 176,
+  "dioceses": [
+    {
+      "name": "Archdiocese of Mobile",
+      "address": "400 Government Street, Mobile, AL 36602",
+      "website": "https://mobarch.org",
+      "probable_emails": [
+        "info@mobarch.org",
+        "communications@mobarch.org",
+        "contact@mobarch.org",
+        "chancery@mobarch.org",
+        "office@mobarch.org"
+      ],
+      "primary_email": "info@mobarch.org"
+    },
+    {
+      "name": "Diocese of Birmingham",
+      "address": "2121 3rd Avenue North, Birmingham, AL 35202",
+      "website": "https://bhmdiocese.org",
+      "probable_emails": [
+        "info@bhmdiocese.org",
+        "communications@bhmdiocese.org",
+        "contact@bhmdiocese.org",
+        "chancery@bhmdiocese.org",
+        "office@bhmdiocese.org"
+      ],
+      "primary_email": "info@bhmdiocese.org"
+    },
+    {
+      "name": "Archdiocese of Anchorage-Juneau",
+      "address": "225 Cordova Street, Anchorage, AK 99501",
+      "website": "https://aoaj.org",
+      "probable_emails": [
+        "info@aoaj.org",
+        "communications@aoaj.org",
+        "contact@aoaj.org",
+        "chancery@aoaj.org",
+        "office@aoaj.org"
+      ],
+      "primary_email": "info@aoaj.org"
+    },
+    {
+      "name": "Diocese of Fairbanks",
+      "address": "1316 Peger Road, Fairbanks, AK 99709",
+      "website": "https://dioceseoffairbanks.org",
+      "probable_emails": [
+        "info@dioceseoffairbanks.org",
+        "communications@dioceseoffairbanks.org",
+        "contact@dioceseoffairbanks.org",
+        "chancery@dioceseoffairbanks.org",
+        "office@dioceseoffairbanks.org"
+      ],
+      "primary_email": "info@dioceseoffairbanks.org"
+    },
+    {
+      "name": "Diocese of Phoenix",
+      "address": "400 East Monroe Street, Phoenix, AZ 85004",
+      "website": "https://diocesephoenix.org",
+      "probable_emails": [
+        "info@diocesephoenix.org",
+        "communications@diocesephoenix.org",
+        "contact@diocesephoenix.org",
+        "chancery@diocesephoenix.org",
+        "office@diocesephoenix.org"
+      ],
+      "primary_email": "info@diocesephoenix.org"
+    },
+    {
+      "name": "Diocese of Tucson",
+      "address": "P.O. Box 31, Tucson, AZ 85702",
+      "website": "https://diocesetucson.org",
+      "probable_emails": [
+        "info@diocesetucson.org",
+        "communications@diocesetucson.org",
+        "contact@diocesetucson.org",
+        "chancery@diocesetucson.org",
+        "office@diocesetucson.org"
+      ],
+      "primary_email": "info@diocesetucson.org"
+    },
+    {
+      "name": "Diocese of Little Rock",
+      "address": "2500 N. Tyler Street, Little Rock, AR 72207",
+      "website": "https://dolr.org",
+      "probable_emails": [
+        "info@dolr.org",
+        "communications@dolr.org",
+        "contact@dolr.org",
+        "chancery@dolr.org",
+        "office@dolr.org"
+      ],
+      "primary_email": "info@dolr.org"
+    },
+    {
+      "name": "Archdiocese of Los Angeles",
+      "address": "3424 Wilshire Boulevard, Los Angeles, CA 90010",
+      "website": "https://lacatholics.org",
+      "probable_emails": [
+        "info@lacatholics.org",
+        "communications@lacatholics.org",
+        "contact@lacatholics.org",
+        "chancery@lacatholics.org",
+        "office@lacatholics.org"
+      ],
+      "primary_email": "info@lacatholics.org"
+    },
+    {
+      "name": "Archdiocese of San Francisco",
+      "address": "One Peter Yorke Way, San Francisco, CA 94109",
+      "website": "https://sfarchdiocese.org",
+      "probable_emails": [
+        "info@sfarchdiocese.org",
+        "communications@sfarchdiocese.org",
+        "contact@sfarchdiocese.org",
+        "chancery@sfarchdiocese.org",
+        "office@sfarchdiocese.org"
+      ],
+      "primary_email": "info@sfarchdiocese.org"
+    },
+    {
+      "name": "Diocese of Fresno",
+      "address": "1550 North Fresno Street, Fresno, CA 93707",
+      "website": "https://dioceseoffresno.org",
+      "probable_emails": [
+        "info@dioceseoffresno.org",
+        "communications@dioceseoffresno.org",
+        "contact@dioceseoffresno.org",
+        "chancery@dioceseoffresno.org",
+        "office@dioceseoffresno.org"
+      ],
+      "primary_email": "info@dioceseoffresno.org"
+    },
+    {
+      "name": "Diocese of Monterey",
+      "address": "425 Church Street, Monterey, CA 93940",
+      "website": "https://dioceseofmonterey.org",
+      "probable_emails": [
+        "info@dioceseofmonterey.org",
+        "communications@dioceseofmonterey.org",
+        "contact@dioceseofmonterey.org",
+        "chancery@dioceseofmonterey.org",
+        "office@dioceseofmonterey.org"
+      ],
+      "primary_email": "info@dioceseofmonterey.org"
+    },
+    {
+      "name": "Diocese of Oakland",
+      "address": "2121 Harrison Street, Oakland, CA 94612",
+      "website": "https://oakdiocese.org",
+      "probable_emails": [
+        "info@oakdiocese.org",
+        "communications@oakdiocese.org",
+        "contact@oakdiocese.org",
+        "chancery@oakdiocese.org",
+        "office@oakdiocese.org"
+      ],
+      "primary_email": "info@oakdiocese.org"
+    },
+    {
+      "name": "Diocese of Orange",
+      "address": "13280 Chapman Avenue, Garden Grove, CA 92840",
+      "website": "https://rcbo.org",
+      "probable_emails": [
+        "info@rcbo.org",
+        "communications@rcbo.org",
+        "contact@rcbo.org",
+        "chancery@rcbo.org",
+        "office@rcbo.org"
+      ],
+      "primary_email": "info@rcbo.org"
+    },
+    {
+      "name": "Diocese of Sacramento",
+      "address": "2110 Broadway, Sacramento, CA 95818",
+      "website": "https://scd.org",
+      "probable_emails": [
+        "info@scd.org",
+        "communications@scd.org",
+        "contact@scd.org",
+        "chancery@scd.org",
+        "office@scd.org"
+      ],
+      "primary_email": "info@scd.org"
+    },
+    {
+      "name": "Diocese of San Bernardino",
+      "address": "1201 E. Highland Avenue, San Bernardino, CA 92404",
+      "website": "https://sbdiocese.org",
+      "probable_emails": [
+        "info@sbdiocese.org",
+        "communications@sbdiocese.org",
+        "contact@sbdiocese.org",
+        "chancery@sbdiocese.org",
+        "office@sbdiocese.org"
+      ],
+      "primary_email": "info@sbdiocese.org"
+    },
+    {
+      "name": "Diocese of San Diego",
+      "address": "P.O. Box 85728, San Diego, CA 92186",
+      "website": "https://sdcatholic.org",
+      "probable_emails": [
+        "info@sdcatholic.org",
+        "communications@sdcatholic.org",
+        "contact@sdcatholic.org",
+        "chancery@sdcatholic.org",
+        "office@sdcatholic.org"
+      ],
+      "primary_email": "info@sdcatholic.org"
+    },
+    {
+      "name": "Diocese of San Jose",
+      "address": "1150 North 1st Street, San Jose, CA 95112",
+      "website": "https://dsj.org",
+      "probable_emails": [
+        "info@dsj.org",
+        "communications@dsj.org",
+        "contact@dsj.org",
+        "chancery@dsj.org",
+        "office@dsj.org"
+      ],
+      "primary_email": "info@dsj.org"
+    },
+    {
+      "name": "Diocese of Santa Rosa",
+      "address": "P.O. Box 1297, Santa Rosa, CA 95402",
+      "website": "https://srdiocese.org",
+      "probable_emails": [
+        "info@srdiocese.org",
+        "communications@srdiocese.org",
+        "contact@srdiocese.org",
+        "chancery@srdiocese.org",
+        "office@srdiocese.org"
+      ],
+      "primary_email": "info@srdiocese.org"
+    },
+    {
+      "name": "Diocese of Stockton",
+      "address": "212 N. San Joaquin Street, Stockton, CA 95202",
+      "website": "https://stocktondiocese.org",
+      "probable_emails": [
+        "info@stocktondiocese.org",
+        "communications@stocktondiocese.org",
+        "contact@stocktondiocese.org",
+        "chancery@stocktondiocese.org",
+        "office@stocktondiocese.org"
+      ],
+      "primary_email": "info@stocktondiocese.org"
+    },
+    {
+      "name": "Archdiocese of Denver",
+      "address": "1300 South Steele Street, Denver, CO 80210",
+      "website": "https://archden.org",
+      "probable_emails": [
+        "info@archden.org",
+        "communications@archden.org",
+        "contact@archden.org",
+        "chancery@archden.org",
+        "office@archden.org"
+      ],
+      "primary_email": "info@archden.org"
+    },
+    {
+      "name": "Diocese of Colorado Springs",
+      "address": "228 N. Cascade Avenue, Colorado Springs, CO 80903",
+      "website": "https://diocs.org",
+      "probable_emails": [
+        "info@diocs.org",
+        "communications@diocs.org",
+        "contact@diocs.org",
+        "chancery@diocs.org",
+        "office@diocs.org"
+      ],
+      "primary_email": "info@diocs.org"
+    },
+    {
+      "name": "Diocese of Pueblo",
+      "address": "101 N. Greenwood Street, Pueblo, CO 81003",
+      "website": "https://dioceseofpueblo.org",
+      "probable_emails": [
+        "info@dioceseofpueblo.org",
+        "communications@dioceseofpueblo.org",
+        "contact@dioceseofpueblo.org",
+        "chancery@dioceseofpueblo.org",
+        "office@dioceseofpueblo.org"
+      ],
+      "primary_email": "info@dioceseofpueblo.org"
+    },
+    {
+      "name": "Archdiocese of Hartford",
+      "address": "467 Bloomfield Avenue, Bloomfield, CT 06002",
+      "website": "https://archdioceseofhartford.org",
+      "probable_emails": [
+        "info@archdioceseofhartford.org",
+        "communications@archdioceseofhartford.org",
+        "contact@archdioceseofhartford.org",
+        "chancery@archdioceseofhartford.org",
+        "office@archdioceseofhartford.org"
+      ],
+      "primary_email": "info@archdioceseofhartford.org"
+    },
+    {
+      "name": "Diocese of Bridgeport",
+      "address": "100 Beard Sawmill Road, Shelton, CT 06848",
+      "website": "https://bridgeportdiocese.com",
+      "probable_emails": [
+        "info@bridgeportdiocese.com",
+        "communications@bridgeportdiocese.com",
+        "contact@bridgeportdiocese.com",
+        "chancery@bridgeportdiocese.com",
+        "office@bridgeportdiocese.com"
+      ],
+      "primary_email": "info@bridgeportdiocese.com"
+    },
+    {
+      "name": "Diocese of Norwich",
+      "address": "201 Broadway, Norwich, CT 06360",
+      "website": "https://norwichdiocese.org",
+      "probable_emails": [
+        "info@norwichdiocese.org",
+        "communications@norwichdiocese.org",
+        "contact@norwichdiocese.org",
+        "chancery@norwichdiocese.org",
+        "office@norwichdiocese.org"
+      ],
+      "primary_email": "info@norwichdiocese.org"
+    },
+    {
+      "name": "Diocese of Wilmington",
+      "address": "1925 Delaware Avenue, Wilmington, DE 19899",
+      "website": "https://cdow.org",
+      "probable_emails": [
+        "info@cdow.org",
+        "communications@cdow.org",
+        "contact@cdow.org",
+        "chancery@cdow.org",
+        "office@cdow.org"
+      ],
+      "primary_email": "info@cdow.org"
+    },
+    {
+      "name": "Archdiocese of Miami",
+      "address": "9401 Biscayne Boulevard, Miami Shores, FL 33138",
+      "website": "https://miamiarch.org",
+      "probable_emails": [
+        "info@miamiarch.org",
+        "communications@miamiarch.org",
+        "contact@miamiarch.org",
+        "chancery@miamiarch.org",
+        "office@miamiarch.org"
+      ],
+      "primary_email": "info@miamiarch.org"
+    },
+    {
+      "name": "Diocese of Orlando",
+      "address": "P.O. Box 1800, Orlando, FL 32802",
+      "website": "https://orlandodiocese.org",
+      "probable_emails": [
+        "info@orlandodiocese.org",
+        "communications@orlandodiocese.org",
+        "contact@orlandodiocese.org",
+        "chancery@orlandodiocese.org",
+        "office@orlandodiocese.org"
+      ],
+      "primary_email": "info@orlandodiocese.org"
+    },
+    {
+      "name": "Diocese of Palm Beach",
+      "address": "9995 N. Military Trail, Palm Beach Gardens, FL 33410",
+      "website": "https://diocesepb.org",
+      "probable_emails": [
+        "info@diocesepb.org",
+        "communications@diocesepb.org",
+        "contact@diocesepb.org",
+        "chancery@diocesepb.org",
+        "office@diocesepb.org"
+      ],
+      "primary_email": "info@diocesepb.org"
+    },
+    {
+      "name": "Diocese of Pensacola-Tallahassee",
+      "address": "11 North B Street, Pensacola, FL 32502",
+      "website": "https://ptdiocese.org",
+      "probable_emails": [
+        "info@ptdiocese.org",
+        "communications@ptdiocese.org",
+        "contact@ptdiocese.org",
+        "chancery@ptdiocese.org",
+        "office@ptdiocese.org"
+      ],
+      "primary_email": "info@ptdiocese.org"
+    },
+    {
+      "name": "Diocese of St. Augustine",
+      "address": "11625 Old St. Augustine Rd., Jacksonville, FL 32258",
+      "website": "https://dosafl.com",
+      "probable_emails": [
+        "info@dosafl.com",
+        "communications@dosafl.com",
+        "contact@dosafl.com",
+        "chancery@dosafl.com",
+        "office@dosafl.com"
+      ],
+      "primary_email": "info@dosafl.com"
+    },
+    {
+      "name": "Diocese of St. Petersburg",
+      "address": "6363 9th Avenue N., St. Petersburg, FL 33710",
+      "website": "https://dosp.org",
+      "probable_emails": [
+        "info@dosp.org",
+        "communications@dosp.org",
+        "contact@dosp.org",
+        "chancery@dosp.org",
+        "office@dosp.org"
+      ],
+      "primary_email": "info@dosp.org"
+    },
+    {
+      "name": "Diocese of Venice",
+      "address": "1000 Pinebrook Road, Venice, FL 34285",
+      "website": "https://dioceseofvenice.org",
+      "probable_emails": [
+        "info@dioceseofvenice.org",
+        "communications@dioceseofvenice.org",
+        "contact@dioceseofvenice.org",
+        "chancery@dioceseofvenice.org",
+        "office@dioceseofvenice.org"
+      ],
+      "primary_email": "info@dioceseofvenice.org"
+    },
+    {
+      "name": "Archdiocese of Atlanta",
+      "address": "2401 Lake Park Drive, S.E., Smyrna, GA 30080",
+      "website": "https://archatl.com",
+      "probable_emails": [
+        "info@archatl.com",
+        "communications@archatl.com",
+        "contact@archatl.com",
+        "chancery@archatl.com",
+        "office@archatl.com"
+      ],
+      "primary_email": "info@archatl.com"
+    },
+    {
+      "name": "Diocese of Savannah",
+      "address": "2170 East Victory Drive, Savannah, GA 31404",
+      "website": "https://diosav.org",
+      "probable_emails": [
+        "info@diosav.org",
+        "communications@diosav.org",
+        "contact@diosav.org",
+        "chancery@diosav.org",
+        "office@diosav.org"
+      ],
+      "primary_email": "info@diosav.org"
+    },
+    {
+      "name": "Diocese of Honolulu",
+      "address": "1184 Bishop Street, Honolulu, HI 96813",
+      "website": "https://catholichawaii.org",
+      "probable_emails": [
+        "info@catholichawaii.org",
+        "communications@catholichawaii.org",
+        "contact@catholichawaii.org",
+        "chancery@catholichawaii.org",
+        "office@catholichawaii.org"
+      ],
+      "primary_email": "info@catholichawaii.org"
+    },
+    {
+      "name": "Diocese of Boise",
+      "address": "1501 S. Federal Way, Boise, ID 83705",
+      "website": "https://catholicidaho.org",
+      "probable_emails": [
+        "info@catholicidaho.org",
+        "communications@catholicidaho.org",
+        "contact@catholicidaho.org",
+        "chancery@catholicidaho.org",
+        "office@catholicidaho.org"
+      ],
+      "primary_email": "info@catholicidaho.org"
+    },
+    {
+      "name": "Archdiocese of Chicago",
+      "address": "835 N. Rush Street, Chicago, IL 60611",
+      "website": "https://archchicago.org",
+      "probable_emails": [
+        "info@archchicago.org",
+        "communications@archchicago.org",
+        "contact@archchicago.org",
+        "chancery@archchicago.org",
+        "office@archchicago.org"
+      ],
+      "primary_email": "info@archchicago.org"
+    },
+    {
+      "name": "Diocese of Belleville",
+      "address": "222 South Third Street, Belleville, IL 62220",
+      "website": "https://diobelle.org",
+      "probable_emails": [
+        "info@diobelle.org",
+        "communications@diobelle.org",
+        "contact@diobelle.org",
+        "chancery@diobelle.org",
+        "office@diobelle.org"
+      ],
+      "primary_email": "info@diobelle.org"
+    },
+    {
+      "name": "Diocese of Joliet",
+      "address": "16555 Weber Road, Crest Hill, IL 60403",
+      "website": "https://dioceseofjoliet.org",
+      "probable_emails": [
+        "info@dioceseofjoliet.org",
+        "communications@dioceseofjoliet.org",
+        "contact@dioceseofjoliet.org",
+        "chancery@dioceseofjoliet.org",
+        "office@dioceseofjoliet.org"
+      ],
+      "primary_email": "info@dioceseofjoliet.org"
+    },
+    {
+      "name": "Diocese of Peoria",
+      "address": "419 N.E. Madison Avenue, Peoria, IL 61603",
+      "website": "https://cdop.org",
+      "probable_emails": [
+        "info@cdop.org",
+        "communications@cdop.org",
+        "contact@cdop.org",
+        "chancery@cdop.org",
+        "office@cdop.org"
+      ],
+      "primary_email": "info@cdop.org"
+    },
+    {
+      "name": "Diocese of Rockford",
+      "address": "555 Coleman Center Drive, Rockford, IL 61108",
+      "website": "https://rockforddiocese.org",
+      "probable_emails": [
+        "info@rockforddiocese.org",
+        "communications@rockforddiocese.org",
+        "contact@rockforddiocese.org",
+        "chancery@rockforddiocese.org",
+        "office@rockforddiocese.org"
+      ],
+      "primary_email": "info@rockforddiocese.org"
+    },
+    {
+      "name": "Diocese of Springfield in Illinois",
+      "address": "1615 West Washington Street, Springfield, IL 62702",
+      "website": "https://dio.org",
+      "probable_emails": [
+        "info@dio.org",
+        "communications@dio.org",
+        "contact@dio.org",
+        "chancery@dio.org",
+        "office@dio.org"
+      ],
+      "primary_email": "info@dio.org"
+    },
+    {
+      "name": "Archdiocese of Indianapolis",
+      "address": "1400 N. Meridian Street, Indianapolis, IN 46202",
+      "website": "https://archindy.org",
+      "probable_emails": [
+        "info@archindy.org",
+        "communications@archindy.org",
+        "contact@archindy.org",
+        "chancery@archindy.org",
+        "office@archindy.org"
+      ],
+      "primary_email": "info@archindy.org"
+    },
+    {
+      "name": "Diocese of Evansville",
+      "address": "4200 N. Kentucky Avenue, Evansville, IN 47724",
+      "website": "https://evdio.org",
+      "probable_emails": [
+        "info@evdio.org",
+        "communications@evdio.org",
+        "contact@evdio.org",
+        "chancery@evdio.org",
+        "office@evdio.org"
+      ],
+      "primary_email": "info@evdio.org"
+    },
+    {
+      "name": "Diocese of Fort Wayne-South Bend",
+      "address": "915 South Clinton, Fort Wayne, IN 46801",
+      "website": "https://diocesefwsb.org",
+      "probable_emails": [
+        "info@diocesefwsb.org",
+        "communications@diocesefwsb.org",
+        "contact@diocesefwsb.org",
+        "chancery@diocesefwsb.org",
+        "office@diocesefwsb.org"
+      ],
+      "primary_email": "info@diocesefwsb.org"
+    },
+    {
+      "name": "Diocese of Gary",
+      "address": "9292 Broadway, Merrillville, IN 46410",
+      "website": "https://dcgary.org",
+      "probable_emails": [
+        "info@dcgary.org",
+        "communications@dcgary.org",
+        "contact@dcgary.org",
+        "chancery@dcgary.org",
+        "office@dcgary.org"
+      ],
+      "primary_email": "info@dcgary.org"
+    },
+    {
+      "name": "Diocese of Lafayette in Indiana",
+      "address": "P.O. Box 260, Lafayette, IN 47902",
+      "website": "https://dol-in.org",
+      "probable_emails": [
+        "info@dol-in.org",
+        "communications@dol-in.org",
+        "contact@dol-in.org",
+        "chancery@dol-in.org",
+        "office@dol-in.org"
+      ],
+      "primary_email": "info@dol-in.org"
+    },
+    {
+      "name": "Archdiocese of Dubuque",
+      "address": "1229 Mt. Loretta Avenue, Dubuque, IA 52003",
+      "website": "https://dbqarch.org",
+      "probable_emails": [
+        "info@dbqarch.org",
+        "communications@dbqarch.org",
+        "contact@dbqarch.org",
+        "chancery@dbqarch.org",
+        "office@dbqarch.org"
+      ],
+      "primary_email": "info@dbqarch.org"
+    },
+    {
+      "name": "Diocese of Davenport",
+      "address": "780 W. Central Park Av., Davenport, IA 52804",
+      "website": "https://davenportdiocese.org",
+      "probable_emails": [
+        "info@davenportdiocese.org",
+        "communications@davenportdiocese.org",
+        "contact@davenportdiocese.org",
+        "chancery@davenportdiocese.org",
+        "office@davenportdiocese.org"
+      ],
+      "primary_email": "info@davenportdiocese.org"
+    },
+    {
+      "name": "Diocese of Des Moines",
+      "address": "601 Grand Avenue, Des Moines, IA 50309",
+      "website": "https://dmdiocese.org",
+      "probable_emails": [
+        "info@dmdiocese.org",
+        "communications@dmdiocese.org",
+        "contact@dmdiocese.org",
+        "chancery@dmdiocese.org",
+        "office@dmdiocese.org"
+      ],
+      "primary_email": "info@dmdiocese.org"
+    },
+    {
+      "name": "Diocese of Sioux City",
+      "address": "1821 Jackson Street, Sioux City, IA 51102",
+      "website": "https://scdiocese.org",
+      "probable_emails": [
+        "info@scdiocese.org",
+        "communications@scdiocese.org",
+        "contact@scdiocese.org",
+        "chancery@scdiocese.org",
+        "office@scdiocese.org"
+      ],
+      "primary_email": "info@scdiocese.org"
+    },
+    {
+      "name": "Archdiocese of Kansas City in Kansas",
+      "address": "12615 Parallel Parkway, Kansas City, KS 66109",
+      "website": "https://archkck.org",
+      "probable_emails": [
+        "info@archkck.org",
+        "communications@archkck.org",
+        "contact@archkck.org",
+        "chancery@archkck.org",
+        "office@archkck.org"
+      ],
+      "primary_email": "info@archkck.org"
+    },
+    {
+      "name": "Diocese of Dodge City",
+      "address": "P.O. Box 137, Dodge City, KS 67801",
+      "website": "https://dcdiocese.org",
+      "probable_emails": [
+        "info@dcdiocese.org",
+        "communications@dcdiocese.org",
+        "contact@dcdiocese.org",
+        "chancery@dcdiocese.org",
+        "office@dcdiocese.org"
+      ],
+      "primary_email": "info@dcdiocese.org"
+    },
+    {
+      "name": "Diocese of Salina",
+      "address": "103 North Ninth Street, Salina, KS 67401",
+      "website": "https://salinadiocese.org",
+      "probable_emails": [
+        "info@salinadiocese.org",
+        "communications@salinadiocese.org",
+        "contact@salinadiocese.org",
+        "chancery@salinadiocese.org",
+        "office@salinadiocese.org"
+      ],
+      "primary_email": "info@salinadiocese.org"
+    },
+    {
+      "name": "Diocese of Wichita",
+      "address": "424 N. Broadway, Wichita, KS 67202",
+      "website": "https://catholicdioceseofwichita.org",
+      "probable_emails": [
+        "info@catholicdioceseofwichita.org",
+        "communications@catholicdioceseofwichita.org",
+        "contact@catholicdioceseofwichita.org",
+        "chancery@catholicdioceseofwichita.org",
+        "office@catholicdioceseofwichita.org"
+      ],
+      "primary_email": "info@catholicdioceseofwichita.org"
+    },
+    {
+      "name": "Archdiocese of Louisville",
+      "address": "3940 Poplar Level Road, Louisville, KY 40213",
+      "website": "https://archlou.org",
+      "probable_emails": [
+        "info@archlou.org",
+        "communications@archlou.org",
+        "contact@archlou.org",
+        "chancery@archlou.org",
+        "office@archlou.org"
+      ],
+      "primary_email": "info@archlou.org"
+    },
+    {
+      "name": "Diocese of Covington",
+      "address": "1125 Madison Avenue, Covington, KY 41011",
+      "website": "https://covingtondiocese.org",
+      "probable_emails": [
+        "info@covingtondiocese.org",
+        "communications@covingtondiocese.org",
+        "contact@covingtondiocese.org",
+        "chancery@covingtondiocese.org",
+        "office@covingtondiocese.org"
+      ],
+      "primary_email": "info@covingtondiocese.org"
+    },
+    {
+      "name": "Diocese of Lexington",
+      "address": "1310 W. Main Street, Lexington, KY 40508",
+      "website": "https://cdlex.org",
+      "probable_emails": [
+        "info@cdlex.org",
+        "communications@cdlex.org",
+        "contact@cdlex.org",
+        "chancery@cdlex.org",
+        "office@cdlex.org"
+      ],
+      "primary_email": "info@cdlex.org"
+    },
+    {
+      "name": "Diocese of Owensboro",
+      "address": "600 Locust Street, Owensboro, KY 42301",
+      "website": "https://rcdok.org",
+      "probable_emails": [
+        "info@rcdok.org",
+        "communications@rcdok.org",
+        "contact@rcdok.org",
+        "chancery@rcdok.org",
+        "office@rcdok.org"
+      ],
+      "primary_email": "info@rcdok.org"
+    },
+    {
+      "name": "Archdiocese of New Orleans",
+      "address": "7887 Walmsley Avenue, New Orleans, LA 70125",
+      "website": "https://arch-no.org",
+      "probable_emails": [
+        "info@arch-no.org",
+        "communications@arch-no.org",
+        "contact@arch-no.org",
+        "chancery@arch-no.org",
+        "office@arch-no.org"
+      ],
+      "primary_email": "info@arch-no.org"
+    },
+    {
+      "name": "Diocese of Alexandria",
+      "address": "4400 Coliseum Boulevard, Alexandria, LA 71303",
+      "website": "https://diocesealex.org",
+      "probable_emails": [
+        "info@diocesealex.org",
+        "communications@diocesealex.org",
+        "contact@diocesealex.org",
+        "chancery@diocesealex.org",
+        "office@diocesealex.org"
+      ],
+      "primary_email": "info@diocesealex.org"
+    },
+    {
+      "name": "Diocese of Baton Rouge",
+      "address": "P.O. Box 2028, Baton Rouge, LA 70821",
+      "website": "https://diobr.org",
+      "probable_emails": [
+        "info@diobr.org",
+        "communications@diobr.org",
+        "contact@diobr.org",
+        "chancery@diobr.org",
+        "office@diobr.org"
+      ],
+      "primary_email": "info@diobr.org"
+    },
+    {
+      "name": "Diocese of Houma-Thibodaux",
+      "address": "2779 Highway 311, Schriever, LA 70395",
+      "website": "https://htdiocese.org",
+      "probable_emails": [
+        "info@htdiocese.org",
+        "communications@htdiocese.org",
+        "contact@htdiocese.org",
+        "chancery@htdiocese.org",
+        "office@htdiocese.org"
+      ],
+      "primary_email": "info@htdiocese.org"
+    },
+    {
+      "name": "Diocese of Lafayette in Louisiana",
+      "address": "1408 Carmel Drive, Lafayette, LA 70501",
+      "website": "https://diolaf.org",
+      "probable_emails": [
+        "info@diolaf.org",
+        "communications@diolaf.org",
+        "contact@diolaf.org",
+        "chancery@diolaf.org",
+        "office@diolaf.org"
+      ],
+      "primary_email": "info@diolaf.org"
+    },
+    {
+      "name": "Diocese of Lake Charles",
+      "address": "414 Iris Street, Lake Charles, LA 70601",
+      "website": "https://lcdiocese.org",
+      "probable_emails": [
+        "info@lcdiocese.org",
+        "communications@lcdiocese.org",
+        "contact@lcdiocese.org",
+        "chancery@lcdiocese.org",
+        "office@lcdiocese.org"
+      ],
+      "primary_email": "info@lcdiocese.org"
+    },
+    {
+      "name": "Diocese of Shreveport",
+      "address": "3500 Fairfield Avenue, Shreveport, LA 71104",
+      "website": "https://dioshpt.org",
+      "probable_emails": [
+        "info@dioshpt.org",
+        "communications@dioshpt.org",
+        "contact@dioshpt.org",
+        "chancery@dioshpt.org",
+        "office@dioshpt.org"
+      ],
+      "primary_email": "info@dioshpt.org"
+    },
+    {
+      "name": "Diocese of Portland in Maine",
+      "address": "510 Ocean Avenue, Portland, ME 04103",
+      "website": "https://portlanddiocese.net",
+      "probable_emails": [
+        "info@portlanddiocese.net",
+        "communications@portlanddiocese.net",
+        "contact@portlanddiocese.net",
+        "chancery@portlanddiocese.net",
+        "office@portlanddiocese.net"
+      ],
+      "primary_email": "info@portlanddiocese.net"
+    },
+    {
+      "name": "Archdiocese of Baltimore",
+      "address": "320 Cathedral Street, Baltimore, MD 21201",
+      "website": "https://archbalt.org",
+      "probable_emails": [
+        "info@archbalt.org",
+        "communications@archbalt.org",
+        "contact@archbalt.org",
+        "chancery@archbalt.org",
+        "office@archbalt.org"
+      ],
+      "primary_email": "info@archbalt.org"
+    },
+    {
+      "name": "Archdiocese of Boston",
+      "address": "66 Brooks Drive, Braintree, MA 02184",
+      "website": "https://bostoncatholic.org",
+      "probable_emails": [
+        "info@bostoncatholic.org",
+        "communications@bostoncatholic.org",
+        "contact@bostoncatholic.org",
+        "chancery@bostoncatholic.org",
+        "office@bostoncatholic.org"
+      ],
+      "primary_email": "info@bostoncatholic.org"
+    },
+    {
+      "name": "Diocese of Fall River",
+      "address": "450 Highland Avenue, Fall River, MA 02720",
+      "website": "https://fallriverdiocese.org",
+      "probable_emails": [
+        "info@fallriverdiocese.org",
+        "communications@fallriverdiocese.org",
+        "contact@fallriverdiocese.org",
+        "chancery@fallriverdiocese.org",
+        "office@fallriverdiocese.org"
+      ],
+      "primary_email": "info@fallriverdiocese.org"
+    },
+    {
+      "name": "Diocese of Springfield MA",
+      "address": "P.O. Box 1730, Springfield, MA 01102",
+      "website": "https://diospringfield.org",
+      "probable_emails": [
+        "info@diospringfield.org",
+        "communications@diospringfield.org",
+        "contact@diospringfield.org",
+        "chancery@diospringfield.org",
+        "office@diospringfield.org"
+      ],
+      "primary_email": "info@diospringfield.org"
+    },
+    {
+      "name": "Diocese of Worcester",
+      "address": "49 Elm Street, Worcester, MA 01609",
+      "website": "https://worcesterdiocese.org",
+      "probable_emails": [
+        "info@worcesterdiocese.org",
+        "communications@worcesterdiocese.org",
+        "contact@worcesterdiocese.org",
+        "chancery@worcesterdiocese.org",
+        "office@worcesterdiocese.org"
+      ],
+      "primary_email": "info@worcesterdiocese.org"
+    },
+    {
+      "name": "Archdiocese of Detroit",
+      "address": "12 State Street, Detroit, MI 48226",
+      "website": "https://aod.org",
+      "probable_emails": [
+        "info@aod.org",
+        "communications@aod.org",
+        "contact@aod.org",
+        "chancery@aod.org",
+        "office@aod.org"
+      ],
+      "primary_email": "info@aod.org"
+    },
+    {
+      "name": "Diocese of Gaylord",
+      "address": "611 W. North Street, Gaylord, MI 49735",
+      "website": "https://dioceseofgaylord.org",
+      "probable_emails": [
+        "info@dioceseofgaylord.org",
+        "communications@dioceseofgaylord.org",
+        "contact@dioceseofgaylord.org",
+        "chancery@dioceseofgaylord.org",
+        "office@dioceseofgaylord.org"
+      ],
+      "primary_email": "info@dioceseofgaylord.org"
+    },
+    {
+      "name": "Diocese of Grand Rapids",
+      "address": "360 Division Avenue S., Grand Rapids, MI 49503",
+      "website": "https://grdiocese.org",
+      "probable_emails": [
+        "info@grdiocese.org",
+        "communications@grdiocese.org",
+        "contact@grdiocese.org",
+        "chancery@grdiocese.org",
+        "office@grdiocese.org"
+      ],
+      "primary_email": "info@grdiocese.org"
+    },
+    {
+      "name": "Diocese of Kalamazoo",
+      "address": "215 N. Westnedge Avenue, Kalamazoo, MI 49007",
+      "website": "https://dioceseofkalamazoo.org",
+      "probable_emails": [
+        "info@dioceseofkalamazoo.org",
+        "communications@dioceseofkalamazoo.org",
+        "contact@dioceseofkalamazoo.org",
+        "chancery@dioceseofkalamazoo.org",
+        "office@dioceseofkalamazoo.org"
+      ],
+      "primary_email": "info@dioceseofkalamazoo.org"
+    },
+    {
+      "name": "Diocese of Lansing",
+      "address": "228 N. Walnut Street, Lansing, MI 48933",
+      "website": "https://dioceseoflansing.org",
+      "probable_emails": [
+        "info@dioceseoflansing.org",
+        "communications@dioceseoflansing.org",
+        "contact@dioceseoflansing.org",
+        "chancery@dioceseoflansing.org",
+        "office@dioceseoflansing.org"
+      ],
+      "primary_email": "info@dioceseoflansing.org"
+    },
+    {
+      "name": "Diocese of Marquette",
+      "address": "1004 Harbor Hills Drive, Marquette, MI 49855",
+      "website": "https://dioceseofmarquette.org",
+      "probable_emails": [
+        "info@dioceseofmarquette.org",
+        "communications@dioceseofmarquette.org",
+        "contact@dioceseofmarquette.org",
+        "chancery@dioceseofmarquette.org",
+        "office@dioceseofmarquette.org"
+      ],
+      "primary_email": "info@dioceseofmarquette.org"
+    },
+    {
+      "name": "Diocese of Saginaw",
+      "address": "5800 Weiss Street, Saginaw, MI 48603",
+      "website": "https://saginaw.org",
+      "probable_emails": [
+        "info@saginaw.org",
+        "communications@saginaw.org",
+        "contact@saginaw.org",
+        "chancery@saginaw.org",
+        "office@saginaw.org"
+      ],
+      "primary_email": "info@saginaw.org"
+    },
+    {
+      "name": "Archdiocese of St. Paul and Minneapolis",
+      "address": "777 Forest Street, Saint Paul, MN 55106",
+      "website": "https://archspm.org",
+      "probable_emails": [
+        "info@archspm.org",
+        "communications@archspm.org",
+        "contact@archspm.org",
+        "chancery@archspm.org",
+        "office@archspm.org"
+      ],
+      "primary_email": "info@archspm.org"
+    },
+    {
+      "name": "Diocese of Crookston",
+      "address": "620 Summit Avenue N., Crookston, MN 56716",
+      "website": "https://crookston.org",
+      "probable_emails": [
+        "info@crookston.org",
+        "communications@crookston.org",
+        "contact@crookston.org",
+        "chancery@crookston.org",
+        "office@crookston.org"
+      ],
+      "primary_email": "info@crookston.org"
+    },
+    {
+      "name": "Diocese of Duluth",
+      "address": "2830 E. Fourth Street, Duluth, MN 55812",
+      "website": "https://dioceseduluth.org",
+      "probable_emails": [
+        "info@dioceseduluth.org",
+        "communications@dioceseduluth.org",
+        "contact@dioceseduluth.org",
+        "chancery@dioceseduluth.org",
+        "office@dioceseduluth.org"
+      ],
+      "primary_email": "info@dioceseduluth.org"
+    },
+    {
+      "name": "Diocese of New Ulm",
+      "address": "1400 6th Street North, New Ulm, MN 56073",
+      "website": "https://dnu.org",
+      "probable_emails": [
+        "info@dnu.org",
+        "communications@dnu.org",
+        "contact@dnu.org",
+        "chancery@dnu.org",
+        "office@dnu.org"
+      ],
+      "primary_email": "info@dnu.org"
+    },
+    {
+      "name": "Diocese of St. Cloud",
+      "address": "P.O. Box 1248, St. Cloud, MN 56302",
+      "website": "https://stcdio.org",
+      "probable_emails": [
+        "info@stcdio.org",
+        "communications@stcdio.org",
+        "contact@stcdio.org",
+        "chancery@stcdio.org",
+        "office@stcdio.org"
+      ],
+      "primary_email": "info@stcdio.org"
+    },
+    {
+      "name": "Diocese of Winona-Rochester",
+      "address": "55 W. Sanborn, Winona, MN 55987",
+      "website": "https://dow.org",
+      "probable_emails": [
+        "info@dow.org",
+        "communications@dow.org",
+        "contact@dow.org",
+        "chancery@dow.org",
+        "office@dow.org"
+      ],
+      "primary_email": "info@dow.org"
+    },
+    {
+      "name": "Diocese of Biloxi",
+      "address": "1790 Popps Ferry Road, Biloxi, MS 39532",
+      "website": "https://biloxidiocese.org",
+      "probable_emails": [
+        "info@biloxidiocese.org",
+        "communications@biloxidiocese.org",
+        "contact@biloxidiocese.org",
+        "chancery@biloxidiocese.org",
+        "office@biloxidiocese.org"
+      ],
+      "primary_email": "info@biloxidiocese.org"
+    },
+    {
+      "name": "Diocese of Jackson",
+      "address": "237 East Amite, Jackson, MS 39225",
+      "website": "https://jacksondiocese.org",
+      "probable_emails": [
+        "info@jacksondiocese.org",
+        "communications@jacksondiocese.org",
+        "contact@jacksondiocese.org",
+        "chancery@jacksondiocese.org",
+        "office@jacksondiocese.org"
+      ],
+      "primary_email": "info@jacksondiocese.org"
+    },
+    {
+      "name": "Archdiocese of St. Louis",
+      "address": "20 Archbishop May Drive, St. Louis, MO 63119",
+      "website": "https://archstl.org",
+      "probable_emails": [
+        "info@archstl.org",
+        "communications@archstl.org",
+        "contact@archstl.org",
+        "chancery@archstl.org",
+        "office@archstl.org"
+      ],
+      "primary_email": "info@archstl.org"
+    },
+    {
+      "name": "Diocese of Jefferson City",
+      "address": "2207 West Main Street, Jefferson City, MO 65110",
+      "website": "https://diojeffcity.org",
+      "probable_emails": [
+        "info@diojeffcity.org",
+        "communications@diojeffcity.org",
+        "contact@diojeffcity.org",
+        "chancery@diojeffcity.org",
+        "office@diojeffcity.org"
+      ],
+      "primary_email": "info@diojeffcity.org"
+    },
+    {
+      "name": "Diocese of Kansas City-St. Joseph",
+      "address": "P.O. Box 419037, Kansas City, MO 64141",
+      "website": "https://kcsjcatholic.org",
+      "probable_emails": [
+        "info@kcsjcatholic.org",
+        "communications@kcsjcatholic.org",
+        "contact@kcsjcatholic.org",
+        "chancery@kcsjcatholic.org",
+        "office@kcsjcatholic.org"
+      ],
+      "primary_email": "info@kcsjcatholic.org"
+    },
+    {
+      "name": "Diocese of Springfield-Cape Girardeau",
+      "address": "601 S. Jefferson Avenue, Springfield, MO 65806",
+      "website": "https://dioscg.org",
+      "probable_emails": [
+        "info@dioscg.org",
+        "communications@dioscg.org",
+        "contact@dioscg.org",
+        "chancery@dioscg.org",
+        "office@dioscg.org"
+      ],
+      "primary_email": "info@dioscg.org"
+    },
+    {
+      "name": "Diocese of Great Falls-Billings",
+      "address": "P.O. Box 1399, Great Falls, MT 59403",
+      "website": "https://diocesegfb.org",
+      "probable_emails": [
+        "info@diocesegfb.org",
+        "communications@diocesegfb.org",
+        "contact@diocesegfb.org",
+        "chancery@diocesegfb.org",
+        "office@diocesegfb.org"
+      ],
+      "primary_email": "info@diocesegfb.org"
+    },
+    {
+      "name": "Diocese of Helena",
+      "address": "P.O. Box 1729, Helena, MT 59624",
+      "website": "https://diocesehelena.org",
+      "probable_emails": [
+        "info@diocesehelena.org",
+        "communications@diocesehelena.org",
+        "contact@diocesehelena.org",
+        "chancery@diocesehelena.org",
+        "office@diocesehelena.org"
+      ],
+      "primary_email": "info@diocesehelena.org"
+    },
+    {
+      "name": "Archdiocese of Omaha",
+      "address": "2222 N. 111th Street, Omaha, NE 68164",
+      "website": "https://archomaha.org",
+      "probable_emails": [
+        "info@archomaha.org",
+        "communications@archomaha.org",
+        "contact@archomaha.org",
+        "chancery@archomaha.org",
+        "office@archomaha.org"
+      ],
+      "primary_email": "info@archomaha.org"
+    },
+    {
+      "name": "Diocese of Grand Island",
+      "address": "2708 Old Fair Road, Grand Island, NE 68803",
+      "website": "https://gidiocese.org",
+      "probable_emails": [
+        "info@gidiocese.org",
+        "communications@gidiocese.org",
+        "contact@gidiocese.org",
+        "chancery@gidiocese.org",
+        "office@gidiocese.org"
+      ],
+      "primary_email": "info@gidiocese.org"
+    },
+    {
+      "name": "Diocese of Lincoln",
+      "address": "3400 Sheridan Boulevard, Lincoln, NE 68506",
+      "website": "https://dioceseoflincoln.org",
+      "probable_emails": [
+        "info@dioceseoflincoln.org",
+        "communications@dioceseoflincoln.org",
+        "contact@dioceseoflincoln.org",
+        "chancery@dioceseoflincoln.org",
+        "office@dioceseoflincoln.org"
+      ],
+      "primary_email": "info@dioceseoflincoln.org"
+    },
+    {
+      "name": "Archdiocese of Las Vegas",
+      "address": "336 Cathedral Way, Las Vegas, NV 89109",
+      "website": "https://lvcatholic.org",
+      "probable_emails": [
+        "info@lvcatholic.org",
+        "communications@lvcatholic.org",
+        "contact@lvcatholic.org",
+        "chancery@lvcatholic.org",
+        "office@lvcatholic.org"
+      ],
+      "primary_email": "info@lvcatholic.org"
+    },
+    {
+      "name": "Diocese of Reno",
+      "address": "290 S. Arlington Avenue, Reno, NV 89501",
+      "website": "https://dioceseofreno.org",
+      "probable_emails": [
+        "info@dioceseofreno.org",
+        "communications@dioceseofreno.org",
+        "contact@dioceseofreno.org",
+        "chancery@dioceseofreno.org",
+        "office@dioceseofreno.org"
+      ],
+      "primary_email": "info@dioceseofreno.org"
+    },
+    {
+      "name": "Diocese of Manchester",
+      "address": "153 Ash Street, Manchester, NH 03104",
+      "website": "https://catholicnh.org",
+      "probable_emails": [
+        "info@catholicnh.org",
+        "communications@catholicnh.org",
+        "contact@catholicnh.org",
+        "chancery@catholicnh.org",
+        "office@catholicnh.org"
+      ],
+      "primary_email": "info@catholicnh.org"
+    },
+    {
+      "name": "Archdiocese of Newark",
+      "address": "171 Clifton Avenue, Newark, NJ 07104",
+      "website": "https://rcan.org",
+      "probable_emails": [
+        "info@rcan.org",
+        "communications@rcan.org",
+        "contact@rcan.org",
+        "chancery@rcan.org",
+        "office@rcan.org"
+      ],
+      "primary_email": "info@rcan.org"
+    },
+    {
+      "name": "Diocese of Camden",
+      "address": "631 Market Street, Camden, NJ 08102",
+      "website": "https://camdendiocese.org",
+      "probable_emails": [
+        "info@camdendiocese.org",
+        "communications@camdendiocese.org",
+        "contact@camdendiocese.org",
+        "chancery@camdendiocese.org",
+        "office@camdendiocese.org"
+      ],
+      "primary_email": "info@camdendiocese.org"
+    },
+    {
+      "name": "Diocese of Metuchen",
+      "address": "P.O. Box 191, Metuchen, NJ 08840",
+      "website": "https://diometuchen.org",
+      "probable_emails": [
+        "info@diometuchen.org",
+        "communications@diometuchen.org",
+        "contact@diometuchen.org",
+        "chancery@diometuchen.org",
+        "office@diometuchen.org"
+      ],
+      "primary_email": "info@diometuchen.org"
+    },
+    {
+      "name": "Diocese of Paterson",
+      "address": "777 Valley Road, Clifton, NJ 07013",
+      "website": "https://patersondiocese.org",
+      "probable_emails": [
+        "info@patersondiocese.org",
+        "communications@patersondiocese.org",
+        "contact@patersondiocese.org",
+        "chancery@patersondiocese.org",
+        "office@patersondiocese.org"
+      ],
+      "primary_email": "info@patersondiocese.org"
+    },
+    {
+      "name": "Diocese of Trenton",
+      "address": "P.O. Box 5147, Trenton, NJ 08638",
+      "website": "https://dioceseoftrenton.org",
+      "probable_emails": [
+        "info@dioceseoftrenton.org",
+        "communications@dioceseoftrenton.org",
+        "contact@dioceseoftrenton.org",
+        "chancery@dioceseoftrenton.org",
+        "office@dioceseoftrenton.org"
+      ],
+      "primary_email": "info@dioceseoftrenton.org"
+    },
+    {
+      "name": "Archdiocese of Santa Fe",
+      "address": "4000 St. Joseph's Pl. NW, Albuquerque, NM 87120",
+      "website": "https://archdiosf.org",
+      "probable_emails": [
+        "info@archdiosf.org",
+        "communications@archdiosf.org",
+        "contact@archdiosf.org",
+        "chancery@archdiosf.org",
+        "office@archdiosf.org"
+      ],
+      "primary_email": "info@archdiosf.org"
+    },
+    {
+      "name": "Diocese of Gallup",
+      "address": "P.O. Box 1338, Gallup, NM 87305",
+      "website": "https://dioceseofgallup.org",
+      "probable_emails": [
+        "info@dioceseofgallup.org",
+        "communications@dioceseofgallup.org",
+        "contact@dioceseofgallup.org",
+        "chancery@dioceseofgallup.org",
+        "office@dioceseofgallup.org"
+      ],
+      "primary_email": "info@dioceseofgallup.org"
+    },
+    {
+      "name": "Diocese of Las Cruces",
+      "address": "1280 Med Park Drive, Las Cruces, NM 88005",
+      "website": "https://rcdlc.org",
+      "probable_emails": [
+        "info@rcdlc.org",
+        "communications@rcdlc.org",
+        "contact@rcdlc.org",
+        "chancery@rcdlc.org",
+        "office@rcdlc.org"
+      ],
+      "primary_email": "info@rcdlc.org"
+    },
+    {
+      "name": "Archdiocese of New York",
+      "address": "1011 First Avenue, New York, NY 10022",
+      "website": "https://archny.org",
+      "probable_emails": [
+        "info@archny.org",
+        "communications@archny.org",
+        "contact@archny.org",
+        "chancery@archny.org",
+        "office@archny.org"
+      ],
+      "primary_email": "info@archny.org"
+    },
+    {
+      "name": "Diocese of Albany",
+      "address": "40 North Main Avenue, Albany, NY 12203",
+      "website": "https://rcda.org",
+      "probable_emails": [
+        "info@rcda.org",
+        "communications@rcda.org",
+        "contact@rcda.org",
+        "chancery@rcda.org",
+        "office@rcda.org"
+      ],
+      "primary_email": "info@rcda.org"
+    },
+    {
+      "name": "Diocese of Brooklyn",
+      "address": "310 Prospect Park West, Brooklyn, NY 11215",
+      "website": "https://dioceseofbrooklyn.org",
+      "probable_emails": [
+        "info@dioceseofbrooklyn.org",
+        "communications@dioceseofbrooklyn.org",
+        "contact@dioceseofbrooklyn.org",
+        "chancery@dioceseofbrooklyn.org",
+        "office@dioceseofbrooklyn.org"
+      ],
+      "primary_email": "info@dioceseofbrooklyn.org"
+    },
+    {
+      "name": "Diocese of Buffalo",
+      "address": "795 Main Street, Buffalo, NY 14203",
+      "website": "https://buffalodiocese.org",
+      "probable_emails": [
+        "info@buffalodiocese.org",
+        "communications@buffalodiocese.org",
+        "contact@buffalodiocese.org",
+        "chancery@buffalodiocese.org",
+        "office@buffalodiocese.org"
+      ],
+      "primary_email": "info@buffalodiocese.org"
+    },
+    {
+      "name": "Diocese of Ogdensburg",
+      "address": "622 Washington Street, Ogdensburg, NY 13669",
+      "website": "https://rcdony.org",
+      "probable_emails": [
+        "info@rcdony.org",
+        "communications@rcdony.org",
+        "contact@rcdony.org",
+        "chancery@rcdony.org",
+        "office@rcdony.org"
+      ],
+      "primary_email": "info@rcdony.org"
+    },
+    {
+      "name": "Diocese of Rochester",
+      "address": "1150 Buffalo Road, Rochester, NY 14624",
+      "website": "https://dor.org",
+      "probable_emails": [
+        "info@dor.org",
+        "communications@dor.org",
+        "contact@dor.org",
+        "chancery@dor.org",
+        "office@dor.org"
+      ],
+      "primary_email": "info@dor.org"
+    },
+    {
+      "name": "Diocese of Rockville Centre",
+      "address": "50 North Park Avenue, Rockville Centre, NY 11571",
+      "website": "https://drvc.org",
+      "probable_emails": [
+        "info@drvc.org",
+        "communications@drvc.org",
+        "contact@drvc.org",
+        "chancery@drvc.org",
+        "office@drvc.org"
+      ],
+      "primary_email": "info@drvc.org"
+    },
+    {
+      "name": "Diocese of Syracuse",
+      "address": "240 East Onondaga Street, Syracuse, NY 13201",
+      "website": "https://syracusediocese.org",
+      "probable_emails": [
+        "info@syracusediocese.org",
+        "communications@syracusediocese.org",
+        "contact@syracusediocese.org",
+        "chancery@syracusediocese.org",
+        "office@syracusediocese.org"
+      ],
+      "primary_email": "info@syracusediocese.org"
+    },
+    {
+      "name": "Diocese of Charlotte",
+      "address": "1123 South Church Street, Charlotte, NC 28203",
+      "website": "https://charlottediocese.org",
+      "probable_emails": [
+        "info@charlottediocese.org",
+        "communications@charlottediocese.org",
+        "contact@charlottediocese.org",
+        "chancery@charlottediocese.org",
+        "office@charlottediocese.org"
+      ],
+      "primary_email": "info@charlottediocese.org"
+    },
+    {
+      "name": "Diocese of Raleigh",
+      "address": "7200 Stonehenge Drive, Raleigh, NC 27613",
+      "website": "https://dioceseofraleigh.org",
+      "probable_emails": [
+        "info@dioceseofraleigh.org",
+        "communications@dioceseofraleigh.org",
+        "contact@dioceseofraleigh.org",
+        "chancery@dioceseofraleigh.org",
+        "office@dioceseofraleigh.org"
+      ],
+      "primary_email": "info@dioceseofraleigh.org"
+    },
+    {
+      "name": "Diocese of Bismarck",
+      "address": "P.O. Box 1575, Bismarck, ND 58502",
+      "website": "https://bismarckdiocese.com",
+      "probable_emails": [
+        "info@bismarckdiocese.com",
+        "communications@bismarckdiocese.com",
+        "contact@bismarckdiocese.com",
+        "chancery@bismarckdiocese.com",
+        "office@bismarckdiocese.com"
+      ],
+      "primary_email": "info@bismarckdiocese.com"
+    },
+    {
+      "name": "Diocese of Fargo",
+      "address": "5201 Bishops Boulevard, Fargo, ND 58104",
+      "website": "https://fargodiocese.org",
+      "probable_emails": [
+        "info@fargodiocese.org",
+        "communications@fargodiocese.org",
+        "contact@fargodiocese.org",
+        "chancery@fargodiocese.org",
+        "office@fargodiocese.org"
+      ],
+      "primary_email": "info@fargodiocese.org"
+    },
+    {
+      "name": "Archdiocese of Cincinnati",
+      "address": "100 East Eighth Street, Cincinnati, OH 45202",
+      "website": "https://catholiccincinnati.org",
+      "probable_emails": [
+        "info@catholiccincinnati.org",
+        "communications@catholiccincinnati.org",
+        "contact@catholiccincinnati.org",
+        "chancery@catholiccincinnati.org",
+        "office@catholiccincinnati.org"
+      ],
+      "primary_email": "info@catholiccincinnati.org"
+    },
+    {
+      "name": "Diocese of Cleveland",
+      "address": "1404 East Ninth Street, Cleveland, OH 44114",
+      "website": "https://dioceseofcleveland.org",
+      "probable_emails": [
+        "info@dioceseofcleveland.org",
+        "communications@dioceseofcleveland.org",
+        "contact@dioceseofcleveland.org",
+        "chancery@dioceseofcleveland.org",
+        "office@dioceseofcleveland.org"
+      ],
+      "primary_email": "info@dioceseofcleveland.org"
+    },
+    {
+      "name": "Diocese of Columbus",
+      "address": "197 E. Gay Street, Columbus, OH 43215",
+      "website": "https://colsdioc.org",
+      "probable_emails": [
+        "info@colsdioc.org",
+        "communications@colsdioc.org",
+        "contact@colsdioc.org",
+        "chancery@colsdioc.org",
+        "office@colsdioc.org"
+      ],
+      "primary_email": "info@colsdioc.org"
+    },
+    {
+      "name": "Diocese of Steubenville",
+      "address": "422 Washington Street, Steubenville, OH 43952",
+      "website": "https://diosteub.org",
+      "probable_emails": [
+        "info@diosteub.org",
+        "communications@diosteub.org",
+        "contact@diosteub.org",
+        "chancery@diosteub.org",
+        "office@diosteub.org"
+      ],
+      "primary_email": "info@diosteub.org"
+    },
+    {
+      "name": "Diocese of Toledo",
+      "address": "1933 Spielbusch Avenue, Toledo, OH 43604",
+      "website": "https://toledodiocese.org",
+      "probable_emails": [
+        "info@toledodiocese.org",
+        "communications@toledodiocese.org",
+        "contact@toledodiocese.org",
+        "chancery@toledodiocese.org",
+        "office@toledodiocese.org"
+      ],
+      "primary_email": "info@toledodiocese.org"
+    },
+    {
+      "name": "Diocese of Youngstown",
+      "address": "144 W. Wood Street, Youngstown, OH 44503",
+      "website": "https://doy.org",
+      "probable_emails": [
+        "info@doy.org",
+        "communications@doy.org",
+        "contact@doy.org",
+        "chancery@doy.org",
+        "office@doy.org"
+      ],
+      "primary_email": "info@doy.org"
+    },
+    {
+      "name": "Archdiocese of Oklahoma City",
+      "address": "7501 N.W. Expressway, Oklahoma City, OK 73132",
+      "website": "https://archokc.org",
+      "probable_emails": [
+        "info@archokc.org",
+        "communications@archokc.org",
+        "contact@archokc.org",
+        "chancery@archokc.org",
+        "office@archokc.org"
+      ],
+      "primary_email": "info@archokc.org"
+    },
+    {
+      "name": "Diocese of Tulsa",
+      "address": "P.O. Box 690240, Tulsa, OK 74169",
+      "website": "https://dioceseoftulsa.org",
+      "probable_emails": [
+        "info@dioceseoftulsa.org",
+        "communications@dioceseoftulsa.org",
+        "contact@dioceseoftulsa.org",
+        "chancery@dioceseoftulsa.org",
+        "office@dioceseoftulsa.org"
+      ],
+      "primary_email": "info@dioceseoftulsa.org"
+    },
+    {
+      "name": "Archdiocese of Portland in Oregon",
+      "address": "2838 East Burnside Street, Portland, OR 97214",
+      "website": "https://archdpdx.org",
+      "probable_emails": [
+        "info@archdpdx.org",
+        "communications@archdpdx.org",
+        "contact@archdpdx.org",
+        "chancery@archdpdx.org",
+        "office@archdpdx.org"
+      ],
+      "primary_email": "info@archdpdx.org"
+    },
+    {
+      "name": "Diocese of Baker",
+      "address": "641 SW Umatilla Avenue, Redmond, OR 97756",
+      "website": "https://dioceseofbaker.org",
+      "probable_emails": [
+        "info@dioceseofbaker.org",
+        "communications@dioceseofbaker.org",
+        "contact@dioceseofbaker.org",
+        "chancery@dioceseofbaker.org",
+        "office@dioceseofbaker.org"
+      ],
+      "primary_email": "info@dioceseofbaker.org"
+    },
+    {
+      "name": "Archdiocese of Philadelphia",
+      "address": "222 North 17th Street, Philadelphia, PA 19103",
+      "website": "https://archphila.org",
+      "probable_emails": [
+        "info@archphila.org",
+        "communications@archphila.org",
+        "contact@archphila.org",
+        "chancery@archphila.org",
+        "office@archphila.org"
+      ],
+      "primary_email": "info@archphila.org"
+    },
+    {
+      "name": "Diocese of Allentown",
+      "address": "P.O. Box F, Allentown, PA 18105",
+      "website": "https://allentowndiocese.org",
+      "probable_emails": [
+        "info@allentowndiocese.org",
+        "communications@allentowndiocese.org",
+        "contact@allentowndiocese.org",
+        "chancery@allentowndiocese.org",
+        "office@allentowndiocese.org"
+      ],
+      "primary_email": "info@allentowndiocese.org"
+    },
+    {
+      "name": "Diocese of Altoona-Johnstown",
+      "address": "2713 West Chestnut Avenue, Altoona, PA 16601",
+      "website": "https://ajdiocese.org",
+      "probable_emails": [
+        "info@ajdiocese.org",
+        "communications@ajdiocese.org",
+        "contact@ajdiocese.org",
+        "chancery@ajdiocese.org",
+        "office@ajdiocese.org"
+      ],
+      "primary_email": "info@ajdiocese.org"
+    },
+    {
+      "name": "Diocese of Erie",
+      "address": "P.O. Box 10397, Erie, PA 16514",
+      "website": "https://eriercd.org",
+      "probable_emails": [
+        "info@eriercd.org",
+        "communications@eriercd.org",
+        "contact@eriercd.org",
+        "chancery@eriercd.org",
+        "office@eriercd.org"
+      ],
+      "primary_email": "info@eriercd.org"
+    },
+    {
+      "name": "Diocese of Greensburg",
+      "address": "723 East Pittsburgh St., Greensburg, PA 15601",
+      "website": "https://dioceseofgreensburg.org",
+      "probable_emails": [
+        "info@dioceseofgreensburg.org",
+        "communications@dioceseofgreensburg.org",
+        "contact@dioceseofgreensburg.org",
+        "chancery@dioceseofgreensburg.org",
+        "office@dioceseofgreensburg.org"
+      ],
+      "primary_email": "info@dioceseofgreensburg.org"
+    },
+    {
+      "name": "Diocese of Harrisburg",
+      "address": "4800 Union Deposit Road, Harrisburg, PA 17111",
+      "website": "https://hbgdiocese.org",
+      "probable_emails": [
+        "info@hbgdiocese.org",
+        "communications@hbgdiocese.org",
+        "contact@hbgdiocese.org",
+        "chancery@hbgdiocese.org",
+        "office@hbgdiocese.org"
+      ],
+      "primary_email": "info@hbgdiocese.org"
+    },
+    {
+      "name": "Diocese of Pittsburgh",
+      "address": "2900 Noblestown Road, Pittsburgh, PA 15205",
+      "website": "https://diopitt.org",
+      "probable_emails": [
+        "info@diopitt.org",
+        "communications@diopitt.org",
+        "contact@diopitt.org",
+        "chancery@diopitt.org",
+        "office@diopitt.org"
+      ],
+      "primary_email": "info@diopitt.org"
+    },
+    {
+      "name": "Diocese of Scranton",
+      "address": "300 Wyoming Avenue, Scranton, PA 18503",
+      "website": "https://dioceseofscranton.org",
+      "probable_emails": [
+        "info@dioceseofscranton.org",
+        "communications@dioceseofscranton.org",
+        "contact@dioceseofscranton.org",
+        "chancery@dioceseofscranton.org",
+        "office@dioceseofscranton.org"
+      ],
+      "primary_email": "info@dioceseofscranton.org"
+    },
+    {
+      "name": "Diocese of Providence",
+      "address": "One Cathedral Square, Providence, RI 02903",
+      "website": "https://dioceseofprovidence.org",
+      "probable_emails": [
+        "info@dioceseofprovidence.org",
+        "communications@dioceseofprovidence.org",
+        "contact@dioceseofprovidence.org",
+        "chancery@dioceseofprovidence.org",
+        "office@dioceseofprovidence.org"
+      ],
+      "primary_email": "info@dioceseofprovidence.org"
+    },
+    {
+      "name": "Diocese of Charleston",
+      "address": "901 Orange Grove Road, Charleston, SC 29407",
+      "website": "https://charlestondiocese.org",
+      "probable_emails": [
+        "info@charlestondiocese.org",
+        "communications@charlestondiocese.org",
+        "contact@charlestondiocese.org",
+        "chancery@charlestondiocese.org",
+        "office@charlestondiocese.org"
+      ],
+      "primary_email": "info@charlestondiocese.org"
+    },
+    {
+      "name": "Diocese of Rapid City",
+      "address": "606 Cathedral Drive, Rapid City, SD 57701",
+      "website": "https://rapidcitydiocese.org",
+      "probable_emails": [
+        "info@rapidcitydiocese.org",
+        "communications@rapidcitydiocese.org",
+        "contact@rapidcitydiocese.org",
+        "chancery@rapidcitydiocese.org",
+        "office@rapidcitydiocese.org"
+      ],
+      "primary_email": "info@rapidcitydiocese.org"
+    },
+    {
+      "name": "Diocese of Sioux Falls",
+      "address": "523 N. Duluth Avenue, Sioux Falls, SD 57104",
+      "website": "https://sfcatholic.org",
+      "probable_emails": [
+        "info@sfcatholic.org",
+        "communications@sfcatholic.org",
+        "contact@sfcatholic.org",
+        "chancery@sfcatholic.org",
+        "office@sfcatholic.org"
+      ],
+      "primary_email": "info@sfcatholic.org"
+    },
+    {
+      "name": "Diocese of Knoxville",
+      "address": "805 S. Northshore Drive, Knoxville, TN 37919",
+      "website": "https://dioknox.org",
+      "probable_emails": [
+        "info@dioknox.org",
+        "communications@dioknox.org",
+        "contact@dioknox.org",
+        "chancery@dioknox.org",
+        "office@dioknox.org"
+      ],
+      "primary_email": "info@dioknox.org"
+    },
+    {
+      "name": "Diocese of Memphis",
+      "address": "5825 Shelby Oaks Drive, Memphis, TN 38134",
+      "website": "https://cdom.org",
+      "probable_emails": [
+        "info@cdom.org",
+        "communications@cdom.org",
+        "contact@cdom.org",
+        "chancery@cdom.org",
+        "office@cdom.org"
+      ],
+      "primary_email": "info@cdom.org"
+    },
+    {
+      "name": "Diocese of Nashville",
+      "address": "2800 McGavock Pike, Nashville, TN 37214",
+      "website": "https://dioceseofnashville.com",
+      "probable_emails": [
+        "info@dioceseofnashville.com",
+        "communications@dioceseofnashville.com",
+        "contact@dioceseofnashville.com",
+        "chancery@dioceseofnashville.com",
+        "office@dioceseofnashville.com"
+      ],
+      "primary_email": "info@dioceseofnashville.com"
+    },
+    {
+      "name": "Archdiocese of Galveston-Houston",
+      "address": "1700 San Jacinto, Houston, TX 77001",
+      "website": "https://archgh.org",
+      "probable_emails": [
+        "info@archgh.org",
+        "communications@archgh.org",
+        "contact@archgh.org",
+        "chancery@archgh.org",
+        "office@archgh.org"
+      ],
+      "primary_email": "info@archgh.org"
+    },
+    {
+      "name": "Archdiocese of San Antonio",
+      "address": "2718 West Woodlawn Avenue, San Antonio, TX 78228",
+      "website": "https://archsa.org",
+      "probable_emails": [
+        "info@archsa.org",
+        "communications@archsa.org",
+        "contact@archsa.org",
+        "chancery@archsa.org",
+        "office@archsa.org"
+      ],
+      "primary_email": "info@archsa.org"
+    },
+    {
+      "name": "Diocese of Amarillo",
+      "address": "P.O. Box 5644, Amarillo, TX 79117",
+      "website": "https://amarillodiocese.org",
+      "probable_emails": [
+        "info@amarillodiocese.org",
+        "communications@amarillodiocese.org",
+        "contact@amarillodiocese.org",
+        "chancery@amarillodiocese.org",
+        "office@amarillodiocese.org"
+      ],
+      "primary_email": "info@amarillodiocese.org"
+    },
+    {
+      "name": "Diocese of Austin",
+      "address": "6225 Highway 290 East, Austin, TX 78723",
+      "website": "https://austindiocese.org",
+      "probable_emails": [
+        "info@austindiocese.org",
+        "communications@austindiocese.org",
+        "contact@austindiocese.org",
+        "chancery@austindiocese.org",
+        "office@austindiocese.org"
+      ],
+      "primary_email": "info@austindiocese.org"
+    },
+    {
+      "name": "Diocese of Beaumont",
+      "address": "710 Archie Street, Beaumont, TX 77701",
+      "website": "https://dioceseofbmt.org",
+      "probable_emails": [
+        "info@dioceseofbmt.org",
+        "communications@dioceseofbmt.org",
+        "contact@dioceseofbmt.org",
+        "chancery@dioceseofbmt.org",
+        "office@dioceseofbmt.org"
+      ],
+      "primary_email": "info@dioceseofbmt.org"
+    },
+    {
+      "name": "Diocese of Brownsville",
+      "address": "1910 University Boulevard, Brownsville, TX 78520",
+      "website": "https://cdob.org",
+      "probable_emails": [
+        "info@cdob.org",
+        "communications@cdob.org",
+        "contact@cdob.org",
+        "chancery@cdob.org",
+        "office@cdob.org"
+      ],
+      "primary_email": "info@cdob.org"
+    },
+    {
+      "name": "Diocese of Corpus Christi",
+      "address": "620 Lipan Street, Corpus Christi, TX 78401",
+      "website": "https://diocesecc.org",
+      "probable_emails": [
+        "info@diocesecc.org",
+        "communications@diocesecc.org",
+        "contact@diocesecc.org",
+        "chancery@diocesecc.org",
+        "office@diocesecc.org"
+      ],
+      "primary_email": "info@diocesecc.org"
+    },
+    {
+      "name": "Diocese of Dallas",
+      "address": "3725 Blackburn Street, Dallas, TX 75219",
+      "website": "https://cathdal.org",
+      "probable_emails": [
+        "info@cathdal.org",
+        "communications@cathdal.org",
+        "contact@cathdal.org",
+        "chancery@cathdal.org",
+        "office@cathdal.org"
+      ],
+      "primary_email": "info@cathdal.org"
+    },
+    {
+      "name": "Diocese of El Paso",
+      "address": "499 St. Matthews Street, El Paso, TX 79907",
+      "website": "https://elpasodiocese.org",
+      "probable_emails": [
+        "info@elpasodiocese.org",
+        "communications@elpasodiocese.org",
+        "contact@elpasodiocese.org",
+        "chancery@elpasodiocese.org",
+        "office@elpasodiocese.org"
+      ],
+      "primary_email": "info@elpasodiocese.org"
+    },
+    {
+      "name": "Diocese of Fort Worth",
+      "address": "800 West Loop 820 South, Fort Worth, TX 76108",
+      "website": "https://fwdioc.org",
+      "probable_emails": [
+        "info@fwdioc.org",
+        "communications@fwdioc.org",
+        "contact@fwdioc.org",
+        "chancery@fwdioc.org",
+        "office@fwdioc.org"
+      ],
+      "primary_email": "info@fwdioc.org"
+    },
+    {
+      "name": "Diocese of Laredo",
+      "address": "1901 Corpus Christi St., Laredo, TX 78043",
+      "website": "https://dioceseoflaredo.org",
+      "probable_emails": [
+        "info@dioceseoflaredo.org",
+        "communications@dioceseoflaredo.org",
+        "contact@dioceseoflaredo.org",
+        "chancery@dioceseoflaredo.org",
+        "office@dioceseoflaredo.org"
+      ],
+      "primary_email": "info@dioceseoflaredo.org"
+    },
+    {
+      "name": "Diocese of Lubbock",
+      "address": "4620 Fourth Street, Lubbock, TX 79499",
+      "website": "https://catholiclubbock.org",
+      "probable_emails": [
+        "info@catholiclubbock.org",
+        "communications@catholiclubbock.org",
+        "contact@catholiclubbock.org",
+        "chancery@catholiclubbock.org",
+        "office@catholiclubbock.org"
+      ],
+      "primary_email": "info@catholiclubbock.org"
+    },
+    {
+      "name": "Diocese of San Angelo",
+      "address": "804 Ford Street, San Angelo, TX 76905",
+      "website": "https://sanangelodiocese.org",
+      "probable_emails": [
+        "info@sanangelodiocese.org",
+        "communications@sanangelodiocese.org",
+        "contact@sanangelodiocese.org",
+        "chancery@sanangelodiocese.org",
+        "office@sanangelodiocese.org"
+      ],
+      "primary_email": "info@sanangelodiocese.org"
+    },
+    {
+      "name": "Diocese of Tyler",
+      "address": "1015 ESE Loop 323, Tyler, TX 75701",
+      "website": "https://dioceseoftyler.org",
+      "probable_emails": [
+        "info@dioceseoftyler.org",
+        "communications@dioceseoftyler.org",
+        "contact@dioceseoftyler.org",
+        "chancery@dioceseoftyler.org",
+        "office@dioceseoftyler.org"
+      ],
+      "primary_email": "info@dioceseoftyler.org"
+    },
+    {
+      "name": "Diocese of Victoria",
+      "address": "1505 E. Mesquite Lane, Victoria, TX 77901",
+      "website": "https://victoriadiocese.org",
+      "probable_emails": [
+        "info@victoriadiocese.org",
+        "communications@victoriadiocese.org",
+        "contact@victoriadiocese.org",
+        "chancery@victoriadiocese.org",
+        "office@victoriadiocese.org"
+      ],
+      "primary_email": "info@victoriadiocese.org"
+    },
+    {
+      "name": "Diocese of Salt Lake City",
+      "address": "27 C Street, Salt Lake City, UT 84103",
+      "website": "https://utahcatholicdiocese.org",
+      "probable_emails": [
+        "info@utahcatholicdiocese.org",
+        "communications@utahcatholicdiocese.org",
+        "contact@utahcatholicdiocese.org",
+        "chancery@utahcatholicdiocese.org",
+        "office@utahcatholicdiocese.org"
+      ],
+      "primary_email": "info@utahcatholicdiocese.org"
+    },
+    {
+      "name": "Diocese of Burlington",
+      "address": "55 Joy Drive, South Burlington, VT 05403",
+      "website": "https://vermontcatholic.org",
+      "probable_emails": [
+        "info@vermontcatholic.org",
+        "communications@vermontcatholic.org",
+        "contact@vermontcatholic.org",
+        "chancery@vermontcatholic.org",
+        "office@vermontcatholic.org"
+      ],
+      "primary_email": "info@vermontcatholic.org"
+    },
+    {
+      "name": "Diocese of Arlington",
+      "address": "200 North Glebe Road, Arlington, VA 22203",
+      "website": "https://arlingtondiocese.org",
+      "probable_emails": [
+        "info@arlingtondiocese.org",
+        "communications@arlingtondiocese.org",
+        "contact@arlingtondiocese.org",
+        "chancery@arlingtondiocese.org",
+        "office@arlingtondiocese.org"
+      ],
+      "primary_email": "info@arlingtondiocese.org"
+    },
+    {
+      "name": "Diocese of Richmond",
+      "address": "7800 Carousel Lane, Richmond, VA 23294",
+      "website": "https://richmonddiocese.org",
+      "probable_emails": [
+        "info@richmonddiocese.org",
+        "communications@richmonddiocese.org",
+        "contact@richmonddiocese.org",
+        "chancery@richmonddiocese.org",
+        "office@richmonddiocese.org"
+      ],
+      "primary_email": "info@richmonddiocese.org"
+    },
+    {
+      "name": "Archdiocese of Seattle",
+      "address": "710 9th Avenue, Seattle, WA 98104",
+      "website": "https://seattlearchdiocese.org",
+      "probable_emails": [
+        "info@seattlearchdiocese.org",
+        "communications@seattlearchdiocese.org",
+        "contact@seattlearchdiocese.org",
+        "chancery@seattlearchdiocese.org",
+        "office@seattlearchdiocese.org"
+      ],
+      "primary_email": "info@seattlearchdiocese.org"
+    },
+    {
+      "name": "Diocese of Spokane",
+      "address": "P.O. Box 1453, Spokane, WA 99210",
+      "website": "https://dioceseofspokane.org",
+      "probable_emails": [
+        "info@dioceseofspokane.org",
+        "communications@dioceseofspokane.org",
+        "contact@dioceseofspokane.org",
+        "chancery@dioceseofspokane.org",
+        "office@dioceseofspokane.org"
+      ],
+      "primary_email": "info@dioceseofspokane.org"
+    },
+    {
+      "name": "Diocese of Yakima",
+      "address": "P.O. Box 2189, Yakima, WA 98907",
+      "website": "https://yakimadiocese.org",
+      "probable_emails": [
+        "info@yakimadiocese.org",
+        "communications@yakimadiocese.org",
+        "contact@yakimadiocese.org",
+        "chancery@yakimadiocese.org",
+        "office@yakimadiocese.org"
+      ],
+      "primary_email": "info@yakimadiocese.org"
+    },
+    {
+      "name": "Archdiocese for Military Services",
+      "address": "1025 Michigan Avenue N.E., Washington, DC 20017",
+      "website": "https://milarch.org",
+      "probable_emails": [
+        "info@milarch.org",
+        "communications@milarch.org",
+        "contact@milarch.org",
+        "chancery@milarch.org",
+        "office@milarch.org"
+      ],
+      "primary_email": "info@milarch.org"
+    },
+    {
+      "name": "Archdiocese of Washington",
+      "address": "P.O. Box 29260, Washington, DC 20017",
+      "website": "https://adw.org",
+      "probable_emails": [
+        "info@adw.org",
+        "communications@adw.org",
+        "contact@adw.org",
+        "chancery@adw.org",
+        "office@adw.org"
+      ],
+      "primary_email": "info@adw.org"
+    },
+    {
+      "name": "Diocese of Wheeling-Charleston",
+      "address": "1300 Byron Street, Wheeling, WV 26003",
+      "website": "https://dwc.org",
+      "probable_emails": [
+        "info@dwc.org",
+        "communications@dwc.org",
+        "contact@dwc.org",
+        "chancery@dwc.org",
+        "office@dwc.org"
+      ],
+      "primary_email": "info@dwc.org"
+    },
+    {
+      "name": "Archdiocese of Milwaukee",
+      "address": "P.O. Box 70912, Milwaukee, WI 53207",
+      "website": "https://archmil.org",
+      "probable_emails": [
+        "info@archmil.org",
+        "communications@archmil.org",
+        "contact@archmil.org",
+        "chancery@archmil.org",
+        "office@archmil.org"
+      ],
+      "primary_email": "info@archmil.org"
+    },
+    {
+      "name": "Diocese of Green Bay",
+      "address": "P.O. Box 23825, Green Bay, WI 54305",
+      "website": "https://gbdioc.org",
+      "probable_emails": [
+        "info@gbdioc.org",
+        "communications@gbdioc.org",
+        "contact@gbdioc.org",
+        "chancery@gbdioc.org",
+        "office@gbdioc.org"
+      ],
+      "primary_email": "info@gbdioc.org"
+    },
+    {
+      "name": "Diocese of La Crosse",
+      "address": "3710 East Avenue South, La Crosse, WI 54602",
+      "website": "https://diolc.org",
+      "probable_emails": [
+        "info@diolc.org",
+        "communications@diolc.org",
+        "contact@diolc.org",
+        "chancery@diolc.org",
+        "office@diolc.org"
+      ],
+      "primary_email": "info@diolc.org"
+    },
+    {
+      "name": "Diocese of Madison",
+      "address": "702 South High Point Road, Madison, WI 53719",
+      "website": "https://madisondiocese.org",
+      "probable_emails": [
+        "info@madisondiocese.org",
+        "communications@madisondiocese.org",
+        "contact@madisondiocese.org",
+        "chancery@madisondiocese.org",
+        "office@madisondiocese.org"
+      ],
+      "primary_email": "info@madisondiocese.org"
+    },
+    {
+      "name": "Diocese of Superior",
+      "address": "1201 Hughitt Avenue, Superior, WI 54880",
+      "website": "https://catholicdos.org",
+      "probable_emails": [
+        "info@catholicdos.org",
+        "communications@catholicdos.org",
+        "contact@catholicdos.org",
+        "chancery@catholicdos.org",
+        "office@catholicdos.org"
+      ],
+      "primary_email": "info@catholicdos.org"
+    },
+    {
+      "name": "Diocese of Cheyenne",
+      "address": "2121 Capitol Avenue, Cheyenne, WY 82001",
+      "website": "https://dcwy.org",
+      "probable_emails": [
+        "info@dcwy.org",
+        "communications@dcwy.org",
+        "contact@dcwy.org",
+        "chancery@dcwy.org",
+        "office@dcwy.org"
+      ],
+      "primary_email": "info@dcwy.org"
+    }
+  ]
+}

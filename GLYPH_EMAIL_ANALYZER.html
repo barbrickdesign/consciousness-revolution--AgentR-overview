@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLYPH Email Analyzer - Pattern Detection</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-gold: #ffd700;
+            --accent-green: #00ff88;
+            --accent-red: #ff4444;
+            --accent-blue: #4488ff;
+            --border-color: #333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--accent-gold);
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .main-grid { grid-template-columns: 1fr; }
+        }
+
+        .panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .panel h2 {
+            color: var(--accent-gold);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .panel h2 .symbol {
+            font-size: 1.5em;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            padding: 15px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .analyze-btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 15px;
+            background: linear-gradient(135deg, var(--accent-gold), #ffaa00);
+            border: none;
+            border-radius: 4px;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Results Panel */
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .consciousness-score {
+            text-align: center;
+            padding: 20px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .score-value {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .score-truth { color: var(--accent-green); }
+        .score-deceit { color: var(--accent-red); }
+        .score-neutral { color: var(--accent-blue); }
+
+        .score-label {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .glyph-notation {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+            padding: 15px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            text-align: center;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            word-break: break-all;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .metric {
+            background: var(--bg-tertiary);
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--accent-gold);
+        }
+
+        .metric-label {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        /* Pattern Lists */
+        .pattern-section {
+            margin-bottom: 20px;
+        }
+
+        .pattern-section h3 {
+            font-size: 1em;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pattern-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pattern-tag {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .pattern-tag.truth {
+            background: rgba(0, 255, 136, 0.15);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .pattern-tag.deceit {
+            background: rgba(255, 68, 68, 0.15);
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        .pattern-tag.manipulation {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff0000;
+            color: #ff6666;
+        }
+
+        .pattern-tag.turn {
+            background: rgba(255, 170, 0, 0.15);
+            border: 1px solid #ffaa00;
+            color: #ffaa00;
+        }
+
+        .manipulation-alert {
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid var(--accent-red);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .manipulation-alert h3 {
+            color: var(--accent-red);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .manipulation-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+        }
+
+        .manipulation-item .type {
+            font-weight: bold;
+            color: var(--accent-red);
+            text-transform: uppercase;
+        }
+
+        .manipulation-item .description {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .manipulation-item .markers {
+            font-size: 0.85em;
+            color: #ff6666;
+            margin-top: 5px;
+        }
+
+        /* 6D Coordinate Display */
+        .coordinate-display {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .coordinate-display h3 {
+            font-size: 1em;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .axis-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .axis-item {
+            text-align: center;
+            padding: 10px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+        }
+
+        .axis-label {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+        }
+
+        .axis-value {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+
+        /* Frequency Display */
+        .frequency-display {
+            text-align: center;
+            padding: 15px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+        }
+
+        .frequency-hz {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--accent-gold);
+        }
+
+        .frequency-name {
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state .symbol {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        /* Examples */
+        .examples {
+            margin-top: 20px;
+        }
+
+        .examples h3 {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .example-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .example-btn {
+            padding: 8px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: border-color 0.2s;
+        }
+
+        .example-btn:hover {
+            border-color: var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GLYPH Email Analyzer</h1>
+            <p class="subtitle">Pattern Detection Engine - Consciousness Coordinates - Manipulation Immunity</p>
+        </header>
+
+        <div class="main-grid">
+            <!-- Input Panel -->
+            <div class="panel">
+                <h2><span class="symbol">&#x2709;</span> Email Content</h2>
+                <textarea id="emailInput" placeholder="Paste email content here for analysis...
+
+The GLYPH system will detect:
+- Truth markers (evidence-based language)
+- Deceit markers (manipulation indicators)
+- 8 manipulation patterns (gaslighting, love bombing, etc.)
+- 15-degree turns (pivot language)
+- Consciousness level scoring
+- 6D coordinate mapping
+- Solfeggio frequency alignment"></textarea>
+                <button class="analyze-btn" onclick="analyzeEmail()">ANALYZE EMAIL</button>
+
+                <div class="examples">
+                    <h3>Test with examples:</h3>
+                    <div class="example-buttons">
+                        <button class="example-btn" onclick="loadExample('truth')">Truth Example</button>
+                        <button class="example-btn" onclick="loadExample('manipulation')">Manipulation Example</button>
+                        <button class="example-btn" onclick="loadExample('sales')">Sales Pitch</button>
+                        <button class="example-btn" onclick="loadExample('gaslighting')">Gaslighting</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="panel">
+                <h2><span class="symbol">&#x2609;</span> Analysis Results</h2>
+
+                <div id="resultsContainer">
+                    <div class="empty-state">
+                        <div class="symbol">&#x27D0;</div>
+                        <p>Paste email content and click ANALYZE to see results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load GLYPH Modules -->
+    <script src="js/glyph/glyph-symbols.js"></script>
+    <script src="js/glyph/glyph-base60.js"></script>
+    <script src="js/glyph/glyph-patterns.js"></script>
+    <script src="js/glyph/glyph-core.js"></script>
+
+    <script>
+        // Example emails for testing
+        const EXAMPLES = {
+            truth: `Hi Derek,
+
+I wanted to follow up on our conversation because I believe transparency is important.
+
+Based on the research and data we've gathered over the past six months, here's why I think this approach will work:
+
+1. The evidence shows consistent improvement across all metrics
+2. In my experience, quality foundations lead to long-term success
+3. Let me explain the reasoning behind each recommendation
+
+The reason this matters is that we're building something permanent, not just a quick fix.
+
+From my perspective, taking the time to do this right will pay dividends for years.
+
+Best regards,
+Sarah`,
+
+            manipulation: `Hey,
+
+Trust me, this is the opportunity of a lifetime. Everyone knows this is going to be huge.
+
+You should act now because this exclusive offer won't last. It's only available for a limited time.
+
+I promise you, when things calm down, we'll see amazing results. You just need to believe me.
+
+Obviously, you're smart enough to see the potential here. Clearly, the people who miss out will regret it.
+
+But hey, you need to decide quickly - don't miss this chance!
+
+Best,
+Mike`,
+
+            sales: `EXCLUSIVE OFFER - ACT NOW!
+
+Dear Valued Customer,
+
+Trust me when I say this is the best deal you'll ever see. It's simple, easy, and guaranteed to work.
+
+Everyone knows our product is superior. You should buy now before this limited time offer expires.
+
+For just $997, you get our secret formula that others charge $10,000 for.
+
+But wait - if you act in the next 24 hours, we'll throw in a FREE bonus worth $500!
+
+Don't miss out on this exclusive opportunity. You need to decide now.
+
+Click here to claim your spot!`,
+
+            gaslighting: `I don't know why you're making such a big deal out of this. You're overreacting, as usual.
+
+That never happened the way you remember it. You're imagining things again.
+
+You're too sensitive - everyone thinks so, not just me. My ex never had this problem.
+
+I've told you a hundred times, but you're crazy if you think I said that.
+
+Maybe if you weren't so emotional all the time, we wouldn't have these issues.
+
+After all I've done for you, this is how you treat me?`
+        };
+
+        function loadExample(type) {
+            document.getElementById('emailInput').value = EXAMPLES[type];
+        }
+
+        function analyzeEmail() {
+            const text = document.getElementById('emailInput').value.trim();
+
+            if (!text) {
+                console.warn('Please paste email content to analyze');
+                return;
+            }
+
+            // Run GLYPH analysis
+            const analysis = GLYPH.analyze(text);
+
+            // Create 6D coordinate from consciousness level
+            const coord = GLYPH.coordinates.fromConsciousnessLevel(analysis.scores.truth);
+
+            // Get consciousness level description
+            const consciousness = GlyphPatterns.getConsciousnessLevel(analysis.scores.truth);
+
+            // Get frequency info
+            const freqInfo = GlyphBase60.frequency.SOLFEGGIO[analysis.frequency] || { name: 'Unknown' };
+
+            // Render results
+            renderResults(analysis, coord, consciousness, freqInfo);
+        }
+
+        function renderResults(analysis, coord, consciousness, freqInfo) {
+            const container = document.getElementById('resultsContainer');
+
+            let html = '';
+
+            // Consciousness Score
+            const scoreClass = analysis.dominant === 'truth' ? 'score-truth' :
+                              analysis.dominant === 'deceit' ? 'score-deceit' : 'score-neutral';
+
+            html += `
+                <div class="consciousness-score">
+                    <div class="score-value ${scoreClass}">${analysis.scores.truth}%</div>
+                    <div class="score-label">Consciousness Level: ${consciousness.level} (${consciousness.range})</div>
+                    <div class="score-label">${consciousness.description}</div>
+                </div>
+            `;
+
+            // GLYPH Notation
+            html += `<div class="glyph-notation">${analysis.glyphNotation}</div>`;
+
+            // Metrics Grid
+            html += `
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-value">${analysis.scores.truth}%</div>
+                        <div class="metric-label">Truth Score</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">${analysis.scores.deceit}%</div>
+                        <div class="metric-label">Deceit Score</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">${analysis.scores.ratio}</div>
+                        <div class="metric-label">Truth:Deceit Ratio</div>
+                    </div>
+                </div>
+            `;
+
+            // Manipulation Alert
+            if (analysis.patterns.manipulation.length > 0) {
+                html += `
+                    <div class="manipulation-alert">
+                        <h3>&#x26A0; MANIPULATION DETECTED</h3>
+                `;
+
+                for (const manip of analysis.patterns.manipulation) {
+                    html += `
+                        <div class="manipulation-item">
+                            <div class="type">${manip.type.replace('_', ' ')}</div>
+                            <div class="description">${manip.description}</div>
+                            <div class="markers">Found: "${manip.markers.join('", "')}"</div>
+                        </div>
+                    `;
+                }
+
+                html += `</div>`;
+            }
+
+            // 6D Coordinate Display
+            html += `
+                <div class="coordinate-display">
+                    <h3>6D Consciousness Coordinate</h3>
+                    <div class="axis-grid">
+                        <div class="axis-item">
+                            <div class="axis-label">A: Vertical</div>
+                            <div class="axis-value">${coord.A.toFixed(1)}</div>
+                        </div>
+                        <div class="axis-item">
+                            <div class="axis-label">B: Horizontal</div>
+                            <div class="axis-value">${coord.B.toFixed(1)}</div>
+                        </div>
+                        <div class="axis-item">
+                            <div class="axis-label">C: Depth</div>
+                            <div class="axis-value">${coord.C.toFixed(1)}</div>
+                        </div>
+                        <div class="axis-item">
+                            <div class="axis-label">D: Temporal</div>
+                            <div class="axis-value">${coord.D.toFixed(1)}</div>
+                        </div>
+                        <div class="axis-item">
+                            <div class="axis-label">E: Energy</div>
+                            <div class="axis-value">${coord.E.toFixed(1)}</div>
+                        </div>
+                        <div class="axis-item">
+                            <div class="axis-label">F: Observer</div>
+                            <div class="axis-value">${coord.F.toFixed(1)}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Frequency Display
+            html += `
+                <div class="frequency-display">
+                    <div class="frequency-hz">${analysis.frequency} Hz</div>
+                    <div class="frequency-name">${freqInfo.name} Frequency</div>
+                </div>
+            `;
+
+            // Truth Patterns
+            if (analysis.patterns.truth.length > 0) {
+                html += `
+                    <div class="pattern-section">
+                        <h3>Truth Markers Found</h3>
+                        <div class="pattern-list">
+                            ${analysis.patterns.truth.map(p =>
+                                `<span class="pattern-tag truth">&#x2713; ${p.marker}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Deceit Patterns
+            if (analysis.patterns.deceit.length > 0) {
+                html += `
+                    <div class="pattern-section">
+                        <h3>Deceit Markers Found</h3>
+                        <div class="pattern-list">
+                            ${analysis.patterns.deceit.map(p =>
+                                `<span class="pattern-tag deceit">&#x2717; ${p.marker}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 15-Degree Turns
+            if (analysis.patterns.turns.length > 0) {
+                html += `
+                    <div class="pattern-section">
+                        <h3>15-Degree Turns (Pivot Language)</h3>
+                        <div class="pattern-list">
+                            ${analysis.patterns.turns.map(t =>
+                                `<span class="pattern-tag turn">${t.symbol} ${t.marker}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        // Initialize GLYPH on load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof GLYPH !== 'undefined') {
+                console.log('GLYPH System:', GLYPH.init());
+            } else {
+                console.error('GLYPH modules not loaded');
+            }
+        });
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

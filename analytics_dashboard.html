@@ -300,7 +300,10 @@
         // Fetch and update metrics
         async function fetchMetrics() {
             try {
-                const response = await fetch('http://localhost:5055/api/analytics');
+                const apiUrl = window.location.hostname === 'localhost'
+                    ? 'http://localhost:5055/api/analytics'
+                    : '/api/analytics';
+                const response = await fetch(apiUrl);
                 const data = await response.json();
                 updateDashboard(data);
             } catch (error) {
@@ -399,5 +402,7 @@
             setInterval(updateRefreshTimer, 1000);
         });
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

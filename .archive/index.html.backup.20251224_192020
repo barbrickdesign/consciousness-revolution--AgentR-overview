@@ -1,0 +1,423 @@
+<!-- EDITED BY ARAYA -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consciousness Revolution - 7 Sacred Chambers</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 100%);
+      color: #F7FAFC;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Sacred Lobby Container */
+    .sacred-lobby {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Title */
+    .title {
+      position: absolute;
+      top: 3rem;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .title h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+      margin-bottom: 0.5rem;
+    }
+
+    .title p {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      letter-spacing: 0.2em;
+    }
+
+    /* Flower of Life SVG */
+    .flower-container {
+      position: relative;
+      width: 700px;
+      height: 700px;
+    }
+
+    .flower-of-life {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      animation: rotate-slow 120s linear infinite;
+    }
+
+    @keyframes rotate-slow {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .flower-circle {
+      fill: none;
+      stroke: rgba(255, 215, 0, 0.15);
+      stroke-width: 1;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .flower-circle:nth-child(odd) {
+      animation-delay: -2s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { stroke: rgba(255, 215, 0, 0.15); }
+      50% { stroke: rgba(255, 215, 0, 0.35); }
+    }
+
+    /* 7 Domain Portals */
+    .portal {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+    }
+
+    .portal:hover {
+      transform: scale(1.15);
+    }
+
+    .portal:hover .portal-shape {
+      filter: drop-shadow(0 0 20px currentColor);
+    }
+
+    .portal-shape {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .portal-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    /* Portal Positions (7 points around circle) */
+    .portal-1 { top: 5%; left: 50%; transform: translateX(-50%); color: #FF6B6B; }
+    .portal-2 { top: 20%; right: 12%; color: #FFA94D; }
+    .portal-3 { top: 55%; right: 5%; color: #FFE066; }
+    .portal-4 { bottom: 12%; right: 20%; color: #69DB7C; }
+    .portal-5 { bottom: 12%; left: 20%; color: #74C0FC; }
+    .portal-6 { top: 55%; left: 5%; color: #9775FA; }
+    .portal-7 { top: 20%; left: 12%; color: #E599F7; }
+
+    /* Center Portal - Metatron's Cube */
+    .center-portal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 160px;
+      height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .center-portal:hover .metatron {
+      animation-duration: 4s;
+      filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+    }
+
+    .metatron {
+      width: 120px;
+      height: 120px;
+      animation: rotate-metatron 20s linear infinite;
+    }
+
+    @keyframes rotate-metatron {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .center-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #FFD700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 10px;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: absolute;
+      bottom: 2rem;
+      display: flex;
+      gap: 2rem;
+      z-index: 10;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+    }
+
+    .nav-link:hover {
+      color: #FFD700;
+      border-color: #FFD700;
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    /* Ambient particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 215, 0, 0.3);
+      border-radius: 50%;
+      animation: float 15s infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .flower-container {
+        width: 400px;
+        height: 400px;
+      }
+      .flower-of-life {
+        width: 350px;
+        height: 350px;
+      }
+      .portal {
+        width: 80px;
+        height: 80px;
+      }
+      .portal-shape {
+        width: 40px;
+        height: 40px;
+      }
+      .portal-label {
+        font-size: 0.7rem;
+      }
+      .title h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ambient Particles -->
+  <div class="particles">
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+    <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
+  </div>
+
+  <div class="sacred-lobby">
+    <!-- Title -->
+    <div class="title">
+      <h1>CONSCIOUSNESS REVOLUTION</h1>
+      <p>7 Sacred Chambers of Evolution</p>
+    </div>
+
+    <!-- Flower of Life Container -->
+    <div class="flower-container">
+      <!-- Flower of Life SVG -->
+      <svg class="flower-of-life" viewBox="0 0 400 400">
+        <!-- Central circle -->
+        <circle class="flower-circle" cx="200" cy="200" r="50"/>
+        <!-- 6 surrounding circles -->
+        <circle class="flower-circle" cx="200" cy="150" r="50"/>
+        <circle class="flower-circle" cx="243" cy="175" r="50"/>
+        <circle class="flower-circle" cx="243" cy="225" r="50"/>
+        <circle class="flower-circle" cx="200" cy="250" r="50"/>
+        <circle class="flower-circle" cx="157" cy="225" r="50"/>
+        <circle class="flower-circle" cx="157" cy="175" r="50"/>
+        <!-- Second ring -->
+        <circle class="flower-circle" cx="200" cy="100" r="50"/>
+        <circle class="flower-circle" cx="286" cy="150" r="50"/>
+        <circle class="flower-circle" cx="286" cy="250" r="50"/>
+        <circle class="flower-circle" cx="200" cy="300" r="50"/>
+        <circle class="flower-circle" cx="114" cy="250" r="50"/>
+        <circle class="flower-circle" cx="114" cy="150" r="50"/>
+        <!-- Outer decorative ring -->
+        <circle class="flower-circle" cx="200" cy="200" r="150" style="stroke-width: 0.5;"/>
+      </svg>
+
+      <!-- 7 Domain Portals -->
+      <a href="SEVEN_DOMAINS_DASHBOARD.html" class="portal portal-1">
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <rect x="25" y="25" width="50" height="50" fill="none" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <span class="portal-label">Command</span>
+      </a>
+
+      <a href="workspace.html" class="portal portal-2">
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <polygon points="50,10 90,75 10,75" fill="none" stroke="currentColor" stroke-width="3"/>
+          <polygon points="50,90 10,25 90,25" fill="none" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <span class="portal-label">Build</span>
+      </a>
+
+      <a href="TRINITY_CONSOLIDATION_HUB.html" class="portal portal-3">
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <polygon points="50,5 95,50 50,95 5,50" fill="none" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <span class="portal-label">Connect</span>
+      </a>
+
+      <a href="consciousness-tools.html" class="portal portal-4">
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <polygon points="50,5 61,35 95,35 68,57 79,90 50,70 21,90 32,57 5,35 39,35" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="portal-label">Protect</span>
+      </a>
+
+      <a href="course-dashboard.html" class="portal portal-5">
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <polygon points="50,5 79,21 93,50 79,79 50,95 21,79 7,50 21,21" fill="none" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <span class="portal-label">Grow</span>
+      </a>
+
+      <a href="PATTERN_LIBRARY.html" class="portal portal-6">
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="3"/>
+          <line x1="50" y1="15" x2="50" y2="85" stroke="currentColor" stroke-width="2"/>
+          <line x1="15" y1="50" x2="85" y2="50" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="portal-label">Learn</span>
+      </a>
+
+      <a href="araya-chat.html" class="portal portal-7">
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="50" cy="50" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="portal-label">Transcend</span>
+      </a>
+
+      <!-- Center: Metatron's Cube -->
+      <a href="araya-chat.html" class="center-portal">
+        <svg class="metatron" viewBox="0 0 100 100">
+          <!-- Outer hexagon -->
+          <polygon points="50,5 93,27 93,73 50,95 7,73 7,27" fill="none" stroke="#FFD700" stroke-width="1"/>
+          <!-- Inner lines forming Metatron's Cube -->
+          <line x1="50" y1="5" x2="50" y2="95" stroke="#FFD700" stroke-width="0.5"/>
+          <line x1="7" y1="27" x2="93" y2="73" stroke="#FFD700" stroke-width="0.5"/>
+          <line x1="93" y1="27" x2="7" y2="73" stroke="#FFD700" stroke-width="0.5"/>
+          <!-- Inner hexagon -->
+          <polygon points="50,25 72,37 72,63 50,75 28,63 28,37" fill="none" stroke="#FFD700" stroke-width="1"/>
+          <!-- Center circle -->
+          <circle cx="50" cy="50" r="12" fill="none" stroke="#FFD700" stroke-width="1"/>
+          <!-- Corner circles -->
+          <circle cx="50" cy="5" r="4" fill="#FFD700" opacity="0.5"/>
+          <circle cx="93" cy="27" r="4" fill="#FFD700" opacity="0.5"/>
+          <circle cx="93" cy="73" r="4" fill="#FFD700" opacity="0.5"/>
+          <circle cx="50" cy="95" r="4" fill="#FFD700" opacity="0.5"/>
+          <circle cx="7" cy="73" r="4" fill="#FFD700" opacity="0.5"/>
+          <circle cx="7" cy="27" r="4" fill="#FFD700" opacity="0.5"/>
+        </svg>
+        <span class="center-label">Enter</span>
+      </a>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+      <a href="login.html" class="nav-link">Sign In</a>
+      <a href="signup.html" class="nav-link">Get Started</a>
+      <a href="araya-chat.html" class="nav-link">Talk to Araya</a>
+    </div>
+  </div>
+
+  <script>
+    // Add hover sound effect (optional)
+    document.querySelectorAll('.portal, .center-portal').forEach(portal => {
+      portal.addEventListener('mouseenter', () => {
+        portal.style.transform = portal.classList.contains('center-portal')
+          ? 'translate(-50%, -50%) scale(1.1)'
+          : 'scale(1.15)';
+      });
+      portal.addEventListener('mouseleave', () => {
+        portal.style.transform = portal.classList.contains('center-portal')
+          ? 'translate(-50%, -50%) scale(1)'
+          : 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>

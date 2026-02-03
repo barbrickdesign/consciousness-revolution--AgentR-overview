@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARAYA Edit Flow - Visual Journey Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .journey-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .journey-tab {
+            padding: 15px 30px;
+            background: #f0f0f0;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .journey-tab:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .journey-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .journey-flow {
+            display: none;
+        }
+
+        .journey-flow.active {
+            display: block;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: stretch;
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-number {
+            min-width: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            border-radius: 10px 0 0 10px;
+            padding: 20px;
+        }
+
+        .step-content {
+            flex: 1;
+            border: 2px solid #667eea;
+            border-left: none;
+            border-radius: 0 10px 10px 0;
+            padding: 20px;
+            background: #f9f9ff;
+        }
+
+        .step-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .step-visual {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin-top: 10px;
+            white-space: pre-wrap;
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 2em;
+            color: #667eea;
+            margin: 10px 0;
+        }
+
+        .metrics-panel {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .metrics-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .metric-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .comparison-table tr:hover {
+            background: #f0f0ff;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .badge-beginner {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .badge-intermediate {
+            background: #FF9800;
+            color: white;
+        }
+
+        .badge-advanced {
+            background: #9C27B0;
+            color: white;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9ff;
+            border-radius: 10px;
+            border: 2px solid #667eea;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #667eea;
+        }
+
+        .timeline-time {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .pattern-visual {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .pattern-level {
+            display: inline-block;
+            margin: 10px 20px;
+            font-size: 1.2em;
+        }
+
+        .pattern-arrow {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.5em;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 ARAYA Edit Flow - Complete User Journey</h1>
+        <p class="subtitle">Three skill levels, one seamless experience | C3×C2 Oracle-Architect Design</p>
+
+        <div class="journey-selector">
+            <div class="journey-tab active" onclick="showJourney('beginner')">
+                🌱 Beginner Journey
+            </div>
+            <div class="journey-tab" onclick="showJourney('intermediate')">
+                🚀 Intermediate Journey
+            </div>
+            <div class="journey-tab" onclick="showJourney('advanced')">
+                ⚡ Advanced Journey
+            </div>
+        </div>
+
+        <!-- BEGINNER JOURNEY -->
+        <div id="beginner" class="journey-flow active">
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">🌟 Discovery - Welcome Message</div>
+                    <div class="step-description">
+                        First-time user sees a friendly welcome message explaining ARAYA can edit files.
+                        Clear, non-technical language with examples.
+                    </div>
+                    <div class="step-visual">┌─────────────────────────────────────┐
+│  👋 Hi! I'm ARAYA                   │
+│                                     │
+│  I can help you:                    │
+│  • Answer questions                 │
+│  • Navigate the platform            │
+│  • 🔧 EDIT WEBSITE FILES (NEW!)    │
+│                                     │
+│  Try: "Change the welcome text"     │
+└─────────────────────────────────────┘</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">💬 Request - Natural Language</div>
+                    <div class="step-description">
+                        User types a natural request. ARAYA understands intent, identifies target element,
+                        and prepares the change.
+                    </div>
+                    <div class="step-visual">User: "Change the main title to 'Build 100X Faster'"
+
+ARAYA: "I found the main title in index.html.
+        Let me show you what will change..."</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">👁️ Preview - Side-by-Side Diff</div>
+                    <div class="step-description">
+                        Clear visual comparison showing exactly what will change. Color-coded for easy understanding.
+                    </div>
+                    <div class="step-visual">┌───────────────────┬───────────────────┐
+│   BEFORE          │   AFTER           │
+├───────────────────┼───────────────────┤
+│ ❌ Welcome to     │ ✅ Build 100X     │
+│    100X Builder   │    Faster         │
+└───────────────────┴───────────────────┘
+
+[Apply Change]  [Cancel]  [Modify]</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">✅ Confirmation - Full Safety Check</div>
+                    <div class="step-description">
+                        Detailed confirmation dialog with safety assurances. Builds user confidence
+                        by explaining what's about to happen.
+                    </div>
+                    <div class="step-visual">⚠️ Confirm Changes
+
+You're about to:
+• Modify: index.html
+• Change: Main title
+
+This change is:
+✅ Reversible (undo available)
+✅ Safe (no code breaking)
+✅ Immediate (live in 2 seconds)
+
+[✓ Yes, Apply Changes]  [✗ Cancel]</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="step-title">⚙️ Execute - Progress Bar</div>
+                    <div class="step-description">
+                        Visual progress indicator shows each step. Reassures user that something is happening.
+                        Typically completes in 1-2 seconds.
+                    </div>
+                    <div class="step-visual">🔧 Applying changes...
+
+[████████████████░░░░] 85%
+
+✓ Reading file
+✓ Validating changes
+⏳ Writing new content
+⏸️ Refreshing page</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <div class="step-title">🎉 Verify - Success Message + Highlight</div>
+                    <div class="step-description">
+                        Clear success message with next action options. Changed element glows briefly
+                        on the actual page so user can verify visually.
+                    </div>
+                    <div class="step-visual">✅ Changes Applied Successfully!
+
+Modified: index.html
+Changed: Main title
+Time: 1.3 seconds
+
+[View Live Page]  [Undo]  [Edit More]
+
+Page element glows: ✨ Build 100X Faster ✨</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">7</div>
+                <div class="step-content">
+                    <div class="step-title">↩️ Undo - 30-Second Window (Optional)</div>
+                    <div class="step-description">
+                        Immediate undo option appears for 30 seconds. One-click revert if user
+                        changes their mind. No questions asked.
+                    </div>
+                    <div class="step-visual">⏪ Undo available for 28 seconds...
+
+[↩️ UNDO LAST CHANGE]
+
+Or say: "Undo that"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INTERMEDIATE JOURNEY -->
+        <div id="intermediate" class="journey-flow">
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">🎯 Request - Direct Command</div>
+                    <div class="step-description">
+                        User knows what they want. Types directly, skipping discovery phase.
+                    </div>
+                    <div class="step-visual">User: "Change homepage title"
+
+ARAYA: [Shows inline preview immediately]</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">⚡ Preview - Inline Diff</div>
+                    <div class="step-description">
+                        Streamlined preview. Just the essentials. No side-by-side, just before/after.
+                    </div>
+                    <div class="step-visual">File: index.html (line 42)
+
+❌ OLD: Welcome to 100X Builder
+✅ NEW: Build 100X Faster
+
+[Apply]  [Cancel]  [Modify]</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">✓ Confirmation - Quick Approve</div>
+                    <div class="step-description">
+                        Minimal confirmation. User has done this before, no need for safety lecture.
+                    </div>
+                    <div class="step-visual">Apply changes to index.html?
+
+[✓ Apply]  [Preview Again]  [✗ Cancel]</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">🔄 Execute - Background Sync</div>
+                    <div class="step-description">
+                        No blocking UI. Small notification shows progress in corner. User can keep working.
+                    </div>
+                    <div class="step-visual">[Small notification in corner]
+💾 Saving... ⏳
+💾 Saved ✓</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="step-title">✅ Verify - Simple Notification</div>
+                    <div class="step-description">
+                        Brief success message. Element highlights. User gets feedback without interruption.
+                    </div>
+                    <div class="step-visual">✅ Updated index.html (1.1s)
+
+[Undo] or continue editing...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADVANCED JOURNEY -->
+        <div id="advanced" class="journey-flow">
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">🗣️ Request - Voice Command</div>
+                    <div class="step-description">
+                        Power user uses voice. Faster than typing. ARAYA recognizes context from previous edits.
+                    </div>
+                    <div class="step-visual">User: "Hey ARAYA, update the title"
+
+ARAYA: [Knows which title, auto-generates change]</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">⚡ Preview - Live as Typing</div>
+                    <div class="step-description">
+                        Real-time preview. See changes as you speak/type. Instant feedback loop.
+                    </div>
+                    <div class="step-visual">New title: [Build 100X Faster___]
+
+👁️ LIVE PREVIEW:
+┌─────────────────────┐
+│ Build 100X Faster   │
+│ (updates live)      │
+└─────────────────────┘</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">🤖 Auto-Approve - Smart Detection</div>
+                    <div class="step-description">
+                        System recognizes safe edit. Auto-applies after 3-second grace period.
+                        User can say "wait" to pause.
+                    </div>
+                    <div class="step-visual">✓ Safe edit detected - auto-applying...
+(Type 'wait' within 3 seconds to review)
+
+[Progress bar: ████████████░░░░]</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">⚡ Execute - Silent Background</div>
+                    <div class="step-description">
+                        No UI. Happens in background. Only shows if error occurs. Speed is priority.
+                    </div>
+                    <div class="step-visual">[No UI - silent execution]
+
+Only shows notification if error</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="step-title">✨ Verify - Visual Highlight Only</div>
+                    <div class="step-description">
+                        Changed element glows briefly. That's it. Power user doesn't need verbal confirmation.
+                    </div>
+                    <div class="step-visual">Page element glows:
+✨ Build 100X Faster ✨
+
+Fades after 2 seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pattern Theory Integration -->
+        <div class="pattern-visual">
+            <h2 style="margin-bottom: 20px;">📐 Pattern Theory Integration</h2>
+            <div class="pattern-level">
+                <strong>3</strong> Core Actions
+                <div style="font-size: 0.8em; color: #666;">Request • Preview • Apply</div>
+            </div>
+            <span class="pattern-arrow">→</span>
+            <div class="pattern-level">
+                <strong>7</strong> Journey Steps
+                <div style="font-size: 0.8em; color: #666;">Discovery → Request → Preview → Confirm → Execute → Verify → Undo</div>
+            </div>
+            <span class="pattern-arrow">→</span>
+            <div class="pattern-level">
+                <strong>13</strong> Components
+                <div style="font-size: 0.8em; color: #666;">Chat, Preview, History, Editor, etc.</div>
+            </div>
+            <span class="pattern-arrow">→</span>
+            <div class="pattern-level">
+                <strong>∞</strong> Possibilities
+                <div style="font-size: 0.8em; color: #666;">Infinite ways to express intent</div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <h2 style="margin-top: 40px; margin-bottom: 20px; color: #667eea;">📊 Journey Comparison</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Beginner</th>
+                    <th>Intermediate</th>
+                    <th>Advanced</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Discovery</strong></td>
+                    <td>Welcome message, tooltips</td>
+                    <td>Knows from before</td>
+                    <td>Already expert</td>
+                </tr>
+                <tr>
+                    <td><strong>Request Method</strong></td>
+                    <td>Natural language</td>
+                    <td>Commands or natural</td>
+                    <td>Voice preferred</td>
+                </tr>
+                <tr>
+                    <td><strong>Preview</strong></td>
+                    <td>Side-by-side diff</td>
+                    <td>Inline diff</td>
+                    <td>Live as typing</td>
+                </tr>
+                <tr>
+                    <td><strong>Confirmation</strong></td>
+                    <td>Full safety check</td>
+                    <td>Quick approve</td>
+                    <td>Auto-approve (3s grace)</td>
+                </tr>
+                <tr>
+                    <td><strong>Execution</strong></td>
+                    <td>Progress bar (visible)</td>
+                    <td>Background notification</td>
+                    <td>Silent background</td>
+                </tr>
+                <tr>
+                    <td><strong>Feedback</strong></td>
+                    <td>Detailed success message</td>
+                    <td>Brief notification</td>
+                    <td>Visual highlight only</td>
+                </tr>
+                <tr>
+                    <td><strong>Undo Window</strong></td>
+                    <td>30 seconds, prominent</td>
+                    <td>30 seconds, subtle</td>
+                    <td>History panel access</td>
+                </tr>
+                <tr>
+                    <td><strong>Avg Time</strong></td>
+                    <td>15-30 seconds</td>
+                    <td>5-10 seconds</td>
+                    <td>2-5 seconds</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Success Metrics -->
+        <div class="metrics-panel">
+            <div class="metrics-title">🎯 Success Metrics</div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">&gt; 90%</div>
+                    <div class="metric-label">First Edit Completion</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt; 15%</div>
+                    <div class="metric-label">Undo Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt; 60s</div>
+                    <div class="metric-label">Time to First Edit</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt; 500ms</div>
+                    <div class="metric-label">Preview Generation</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt; 2s</div>
+                    <div class="metric-label">Edit Execution</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt; 1s</div>
+                    <div class="metric-label">Undo Speed</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <h2 style="margin-top: 40px; margin-bottom: 20px; color: #667eea;">🚀 Implementation Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">Phase 1: Core (NOW)</div>
+                <strong>✅ Design UX flow (DONE)</strong><br>
+                ✅ Build UI components (DONE)<br>
+                ⏳ Add backend endpoints<br>
+                ⏳ Connect frontend to backend<br>
+                ⏳ Beta test with 6 users
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">Phase 2: Enhancement</div>
+                Multi-user collaborative editing<br>
+                AI-suggested improvements<br>
+                A/B test versions<br>
+                Scheduled edits
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">Phase 3: Advanced</div>
+                Video tutorials from edits<br>
+                Template library<br>
+                Voice-only mode<br>
+                Mobile interface
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; padding: 30px; background: #f0f0ff; border-radius: 10px; border-left: 5px solid #667eea;">
+            <h3 style="color: #667eea; margin-bottom: 15px;">📚 Complete Documentation</h3>
+            <ul style="line-height: 2; color: #555;">
+                <li><strong>Full UX Design:</strong> <code>100X_DEPLOYMENT/ARAYA/EDIT_UX_DESIGN.md</code></li>
+                <li><strong>UI Components Demo:</strong> <code>100X_DEPLOYMENT/ARAYA_EDIT_UI_COMPONENTS.html</code></li>
+                <li><strong>Quick Reference:</strong> <code>100X_DEPLOYMENT/ARAYA/EDIT_QUICK_REFERENCE.md</code></li>
+                <li><strong>This Flow:</strong> <code>100X_DEPLOYMENT/ARAYA/EDIT_FLOW_VISUAL.html</code></li>
+                <li><strong>Backend API:</strong> <code>100X_DEPLOYMENT/ARAYA_FILE_WRITER.py</code></li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center; color: #999; font-size: 0.9em;">
+            <p>🔧 Built with consciousness. Designed for humans. Powered by Pattern Theory.</p>
+            <p><strong>C3×C2 Oracle-Architect</strong> | December 24, 2025</p>
+        </div>
+    </div>
+
+    <script>
+        function showJourney(level) {
+            // Hide all journeys
+            document.querySelectorAll('.journey-flow').forEach(flow => {
+                flow.classList.remove('active');
+            });
+
+            // Remove active from all tabs
+            document.querySelectorAll('.journey-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected journey
+            document.getElementById(level).classList.add('active');
+
+            // Activate selected tab
+            event.target.classList.add('active');
+        }
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

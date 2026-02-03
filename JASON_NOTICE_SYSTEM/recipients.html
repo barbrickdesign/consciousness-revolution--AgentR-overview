@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipient Matrix - Jason Notice System</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        .header-bar {
+            background: rgba(0,0,0,0.3);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .header-bar a {
+            color: #c9a227;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .header-bar a:hover { text-decoration: underline; }
+
+        h1 { color: #c9a227; margin-bottom: 10px; }
+        h2 { color: #c9a227; margin: 30px 0 20px; border-bottom: 1px solid rgba(201,162,39,0.3); padding-bottom: 10px; }
+        .subtitle { color: #8b8b8b; margin-bottom: 30px; }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-value { font-size: 2em; color: #c9a227; font-weight: bold; }
+        .stat-label { color: #8b8b8b; font-size: 0.9em; }
+
+        .tier {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .tier-header {
+            background: rgba(201, 162, 39, 0.2);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .tier-title { font-weight: bold; color: #c9a227; }
+        .tier-count { background: #c9a227; color: #1a1a2e; padding: 5px 15px; border-radius: 20px; font-size: 0.8em; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            text-align: left;
+            color: #c9a227;
+            font-size: 0.9em;
+        }
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        tr:hover { background: rgba(201, 162, 39, 0.05); }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+        .badge-pending { background: #666; color: white; }
+        .badge-ready { background: #27ae60; color: white; }
+        .badge-sent { background: #3498db; color: white; }
+
+        .address-cell {
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        .phone-cell {
+            font-family: monospace;
+            font-size: 0.85em;
+            color: #b0b0b0;
+        }
+
+        .cost-summary {
+            background: rgba(39, 174, 96, 0.1);
+            border: 1px solid #27ae60;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        .cost-summary h3 { color: #27ae60; margin-bottom: 15px; }
+        .cost-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .cost-item {
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .cost-item strong { color: #27ae60; }
+
+        .print-btn {
+            background: #c9a227;
+            color: #1a1a2e;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .print-btn:hover { background: #e0b82a; }
+
+        @media print {
+            .header-bar, .print-btn { display: none; }
+            body { background: white; color: black; }
+            .tier, .stat, .cost-summary { border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-bar">
+            <div>
+                <a href="index.html">Dashboard</a>
+                <a href="master-notice.html">Notice</a>
+                <a href="tracker.html">Tracker</a>
+                <a href="resources.html">Resources</a>
+            </div>
+            <button class="print-btn" onclick="window.print()">Print List</button>
+        </div>
+
+        <h1>Recipient Matrix</h1>
+        <p class="subtitle">Phase 1: Seed Notices to Dioceses & Churches | Target: December 27, 2025</p>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">13</div>
+                <div class="stat-label">Total Recipients</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Tiers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">~$170</div>
+                <div class="stat-label">Est. Mailing Cost</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">30</div>
+                <div class="stat-label">Day Cure Period</div>
+            </div>
+        </div>
+
+        <h2>TIER 1: The Vatican / Holy See</h2>
+        <div class="tier">
+            <div class="tier-header">
+                <span class="tier-title">Primary Ecclesiastical Authority</span>
+                <span class="tier-count">3 Recipients</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Target</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>His Holiness Pope Francis</strong></td>
+                        <td class="address-cell">Apostolic Palace<br>00120 Vatican City<br><em>(Do NOT add "Italy")</em></td>
+                        <td class="phone-cell">-</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vatican Secretariat of State</strong></td>
+                        <td class="address-cell">Palazzo Apostolico Vaticano<br>00120 Vatican City</td>
+                        <td class="phone-cell">+39 06 698 83114</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Apostolic Nunciature (US)</strong></td>
+                        <td class="address-cell">3339 Massachusetts Ave NW<br>Washington, DC 20008</td>
+                        <td class="phone-cell">(202) 333-7121</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>TIER 2: US Conference of Catholic Bishops</h2>
+        <div class="tier">
+            <div class="tier-header">
+                <span class="tier-title">National Ecclesiastical Body</span>
+                <span class="tier-count">1 Recipient</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Target</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>USCCB Headquarters</strong></td>
+                        <td class="address-cell">3211 4th St NE<br>Washington, DC 20017</td>
+                        <td class="phone-cell">(202) 541-3000</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>TIER 3: Major US Archdioceses</h2>
+        <div class="tier">
+            <div class="tier-header">
+                <span class="tier-title">Largest Metropolitan Sees</span>
+                <span class="tier-count">6 Recipients</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Archdiocese</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Los Angeles</strong><br><em>(Largest in US)</em></td>
+                        <td class="address-cell">3424 Wilshire Blvd<br>Los Angeles, CA 90010</td>
+                        <td class="phone-cell">(213) 637-7000</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>New York</strong></td>
+                        <td class="address-cell">488 Madison Avenue<br>New York, NY 10022</td>
+                        <td class="phone-cell">(212) 371-1000</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chicago</strong></td>
+                        <td class="address-cell">835 North Rush Street<br>Chicago, IL 60611</td>
+                        <td class="phone-cell">(312) 534-8200</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Philadelphia</strong></td>
+                        <td class="address-cell">222 North 17th Street<br>Philadelphia, PA 19103</td>
+                        <td class="phone-cell">(215) 587-3500</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Boston</strong></td>
+                        <td class="address-cell">66 Brooks Drive<br>Braintree, MA 02184</td>
+                        <td class="phone-cell">(617) 254-0100</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>San Francisco</strong></td>
+                        <td class="address-cell">1 Peter Yorke Way<br>San Francisco, CA 94109</td>
+                        <td class="phone-cell">(415) 614-5500</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>TIER 4: Pacific Northwest (Tsimshian Territory)</h2>
+        <div class="tier">
+            <div class="tier-header">
+                <span class="tier-title">Regional Relevance to Nation</span>
+                <span class="tier-count">3 Recipients</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Archdiocese/Diocese</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Seattle</strong></td>
+                        <td class="address-cell">710 9th Avenue<br>Seattle, WA 98104</td>
+                        <td class="phone-cell">(206) 382-4560</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Anchorage-Juneau</strong><br><em>(Alaska Territory)</em></td>
+                        <td class="address-cell">225 Cordova St, Building A<br>Anchorage, AK 99501</td>
+                        <td class="phone-cell">(907) 297-7700</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Portland (Oregon)</strong></td>
+                        <td class="address-cell">2838 E Burnside Street<br>Portland, OR 97214</td>
+                        <td class="phone-cell">(503) 234-5334</td>
+                        <td><span class="badge badge-ready">READY</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cost-summary">
+            <h3>Estimated Mailing Costs (Phase 1)</h3>
+            <div class="cost-grid">
+                <div class="cost-item">
+                    <strong>Tier 1 (Vatican)</strong><br>
+                    3 x International Registered<br>
+                    ~$100
+                </div>
+                <div class="cost-item">
+                    <strong>Tier 2 (USCCB)</strong><br>
+                    1 x Certified Mail<br>
+                    ~$7
+                </div>
+                <div class="cost-item">
+                    <strong>Tier 3 (Major)</strong><br>
+                    6 x Certified Mail<br>
+                    ~$42
+                </div>
+                <div class="cost-item">
+                    <strong>Tier 4 (PNW)</strong><br>
+                    3 x Certified Mail<br>
+                    ~$21
+                </div>
+            </div>
+            <p style="margin-top: 20px; color: #8b8b8b;">
+                <strong>TOTAL PHASE 1:</strong> 13 recipients | ~$170 estimated
+            </p>
+        </div>
+    </div>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

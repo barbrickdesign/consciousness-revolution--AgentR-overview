@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Consciousness Revolution - Team Onboarding</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        .step {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        .step.completed {
+            border-color: #00ff88;
+            background: rgba(0,255,136,0.05);
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #000;
+        }
+        .step.completed .step-number {
+            background: #00ff88;
+        }
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .step-time {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .step-content {
+            margin-left: 64px;
+        }
+        .step-content ol {
+            padding-left: 20px;
+        }
+        .step-content li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 8px 8px 8px 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,255,136,0.3);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .checkbox-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .checkbox-wrap input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            accent-color: #00ff88;
+        }
+        .progress-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            margin: 20px 0 40px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+        .progress-text {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+        .warning {
+            background: rgba(255,200,0,0.1);
+            border: 1px solid rgba(255,200,0,0.3);
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        .warning-title {
+            color: #ffc800;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .sync-code-input {
+            width: 100%;
+            padding: 16px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-top: 12px;
+        }
+        .success-banner {
+            display: none;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #000;
+            padding: 32px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .success-banner.show {
+            display: block;
+        }
+        .success-banner h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Consciousness Revolution</h1>
+        <p class="subtitle">Team Onboarding - Get access in 15 minutes</p>
+
+        <div class="progress-text">Progress: <span id="progressPercent">0</span>%</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+
+        <!-- Step 1: Brave Browser -->
+        <div class="step" id="step1">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div>
+                    <div class="step-title">Install Brave Browser</div>
+                    <div class="step-time">3 minutes</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p>Brave is our team's browser with synced bookmarks and passwords.</p>
+                <ol>
+                    <li>Download and install Brave</li>
+                    <li>Set as default browser (recommended)</li>
+                </ol>
+                <a href="https://brave.com/download/" target="_blank" class="btn">Download Brave</a>
+                <label class="checkbox-wrap">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span>I have Brave installed</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Step 2: Brave Sync -->
+        <div class="step" id="step2">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div>
+                    <div class="step-title">Join Brave Sync Chain</div>
+                    <div class="step-time">2 minutes</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p>This gives you all team bookmarks instantly.</p>
+                <ol>
+                    <li>Open Brave Settings → Sync</li>
+                    <li>Click "I have a Sync Code"</li>
+                    <li>Enter the 25-word code from your admin</li>
+                    <li>Wait for bookmarks to appear</li>
+                </ol>
+                <a href="brave://settings/braveSync/setup" class="btn btn-secondary">Open Sync Settings</a>
+                <div class="warning">
+                    <div class="warning-title">Need the Sync Code?</div>
+                    <p>Contact your admin for the 25-word sync code. This is shared privately, not stored here.</p>
+                </div>
+                <label class="checkbox-wrap">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span>Brave is synced - I see team bookmarks</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Step 3: Bitwarden Account -->
+        <div class="step" id="step3">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div>
+                    <div class="step-title">Create Bitwarden Account</div>
+                    <div class="step-time">3 minutes</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p>Bitwarden stores all team passwords securely.</p>
+                <ol>
+                    <li>Create a free account</li>
+                    <li>Use a STRONG master password</li>
+                    <li>Write it down somewhere safe!</li>
+                    <li>Verify your email</li>
+                </ol>
+                <a href="https://vault.bitwarden.com/#/register" target="_blank" class="btn">Create Bitwarden Account</a>
+                <label class="checkbox-wrap">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span>Bitwarden account created and email verified</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Step 4: Bitwarden Extension -->
+        <div class="step" id="step4">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <div>
+                    <div class="step-title">Install Bitwarden Extension</div>
+                    <div class="step-time">2 minutes</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p>The browser extension auto-fills passwords.</p>
+                <ol>
+                    <li>Add Bitwarden to Brave</li>
+                    <li>Click puzzle piece icon in toolbar</li>
+                    <li>Pin Bitwarden to toolbar</li>
+                    <li>Log in with your account</li>
+                </ol>
+                <a href="https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb" target="_blank" class="btn">Add to Brave</a>
+                <label class="checkbox-wrap">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span>Bitwarden extension installed and logged in</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Step 5: Join Organization -->
+        <div class="step" id="step5">
+            <div class="step-header">
+                <div class="step-number">5</div>
+                <div>
+                    <div class="step-title">Accept Organization Invite</div>
+                    <div class="step-time">2 minutes</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p>Your admin will send you an invite to the team vault.</p>
+                <ol>
+                    <li>Check your email for Bitwarden invite</li>
+                    <li>Click "Join Organization"</li>
+                    <li>Refresh Bitwarden extension</li>
+                    <li>You should see shared Collections!</li>
+                </ol>
+                <div class="warning">
+                    <div class="warning-title">No invite yet?</div>
+                    <p>Tell your admin your email address so they can invite you.</p>
+                </div>
+                <label class="checkbox-wrap">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span>I'm in the organization and see shared passwords</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Step 6: Test -->
+        <div class="step" id="step6">
+            <div class="step-header">
+                <div class="step-number">6</div>
+                <div>
+                    <div class="step-title">Test It Works!</div>
+                    <div class="step-time">1 minute</div>
+                </div>
+            </div>
+            <div class="step-content">
+                <p>Let's make sure everything is connected.</p>
+                <ol>
+                    <li>Go to GitHub login page</li>
+                    <li>Click in the username field</li>
+                    <li>Bitwarden should offer to autofill</li>
+                    <li>Select the team login - you're in!</li>
+                </ol>
+                <a href="https://github.com/login" target="_blank" class="btn">Test: GitHub Login</a>
+                <label class="checkbox-wrap">
+                    <input type="checkbox" onchange="updateProgress()">
+                    <span>Password autofill works - I'm fully connected!</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="success-banner" id="successBanner">
+            <h2>You're In!</h2>
+            <p>Welcome to Consciousness Revolution. You now have access to all team tools and applications.</p>
+            <p style="margin-top: 16px; opacity: 0.8;">Questions? Contact your admin or check the team Discord.</p>
+        </div>
+    </div>
+
+    <script>
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const total = checkboxes.length;
+            const percent = Math.round((checked / total) * 100);
+
+            document.getElementById('progressPercent').textContent = percent;
+            document.getElementById('progressFill').style.width = percent + '%';
+
+            // Update step styling
+            checkboxes.forEach((cb, index) => {
+                const step = document.getElementById('step' + (index + 1));
+                if (cb.checked) {
+                    step.classList.add('completed');
+                } else {
+                    step.classList.remove('completed');
+                }
+            });
+
+            // Show success banner
+            if (percent === 100) {
+                document.getElementById('successBanner').classList.add('show');
+            } else {
+                document.getElementById('successBanner').classList.remove('show');
+            }
+
+            // Save progress to localStorage
+            const progress = Array.from(checkboxes).map(cb => cb.checked);
+            localStorage.setItem('onboarding_progress', JSON.stringify(progress));
+        }
+
+        // Load saved progress
+        window.onload = function() {
+            const saved = localStorage.getItem('onboarding_progress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                progress.forEach((checked, index) => {
+                    if (checkboxes[index]) {
+                        checkboxes[index].checked = checked;
+                    }
+                });
+                updateProgress();
+            }
+        };
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

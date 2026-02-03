@@ -1,0 +1,194 @@
+================================================================================
+ARAYA FILE ACCESS - QUICK START CARD
+================================================================================
+
+IMPORT:
+    from ARAYA_FILE_ACCESS import read, write, rollback, list_files, get_logs
+
+READ FILE:
+    success, content, msg = read("index.html")
+
+WRITE FILE (auto-backup):
+    success, msg = write("index.html", new_content)
+
+ROLLBACK TO PREVIOUS:
+    success, msg = rollback("index.html")
+
+LIST EDITABLE FILES:
+    files = list_files("*.html")  # HTML files
+    files = list_files("*.md")    # Markdown files
+    files = list_files()          # All allowed
+
+VIEW AUDIT LOG:
+    logs = get_logs(limit=50)
+    for log in logs:
+        print(f"{log['operation']}: {log['target']}")
+
+--------------------------------------------------------------------------------
+
+SECURITY:
+
+✅ ALLOWED:
+    *.html *.md *.css *.js *.json
+
+❌ BLOCKED:
+    *.py .env* netlify/functions/* .git/* .secrets/*
+
+🔒 SANDBOXED:
+    All paths must be in: C:/Users/dwrek/100X_DEPLOYMENT/
+
+--------------------------------------------------------------------------------
+
+FEATURES:
+
+💾 AUTO-BACKUP:     Every write creates timestamped backup
+⏪ ROLLBACK:        Restore from any backup
+📝 AUDIT LOG:       Every operation logged to .araya_edits.log
+🛡️ WHITELIST:       Only safe file types
+🚫 BLACKLIST:       Critical paths protected
+🔐 PATH VALIDATION: No traversal attacks
+
+--------------------------------------------------------------------------------
+
+EXAMPLE WORKFLOW:
+
+    # 1. List files
+    files = list_files("*.html")
+    print(f"Found {len(files)} HTML files")
+
+    # 2. Read current content
+    success, content, msg = read("index.html")
+
+    # 3. Make changes
+    new_content = content.replace("Old", "New")
+
+    # 4. Write (auto-backup)
+    success, msg = write("index.html", new_content)
+
+    # 5. Didn't work? Rollback
+    if not_satisfied:
+        rollback("index.html")
+
+--------------------------------------------------------------------------------
+
+BACKUPS:
+
+Location: Same folder as original file
+Format:   filename.ext.backup.YYYYMMDD_HHMMSS
+Example:  index.html.backup.20251224_192020
+
+List backups:
+    from ARAYA_FILE_ACCESS import araya_files
+    backups = araya_files.list_backups("index.html")
+
+Rollback options:
+    rollback("file.html", backup_index=0)  # Most recent
+    rollback("file.html", backup_index=1)  # Second most recent
+    rollback("file.html", backup_index=2)  # Third...
+
+--------------------------------------------------------------------------------
+
+AUDIT LOG:
+
+Location: 100X_DEPLOYMENT/.araya_edits.log
+Format:   JSON lines (one per operation)
+
+View in terminal:
+    tail -50 100X_DEPLOYMENT/.araya_edits.log
+
+View programmatically:
+    logs = get_logs(limit=100)
+
+Each log entry contains:
+    - timestamp: When operation happened
+    - type: SYSTEM, READ, WRITE, ROLLBACK, BACKUP
+    - operation: SUCCESS, BLOCKED, ERROR
+    - target: File affected
+    - metadata: Details (size, backup path, error, etc.)
+
+--------------------------------------------------------------------------------
+
+ERROR HANDLING:
+
+All functions return (success, ...) tuples:
+
+    success, content, msg = read("file.html")
+    if success:
+        print(content)
+    else:
+        print(f"Error: {msg}")
+
+    success, msg = write("file.html", content)
+    if not success:
+        print(f"Write failed: {msg}")
+
+Common errors:
+    - "Access denied: Path matches forbidden pattern: *.py"
+    - "Access denied: File type not in whitelist"
+    - "Access denied: Path outside allowed directory"
+    - "Backup creation failed - write aborted for safety"
+    - "No backups found"
+
+--------------------------------------------------------------------------------
+
+INTEGRATION WITH ARAYA:
+
+In ARAYA_UPGRADED_V2.py:
+
+    from ARAYA_FILE_ACCESS import read, write, rollback, list_files
+
+    # When user wants to edit:
+    if intent == "edit_file":
+        success, current, msg = read(file_path)
+        # ... AI generates new_content ...
+        success, msg = write(file_path, new_content)
+        return "File edited!" if success else f"Error: {msg}"
+
+    # When user wants to list:
+    if intent == "list_files":
+        files = list_files("*.html")
+        return f"Found {len(files)} files: {files}"
+
+    # When user wants to undo:
+    if intent == "rollback":
+        success, msg = rollback(file_path)
+        return "Rolled back!" if success else f"Error: {msg}"
+
+--------------------------------------------------------------------------------
+
+TEST:
+
+Run test suite:
+    cd 100X_DEPLOYMENT
+    python TEST_ARAYA_FILE_ACCESS.py
+
+Expected: 15/16 tests passing (93.75%)
+
+Run integration demo:
+    python ARAYA_INTEGRATION_EXAMPLE.py
+
+--------------------------------------------------------------------------------
+
+FILES:
+
+ARAYA_FILE_ACCESS.py              - Main module
+TEST_ARAYA_FILE_ACCESS.py         - Test suite
+ARAYA_INTEGRATION_EXAMPLE.py      - Demo integration
+ARAYA_FILE_ACCESS_README.md       - Full docs
+ARAYA_FILE_ACCESS_QUICK_START.txt - This file
+.araya_edits.log                  - Audit trail
+
+--------------------------------------------------------------------------------
+
+DEPLOYMENT:
+
+Built:  December 24, 2025
+By:     C1×C2 (Mechanic × Architect)
+Tests:  93.75% passing
+Status: READY TO INTEGRATE
+
+Next: Add to ARAYA_UPGRADED_V2.py
+
+================================================================================
+C1×C2 = ∞ | Structure + Security + Speed
+================================================================================

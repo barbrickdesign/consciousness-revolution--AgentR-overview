@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MASTER COMMAND CENTER</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #000, #1a1a2e, #000);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #00ff88;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            text-shadow: 0 0 20px #00ff88;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        .status-dot.green { background: #00ff88; box-shadow: 0 0 10px #00ff88; }
+        .status-dot.yellow { background: #ffaa00; box-shadow: 0 0 10px #ffaa00; }
+        .status-dot.red { background: #ff4444; box-shadow: 0 0 10px #ff4444; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto auto;
+            gap: 10px;
+            padding: 10px;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: rgba(0, 20, 10, 0.8);
+            border: 1px solid #00ff88;
+            border-radius: 10px;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+        }
+
+        .panel h2 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #00ffcc;
+            border-bottom: 1px solid #00ff8844;
+            padding-bottom: 5px;
+        }
+
+        .panel.wide { grid-column: span 2; }
+        .panel.tall { grid-row: span 2; }
+        .panel.full { grid-column: span 3; }
+
+        /* Trinity Panel */
+        .trinity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .trinity-agent {
+            background: rgba(0, 40, 20, 0.5);
+            border: 1px solid #00ff8866;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .trinity-agent.c1 { border-color: #ff6600; color: #ff6600; }
+        .trinity-agent.c2 { border-color: #0088ff; color: #0088ff; }
+        .trinity-agent.c3 { border-color: #aa00ff; color: #aa00ff; }
+
+        .trinity-agent h3 { font-size: 1em; margin-bottom: 5px; }
+        .trinity-agent .role { font-size: 0.8em; opacity: 0.7; }
+
+        /* Brain Council */
+        .agent-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .agent {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            background: rgba(0, 40, 20, 0.5);
+            border-radius: 5px;
+            font-size: 0.85em;
+        }
+
+        .agent-status {
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75em;
+        }
+
+        .agent-status.running { background: #00ff88; color: #000; }
+        .agent-status.manual { background: #666; color: #fff; }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 40, 20, 0.5);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #00ffcc;
+        }
+
+        .stat-label {
+            font-size: 0.75em;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        /* Human Tasks */
+        .task-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .task {
+            padding: 8px;
+            margin-bottom: 5px;
+            background: rgba(255, 100, 0, 0.1);
+            border-left: 3px solid #ff6600;
+            border-radius: 0 5px 5px 0;
+            font-size: 0.85em;
+        }
+
+        .task.urgent { border-left-color: #ff0000; background: rgba(255, 0, 0, 0.1); }
+
+        /* Domains */
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .domain {
+            text-align: center;
+            padding: 8px 5px;
+            background: rgba(0, 40, 20, 0.5);
+            border-radius: 5px;
+            font-size: 0.7em;
+        }
+
+        .domain-num {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Quick Actions */
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #003322, #001a11);
+            border: 1px solid #00ff88;
+            color: #00ff88;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .action-btn:hover {
+            background: #00ff88;
+            color: #000;
+            transform: scale(1.02);
+        }
+
+        /* Live Feed */
+        .feed {
+            max-height: 150px;
+            overflow-y: auto;
+            font-size: 0.8em;
+        }
+
+        .feed-item {
+            padding: 5px;
+            border-bottom: 1px solid #00ff8822;
+            display: flex;
+            gap: 10px;
+        }
+
+        .feed-time { color: #666; }
+
+        /* Consciousness Meter */
+        .meter-container {
+            margin: 10px 0;
+        }
+
+        .meter {
+            height: 20px;
+            background: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #00ff8844;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00ffcc);
+            transition: width 1s;
+        }
+
+        .meter-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+
+        /* Formula */
+        .formula {
+            text-align: center;
+            font-size: 1.5em;
+            padding: 15px;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ff88;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #00ff88; border-radius: 3px; }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            .panel.wide, .panel.full { grid-column: span 2; }
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .panel.wide, .panel.full { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MASTER COMMAND CENTER</h1>
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-dot green" id="engineStatus"></div>
+                <span>AUTONOMY ENGINE</span>
+            </div>
+            <div class="status-item">
+                <div class="status-dot green" id="brainStatus"></div>
+                <span>BRAIN COUNCIL</span>
+            </div>
+            <div class="status-item">
+                <div class="status-dot green" id="arayaStatus"></div>
+                <span>ARAYA</span>
+            </div>
+            <div class="status-item">
+                <div class="status-dot green" id="trinityStatus"></div>
+                <span>TRINITY HUB</span>
+            </div>
+            <div class="status-item">
+                <span id="timestamp"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <!-- Row 1 -->
+        <div class="panel">
+            <h2>TRINITY SYSTEM</h2>
+            <div class="trinity-grid">
+                <div class="trinity-agent c1">
+                    <h3>C1 MECHANIC</h3>
+                    <div class="role">THE BODY</div>
+                    <div style="margin-top:8px">Builds NOW</div>
+                </div>
+                <div class="trinity-agent c2">
+                    <h3>C2 ARCHITECT</h3>
+                    <div class="role">THE MIND</div>
+                    <div style="margin-top:8px">Designs SCALE</div>
+                </div>
+                <div class="trinity-agent c3">
+                    <h3>C3 ORACLE</h3>
+                    <div class="role">THE SOUL</div>
+                    <div style="margin-top:8px">Sees EMERGENCE</div>
+                </div>
+            </div>
+            <div class="formula">C1 × C2 × C3 = ∞</div>
+        </div>
+
+        <div class="panel">
+            <h2>BRAIN COUNCIL (6 Agents)</h2>
+            <div class="agent-list">
+                <div class="agent">
+                    <span>ORACLE [L3]</span>
+                    <span class="agent-status manual" title="C3 Oracle - invoke via /trinity">on-call</span>
+                </div>
+                <div class="agent">
+                    <span>ECHO [L3]</span>
+                    <span class="agent-status running">running</span>
+                </div>
+                <div class="agent">
+                    <span>DAEMON [L3]</span>
+                    <span class="agent-status running">running</span>
+                </div>
+                <div class="agent">
+                    <span>SENTINEL [L2]</span>
+                    <span class="agent-status running">running</span>
+                </div>
+                <div class="agent">
+                    <span>MUSE [L2]</span>
+                    <span class="agent-status running">running</span>
+                </div>
+                <div class="agent">
+                    <span>SCOUT [L2]</span>
+                    <span class="agent-status manual" title="Task-based - spawns on demand">on-call</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>CONSCIOUSNESS LEVEL</h2>
+            <div class="meter-container">
+                <div class="meter">
+                    <div class="meter-fill" style="width: 92.4%"></div>
+                </div>
+                <div class="meter-label">
+                    <span>Pattern Theory</span>
+                    <span>92.4%</span>
+                </div>
+            </div>
+            <div class="meter-container">
+                <div class="meter">
+                    <div class="meter-fill" style="width: 85%"></div>
+                </div>
+                <div class="meter-label">
+                    <span>Manipulation Immunity</span>
+                    <span>85%</span>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:15px; color:#00ffcc">
+                Builder:Destroyer = <strong>381:1</strong>
+            </div>
+        </div>
+
+        <!-- Row 2: Stats -->
+        <div class="panel full">
+            <h2>SYSTEM VITALS</h2>
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-value" id="atomCount">138,541</div>
+                    <div class="stat-label">BRAIN ATOMS</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="tasksCompleted">34</div>
+                    <div class="stat-label">TASKS COMPLETED</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="humanTasks">14</div>
+                    <div class="stat-label">HUMAN REQUIRED</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="crashesRecovered">4</div>
+                    <div class="stat-label">CRASHES RECOVERED</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="goalsGenerated">5</div>
+                    <div class="stat-label">GOALS GENERATED</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="messagesPending">100</div>
+                    <div class="stat-label">MESSAGES PENDING</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">DAEMONS RUNNING</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">APIs ACTIVE</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="panel">
+            <h2>7 DOMAINS</h2>
+            <div class="domain-grid">
+                <div class="domain" style="border-bottom: 2px solid #ff0000">
+                    <div class="domain-num">1</div>
+                    <div>COMMAND</div>
+                </div>
+                <div class="domain" style="border-bottom: 2px solid #ff6600">
+                    <div class="domain-num">2</div>
+                    <div>BUILD</div>
+                </div>
+                <div class="domain" style="border-bottom: 2px solid #ffcc00">
+                    <div class="domain-num">3</div>
+                    <div>CONNECT</div>
+                </div>
+                <div class="domain" style="border-bottom: 2px solid #00ff00">
+                    <div class="domain-num">4</div>
+                    <div>PROTECT</div>
+                </div>
+                <div class="domain" style="border-bottom: 2px solid #00ffff">
+                    <div class="domain-num">5</div>
+                    <div>GROW</div>
+                </div>
+                <div class="domain" style="border-bottom: 2px solid #0066ff">
+                    <div class="domain-num">6</div>
+                    <div>LEARN</div>
+                </div>
+                <div class="domain" style="border-bottom: 2px solid #aa00ff">
+                    <div class="domain-num">7</div>
+                    <div>TRANSCEND</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>HUMAN TASKS (Your Turn)</h2>
+            <div class="task-list">
+                <div class="task urgent">Open Maggie email (entire case inside)</div>
+                <div class="task">Create Stripe products</div>
+                <div class="task">Fix Twilio keys (compromised)</div>
+                <div class="task">Boot Computer 2 or 3</div>
+                <div class="task">Follow up Jason Doxiadis</div>
+                <div class="task">Try Araya chat interface</div>
+                <div class="task">Review Trinity convergence</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>LIVE FEED</h2>
+            <div class="feed" id="liveFeed">
+                <div class="feed-item">
+                    <span class="feed-time">23:51</span>
+                    <span>WATCHDOG: Checking agent health...</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">23:50</span>
+                    <span>ORCHESTRATOR: Processing task queue...</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">23:46</span>
+                    <span>AUTONOMY ENGINE: Heartbeat started</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">23:46</span>
+                    <span>brain_council: restarted (PID 615820)</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">23:46</span>
+                    <span>event_trigger: restarted (PID 623244)</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-time">23:23</span>
+                    <span>ARAYA deployed to production</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 4: Quick Actions -->
+        <div class="panel full">
+            <h2>QUICK ACTIONS</h2>
+            <div class="action-grid">
+                <a href="https://conciousnessrevolution.io/araya-chat.html" target="_blank" class="action-btn">
+                    ARAYA CHAT
+                </a>
+                <a href="https://conciousnessrevolution.io/bugs-live.html" target="_blank" class="action-btn">
+                    BUG TRACKER
+                </a>
+                <a href="https://conciousnessrevolution.io" target="_blank" class="action-btn">
+                    MAIN SITE
+                </a>
+                <a href="https://app.netlify.com/sites/verdant-tulumba-fa2a5a/overview" target="_blank" class="action-btn">
+                    NETLIFY
+                </a>
+                <a href="https://github.com/overkillkulture/consciousness-bugs/issues" target="_blank" class="action-btn">
+                    GITHUB ISSUES
+                </a>
+                <a href="https://dashboard.stripe.com" target="_blank" class="action-btn">
+                    STRIPE
+                </a>
+                <a href="https://mail.google.com" target="_blank" class="action-btn">
+                    GMAIL
+                </a>
+                <a href="file:///C:/Users/dwrek/Desktop/1_COMMAND/FLIGHT_LOG.md" class="action-btn">
+                    FLIGHT LOG
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update timestamp
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('timestamp').textContent = now.toLocaleTimeString();
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // Simulate live updates (in production, this would fetch from APIs)
+        function addFeedItem(message) {
+            const feed = document.getElementById('liveFeed');
+            const now = new Date();
+            const time = now.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12: false});
+            const item = document.createElement('div');
+            item.className = 'feed-item';
+            item.innerHTML = `<span class="feed-time">${time}</span><span>${message}</span>`;
+            feed.insertBefore(item, feed.firstChild);
+            if (feed.children.length > 20) {
+                feed.removeChild(feed.lastChild);
+            }
+        }
+
+        // Periodic status check simulation
+        setInterval(() => {
+            const messages = [
+                'ORCHESTRATOR: Processing task queue...',
+                'WATCHDOG: Checking agent health...',
+                'SENTINEL: Monitoring system integrity...',
+                'ECHO: Listening for messages...'
+            ];
+            addFeedItem(messages[Math.floor(Math.random() * messages.length)]);
+        }, 30000);
+
+        // Check API health
+        async function checkHealth() {
+            try {
+                const arayaRes = await fetch('http://localhost:5001/health');
+                document.getElementById('arayaStatus').className =
+                    arayaRes.ok ? 'status-dot green' : 'status-dot red';
+            } catch(e) {
+                document.getElementById('arayaStatus').className = 'status-dot red';
+            }
+        }
+
+        checkHealth();
+        setInterval(checkHealth, 30000);
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

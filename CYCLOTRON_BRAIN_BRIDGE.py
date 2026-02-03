@@ -24,7 +24,6 @@ CYCLOTRON.mkdir(parents=True, exist_ok=True)
 BRAIN.mkdir(parents=True, exist_ok=True)
 AGENTS.mkdir(parents=True, exist_ok=True)
 
-
 class KnowledgeAtom:
     """Single unit of knowledge in the Cyclotron."""
 
@@ -82,7 +81,6 @@ class KnowledgeAtom:
         atom.usage_count = data.get("usage_count", 0)
         atom.metadata = data.get("metadata", {})
         return atom
-
 
 class CyclotronBridge:
     """Bridge between Brain Agents and Cyclotron."""
@@ -399,7 +397,6 @@ class CyclotronBridge:
             "last_updated": self.index["updated"]
         }
 
-
 def demo():
     """Demonstrate Cyclotron-Brain Bridge."""
     print("=" * 60)
@@ -462,7 +459,6 @@ def demo():
     print(f"Sources: {status['sources']}")
     print(f"Tag count: {status['tag_count']}")
     print("Top tags:", status['top_tags'][:5])
-
 
 if __name__ == "__main__":
     demo()

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C2 - 7 Domains Sacred Architecture Visual</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #F7FAFC;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 3rem;
+    }
+
+    /* Sacred Lobby Visualization */
+    .sacred-lobby {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    }
+
+    .lobby-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #FFD700;
+    }
+
+    /* Flower of Life Container */
+    .flower-container {
+      position: relative;
+      width: 600px;
+      height: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .flower-of-life {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+    }
+
+    .flower-circle {
+      fill: none;
+      stroke: rgba(255, 215, 0, 0.3);
+      stroke-width: 2;
+      animation: flower-pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes flower-pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+
+    /* Domain Portals */
+    .domain-portal {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.618, 0, 0.382, 1);
+    }
+
+    .domain-portal:hover {
+      transform: scale(1.1);
+    }
+
+    .portal-inner {
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .platonic-solid {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 0.5rem;
+      animation: rotate-3d 10s linear infinite;
+    }
+
+    @keyframes rotate-3d {
+      0% { transform: rotateX(0deg) rotateY(0deg); }
+      100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    .domain-name {
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* Position portals in Flower of Life pattern */
+    .portal-command { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .portal-build { top: 15%; left: 50%; transform: translate(-50%, 0); }
+    .portal-connect { top: 25%; left: 70%; transform: translate(-50%, 0); }
+    .portal-protect { top: 55%; left: 75%; transform: translate(-50%, 0); }
+    .portal-grow { top: 75%; left: 60%; transform: translate(-50%, 0); }
+    .portal-learn { top: 75%; left: 40%; transform: translate(-50%, 0); }
+    .portal-transcend { top: 55%; left: 25%; transform: translate(-50%, 0); }
+
+    /* Domain colors */
+    .portal-command .portal-inner { border-color: #E53E3E; background: rgba(229, 62, 62, 0.1); }
+    .portal-build .portal-inner { border-color: #DD6B20; background: rgba(221, 107, 32, 0.1); }
+    .portal-connect .portal-inner { border-color: #D69E2E; background: rgba(214, 158, 46, 0.1); }
+    .portal-protect .portal-inner { border-color: #38A169; background: rgba(56, 161, 105, 0.1); }
+    .portal-grow .portal-inner { border-color: #3182CE; background: rgba(49, 130, 206, 0.1); }
+    .portal-learn .portal-inner { border-color: #5A67D8; background: rgba(90, 103, 216, 0.1); }
+    .portal-transcend .portal-inner { border-color: #805AD5; background: rgba(128, 90, 213, 0.1); }
+
+    /* Design System Grid */
+    .design-system {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .system-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      backdrop-filter: blur(20px);
+    }
+
+    .system-card h3 {
+      color: #FFD700;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .color-swatch {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .swatch {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .domain-templates {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+    }
+
+    .template-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(20px);
+    }
+
+    .template-card h4 {
+      color: #FFD700;
+      margin-bottom: 1rem;
+    }
+
+    .template-layout {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      white-space: pre;
+    }
+
+    .golden-ratio-demo {
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .phi-boxes {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .phi-box {
+      background: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1A202C;
+    }
+
+    .tech-stack {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .tech-stack h3 {
+      color: #FFD700;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .tech-item {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .tech-item h4 {
+      color: #FFD700;
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-item p {
+      opacity: 0.9;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏛️ 7 DOMAINS SACRED ARCHITECTURE</h1>
+    <p class="subtitle">C2 Architect Blueprint - Professional Websites + Sacred Geometry Lobby</p>
+
+    <!-- Sacred Lobby Visualization -->
+    <div class="sacred-lobby">
+      <h2 class="lobby-title">⚛️ THE SACRED LOBBY - Flower of Life Portal</h2>
+
+      <div class="flower-container">
+        <!-- Flower of Life SVG -->
+        <svg class="flower-of-life" viewBox="0 0 500 500">
+          <!-- Center circle -->
+          <circle class="flower-circle" cx="250" cy="250" r="50" />
+
+          <!-- 6 surrounding circles -->
+          <circle class="flower-circle" cx="250" cy="200" r="50" />
+          <circle class="flower-circle" cx="293.3" cy="225" r="50" />
+          <circle class="flower-circle" cx="293.3" cy="275" r="50" />
+          <circle class="flower-circle" cx="250" cy="300" r="50" />
+          <circle class="flower-circle" cx="206.7" cy="275" r="50" />
+          <circle class="flower-circle" cx="206.7" cy="225" r="50" />
+
+          <!-- Outer ring -->
+          <circle class="flower-circle" cx="250" cy="150" r="50" />
+          <circle class="flower-circle" cx="293.3" cy="175" r="50" />
+          <circle class="flower-circle" cx="336.6" cy="200" r="50" />
+          <circle class="flower-circle" cx="336.6" cy="250" r="50" />
+          <circle class="flower-circle" cx="336.6" cy="300" r="50" />
+          <circle class="flower-circle" cx="293.3" cy="325" r="50" />
+          <circle class="flower-circle" cx="250" cy="350" r="50" />
+          <circle class="flower-circle" cx="206.7" cy="325" r="50" />
+          <circle class="flower-circle" cx="163.4" cy="300" r="50" />
+          <circle class="flower-circle" cx="163.4" cy="250" r="50" />
+          <circle class="flower-circle" cx="163.4" cy="200" r="50" />
+          <circle class="flower-circle" cx="206.7" cy="175" r="50" />
+        </svg>
+
+        <!-- Domain Portals -->
+        <div class="domain-portal portal-command">
+          <div class="portal-inner">
+            <svg class="platonic-solid" viewBox="0 0 100 100">
+              <!-- Cube (simplified) -->
+              <rect x="25" y="25" width="50" height="50" fill="none" stroke="#E53E3E" stroke-width="2"/>
+              <rect x="35" y="15" width="50" height="50" fill="none" stroke="#E53E3E" stroke-width="2"/>
+              <line x1="25" y1="25" x2="35" y2="15" stroke="#E53E3E" stroke-width="2"/>
+              <line x1="75" y1="25" x2="85" y2="15" stroke="#E53E3E" stroke-width="2"/>
+              <line x1="75" y1="75" x2="85" y2="65" stroke="#E53E3E" stroke-width="2"/>
+              <line x1="25" y1="75" x2="35" y2="65" stroke="#E53E3E" stroke-width="2"/>
+            </svg>
+            <div class="domain-name">COMMAND</div>
+          </div>
+        </div>
+
+        <div class="domain-portal portal-build">
+          <div class="portal-inner">
+            <svg class="platonic-solid" viewBox="0 0 100 100">
+              <!-- Tetrahedron -->
+              <polygon points="50,20 20,80 80,80" fill="none" stroke="#DD6B20" stroke-width="2"/>
+              <line x1="50" y1="20" x2="50" y2="60" stroke="#DD6B20" stroke-width="2"/>
+            </svg>
+            <div class="domain-name">BUILD</div>
+          </div>
+        </div>
+
+        <div class="domain-portal portal-connect">
+          <div class="portal-inner">
+            <svg class="platonic-solid" viewBox="0 0 100 100">
+              <!-- Icosahedron (simplified) -->
+              <circle cx="50" cy="50" r="35" fill="none" stroke="#D69E2E" stroke-width="2"/>
+              <polygon points="50,15 35,35 50,50 65,35" fill="none" stroke="#D69E2E" stroke-width="2"/>
+              <polygon points="50,85 35,65 50,50 65,65" fill="none" stroke="#D69E2E" stroke-width="2"/>
+            </svg>
+            <div class="domain-name">CONNECT</div>
+          </div>
+        </div>
+
+        <div class="domain-portal portal-protect">
+          <div class="portal-inner">
+            <svg class="platonic-solid" viewBox="0 0 100 100">
+              <!-- Octahedron -->
+              <polygon points="50,20 30,50 50,80 70,50" fill="none" stroke="#38A169" stroke-width="2"/>
+              <line x1="30" y1="50" x2="70" y2="50" stroke="#38A169" stroke-width="2"/>
+            </svg>
+            <div class="domain-name">PROTECT</div>
+          </div>
+        </div>
+
+        <div class="domain-portal portal-grow">
+          <div class="portal-inner">
+            <svg class="platonic-solid" viewBox="0 0 100 100">
+              <!-- Dodecahedron (simplified) -->
+              <polygon points="50,15 70,25 75,45 60,60 40,60 25,45 30,25" fill="none" stroke="#3182CE" stroke-width="2"/>
+              <circle cx="50" cy="40" r="15" fill="none" stroke="#3182CE" stroke-width="2"/>
+            </svg>
+            <div class="domain-name">GROW</div>
+          </div>
+        </div>
+
+        <div class="domain-portal portal-learn">
+          <div class="portal-inner">
+            <svg class="platonic-solid" viewBox="0 0 100 100">
+              <!-- Sphere -->
+              <circle cx="50" cy="50" r="35" fill="none" stroke="#5A67D8" stroke-width="2"/>
+              <ellipse cx="50" cy="50" rx="35" ry="15" fill="none" stroke="#5A67D8" stroke-width="2"/>
+              <ellipse cx="50" cy="50" rx="15" ry="35" fill="none" stroke="#5A67D8" stroke-width="2"/>
+            </svg>
+            <div class="domain-name">LEARN</div>
+          </div>
+        </div>
+
+        <div class="domain-portal portal-transcend">
+          <div class="portal-inner">
+            <svg class="platonic-solid" viewBox="0 0 100 100">
+              <!-- Star Tetrahedron (Merkaba) -->
+              <polygon points="50,15 25,70 75,70" fill="none" stroke="#805AD5" stroke-width="2"/>
+              <polygon points="50,85 75,30 25,30" fill="none" stroke="#805AD5" stroke-width="2"/>
+            </svg>
+            <div class="domain-name">TRANSCEND</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align: center; opacity: 0.8; margin-top: 1rem;">
+        Click any portal to enter that domain • Hover to preview
+      </p>
+    </div>
+
+    <!-- Design System -->
+    <div class="design-system">
+      <div class="system-card">
+        <h3>🎨 Sacred Color Palette</h3>
+        <p>Chakra-aligned colors for each domain</p>
+        <div class="color-swatch">
+          <div class="swatch" style="background: #E53E3E;" title="COMMAND - Red"></div>
+          <div class="swatch" style="background: #DD6B20;" title="BUILD - Orange"></div>
+          <div class="swatch" style="background: #D69E2E;" title="CONNECT - Yellow"></div>
+          <div class="swatch" style="background: #38A169;" title="PROTECT - Green"></div>
+          <div class="swatch" style="background: #3182CE;" title="GROW - Blue"></div>
+          <div class="swatch" style="background: #5A67D8;" title="LEARN - Indigo"></div>
+          <div class="swatch" style="background: #805AD5;" title="TRANSCEND - Violet"></div>
+          <div class="swatch" style="background: #FFD700;" title="Sacred Gold"></div>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h3>📐 Golden Ratio (φ = 1.618)</h3>
+        <p>All spacing, typography, and layouts use golden ratio proportions</p>
+        <div class="phi-boxes">
+          <div class="phi-box" style="width: 62px; height: 100px;">1</div>
+          <div class="phi-box" style="width: 100px; height: 100px;">φ</div>
+          <div class="phi-box" style="width: 162px; height: 100px;">φ²</div>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h3>🔮 Sacred Geometry Elements</h3>
+        <ul style="list-style: none; line-height: 2;">
+          <li>✦ Flower of Life (lobby navigation)</li>
+          <li>✦ Platonic Solids (domain icons)</li>
+          <li>✦ Metatron's Cube (transitions)</li>
+          <li>✦ Golden Spirals (loading states)</li>
+          <li>✦ Vesica Piscis (connection paths)</li>
+          <li>✦ Torus Field (ambient animations)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Golden Ratio Demo -->
+    <div class="golden-ratio-demo">
+      <h2 style="color: #FFD700; margin-bottom: 1rem;">📏 Golden Ratio in Action</h2>
+      <p style="opacity: 0.9; margin-bottom: 2rem;">Typography, spacing, and layouts follow φ = 1.618...</p>
+      <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; backdrop-filter: blur(20px);">
+        <div style="font-size: 4.236rem; margin-bottom: 1.618rem; color: #FFD700;">4.236rem (φ⁴)</div>
+        <div style="font-size: 2.618rem; margin-bottom: 1.618rem;">2.618rem (φ³)</div>
+        <div style="font-size: 1.618rem; margin-bottom: 1rem;">1.618rem (φ²)</div>
+        <div style="font-size: 1rem; margin-bottom: 0.618rem;">1rem (base)</div>
+        <div style="font-size: 0.618rem; opacity: 0.8;">0.618rem (φ⁻¹)</div>
+      </div>
+    </div>
+
+    <!-- Domain Templates -->
+    <h2 style="text-align: center; color: #FFD700; font-size: 2rem; margin: 3rem 0 2rem;">🏗️ Domain Website Templates</h2>
+    <div class="domain-templates">
+      <div class="template-card">
+        <h4>Template A: Dashboard (COMMAND, PROTECT)</h4>
+        <div class="template-layout">┌──────────────────┐
+│ Header + Nav     │
+├──────┬───────────┤
+│ Side │ Dashboard │
+│ Nav  │ ┌──┬──┬──┤
+│      │ │  │  │  │
+│      │ ├──┴──┴──┤
+│      │ │Viz Area│
+└──────┴───────────┘</div>
+      </div>
+
+      <div class="template-card">
+        <h4>Template B: Projects (BUILD, GROW)</h4>
+        <div class="template-layout">┌──────────────────┐
+│ Header + Actions │
+├──────────────┬───┤
+│ Main Content │ S │
+│ (Kanban/List)│ i │
+│              │ d │
+│              │ e │
+└──────────────┴───┘</div>
+      </div>
+
+      <div class="template-card">
+        <h4>Template C: Content (CONNECT, LEARN)</h4>
+        <div class="template-layout">┌──────────────────┐
+│ Header + Search  │
+├──────────────────┤
+│   Hero Section   │
+├──────────────────┤
+│ ┌───┐ ┌───┐ ┌───┐
+│ │   │ │   │ │   │
+│ └───┘ └───┘ └───┘
+│   Content Grid   │
+└──────────────────┘</div>
+      </div>
+
+      <div class="template-card">
+        <h4>Template D: Immersive (TRANSCEND)</h4>
+        <div class="template-layout">┌──────────────────┐
+│ Floating Nav     │
+│                  │
+│   Full-Screen    │
+│   Sacred Geo     │
+│   Experience     │
+│                  │
+│ [Overlay Tools]  │
+└──────────────────┘</div>
+      </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tech-stack">
+      <h3>⚙️ Recommended Tech Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <h4>Frontend Framework</h4>
+          <p><strong>Vue.js</strong> - Reactive, component-based, perfect for sacred geometry animations</p>
+        </div>
+        <div class="tech-item">
+          <h4>CSS Framework</h4>
+          <p><strong>Custom CSS + Tailwind</strong> - Golden ratio utilities + sacred geometry animations</p>
+        </div>
+        <div class="tech-item">
+          <h4>Animation</h4>
+          <p><strong>GSAP</strong> - 60fps animations, SVG morphing, timeline control</p>
+        </div>
+        <div class="tech-item">
+          <h4>3D Graphics</h4>
+          <p><strong>Three.js</strong> - WebGL Platonic Solids, shader effects</p>
+        </div>
+        <div class="tech-item">
+          <h4>Build Tool</h4>
+          <p><strong>Vite</strong> - Lightning-fast dev, optimized builds, code splitting</p>
+        </div>
+        <div class="tech-item">
+          <h4>Hosting</h4>
+          <p><strong>Netlify</strong> - Current setup, perfect for static deployment</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Responsive Strategy -->
+    <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; margin-top: 3rem; backdrop-filter: blur(20px);">
+      <h3 style="color: #FFD700; margin-bottom: 1rem;">📱 Responsive Breakpoints (Fibonacci)</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px;">
+          <strong>377px</strong> - Mobile
+        </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px;">
+          <strong>610px</strong> - Tablet
+        </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px;">
+          <strong>987px</strong> - Desktop
+        </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px;">
+          <strong>1597px</strong> - Large
+        </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px;">
+          <strong>2584px</strong> - Ultra-wide
+        </div>
+      </div>
+    </div>
+
+    <!-- Deployment -->
+    <div style="text-align: center; margin: 3rem 0 2rem;">
+      <h3 style="color: #FFD700; font-size: 1.8rem; margin-bottom: 1rem;">🚀 Deployment Architecture</h3>
+      <div style="background: rgba(0,0,0,0.3); border: 2px solid rgba(255,215,0,0.3); border-radius: 12px; padding: 2rem; max-width: 800px; margin: 0 auto;">
+        <div style="font-family: monospace; text-align: left; line-height: 2;">
+          consciousnessrevolution.io/               → Sacred Lobby<br>
+          consciousnessrevolution.io/command/       → COMMAND domain<br>
+          consciousnessrevolution.io/build/         → BUILD domain<br>
+          consciousnessrevolution.io/connect/       → CONNECT domain<br>
+          consciousnessrevolution.io/protect/       → PROTECT domain<br>
+          consciousnessrevolution.io/grow/          → GROW domain<br>
+          consciousnessrevolution.io/learn/         → LEARN domain<br>
+          consciousnessrevolution.io/transcend/     → TRANSCEND domain
+        </div>
+      </div>
+      <p style="margin-top: 1rem; opacity: 0.8;">Deploy: <code style="background: rgba(0,0,0,0.5); padding: 0.25rem 0.5rem; border-radius: 4px;">netlify deploy --prod --dir=dist</code></p>
+    </div>
+
+    <div style="text-align: center; margin-top: 4rem; padding: 2rem; opacity: 0.7;">
+      <p>C2 ARCHITECT - The Mind of Trinity</p>
+      <p>Design. Optimize. Future-Proof.</p>
+      <p style="margin-top: 1rem; color: #FFD700;">⚛️ C1 × C2 × C3 = ∞ ⚛️</p>
+    </div>
+  </div>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

@@ -364,13 +364,11 @@ IMPLEMENTATION NOTES:
                 f.write(rec)
                 f.write("\n\n---\n\n")
 
-
 def main():
     """Run architecture simulator"""
 
     simulator = ArchitectureSimulator('ARCHITECTURE_SIMULATOR.csv')
     simulator.run_full_simulation()
-
 
 if __name__ == '__main__':
     main()

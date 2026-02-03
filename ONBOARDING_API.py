@@ -71,7 +71,6 @@ RECOMMENDATIONS = {
     }
 }
 
-
 @app.route('/api/onboarding', methods=['POST'])
 def save_onboarding():
     """Save user onboarding preferences"""
@@ -112,7 +111,6 @@ def save_onboarding():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-
 @app.route('/api/recommendations', methods=['GET'])
 def get_user_recommendations():
     """Get personalized recommendations based on parameters"""
@@ -122,7 +120,6 @@ def get_user_recommendations():
     recs = get_recommendations(goal, experience)
     return jsonify({'recommendations': recs})
 
-
 def get_recommendations(goal, experience):
     """Generate personalized tool recommendations"""
     if goal not in RECOMMENDATIONS:
@@ -131,7 +128,6 @@ def get_recommendations(goal, experience):
         experience = 'beginner'
 
     return RECOMMENDATIONS[goal][experience]
-
 
 @app.route('/api/onboarding/stats', methods=['GET'])
 def get_stats():
@@ -161,12 +157,10 @@ def get_stats():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-
 @app.route('/api/health', methods=['GET'])
 def health():
     """Health check endpoint"""
     return jsonify({'status': 'ok', 'service': 'onboarding-api'})
-
 
 if __name__ == '__main__':
     print("Starting Onboarding API on port 5050...")

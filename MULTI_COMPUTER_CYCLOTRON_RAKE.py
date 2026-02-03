@@ -287,13 +287,11 @@ class FederatedCyclotronRake:
         print("🌐 Other computers can now access this knowledge")
         print()
 
-
 def main():
     """Run federated cyclotron rake"""
 
     rake = FederatedCyclotronRake()
     rake.run_full_rake()
-
 
 if __name__ == '__main__':
     main()

@@ -96,13 +96,18 @@
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .submit-btn:hover {
+        .submit-btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
 
-        .submit-btn:active {
+        .submit-btn:active:not(:disabled) {
             transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
         .benefits {
@@ -195,7 +200,7 @@
         </div>
 
         <div class="benefits">
-            <h3>🚀 What You Get (Free Beta):</h3>
+            <h3>What You Get (Free Beta):</h3>
             <ul>
                 <li>Full R3 Consciousness Dashboard</li>
                 <li>Pattern Recognition Tools</li>
@@ -231,7 +236,7 @@
                 <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Re-enter password">
             </div>
 
-            <button type="submit" class="submit-btn">Join Beta (Free) →</button>
+            <button type="submit" class="submit-btn">Join Beta (Free)</button>
         </form>
 
         <div class="login-link">
@@ -273,57 +278,51 @@
                 return;
             }
 
+            // Disable button during submission
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Creating account...';
+            submitBtn.disabled = true;
+
             try {
-                // TODO: Replace with actual API endpoint
-                const response = await fetch('/api/signup', {
+                const response = await fetch('/.netlify/functions/auth-signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        name: formData.fullName,
                         email: formData.email,
-                        password: formData.password
+                        password: formData.password,
+                        full_name: formData.fullName
                     })
                 });
 
                 const data = await response.json();
 
-                if (response.ok) {
-                    successMessage.textContent = 'Success! Check your email to verify your account.';
+                if (response.ok && data.success) {
+                    successMessage.textContent = 'Account created! Redirecting to login...';
                     successMessage.style.display = 'block';
                     form.reset();
 
-                    // Redirect to dashboard after 2 seconds
+                    // Redirect to login after 2 seconds
                     setTimeout(() => {
-                        window.location.href = 'dashboard.html';
+                        window.location.href = 'login.html';
                     }, 2000);
                 } else {
-                    errorMessage.textContent = data.message || 'Signup failed. Please try again.';
+                    errorMessage.textContent = data.error || 'Signup failed. Please try again.';
                     errorMessage.style.display = 'block';
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
                 }
             } catch (error) {
-                // For now, simulate success (no backend yet)
-                console.log('Signup data:', formData);
-
-                successMessage.textContent = 'Success! Welcome to the beta. Check your email for next steps.';
-                successMessage.style.display = 'block';
-                form.reset();
-
-                // Store signup in localStorage (temporary)
-                const signups = JSON.parse(localStorage.getItem('betaSignups') || '[]');
-                signups.push({
-                    name: formData.fullName,
-                    email: formData.email,
-                    signupDate: new Date().toISOString()
-                });
-                localStorage.setItem('betaSignups', JSON.stringify(signups));
-
-                setTimeout(() => {
-                    window.location.href = 'welcome.html';
-                }, 2000);
+                errorMessage.textContent = 'Connection error. Please try again.';
+                errorMessage.style.display = 'block';
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             }
         });
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

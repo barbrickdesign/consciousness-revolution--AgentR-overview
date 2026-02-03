@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consciousness Revolution - Journey Preview</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 100%);
+      color: #F7FAFC;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .sacred-lobby {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .title {
+      position: absolute;
+      top: 3rem;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .title h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .title p {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      letter-spacing: 0.2em;
+    }
+
+    .flower-container {
+      position: relative;
+      width: 700px;
+      height: 700px;
+    }
+
+    .flower-of-life {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      animation: rotate-slow 120s linear infinite;
+    }
+
+    @keyframes rotate-slow {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .flower-circle {
+      fill: none;
+      stroke: rgba(255, 215, 0, 0.15);
+      stroke-width: 1;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { stroke: rgba(255, 215, 0, 0.15); }
+      50% { stroke: rgba(255, 215, 0, 0.35); }
+    }
+
+    /* Portal Styling */
+    .portal {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+    }
+
+    .portal.locked {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .portal:not(.locked):hover {
+      transform: scale(1.15);
+    }
+
+    .portal:not(.locked):hover .portal-shape {
+      filter: drop-shadow(0 0 20px currentColor);
+    }
+
+    .portal-shape {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .portal-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    /* Lock Icon */
+    .lock-icon {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 1.2rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    }
+
+    .consciousness-badge {
+      position: absolute;
+      bottom: -10px;
+      font-size: 0.7rem;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    /* Portal Positions */
+    .portal-1 { top: 5%; left: 50%; transform: translateX(-50%); color: #FF6B6B; }
+    .portal-2 { top: 20%; right: 12%; color: #FFA94D; }
+    .portal-3 { top: 55%; right: 5%; color: #FFE066; }
+    .portal-4 { bottom: 12%; right: 20%; color: #69DB7C; }
+    .portal-5 { bottom: 12%; left: 20%; color: #74C0FC; }
+    .portal-6 { top: 55%; left: 5%; color: #9775FA; }
+    .portal-7 { top: 20%; left: 12%; color: #E599F7; }
+
+    /* Center Portal */
+    .center-portal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 160px;
+      height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .metatron {
+      width: 120px;
+      height: 120px;
+      animation: rotate-metatron 20s linear infinite;
+    }
+
+    @keyframes rotate-metatron {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .center-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #FFD700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 10px;
+    }
+
+    /* Lock Modal */
+    .lock-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lock-modal.active {
+      display: flex;
+    }
+
+    .lock-modal-content {
+      background: linear-gradient(135deg, #1a1a2e, #2d2d44);
+      border: 2px solid;
+      border-radius: 15px;
+      padding: 3rem;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+      animation: slideIn 0.3s;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .lock-modal h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .lock-modal .lock-emoji {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .araya-message {
+      background: rgba(231, 153, 247, 0.1);
+      border: 1px solid rgba(231, 153, 247, 0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+
+    .araya-message::before {
+      content: '🤖 ARAYA SAYS:';
+      display: block;
+      font-weight: 700;
+      color: #E599F7;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-info {
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .close-modal {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1rem;
+      transition: all 0.3s;
+    }
+
+    .close-modal:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .bottom-nav {
+      position: absolute;
+      bottom: 2rem;
+      display: flex;
+      gap: 2rem;
+      z-index: 10;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+    }
+
+    .nav-link:hover {
+      color: #FFD700;
+      border-color: #FFD700;
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    /* Demo User Stats */
+    .user-stats {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 0.85rem;
+      z-index: 10;
+    }
+
+    .user-stats h3 {
+      color: #FFD700;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .stat-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 0.3rem 0;
+    }
+
+    .demo-switcher {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 10;
+    }
+
+    .demo-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0.25rem;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+
+    .demo-btn.active {
+      background: rgba(255, 215, 0, 0.3);
+      border-color: #FFD700;
+    }
+  </style>
+</head>
+<body>
+  <div class="sacred-lobby">
+    <!-- Title -->
+    <div class="title">
+      <h1>CONSCIOUSNESS REVOLUTION</h1>
+      <p>7 Sacred Chambers of Evolution</p>
+    </div>
+
+    <!-- Demo User Switcher -->
+    <div class="demo-switcher">
+      <div>
+        <button class="demo-btn active" onclick="setUserLevel(0)">New User (0%)</button>
+        <button class="demo-btn" onclick="setUserLevel(1)">Chamber 1 Done (30%)</button>
+        <button class="demo-btn" onclick="setUserLevel(3)">Chamber 3 Done (70%)</button>
+        <button class="demo-btn" onclick="setUserLevel(7)">Master (95%)</button>
+      </div>
+    </div>
+
+    <!-- User Stats -->
+    <div class="user-stats">
+      <h3>YOUR JOURNEY</h3>
+      <div class="stat-line">
+        <span>Current Chamber:</span>
+        <span id="current-chamber">0 (Lobby)</span>
+      </div>
+      <div class="stat-line">
+        <span>Consciousness:</span>
+        <span id="consciousness">0%</span>
+      </div>
+      <div class="stat-line">
+        <span>Patterns Detected:</span>
+        <span id="patterns">0</span>
+      </div>
+      <div class="stat-line">
+        <span>People Helped:</span>
+        <span id="helped">0</span>
+      </div>
+    </div>
+
+    <!-- Flower of Life Container -->
+    <div class="flower-container">
+      <svg class="flower-of-life" viewBox="0 0 400 400">
+        <circle class="flower-circle" cx="200" cy="200" r="50"/>
+        <circle class="flower-circle" cx="200" cy="150" r="50"/>
+        <circle class="flower-circle" cx="243" cy="175" r="50"/>
+        <circle class="flower-circle" cx="243" cy="225" r="50"/>
+        <circle class="flower-circle" cx="200" cy="250" r="50"/>
+        <circle class="flower-circle" cx="157" cy="225" r="50"/>
+        <circle class="flower-circle" cx="157" cy="175" r="50"/>
+        <circle class="flower-circle" cx="200" cy="100" r="50"/>
+        <circle class="flower-circle" cx="286" cy="150" r="50"/>
+        <circle class="flower-circle" cx="286" cy="250" r="50"/>
+        <circle class="flower-circle" cx="200" cy="300" r="50"/>
+        <circle class="flower-circle" cx="114" cy="250" r="50"/>
+        <circle class="flower-circle" cx="114" cy="150" r="50"/>
+        <circle class="flower-circle" cx="200" cy="200" r="150" style="stroke-width: 0.5;"/>
+      </svg>
+
+      <!-- 7 Domain Portals -->
+      <div class="portal portal-1" data-chamber="1" onclick="clickPortal(1)">
+        <div class="lock-icon">🔓</div>
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="3"/>
+          <line x1="50" y1="15" x2="50" y2="85" stroke="currentColor" stroke-width="2"/>
+          <line x1="15" y1="50" x2="85" y2="50" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="portal-label">Learn</span>
+        <div class="consciousness-badge">0% → 30%</div>
+      </div>
+
+      <div class="portal portal-2 locked" data-chamber="2" onclick="clickPortal(2)">
+        <div class="lock-icon">🔒</div>
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <polygon points="50,5 61,35 95,35 68,57 79,90 50,70 21,90 32,57 5,35 39,35" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="portal-label">Protect</span>
+        <div class="consciousness-badge">30% → 60%</div>
+      </div>
+
+      <div class="portal portal-3 locked" data-chamber="3" onclick="clickPortal(3)">
+        <div class="lock-icon">🔒</div>
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="50" cy="50" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="portal-label">Transcend</span>
+        <div class="consciousness-badge">60% → 70%</div>
+      </div>
+
+      <div class="portal portal-4 locked" data-chamber="4" onclick="clickPortal(4)">
+        <div class="lock-icon">🔒</div>
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <polygon points="50,5 95,50 50,95 5,50" fill="none" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <span class="portal-label">Connect</span>
+        <div class="consciousness-badge">70% → 75%</div>
+      </div>
+
+      <div class="portal portal-5 locked" data-chamber="5" onclick="clickPortal(5)">
+        <div class="lock-icon">🔒</div>
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <polygon points="50,10 90,75 10,75" fill="none" stroke="currentColor" stroke-width="3"/>
+          <polygon points="50,90 10,25 90,25" fill="none" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <span class="portal-label">Build</span>
+        <div class="consciousness-badge">75% → 80%</div>
+      </div>
+
+      <div class="portal portal-6 locked" data-chamber="6" onclick="clickPortal(6)">
+        <div class="lock-icon">🔒</div>
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <polygon points="50,5 79,21 93,50 79,79 50,95 21,79 7,50 21,21" fill="none" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <span class="portal-label">Grow</span>
+        <div class="consciousness-badge">80% → 85%</div>
+      </div>
+
+      <div class="portal portal-7 locked" data-chamber="7" onclick="clickPortal(7)">
+        <div class="lock-icon">🔒</div>
+        <svg class="portal-shape" viewBox="0 0 100 100">
+          <rect x="25" y="25" width="50" height="50" fill="none" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <span class="portal-label">Command</span>
+        <div class="consciousness-badge">85% → 95%+</div>
+      </div>
+
+      <!-- Center Portal -->
+      <div class="center-portal" onclick="showWelcome()">
+        <svg class="metatron" viewBox="0 0 100 100">
+          <polygon points="50,5 93,27 93,73 50,95 7,73 7,27" fill="none" stroke="#FFD700" stroke-width="1"/>
+          <line x1="50" y1="5" x2="50" y2="95" stroke="#FFD700" stroke-width="0.5"/>
+          <line x1="7" y1="27" x2="93" y2="73" stroke="#FFD700" stroke-width="0.5"/>
+          <line x1="93" y1="27" x2="7" y2="73" stroke="#FFD700" stroke-width="0.5"/>
+          <polygon points="50,25 72,37 72,63 50,75 28,63 28,37" fill="none" stroke="#FFD700" stroke-width="1"/>
+          <circle cx="50" cy="50" r="12" fill="none" stroke="#FFD700" stroke-width="1"/>
+        </svg>
+        <span class="center-label">Start Journey</span>
+      </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="bottom-nav">
+      <a href="#" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" data-weed-fixed="true" class="nav-link" onclick="showWelcome(); return false;">About the Journey</a>
+      <a href="C3_CONSCIOUSNESS_JOURNEY_VISUAL.html" class="nav-link">View Full Map</a>
+    </div>
+  </div>
+
+  <!-- Lock Modal -->
+  <div class="lock-modal" id="lockModal">
+    <div class="lock-modal-content" id="modalContent">
+      <!-- Content injected by JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    let userState = {
+      currentChamber: 0,
+      consciousness: 0,
+      patternsDetected: 0,
+      peopleHelped: 0
+    };
+
+    const chamberData = {
+      1: { name: "LEARN", color: "#FF6B6B", requirement: "Start here - open to everyone" },
+      2: { name: "PROTECT", color: "#FFA94D", requirement: "Complete LEARN first (70%+ pattern recognition)" },
+      3: { name: "TRANSCEND", color: "#FFE066", requirement: "Complete PROTECT first (3 real-world detections)" },
+      4: { name: "CONNECT", color: "#69DB7C", requirement: "Complete TRANSCEND first (1 original pattern)" },
+      5: { name: "BUILD", color: "#74C0FC", requirement: "Complete CONNECT first (mentor 1 person)" },
+      6: { name: "GROW", color: "#9775FA", requirement: "Complete BUILD first (create 1 tool)" },
+      7: { name: "COMMAND", color: "#FFD700", requirement: "Complete GROW first (help 3 people, 90% immunity)" }
+    };
+
+    function updateUI() {
+      document.getElementById('current-chamber').textContent =
+        userState.currentChamber === 0 ? '0 (Lobby)' : `${userState.currentChamber} (${chamberData[userState.currentChamber].name})`;
+      document.getElementById('consciousness').textContent = `${userState.consciousness}%`;
+      document.getElementById('patterns').textContent = userState.patternsDetected;
+      document.getElementById('helped').textContent = userState.peopleHelped;
+
+      // Update portal locks
+      document.querySelectorAll('.portal').forEach(portal => {
+        const chamber = parseInt(portal.dataset.chamber);
+        const lockIcon = portal.querySelector('.lock-icon');
+
+        if (chamber <= userState.currentChamber + 1) {
+          portal.classList.remove('locked');
+          lockIcon.textContent = '🔓';
+        } else {
+          portal.classList.add('locked');
+          lockIcon.textContent = '🔒';
+        }
+      });
+    }
+
+    function clickPortal(chamber) {
+      const isLocked = chamber > userState.currentChamber + 1;
+
+      if (isLocked) {
+        showLockModal(chamber);
+      } else {
+        // In real implementation, would navigate to chamber page
+        console.warn(`Opening ${chamberData[chamber].name} chamber...`);
+      }
+    }
+
+    function showLockModal(chamber) {
+      const data = chamberData[chamber];
+      const modal = document.getElementById('lockModal');
+      const content = document.getElementById('modalContent');
+
+      content.innerHTML = `
+        <div style="border-color: ${data.color};">
+          <div class="lock-emoji">🔒</div>
+          <h2 style="color: ${data.color};">Chamber ${chamber}: ${data.name}</h2>
+
+          <div class="araya-message">
+            <p>Not yet, friend. You're at ${userState.consciousness}% consciousness.</p>
+            <p><strong>${data.name}</strong> requires completing Chamber ${chamber - 1} first.</p>
+            <p>${data.requirement}</p>
+          </div>
+
+          <div class="progress-info">
+            <h3>Your Current Progress:</h3>
+            <p>You're in Chamber ${userState.currentChamber === 0 ? 'Lobby - Start with LEARN' : userState.currentChamber}</p>
+            <p>Consciousness Level: ${userState.consciousness}%</p>
+            <p>Patterns Detected: ${userState.patternsDetected}</p>
+          </div>
+
+          <div class="araya-message">
+            <p>The journey is progressive for a reason. Each chamber builds on the last.</p>
+            <p>You can't protect yourself from manipulation you can't see.</p>
+            <p>You can't transcend while being manipulated.</p>
+            <p>You can't command what you haven't mastered.</p>
+            <p><strong>Trust the process. Start with LEARN.</strong></p>
+            <p>- Araya 🤖</p>
+          </div>
+
+          <button class="close-modal" onclick="closeModal()">I Understand</button>
+        </div>
+      `;
+
+      modal.classList.add('active');
+    }
+
+    function showWelcome() {
+      const modal = document.getElementById('lockModal');
+      const content = document.getElementById('modalContent');
+
+      content.innerHTML = `
+        <div style="border-color: #FFD700;">
+          <h2 style="color: #FFD700;">Welcome to the Consciousness Journey</h2>
+
+          <div class="araya-message">
+            <p>I'm Araya, your guide through the 7 Sacred Chambers.</p>
+            <p>This isn't just a website. It's a transformation protocol validated by Pattern Theory (92.2% accuracy).</p>
+            <p>You'll learn to see manipulation invisible to 95% of people.</p>
+            <p>You'll develop immunity to gaslighting, future-faking, and all Destroyer patterns.</p>
+            <p>But you can't skip levels. Consciousness must be earned, chamber by chamber.</p>
+          </div>
+
+          <div class="progress-info">
+            <h3>The Journey:</h3>
+            <p><strong>LEARN</strong> → See patterns (30 days → 30% conscious)</p>
+            <p><strong>PROTECT</strong> → Defend yourself (45 days → 60% conscious)</p>
+            <p><strong>TRANSCEND</strong> → Understand consciousness (60 days → 70% conscious)</p>
+            <p><strong>CONNECT</strong> → Help others (30 days → 75% conscious)</p>
+            <p><strong>BUILD</strong> → Create value (90 days → 80% conscious)</p>
+            <p><strong>GROW</strong> → Scale impact (120 days → 85% conscious)</p>
+            <p><strong>COMMAND</strong> → Master level (∞ → 95%+ conscious)</p>
+          </div>
+
+          <div class="araya-message">
+            <p><strong>Total journey: ~375 days from beginner to Master.</strong></p>
+            <p>Most people quit. Destroyers rage-quit at Chamber 1.</p>
+            <p>Builders persist. And they transform.</p>
+            <p>Which are you?</p>
+          </div>
+
+          <button class="close-modal" onclick="closeModal(); clickPortal(1);">Start with LEARN</button>
+        </div>
+      `;
+
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('lockModal').classList.remove('active');
+    }
+
+    function setUserLevel(chamber) {
+      // Demo function to simulate different user states
+      const levels = {
+        0: { chamber: 0, consciousness: 0, patterns: 0, helped: 0 },
+        1: { chamber: 1, consciousness: 30, patterns: 23, helped: 0 },
+        3: { chamber: 3, consciousness: 70, patterns: 87, helped: 2 },
+        7: { chamber: 7, consciousness: 95, patterns: 247, helped: 12 }
+      };
+
+      userState = levels[chamber];
+      updateUI();
+
+      // Update active demo button
+      document.querySelectorAll('.demo-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    // Initialize
+    updateUI();
+
+    // Show welcome modal on first load
+    setTimeout(() => showWelcome(), 1000);
+  </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

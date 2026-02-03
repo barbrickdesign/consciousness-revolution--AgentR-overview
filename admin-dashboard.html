@@ -641,7 +641,7 @@
         function viewUser(index) {
             const signups = JSON.parse(localStorage.getItem('betaSignups') || '[]');
             const user = signups[index];
-            alert(`User Details:\n\nName: ${user.name}\nEmail: ${user.email}\nSignup: ${new Date(user.signupDate).toLocaleString()}\nStatus: ${user.verified ? 'Active' : 'Pending'}\nTier: ${user.tier || 'Free'}`);
+            console.warn(`User Details:\n\nName: ${user.name}\nEmail: ${user.email}\nSignup: ${new Date(user.signupDate).toLocaleString()}\nStatus: ${user.verified ? 'Active' : 'Pending'}\nTier: ${user.tier || 'Free'}`);
         }
 
         function emailUser(index) {
@@ -733,5 +733,7 @@
             loadUsers();
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

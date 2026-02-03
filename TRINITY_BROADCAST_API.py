@@ -201,10 +201,8 @@ class TrinityBroadcaster:
 
         BROADCAST_LOG.write_text(json.dumps(log, indent=2))
 
-
 # Global broadcaster instance
 broadcaster = TrinityBroadcaster()
-
 
 @app.route('/broadcast', methods=['POST'])
 def broadcast():
@@ -218,12 +216,10 @@ def broadcast():
     result = broadcaster.broadcast_command(command)
     return jsonify(result)
 
-
 @app.route('/status', methods=['GET'])
 def status():
     """Get current status of all instances"""
     return jsonify(broadcaster.status)
-
 
 @app.route('/history', methods=['GET'])
 def history():
@@ -236,7 +232,6 @@ def history():
             return jsonify([])
     return jsonify([])
 
-
 @app.route('/health', methods=['GET'])
 def health():
     """Health check"""
@@ -245,7 +240,6 @@ def health():
         'timestamp': datetime.now().isoformat(),
         'instances': broadcaster.status
     })
-
 
 if __name__ == '__main__':
     print("=" * 60)

@@ -485,11 +485,11 @@
         }
 
         function runNewSimulation() {
-            alert('🚀 Running new simulation...\n\nExecute: python ARCHITECTURE_SIMULATOR.py');
+            console.warn('🚀 Running new simulation...\n\nExecute: python ARCHITECTURE_SIMULATOR.py');
         }
 
         function exportConfiguration() {
-            alert('💾 Export configuration...\n\nCurrent architecture: meta_observer\n\nFiles:\n- ARCHITECTURE_SIMULATOR.csv\n- ARCHITECTURE_SIMULATION_RESULTS.json');
+            console.warn('💾 Export configuration...\n\nCurrent architecture: meta_observer\n\nFiles:\n- ARCHITECTURE_SIMULATOR.csv\n- ARCHITECTURE_SIMULATION_RESULTS.json');
         }
 
         // Auto-load on page load
@@ -497,5 +497,7 @@
             setTimeout(loadResults, 500);
         };
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

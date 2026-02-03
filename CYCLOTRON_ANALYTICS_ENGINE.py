@@ -278,12 +278,10 @@ class CyclotronAnalytics:
 
         return analytics
 
-
 def main():
     """Run full analytics"""
     analytics = CyclotronAnalytics()
     analytics.generate_full_report()
-
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Agreement - Consciousness Revolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #00ffaa;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .agreement-status {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .status-signed {
+            border: 2px solid #00ffaa;
+        }
+
+        .status-unsigned {
+            border: 2px solid #ffaa00;
+        }
+
+        .agreement-document {
+            background: #111;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 1px solid #333;
+            line-height: 1.8;
+        }
+
+        .agreement-document h2 {
+            color: #00ffaa;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .agreement-document h2:first-child {
+            margin-top: 0;
+        }
+
+        .agreement-document h3 {
+            color: #88aaff;
+            margin: 20px 0 10px 0;
+        }
+
+        .agreement-document p {
+            margin: 15px 0;
+            color: #ccc;
+        }
+
+        .agreement-document ul, .agreement-document ol {
+            margin: 15px 0 15px 30px;
+            color: #ccc;
+        }
+
+        .agreement-document li {
+            margin: 10px 0;
+        }
+
+        .highlight-box {
+            background: rgba(255, 170, 0, 0.1);
+            border-left: 4px solid #ffaa00;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .danger-box {
+            background: rgba(255, 68, 68, 0.1);
+            border-left: 4px solid #ff4444;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .signature-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d1a4a 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #4a2d6a;
+        }
+
+        .signature-section h2 {
+            color: #aa88ff;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin: 20px 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #888;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background: #0a0a0a;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        .form-group input:focus {
+            border-color: #00ffaa;
+            outline: none;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 15px;
+            background: #0a0a0a;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            margin-top: 3px;
+            cursor: pointer;
+            accent-color: #00ffaa;
+        }
+
+        .checkbox-group label {
+            color: #ccc;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .signature-canvas-container {
+            margin: 20px 0;
+        }
+
+        .signature-canvas {
+            width: 100%;
+            height: 150px;
+            background: #fff;
+            border-radius: 10px;
+            cursor: crosshair;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ffaa 0%, #00aa77 100%);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 170, 0.3);
+        }
+
+        .btn-secondary {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        .btn-danger {
+            background: #ff4444;
+            color: #fff;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .signed-confirmation {
+            background: rgba(0, 255, 170, 0.1);
+            border: 2px solid #00ffaa;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .signed-confirmation h2 {
+            color: #00ffaa;
+            margin-bottom: 15px;
+        }
+
+        .signature-display {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        .signature-display img {
+            max-width: 100%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            .agreement-document {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TEAM AGREEMENT</h1>
+            <p>Consciousness Revolution - Contributor Agreement</p>
+        </header>
+
+        <div class="agreement-status" id="agreementStatus">
+            <!-- Status populated by JavaScript -->
+        </div>
+
+        <div class="agreement-document">
+            <h2>CONSCIOUSNESS REVOLUTION CONTRIBUTOR AGREEMENT</h2>
+            <p><strong>Effective Date:</strong> Upon Digital Signature</p>
+            <p><strong>Parties:</strong> Consciousness Revolution LLC ("Company") and the undersigned Contributor ("You")</p>
+
+            <h2>1. INTELLECTUAL PROPERTY OWNERSHIP</h2>
+            <p>By signing this agreement, you acknowledge and agree that:</p>
+            <ul>
+                <li><strong>All work product</strong> created during your engagement with Consciousness Revolution, including but not limited to code, documentation, designs, content, ideas, and any derivative works, shall be the <strong>sole and exclusive property of Consciousness Revolution LLC</strong>.</li>
+                <li>You hereby assign all rights, title, and interest in any work created to the Company.</li>
+                <li>This includes work created using Company tools, resources, or during Company time.</li>
+                <li>You waive any moral rights to work created for the Company.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>PLAIN ENGLISH:</strong> Anything you build, write, or create for this project belongs to the company. Not you. No exceptions.
+            </div>
+
+            <h2>2. ACCESS BOUNDARIES</h2>
+            <p>You understand and agree to the following access limitations:</p>
+            <ul>
+                <li><strong>NO backend access</strong> - Server infrastructure, databases, and admin panels are off-limits</li>
+                <li><strong>NO credential access</strong> - API keys, passwords, and authentication tokens are never shared</li>
+                <li><strong>NO deployment rights</strong> - Only Commander (Level 4) can deploy to production</li>
+                <li><strong>NO financial access</strong> - Payment systems, accounts, and financial data are restricted</li>
+                <li>Your access level determines what you CAN access - everything else is prohibited</li>
+            </ul>
+
+            <div class="danger-box">
+                <strong>WARNING:</strong> Attempting to access systems beyond your authorization level is grounds for immediate termination and may result in legal action.
+            </div>
+
+            <h2>3. CONFIDENTIALITY & NON-DISCLOSURE</h2>
+            <p>You agree to maintain strict confidentiality regarding:</p>
+            <ul>
+                <li>All proprietary information, trade secrets, and business strategies</li>
+                <li>Technical architecture, code, and system designs</li>
+                <li>User data, customer information, and analytics</li>
+                <li>Internal communications, plans, and roadmaps</li>
+                <li>Any information not publicly available on our website</li>
+            </ul>
+            <p>This confidentiality obligation survives termination of this agreement for a period of <strong>5 years</strong>.</p>
+
+            <h2>4. NON-COMPETE CLAUSE</h2>
+            <p>During your engagement and for <strong>12 months</strong> after termination, you agree not to:</p>
+            <ul>
+                <li>Create, develop, or contribute to competing products or services</li>
+                <li>Solicit or recruit other team members for competing ventures</li>
+                <li>Use Company knowledge to benefit direct competitors</li>
+                <li>Disclose Company strategies to competitors</li>
+            </ul>
+
+            <h2>5. TERMINATION</h2>
+            <p>Either party may terminate this agreement at any time, for any reason, with or without cause. Upon termination:</p>
+            <ul>
+                <li>All access will be immediately revoked</li>
+                <li>You must return or destroy all Company materials</li>
+                <li>IP ownership remains with the Company</li>
+                <li>Confidentiality obligations remain in effect</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>PLAIN ENGLISH:</strong> We can part ways anytime. When we do, you leave everything behind and keep our secrets secret.
+            </div>
+
+            <h2>6. CODE OF CONDUCT</h2>
+            <p>You agree to:</p>
+            <ul>
+                <li>Act with integrity and honesty in all dealings</li>
+                <li>Respect other team members and their contributions</li>
+                <li>Communicate clearly and professionally</li>
+                <li>Follow the established role hierarchy and escalation procedures</li>
+                <li>Report any security concerns or violations immediately</li>
+                <li>Never misrepresent your access level or authority</li>
+            </ul>
+
+            <h2>7. LIABILITY LIMITATION</h2>
+            <p>You acknowledge that:</p>
+            <ul>
+                <li>The Company is not liable for any indirect, incidental, or consequential damages</li>
+                <li>Your participation is voluntary and at your own risk</li>
+                <li>No employment relationship is created by this agreement unless explicitly stated</li>
+            </ul>
+
+            <h2>8. GOVERNING LAW</h2>
+            <p>This agreement shall be governed by and construed in accordance with the laws of the State of Washington, United States. Any disputes shall be resolved in the courts of Spokane County, Washington.</p>
+
+            <h2>9. ENTIRE AGREEMENT</h2>
+            <p>This document constitutes the entire agreement between the parties and supersedes all prior discussions, negotiations, and agreements. Modifications must be in writing and signed by both parties.</p>
+        </div>
+
+        <div class="signature-section" id="signatureSection">
+            <h2>Digital Signature</h2>
+            <p style="color: #888; margin-bottom: 20px;">By signing below, you acknowledge that you have read, understood, and agree to be bound by all terms of this agreement.</p>
+
+            <div class="form-group">
+                <label for="fullName">Full Legal Name *</label>
+                <input type="text" id="fullName" placeholder="Enter your full legal name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" placeholder="Enter your email address" required>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="agreeIP" required>
+                <label for="agreeIP">I understand and agree that ALL intellectual property I create belongs to Consciousness Revolution LLC</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="agreeAccess" required>
+                <label for="agreeAccess">I understand I have NO access to backend systems, credentials, or deployment capabilities unless explicitly granted</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="agreeNDA" required>
+                <label for="agreeNDA">I agree to maintain confidentiality and abide by the non-disclosure terms</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="agreeTermination" required>
+                <label for="agreeTermination">I understand I can be removed at any time, for any reason, and all terms survive termination</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="agreeAll" required>
+                <label for="agreeAll">I have read the ENTIRE agreement above and agree to ALL terms and conditions</label>
+            </div>
+
+            <div class="signature-canvas-container">
+                <label>Draw Your Signature Below *</label>
+                <canvas id="signatureCanvas" class="signature-canvas"></canvas>
+                <button class="btn btn-secondary" onclick="clearSignature()" style="margin-top: 10px;">Clear Signature</button>
+            </div>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn btn-primary" id="signBtn" onclick="submitAgreement()" disabled>Sign Agreement</button>
+                <a href="TEAM_COCKPIT.html" class="btn btn-secondary">Back to Cockpit</a>
+            </div>
+        </div>
+
+        <div class="signed-confirmation" id="signedConfirmation" style="display: none;">
+            <h2>Agreement Signed Successfully</h2>
+            <p>Thank you for signing the Team Agreement.</p>
+            <div class="signature-display" id="signatureDisplay"></div>
+            <p><strong>Signed by:</strong> <span id="signedName"></span></p>
+            <p><strong>Email:</strong> <span id="signedEmail"></span></p>
+            <p><strong>Date:</strong> <span id="signedDate"></span></p>
+            <div style="margin-top: 20px;">
+                <a href="ONBOARDING_GATE.html" class="btn btn-primary">Continue to Onboarding</a>
+                <a href="TEAM_COCKPIT.html" class="btn btn-secondary">View Cockpit</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Consciousness Revolution &copy; 2025 | Pattern: 3 &rarr; 7 &rarr; 13 &rarr; &infin;</p>
+        </footer>
+    </div>
+
+    <script>
+        // Signature canvas setup
+        const canvas = document.getElementById('signatureCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let hasSignature = false;
+
+        // Set canvas size
+        function resizeCanvas() {
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Drawing functions
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        // Touch support
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const rect = canvas.getBoundingClientRect();
+            startDrawing({ offsetX: touch.clientX - rect.left, offsetY: touch.clientY - rect.top });
+        });
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const rect = canvas.getBoundingClientRect();
+            draw({ offsetX: touch.clientX - rect.left, offsetY: touch.clientY - rect.top });
+        });
+        canvas.addEventListener('touchend', stopDrawing);
+
+        function startDrawing(e) {
+            isDrawing = true;
+            ctx.beginPath();
+            ctx.moveTo(e.offsetX, e.offsetY);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            hasSignature = true;
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            validateForm();
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        function clearSignature() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hasSignature = false;
+            validateForm();
+        }
+
+        // Form validation
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const nameInput = document.getElementById('fullName');
+        const emailInput = document.getElementById('email');
+        const signBtn = document.getElementById('signBtn');
+
+        checkboxes.forEach(cb => cb.addEventListener('change', validateForm));
+        nameInput.addEventListener('input', validateForm);
+        emailInput.addEventListener('input', validateForm);
+
+        function validateForm() {
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            const hasName = nameInput.value.trim().length > 2;
+            const hasEmail = emailInput.value.includes('@');
+
+            signBtn.disabled = !(allChecked && hasName && hasEmail && hasSignature);
+        }
+
+        // Submit agreement
+        function submitAgreement() {
+            const signatureData = canvas.toDataURL();
+            const agreementData = {
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                signatureImage: signatureData,
+                signedAt: new Date().toISOString(),
+                agreements: {
+                    ip: document.getElementById('agreeIP').checked,
+                    access: document.getElementById('agreeAccess').checked,
+                    nda: document.getElementById('agreeNDA').checked,
+                    termination: document.getElementById('agreeTermination').checked,
+                    allTerms: document.getElementById('agreeAll').checked
+                }
+            };
+
+            // Save to localStorage
+            localStorage.setItem('teamAgreement', JSON.stringify(agreementData));
+
+            // Update user data
+            let userData = JSON.parse(localStorage.getItem('teamCockpitUser') || '{}');
+            userData.agreementSigned = true;
+            userData.agreementDate = agreementData.signedAt;
+            userData.name = agreementData.name;
+            userData.email = agreementData.email;
+            localStorage.setItem('teamCockpitUser', JSON.stringify(userData));
+
+            // Show confirmation
+            document.getElementById('signatureSection').style.display = 'none';
+            document.getElementById('signedConfirmation').style.display = 'block';
+            document.getElementById('signatureDisplay').innerHTML = `<img src="${signatureData}" alt="Signature">`;
+            document.getElementById('signedName').textContent = agreementData.name;
+            document.getElementById('signedEmail').textContent = agreementData.email;
+            document.getElementById('signedDate').textContent = new Date(agreementData.signedAt).toLocaleString();
+
+            updateStatus();
+        }
+
+        // Check if already signed
+        function checkExistingAgreement() {
+            const agreement = localStorage.getItem('teamAgreement');
+            if (agreement) {
+                const data = JSON.parse(agreement);
+                document.getElementById('signatureSection').style.display = 'none';
+                document.getElementById('signedConfirmation').style.display = 'block';
+                document.getElementById('signatureDisplay').innerHTML = `<img src="${data.signatureImage}" alt="Signature">`;
+                document.getElementById('signedName').textContent = data.name;
+                document.getElementById('signedEmail').textContent = data.email;
+                document.getElementById('signedDate').textContent = new Date(data.signedAt).toLocaleString();
+            }
+        }
+
+        function updateStatus() {
+            const statusDiv = document.getElementById('agreementStatus');
+            const agreement = localStorage.getItem('teamAgreement');
+
+            if (agreement) {
+                const data = JSON.parse(agreement);
+                statusDiv.className = 'agreement-status status-signed';
+                statusDiv.innerHTML = `
+                    <h2 style="color: #00ffaa;">Agreement Signed</h2>
+                    <p>Signed by ${data.name} on ${new Date(data.signedAt).toLocaleDateString()}</p>
+                `;
+            } else {
+                statusDiv.className = 'agreement-status status-unsigned';
+                statusDiv.innerHTML = `
+                    <h2 style="color: #ffaa00;">Agreement Not Signed</h2>
+                    <p>You must sign this agreement before proceeding</p>
+                `;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            checkExistingAgreement();
+            updateStatus();
+        });
+    </script>
+    <script src="/js/bug-widget.js"></script>
+</body>
+</html>

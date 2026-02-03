@@ -248,7 +248,7 @@
                 });
                 const data = await response.json();
                 log(`Manipulation score: ${data.manipulation_score}, Threat: ${data.threat_level}`);
-                alert(`Manipulation Score: ${data.manipulation_score}\nThreat Level: ${data.threat_level}\nPatterns: ${data.patterns_detected}`);
+                console.warn(`Manipulation Score: ${data.manipulation_score}\nThreat Level: ${data.threat_level}\nPatterns: ${data.patterns_detected}`);
             } catch (error) {
                 log('Error: ' + error.message);
             }
@@ -260,7 +260,7 @@
                 const response = await fetch('/api/seven-domains');
                 const data = await response.json();
                 log(`Seven Domains: ${data.domains.length} domains loaded`);
-                alert(`Loaded ${data.domains.length} domains:\n${data.domains.map(d => d.name).join(', ')}`);
+                console.warn(`Loaded ${data.domains.length} domains:\n${data.domains.map(d => d.name).join(', ')}`);
             } catch (error) {
                 log('Error: ' + error.message);
             }
@@ -281,5 +281,7 @@
         checkAllAPIs();
         calculateSystemConsciousness();
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

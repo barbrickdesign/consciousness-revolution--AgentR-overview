@@ -290,7 +290,6 @@ class CyclotronAuditor:
                 for rec in self.results['recommendations']: f.write(f"- {rec}\n")
         print(f"Summary: {summary_file}")
 
-
 def main():
     """Run the 13-phase audit"""
     CyclotronAuditor().run_full_audit()

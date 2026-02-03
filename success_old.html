@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Revolution - Consciousness Revolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .success-container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+        }
+
+        .checkmark {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #52c41a;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .checkmark svg {
+            width: 60px;
+            height: 60px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: drawCheck 0.8s ease-out 0.3s forwards;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .next-steps {
+            background: #f5f5f5;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .next-steps h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .next-steps ol {
+            margin-left: 20px;
+        }
+
+        .next-steps li {
+            color: #555;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        .next-steps li strong {
+            color: #667eea;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            margin: 20px 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .email-notice {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .email-notice strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .session-id {
+            font-family: monospace;
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="checkmark">
+            <svg viewBox="0 0 52 52">
+                <path d="M14 27l8 8 16-16"/>
+            </svg>
+        </div>
+
+        <h1>Welcome to the Revolution!</h1>
+        <p class="subtitle">Your payment was successful. You're now part of something extraordinary.</p>
+
+        <div class="email-notice">
+            <strong>📧 Check Your Email</strong>
+            <p>We've sent your login credentials and getting started guide to your email. Check your spam folder if you don't see it within 5 minutes.</p>
+        </div>
+
+        <div class="next-steps">
+            <h2>🚀 What Happens Next</h2>
+            <ol>
+                <li><strong>Check your email</strong> for your login credentials and welcome guide</li>
+                <li><strong>Log into the platform</strong> and complete your 7 Domain assessment</li>
+                <li><strong>Explore the tools</strong> - Start with the Pattern Recognition Course</li>
+                <li><strong>Join the community</strong> in our private member channel</li>
+                <li><strong>Book your onboarding call</strong> (Pro members get priority scheduling)</li>
+            </ol>
+        </div>
+
+        <a href="https://conciousnessrevolution.io/login.html" class="cta-button">
+            Access Platform
+        </a>
+
+        <a href="https://conciousnessrevolution.io" class="cta-button secondary">
+            Return Home
+        </a>
+
+        <div class="session-id" id="session-info">
+            Session ID: <span id="session-id">Loading...</span>
+        </div>
+    </div>
+
+    <script>
+        // Get session ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+
+        if (sessionId) {
+            document.getElementById('session-id').textContent = sessionId;
+
+            // Optional: Send session ID to backend for processing
+            fetch('https://conciousnessrevolution.io/api/process-success', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    session_id: sessionId,
+                    timestamp: new Date().toISOString()
+                })
+            }).catch(err => console.log('Backend not available:', err));
+        } else {
+            document.getElementById('session-id').textContent = 'No session found';
+        }
+
+        // Auto-redirect to platform after 10 seconds
+        setTimeout(() => {
+            // Uncomment when ready:
+            // window.location.href = 'https://conciousnessrevolution.io/login.html';
+        }, 10000);
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

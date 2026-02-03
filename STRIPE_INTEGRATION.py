@@ -13,7 +13,6 @@ TIERS = {'free': {'name': 'Free', 'price': 0, 'features': ['Basic tools', 'Commu
          'pro': {'name': 'Pro', 'price': 4900, 'features': ['Starter+', 'OVERKORE v13', 'Mentor access', 'Trinity']},
          'enterprise': {'name': 'Enterprise', 'price': 19900, 'features': ['Pro+', 'Custom programs', '1-on-1', 'Full autonomy']}}
 
-
 class StripeIntegration:
     """Stripe payment processing."""
     def __init__(self):
@@ -137,7 +136,6 @@ class StripeIntegration:
 
     def list_all_tiers(self) -> Dict[str, Any]: return {'success': True, 'tiers': TIERS}
 
-
 def create_checkout(tier: str, email: str, success_url: str, cancel_url: str) -> Dict[str, Any]:
     """Quick checkout session."""
     return StripeIntegration().create_checkout_session(tier=tier, customer_email=email, success_url=success_url, cancel_url=cancel_url)
@@ -148,7 +146,6 @@ def get_or_create_customer(email: str, name: Optional[str] = None) -> Dict[str, 
     if r['success'] and r.get('found'): return {'success': True, 'customer_id': r['customer_id'], 'created': False}
     cr = si.create_customer(email, name)
     return {'success': True, 'customer_id': cr['customer_id'], 'created': True} if cr['success'] else cr
-
 
 if __name__ == '__main__':
     print("="*50 + "\nSTRIPE INTEGRATION\n" + "="*50)

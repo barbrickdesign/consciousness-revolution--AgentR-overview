@@ -300,14 +300,14 @@
         function check() {
             const belief = document.getElementById('belief').value.trim();
             if (!belief) {
-                alert('Please enter a belief to examine');
+                console.warn('Please enter a belief to examine');
                 return;
             }
 
             // Check all answered
             const allAnswered = Object.values(answers).every(v => v !== null);
             if (!allAnswered) {
-                alert('Please answer all questions');
+                console.warn('Please answer all questions');
                 return;
             }
 
@@ -388,5 +388,7 @@
             document.getElementById('result').classList.add('active');
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

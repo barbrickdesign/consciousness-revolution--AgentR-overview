@@ -1,0 +1,66 @@
+[
+  {
+    "name": "LDS Church - Office of the First Presidency",
+    "email": null,
+    "address": "47 East South Temple Street, Salt Lake City, Utah 84150",
+    "phone": "(801) 240-1000",
+    "notes": "NO PUBLIC EMAIL - Physical mail only",
+    "category": "LDS"
+  },
+  {
+    "name": "LDS Church - Church Headquarters",
+    "email": null,
+    "address": "50 East North Temple, Salt Lake City, UT 84150",
+    "phone": "(801) 240-1000",
+    "notes": "NO PUBLIC EMAIL - Physical mail only",
+    "category": "LDS"
+  },
+  {
+    "name": "Ecumenical Patriarchate of Constantinople",
+    "email": "ecumenical.patriarchate@gmail.com",
+    "address": "Fener-Hali\u00e7, 342 20 Istanbul, Turkey",
+    "phone": "+90 212 5319670",
+    "notes": "His All-Holiness Ecumenical Patriarch Bartholomew",
+    "category": "Orthodox"
+  },
+  {
+    "name": "Russian Orthodox Church - Moscow Patriarchate",
+    "email": "ovcs@patriarchia.ru",
+    "address": "22nd Danilovskiy val street, Moscow 115191, Russia",
+    "phone": "+7 495 633 84 28",
+    "notes": "Department for External Church Relations",
+    "category": "Orthodox"
+  },
+  {
+    "name": "Greek Orthodox Archdiocese of America",
+    "email": "communications@goarch.org",
+    "address": "8 East 79th Street, New York, NY 10075",
+    "phone": "(212) 570-3500",
+    "notes": "Archbishop Elpidophoros of America",
+    "category": "Orthodox"
+  },
+  {
+    "name": "Antiochian Orthodox Christian Archdiocese",
+    "email": "archdiocese@antiochian.org",
+    "address": "P.O. Box 5238, Englewood, NJ 07631",
+    "phone": "(201) 871-1355",
+    "notes": "North America headquarters",
+    "category": "Orthodox"
+  },
+  {
+    "name": "Orthodox Church in America (OCA)",
+    "email": "info@oca.org",
+    "address": "P.O. Box 675, Syosset, NY 11791",
+    "phone": "(516) 922-0550",
+    "notes": "Autocephalous Orthodox Church",
+    "category": "Orthodox"
+  },
+  {
+    "name": "Serbian Orthodox Church in North America",
+    "email": "serborth@aol.com",
+    "address": "P.O. Box 519, Libertyville, IL 60048",
+    "phone": "(847) 367-0698",
+    "notes": "Serbian Patriarch's representative",
+    "category": "Orthodox"
+  }
+]

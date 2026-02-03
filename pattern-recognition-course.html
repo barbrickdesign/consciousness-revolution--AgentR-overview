@@ -623,11 +623,11 @@
                 if (url) {
                     window.location.href = url;
                 } else {
-                    alert('Error creating checkout session. Please try again or contact support.');
+                    console.warn('Error creating checkout session. Please try again or contact support.');
                 }
             } catch (error) {
                 console.error('Checkout error:', error);
-                alert('Error processing payment. Please try again or contact support@consciousnessrevolution.io');
+                console.warn('Error processing payment. Please try again or contact support@consciousnessrevolution.io');
             }
         }
 
@@ -638,5 +638,7 @@
         // Track page views (optional - add your analytics here)
         console.log('Pattern Recognition Course page loaded');
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

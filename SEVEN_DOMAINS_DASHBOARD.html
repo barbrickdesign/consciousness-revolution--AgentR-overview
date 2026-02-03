@@ -467,7 +467,7 @@
             const text = document.getElementById('analyze-input').value.trim();
 
             if (!text) {
-                alert('Please enter text to analyze');
+                console.warn('Please enter text to analyze');
                 return;
             }
 
@@ -538,5 +538,7 @@
             if (e.key === 'Enter') analyzeInput();
         });
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

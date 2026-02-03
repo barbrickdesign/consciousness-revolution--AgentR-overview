@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe - Consciousness Revolution</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+        }
+
+        .card.featured {
+            border: 3px solid #667eea;
+        }
+
+        .card.featured::before {
+            content: "FOUNDING MEMBER";
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.7em;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-header h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .price span {
+            font-size: 0.4em;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f5;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #44cc44;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e5e5;
+        }
+
+        .guarantee {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .guarantee p {
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .footer a {
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .price {
+                font-size: 2.5em;
+            }
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Join the Consciousness Revolution</h1>
+            <p>35 pattern recognition tools to see through manipulation</p>
+        </div>
+
+        <div class="pricing-cards">
+            <!-- Founding Member - $47/mo -->
+            <div class="card featured">
+                <div class="card-header">
+                    <h2>ARAYA Access</h2>
+                    <div class="price">$47<span>/month</span></div>
+                </div>
+                <ul class="features">
+                    <li>Full access to ARAYA AI Assistant</li>
+                    <li>35 Pattern Recognition Tools</li>
+                    <li>Gaslighting Detector</li>
+                    <li>Manipulation Immunity Training</li>
+                    <li>Love Bombing Detector</li>
+                    <li>Boundary Setting Assistant</li>
+                    <li>Priority Support</li>
+                    <li>Founding Member Rate (locked forever)</li>
+                </ul>
+                <a href="https://buy.stripe.com/7sY9AD6IUaUK6E84gh" class="btn btn-primary" id="subscribe-btn">
+                    Start Your Journey
+                </a>
+            </div>
+
+            <!-- Pro Tools - $99/mo -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Pattern Tools Pro</h2>
+                    <div class="price">$99<span>/month</span></div>
+                </div>
+                <ul class="features">
+                    <li>Everything in ARAYA Access</li>
+                    <li>Advanced Pattern Analysis</li>
+                    <li>Email Analyzer</li>
+                    <li>Meeting Analyzer</li>
+                    <li>Contract Analyzer</li>
+                    <li>API Access</li>
+                    <li>Custom Integrations</li>
+                    <li>1-on-1 Onboarding Call</li>
+                </ul>
+                <a href="https://buy.stripe.com/6oE9AD5EQ6Euda84gi" class="btn btn-secondary">
+                    Go Pro
+                </a>
+            </div>
+        </div>
+
+        <div class="guarantee">
+            <p><strong>30-Day Money Back Guarantee</strong></p>
+            <p>Not seeing patterns clearly? Full refund, no questions.</p>
+        </div>
+
+        <div class="footer">
+            <p>Questions? <a href="mailto:darrickpreble@proton.me">Contact us</a></p>
+            <p style="margin-top: 10px;"><a href="/">Back to Home</a></p>
+        </div>
+    </div>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

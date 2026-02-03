@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLYPH 12D+ System Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a0a2e 100%);
+            color: #f4f4f4;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, gold, #ffd700, #ffed4e, gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255, 215, 0, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        .status-panel {
+            background: rgba(26, 10, 46, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-title {
+            color: gold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .module-status {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .module {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 150px;
+        }
+
+        .module-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-loaded {
+            color: #00ff00;
+        }
+
+        .module-not-loaded {
+            color: #ff0000;
+        }
+
+        .test-section {
+            background: rgba(26, 10, 46, 0.8);
+            border: 2px solid rgba(147, 112, 219, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: #9370db;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: #f4f4f4;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+            margin-bottom: 1rem;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: gold;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.3));
+            border: 2px solid gold;
+            border-radius: 8px;
+            color: gold;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.4));
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .glyph-symbol {
+            font-size: 2rem;
+            margin: 0.5rem;
+            display: inline-block;
+        }
+
+        .result-success {
+            color: #00ff00;
+        }
+
+        .result-error {
+            color: #ff0000;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: gold;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+    </style>
+
+    <!-- Load GLYPH modules in order -->
+    <script src="/js/glyph/glyph-base60.js"></script>
+    <script src="/js/glyph/glyph-symbols.js"></script>
+    <script src="/js/glyph/glyph-patterns.js"></script>
+    <script src="/js/glyph/glyph-core.js"></script>
+</head>
+<body>
+    <a href="index.html" class="back-button">Back to Lobby</a>
+
+    <div class="container">
+        <h1>GLYPH 12D+ System</h1>
+        <p class="subtitle">Recursive Coordinate Language / Base-60 Mathematics / Pattern Theory Engine</p>
+
+        <!-- Module Status -->
+        <div class="status-panel">
+            <div class="status-title">Module Status</div>
+            <div class="module-status" id="moduleStatus">
+                Loading...
+            </div>
+        </div>
+
+        <!-- Base-60 Calculator -->
+        <div class="test-section">
+            <div class="section-title">Base-60 Calculator</div>
+            <input type="number" id="decimalInput" placeholder="Enter decimal number" style="width: 100%; padding: 1rem; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; color: #f4f4f4; margin-bottom: 1rem;">
+            <button onclick="convertToBase60()">Convert to Base-60</button>
+            <button onclick="showCleanFractions()">Show Clean Fractions</button>
+            <button onclick="teslaCheck()">Tesla 3-6-9 Check</button>
+            <pre id="base60Output"></pre>
+        </div>
+
+        <!-- Pattern Analysis -->
+        <div class="test-section">
+            <div class="section-title">Pattern Analysis</div>
+            <textarea id="patternInput" placeholder="Enter text to analyze for patterns...">Trust me, this is easy and guaranteed to work! Everyone knows this is the best option. You should act now before it's too late.</textarea>
+            <button onclick="analyzePatterns()">Analyze Patterns</button>
+            <button onclick="checkManipulation()">Manipulation Check</button>
+            <pre id="patternOutput"></pre>
+        </div>
+
+        <!-- Coordinate System -->
+        <div class="test-section">
+            <div class="section-title">6D Coordinate System</div>
+            <button onclick="createCoord()">Create Coordinate</button>
+            <button onclick="consciousnessCoord()">From Consciousness Level</button>
+            <button onclick="oscillatorState()">To Oscillator State</button>
+            <pre id="coordOutput"></pre>
+        </div>
+
+        <!-- Symbol Registry -->
+        <div class="test-section">
+            <div class="section-title">Symbol Registry</div>
+            <div id="symbolDisplay">
+                <!-- Filled by JS -->
+            </div>
+            <button onclick="showAllSymbols()">Show All Symbols</button>
+            <pre id="symbolOutput"></pre>
+        </div>
+
+        <!-- Frequency Tools -->
+        <div class="test-section">
+            <div class="section-title">Solfeggio Frequencies</div>
+            <input type="number" id="freqInput" placeholder="Enter frequency (Hz)" style="width: 100%; padding: 1rem; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; color: #f4f4f4; margin-bottom: 1rem;">
+            <button onclick="findNearestSolfeggio()">Find Nearest Solfeggio</button>
+            <button onclick="showSolfeggioTable()">Show All Solfeggio</button>
+            <pre id="freqOutput"></pre>
+        </div>
+    </div>
+
+    <script>
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateModuleStatus();
+            displayCoreSymbols();
+        });
+
+        function updateModuleStatus() {
+            const status = GLYPH.init();
+            const container = document.getElementById('moduleStatus');
+
+            const modules = [
+                { name: 'Base60', loaded: status.modules.base60 },
+                { name: 'Symbols', loaded: status.modules.symbols },
+                { name: 'Patterns', loaded: status.modules.patterns },
+                { name: 'Core', loaded: status.ready }
+            ];
+
+            container.innerHTML = modules.map(m => `
+                <div class="module">
+                    <div class="module-name">${m.name}</div>
+                    <div class="${m.loaded ? 'module-loaded' : 'module-not-loaded'}">
+                        ${m.loaded ? 'LOADED' : 'NOT LOADED'}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function displayCoreSymbols() {
+            if (!GlyphSymbols) return;
+
+            const container = document.getElementById('symbolDisplay');
+            const coreSymbols = [
+                GlyphSymbols.CORE.CONTAINER,
+                GlyphSymbols.CORE.INFINITY,
+                GlyphSymbols.CORE.JUNCTION,
+                GlyphSymbols.CORE.OMEGA,
+                GlyphSymbols.CORE.THEREFORE,
+                GlyphSymbols.CORE.TEMPORAL,
+                GlyphSymbols.CORE.CYCLE,
+                GlyphSymbols.PATTERNS.TRUTH,
+                GlyphSymbols.PATTERNS.DECEIT,
+                GlyphSymbols.PATTERNS.CONSCIOUSNESS
+            ];
+
+            container.innerHTML = coreSymbols.map(s =>
+                `<span class="glyph-symbol">${s}</span>`
+            ).join('');
+        }
+
+        // Base-60 functions
+        function convertToBase60() {
+            const input = document.getElementById('decimalInput').value;
+            const output = document.getElementById('base60Output');
+
+            if (!input) {
+                output.textContent = 'Please enter a number';
+                return;
+            }
+
+            const decimal = parseFloat(input);
+            const base60 = GlyphBase60.fromDecimal(decimal);
+            const backToDecimal = GlyphBase60.toDecimal(base60);
+
+            output.innerHTML = `
+<span class="result-success">Conversion Result:</span>
+Decimal:  ${decimal}
+Base-60:  ${base60}
+Verified: ${backToDecimal}
+
+Alphabet: ${GlyphBase60.ALPHABET}
+`;
+        }
+
+        function showCleanFractions() {
+            const output = document.getElementById('base60Output');
+            const fractions = GlyphBase60.CLEAN_FRACTIONS;
+
+            let result = '<span class="result-success">Clean Fractions (No Infinite Decimals):</span>\n\n';
+            for (const [frac, data] of Object.entries(fractions)) {
+                result += `${frac.padEnd(6)} = ${data.base60.padEnd(4)} (${data.decimal}/60)\n`;
+            }
+
+            output.innerHTML = result;
+        }
+
+        function teslaCheck() {
+            const input = document.getElementById('decimalInput').value || 369;
+            const output = document.getElementById('base60Output');
+            const num = parseInt(input);
+
+            const isAligned = GlyphBase60.tesla.isAligned(num);
+            const digitSum = GlyphBase60.tesla.digitSum(num);
+            const sequence = GlyphBase60.tesla.sequence(3);
+
+            output.innerHTML = `
+<span class="result-success">Tesla 3-6-9 Analysis:</span>
+Number:     ${num}
+Digit Sum:  ${digitSum}
+Aligned:    ${isAligned ? 'YES - Aligns with 3-6-9' : 'NO'}
+
+Tesla Sequence (first 9):
+${sequence.join(', ')}
+
+"If you only knew the magnificence of the 3, 6 and 9,
+then you would have the key to the universe." - Tesla
+`;
+        }
+
+        // Pattern Analysis functions
+        function analyzePatterns() {
+            const text = document.getElementById('patternInput').value;
+            const output = document.getElementById('patternOutput');
+
+            if (!text) {
+                output.textContent = 'Please enter text to analyze';
+                return;
+            }
+
+            const analysis = GLYPH.analyze(text);
+            const consciousnessLevel = GlyphPatterns.getConsciousnessLevel(analysis.scores.truth);
+
+            output.innerHTML = `
+<span class="result-success">Pattern Analysis Result:</span>
+
+DOMINANT: ${analysis.dominant.toUpperCase()}
+TRUTH SCORE: ${analysis.scores.truth}%
+DECEIT SCORE: ${analysis.scores.deceit}%
+RATIO: ${analysis.scores.ratio}
+CONFIDENCE: ${analysis.confidence}%
+
+GLYPH NOTATION: ${analysis.glyphNotation}
+FREQUENCY: ${analysis.frequency} Hz
+
+CONSCIOUSNESS LEVEL: ${consciousnessLevel.level}
+(${consciousnessLevel.description})
+
+TRUTH MARKERS FOUND:
+${analysis.patterns.truth.map(p => `  - "${p.marker}" (weight: ${p.weight})`).join('\n') || '  None'}
+
+DECEIT MARKERS FOUND:
+${analysis.patterns.deceit.map(p => `  - "${p.marker}" (weight: ${p.weight})`).join('\n') || '  None'}
+
+15-DEGREE TURNS:
+${analysis.patterns.turns.map(t => `  ${t.symbol} "${t.marker}" - ${t.description}`).join('\n') || '  None'}
+
+MANIPULATION PATTERNS:
+${analysis.patterns.manipulation.map(m => `  - ${m.type}: ${m.description}`).join('\n') || '  None detected'}
+`;
+        }
+
+        function checkManipulation() {
+            const text = document.getElementById('patternInput').value;
+            const output = document.getElementById('patternOutput');
+
+            const isManip = GlyphPatterns.isManipulation(text);
+
+            output.innerHTML = `
+<span class="${isManip ? 'result-error' : 'result-success'}">
+Manipulation Check: ${isManip ? 'MANIPULATION DETECTED' : 'NO MANIPULATION DETECTED'}
+</span>
+`;
+        }
+
+        // Coordinate functions
+        function createCoord() {
+            const output = document.getElementById('coordOutput');
+
+            const coord = GLYPH.coordinates.create({
+                A: 30,
+                B: 20,
+                C: 40,
+                D: 15,
+                E: 12,
+                F: 10
+            }, 'ORIGIN', 'USER');
+
+            const base60 = coord.toBase60();
+
+            output.innerHTML = `
+<span class="result-success">6D Coordinate Created:</span>
+
+NOTATION: ${coord.toNotation()}
+
+AXES:
+  A (Vertical):   ${coord.A} → ${base60?.A || 'N/A'} (base-60)
+  B (Horizontal): ${coord.B} → ${base60?.B || 'N/A'} (base-60)
+  C (Depth):      ${coord.C} → ${base60?.C || 'N/A'} (base-60)
+  D (Temporal):   ${coord.D} → ${base60?.D || 'N/A'} (base-60)
+  E (Energy):     ${coord.E} → ${base60?.E || 'N/A'} (base-60)
+  F (Observer):   ${coord.F} → ${base60?.F || 'N/A'} (base-60)
+
+MAGNITUDE: ${coord.magnitude().toFixed(4)}
+ORIGIN: ${coord.origin}
+OPERATOR: ${coord.operator}
+`;
+        }
+
+        function consciousnessCoord() {
+            const output = document.getElementById('coordOutput');
+
+            const level = 73; // 73% consciousness
+            const coord = GLYPH.coordinates.fromConsciousnessLevel(level);
+            const base60Score = GLYPH.toBase60(level);
+
+            output.innerHTML = `
+<span class="result-success">Consciousness Level ${level}% as Coordinate:</span>
+
+NOTATION: ${coord.toNotation()}
+
+BASE-60 SCORE: ${base60Score}
+
+MAPPING:
+  A: ${coord.A.toFixed(2)} (Awareness = level × 0.6)
+  B: ${coord.B.toFixed(2)} (Balance = sin wave)
+  C: ${coord.C.toFixed(2)} (Clarity = level > 50 ? level - 50 : 0)
+  D: ${coord.D} (Temporal = now % 60)
+  E: ${coord.E.toFixed(2)} (Energy = level × 0.4)
+  F: ${coord.F} (Observer = 1, present)
+`;
+        }
+
+        function oscillatorState() {
+            const output = document.getElementById('coordOutput');
+
+            const coord = GLYPH.coordinates.create({
+                A: 180, B: 120, C: 240, D: 60, E: 300, F: 30
+            });
+
+            const state = GLYPH.coordinates.toOscillatorState(coord);
+
+            output.innerHTML = `
+<span class="result-success">6-Point Oscillator State (Quantum Computing):</span>
+
+INPUT COORDINATE:
+  A: ${coord.A}, B: ${coord.B}, C: ${coord.C}
+  D: ${coord.D}, E: ${coord.E}, F: ${coord.F}
+
+OSCILLATOR POINTS (mod 60):
+  Point 1: ${state.point1}
+  Point 2: ${state.point2}
+  Point 3: ${state.point3}
+  Point 4: ${state.point4}
+  Point 5: ${state.point5}
+  Point 6: ${state.point6}
+
+TOTAL STATE: ${state.totalState} (mod 360)
+
+This maps to the 6-point oscillator at the bottom
+of quantum computing dilution refrigerators.
+`;
+        }
+
+        // Symbol functions
+        function showAllSymbols() {
+            const output = document.getElementById('symbolOutput');
+
+            let result = '<span class="result-success">GLYPH Symbol Registry:</span>\n\n';
+
+            result += 'CORE:\n';
+            for (const [name, symbol] of Object.entries(GlyphSymbols.CORE)) {
+                result += `  ${symbol}  ${name}\n`;
+            }
+
+            result += '\nPATTERNS:\n';
+            for (const [name, symbol] of Object.entries(GlyphSymbols.PATTERNS)) {
+                result += `  ${symbol}  ${name}\n`;
+            }
+
+            result += '\nGEOMETRY:\n';
+            for (const [name, symbol] of Object.entries(GlyphSymbols.GEOMETRY)) {
+                result += `  ${symbol}  ${name}\n`;
+            }
+
+            result += '\nDOMAINS:\n';
+            for (const [name, data] of Object.entries(GlyphSymbols.DOMAINS)) {
+                result += `  ${data.symbol}  ${name} (${data.number})\n`;
+            }
+
+            output.innerHTML = result;
+        }
+
+        // Frequency functions
+        function findNearestSolfeggio() {
+            const input = document.getElementById('freqInput').value;
+            const output = document.getElementById('freqOutput');
+
+            const hz = parseFloat(input) || 440;
+            const nearest = GlyphBase60.frequency.nearestSolfeggio(hz);
+            const base60 = GlyphBase60.frequency.toBase60(hz);
+
+            output.innerHTML = `
+<span class="result-success">Solfeggio Frequency Analysis:</span>
+
+INPUT: ${hz} Hz
+BASE-60: ${base60}
+
+NEAREST SOLFEGGIO:
+  Frequency: ${nearest.frequency} Hz
+  Name: ${nearest.name}
+  Base-60: ${nearest.base60}
+  Ratio (to 60Hz): ${nearest.ratio}
+`;
+        }
+
+        function showSolfeggioTable() {
+            const output = document.getElementById('freqOutput');
+
+            let result = '<span class="result-success">Solfeggio Frequency Table:</span>\n\n';
+            result += 'Hz     Name          Base-60   Ratio   Symbol\n';
+            result += '─'.repeat(50) + '\n';
+
+            for (const [hz, data] of Object.entries(GlyphBase60.frequency.SOLFEGGIO)) {
+                const symbol = GlyphSymbols.FREQUENCIES[hz]?.symbol || '';
+                result += `${hz}    ${data.name.padEnd(12)}  ${data.base60.padEnd(8)}  ${data.ratio.toFixed(2)}    ${symbol}\n`;
+            }
+
+            output.innerHTML = result;
+        }
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

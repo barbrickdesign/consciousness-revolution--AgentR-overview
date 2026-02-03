@@ -1,0 +1,252 @@
+/* ===================================
+   RESPONSIVE GRID SYSTEM
+   Consciousness Revolution Platform
+   =================================== */
+
+/* BREAKPOINT VARIABLES */
+:root {
+  --breakpoint-xs: 320px;   /* Small phones */
+  --breakpoint-sm: 480px;   /* Large phones */
+  --breakpoint-md: 768px;   /* Tablets */
+  --breakpoint-lg: 1024px;  /* Small laptops */
+  --breakpoint-xl: 1200px;  /* Desktops */
+  --breakpoint-xxl: 1600px; /* Large desktops */
+
+  --container-max: 1400px;
+  --container-padding: 1rem;
+}
+
+/* CONTAINER RESPONSIVE */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--container-padding);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 2rem;
+  }
+}
+
+/* RESPONSIVE GRID UTILITIES */
+.grid-1 { display: grid; grid-template-columns: 1fr; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); }
+
+.gap-sm { gap: 0.5rem; }
+.gap-md { gap: 1rem; }
+.gap-lg { gap: 1.5rem; }
+.gap-xl { gap: 2rem; }
+
+/* MOBILE: Everything stacks */
+@media (max-width: 767px) {
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .gap-lg { gap: 1rem; }
+  .gap-xl { gap: 1rem; }
+}
+
+/* TABLET: 2 columns max */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid-3, .grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* RESPONSIVE FLEX UTILITIES */
+.flex-mobile-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .flex-mobile-column {
+    flex-direction: row;
+  }
+}
+
+/* HIDE/SHOW UTILITIES */
+.mobile-only { display: block; }
+.tablet-up { display: none; }
+.desktop-only { display: none; }
+
+@media (min-width: 768px) {
+  .mobile-only { display: none; }
+  .tablet-up { display: block; }
+}
+
+@media (min-width: 1024px) {
+  .desktop-only { display: block; }
+}
+
+/* RESPONSIVE GRID PATTERN (Sacred Geometry Compatible) */
+.dashboard-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr; /* Mobile first */
+}
+
+@media (min-width: 480px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+/* TRINITY GRID (3 columns → responsive) */
+.trinity-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .trinity-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .trinity-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* TOOLS GRID (auto-fit pattern) */
+.tools-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .tools-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* WORKSPACE LAYOUT (sidebar + content) */
+.workspace-layout {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr; /* Mobile: single column */
+}
+
+@media (min-width: 1024px) {
+  .workspace-layout {
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+  }
+}
+
+/* RESPONSIVE WIDTHS */
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+.w-fit { width: fit-content; }
+
+.max-w-sm { max-width: 640px; }
+.max-w-md { max-width: 768px; }
+.max-w-lg { max-width: 1024px; }
+.max-w-xl { max-width: 1280px; }
+.max-w-full { max-width: 100%; }
+
+/* RESPONSIVE HEIGHTS */
+.min-h-screen { min-height: 100vh; }
+.h-screen { height: 100vh; }
+
+/* Reduce height on small screens */
+@media (max-height: 600px) {
+  .min-h-screen { min-height: auto; }
+}
+
+/* OVERFLOW CONTROL */
+.overflow-x-hidden { overflow-x: hidden; }
+.overflow-y-auto { overflow-y: auto; }
+.overflow-auto { overflow: auto; }
+
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* POSITIONING RESPONSIVE */
+.sticky-mobile {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .sticky-mobile {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+/* PORTAL POSITIONING (Sacred Lobby) */
+.portals-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr); /* Mobile: 2 columns */
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 480px) {
+  .portals-container {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .portals-container {
+    /* Desktop: absolute positioning handled in main CSS */
+    display: block;
+  }
+}
+
+/* SACRED GEOMETRY RESPONSIVE */
+.flower-container {
+  width: min(700px, 90vw);
+  height: min(700px, 90vw);
+  max-width: 700px;
+  max-height: 700px;
+}
+
+.flower-of-life {
+  width: 100%;
+  height: 100%;
+}
+
+/* Z-INDEX MANAGEMENT */
+.z-0 { z-index: 0; }
+.z-1 { z-index: 1; }
+.z-10 { z-index: 10; }
+.z-50 { z-index: 50; }
+.z-100 { z-index: 100; }
+.z-999 { z-index: 999; }
+
+/* Mobile nav should be highest */
+.mobile-nav { z-index: 1000; }
+.mobile-overlay { z-index: 999; }

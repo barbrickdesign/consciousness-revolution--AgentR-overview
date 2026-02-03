@@ -1,2 +1,0 @@
-{"timestamp": "2025-10-26T18:26:25.482948", "action": "test_action", "user_email": "test@example.com", "details": {"test_key": "test_value"}}
-{"timestamp": "2025-10-26T19:55:36.920099", "action": "bug_report_submitted", "user_email": "test@example.com", "details": {"title": "API Test Bug", "url": "http://localhost/test"}}

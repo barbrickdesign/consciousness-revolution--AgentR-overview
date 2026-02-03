@@ -1,82 +1,18 @@
 [build]
   publish = "."
   functions = "netlify/functions"
-  command = "echo 'No build required'"
 
-[build.environment]
-  NODE_VERSION = "18"
+[functions]
+  node_bundler = "esbuild"
 
-[[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
 
+# Redirects for cleaner URLs
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
-  status = 200
-
-# ============================================
-# FIX BROKEN PAGE URLS - Trinity Protocol v4.0
-# Team: ODB, COMMANDER, JOSHUA
-# ============================================
-[[redirects]]
-  from = "/manipulation-detector.html"
-  to = "/manipulation_detector.html"
-  status = 200
-
-[[redirects]]
-  from = "/news-analysis.html"
-  to = "/NEWS_BIAS_DETECTOR.html"
-  status = 200
-
-[[redirects]]
-  from = "/crypto-module.html"
-  to = "/crypto_module.html"
-  status = 200
-# ============================================
-
-[[redirects]]
-  from = "/onboard.html"
-  to = "/index.html"
-  status = 301
-
-[[redirects]]
-  from = "/TRINITY_NEXUS_DASHBOARD.html"
-  to = "/index.html"
-  status = 301
-
-[[headers]]
-  for = "/onboard.html"
-  [headers.values]
-    X-Robots-Tag = "noindex"
-
-[[headers]]
-  for = "/TRINITY_*.html"
-  [headers.values]
-    X-Robots-Tag = "noindex"
-
-[[headers]]
-  for = "/*.py"
-  [headers.values]
-    X-Robots-Tag = "noindex"
-
-[[redirects]]
-  from = "/api/webhook"
-  to = "/.netlify/functions/webhook"
-  status = 200
-
-[[redirects]]
-  from = "/api/create-checkout"
-  to = "/.netlify/functions/create-checkout"
-  status = 200
-
-[[redirects]]
-  from = "/api/save-beta-signup"
-  to = "/.netlify/functions/save-beta-signup"
-  status = 200
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
   status = 200

@@ -353,8 +353,8 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        priceId: 'price_ArayaBeta2025', // Replace with actual Stripe price ID
-                        successUrl: window.location.origin + '/araya/welcome',
+                        priceId: 'price_1SlhpGIBd71iNToy1c0aVnLy', // Araya Beta $20
+                        successUrl: window.location.origin + '/araya-chat.html?welcome=true',
                         cancelUrl: window.location.origin + '/araya-beta-signup.html',
                         customerEmail: email,
                         metadata: {
@@ -392,5 +392,7 @@
         // Optional: Add analytics tracking here
         // gtag('event', 'page_view', { page_title: 'Araya Beta Signup' });
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

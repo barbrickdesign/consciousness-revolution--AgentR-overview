@@ -1,0 +1,28 @@
+# Log files
+*.log
+*.jsonl
+transcription_log_*.jsonl
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment files
+.env*
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# Node modules
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -234,7 +234,7 @@
         async function analyze() {
             const text = document.getElementById('inputText').value.trim();
             if (!text) {
-                alert('Please describe your situation');
+                console.warn('Please describe your situation');
                 return;
             }
 
@@ -256,7 +256,7 @@
 
                 showResults(data.result);
             } catch (error) {
-                alert('Error analyzing domains: ' + error.message);
+                console.warn('Error analyzing domains: ' + error.message);
             } finally {
                 document.getElementById('loading').style.display = 'none';
             }
@@ -317,5 +317,7 @@
             document.getElementById('inputText').value = '';
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

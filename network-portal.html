@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciousness Network Portal | consciousnessrevolution.io</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --text-primary: #e8e6e3;
+            --text-secondary: #9ca3af;
+            --accent-gold: #d4af37;
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --border-color: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Four Pillars Section */
+        .pillars-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+        }
+
+        .pillar-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .pillar-title {
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+        }
+
+        .pillar-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .pillar-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-active { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
+        .status-building { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
+        .status-planning { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
+
+        /* Network Contacts Section */
+        .network-section {
+            margin-bottom: 60px;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-purple));
+        }
+
+        .contact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .contact-handle {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .contact-followers {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        .contact-niche {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .alignment-bar {
+            height: 6px;
+            background: var(--bg-secondary);
+            border-radius: 3px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        .alignment-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-gold));
+            border-radius: 3px;
+        }
+
+        .contact-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .outreach-status {
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+        }
+
+        .outreach-pending { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .outreach-contacted { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
+        .outreach-connected { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
+
+        /* Stats Dashboard */
+        .stats-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 60px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Assets Section */
+        .assets-section {
+            margin-bottom: 60px;
+        }
+
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .asset-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .asset-card h4 {
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .asset-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Action Buttons */
+        .actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold), #b8960c);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .pillars-grid, .contacts-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CONSCIOUSNESS NETWORK</h1>
+            <p class="subtitle">Building the infrastructure for awakened humanity</p>
+        </header>
+
+        <!-- Four Pillars -->
+        <section class="pillars-section">
+            <h2 class="section-title">THE FOUR PILLARS</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">&#128225;</div>
+                    <h3 class="pillar-title">New Media Network</h3>
+                    <p class="pillar-desc">Decentralized truth-based media infrastructure. 7,000+ pages of research on consciousness, exotic technology, and suppressed knowledge.</p>
+                    <span class="pillar-status status-building">BUILDING</span>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">&#128176;</div>
+                    <h3 class="pillar-title">New Economic System</h3>
+                    <p class="pillar-desc">Value exchange beyond fiat currency. Contribution-based economics powered by Pattern Theory.</p>
+                    <span class="pillar-status status-planning">CONCEPTUAL</span>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">&#127968;</div>
+                    <h3 class="pillar-title">New Communities</h3>
+                    <p class="pillar-desc">Physical and digital conscious communities. Self-sovereign, interconnected, resilient.</p>
+                    <span class="pillar-status status-planning">PLANNING</span>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">&#128279;</div>
+                    <h3 class="pillar-title">Connect to Others</h3>
+                    <p class="pillar-desc">Bridge builders worldwide. You are here. The network grows one authentic connection at a time.</p>
+                    <span class="pillar-status status-active">ACTIVE</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Network Stats -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 id="total-reach">1.52M</h3>
+                    <p>Combined Reach</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="active-contacts">4</h3>
+                    <p>Target Creators</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="research-pages">7,000+</h3>
+                    <p>Research Pages</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="tools-count">30+</h3>
+                    <p>Consciousness Tools</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="domains">7</h3>
+                    <p>Life Domains</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Network Contacts -->
+        <section class="network-section">
+            <h2 class="section-title">NETWORK TARGETS</h2>
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <span class="contact-handle">@lifebythor</span>
+                        <span class="contact-followers">598K</span>
+                    </div>
+                    <p class="contact-niche">Awakening, consciousness, sacred knowledge</p>
+                    <div class="alignment-bar">
+                        <div class="alignment-fill" style="width: 95%"></div>
+                    </div>
+                    <div class="contact-meta">
+                        <span>Alignment: 95%</span>
+                        <span class="outreach-status outreach-pending">PENDING</span>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <span class="contact-handle">@wildmindscommunity</span>
+                        <span class="contact-followers">921K</span>
+                    </div>
+                    <p class="contact-niche">Alternative thinking, free community</p>
+                    <div class="alignment-bar">
+                        <div class="alignment-fill" style="width: 90%"></div>
+                    </div>
+                    <div class="contact-meta">
+                        <span>Alignment: 90%</span>
+                        <span class="outreach-status outreach-pending">PENDING</span>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <span class="contact-handle">@IamKristianbell</span>
+                        <span class="contact-followers">2.4K</span>
+                    </div>
+                    <p class="contact-niche">Consciousness, spiritual awakening</p>
+                    <div class="alignment-bar">
+                        <div class="alignment-fill" style="width: 85%"></div>
+                    </div>
+                    <div class="contact-meta">
+                        <span>Alignment: 85%</span>
+                        <span class="outreach-status outreach-pending">PENDING</span>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <span class="contact-handle">@thecaitawakening1</span>
+                        <span class="contact-followers">TBD</span>
+                    </div>
+                    <p class="contact-niche">Awakening journey, transformation</p>
+                    <div class="alignment-bar">
+                        <div class="alignment-fill" style="width: 80%"></div>
+                    </div>
+                    <div class="contact-meta">
+                        <span>Alignment: 80%</span>
+                        <span class="outreach-status outreach-pending">PENDING</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Assets -->
+        <section class="assets-section">
+            <h2 class="section-title">STRATEGIC ASSETS</h2>
+            <div class="assets-grid">
+                <div class="asset-card">
+                    <h4>Research Archive</h4>
+                    <p>7,000+ pages covering exotic technology, consciousness programs, black budget operations, and Pattern Theory.</p>
+                </div>
+                <div class="asset-card">
+                    <h4>Live Platform</h4>
+                    <p>consciousnessrevolution.io - 30+ pattern recognition tools, consciousness training, manipulation immunity.</p>
+                </div>
+                <div class="asset-card">
+                    <h4>GLYPH 12D+</h4>
+                    <p>Universal translation language concept - consciousness-based communication beyond verbal limits.</p>
+                </div>
+                <div class="asset-card">
+                    <h4>7 Domain Framework</h4>
+                    <p>Complete life organization system: Command, Build, Connect, Protect, Grow, Learn, Transcend.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="actions">
+            <a href="consciousness-tools.html" class="btn btn-primary">Explore Tools</a>
+            <a href="SEVEN_DOMAINS_DASHBOARD.html" class="btn btn-secondary">7 Domains</a>
+            <a href="index.html" class="btn btn-secondary">Home</a>
+        </div>
+
+        <footer>
+            <p>Consciousness Network Portal | <a href="https://consciousnessrevolution.io">consciousnessrevolution.io</a></p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">The pattern never lies. Build the world that should exist.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Dynamic data loading from JSON (for future API integration)
+        async function loadNetworkData() {
+            try {
+                const response = await fetch('data/consciousness_network_contacts.json');
+                const data = await response.json();
+
+                // Update stats dynamically
+                const tier1 = data.tier_1_targets;
+                let totalReach = 0;
+                tier1.forEach(c => {
+                    if (c.followers) totalReach += c.followers;
+                });
+
+                document.getElementById('total-reach').textContent =
+                    totalReach >= 1000000 ? (totalReach/1000000).toFixed(2) + 'M' :
+                    totalReach >= 1000 ? (totalReach/1000).toFixed(0) + 'K' : totalReach;
+
+                document.getElementById('active-contacts').textContent = tier1.length;
+
+                console.log('Network data loaded:', data);
+            } catch (e) {
+                console.log('Using static data');
+            }
+        }
+
+        loadNetworkData();
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

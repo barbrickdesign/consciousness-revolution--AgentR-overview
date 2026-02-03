@@ -308,7 +308,7 @@
                     const x2 = toRect.left + toRect.width / 2 - containerRect.left;
                     const y2 = toRect.top + toRect.height / 2 - containerRect.top;
 
-                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    const line = document.createElementNS('https://www.w3.org/2000/svg', 'line');
                     line.setAttribute('x1', x1);
                     line.setAttribute('y1', y1);
                     line.setAttribute('x2', x2);
@@ -403,9 +403,11 @@
         // Node click handlers
         document.querySelectorAll('.node').forEach(node => {
             node.addEventListener('click', () => {
-                alert(`Node: ${node.dataset.node}\nTitle: ${node.querySelector('.node-title').textContent}\nDesc: ${node.querySelector('.node-desc').textContent}`);
+                console.warn(`Node: ${node.dataset.node}\nTitle: ${node.querySelector('.node-title').textContent}\nDesc: ${node.querySelector('.node-desc').textContent}`);
             });
         });
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

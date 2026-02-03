@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidence Tracker - Consciousness Tools</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #f4f4f4;
+            min-height: 100vh;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+        .header { text-align: center; padding: 3rem 0; border-bottom: 2px solid rgba(76, 175, 80, 0.3); margin-bottom: 2rem; }
+        .header .icon { font-size: 4rem; margin-bottom: 1rem; }
+        .header h1 { font-size: 2.5rem; color: #4CAF50; margin-bottom: 0.5rem; }
+        .header p { color: rgba(76, 175, 80, 0.7); }
+        .back-button {
+            position: fixed; top: 2rem; left: 2rem;
+            padding: 0.75rem 1.5rem; background: rgba(76, 175, 80, 0.1);
+            border: 2px solid rgba(76, 175, 80, 0.3); border-radius: 8px;
+            color: #4CAF50; text-decoration: none; font-weight: 600;
+            z-index: 100;
+        }
+        .tool-section {
+            background: rgba(26, 26, 46, 0.6); border: 2px solid rgba(76, 175, 80, 0.2);
+            border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
+        }
+        .tool-section h2 { color: #4CAF50; margin-bottom: 1rem; }
+        input, textarea, select {
+            width: 100%; padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3); border: 2px solid rgba(76, 175, 80, 0.3);
+            border-radius: 8px; color: #f4f4f4; font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: #4CAF50; }
+        .add-btn {
+            padding: 0.75rem 1.5rem; margin-top: 0.5rem;
+            background: linear-gradient(135deg, #4CAF50, #388E3C);
+            border: none; border-radius: 8px; color: white;
+            font-size: 1rem; font-weight: 600; cursor: pointer;
+        }
+        .evidence-list { margin-top: 1.5rem; }
+        .evidence-item {
+            background: rgba(0,0,0,0.2); border-radius: 8px; padding: 1.25rem;
+            margin-bottom: 1rem; border-left: 4px solid #4CAF50;
+        }
+        .evidence-item.weak { border-left-color: #ff5f56; }
+        .evidence-item.medium { border-left-color: #ffaa00; }
+        .evidence-item.strong { border-left-color: #4CAF50; }
+        .evidence-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+        .evidence-type { font-size: 0.8rem; padding: 0.25rem 0.5rem; background: rgba(76, 175, 80, 0.2); border-radius: 4px; }
+        .evidence-strength { font-size: 0.8rem; padding: 0.25rem 0.5rem; border-radius: 4px; }
+        .strength-strong { background: rgba(76, 175, 80, 0.3); color: #81C784; }
+        .strength-medium { background: rgba(255, 170, 0, 0.3); color: #ffaa00; }
+        .strength-weak { background: rgba(255, 95, 86, 0.3); color: #ff5f56; }
+        .evidence-desc { margin-bottom: 0.5rem; }
+        .evidence-source { font-size: 0.85rem; opacity: 0.7; }
+        .evidence-date { font-size: 0.8rem; opacity: 0.5; margin-top: 0.5rem; }
+        .delete-btn { background: rgba(255,95,86,0.2); border: none; color: #ff5f56; padding: 0.25rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+        .summary-box { background: rgba(76, 175, 80, 0.1); border-radius: 8px; padding: 1.5rem; margin-top: 1.5rem; }
+        .summary-box h3 { color: #4CAF50; margin-bottom: 1rem; }
+        .summary-stat { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(76, 175, 80, 0.2); }
+        .tip-box { background: rgba(0,0,0,0.2); border-radius: 8px; padding: 1rem; margin-top: 1rem; }
+        .tip-box h4 { color: #81C784; margin-bottom: 0.5rem; }
+        .tip-box ul { margin-left: 1.5rem; opacity: 0.8; }
+        .tip-box li { padding: 0.25rem 0; }
+        @media (max-width: 768px) {
+            .back-button { position: static; margin-bottom: 1rem; display: inline-block; }
+        }
+    </style>
+</head>
+<body>
+    <a href="consciousness-tools.html" class="back-button">← Tools</a>
+    <div class="container">
+        <div class="header">
+            <div class="icon">📋</div>
+            <h1>Evidence Tracker</h1>
+            <p>Organize and evaluate evidence for any dispute or case.</p>
+        </div>
+
+        <div class="tool-section">
+            <h2>Add Evidence</h2>
+            <input type="text" id="evidenceTitle" placeholder="Brief description of evidence">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <select id="evidenceType">
+                    <option value="">Type of Evidence</option>
+                    <option value="document">Document/Written</option>
+                    <option value="communication">Communication (email, text, recording)</option>
+                    <option value="photo">Photo/Video</option>
+                    <option value="witness">Witness Statement</option>
+                    <option value="financial">Financial Record</option>
+                    <option value="medical">Medical Record</option>
+                    <option value="official">Official/Government Record</option>
+                    <option value="other">Other</option>
+                </select>
+                <select id="evidenceStrength">
+                    <option value="">Evidence Strength</option>
+                    <option value="strong">Strong - Hard evidence, documented</option>
+                    <option value="medium">Medium - Circumstantial/supportive</option>
+                    <option value="weak">Weak - Hearsay or unverifiable</option>
+                </select>
+            </div>
+            <input type="text" id="evidenceSource" placeholder="Source (where is this evidence from?)">
+            <input type="date" id="evidenceDate">
+            <textarea id="evidenceNotes" rows="3" placeholder="Notes - What does this prove? How does it help your case?"></textarea>
+            <button class="add-btn" onclick="addEvidence()">+ Add Evidence</button>
+        </div>
+
+        <div class="tool-section">
+            <h2>Your Evidence</h2>
+            <div class="evidence-list" id="evidenceList">
+                <p style="opacity: 0.5; text-align: center; padding: 2rem;">No evidence added yet. Start building your case above.</p>
+            </div>
+            <div class="summary-box" id="summaryBox" style="display: none;">
+                <h3>Case Strength Summary</h3>
+                <div id="summaryContent"></div>
+            </div>
+        </div>
+
+        <div class="tool-section">
+            <h2>Evidence Best Practices</h2>
+            <div class="tip-box">
+                <h4>Strong Evidence Characteristics</h4>
+                <ul>
+                    <li>Documented with dates and sources</li>
+                    <li>Contemporaneous (created at the time of events)</li>
+                    <li>From independent/neutral sources</li>
+                    <li>Corroborated by multiple sources</li>
+                    <li>Original documents, not copies when possible</li>
+                </ul>
+            </div>
+            <div class="tip-box">
+                <h4>Common Evidence Types by Dispute</h4>
+                <ul>
+                    <li><strong>Employment:</strong> Emails, performance reviews, witness statements, policies</li>
+                    <li><strong>Family/Custody:</strong> Communications, photos, school records, medical records</li>
+                    <li><strong>Financial:</strong> Bank statements, contracts, invoices, receipts</li>
+                    <li><strong>Medical:</strong> Treatment records, bills, second opinions</li>
+                    <li><strong>Property:</strong> Photos, appraisals, contracts, permits</li>
+                </ul>
+            </div>
+            <div class="tip-box">
+                <h4>Organizing Tips</h4>
+                <ul>
+                    <li>Keep a timeline of events with corresponding evidence</li>
+                    <li>Note what each piece of evidence proves</li>
+                    <li>Identify gaps - what evidence do you still need?</li>
+                    <li>Keep originals safe, work with copies</li>
+                    <li>Back up digital evidence in multiple locations</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tool-section" style="border-color: rgba(255,170,0,0.3);">
+            <h2 style="color: #ffaa00;">Legal Disclaimer</h2>
+            <p style="opacity: 0.8; line-height: 1.7;">
+                This tool is for personal organization only and does not constitute legal advice.
+                Evidence rules vary by jurisdiction and case type. For legal matters, consult with
+                a qualified attorney who can advise on evidence admissibility and strategy.
+            </p>
+            <div style="margin-top: 1rem;"><a href="araya-chat.html" style="color: #4CAF50;">→ Discuss with Araya AI</a></div>
+        </div>
+    </div>
+
+    <script>
+        let evidence = JSON.parse(localStorage.getItem('evidenceTracker') || '[]');
+
+        function renderEvidence() {
+            const list = document.getElementById('evidenceList');
+            const summaryBox = document.getElementById('summaryBox');
+
+            if (evidence.length === 0) {
+                list.innerHTML = '<p style="opacity: 0.5; text-align: center; padding: 2rem;">No evidence added yet. Start building your case above.</p>';
+                summaryBox.style.display = 'none';
+                return;
+            }
+
+            let html = '';
+            evidence.forEach((item, index) => {
+                const strengthClass = item.strength || 'medium';
+                html += `
+                    <div class="evidence-item ${strengthClass}">
+                        <div class="evidence-header">
+                            <span class="evidence-type">${item.type || 'Other'}</span>
+                            <div>
+                                <span class="evidence-strength strength-${strengthClass}">${strengthClass.toUpperCase()}</span>
+                                <button class="delete-btn" onclick="deleteEvidence(${index})">Delete</button>
+                            </div>
+                        </div>
+                        <div class="evidence-desc"><strong>${item.title}</strong></div>
+                        ${item.source ? `<div class="evidence-source">Source: ${item.source}</div>` : ''}
+                        ${item.notes ? `<div style="margin-top: 0.5rem; opacity: 0.8; font-size: 0.9rem;">${item.notes}</div>` : ''}
+                        ${item.date ? `<div class="evidence-date">Date: ${item.date}</div>` : ''}
+                    </div>
+                `;
+            });
+            list.innerHTML = html;
+
+            // Summary
+            const strong = evidence.filter(e => e.strength === 'strong').length;
+            const medium = evidence.filter(e => e.strength === 'medium').length;
+            const weak = evidence.filter(e => e.strength === 'weak').length;
+
+            summaryBox.style.display = 'block';
+            document.getElementById('summaryContent').innerHTML = `
+                <div class="summary-stat"><span>Total Evidence Pieces:</span><span>${evidence.length}</span></div>
+                <div class="summary-stat"><span style="color: #4CAF50;">Strong Evidence:</span><span>${strong}</span></div>
+                <div class="summary-stat"><span style="color: #ffaa00;">Medium Evidence:</span><span>${medium}</span></div>
+                <div class="summary-stat"><span style="color: #ff5f56;">Weak Evidence:</span><span>${weak}</span></div>
+                <div style="margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                    <strong>Assessment:</strong> ${getAssessment(strong, medium, weak)}
+                </div>
+            `;
+        }
+
+        function getAssessment(strong, medium, weak) {
+            const total = strong + medium + weak;
+            if (total === 0) return 'Add evidence to see assessment.';
+            const strongPct = (strong / total) * 100;
+            if (strongPct >= 50) return 'Good foundation of strong evidence. Focus on corroborating your key points.';
+            if (strongPct >= 25) return 'Moderate evidence base. Look for ways to strengthen weaker pieces or find additional documentation.';
+            return 'Evidence base needs strengthening. Focus on obtaining documented, verifiable evidence.';
+        }
+
+        function addEvidence() {
+            const title = document.getElementById('evidenceTitle').value.trim();
+            if (!title) {
+                console.warn('Please enter a description of the evidence');
+                return;
+            }
+
+            evidence.push({
+                title: title,
+                type: document.getElementById('evidenceType').value,
+                strength: document.getElementById('evidenceStrength').value || 'medium',
+                source: document.getElementById('evidenceSource').value.trim(),
+                date: document.getElementById('evidenceDate').value,
+                notes: document.getElementById('evidenceNotes').value.trim(),
+                added: new Date().toISOString()
+            });
+
+            localStorage.setItem('evidenceTracker', JSON.stringify(evidence));
+
+            // Clear form
+            document.getElementById('evidenceTitle').value = '';
+            document.getElementById('evidenceType').value = '';
+            document.getElementById('evidenceStrength').value = '';
+            document.getElementById('evidenceSource').value = '';
+            document.getElementById('evidenceDate').value = '';
+            document.getElementById('evidenceNotes').value = '';
+
+            renderEvidence();
+        }
+
+        function deleteEvidence(index) {
+            if (confirm('Delete this evidence?')) {
+                evidence.splice(index, 1);
+                localStorage.setItem('evidenceTracker', JSON.stringify(evidence));
+                renderEvidence();
+            }
+        }
+
+        renderEvidence();
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

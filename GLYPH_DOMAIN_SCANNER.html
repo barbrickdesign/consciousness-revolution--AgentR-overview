@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLYPH 7-Domain Consciousness Scanner</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --border: #333;
+            --text: #e0e0e0;
+            --gold: #ffd700;
+            --green: #00ff88;
+            --red: #ff4444;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--gold);
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle { color: #888; font-size: 0.95em; }
+
+        /* Domain Grid */
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .domain-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .domain-card:hover {
+            border-color: var(--gold);
+        }
+
+        .domain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .domain-name {
+            font-size: 1.1em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .domain-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+
+        .domain-score {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .domain-score.high { color: var(--green); }
+        .domain-score.medium { color: var(--gold); }
+        .domain-score.low { color: var(--red); }
+
+        .domain-bar {
+            height: 8px;
+            background: #1a1a25;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .domain-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+
+        .domain-textarea {
+            width: 100%;
+            height: 100px;
+            background: #1a1a25;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            padding: 10px;
+            font-size: 13px;
+            resize: vertical;
+        }
+
+        .domain-textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .domain-notation {
+            font-family: monospace;
+            font-size: 0.85em;
+            color: var(--gold);
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .domain-patterns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .pattern-tag {
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 10px;
+        }
+
+        .pattern-tag.truth {
+            background: rgba(0,255,136,0.1);
+            color: var(--green);
+        }
+
+        .pattern-tag.deceit {
+            background: rgba(255,68,68,0.1);
+            color: var(--red);
+        }
+
+        /* Overview Panel */
+        .overview-panel {
+            background: var(--surface);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .overview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .overview-title {
+            font-size: 1.3em;
+            color: var(--gold);
+        }
+
+        .total-score {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 800px) {
+            .overview-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .overview-metric {
+            text-align: center;
+            padding: 15px;
+            background: #1a1a25;
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* Radar Chart */
+        .radar-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .radar-chart {
+            width: 400px;
+            height: 400px;
+        }
+
+        /* Frequency Breakdown */
+        .freq-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .freq-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .freq-item {
+            text-align: center;
+            padding: 15px 10px;
+            background: #1a1a25;
+            border-radius: 8px;
+        }
+
+        .freq-hz {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .freq-name {
+            font-size: 0.75em;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .freq-count {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--green);
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GLYPH 7-Domain Consciousness Scanner</h1>
+            <p class="subtitle">Pattern Theory Analysis Across All Domains</p>
+        </header>
+
+        <!-- Overview Panel -->
+        <div class="overview-panel">
+            <div class="overview-header">
+                <span class="overview-title">System Consciousness Level</span>
+                <span class="total-score high" id="totalScore">--</span>
+            </div>
+            <div class="overview-grid">
+                <div class="overview-metric">
+                    <div class="metric-value" id="avgTruth">--</div>
+                    <div class="metric-label">Avg Truth Score</div>
+                </div>
+                <div class="overview-metric">
+                    <div class="metric-value" id="avgDeceit">--</div>
+                    <div class="metric-label">Avg Deceit Score</div>
+                </div>
+                <div class="overview-metric">
+                    <div class="metric-value" id="manipCount">0</div>
+                    <div class="metric-label">Manipulation Alerts</div>
+                </div>
+                <div class="overview-metric">
+                    <div class="metric-value" id="dominantFreq">---</div>
+                    <div class="metric-label">Dominant Frequency</div>
+                </div>
+            </div>
+
+            <div class="freq-grid" id="freqGrid"></div>
+        </div>
+
+        <!-- Domain Cards -->
+        <div class="domain-grid" id="domainGrid"></div>
+    </div>
+
+    <!-- Load GLYPH Modules -->
+    <script src="js/glyph/glyph-symbols.js"></script>
+    <script src="js/glyph/glyph-base60.js"></script>
+    <script src="js/glyph/glyph-patterns.js"></script>
+    <script src="js/glyph/glyph-core.js"></script>
+
+    <script>
+        // Domain configuration
+        const DOMAINS = [
+            { id: 1, name: 'COMMAND', icon: '\u2318', color: '#ffd700' },
+            { id: 2, name: 'BUILD', icon: '\u2692', color: '#00ff00' },
+            { id: 3, name: 'CONNECT', icon: '\u260E', color: '#00ffff' },
+            { id: 4, name: 'PROTECT', icon: '\u2694', color: '#ff4444' },
+            { id: 5, name: 'GROW', icon: '\u2697', color: '#00aa00' },
+            { id: 6, name: 'LEARN', icon: '\u270F', color: '#aa00ff' },
+            { id: 7, name: 'TRANSCEND', icon: '\u2609', color: '#ffff00' }
+        ];
+
+        const SOLFEGGIO = {
+            396: 'Liberation',
+            417: 'Change',
+            528: 'DNA Repair',
+            639: 'Connection',
+            741: 'Expression',
+            852: 'Intuition',
+            963: 'Unity'
+        };
+
+        // Store results
+        let domainResults = {};
+
+        // Initialize
+        function init() {
+            const grid = document.getElementById('domainGrid');
+
+            DOMAINS.forEach(domain => {
+                const card = document.createElement('div');
+                card.className = 'domain-card';
+                card.id = `domain-${domain.id}`;
+                card.innerHTML = `
+                    <div class="domain-header">
+                        <div class="domain-name">
+                            <span class="domain-icon" style="background: ${domain.color}20; color: ${domain.color}">${domain.icon}</span>
+                            <span>${domain.id}_${domain.name}</span>
+                        </div>
+                        <span class="domain-score" id="score-${domain.id}">--</span>
+                    </div>
+                    <div class="domain-bar">
+                        <div class="domain-fill" id="bar-${domain.id}" style="width: 0%; background: ${domain.color}"></div>
+                    </div>
+                    <textarea class="domain-textarea" id="text-${domain.id}"
+                        placeholder="Paste ${domain.name} content here..."></textarea>
+                    <div class="domain-notation" id="notation-${domain.id}">\u27D0 Awaiting input \u27D0</div>
+                    <div class="domain-patterns" id="patterns-${domain.id}"></div>
+                `;
+                grid.appendChild(card);
+
+                // Attach listener
+                document.getElementById(`text-${domain.id}`).addEventListener('input',
+                    debounce(() => analyzeDomain(domain.id), 200)
+                );
+            });
+
+            initFrequencyGrid();
+        }
+
+        function initFrequencyGrid() {
+            const grid = document.getElementById('freqGrid');
+            Object.entries(SOLFEGGIO).forEach(([hz, name]) => {
+                grid.innerHTML += `
+                    <div class="freq-item">
+                        <div class="freq-hz">${hz}</div>
+                        <div class="freq-name">${name}</div>
+                        <div class="freq-count" id="freq-${hz}">0</div>
+                    </div>
+                `;
+            });
+        }
+
+        function debounce(fn, wait) {
+            let timeout;
+            return (...args) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => fn(...args), wait);
+            };
+        }
+
+        function analyzeDomain(domainId) {
+            const text = document.getElementById(`text-${domainId}`).value.trim();
+
+            if (!text || text.length < 10) {
+                delete domainResults[domainId];
+                updateDomainUI(domainId, null);
+                updateOverview();
+                return;
+            }
+
+            const analysis = GLYPH.analyze(text);
+            domainResults[domainId] = analysis;
+            updateDomainUI(domainId, analysis);
+            updateOverview();
+        }
+
+        function updateDomainUI(domainId, analysis) {
+            const scoreEl = document.getElementById(`score-${domainId}`);
+            const barEl = document.getElementById(`bar-${domainId}`);
+            const notationEl = document.getElementById(`notation-${domainId}`);
+            const patternsEl = document.getElementById(`patterns-${domainId}`);
+
+            if (!analysis) {
+                scoreEl.textContent = '--';
+                scoreEl.className = 'domain-score';
+                barEl.style.width = '0%';
+                notationEl.textContent = '\u27D0 Awaiting input \u27D0';
+                patternsEl.innerHTML = '';
+                return;
+            }
+
+            scoreEl.textContent = analysis.scores.truth + '%';
+            scoreEl.className = 'domain-score ' +
+                (analysis.scores.truth >= 70 ? 'high' :
+                 analysis.scores.truth >= 40 ? 'medium' : 'low');
+
+            barEl.style.width = analysis.scores.truth + '%';
+            notationEl.textContent = analysis.glyphNotation;
+
+            let patterns = '';
+            analysis.patterns.truth.slice(0, 2).forEach(p => {
+                patterns += `<span class="pattern-tag truth">\u2713 ${p.marker}</span>`;
+            });
+            analysis.patterns.deceit.slice(0, 2).forEach(p => {
+                patterns += `<span class="pattern-tag deceit">\u2717 ${p.marker}</span>`;
+            });
+            patternsEl.innerHTML = patterns;
+        }
+
+        function updateOverview() {
+            const results = Object.values(domainResults);
+
+            if (results.length === 0) {
+                document.getElementById('totalScore').textContent = '--';
+                document.getElementById('avgTruth').textContent = '--';
+                document.getElementById('avgDeceit').textContent = '--';
+                document.getElementById('manipCount').textContent = '0';
+                document.getElementById('dominantFreq').textContent = '---';
+                Object.keys(SOLFEGGIO).forEach(hz => {
+                    document.getElementById(`freq-${hz}`).textContent = '0';
+                });
+                return;
+            }
+
+            // Calculate averages
+            const avgTruth = Math.round(results.reduce((a, r) => a + r.scores.truth, 0) / results.length);
+            const avgDeceit = Math.round(results.reduce((a, r) => a + r.scores.deceit, 0) / results.length);
+            const manipCount = results.reduce((a, r) => a + r.patterns.manipulation.length, 0);
+
+            // Count frequencies
+            const freqCounts = {};
+            results.forEach(r => {
+                freqCounts[r.frequency] = (freqCounts[r.frequency] || 0) + 1;
+            });
+
+            const dominantFreq = Object.entries(freqCounts)
+                .sort((a, b) => b[1] - a[1])[0];
+
+            // Update UI
+            const totalEl = document.getElementById('totalScore');
+            totalEl.textContent = avgTruth + '%';
+            totalEl.className = 'total-score ' +
+                (avgTruth >= 70 ? 'high' : avgTruth >= 40 ? 'medium' : 'low');
+
+            document.getElementById('avgTruth').textContent = avgTruth + '%';
+            document.getElementById('avgDeceit').textContent = avgDeceit + '%';
+            document.getElementById('manipCount').textContent = manipCount;
+            document.getElementById('dominantFreq').textContent =
+                dominantFreq ? dominantFreq[0] + ' Hz' : '---';
+
+            // Update frequency counts
+            Object.keys(SOLFEGGIO).forEach(hz => {
+                document.getElementById(`freq-${hz}`).textContent = freqCounts[hz] || 0;
+            });
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

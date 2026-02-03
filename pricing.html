@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Consciousness Revolution</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            margin-bottom: 50px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .card:hover { transform: translateY(-8px); }
+
+        .card.featured { border: 3px solid #667eea; }
+
+        .card.featured::before {
+            content: "BEST VALUE";
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #667eea;
+            color: white;
+            padding: 4px 35px;
+            transform: rotate(45deg);
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+
+        .card.entry { border-top: 4px solid #22c55e; }
+        .card.premium { border-top: 4px solid #f59e0b; }
+        .card.emergency {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        .card.emergency .price, .card.emergency .features li { color: white; }
+
+        .card-title {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .price {
+            font-size: 2.8em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .interval { color: #999; font-size: 0.95em; margin-bottom: 20px; }
+
+        .features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        .features li::before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            font-size: 1em;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .card.emergency .btn {
+            background: white;
+            color: #f5576c;
+        }
+
+        .card.emergency .card-title,
+        .card.emergency .card-desc { color: white; }
+
+        .guarantee {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            font-size: 1.1em;
+        }
+
+        .guarantee strong { display: block; font-size: 1.4em; margin-bottom: 8px; }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            text-decoration: none;
+        }
+
+        .back-link:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Your Path</h1>
+        <p class="subtitle">Transform your reality. Master the patterns. Join the revolution.</p>
+
+        <div class="pricing-grid">
+            <!-- ENTRY: Beta Access -->
+            <div class="card entry">
+                <h2 class="card-title">Beta Access</h2>
+                <p class="card-desc">Start your journey. Get immediate access to ARAYA and basic tools.</p>
+                <div class="price">$20</div>
+                <div class="interval">one-time</div>
+                <ul class="features">
+                    <li>ARAYA AI companion access</li>
+                    <li>Manipulation immunity score</li>
+                    <li>Basic pattern recognition</li>
+                    <li>7 Domain assessment</li>
+                    <li>Community access</li>
+                </ul>
+                <a href="https://buy.stripe.com/cNifZi5m4bY655I6kO8Vi08" class="btn">Get Started - $20</a>
+            </div>
+
+            <!-- CORE: Founding Member -->
+            <div class="card featured">
+                <h2 class="card-title">Founding Member</h2>
+                <p class="card-desc">Lock in the lifetime rate. Full platform access forever at this price.</p>
+                <div class="price">$47</div>
+                <div class="interval">/month - locked forever</div>
+                <ul class="features">
+                    <li>Everything in Beta Access</li>
+                    <li>Full consciousness toolkit</li>
+                    <li>Pattern recognition training</li>
+                    <li>Monthly training calls</li>
+                    <li>Lifetime rate guarantee</li>
+                    <li>Priority email support</li>
+                </ul>
+                <a href="https://buy.stripe.com/cNi6oIg0I0fobu67oS8Vi09" class="btn">Join Founding Members</a>
+            </div>
+
+            <!-- PREMIUM: Pattern Tools Pro -->
+            <div class="card premium">
+                <h2 class="card-title">Pattern Tools Pro</h2>
+                <p class="card-desc">Advanced training, priority support, and quarterly 1-on-1 sessions.</p>
+                <div class="price">$99</div>
+                <div class="interval">/month</div>
+                <ul class="features">
+                    <li>Everything in Founding Member</li>
+                    <li>Priority support (24hr)</li>
+                    <li>Advanced pattern workshops</li>
+                    <li>Quarterly 1-on-1 sessions</li>
+                    <li>Custom tool configuration</li>
+                    <li>Early access to features</li>
+                    <li>Expert community channel</li>
+                </ul>
+                <a href="https://buy.stripe.com/14AaEY01K1jsaq24cG8Vi0b" class="btn">Upgrade to Pro</a>
+            </div>
+
+            <!-- COURSE -->
+            <div class="card">
+                <h2 class="card-title">Pattern Recognition Course</h2>
+                <p class="card-desc">Complete 13-module deep-dive into pattern theory and manipulation immunity.</p>
+                <div class="price">$197</div>
+                <div class="interval">one-time</div>
+                <ul class="features">
+                    <li>13 comprehensive modules</li>
+                    <li>Video + written content</li>
+                    <li>Pattern identification drills</li>
+                    <li>Real-world case studies</li>
+                    <li>Lifetime access</li>
+                    <li>Certificate of completion</li>
+                </ul>
+                <a href="https://buy.stripe.com/3cI00k7uc8LUeGi38C8Vi0d" class="btn">Get Full Course</a>
+            </div>
+
+            <!-- EMERGENCY -->
+            <div class="card emergency">
+                <h2 class="card-title">Emergency Session</h2>
+                <p class="card-desc">In crisis? Get immediate 1-on-1 pattern analysis and guidance.</p>
+                <div class="price">$500</div>
+                <div class="interval">one-time</div>
+                <ul class="features">
+                    <li>1-hour private session</li>
+                    <li>Immediate scheduling</li>
+                    <li>Pattern analysis of your situation</li>
+                    <li>Custom manipulation defense plan</li>
+                    <li>Follow-up resources</li>
+                    <li>Session recording provided</li>
+                </ul>
+                <a href="https://buy.stripe.com/4gM3cw3dW7HQ55IdNg8Vi0c" class="btn">Book Emergency Session</a>
+            </div>
+        </div>
+
+        <div class="guarantee">
+            <strong>30-Day Money-Back Guarantee</strong>
+            If you don't see patterns you couldn't see before within 30 days, we'll refund you completely.
+        </div>
+
+        <a href="/" class="back-link">Back to Home</a>
+    </div>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+</body>
+</html>

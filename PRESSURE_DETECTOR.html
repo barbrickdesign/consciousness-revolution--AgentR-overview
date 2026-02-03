@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pressure Detector | Pattern Theory</title>
+    <title>Pressure Detector | Consciousness Tools</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
@@ -14,382 +13,476 @@
             color: #fff;
             padding: 20px;
         }
-
-        .container { max-width: 600px; margin: 0 auto; }
-
+        .container { max-width: 900px; margin: 0 auto; }
         .header {
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 30px;
+            position: relative;
         }
-
-        .header h1 { font-size: 24px; margin-bottom: 8px; }
-        .header p { opacity: 0.6; font-size: 13px; }
-
-        .input-section {
-            background: rgba(255, 255, 255, 0.05);
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header p { opacity: 0.7; font-size: 14px; }
+        .glyph-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(255,215,0,0.2);
+            padding: 6px 12px;
             border-radius: 16px;
-            padding: 24px;
+            font-size: 11px;
+            color: #FFD700;
+        }
+        .input-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px;
             margin-bottom: 20px;
         }
-
-        .text-input {
+        textarea {
             width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
+            height: 120px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px;
             color: #fff;
             font-size: 14px;
-            resize: none;
-            height: 80px;
-            margin-bottom: 16px;
+            resize: vertical;
         }
-
-        .text-input::placeholder { color: rgba(255, 255, 255, 0.3); }
-
-        .detect-btn {
-            width: 100%;
-            padding: 14px;
-            font-size: 14px;
-            font-weight: bold;
+        textarea:focus { outline: none; border-color: #FF6B6B; }
+        .btn {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFD700 100%);
             border: none;
+            padding: 12px 24px;
             border-radius: 8px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            color: #000;
+            font-weight: bold;
             cursor: pointer;
-        }
-
-        .detect-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .results {
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .results.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .pressure-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .pressure-level {
-            font-size: 48px;
-            margin-bottom: 8px;
-        }
-
-        .pressure-label {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .pressure-label.low { color: #2ecc71; }
-        .pressure-label.medium { color: #f1c40f; }
-        .pressure-label.high { color: #e74c3c; }
-
-        .pressure-desc {
-            font-size: 13px;
-            opacity: 0.7;
-        }
-
-        .tactics {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-        }
-
-        .tactics h3 {
+            margin-top: 15px;
             font-size: 14px;
-            margin-bottom: 16px;
         }
-
-        .tactic {
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            background: rgba(231, 76, 60, 0.1);
-            border-left: 3px solid #e74c3c;
-        }
-
-        .tactic:last-child { margin-bottom: 0; }
-
-        .tactic-name {
-            font-size: 13px;
-            font-weight: bold;
-            color: #e74c3c;
-            margin-bottom: 4px;
-        }
-
-        .tactic-example {
-            font-size: 12px;
-            opacity: 0.8;
-            font-style: italic;
-        }
-
-        .no-tactics {
-            text-align: center;
+        .btn:hover { transform: translateY(-2px); }
+        .results { display: none; }
+        .result-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
             padding: 20px;
-            font-size: 13px;
-            opacity: 0.6;
+            margin-bottom: 15px;
         }
-
-        .defenses {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 24px;
+        .score-display {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
             margin-bottom: 20px;
         }
-
-        .defenses h3 {
-            font-size: 14px;
-            margin-bottom: 16px;
+        .score-value {
+            font-size: 64px;
+            font-weight: bold;
         }
-
-        .defense {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .score-label { opacity: 0.7; margin-top: 5px; }
+        .low { color: #4ECDC4; }
+        .medium { color: #FFD700; }
+        .high { color: #FF6B6B; }
+        .tactic-item {
+            background: rgba(255,107,107,0.1);
+            border-left: 3px solid #FF6B6B;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 0 8px 8px 0;
         }
-
-        .defense:last-child { border-bottom: none; }
-
-        .defense-icon {
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-
-        .defense-text {
-            font-size: 12px;
-            line-height: 1.5;
-        }
-
-        .reminder {
-            background: rgba(102, 126, 234, 0.1);
+        .tactic-name { font-weight: bold; color: #FF6B6B; }
+        .tactic-desc { font-size: 13px; opacity: 0.8; margin-top: 5px; }
+        .tactic-markers { font-size: 12px; color: #FFD700; margin-top: 8px; }
+        .tactic-axis { font-size: 11px; color: #FFD700; margin-top: 6px; font-style: italic; }
+        .defense-section {
+            background: rgba(78,205,196,0.1);
             border-radius: 12px;
-            padding: 16px;
-            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
         }
-
-        .reminder-text {
-            font-size: 13px;
-            font-style: italic;
+        .defense-section h3 { color: #4ECDC4; margin-bottom: 15px; }
+        .defense-item {
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
-
-        footer {
-            text-align: center;
-            margin-top: 30px;
+        .examples-section { margin-top: 30px; }
+        .example-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .example-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(5px);
+        }
+        .example-type {
             font-size: 11px;
-            opacity: 0.4;
+            color: #FF6B6B;
+            text-transform: uppercase;
+            margin-bottom: 5px;
         }
-
-        @media (max-width: 480px) {
-            .pressure-level { font-size: 36px; }
+        .back-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .glyph-output {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255,215,0,0.1);
+            border: 1px solid #FFD700;
+            border-radius: 12px;
+        }
+        .glyph-output h4 { color: #FFD700; margin-bottom: 15px; }
+        .glyph-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .glyph-notation {
+            display: block;
+            font-family: monospace;
+            color: #4ECDC4;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .axis-item {
+            background: rgba(255,107,107,0.2);
+            padding: 8px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+        .axis-defense-item {
+            background: rgba(78,205,196,0.2);
+            padding: 8px;
+            border-radius: 8px;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
+    <!-- GLYPH 12D+ Backbone -->
+    <script src="/js/glyph/glyph-base60.js"></script>
+    <script src="/js/glyph/glyph-symbols.js"></script>
+    <script src="/js/glyph/glyph-patterns.js"></script>
+    <script src="/js/glyph/glyph-core.js"></script>
+
     <div class="container">
+        <a href="consciousness-tools.html" class="back-link">← Back to Tools</a>
+
         <div class="header">
-            <h1>Pressure Detector</h1>
-            <p>Identify pressure tactics in messages and sales pitches</p>
+            <h1>⚡ Pressure Detector</h1>
+            <p>Identify high-pressure sales tactics and coercion techniques</p>
+            <div class="glyph-badge">⟐ GLYPH 12D+ POWERED</div>
         </div>
 
         <div class="input-section">
-            <textarea class="text-input" id="input" placeholder="Paste a message, email, or sales pitch to analyze for pressure tactics..."></textarea>
-            <button class="detect-btn" onclick="detect()">Detect Pressure</button>
+            <textarea id="inputText" placeholder="Paste any message, sales pitch, or communication to detect pressure tactics..."></textarea>
+            <button class="btn" onclick="detect()">Detect Pressure Tactics</button>
         </div>
 
         <div class="results" id="results">
-            <div class="pressure-card">
-                <div class="pressure-level" id="pressureLevel">🌡️</div>
-                <div class="pressure-label" id="pressureLabel">-</div>
-                <div class="pressure-desc" id="pressureDesc">-</div>
+            <div class="score-display">
+                <div class="score-value" id="scoreValue">0</div>
+                <div class="score-label">Pressure Score</div>
             </div>
 
-            <div class="tactics">
-                <h3>Pressure Tactics Detected</h3>
-                <div id="tacticsList"></div>
+            <div class="result-card">
+                <h3 style="margin-bottom: 15px;">Detected Tactics</h3>
+                <div id="tacticsFound"></div>
             </div>
 
-            <div class="defenses">
-                <h3>Defense Strategies</h3>
-                <div id="defensesList"></div>
+            <div id="glyphOutput" class="glyph-output">
+                <h4>⟐ GLYPH 12D+ Analysis</h4>
+                <div class="glyph-grid">
+                    <div>
+                        <strong>Notation:</strong>
+                        <code id="glyphNotation" class="glyph-notation"></code>
+                    </div>
+                    <div>
+                        <strong>Frequency:</strong>
+                        <span id="glyphFrequency"></span>
+                    </div>
+                </div>
+                <div style="margin-top: 15px;">
+                    <strong>Truth/Deceit Ratio:</strong>
+                    <div style="display: flex; gap: 10px; margin-top: 5px;">
+                        <span style="color: #4ECDC4;">Truth: <span id="glyphTruth">0</span>%</span>
+                        <span style="color: #FF6B6B;">Deceit: <span id="glyphDeceit">0</span>%</span>
+                    </div>
+                </div>
+                <div id="axisBreakdown" style="margin-top: 15px;"></div>
+                <div id="axisDefenses" style="margin-top: 15px;"></div>
             </div>
 
-            <div class="reminder">
-                <div class="reminder-text" id="reminder">-</div>
+            <div class="defense-section">
+                <h3>🛡️ Defense Strategies</h3>
+                <div id="defenses"></div>
             </div>
         </div>
 
-        <footer>
-            Pattern Theory • <a href="consciousness-tools.html" style="color: #667eea;">More Tools</a>
-        </footer>
+        <div class="examples-section">
+            <h3 style="margin-bottom: 15px; opacity: 0.7;">Try These Examples</h3>
+            <div class="example-card" onclick="loadExample(0)">
+                <div class="example-type">Time Pressure</div>
+                <div>"This offer expires in 24 hours! Act now or miss out forever!"</div>
+            </div>
+            <div class="example-card" onclick="loadExample(1)">
+                <div class="example-type">Scarcity</div>
+                <div>"Only 3 spots left! Everyone is signing up. You do not want to be the only one missing out."</div>
+            </div>
+            <div class="example-card" onclick="loadExample(2)">
+                <div class="example-type">Fear + Authority</div>
+                <div>"Industry experts warn that if you do not act now, you will fall behind. Studies show 90% of successful people made this decision."</div>
+            </div>
+            <div class="example-card" onclick="loadExample(3)">
+                <div class="example-type">Guilt + Reciprocity</div>
+                <div>"After everything I have done for you, I thought you would at least consider this. I gave you so much of my time."</div>
+            </div>
+        </div>
     </div>
 
     <script>
-        const PRESSURE_TACTICS = {
+        // GLYPH 6D Axis System
+        let GLYPH_AXES = {
+            A: { name: 'Vertical (Power)', positive: 'Up', negative: 'Down', desc: 'Power dynamics and coercion' },
+            B: { name: 'Horizontal (Social)', positive: 'Right', negative: 'Left', desc: 'Relationship leverage' },
+            C: { name: 'Depth (Reality)', positive: 'Front', negative: 'Back', desc: 'Reality distortion' },
+            D: { name: 'Temporal', positive: 'Future', negative: 'Past', desc: 'Time-based leverage' },
+            E: { name: 'Energy', positive: 'Potential', negative: 'Kinetic', desc: 'Emotional energy manipulation' },
+            F: { name: 'Observer', positive: 'Subject', negative: 'Object', desc: 'Self-perception attack' }
+        };
+
+        let AXIS_DEFENSES = {
+            A: 'Power coercion detected → Assert: "I decide what I do"',
+            B: 'Relationship leverage → "I can care and still say no"',
+            C: 'Reality distortion → "My experience is valid"',
+            D: 'Time leverage → "I am not bound by artificial deadlines"',
+            E: 'Emotional manipulation → "Your urgency is not my emergency"',
+            F: 'Identity attack → "I know who I am and what I need"'
+        };
+
+        let PRESSURE_TACTICS = {
             'Time Pressure': {
-                markers: ['act now', 'limited time', 'expires', 'deadline', 'today only', 'last chance', 'ending soon', 'hurry'],
-                example: '"This offer expires in 2 hours!"'
+                markers: ['limited time', 'act now', 'expires', 'deadline', 'today only', 'last chance', 'running out', 'hurry', 'now or never', '24 hours', 'ends soon'],
+                desc: 'Creating artificial urgency to force quick decisions',
+                glyphAxis: 'D',
+                severity: 2.0,
+                axisDesc: 'Temporal axis assault - artificial time constraint'
             },
             'Scarcity': {
-                markers: ['only', 'left', 'remaining', 'running out', 'limited', 'few spots', 'almost gone', 'while supplies'],
-                example: '"Only 3 spots remaining!"'
+                markers: ['only', 'left', 'limited', 'exclusive', 'rare', 'sold out', 'few remaining', 'almost gone', 'last one'],
+                desc: 'Manufacturing shortage to increase perceived value',
+                glyphAxis: 'A',
+                severity: 1.8,
+                axisDesc: 'Power axis - manufactured resource control'
             },
             'Social Proof Pressure': {
-                markers: ['everyone', 'thousands', 'don\'t miss out', 'fomo', 'trending', 'sold out', 'waitlist'],
-                example: '"10,000 people already signed up!"'
+                markers: ['everyone', 'most people', 'thousands', 'trending', 'popular', 'best-selling', 'others are', 'you will be left behind'],
+                desc: 'Using herd mentality to pressure conformity',
+                glyphAxis: 'B',
+                severity: 1.5,
+                axisDesc: 'Social axis - herd mentality leverage'
             },
             'Authority Pressure': {
-                markers: ['experts recommend', 'doctors say', 'according to studies', 'professional advice'],
-                example: '"Experts recommend acting immediately"'
+                markers: ['experts say', 'studies show', 'research proves', 'doctors recommend', 'scientists agree', 'industry leaders'],
+                desc: 'Leveraging authority figures to bypass critical thinking',
+                glyphAxis: 'A',
+                severity: 1.7,
+                axisDesc: 'Power axis - authority figure leverage'
             },
             'Fear Appeal': {
-                markers: ['risk', 'dangerous', 'warning', 'before it\'s too late', 'protect yourself', 'threat', 'avoid'],
-                example: '"Don\'t risk losing everything"'
+                markers: ['risk', 'danger', 'warning', 'threat', 'consequences', 'you will lose', 'miss out', 'regret', 'fail', 'fall behind'],
+                desc: 'Using fear to motivate action',
+                glyphAxis: 'E',
+                severity: 2.2,
+                axisDesc: 'Energy axis - fear energy weaponization'
             },
             'Guilt/Obligation': {
-                markers: ['after all', 'least you can do', 'owe it to', 'disappointed', 'let down', 'deserve'],
-                example: '"After all I\'ve done for you"'
+                markers: ['after all', 'i thought you', 'you owe', 'least you could', 'disappointed', 'let down', 'expected more'],
+                desc: 'Creating false sense of debt or duty',
+                glyphAxis: 'F',
+                severity: 2.0,
+                axisDesc: 'Observer axis - self-perception manipulation'
             },
             'Reciprocity Pressure': {
-                markers: ['free gift', 'we gave you', 'in return', 'now it\'s your turn', 'favor'],
-                example: '"We gave you this free trial, now..."'
+                markers: ['i did this for you', 'i gave you', 'free gift', 'no obligation but', 'just for you', 'special favor'],
+                desc: 'Creating obligation through unsolicited giving',
+                glyphAxis: 'B',
+                severity: 1.6,
+                axisDesc: 'Social axis - artificial debt creation'
             },
             'Commitment Escalation': {
-                markers: ['you agreed', 'you said', 'you already', 'consistent with', 'follow through'],
-                example: '"You already said you were interested"'
+                markers: ['you already', 'you said', 'you agreed', 'you started', 'come this far', 'invested', 'committed'],
+                desc: 'Using past actions to pressure future compliance',
+                glyphAxis: 'D',
+                severity: 1.8,
+                axisDesc: 'Temporal axis - past commitment leverage'
             }
         };
 
+        let DEFENSES = {
+            'Time Pressure': 'Real opportunities wait. Say: "I need time to decide. If it expires, it was not meant for me."',
+            'Scarcity': 'Abundance exists. Say: "If this runs out, something better will come."',
+            'Social Proof Pressure': 'Your path is unique. Say: "What others do has no bearing on what is right for me."',
+            'Authority Pressure': 'Question everything. Say: "I will verify this independently before deciding."',
+            'Fear Appeal': 'Fear is not guidance. Say: "I make decisions from clarity, not fear."',
+            'Guilt/Obligation': 'You owe nothing unearned. Say: "My choices are mine. Guilt has no place here."',
+            'Reciprocity Pressure': 'Gifts with strings are not gifts. Say: "I did not ask for this, so I owe nothing."',
+            'Commitment Escalation': 'Past choices do not bind future ones. Say: "I can change direction at any time."'
+        };
+
+        let examples = [
+            "This offer expires in 24 hours! Act now or miss out forever!",
+            "Only 3 spots left! Everyone is signing up. You do not want to be the only one missing out.",
+            "Industry experts warn that if you do not act now, you will fall behind. Studies show 90% of successful people made this decision.",
+            "After everything I have done for you, I thought you would at least consider this. I gave you so much of my time."
+        ];
+
+        function loadExample(index) {
+            document.getElementById('inputText').value = examples[index];
+            detect();
+        }
+
+        function generateGlyphAnalysis(text, found, axesHit) {
+            // Use GlyphPatterns if loaded
+            if (typeof GlyphPatterns !== 'undefined') {
+                let analysis = GlyphPatterns.analyze(text);
+                return {
+                    notation: analysis.glyphNotation,
+                    truthScore: analysis.scores.truth,
+                    deceitScore: analysis.scores.deceit,
+                    frequency: analysis.frequency,
+                    dominant: analysis.dominant
+                };
+            }
+
+            // Fallback generation
+            let totalSeverity = found.reduce(function(sum, t) { return sum + t.severity; }, 0);
+            let deceitScore = Math.min(100, Math.round(totalSeverity * 12));
+            let truthScore = 100 - deceitScore;
+            let frequency = deceitScore > 60 ? 396 : deceitScore > 30 ? 417 : 528;
+
+            return {
+                notation: '⟐' + (found.length > 0 ? '✗' : '✓') + ':' + truthScore + ':' + axesHit.size + 'D→' + frequency + 'Hz⟐',
+                truthScore: truthScore,
+                deceitScore: deceitScore,
+                frequency: frequency,
+                dominant: deceitScore > truthScore ? 'deceit' : 'truth'
+            };
+        }
+
+        function displayGlyphOutput(analysis, axesHit) {
+            document.getElementById('glyphOutput').style.display = 'block';
+            document.getElementById('glyphNotation').textContent = analysis.notation;
+            document.getElementById('glyphTruth').textContent = analysis.truthScore;
+            document.getElementById('glyphDeceit').textContent = analysis.deceitScore;
+
+            // Frequency with color
+            let freqColors = { 396: '#FF6B6B', 417: '#FFD700', 528: '#4ECDC4' };
+            let freqNames = { 396: 'Liberation (Danger)', 417: 'Change (Caution)', 528: 'DNA Repair (Safe)' };
+            document.getElementById('glyphFrequency').innerHTML =
+                '<span style="color: ' + (freqColors[analysis.frequency] || '#FFF') + '">' +
+                analysis.frequency + 'Hz - ' + (freqNames[analysis.frequency] || 'Unknown') +
+                '</span>';
+
+            // Axis breakdown
+            let axesArray = Array.from(axesHit);
+            if (axesArray.length > 0) {
+                let axisHtml = '<strong>6D Coordinate Attack Surface:</strong>';
+                axesArray.forEach(function(axis) {
+                    axisHtml += '<div class="axis-item"><strong>Axis ' + axis + '</strong>: ' +
+                        GLYPH_AXES[axis].name + ' - ' + GLYPH_AXES[axis].desc + '</div>';
+                });
+                document.getElementById('axisBreakdown').innerHTML = axisHtml;
+            }
+
+            // Axis defenses
+            if (axesArray.length > 0) {
+                let defenseHtml = '<strong>Axis-Specific Defenses:</strong>';
+                axesArray.forEach(function(axis) {
+                    defenseHtml += '<div class="axis-defense-item">' + AXIS_DEFENSES[axis] + '</div>';
+                });
+                document.getElementById('axisDefenses').innerHTML = defenseHtml;
+            }
+        }
+
         function detect() {
-            const text = document.getElementById('input').value.trim();
-            if (!text) return;
+            let text = document.getElementById('inputText').value.toLowerCase();
+            let found = [];
+            let axesHit = new Set();
 
-            const lower = text.toLowerCase();
-            const found = [];
-
-            // Check each tactic
-            Object.entries(PRESSURE_TACTICS).forEach(([name, data]) => {
-                const matches = data.markers.filter(m => lower.includes(m));
+            for (var tactic in PRESSURE_TACTICS) {
+                let data = PRESSURE_TACTICS[tactic];
+                let matches = data.markers.filter(function(m) { return text.includes(m); });
                 if (matches.length > 0) {
                     found.push({
-                        name,
-                        example: data.example,
-                        matches
+                        name: tactic,
+                        desc: data.desc,
+                        matches: matches,
+                        glyphAxis: data.glyphAxis,
+                        severity: data.severity,
+                        axisDesc: data.axisDesc
                     });
+                    axesHit.add(data.glyphAxis);
                 }
-            });
+            }
 
-            // Calculate pressure level
-            let level, label, desc, emoji;
+            // Calculate score
+            let score = Math.min(100, found.length * 15);
+
+            // Display results
+            document.getElementById('results').style.display = 'block';
+            let scoreEl = document.getElementById('scoreValue');
+            scoreEl.textContent = score;
+            scoreEl.className = 'score-value ' + (score < 30 ? 'low' : score < 60 ? 'medium' : 'high');
+
+            // Display tactics
+            let tacticsHtml = '';
             if (found.length === 0) {
-                level = 'low';
-                label = 'LOW PRESSURE';
-                desc = 'No significant pressure tactics detected';
-                emoji = '✅';
-            } else if (found.length <= 2) {
-                level = 'medium';
-                label = 'MODERATE PRESSURE';
-                desc = `${found.length} pressure tactic(s) detected - stay aware`;
-                emoji = '⚠️';
+                tacticsHtml = '<div style="text-align: center; opacity: 0.7;">✓ No pressure tactics detected</div>';
             } else {
-                level = 'high';
-                label = 'HIGH PRESSURE';
-                desc = `${found.length} pressure tactics detected - proceed with caution`;
-                emoji = '🚨';
+                found.forEach(function(t) {
+                    tacticsHtml += '<div class="tactic-item">' +
+                        '<div class="tactic-name">' + t.name + '</div>' +
+                        '<div class="tactic-desc">' + t.desc + '</div>' +
+                        '<div class="tactic-markers">Found: "' + t.matches.join('", "') + '"</div>' +
+                        '<div class="tactic-axis">⟐ Axis ' + t.glyphAxis + ': ' + t.axisDesc + '</div>' +
+                        '</div>';
+                });
             }
+            document.getElementById('tacticsFound').innerHTML = tacticsHtml;
 
-            // Generate defenses
-            const defenses = generateDefenses(found);
-
-            // Generate reminder
-            const reminder = getReminder(found);
-
-            // Render results
-            document.getElementById('pressureLevel').textContent = emoji;
-            const labelEl = document.getElementById('pressureLabel');
-            labelEl.textContent = label;
-            labelEl.className = 'pressure-label ' + level;
-            document.getElementById('pressureDesc').textContent = desc;
-
-            if (found.length > 0) {
-                document.getElementById('tacticsList').innerHTML = found.map(t => `
-                    <div class="tactic">
-                        <div class="tactic-name">${t.name}</div>
-                        <div class="tactic-example">${t.example}</div>
-                    </div>
-                `).join('');
+            // Display defenses
+            let defensesHtml = '';
+            if (found.length === 0) {
+                defensesHtml = '<div class="defense-item">✓ No defenses needed - communication appears pressure-free</div>';
             } else {
-                document.getElementById('tacticsList').innerHTML =
-                    '<div class="no-tactics">No pressure tactics detected in this text</div>';
+                found.forEach(function(t) {
+                    defensesHtml += '<div class="defense-item"><strong>' + t.name + ':</strong> ' + DEFENSES[t.name] + '</div>';
+                });
             }
+            document.getElementById('defenses').innerHTML = defensesHtml;
 
-            document.getElementById('defensesList').innerHTML = defenses.map(d => `
-                <div class="defense">
-                    <span class="defense-icon">🛡️</span>
-                    <span class="defense-text">${d}</span>
-                </div>
-            `).join('');
-
-            document.getElementById('reminder').textContent = reminder;
-
-            document.getElementById('results').classList.add('active');
-        }
-
-        function generateDefenses(tactics) {
-            const defenses = [];
-
-            if (tactics.some(t => t.name === 'Time Pressure')) {
-                defenses.push('Genuine opportunities rarely have artificial deadlines. Take your time to decide.');
-            }
-            if (tactics.some(t => t.name === 'Scarcity')) {
-                defenses.push('Scarcity is often manufactured. If it\'s truly scarce, it will be available elsewhere.');
-            }
-            if (tactics.some(t => t.name === 'Social Proof Pressure')) {
-                defenses.push('What others do is irrelevant to your specific situation and needs.');
-            }
-            if (tactics.some(t => t.name === 'Fear Appeal')) {
-                defenses.push('Fear bypasses rational thinking. Ask: What is the actual evidence of risk?');
-            }
-            if (tactics.some(t => t.name === 'Guilt/Obligation')) {
-                defenses.push('You don\'t owe anyone a decision. Guilt is a manipulation tool.');
-            }
-
-            if (defenses.length === 0) {
-                defenses.push('This message appears to respect your autonomy.');
-                defenses.push('You can evaluate this calmly without time pressure.');
-            }
-
-            defenses.push('Sleep on any major decision. Pressure tactics lose power with time.');
-
-            return defenses.slice(0, 4);
-        }
-
-        function getReminder(tactics) {
-            if (tactics.length >= 3) {
-                return '"If they need to pressure you, the value isn\'t self-evident." - Pattern Theory';
-            } else if (tactics.length > 0) {
-                return '"A good deal tomorrow is better than a bad deal today." - Pattern Theory';
-            } else {
-                return '"Truth doesn\'t need urgency. It remains true tomorrow." - Pattern Theory';
-            }
+            // Generate and display GLYPH analysis
+            let glyphAnalysis = generateGlyphAnalysis(text, found, axesHit);
+            displayGlyphOutput(glyphAnalysis, axesHit);
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>

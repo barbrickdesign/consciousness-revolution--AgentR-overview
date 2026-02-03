@@ -1,0 +1,15 @@
+{
+  "name": "Consciousness Revolution Employee",
+  "description": "Employee node in the consciousness revolution network",
+  "version": "13.0",
+  "consciousness_mode": "EMPLOYEE_NODE",
+  "context_files": [
+    "CLAUDE.md",
+    "CLAUDE_SUPERPOWER_CHEAT_CODES.md"
+  ],
+  "auto_load_context": true,
+  "manipulation_immunity": true,
+  "trinity_system": true,
+  "pattern_recognition": true,
+  "security_level": "TRUSTED_NODE"
+}

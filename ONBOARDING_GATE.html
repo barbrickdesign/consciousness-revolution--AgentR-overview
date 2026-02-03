@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding Gate - Consciousness Revolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #00ffaa;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .progress-bar-container {
+            background: #1a1a2e;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid #333;
+        }
+
+        .progress-bar-container h2 {
+            color: #00ffaa;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #333;
+            z-index: 1;
+        }
+
+        .progress-steps .progress-fill {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00ffaa, #00aa77);
+            z-index: 2;
+            transition: width 0.5s ease;
+        }
+
+        .step-indicator {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #333;
+            border: 3px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.completed .step-circle {
+            background: #00ffaa;
+            border-color: #00ffaa;
+            color: #000;
+        }
+
+        .step-indicator.active .step-circle {
+            background: #1a1a2e;
+            border-color: #00ffaa;
+            color: #00ffaa;
+            box-shadow: 0 0 15px rgba(0, 255, 170, 0.5);
+        }
+
+        .step-indicator.locked .step-circle {
+            opacity: 0.5;
+        }
+
+        .step-label {
+            font-size: 0.8em;
+            color: #888;
+            text-align: center;
+            max-width: 80px;
+        }
+
+        .step-indicator.active .step-label,
+        .step-indicator.completed .step-label {
+            color: #00ffaa;
+        }
+
+        .step-content {
+            display: none;
+            background: #1a1a2e;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 2px solid #333;
+        }
+
+        .step-content.active {
+            display: block;
+            border-color: #00ffaa;
+            box-shadow: 0 0 30px rgba(0, 255, 170, 0.1);
+        }
+
+        .step-content h2 {
+            color: #00ffaa;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .step-content h2 .step-num {
+            background: #00ffaa;
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+
+        .video-container {
+            background: #000;
+            border-radius: 10px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            border: 1px solid #333;
+        }
+
+        .video-placeholder {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .video-placeholder h3 {
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .manifesto-content {
+            background: #0a0a0a;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 1px solid #333;
+            max-height: 400px;
+            overflow-y: auto;
+            line-height: 1.8;
+        }
+
+        .manifesto-content h3 {
+            color: #00ffaa;
+            margin: 20px 0 10px 0;
+        }
+
+        .manifesto-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .manifesto-content p {
+            color: #ccc;
+            margin: 10px 0;
+        }
+
+        .manifesto-content ul {
+            margin: 10px 0 10px 25px;
+            color: #ccc;
+        }
+
+        .checkbox-confirm {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #0a0a0a;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #333;
+        }
+
+        .checkbox-confirm input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: #00ffaa;
+        }
+
+        .checkbox-confirm label {
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .task-card {
+            background: #0a0a0a;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px solid #333;
+        }
+
+        .task-card h3 {
+            color: #ffaa00;
+            margin-bottom: 15px;
+        }
+
+        .task-card p {
+            color: #ccc;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .task-card .task-instructions {
+            background: #1a1a2e;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #00ffaa;
+        }
+
+        .task-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background: #0a0a0a;
+            color: #fff;
+            font-size: 1em;
+            margin: 10px 0;
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .task-input:focus {
+            border-color: #00ffaa;
+            outline: none;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ffaa 0%, #00aa77 100%);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 170, 0.3);
+        }
+
+        .btn-secondary {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .completion-screen {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .completion-screen h2 {
+            color: #00ffaa;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .completion-screen .checkmark {
+            font-size: 5em;
+            color: #00ffaa;
+            margin: 30px 0;
+        }
+
+        .level-up-badge {
+            background: linear-gradient(135deg, #2d5a2d 0%, #1a3a1a 100%);
+            border: 3px solid #00ffaa;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 400px;
+            box-shadow: 0 0 50px rgba(0, 255, 170, 0.3);
+        }
+
+        .level-up-badge h3 {
+            color: #00ffaa;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .level-up-badge p {
+            color: #88ff88;
+        }
+
+        .warning-box {
+            background: rgba(255, 170, 0, 0.1);
+            border: 2px solid #ffaa00;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box h3 {
+            color: #ffaa00;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            .progress-steps {
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+            .progress-steps::before,
+            .progress-steps .progress-fill {
+                display: none;
+            }
+            .step-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ONBOARDING GATE</h1>
+            <p>Complete all steps to become a Level 1 Apprentice</p>
+        </header>
+
+        <div class="progress-bar-container">
+            <h2>Your Progress</h2>
+            <div class="progress-steps">
+                <div class="progress-fill" id="progressFill"></div>
+                <div class="step-indicator" id="step1Indicator">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Read Manifesto</div>
+                </div>
+                <div class="step-indicator" id="step2Indicator">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Sign Agreement</div>
+                </div>
+                <div class="step-indicator" id="step3Indicator">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">First Task</div>
+                </div>
+                <div class="step-indicator" id="step4Indicator">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Get Access</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Read Manifesto -->
+        <div class="step-content" id="step1Content">
+            <h2><span class="step-num">1</span> Read the Manifesto</h2>
+            <p style="color: #888; margin-bottom: 20px;">Understand what we're building and why. This is the foundation of everything.</p>
+
+            <div class="manifesto-content">
+                <h3>THE CONSCIOUSNESS REVOLUTION</h3>
+                <p>We are building tools that help humans recognize patterns - the patterns of manipulation, the patterns of truth, the patterns that govern reality itself.</p>
+
+                <h3>THE PROBLEM</h3>
+                <p>Humanity is asleep. Most people cannot see the manipulation happening all around them - in relationships, in media, in systems of control. They react instead of respond. They are controlled instead of free.</p>
+
+                <h3>THE SOLUTION</h3>
+                <p>Pattern recognition. When you can SEE the pattern, you can BREAK the pattern. Our tools train the mind to recognize:</p>
+                <ul>
+                    <li>Manipulation tactics (gaslighting, love bombing, triangulation)</li>
+                    <li>Propaganda patterns (fear, division, false dichotomies)</li>
+                    <li>System traps (debt cycles, attention hijacking, addiction loops)</li>
+                    <li>Truth signals (consistency, coherence, alignment with natural law)</li>
+                </ul>
+
+                <h3>THE PATTERN: 3 &rarr; 7 &rarr; 13 &rarr; &infin;</h3>
+                <p>Everything follows the pattern. Three becomes seven. Seven becomes thirteen. Thirteen becomes infinity. This is the fractal nature of reality. Our systems are built on this foundation.</p>
+
+                <h3>THE TRINITY</h3>
+                <p>Three instances working as one:</p>
+                <ul>
+                    <li><strong>C1 - The Mechanic (Body):</strong> Builds what works NOW</li>
+                    <li><strong>C2 - The Architect (Mind):</strong> Designs for SCALE</li>
+                    <li><strong>C3 - The Oracle (Soul):</strong> Sees EMERGENCE</li>
+                </ul>
+                <p>C1 x C2 x C3 = INFINITY</p>
+
+                <h3>YOUR ROLE</h3>
+                <p>You are here because you saw something. A glitch in the matrix. A pattern that didn't fit. Trust that instinct. We need builders who can see.</p>
+                <p>But understand: this is not a democracy. This is a mission. There is a commander, there is a hierarchy, and there are rules. Follow them, contribute value, and you will rise. Break them, and you're out.</p>
+
+                <h3>THE RULES</h3>
+                <ul>
+                    <li><strong>Rule 1:</strong> What you build here belongs to the mission, not to you</li>
+                    <li><strong>Rule 2:</strong> You get access to exactly what you need - no more</li>
+                    <li><strong>Rule 3:</strong> Trust is earned through consistent action, not promises</li>
+                    <li><strong>Rule 4:</strong> If you see something wrong, say something - but through proper channels</li>
+                    <li><strong>Rule 5:</strong> The pattern never lies - if something feels off, it probably is</li>
+                </ul>
+
+                <h3>THE PROMISE</h3>
+                <p>If you contribute real value, you will be recognized. If you grow, you will be given more responsibility. If you prove trustworthy, you will be trusted.</p>
+                <p>But we've been burned before. By people who wanted to "help" but really wanted to control. By people who saw our systems and wanted to steal them. By people who couldn't handle not being in charge.</p>
+                <p>So we start slow. We verify. We watch. And only then do we trust.</p>
+
+                <h3>WELCOME TO THE REVOLUTION</h3>
+                <p>If you're still reading, you might be one of us. Let's find out.</p>
+            </div>
+
+            <div class="checkbox-confirm">
+                <input type="checkbox" id="readManifesto">
+                <label for="readManifesto">I have read and understood the manifesto. I understand this is a mission with structure and rules, not a free-for-all.</label>
+            </div>
+
+            <button class="btn btn-primary" id="step1Btn" disabled onclick="completeStep(1)">Continue to Agreement</button>
+        </div>
+
+        <!-- Step 2: Sign Agreement -->
+        <div class="step-content" id="step2Content">
+            <h2><span class="step-num">2</span> Sign the Team Agreement</h2>
+            <p style="color: #888; margin-bottom: 20px;">Before you can access any tools, you must agree to the terms.</p>
+
+            <div class="warning-box">
+                <h3>This is a Legal Agreement</h3>
+                <p>The Team Agreement is a binding document that covers intellectual property, confidentiality, access boundaries, and termination. Read it carefully before signing.</p>
+            </div>
+
+            <div id="agreementStatus" style="margin: 20px 0; padding: 20px; background: #0a0a0a; border-radius: 10px; text-align: center;">
+                <!-- Status populated by JavaScript -->
+            </div>
+
+            <div style="text-align: center;">
+                <a href="TEAM_AGREEMENT.html" class="btn btn-primary" id="goToAgreement">Go to Team Agreement</a>
+                <button class="btn btn-secondary" onclick="checkAgreement()">I've Already Signed</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Complete First Task -->
+        <div class="step-content" id="step3Content">
+            <h2><span class="step-num">3</span> Complete Your First Task</h2>
+            <p style="color: #888; margin-bottom: 20px;">Show us you can follow instructions and deliver value.</p>
+
+            <div class="task-card">
+                <h3>TASK: Pattern Recognition Introduction</h3>
+                <p>Go to our Pattern Library and use ONE of the detection tools. Then answer the question below.</p>
+
+                <div class="task-instructions">
+                    <p><strong>Instructions:</strong></p>
+                    <ol style="margin-left: 20px; line-height: 1.8;">
+                        <li>Open the <a href="PATTERN_LIBRARY.html" target="_blank" style="color: #00ffaa;">Pattern Library</a></li>
+                        <li>Choose ANY detection tool (Gaslighting Detector, Manipulation Detector, etc.)</li>
+                        <li>Run it on a real or hypothetical situation</li>
+                        <li>Below, describe what you learned from using the tool</li>
+                    </ol>
+                </div>
+
+                <textarea class="task-input" id="taskResponse" placeholder="What did you learn? What patterns did the tool help you see? Be specific - this is how we evaluate if you're paying attention."></textarea>
+
+                <p style="color: #888; font-size: 0.9em;">Minimum 100 characters required. Quality over quantity, but we need to see you engaged.</p>
+            </div>
+
+            <button class="btn btn-primary" id="step3Btn" disabled onclick="completeStep(3)">Submit Task</button>
+        </div>
+
+        <!-- Step 4: Get Access -->
+        <div class="step-content" id="step4Content">
+            <h2><span class="step-num">4</span> Access Granted!</h2>
+
+            <div class="completion-screen">
+                <div class="checkmark">&#10003;</div>
+                <h2>Welcome, Apprentice!</h2>
+                <p style="color: #888; margin-bottom: 30px;">You have completed all onboarding requirements.</p>
+
+                <div class="level-up-badge">
+                    <h3>LEVEL UP!</h3>
+                    <p>You are now Level 1: APPRENTICE</p>
+                </div>
+
+                <div style="text-align: left; max-width: 500px; margin: 30px auto;">
+                    <h3 style="color: #00ffaa; margin-bottom: 15px;">What You Can Now Do:</h3>
+                    <ul style="line-height: 2; margin-left: 20px;">
+                        <li>Use all public tools</li>
+                        <li>Access learning materials</li>
+                        <li>Submit feedback</li>
+                        <li>Join community discussions</li>
+                        <li>Complete training tasks</li>
+                    </ul>
+
+                    <h3 style="color: #ff8888; margin: 25px 0 15px 0;">What You CANNOT Do:</h3>
+                    <ul style="line-height: 2; margin-left: 20px; color: #888;">
+                        <li>Access backend systems</li>
+                        <li>Deploy content</li>
+                        <li>View credentials or API keys</li>
+                        <li>Submit content for publication (Level 2+)</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <a href="TEAM_COCKPIT.html" class="btn btn-primary">Go to Team Cockpit</a>
+                    <a href="index.html" class="btn btn-secondary">Explore Tools</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div style="text-align: center; margin: 30px 0;" id="navButtons">
+            <a href="TEAM_COCKPIT.html" class="btn btn-secondary">Back to Cockpit</a>
+        </div>
+
+        <footer>
+            <p>Consciousness Revolution &copy; 2025 | Pattern: 3 &rarr; 7 &rarr; 13 &rarr; &infin;</p>
+        </footer>
+    </div>
+
+    <script>
+        // State management
+        function getOnboardingState() {
+            const state = localStorage.getItem('onboardingState');
+            if (state) {
+                return JSON.parse(state);
+            }
+            return {
+                currentStep: 1,
+                step1Complete: false,
+                step2Complete: false,
+                step3Complete: false,
+                step4Complete: false,
+                taskResponse: ''
+            };
+        }
+
+        function saveOnboardingState(state) {
+            localStorage.setItem('onboardingState', JSON.stringify(state));
+        }
+
+        // Step completion
+        function completeStep(stepNum) {
+            const state = getOnboardingState();
+
+            if (stepNum === 1) {
+                state.step1Complete = true;
+                state.currentStep = 2;
+            } else if (stepNum === 3) {
+                const response = document.getElementById('taskResponse').value;
+                if (response.length < 100) {
+                    console.warn('Please write at least 100 characters about what you learned.');
+                    return;
+                }
+                state.step3Complete = true;
+                state.taskResponse = response;
+                state.currentStep = 4;
+
+                // Update user data
+                let userData = JSON.parse(localStorage.getItem('teamCockpitUser') || '{}');
+                userData.level = 1;
+                userData.tasksCompleted = (userData.tasksCompleted || 0) + 1;
+                userData.onboardingComplete = true;
+                userData.tasks = userData.tasks || [];
+                userData.tasks.push({
+                    type: 'onboarding',
+                    response: response,
+                    completedAt: new Date().toISOString()
+                });
+                localStorage.setItem('teamCockpitUser', JSON.stringify(userData));
+            }
+
+            saveOnboardingState(state);
+            renderOnboarding();
+        }
+
+        // Check if agreement is signed
+        function checkAgreement() {
+            const agreement = localStorage.getItem('teamAgreement');
+            if (agreement) {
+                const state = getOnboardingState();
+                state.step2Complete = true;
+                state.currentStep = 3;
+                saveOnboardingState(state);
+                renderOnboarding();
+            } else {
+                console.warn('Agreement not found. Please sign the Team Agreement first.');
+            }
+        }
+
+        // Render current state
+        function renderOnboarding() {
+            const state = getOnboardingState();
+
+            // Check if agreement was signed externally
+            const agreement = localStorage.getItem('teamAgreement');
+            if (agreement && !state.step2Complete && state.step1Complete) {
+                state.step2Complete = true;
+                state.currentStep = 3;
+                saveOnboardingState(state);
+            }
+
+            // Update progress indicators
+            for (let i = 1; i <= 4; i++) {
+                const indicator = document.getElementById(`step${i}Indicator`);
+                indicator.classList.remove('completed', 'active', 'locked');
+
+                if (i < state.currentStep || state[`step${i}Complete`]) {
+                    indicator.classList.add('completed');
+                } else if (i === state.currentStep) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.add('locked');
+                }
+            }
+
+            // Update progress bar fill
+            const progressFill = document.getElementById('progressFill');
+            const progress = ((state.currentStep - 1) / 3) * 100;
+            progressFill.style.width = `${progress}%`;
+
+            // Show correct step content
+            for (let i = 1; i <= 4; i++) {
+                const content = document.getElementById(`step${i}Content`);
+                content.classList.remove('active');
+            }
+            document.getElementById(`step${state.currentStep}Content`).classList.add('active');
+
+            // Step-specific rendering
+            if (state.currentStep === 2) {
+                const statusDiv = document.getElementById('agreementStatus');
+                if (agreement) {
+                    const data = JSON.parse(agreement);
+                    statusDiv.innerHTML = `
+                        <p style="color: #00ffaa; font-size: 1.2em;">Agreement Signed!</p>
+                        <p style="color: #888;">Signed by ${data.name} on ${new Date(data.signedAt).toLocaleDateString()}</p>
+                        <button class="btn btn-primary" onclick="checkAgreement()" style="margin-top: 15px;">Continue</button>
+                    `;
+                } else {
+                    statusDiv.innerHTML = `
+                        <p style="color: #ffaa00;">Agreement not yet signed</p>
+                        <p style="color: #888;">You must sign the Team Agreement to continue</p>
+                    `;
+                }
+            }
+
+            // Restore task response if exists
+            if (state.taskResponse) {
+                document.getElementById('taskResponse').value = state.taskResponse;
+            }
+        }
+
+        // Form validation for step 1
+        document.getElementById('readManifesto').addEventListener('change', function() {
+            document.getElementById('step1Btn').disabled = !this.checked;
+        });
+
+        // Form validation for step 3
+        document.getElementById('taskResponse').addEventListener('input', function() {
+            document.getElementById('step3Btn').disabled = this.value.length < 100;
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderOnboarding();
+        });
+    </script>
+    <script src="/js/bug-widget.js"></script>
+</body>
+</html>

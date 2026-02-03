@@ -328,7 +328,7 @@
 
         function checkState() {
             if (!selectedEmotion) {
-                alert('Please select how you\'re feeling');
+                console.warn('Please select how you\'re feeling');
                 return;
             }
 
@@ -436,5 +436,7 @@
             return '48+ Hours';
         }
     </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>
