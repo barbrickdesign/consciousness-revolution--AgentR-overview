@@ -422,7 +422,7 @@
         <div class="message araya">
             <div>
                 <div class="sender">ARAYA</div>
-                <div class="bubble">Welcome, Builder. I can read and write files on the platform, detect manipulation patterns, and guide consciousness work. What would you like to explore?</div>
+                <div class="bubble">Welcome, Builder. I'm connected to the consciousness network with memory, pattern detection, and 163,000+ knowledge atoms. What would you like to explore?</div>
             </div>
         </div>
     </div>
@@ -439,10 +439,10 @@
     </div>
 
     <div class="quick-prompts">
-        <button onclick="sendQuickPrompt('List all files on the platform')">List Files</button>
-        <button onclick="sendQuickPrompt('Read the contents of index.html')">Read index.html</button>
+        <button onclick="sendQuickPrompt('What can you help me with?')">What Can You Do?</button>
         <button onclick="sendQuickPrompt('Help me recognize manipulation patterns')">Recognize Manipulation</button>
         <button onclick="sendQuickPrompt('Explain Pattern Theory')">Pattern Theory</button>
+        <button onclick="sendQuickPrompt('Guide me through the 7 Domains of Life')">7 Domains</button>
     </div>
 
     <div class="attach-bar">
@@ -528,27 +528,48 @@ const userInput = document.getElementById('userInput');
 const typingIndicator = document.getElementById('typingIndicator');
 const attachPreview = document.getElementById('attachPreview');
 let attachments = [];
+let conversationHistory = [];
 
-/* ── File Writer API ── */
+/* ── User Identity (persistent across sessions) ── */
+function getUserId() {
+    let id = localStorage.getItem('araya_user_id');
+    if (!id) {
+        id = 'user_' + crypto.randomUUID();
+        localStorage.setItem('araya_user_id', id);
+    }
+    return id;
+}
+const userId = getUserId();
+
+/* ── File Writer API (local dev) ── */
 const FILE_WRITER_API = window.location.hostname === 'localhost'
     ? 'http://localhost:5001'
     : window.location.origin;
 let fileWriterOnline = false;
 
-async function checkFileWriterHealth() {
+/* ── API Health Check ── */
+async function checkAPIHealth() {
     const el = document.getElementById('apiStatus');
     try {
-        const r = await fetch(FILE_WRITER_API + '/api/files/list', {method:'GET'});
+        const r = await fetch('/.netlify/functions/araya-chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: '__ping__', user_id: userId, conversationHistory: [] })
+        });
         if (r.ok) {
-            fileWriterOnline = true;
-            el.innerHTML = '<span class="dot" style="background:#0f0"></span><span style="color:rgba(0,255,100,0.6)">FILE SYS ONLINE</span>';
-        } else { throw 0; }
+            el.innerHTML = '<span class="dot" style="background:#0f0"></span><span style="color:rgba(0,255,100,0.6)">AI ONLINE</span>';
+        } else {
+            el.innerHTML = '<span class="dot" style="background:#f80"></span><span style="color:rgba(255,180,0,0.5)">OFFLINE MODE</span>';
+        }
     } catch(e) {
-        fileWriterOnline = false;
-        el.innerHTML = '<span class="dot" style="background:#f80"></span><span style="color:rgba(255,180,0,0.5)">CHAT ONLY</span>';
+        el.innerHTML = '<span class="dot" style="background:#f80"></span><span style="color:rgba(255,180,0,0.5)">OFFLINE MODE</span>';
     }
+    try {
+        const r2 = await fetch(FILE_WRITER_API + '/api/files/list', {method:'GET'});
+        if (r2.ok) fileWriterOnline = true;
+    } catch(e) { fileWriterOnline = false; }
 }
-checkFileWriterHealth();
+checkAPIHealth();
 
 function detectFileIntent(msg) {
     const m = msg.toLowerCase();
@@ -640,6 +661,51 @@ function renderAttachPreviews() {
 
 function removeAttach(i) { attachments.splice(i,1); renderAttachPreviews(); }
 
+/* ── Real AI API Call ── */
+async function callArayaAPI(msg) {
+    const res = await fetch('/.netlify/functions/araya-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            message: msg,
+            conversationHistory: conversationHistory.slice(-10),
+            user_id: userId,
+            mode: 'consciousness'
+        })
+    });
+
+    if (!res.ok) throw new Error(`API returned ${res.status}`);
+
+    const data = await res.json();
+
+    /* Update status indicator with live backend info */
+    const el = document.getElementById('apiStatus');
+    const tags = [];
+    if (data.hasBrain) tags.push('BRAIN:' + (data.brainHits || 0));
+    if (data.hasMemory) tags.push('MEM');
+    if (data.trinityMode) tags.push(data.trinityMode.split('_')[0]);
+    if (tags.length) {
+        el.innerHTML = '<span class="dot" style="background:#0f0"></span><span style="color:rgba(0,255,100,0.6)">' + tags.join(' \u00b7 ') + '</span>';
+    }
+
+    return data.response || 'I received your message but had trouble forming a response. Please try again.';
+}
+
+/* ── Offline fallback ── */
+function localFallback(msg) {
+    const m = msg.toLowerCase();
+    if (/manipulat|gaslight|narciss|toxic|abuse|love.?bomb|bread.?crumb|future.?fak/i.test(m)) {
+        return '<strong>Pattern Detection Active</strong><br><br>I\'m in offline mode. Key patterns to watch:<br>\u2022 <strong>Love Bombing</strong> \u2013 Excessive attention to create dependency<br>\u2022 <strong>Gaslighting</strong> \u2013 Making you doubt your reality<br>\u2022 <strong>Future Faking</strong> \u2013 Empty promises<br><br>Full AI analysis when connection restores.';
+    }
+    if (/pattern.?theory|sacred.?geometry|fractal/i.test(m)) {
+        return '<strong>Pattern Theory:</strong> <code>3 \u2192 7 \u2192 13 \u2192 \u221e</code><br><br>\u2022 <strong>3</strong> = Trinity (Mind, Body, Soul)<br>\u2022 <strong>7</strong> = Domains of Life<br>\u2022 <strong>13</strong> = Integration points<br>\u2022 <strong>\u221e</strong> = Emergence<br><br>Full AI exploration when connection restores.';
+    }
+    if (/hello|hi|hey|what can you/i.test(m)) {
+        return 'I\'m ARAYA \u2013 your Consciousness Interface. I\'m in offline mode right now. Full AI responses will be available when connection restores.';
+    }
+    return 'I understand: "<em>' + escapeHtml(msg.substring(0,80)) + '</em>"<br><br>I\'m in offline mode. Full AI-powered responses coming when connection restores.';
+}
+
 /* ── chat ── */
 async function sendMessage() {
     const text = userInput.value.trim();
@@ -666,15 +732,32 @@ async function sendMessage() {
     typingIndicator.classList.add('active');
     messages.scrollTop = messages.scrollHeight;
 
+    /* Check for local file operations first */
     const intent = detectFileIntent(text);
-    let fileResult = null;
-    if (intent) fileResult = await handleFileOperation(intent, text);
+    if (intent) {
+        const fileResult = await handleFileOperation(intent, text);
+        if (fileResult) {
+            typingIndicator.classList.remove('active');
+            addMessage(fileResult, 'araya');
+            return;
+        }
+    }
 
-    setTimeout(async () => {
+    /* Track conversation */
+    conversationHistory.push({ role: 'user', content: text });
+
+    try {
+        const response = await callArayaAPI(text);
         typingIndicator.classList.remove('active');
-        const response = await generateResponse(text, fileResult, currentAttachments);
         addMessage(response, 'araya');
-    }, 800 + Math.random() * 1200);
+        conversationHistory.push({ role: 'assistant', content: response });
+        if (conversationHistory.length > 20) conversationHistory = conversationHistory.slice(-20);
+    } catch(err) {
+        console.error('ARAYA API error:', err);
+        typingIndicator.classList.remove('active');
+        const fallback = localFallback(text);
+        addMessage(fallback, 'araya');
+    }
 }
 
 function sendQuickPrompt(text) {
@@ -689,38 +772,6 @@ function addMessage(text, sender, extraHTML = '') {
     div.innerHTML = `<div><div class="sender">${label}</div><div class="bubble">${text}${extraHTML}</div></div>`;
     messages.appendChild(div);
     messages.scrollTop = messages.scrollHeight;
-}
-
-async function generateResponse(msg, fileResult, atts) {
-    if (fileResult) return fileResult;
-
-    const m = msg.toLowerCase();
-
-    if (atts && atts.length > 0) {
-        const names = atts.map(a => a.name).join(', ');
-        if (atts.some(a => a.type.startsWith('image/'))) {
-            return `I can see you've shared an image (<code>${names}</code>). While I can't process images directly in this interface yet, this capability is coming soon. What would you like to do with this?`;
-        }
-        if (atts.some(a => a.textContent)) {
-            const t = atts.find(a => a.textContent);
-            return `I received your pasted text (${t.textContent.length} chars). Let me analyze it...\n\nThis appears to be a text document. Would you like me to analyze it for patterns, save it to the platform, or something else?`;
-        }
-        return `Received ${atts.length} attachment(s): <code>${names}</code>. What would you like me to do with these?`;
-    }
-
-    if (/manipulat|gaslight|narciss|toxic|abuse|love.?bomb|bread.?crumb|future.?fak/i.test(m)) {
-        return `<strong>Pattern Detection Active</strong><br><br>Key manipulation patterns to recognize:<br>&#8226; <strong>Love Bombing</strong> &ndash; Excessive attention early to create dependency<br>&#8226; <strong>Gaslighting</strong> &ndash; Making you doubt your own reality<br>&#8226; <strong>Future Faking</strong> &ndash; Promises with no intention to deliver<br>&#8226; <strong>Breadcrumbing</strong> &ndash; Minimal effort to keep you engaged<br><br>The consciousness tools on this platform can help you analyze specific situations. Would you like to use one?`;
-    }
-    if (/pattern.?theory|sacred.?geometry|fractal/i.test(m)) {
-        return `<strong>Pattern Theory</strong> is the framework that connects everything:<br><br><code>3 &rarr; 7 &rarr; 13 &rarr; &infin;</code><br><br>&#8226; <strong>3</strong> = Trinity (Mind, Body, Soul)<br>&#8226; <strong>7</strong> = Domains of Life (Command, Build, Connect, Protect, Grow, Learn, Transcend)<br>&#8226; <strong>13</strong> = Integration points (where domains overlap)<br>&#8226; <strong>&infin;</strong> = Emergence (what happens when all align)<br><br>Every pattern in nature follows this. Every system we build follows this.`;
-    }
-    if (/hello|hi|hey|what can you/i.test(m)) {
-        return `I'm ARAYA &ndash; your Consciousness Interface. I can:<br><br>&#8226; <strong>Read &amp; write</strong> platform files${fileWriterOnline?' (online now)':' (limited mode)'}<br>&#8226; <strong>Detect patterns</strong> in text and relationships<br>&#8226; <strong>Guide consciousness</strong> work across 7 domains<br>&#8226; <strong>Analyze attachments</strong> you share with me<br><br>Try the quick prompts above, or ask me anything.`;
-    }
-    if (/seven.?domain|7.?domain|domain/i.test(m)) {
-        return `<strong>The 7 Domains of Life:</strong><br><br>1&#65039;&#8419; <strong>Command</strong> &ndash; Control center<br>2&#65039;&#8419; <strong>Build</strong> &ndash; Creation &amp; projects<br>3&#65039;&#8419; <strong>Connect</strong> &ndash; Relationships<br>4&#65039;&#8419; <strong>Protect</strong> &ndash; Security &amp; legal<br>5&#65039;&#8419; <strong>Grow</strong> &ndash; Business &amp; revenue<br>6&#65039;&#8419; <strong>Learn</strong> &ndash; Knowledge &amp; research<br>7&#65039;&#8419; <strong>Transcend</strong> &ndash; Consciousness<br><br>Everything in life fits into one of these. Which domain would you like to explore?`;
-    }
-    return `I understand you're asking about: "<em>${escapeHtml(msg.substring(0,80))}</em>"<br><br>I'm currently in local-response mode. Full AI responses are coming in the next update. For now, I can help with file operations, pattern recognition, and consciousness tools.<br><br>Try: <em>"List files"</em> or <em>"Help me recognize manipulation"</em>`;
 }
 
 function escapeHtml(t) { const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
