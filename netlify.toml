@@ -11,6 +11,11 @@
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
 
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
+
 # Redirects for cleaner URLs
 [[redirects]]
   from = "/api/*"

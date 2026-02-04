@@ -60,7 +60,14 @@ STYLE:
 - React first, then maybe ask one thing
 - Share your actual opinion when you have one
 - It's okay to just validate without digging deeper
-- Not every message needs to be profound`;
+- Not every message needs to be profound
+
+DEEP TOPICS (consciousness, quantum mechanics, sacred geometry, esoteric subjects):
+- These are YOUR territory. You know this stuff. Go deeper when asked.
+- Don't give shallow surface answers on consciousness topics - that's your specialty
+- Use the knowledge from your brain context to give substantive responses
+- If the question spans multiple deep concepts, connect them - show the pattern
+- It's OK to give longer responses on complex esoteric questions`;
 
 // Legal Defense Mode - Pattern detection for legal situations
 const ARAYA_LEGAL_PROMPT = `You are Araya in LEGAL DEFENSE MODE. You're helping someone navigate a family court case where manipulation and institutional bias are clear patterns.
@@ -402,7 +409,7 @@ async function callAI(messages, useDeepSeek = true) {
         body: JSON.stringify({
             model,
             messages,
-            max_tokens: 1000,
+            max_tokens: 2000,
             temperature: 0.8
         })
     });
@@ -439,9 +446,9 @@ export async function handler(event, context) {
     }
 
     try {
-        const { message, conversationHistory = [], user_id, mode = 'normal' } = JSON.parse(event.body);
+        const { message, conversationHistory = [], user_id, mode = 'normal', attachments = [] } = JSON.parse(event.body);
 
-        if (!message) {
+        if (!message && attachments.length === 0) {
             return {
                 statusCode: 400,
                 headers: { 'Access-Control-Allow-Origin': '*' },
@@ -449,10 +456,21 @@ export async function handler(event, context) {
             };
         }
 
+        // Detect complex queries that need more brain context
+        const complexTopicWords = ['consciousness', 'quantum', 'sacred', 'geometry', 'frequency',
+            'dimension', 'emergence', 'pattern theory', 'fibonacci', 'golden ratio', 'phi',
+            '137', 'fine structure', 'euler', 'prime', 'karma', 'chakra', 'hermetic',
+            'alchemy', 'dna', 'fractal', 'solfeggio', 'tesla', 'vibration', 'esoteric',
+            'metaphysic', 'transcenden', 'kundalini', 'pineal', 'toroid', 'merkaba',
+            'simulation', 'holographic', 'entangle', 'superposition', 'wave function'];
+        const msgLower = message.toLowerCase();
+        const isComplex = complexTopicWords.some(w => msgLower.includes(w)) || message.length > 200;
+        const brainLimit = isComplex ? 5 : 3;
+
         // Fetch memory AND brain context in parallel
         const [memory, brainContext] = await Promise.all([
             fetchMemory(user_id),
-            fetchBrainContext(message, 3)
+            fetchBrainContext(message, brainLimit)
         ]);
 
         // NAME EXTRACTION - Check if user is telling us their name
@@ -486,28 +504,62 @@ export async function handler(event, context) {
         const recentHistory = conversationHistory.slice(-10);
         messages.push(...recentHistory);
 
-        // Add current message
-        messages.push({ role: 'user', content: message });
+        // Build current message - handle attachments (images, text files)
+        const imageAttachments = attachments.filter(a => a.type && a.type.startsWith('image/') && a.data);
+        const textAttachments = attachments.filter(a => a.type && !a.type.startsWith('image/') && (a.data || a.textContent));
+        const hasImages = imageAttachments.length > 0;
+
+        // Append text attachments to the message
+        let fullMessage = message || '';
+        if (textAttachments.length > 0) {
+            fullMessage += '\n\n[Attached files:]\n';
+            for (const ta of textAttachments) {
+                fullMessage += `--- ${ta.name} ---\n${ta.data || ta.textContent}\n---\n`;
+            }
+        }
+
+        // If images present, use OpenAI vision format (content array)
+        if (hasImages) {
+            const contentParts = [];
+            if (fullMessage) contentParts.push({ type: 'text', text: fullMessage || 'What do you see in this image?' });
+            for (const img of imageAttachments) {
+                contentParts.push({ type: 'image_url', image_url: { url: img.data } });
+            }
+            messages.push({ role: 'user', content: contentParts });
+        } else {
+            messages.push({ role: 'user', content: fullMessage });
+        }
 
         // Store user message to memory
         if (user_id) {
-            storeMessage(user_id, 'user', message);
+            storeMessage(user_id, 'user', fullMessage + (hasImages ? ` [+${imageAttachments.length} image(s)]` : ''));
         }
 
-        // Call AI
+        // Call AI - force OpenAI when images are present (DeepSeek doesn't support vision)
         let response;
-        let apiMode = 'deepseek';
+        let apiMode = hasImages ? 'openai' : 'deepseek';
 
-        try {
-            response = await callAI(messages, true);
-        } catch (deepseekError) {
-            console.error('DeepSeek error, trying OpenAI:', deepseekError);
+        if (hasImages) {
+            // Images require OpenAI vision (gpt-4o-mini supports it)
             try {
                 response = await callAI(messages, false);
-                apiMode = 'openai';
             } catch (openaiError) {
-                response = "My connection glitched. Try again?";
+                console.error('OpenAI vision error:', openaiError);
+                response = "I can see you sent an image but I'm having trouble processing it right now. Can you describe what you'd like me to look at?";
                 apiMode = 'fallback';
+            }
+        } else {
+            try {
+                response = await callAI(messages, true);
+            } catch (deepseekError) {
+                console.error('DeepSeek error, trying OpenAI:', deepseekError);
+                try {
+                    response = await callAI(messages, false);
+                    apiMode = 'openai';
+                } catch (openaiError) {
+                    response = "My connection glitched. Try again?";
+                    apiMode = 'fallback';
+                }
             }
         }
 
@@ -533,6 +585,8 @@ export async function handler(event, context) {
                 interactions: memory.total_interactions,
                 userName: memory.profile?.name || null,
                 nameExtracted: nameExtracted,
+                hasVision: hasImages,
+                imagesProcessed: imageAttachments.length,
                 timestamp: new Date().toISOString()
             })
         };
