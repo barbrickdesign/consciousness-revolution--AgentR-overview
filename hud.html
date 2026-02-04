@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OVERKORE HUD</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root {
+    --cyan: #00f0ff;
+    --gold: #ffd700;
+    --purple: #9370db;
+    --bg-deep: #030014;
+    --glass: rgba(255,255,255,0.04);
+    --glass-border: rgba(100,200,255,0.15);
+    --glass-bg: rgba(0,0,30,0.85);
+    --panel-bg: rgba(0,0,30,0.9);
+    --header-h: 50px;
+    --bottom-h: 130px;
+    --left-w: 280px;
+    --right-w: 280px;
+    --dom1: #ff6b6b;
+    --dom2: #ffd700;
+    --dom3: #4ecdc4;
+    --dom4: #a855f7;
+    --dom5: #22c55e;
+    --dom6: #3b82f6;
+    --dom7: #f472b6;
+}
+
+html,body {
+    width:100%; height:100%;
+    overflow:hidden;
+    background: var(--bg-deep);
+    font-family: 'Exo 2', sans-serif;
+    color: #e0e0e0;
+}
+
+/* ── Starfield ── */
+#starfield {
+    position:fixed; top:0; left:0;
+    width:100%; height:100%;
+    z-index:0;
+}
+.nebula {
+    position:fixed; border-radius:50%;
+    filter:blur(120px); opacity:0.12;
+    z-index:0; pointer-events:none;
+    animation: drift 20s ease-in-out infinite alternate;
+}
+.nebula.a { width:500px; height:500px; background:var(--cyan); top:-10%; left:20%; }
+.nebula.b { width:400px; height:400px; background:var(--purple); bottom:10%; right:10%; animation-delay:-7s; }
+.nebula.c { width:350px; height:350px; background:var(--gold); top:40%; left:-5%; animation-delay:-13s; }
+@keyframes drift {
+    0% { transform:translate(0,0) scale(1); }
+    100% { transform:translate(30px,-20px) scale(1.1); }
+}
+
+/* ── Main Grid ── */
+.hud-grid {
+    position:relative; z-index:1;
+    display:grid;
+    width:100%; height:100vh;
+    grid-template-columns: var(--left-w) 1fr var(--right-w);
+    grid-template-rows: var(--header-h) 1fr var(--bottom-h);
+    grid-template-areas:
+        "header  header  header"
+        "left    main    right"
+        "bottom  bottom  bottom";
+    gap: 1px;
+}
+
+/* ── Glassmorphism Panel Base ── */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+}
+
+/* ═══════════════════════════════════════
+   HEADER BAR
+   ═══════════════════════════════════════ */
+.hud-header {
+    grid-area: header;
+    display:flex;
+    align-items:center;
+    padding: 0 16px;
+    gap: 12px;
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(0,0,30,0.95);
+    z-index: 10;
+}
+.hud-header .hamburger {
+    background:none; border:none; color:var(--cyan);
+    font-size:1.4rem; cursor:pointer; padding:4px 8px;
+    border-radius:4px; transition: background 0.2s;
+}
+.hud-header .hamburger:hover { background:rgba(0,240,255,0.1); }
+.hud-header .brand {
+    font-family:'Orbitron',monospace;
+    font-weight:900; font-size:1.1rem;
+    letter-spacing:0.2em;
+    background: linear-gradient(135deg, var(--cyan), var(--gold));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+.hud-header .domain-indicator {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    border: 1px solid;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+.hud-header .nav-btns {
+    display:flex; gap:4px; margin-left:auto;
+}
+.hud-header .nav-btns button {
+    background:none; border:1px solid rgba(100,200,255,0.2);
+    color:#aaa; padding:4px 10px; border-radius:4px;
+    cursor:pointer; font-size:0.8rem; transition:all 0.2s;
+}
+.hud-header .nav-btns button:hover { color:var(--cyan); border-color:var(--cyan); }
+.hud-header .nav-btns button:disabled { opacity:0.3; cursor:default; }
+
+/* ── URL Bar (Browser Mode) ── */
+.hud-header .url-bar {
+    flex:1; max-width:500px;
+    display:flex; align-items:center; gap:6px;
+    background: rgba(0,0,40,0.6);
+    border:1px solid rgba(100,200,255,0.15);
+    border-radius:20px; padding:2px 4px 2px 12px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.hud-header .url-bar:focus-within {
+    border-color: var(--cyan);
+    box-shadow: 0 0 12px rgba(0,240,255,0.15);
+}
+.hud-header .url-bar input {
+    flex:1; background:none; border:none; outline:none;
+    color:#ccc; font-family:'Exo 2',sans-serif;
+    font-size:0.75rem; padding:4px 0;
+}
+.hud-header .url-bar input::placeholder { color:#555; }
+.hud-header .url-bar .url-go {
+    background:none; border:none; color:var(--cyan);
+    cursor:pointer; font-size:0.85rem; padding:4px 8px;
+    border-radius:50%; transition:background 0.2s;
+}
+.hud-header .url-bar .url-go:hover { background:rgba(0,240,255,0.1); }
+
+/* ── Browser Mode (panels collapse) ── */
+.hud-header .browser-toggle {
+    background:none; border:1px solid rgba(100,200,255,0.2);
+    color:#888; padding:4px 8px; border-radius:4px;
+    cursor:pointer; font-size:0.8rem; transition:all 0.2s;
+    white-space:nowrap;
+}
+.hud-header .browser-toggle:hover { color:var(--cyan); border-color:var(--cyan); }
+.hud-header .browser-toggle.active { color:var(--cyan); border-color:var(--cyan); background:rgba(0,240,255,0.08); }
+
+.hud-grid.browser-mode {
+    grid-template-columns: 0px 1fr 0px;
+    transition: grid-template-columns 0.3s ease;
+}
+.hud-grid.browser-mode .hud-left,
+.hud-grid.browser-mode .hud-right {
+    overflow:hidden; opacity:0; pointer-events:none;
+    transition: opacity 0.3s ease;
+}
+.hud-grid.browser-mode .hud-bottom { display:none; }
+
+.hud-header .level-badge {
+    font-family:'Orbitron',monospace;
+    font-size:0.65rem; color:var(--gold);
+    border:1px solid rgba(255,215,0,0.3);
+    padding:3px 8px; border-radius:8px;
+    white-space:nowrap;
+}
+.hud-header .settings-btn {
+    background:none; border:none; color:#888;
+    font-size:1.1rem; cursor:pointer; padding:4px;
+}
+.hud-header .settings-btn:hover { color:var(--cyan); }
+
+/* ═══════════════════════════════════════
+   LEFT PANEL — Domain Navigator
+   ═══════════════════════════════════════ */
+.hud-left {
+    grid-area: left;
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+    border-right: 1px solid var(--glass-border);
+}
+.hud-left .section-label {
+    font-family:'Orbitron',monospace;
+    font-size:0.55rem; letter-spacing:0.15em;
+    color:#666; padding:12px 14px 6px;
+    text-transform:uppercase;
+}
+.hud-left .popular-tools {
+    padding: 4px 10px 8px;
+    display:flex; flex-wrap:wrap; gap:4px;
+}
+.hud-left .popular-tools button {
+    background:rgba(0,240,255,0.06);
+    border:1px solid rgba(0,240,255,0.15);
+    color:#b0c4de; padding:4px 10px;
+    border-radius:16px; font-size:0.7rem;
+    cursor:pointer; transition:all 0.2s;
+    font-family:'Exo 2',sans-serif;
+}
+.hud-left .popular-tools button:hover {
+    background:rgba(0,240,255,0.12);
+    color:var(--cyan); border-color:var(--cyan);
+}
+.domain-list {
+    flex:1; overflow-y:auto; padding:4px 0;
+}
+.domain-group {
+    margin-bottom:2px;
+}
+.domain-btn {
+    display:flex; align-items:center; gap:10px;
+    width:100%; padding:10px 14px;
+    background:none; border:none; border-left:3px solid transparent;
+    color:#b0b0b0; cursor:pointer;
+    font-family:'Exo 2',sans-serif; font-size:0.82rem;
+    transition: all 0.2s;
+}
+.domain-btn:hover {
+    background:rgba(255,255,255,0.03);
+    color:#fff;
+}
+.domain-btn.active {
+    color:#fff;
+    background:rgba(255,255,255,0.05);
+}
+.domain-btn .domain-icon {
+    width:28px; height:28px;
+    border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.9rem;
+    border: 1px solid;
+    flex-shrink:0;
+}
+.domain-btn .domain-name {
+    font-weight:600; letter-spacing:0.05em;
+}
+.domain-tools {
+    display:none;
+    padding:2px 0 6px 42px;
+}
+.domain-tools.open { display:block; }
+.tool-btn {
+    display:block; width:100%;
+    padding:6px 12px;
+    background:none; border:none;
+    color:#888; font-size:0.75rem;
+    text-align:left; cursor:pointer;
+    border-radius:4px; transition:all 0.15s;
+    font-family:'Exo 2',sans-serif;
+}
+.tool-btn:hover {
+    background:rgba(0,240,255,0.06);
+    color:var(--cyan);
+}
+.tool-btn.active-tool {
+    color:var(--cyan);
+    background:rgba(0,240,255,0.08);
+}
+
+/* ═══════════════════════════════════════
+   MAIN VIEWPORT — iframe
+   ═══════════════════════════════════════ */
+.hud-main {
+    grid-area: main;
+    position:relative;
+    overflow:hidden;
+    background: rgba(0,0,10,0.5);
+}
+.hud-main iframe {
+    width:100%; height:100%;
+    border:none;
+    background:#030014;
+}
+.hud-main .welcome-screen {
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center; padding:40px;
+}
+.hud-main .welcome-screen h2 {
+    font-family:'Orbitron',monospace;
+    font-size:1.8rem; font-weight:900;
+    background: linear-gradient(135deg, var(--cyan), var(--gold));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+    margin-bottom:12px;
+}
+.hud-main .welcome-screen p {
+    color:#667; font-size:0.9rem; max-width:400px;
+    line-height:1.6;
+}
+.hud-main .welcome-screen .quick-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px; margin-top:24px; max-width:450px;
+}
+.hud-main .welcome-screen .quick-card {
+    background:var(--glass-bg);
+    border:1px solid var(--glass-border);
+    border-radius:10px; padding:16px 12px;
+    cursor:pointer; transition:all 0.2s;
+    text-align:center;
+}
+.hud-main .welcome-screen .quick-card:hover {
+    border-color:var(--cyan);
+    transform:translateY(-2px);
+    box-shadow:0 4px 20px rgba(0,240,255,0.1);
+}
+.hud-main .welcome-screen .quick-card .qc-icon { font-size:1.4rem; margin-bottom:6px; }
+.hud-main .welcome-screen .quick-card .qc-label { font-size:0.7rem; color:#aaa; }
+
+/* ═══════════════════════════════════════
+   RIGHT PANEL — Active AI Chat
+   ═══════════════════════════════════════ */
+.hud-right {
+    grid-area: right;
+    display:flex;
+    flex-direction:column;
+    border-left: 1px solid var(--glass-border);
+}
+.hud-right .chat-header {
+    padding:10px 14px;
+    border-bottom:1px solid var(--glass-border);
+    display:flex; align-items:center; gap:8px;
+}
+.hud-right .chat-header .ai-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 6px #22c55e;
+}
+.hud-right .chat-header .ai-name {
+    font-family:'Orbitron',monospace;
+    font-size:0.75rem; font-weight:700;
+    letter-spacing:0.1em;
+}
+.hud-right .chat-header .ai-mode {
+    font-size:0.6rem; color:#666;
+    margin-left:auto;
+}
+.chat-messages {
+    flex:1;
+    overflow-y:auto;
+    padding:10px;
+    display:flex; flex-direction:column;
+    gap:8px;
+}
+.chat-msg {
+    max-width:92%;
+    padding:8px 12px;
+    border-radius:12px;
+    font-size:0.78rem;
+    line-height:1.5;
+    word-wrap:break-word;
+}
+.chat-msg.ai {
+    background:rgba(0,240,255,0.06);
+    border:1px solid rgba(0,240,255,0.12);
+    align-self:flex-start;
+    border-top-left-radius:2px;
+}
+.chat-msg.user {
+    background:rgba(147,112,219,0.12);
+    border:1px solid rgba(147,112,219,0.2);
+    align-self:flex-end;
+    border-top-right-radius:2px;
+}
+.chat-msg .msg-label {
+    font-family:'Orbitron',monospace;
+    font-size:0.5rem; letter-spacing:0.1em;
+    margin-bottom:3px; opacity:0.6;
+}
+.chat-typing {
+    display:none; padding:8px 12px;
+    align-self:flex-start;
+}
+.chat-typing.active { display:flex; gap:4px; align-items:center; }
+.chat-typing .tdot {
+    width:6px; height:6px; border-radius:50%;
+    background:var(--cyan); opacity:0.4;
+    animation:typePulse 1.2s infinite;
+}
+.chat-typing .tdot:nth-child(2) { animation-delay:0.2s; }
+.chat-typing .tdot:nth-child(3) { animation-delay:0.4s; }
+@keyframes typePulse {
+    0%,100% { opacity:0.3; transform:scale(0.8); }
+    50% { opacity:1; transform:scale(1.1); }
+}
+.chat-input-bar {
+    padding:8px 10px;
+    border-top:1px solid var(--glass-border);
+    display:flex; gap:6px;
+}
+.chat-input-bar textarea {
+    flex:1; background:rgba(255,255,255,0.04);
+    border:1px solid rgba(100,200,255,0.15);
+    border-radius:8px; color:#e0e0e0;
+    padding:8px 10px; font-size:0.78rem;
+    font-family:'Exo 2',sans-serif;
+    resize:none; outline:none;
+    min-height:36px; max-height:80px;
+}
+.chat-input-bar textarea:focus { border-color:var(--cyan); }
+.chat-input-bar textarea::placeholder { color:#555; }
+.chat-input-bar .send-btn {
+    background:linear-gradient(135deg, rgba(0,240,255,0.2), rgba(147,112,219,0.2));
+    border:1px solid rgba(0,240,255,0.3);
+    color:var(--cyan); border-radius:8px;
+    width:36px; cursor:pointer;
+    font-size:1rem; transition:all 0.2s;
+    display:flex; align-items:center; justify-content:center;
+}
+.chat-input-bar .send-btn:hover {
+    background:linear-gradient(135deg, rgba(0,240,255,0.3), rgba(147,112,219,0.3));
+    box-shadow:0 0 12px rgba(0,240,255,0.2);
+}
+
+/* ═══════════════════════════════════════
+   BOTTOM BAR — AI Party
+   ═══════════════════════════════════════ */
+.hud-bottom {
+    grid-area: bottom;
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid var(--glass-border);
+    background: rgba(0,0,20,0.95);
+}
+.party-bar {
+    display:flex;
+    gap:6px;
+    padding:8px 12px;
+    overflow-x:auto;
+    flex:1;
+}
+.ai-card {
+    flex:0 0 140px;
+    background:var(--glass-bg);
+    border:1px solid var(--glass-border);
+    border-radius:10px;
+    padding:10px;
+    cursor:pointer;
+    transition:all 0.25s;
+    display:flex; flex-direction:column;
+    align-items:center; gap:4px;
+    position:relative;
+}
+.ai-card:hover {
+    border-color:rgba(100,200,255,0.3);
+    transform:translateY(-2px);
+    box-shadow:0 4px 16px rgba(0,0,0,0.3);
+}
+.ai-card.active {
+    border-color:var(--cyan);
+    box-shadow:0 0 20px rgba(0,240,255,0.15);
+    background:rgba(0,240,255,0.04);
+}
+.ai-card .ai-avatar {
+    width:36px; height:36px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem;
+    border:2px solid var(--glass-border);
+}
+.ai-card.active .ai-avatar { border-color:var(--cyan); }
+.ai-card .ai-card-name {
+    font-family:'Orbitron',monospace;
+    font-size:0.6rem; font-weight:700;
+    letter-spacing:0.1em;
+}
+.ai-card .ai-card-role {
+    font-size:0.55rem; color:#666;
+}
+.ai-card .ai-status-dot {
+    position:absolute; top:8px; right:8px;
+    width:7px; height:7px; border-radius:50%;
+}
+.ai-card .ai-status-dot.online { background:#22c55e; box-shadow:0 0 4px #22c55e; }
+.ai-card .ai-status-dot.link { background:#ffd700; box-shadow:0 0 4px #ffd700; }
+.ai-card .ai-status-dot.external { background:#3b82f6; box-shadow:0 0 4px #3b82f6; }
+.ai-card .ai-status-dot.offline { background:#555; }
+
+.global-input-bar {
+    display:flex; gap:6px;
+    padding:6px 12px 10px;
+}
+.global-input-bar input {
+    flex:1;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(100,200,255,0.12);
+    border-radius:20px;
+    color:#e0e0e0;
+    padding:8px 16px;
+    font-size:0.82rem;
+    font-family:'Exo 2',sans-serif;
+    outline:none;
+}
+.global-input-bar input:focus { border-color:var(--cyan); }
+.global-input-bar input::placeholder { color:#444; }
+.global-input-bar .global-send {
+    background:linear-gradient(135deg, var(--cyan), var(--purple));
+    border:none; color:#fff;
+    width:38px; height:38px; border-radius:50%;
+    cursor:pointer; font-size:1rem;
+    display:flex; align-items:center; justify-content:center;
+    transition:all 0.2s;
+}
+.global-input-bar .global-send:hover {
+    transform:scale(1.05);
+    box-shadow:0 0 16px rgba(0,240,255,0.3);
+}
+
+/* ═══════════════════════════════════════
+   MOBILE RESPONSIVE
+   ═══════════════════════════════════════ */
+.mobile-tabs {
+    display:none;
+}
+
+@media (max-width: 900px) {
+    .hud-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: var(--header-h) auto 1fr var(--bottom-h);
+        grid-template-areas:
+            "header"
+            "tabs"
+            "main"
+            "bottom";
+    }
+    .hud-left, .hud-right {
+        display:none;
+        position:fixed;
+        top:var(--header-h);
+        bottom:var(--bottom-h);
+        width:100%;
+        z-index:20;
+        background:var(--panel-bg);
+    }
+    .hud-left.mobile-open, .hud-right.mobile-open {
+        display:flex;
+    }
+    .mobile-tabs {
+        grid-area:tabs;
+        display:flex;
+        gap:0;
+        background:rgba(0,0,30,0.95);
+        border-bottom:1px solid var(--glass-border);
+    }
+    .mobile-tabs button {
+        flex:1; padding:8px;
+        background:none; border:none;
+        color:#666; font-size:0.7rem;
+        font-family:'Exo 2',sans-serif;
+        cursor:pointer; transition:all 0.2s;
+        border-bottom:2px solid transparent;
+    }
+    .mobile-tabs button.active {
+        color:var(--cyan);
+        border-bottom-color:var(--cyan);
+    }
+    .hud-header .level-badge,
+    .hud-header .domain-indicator { display:none; }
+    .hud-header .url-bar { max-width:none; }
+    .hud-header .browser-toggle { display:none; }
+}
+
+@media (max-width: 600px) {
+    .ai-card { flex:0 0 110px; }
+    .ai-card .ai-card-name { font-size:0.55rem; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(100,200,255,0.15); border-radius:4px; }
+::-webkit-scrollbar-thumb:hover { background:rgba(100,200,255,0.3); }
+</style>
+</head>
+<body>
+
+<canvas id="starfield"></canvas>
+<div class="nebula a"></div>
+<div class="nebula b"></div>
+<div class="nebula c"></div>
+
+<div class="hud-grid">
+
+<!-- ═══ HEADER ═══ -->
+<div class="hud-header glass-panel">
+    <button class="hamburger" onclick="toggleLeft()" title="Toggle Navigator">&#9776;</button>
+    <span class="brand">OVERKORE</span>
+    <span class="domain-indicator" id="domainIndicator" style="color:var(--dom1);border-color:var(--dom1);">COMMAND</span>
+    <div class="nav-btns">
+        <button onclick="navBack()" id="btnBack" disabled title="Back">&#9668;</button>
+        <button onclick="navForward()" id="btnFwd" disabled title="Forward">&#9658;</button>
+        <button onclick="navHome()" title="Home">&#8962;</button>
+    </div>
+    <div class="url-bar" id="urlBar">
+        <input type="text" id="urlInput" placeholder="Enter URL or search..." onkeydown="if(event.key==='Enter')browseUrl()">
+        <button class="url-go" onclick="browseUrl()" title="Go">&#10148;</button>
+    </div>
+    <button class="browser-toggle" id="browserToggle" onclick="toggleBrowserMode()" title="Toggle Browser Mode">&#9881; Browse</button>
+    <span class="level-badge" id="levelBadge">LVL 1 &bull; 0 XP</span>
+    <button class="settings-btn" onclick="toggleRight()" title="Toggle Chat">&#9881;</button>
+</div>
+
+<!-- ═══ MOBILE TABS ═══ -->
+<div class="mobile-tabs">
+    <button class="active" onclick="showMobilePanel('viewport')">Viewport</button>
+    <button onclick="showMobilePanel('nav')">Domains</button>
+    <button onclick="showMobilePanel('chat')">Chat</button>
+</div>
+
+<!-- ═══ LEFT PANEL ═══ -->
+<div class="hud-left glass-panel" id="leftPanel">
+    <div class="section-label">Quick Access</div>
+    <div class="popular-tools" id="popularTools"></div>
+    <div class="section-label">Domains</div>
+    <div class="domain-list" id="domainList"></div>
+</div>
+
+<!-- ═══ MAIN VIEWPORT ═══ -->
+<div class="hud-main" id="mainViewport">
+    <div class="welcome-screen" id="welcomeScreen">
+        <h2>OVERKORE HUD</h2>
+        <p>Your command center for the Consciousness Revolution. Select a domain or tool to begin.</p>
+        <div class="quick-grid">
+            <div class="quick-card" onclick="loadTool('araya-chat.html')">
+                <div class="qc-icon">&#10024;</div>
+                <div class="qc-label">ARAYA</div>
+            </div>
+            <div class="quick-card" onclick="loadTool('MASTER_COMMAND_CENTER.html')">
+                <div class="qc-icon">&#9881;</div>
+                <div class="qc-label">Command</div>
+            </div>
+            <div class="quick-card" onclick="loadTool('ULTIMATE_HUMAN_OS/index.html')">
+                <div class="qc-icon">&#127793;</div>
+                <div class="qc-label">Human OS</div>
+            </div>
+            <div class="quick-card" onclick="loadTool('community.html')">
+                <div class="qc-icon">&#127760;</div>
+                <div class="qc-label">Community</div>
+            </div>
+            <div class="quick-card" onclick="loadTool('PATTERN_TOOLKIT.html')">
+                <div class="qc-icon">&#128300;</div>
+                <div class="qc-label">Detectors</div>
+            </div>
+            <div class="quick-card" onclick="loadExternal('https://suno.ai')">
+                <div class="qc-icon">&#127925;</div>
+                <div class="qc-label">Suno Music</div>
+            </div>
+        </div>
+    </div>
+    <iframe id="viewport" style="display:none" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"></iframe>
+</div>
+
+<!-- ═══ RIGHT PANEL ═══ -->
+<div class="hud-right glass-panel" id="rightPanel">
+    <div class="chat-header">
+        <div class="ai-dot" id="chatDot"></div>
+        <span class="ai-name" id="chatAiName">ARAYA</span>
+        <span class="ai-mode" id="chatAiMode">consciousness</span>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg ai">
+            <div class="msg-label">ARAYA</div>
+            Welcome, Builder. I'm connected and ready. Ask me anything or select a tool from the left panel.
+        </div>
+    </div>
+    <div class="chat-typing" id="chatTyping">
+        <div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>
+    </div>
+    <div class="chat-input-bar">
+        <textarea id="chatInput" rows="1" placeholder="Message Araya..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat();}"></textarea>
+        <button class="send-btn" onclick="sendChat()">&#9654;</button>
+    </div>
+</div>
+
+<!-- ═══ BOTTOM BAR ═══ -->
+<div class="hud-bottom glass-panel">
+    <div class="party-bar" id="partyBar"></div>
+    <div class="global-input-bar">
+        <input type="text" id="globalInput" placeholder="Command anything... (loads in viewport or chats with active AI)" onkeydown="if(event.key==='Enter')handleGlobalInput();">
+        <button class="global-send" onclick="handleGlobalInput()">&#9654;</button>
+    </div>
+</div>
+
+</div><!-- /hud-grid -->
+
+<script>
+/* ══════════════════════════════════════════════
+   DOMAIN & TOOL MANIFEST
+   ══════════════════════════════════════════════ */
+const DOMAINS = {
+    "1_COMMAND": {
+        color:"#ff6b6b", label:"COMMAND", icon:"\u2318",
+        tools:[
+            {name:"Master Command Center", url:"MASTER_COMMAND_CENTER.html"},
+            {name:"Claude Cockpit", url:"CLAUDE_COCKPIT.html"},
+            {name:"Command Wheel", url:"COMMAND_CENTER_WHEEL.html"},
+            {name:"Domain Status", url:"DOMAIN_STATUS_DASHBOARD.html"}
+        ]
+    },
+    "2_BUILD": {
+        color:"#ffd700", label:"BUILD", icon:"\u2692",
+        tools:[
+            {name:"Dashboard Template", url:"DASHBOARD_TEMPLATE.html"},
+            {name:"Bug Tracker", url:"bugs.html"},
+            {name:"Beta Downloads", url:"downloads.html"},
+            {name:"Voice Downloads", url:"voice-download.html"},
+            {name:"Architecture Sim", url:"ARCHITECTURE_SIMULATOR_DASHBOARD.html"}
+        ]
+    },
+    "3_CONNECT": {
+        color:"#4ecdc4", label:"CONNECT", icon:"\u2B50",
+        tools:[
+            {name:"Community Portal", url:"community.html"},
+            {name:"Master Roster", url:"roster.html"},
+            {name:"Beta Tester Hub", url:"beta.html"},
+            {name:"Network Portal", url:"network-portal.html"},
+            {name:"Outreach Tracker", url:"outreach-tracker.html"}
+        ]
+    },
+    "4_PROTECT": {
+        color:"#a855f7", label:"PROTECT", icon:"\u26E8",
+        tools:[
+            {name:"Manipulation Detector", url:"manipulation_detector.html"},
+            {name:"Gaslighting Detector", url:"GASLIGHTING_DETECTOR.html"},
+            {name:"Boundary Setter", url:"BOUNDARY_SETTER.html"},
+            {name:"Evidence Tracker", url:"EVIDENCE_TRACKER.html"},
+            {name:"Contract Analyzer", url:"CONTRACT_ANALYZER.html"}
+        ]
+    },
+    "5_GROW": {
+        color:"#22c55e", label:"GROW", icon:"\u2B06",
+        tools:[
+            {name:"Araya Beta Signup", url:"araya-beta-signup.html"},
+            {name:"Landing Page", url:"landing.html"},
+            {name:"Pricing", url:"pricing-live.html"},
+            {name:"Store", url:"store.html"},
+            {name:"Analytics", url:"analytics_dashboard.html"}
+        ]
+    },
+    "6_LEARN": {
+        color:"#3b82f6", label:"LEARN", icon:"\uD83D\uDCD6",
+        tools:[
+            {name:"Pattern Training Hub", url:"ULTIMATE_HUMAN_OS/pattern-training.html"},
+            {name:"Pattern Library", url:"PATTERN_LIBRARY.html"},
+            {name:"Consciousness Trainer", url:"CONSCIOUSNESS_TRAINER.html"},
+            {name:"Course Dashboard", url:"course-dashboard.html"},
+            {name:"Daily Check", url:"DAILY_CONSCIOUSNESS_CHECK.html"}
+        ]
+    },
+    "7_TRANSCEND": {
+        color:"#f472b6", label:"TRANSCEND", icon:"\u2728",
+        tools:[
+            {name:"Araya Chat", url:"araya-chat.html"},
+            {name:"Araya Welcome", url:"araya-welcome.html"},
+            {name:"Ultimate Human OS", url:"ULTIMATE_HUMAN_OS/index.html"},
+            {name:"Consciousness Dashboard", url:"CONSCIOUSNESS_DASHBOARD.html"},
+            {name:"Meditation Flow", url:"MEDITATION_FLOW.html"},
+            {name:"7 Domains Assessment", url:"seven-domains-assessment.html"}
+        ]
+    }
+};
+
+const AI_PARTY = [
+    {id:"araya", name:"ARAYA", role:"Main / Consciousness", icon:"\u2728", status:"online", type:"api"},
+    {id:"claude", name:"CLAUDE", role:"Code / Architecture", icon:"\uD83E\uDDE0", status:"link", type:"link", url:"https://claude.ai"},
+    {id:"chatgpt", name:"CHATGPT", role:"Search / Research", icon:"\uD83D\uDCAC", status:"link", type:"stub"},
+    {id:"suno", name:"SUNO", role:"Music Creation", icon:"\uD83C\uDFB5", status:"external", type:"external", url:"https://suno.ai"},
+    {id:"bergmal", name:"BERGMAL", role:"Local / Offline", icon:"\uD83D\uDDA5", status:"offline", type:"coming_soon"}
+];
+
+const POPULAR = [
+    {name:"Araya", url:"araya-chat.html"},
+    {name:"Command", url:"MASTER_COMMAND_CENTER.html"},
+    {name:"Human OS", url:"ULTIMATE_HUMAN_OS/index.html"},
+    {name:"Detectors", url:"PATTERN_TOOLKIT.html"},
+    {name:"Community", url:"community.html"}
+];
+
+/* ══════════════════════════════════════════════
+   STATE
+   ══════════════════════════════════════════════ */
+let activeAI = "araya";
+let activeDomain = null;
+let navHistory = [];
+let navIndex = -1;
+let chatHistories = JSON.parse(localStorage.getItem('hud_chats') || '{}');
+let xp = parseInt(localStorage.getItem('hud_xp') || '0');
+let conversationHistory = [];
+
+/* ══════════════════════════════════════════════
+   STARFIELD
+   ══════════════════════════════════════════════ */
+(function(){
+    const c=document.getElementById('starfield'),x=c.getContext('2d');
+    let stars=[];
+    function resize(){c.width=innerWidth;c.height=innerHeight;initStars();}
+    function initStars(){
+        stars=[];
+        for(let i=0;i<200;i++) stars.push({
+            x:Math.random()*c.width,
+            y:Math.random()*c.height,
+            r:Math.random()*1.5+0.3,
+            a:Math.random(),
+            da:(Math.random()-0.5)*0.01,
+            dx:(Math.random()-0.5)*0.15,
+            dy:(Math.random()-0.5)*0.15
+        });
+    }
+    function draw(){
+        x.clearRect(0,0,c.width,c.height);
+        stars.forEach(s=>{
+            s.x+=s.dx; s.y+=s.dy; s.a+=s.da;
+            if(s.a>1||s.a<0.1) s.da*=-1;
+            if(s.x<0) s.x=c.width; if(s.x>c.width) s.x=0;
+            if(s.y<0) s.y=c.height; if(s.y>c.height) s.y=0;
+            x.beginPath();
+            x.arc(s.x,s.y,s.r,0,Math.PI*2);
+            x.fillStyle=`rgba(200,220,255,${s.a})`;
+            x.fill();
+        });
+        requestAnimationFrame(draw);
+    }
+    addEventListener('resize',resize);
+    resize(); draw();
+})();
+
+/* ══════════════════════════════════════════════
+   INIT
+   ══════════════════════════════════════════════ */
+function init(){
+    renderDomains();
+    renderPopular();
+    renderPartyBar();
+    updateLevel();
+    setActiveAI('araya');
+}
+
+/* ── Render left panel domains ── */
+function renderDomains(){
+    const el = document.getElementById('domainList');
+    el.innerHTML = '';
+    Object.entries(DOMAINS).forEach(([key, dom]) => {
+        const group = document.createElement('div');
+        group.className = 'domain-group';
+        group.innerHTML = `
+            <button class="domain-btn" data-domain="${key}" onclick="toggleDomain('${key}')">
+                <div class="domain-icon" style="color:${dom.color};border-color:${dom.color};">${dom.icon}</div>
+                <span class="domain-name">${dom.label}</span>
+            </button>
+            <div class="domain-tools" id="tools_${key}">
+                ${dom.tools.map(t => `<button class="tool-btn" onclick="loadTool('${t.url}','${key}')">${t.name}</button>`).join('')}
+            </div>
+        `;
+        el.appendChild(group);
+    });
+}
+
+function renderPopular(){
+    const el = document.getElementById('popularTools');
+    el.innerHTML = POPULAR.map(p => `<button onclick="loadTool('${p.url}')">${p.name}</button>`).join('');
+}
+
+function toggleDomain(key){
+    const toolsEl = document.getElementById('tools_'+key);
+    const btn = document.querySelector(`.domain-btn[data-domain="${key}"]`);
+    const wasOpen = toolsEl.classList.contains('open');
+
+    // close all
+    document.querySelectorAll('.domain-tools').forEach(e=>e.classList.remove('open'));
+    document.querySelectorAll('.domain-btn').forEach(e=>e.classList.remove('active'));
+
+    if(!wasOpen){
+        toolsEl.classList.add('open');
+        btn.classList.add('active');
+        setActiveDomain(key);
+    }
+}
+
+function setActiveDomain(key){
+    activeDomain = key;
+    const dom = DOMAINS[key];
+    const ind = document.getElementById('domainIndicator');
+    ind.textContent = dom.label;
+    ind.style.color = dom.color;
+    ind.style.borderColor = dom.color;
+}
+
+/* ── Render party bar ── */
+function renderPartyBar(){
+    const el = document.getElementById('partyBar');
+    el.innerHTML = AI_PARTY.map(ai => `
+        <div class="ai-card ${ai.id===activeAI?'active':''}" id="ai_${ai.id}" onclick="selectAI('${ai.id}')">
+            <div class="ai-status-dot ${ai.status}"></div>
+            <div class="ai-avatar">${ai.icon}</div>
+            <div class="ai-card-name">${ai.name}</div>
+            <div class="ai-card-role">${ai.role}</div>
+        </div>
+    `).join('');
+}
+
+/* ══════════════════════════════════════════════
+   VIEWPORT NAVIGATION
+   ══════════════════════════════════════════════ */
+function loadTool(url, domainKey){
+    const iframe = document.getElementById('viewport');
+    const welcome = document.getElementById('welcomeScreen');
+    welcome.style.display = 'none';
+    iframe.style.display = 'block';
+    iframe.src = url;
+
+    // nav history
+    if(navIndex < navHistory.length - 1) navHistory = navHistory.slice(0, navIndex+1);
+    navHistory.push(url);
+    navIndex = navHistory.length - 1;
+    updateNavBtns();
+
+    // highlight tool in left panel
+    document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active-tool'));
+    document.querySelectorAll('.tool-btn').forEach(b => {
+        if(b.onclick && b.onclick.toString().includes(url)) b.classList.add('active-tool');
+    });
+
+    // set domain if provided
+    if(domainKey) setActiveDomain(domainKey);
+    else {
+        // try to figure out domain from url
+        Object.entries(DOMAINS).forEach(([k,d]) => {
+            d.tools.forEach(t => { if(t.url === url) setActiveDomain(k); });
+        });
+    }
+
+    // XP
+    addXP(5);
+
+    // close mobile panel
+    closeMobilePanels();
+}
+
+function loadExternal(url){
+    const iframe = document.getElementById('viewport');
+    const welcome = document.getElementById('welcomeScreen');
+    welcome.style.display = 'none';
+    iframe.style.display = 'block';
+    iframe.src = url;
+    if(navIndex < navHistory.length - 1) navHistory = navHistory.slice(0, navIndex+1);
+    navHistory.push(url);
+    navIndex = navHistory.length - 1;
+    updateNavBtns();
+    addXP(3);
+    closeMobilePanels();
+}
+
+function navBack(){
+    if(navIndex > 0){
+        navIndex--;
+        document.getElementById('viewport').src = navHistory[navIndex];
+        updateNavBtns();
+    }
+}
+function navForward(){
+    if(navIndex < navHistory.length - 1){
+        navIndex++;
+        document.getElementById('viewport').src = navHistory[navIndex];
+        updateNavBtns();
+    }
+}
+function navHome(){
+    document.getElementById('viewport').style.display = 'none';
+    document.getElementById('welcomeScreen').style.display = 'flex';
+}
+function updateNavBtns(){
+    document.getElementById('btnBack').disabled = navIndex <= 0;
+    document.getElementById('btnFwd').disabled = navIndex >= navHistory.length - 1;
+    // sync URL bar with current page
+    const urlInput = document.getElementById('urlInput');
+    if(urlInput && navIndex >= 0){
+        urlInput.value = navHistory[navIndex] || '';
+    }
+}
+
+/* ══════════════════════════════════════════════
+   BROWSER MODE
+   ══════════════════════════════════════════════ */
+let browserMode = false;
+
+function browseUrl(){
+    let url = document.getElementById('urlInput').value.trim();
+    if(!url) return;
+    // add protocol if missing
+    if(!/^https?:\/\//i.test(url)){
+        if(url.includes('.') && !url.includes(' ')){
+            url = 'https://' + url;
+        } else {
+            url = 'https://www.google.com/search?igu=1&q=' + encodeURIComponent(url);
+        }
+    }
+    document.getElementById('urlInput').value = url;
+    loadExternal(url);
+}
+
+function toggleBrowserMode(){
+    browserMode = !browserMode;
+    const grid = document.querySelector('.hud-grid');
+    const btn = document.getElementById('browserToggle');
+    if(browserMode){
+        grid.classList.add('browser-mode');
+        btn.classList.add('active');
+        btn.innerHTML = '&#9881; HUD';
+    } else {
+        grid.classList.remove('browser-mode');
+        btn.classList.remove('active');
+        btn.innerHTML = '&#9881; Browse';
+    }
+}
+
+/* ══════════════════════════════════════════════
+   AI SELECTION
+   ══════════════════════════════════════════════ */
+function selectAI(id){
+    const ai = AI_PARTY.find(a => a.id === id);
+    if(!ai) return;
+
+    if(ai.type === 'external'){
+        loadExternal(ai.url);
+        setActiveAI(id);
+        return;
+    }
+    if(ai.type === 'link'){
+        // show instruction in chat
+        setActiveAI(id);
+        addChatMsg('ai', `Open ${ai.name} at: ${ai.url || 'N/A'}`);
+        return;
+    }
+    if(ai.type === 'coming_soon'){
+        setActiveAI(id);
+        addChatMsg('ai', `${ai.name} (Francis's project) — Coming Soon. Local Ollama AI for offline consciousness work.`);
+        return;
+    }
+    if(ai.type === 'stub'){
+        setActiveAI(id);
+        addChatMsg('ai', `${ai.name} routing available via ChatGPT Bridge. Ask Araya to route your question.`);
+        return;
+    }
+
+    setActiveAI(id);
+}
+
+function setActiveAI(id){
+    // save current chat
+    saveChatHistory();
+
+    activeAI = id;
+    const ai = AI_PARTY.find(a => a.id === id);
+
+    // update party bar highlights
+    document.querySelectorAll('.ai-card').forEach(c => c.classList.remove('active'));
+    const card = document.getElementById('ai_'+id);
+    if(card) card.classList.add('active');
+
+    // update chat header
+    document.getElementById('chatAiName').textContent = ai.name;
+    document.getElementById('chatAiMode').textContent = ai.role;
+    const dot = document.getElementById('chatDot');
+    dot.style.background = ai.status==='online' ? '#22c55e' : ai.status==='link' ? '#ffd700' : ai.status==='external' ? '#3b82f6' : '#555';
+    dot.style.boxShadow = `0 0 6px ${dot.style.background}`;
+
+    // load chat history for this AI
+    loadChatHistory(id);
+}
+
+/* ══════════════════════════════════════════════
+   CHAT SYSTEM
+   ══════════════════════════════════════════════ */
+function getUserId(){
+    let id = localStorage.getItem('araya_user_id');
+    if(!id){ id = 'user_' + crypto.randomUUID(); localStorage.setItem('araya_user_id', id); }
+    return id;
+}
+const userId = getUserId();
+
+function addChatMsg(sender, text){
+    const el = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = `chat-msg ${sender}`;
+    const label = sender === 'user' ? 'YOU' : activeAI.toUpperCase();
+    div.innerHTML = `<div class="msg-label">${label}</div>${escapeHtml(text)}`;
+    el.appendChild(div);
+    el.scrollTop = el.scrollHeight;
+}
+
+function escapeHtml(t){ const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
+
+function saveChatHistory(){
+    const msgs = document.getElementById('chatMessages');
+    chatHistories[activeAI] = msgs.innerHTML;
+    localStorage.setItem('hud_chats', JSON.stringify(chatHistories));
+}
+
+function loadChatHistory(id){
+    const msgs = document.getElementById('chatMessages');
+    if(chatHistories[id]){
+        msgs.innerHTML = chatHistories[id];
+    } else {
+        const ai = AI_PARTY.find(a=>a.id===id);
+        msgs.innerHTML = `<div class="chat-msg ai"><div class="msg-label">${ai.name}</div>${ai.name} ready. ${ai.role}.</div>`;
+    }
+    msgs.scrollTop = msgs.scrollHeight;
+    conversationHistory = [];
+}
+
+async function sendChat(){
+    const input = document.getElementById('chatInput');
+    const text = input.value.trim();
+    if(!text) return;
+
+    addChatMsg('user', text);
+    input.value = '';
+    input.style.height = 'auto';
+
+    conversationHistory.push({role:'user', content:text});
+
+    // check for nav commands
+    if(text.startsWith('/go ') || text.startsWith('/load ')){
+        const url = text.split(' ').slice(1).join(' ');
+        loadTool(url);
+        addChatMsg('ai', `Loaded: ${url}`);
+        return;
+    }
+
+    if(activeAI !== 'araya'){
+        addChatMsg('ai', `[${activeAI.toUpperCase()} is a stub] Route through Araya for full AI response.`);
+        return;
+    }
+
+    // Call Araya API
+    const typing = document.getElementById('chatTyping');
+    typing.classList.add('active');
+
+    try {
+        const res = await fetch('/.netlify/functions/araya-chat', {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({
+                message: text,
+                conversationHistory: conversationHistory.slice(-10),
+                user_id: userId,
+                mode: 'consciousness'
+            })
+        });
+        typing.classList.remove('active');
+
+        if(!res.ok) throw new Error(`API ${res.status}`);
+        const data = await res.json();
+        const reply = data.response || data.message || 'No response';
+
+        addChatMsg('ai', reply);
+        conversationHistory.push({role:'assistant', content:reply});
+        if(conversationHistory.length > 20) conversationHistory = conversationHistory.slice(-20);
+
+        // Check for navigation commands from Araya
+        const navMatch = reply.match(/\[NAVIGATE:\s*(.+?)\]/);
+        if(navMatch) loadTool(navMatch[1].trim());
+        const toolMatch = reply.match(/\[TOOL:\s*(.+?)\]/);
+        if(toolMatch) {
+            const tname = toolMatch[1].trim().toLowerCase();
+            Object.values(DOMAINS).forEach(d => {
+                d.tools.forEach(t => { if(t.name.toLowerCase().includes(tname)) loadTool(t.url); });
+            });
+        }
+
+        addXP(2);
+    } catch(err){
+        typing.classList.remove('active');
+        addChatMsg('ai', 'Connection issue. Check your network or try again.');
+        console.error('Chat error:', err);
+    }
+
+    saveChatHistory();
+}
+
+/* ══════════════════════════════════════════════
+   GLOBAL INPUT
+   ══════════════════════════════════════════════ */
+function handleGlobalInput(){
+    const input = document.getElementById('globalInput');
+    const text = input.value.trim();
+    if(!text) return;
+    input.value = '';
+
+    // If it looks like a URL, load it
+    if(text.startsWith('http://') || text.startsWith('https://') || text.endsWith('.html')){
+        if(text.startsWith('http')) loadExternal(text);
+        else loadTool(text);
+        return;
+    }
+
+    // If starts with /, treat as command
+    if(text.startsWith('/')){
+        const parts = text.split(' ');
+        const cmd = parts[0].toLowerCase();
+        const arg = parts.slice(1).join(' ');
+
+        if(cmd === '/go' || cmd === '/load') { loadTool(arg); return; }
+        if(cmd === '/domain') {
+            const dk = Object.keys(DOMAINS).find(k => k.toLowerCase().includes(arg.toLowerCase()));
+            if(dk) { toggleDomain(dk); return; }
+        }
+        if(cmd === '/home') { navHome(); return; }
+    }
+
+    // Otherwise send to active AI chat
+    document.getElementById('chatInput').value = text;
+    sendChat();
+}
+
+/* ══════════════════════════════════════════════
+   XP SYSTEM
+   ══════════════════════════════════════════════ */
+function addXP(amount){
+    xp += amount;
+    localStorage.setItem('hud_xp', xp.toString());
+    updateLevel();
+}
+
+function updateLevel(){
+    const level = Math.floor(xp / 50) + 1;
+    document.getElementById('levelBadge').textContent = `LVL ${level} \u2022 ${xp} XP`;
+}
+
+/* ══════════════════════════════════════════════
+   PANEL TOGGLES
+   ══════════════════════════════════════════════ */
+function toggleLeft(){
+    const el = document.getElementById('leftPanel');
+    if(window.innerWidth <= 900){
+        el.classList.toggle('mobile-open');
+        document.getElementById('rightPanel').classList.remove('mobile-open');
+    } else {
+        const grid = document.querySelector('.hud-grid');
+        if(el.style.display === 'none'){
+            el.style.display = 'flex';
+            grid.style.gridTemplateColumns = `var(--left-w) 1fr var(--right-w)`;
+        } else {
+            el.style.display = 'none';
+            grid.style.gridTemplateColumns = `0px 1fr var(--right-w)`;
+        }
+    }
+}
+
+function toggleRight(){
+    const el = document.getElementById('rightPanel');
+    if(window.innerWidth <= 900){
+        el.classList.toggle('mobile-open');
+        document.getElementById('leftPanel').classList.remove('mobile-open');
+    } else {
+        const grid = document.querySelector('.hud-grid');
+        if(el.style.display === 'none'){
+            el.style.display = 'flex';
+            grid.style.gridTemplateColumns = `var(--left-w) 1fr var(--right-w)`;
+        } else {
+            el.style.display = 'none';
+            grid.style.gridTemplateColumns = `var(--left-w) 1fr 0px`;
+        }
+    }
+}
+
+function showMobilePanel(panel){
+    document.querySelectorAll('.mobile-tabs button').forEach(b=>b.classList.remove('active'));
+    event.target.classList.add('active');
+    closeMobilePanels();
+    if(panel==='nav') document.getElementById('leftPanel').classList.add('mobile-open');
+    if(panel==='chat') document.getElementById('rightPanel').classList.add('mobile-open');
+}
+
+function closeMobilePanels(){
+    document.getElementById('leftPanel').classList.remove('mobile-open');
+    document.getElementById('rightPanel').classList.remove('mobile-open');
+}
+
+/* ── Auto-resize chat input ── */
+document.getElementById('chatInput').addEventListener('input', function(){
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 80)+'px';
+});
+
+/* ── BOOT ── */
+init();
+</script>
+
+<!-- Dashboard DNA -->
+<script type="application/json" id="dashboard-dna">
+{
+  "name": "OVERKORE HUD",
+  "version": "1.0.0",
+  "domain": "1_COMMAND",
+  "purpose": "Video game-style command interface wrapping all tools in RPG HUD overlay",
+  "created": "2026-02-04",
+  "layer_1_identity": { "title": "OVERKORE HUD", "subtitle": "Command Interface", "version": "1.0.0" },
+  "layer_2_display": "css_grid_5_zone",
+  "layer_3_data": ["localStorage","araya-chat-api"],
+  "layer_4_health": "manual",
+  "layer_5_upgrade": "phase_2_planned",
+  "layer_6_manual": "hover_tooltips",
+  "layer_7_bridge": "iframe_viewport"
+}
+</script>
+</body>
+</html>
