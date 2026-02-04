@@ -593,11 +593,10 @@ function getUserId() {
 }
 const userId = getUserId();
 
-/* ── File Writer API (local dev) ── */
-const FILE_WRITER_API = window.location.hostname === 'localhost'
-    ? 'http://localhost:5001'
-    : window.location.origin;
-let fileWriterOnline = false;
+/* ── File Builder API (Netlify Function) ── */
+const FILE_API = '/.netlify/functions/araya-file';
+let fileAPIOnline = false;
+let pendingFileOp = null;
 
 /* ── API Health Check ── */
 async function checkAPIHealth() {
@@ -617,9 +616,16 @@ async function checkAPIHealth() {
         el.innerHTML = '<span class="dot" style="background:#f80"></span><span style="color:rgba(255,180,0,0.5)">OFFLINE MODE</span>';
     }
     try {
-        const r2 = await fetch(FILE_WRITER_API + '/api/files/list', {method:'GET'});
-        if (r2.ok) fileWriterOnline = true;
-    } catch(e) { fileWriterOnline = false; }
+        const r2 = await fetch(FILE_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'status' })
+        });
+        if (r2.ok) {
+            fileAPIOnline = true;
+            el.innerHTML += ' <span style="color:rgba(0,255,100,0.4);font-size:0.7rem;">| BUILDER</span>';
+        }
+    } catch(e) { fileAPIOnline = false; }
 }
 checkAPIHealth();
 
@@ -627,29 +633,63 @@ function detectFileIntent(msg) {
     const m = msg.toLowerCase();
     if (/\b(list|show|dir)\b.*\bfiles?\b/.test(m)) return 'list';
     if (/\b(read|open|show|cat|view|get)\b.*\.(html|css|js|json|md|txt|py)\b/.test(m)) return 'read';
+    if (/\b(create|make|build|generate|new)\b.*\b(page|dashboard|tool|file|html|detector|tracker|checker)\b/.test(m)) return 'create';
+    if (/\b(edit|update|change|modify|fix)\b.*\.(html|css|js|json|md|txt|py)\b/.test(m)) return 'edit';
+    if (/\b(write|save|deploy|publish)\b.*\.(html|css|js|json|md|txt|py)\b/.test(m)) return 'write';
     return null;
 }
 
 async function handleFileOperation(intent, msg) {
-    if (!fileWriterOnline) return null;
+    if (!fileAPIOnline) return null;
     try {
         if (intent === 'list') {
-            const r = await fetch(FILE_WRITER_API + '/api/files/list');
+            const r = await fetch(FILE_API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'list', path: '' })
+            });
             const d = await r.json();
             if (d.files) {
-                const list = d.files.map(f => `<code>${f.name}</code> (${formatSize(f.size)})`).join('<br>');
-                return `<strong>Platform Files:</strong><br>${list}`;
+                const htmlFiles = d.files.filter(f => f.name.endsWith('.html'));
+                const list = htmlFiles.map(f => `<code>${f.name}</code> (${formatSize(f.size)})`).join('<br>');
+                return `<strong>Platform Files (${htmlFiles.length} pages):</strong><br>${list}`;
             }
         }
         if (intent === 'read') {
             const match = msg.match(/[\w-]+\.(html|css|js|json|md|txt|py)/i);
             if (match) {
-                const r = await fetch(FILE_WRITER_API + '/api/files/read?file=' + encodeURIComponent(match[0]));
+                const r = await fetch(FILE_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'read', path: match[0] })
+                });
                 const d = await r.json();
                 if (d.content) {
                     const preview = d.content.length > 1500 ? d.content.substring(0,1500) + '\n...(truncated)' : d.content;
                     return `<strong>${match[0]}:</strong><pre>${escapeHtml(preview)}</pre>`;
                 }
+            }
+        }
+        if (intent === 'create') {
+            /* Extract desired name, pass to Araya AI to generate code */
+            const nameMatch = msg.match(/(?:called?|named?|for)\s+["\']?([\w-]+)["\']?/i) ||
+                              msg.match(/\b([\w-]+)\s+(?:page|dashboard|tool|detector|tracker|checker)/i);
+            const pageName = nameMatch ? nameMatch[1].toLowerCase().replace(/\s+/g, '-') : null;
+            pendingFileOp = { intent: 'create', name: pageName, originalMsg: msg };
+            return '__BUILDER_FLOW__';
+        }
+        if (intent === 'edit') {
+            const match = msg.match(/[\w-]+\.(html|css|js|json|md|txt|py)/i);
+            if (match) {
+                pendingFileOp = { intent: 'edit', file: match[0], originalMsg: msg };
+                return '__EDIT_FLOW__:' + match[0];
+            }
+        }
+        if (intent === 'write') {
+            const match = msg.match(/[\w-]+\.(html|css|js|json|md|txt|py)/i);
+            if (match) {
+                pendingFileOp = { intent: 'write', file: match[0], originalMsg: msg };
+                return '__BUILDER_FLOW__';
             }
         }
     } catch(e) { console.error('File op error', e); }
@@ -784,10 +824,49 @@ async function sendMessage() {
     typingIndicator.classList.add('active');
     messages.scrollTop = messages.scrollHeight;
 
-    /* Check for local file operations first */
+    /* Check for file operations first */
     const intent = detectFileIntent(text);
     if (intent) {
         const fileResult = await handleFileOperation(intent, text);
+        if (fileResult === '__BUILDER_FLOW__') {
+            /* Araya generates the page, then we confirm before writing */
+            addMessage('🔨 <strong>Builder Mode</strong> — Let me design that for you...', 'araya');
+            try {
+                const buildPrompt = pendingFileOp.intent === 'create'
+                    ? `The user wants you to CREATE a new HTML page. Their request: "${text}". Generate ONLY the complete HTML code for this page. Use dark space theme (bg: #0a0a1a, text: #e2e8f0, cyan: #00f0ff, purple: #8b5cf6). Make it mobile-first, self-contained (no external deps), glassmorphism style. Include a DNA JSON block in a script tag. Return ONLY the HTML code, no explanation.`
+                    : `The user wants to write/save this file. Their request: "${text}". Generate the file content. Return ONLY the code, no explanation.`;
+                const response = await callArayaAPI(buildPrompt);
+                typingIndicator.classList.remove('active');
+                showBuilderConfirmation(response, pendingFileOp);
+            } catch(err) {
+                typingIndicator.classList.remove('active');
+                addMessage('Builder error: ' + err.message, 'araya');
+                pendingFileOp = null;
+            }
+            return;
+        }
+        if (fileResult && fileResult.startsWith('__EDIT_FLOW__:')) {
+            const fileName = fileResult.split(':')[1];
+            addMessage(`✏️ <strong>Edit Mode</strong> — Reading ${fileName}...`, 'araya');
+            try {
+                const readR = await fetch(FILE_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'read', path: fileName })
+                });
+                const fileData = await readR.json();
+                if (!fileData.success) throw new Error(fileData.error);
+                const editPrompt = `The user wants to edit ${fileName}. Their request: "${text}". Here is the current file (first 2000 chars):\n\n${fileData.content.substring(0,2000)}\n\nDescribe what specific changes need to be made. Be precise about what text to find and what to replace it with.`;
+                const response = await callArayaAPI(editPrompt);
+                typingIndicator.classList.remove('active');
+                showEditConfirmation(response, fileName, pendingFileOp);
+            } catch(err) {
+                typingIndicator.classList.remove('active');
+                addMessage('Edit error: ' + err.message, 'araya');
+                pendingFileOp = null;
+            }
+            return;
+        }
         if (fileResult) {
             typingIndicator.classList.remove('active');
             addMessage(fileResult, 'araya');
@@ -828,6 +907,122 @@ function addMessage(text, sender, extraHTML = '') {
 
 function escapeHtml(t) { const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
 function formatSize(b) { if(b<1024)return b+'B'; if(b<1048576)return (b/1024).toFixed(1)+'KB'; return (b/1048576).toFixed(1)+'MB'; }
+
+/* ── Builder Confirmation UI ── */
+function showBuilderConfirmation(generatedCode, fileOp) {
+    const name = fileOp.name || 'new-page';
+    const filename = name.endsWith('.html') ? name : name + '.html';
+    const preview = generatedCode.length > 800 ? generatedCode.substring(0,800) + '\n...' : generatedCode;
+    const id = 'builder-' + Date.now();
+    const html = `
+        <div id="${id}" style="background:rgba(0,255,100,0.05);border:1px solid rgba(0,255,100,0.2);border-radius:12px;padding:16px;margin:8px 0;">
+            <div style="color:#10b981;font-weight:600;margin-bottom:8px;">🔨 Builder Preview</div>
+            <div style="margin-bottom:10px;">
+                <label style="font-size:0.8rem;color:rgba(255,255,255,0.5);">Filename:</label>
+                <input id="${id}-name" type="text" value="${escapeHtml(filename)}"
+                    style="background:rgba(0,0,0,0.3);border:1px solid rgba(100,200,255,0.2);border-radius:6px;padding:6px 10px;color:#e2e8f0;width:100%;font-family:monospace;margin-top:4px;">
+            </div>
+            <pre style="max-height:200px;overflow:auto;font-size:0.7rem;background:rgba(0,0,0,0.3);padding:10px;border-radius:8px;margin-bottom:10px;">${escapeHtml(preview)}</pre>
+            <div style="display:flex;gap:8px;">
+                <button onclick="executeFileCreate(document.getElementById('${id}-name').value, ${id}_code)"
+                    style="flex:1;padding:10px;background:linear-gradient(135deg,#10b981,#059669);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;">
+                    🚀 Deploy
+                </button>
+                <button onclick="document.getElementById('${id}').remove(); pendingFileOp=null;"
+                    style="flex:1;padding:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#e2e8f0;cursor:pointer;">
+                    Cancel
+                </button>
+            </div>
+        </div>`;
+    addMessage(html, 'araya');
+    window[id + '_code'] = generatedCode;
+}
+
+async function executeFileCreate(filename, content) {
+    if (!filename || !content) { addMessage('Missing filename or content.', 'araya'); return; }
+    const path = filename.includes('/') ? filename : filename;
+    addMessage(`⏳ Deploying <code>${escapeHtml(path)}</code>...`, 'araya');
+    try {
+        const r = await fetch(FILE_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'write',
+                path: path,
+                content: content,
+                message: '[ARAYA] Created ' + path
+            })
+        });
+        const d = await r.json();
+        if (d.success) {
+            const url = 'https://conciousnessrevolution.io/' + path;
+            addMessage(`✅ <strong>Deployed!</strong> <a href="${url}" target="_blank" style="color:#00f0ff;">${url}</a><br><span style="font-size:0.8rem;color:rgba(255,255,255,0.4);">Auto-deploying via Netlify — live in ~30 seconds.</span>`, 'araya');
+            try { window.parent.postMessage({ type: 'araya-navigate', url: path }, '*'); } catch(e) {}
+        } else {
+            addMessage('❌ Deploy failed: ' + (d.error || 'Unknown error'), 'araya');
+        }
+    } catch(e) {
+        addMessage('❌ Deploy error: ' + e.message, 'araya');
+    }
+    pendingFileOp = null;
+}
+
+function showEditConfirmation(editPlan, fileName, fileOp) {
+    const id = 'edit-' + Date.now();
+    const html = `
+        <div id="${id}" style="background:rgba(139,92,246,0.05);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:16px;margin:8px 0;">
+            <div style="color:#8b5cf6;font-weight:600;margin-bottom:8px;">✏️ Edit Plan: ${escapeHtml(fileName)}</div>
+            <div style="font-size:0.85rem;line-height:1.5;margin-bottom:12px;white-space:pre-wrap;">${editPlan}</div>
+            <div style="display:flex;gap:8px;">
+                <button onclick="executeEditFromPlan('${escapeHtml(fileName)}', '${id}')"
+                    style="flex:1;padding:10px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;">
+                    ✅ Apply Changes
+                </button>
+                <button onclick="document.getElementById('${id}').remove(); pendingFileOp=null;"
+                    style="flex:1;padding:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#e2e8f0;cursor:pointer;">
+                    Cancel
+                </button>
+            </div>
+        </div>`;
+    addMessage(html, 'araya');
+    window[id + '_plan'] = editPlan;
+    window[id + '_file'] = fileName;
+}
+
+async function executeEditFromPlan(fileName, editId) {
+    addMessage(`⏳ Applying edits to <code>${escapeHtml(fileName)}</code>...`, 'araya');
+    try {
+        const readR = await fetch(FILE_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'read', path: fileName })
+        });
+        const fileData = await readR.json();
+        if (!fileData.success) throw new Error(fileData.error || 'Cannot read file');
+        const editPrompt = `Apply these edits to the file. Here is the edit plan:\n${window[editId+'_plan']}\n\nHere is the current file content:\n${fileData.content}\n\nReturn ONLY the complete updated file content. No explanations.`;
+        const newContent = await callArayaAPI(editPrompt);
+        const writeR = await fetch(FILE_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'write',
+                path: fileName,
+                content: newContent,
+                message: '[ARAYA] Edited ' + fileName
+            })
+        });
+        const result = await writeR.json();
+        if (result.success) {
+            const url = 'https://conciousnessrevolution.io/' + fileName;
+            addMessage(`✅ <strong>Edits applied!</strong> <a href="${url}" target="_blank" style="color:#00f0ff;">${url}</a>`, 'araya');
+        } else {
+            addMessage('❌ Edit failed: ' + (result.error || 'Unknown error'), 'araya');
+        }
+    } catch(e) {
+        addMessage('❌ Edit error: ' + e.message, 'araya');
+    }
+    pendingFileOp = null;
+}
 
 /* ── Voice Input (Speech Recognition) ── */
 let voiceRecognition = null;
@@ -993,9 +1188,9 @@ userInput.addEventListener('input', function() {
 <script type="application/json" id="dashboard-dna">
 {
   "name": "Araya Chat",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "domain": "7_TRANSCEND",
-  "purpose": "Primary Araya AI chat interface - consciousness-aware conversational AI with voice I/O",
+  "purpose": "Primary Araya AI chat interface - consciousness-aware conversational AI with voice I/O and file builder",
   "created": "2025-11-01",
   "updated": "2026-02-04",
   "connects": [
