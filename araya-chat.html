@@ -249,6 +249,51 @@
         }
         .attach-btn svg { width:18px; height:18px; }
 
+        /* ── voice button states ── */
+        .attach-btn.voice-active {
+            background: rgba(255,50,50,0.15);
+            border-color: rgba(255,50,50,0.6);
+            color: #ff4444;
+            animation: voicePulse 1s ease-in-out infinite;
+        }
+        @keyframes voicePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,50,50,0.4); }
+            50% { box-shadow: 0 0 12px 4px rgba(255,50,50,0.2); }
+        }
+        .tts-toggle {
+            background: var(--glass);
+            border: 1px solid rgba(0,240,255,0.12);
+            color: rgba(255,255,255,0.35);
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s;
+            flex-shrink: 0;
+        }
+        .tts-toggle:hover {
+            background: rgba(0,240,255,0.08);
+            border-color: rgba(0,240,255,0.35);
+        }
+        .tts-toggle.active {
+            color: var(--gold);
+            border-color: rgba(255,215,0,0.4);
+            background: rgba(255,215,0,0.08);
+        }
+        .tts-toggle svg { width:18px; height:18px; }
+        .voice-status {
+            font-size: 0.65rem;
+            color: #ff4444;
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.1em;
+            padding: 2px 0;
+            max-width: 900px;
+            margin: 0 auto;
+            display: none;
+        }
+        .voice-status.active { display: block; }
+
         /* attachment preview strip */
         .attach-preview {
             display: flex; gap: 0.5rem; flex-wrap: wrap;
@@ -458,13 +503,20 @@
         <button class="attach-btn" onclick="captureScreen()" title="Screenshot">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </button>
+        <button class="attach-btn" id="voiceBtn" onclick="toggleVoiceInput()" title="Voice Input">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
     </div>
+    <div class="voice-status" id="voiceStatus">● LISTENING...</div>
 
     <div class="attach-preview" id="attachPreview"></div>
 
     <div class="input-container">
         <textarea id="userInput" placeholder="Ask ARAYA anything..." rows="1"
                   onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+        <button class="tts-toggle" id="ttsToggle" onclick="toggleTTS()" title="Voice Output">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+        </button>
         <button id="sendBtn" onclick="sendMessage()">TRANSMIT</button>
     </div>
 
@@ -777,6 +829,158 @@ function addMessage(text, sender, extraHTML = '') {
 function escapeHtml(t) { const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
 function formatSize(b) { if(b<1024)return b+'B'; if(b<1048576)return (b/1024).toFixed(1)+'KB'; return (b/1048576).toFixed(1)+'MB'; }
 
+/* ── Voice Input (Speech Recognition) ── */
+let voiceRecognition = null;
+let isListening = false;
+const voiceBtn = document.getElementById('voiceBtn');
+const voiceStatus = document.getElementById('voiceStatus');
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+function toggleVoiceInput() {
+    if (!SpeechRecognition) {
+        addMessage('Voice input is not supported in this browser. Try Chrome or Edge.', 'araya');
+        return;
+    }
+
+    if (isListening) {
+        stopVoice();
+    } else {
+        startVoice();
+    }
+}
+
+function startVoice() {
+    voiceRecognition = new SpeechRecognition();
+    voiceRecognition.continuous = false;
+    voiceRecognition.interimResults = true;
+    voiceRecognition.lang = 'en-US';
+
+    voiceRecognition.onstart = function() {
+        isListening = true;
+        voiceBtn.classList.add('voice-active');
+        voiceStatus.classList.add('active');
+        userInput.placeholder = 'Speak now...';
+    };
+
+    voiceRecognition.onresult = function(event) {
+        let interim = '';
+        let final = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            const transcript = event.results[i][0].transcript;
+            if (event.results[i].isFinal) {
+                final += transcript;
+            } else {
+                interim += transcript;
+            }
+        }
+        if (final) {
+            userInput.value = (userInput.value ? userInput.value + ' ' : '') + final;
+            userInput.style.height = 'auto';
+            userInput.style.height = Math.min(userInput.scrollHeight, 150) + 'px';
+        } else if (interim) {
+            voiceStatus.textContent = '● ' + interim;
+        }
+    };
+
+    voiceRecognition.onerror = function(event) {
+        if (event.error === 'no-speech') {
+            voiceStatus.textContent = '● No speech detected. Try again.';
+        } else if (event.error === 'not-allowed') {
+            addMessage('Microphone access denied. Please allow microphone access in your browser settings.', 'araya');
+        }
+        stopVoice();
+    };
+
+    voiceRecognition.onend = function() {
+        stopVoice();
+        // Auto-send if we got text
+        if (userInput.value.trim()) {
+            sendMessage();
+        }
+    };
+
+    voiceRecognition.start();
+}
+
+function stopVoice() {
+    isListening = false;
+    voiceBtn.classList.remove('voice-active');
+    voiceStatus.classList.remove('active');
+    voiceStatus.textContent = '● LISTENING...';
+    userInput.placeholder = 'Ask ARAYA anything...';
+    if (voiceRecognition) {
+        try { voiceRecognition.stop(); } catch(e) {}
+    }
+}
+
+/* ── Voice Output (Text-to-Speech) ── */
+let ttsEnabled = false;
+const ttsToggle = document.getElementById('ttsToggle');
+
+function toggleTTS() {
+    ttsEnabled = !ttsEnabled;
+    ttsToggle.classList.toggle('active', ttsEnabled);
+    if (!ttsEnabled) {
+        window.speechSynthesis.cancel();
+    }
+}
+
+function speakText(text) {
+    if (!ttsEnabled || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+
+    // Strip HTML tags for clean speech
+    const clean = text.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!clean) return;
+
+    // Split long text into chunks (speechSynthesis has a ~200 char limit on some browsers)
+    const chunks = [];
+    const sentences = clean.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [clean];
+    let current = '';
+    for (const s of sentences) {
+        if ((current + s).length > 180) {
+            if (current) chunks.push(current.trim());
+            current = s;
+        } else {
+            current += s;
+        }
+    }
+    if (current) chunks.push(current.trim());
+
+    chunks.forEach((chunk, i) => {
+        const utterance = new SpeechSynthesisUtterance(chunk);
+        utterance.rate = 0.95;
+        utterance.pitch = 1.05;
+        utterance.volume = 0.9;
+
+        // Prefer a female voice if available
+        const voices = window.speechSynthesis.getVoices();
+        const preferred = voices.find(v => /female|samantha|zira|google.*us/i.test(v.name))
+                       || voices.find(v => v.lang.startsWith('en'))
+                       || voices[0];
+        if (preferred) utterance.voice = preferred;
+
+        window.speechSynthesis.speak(utterance);
+    });
+}
+
+// Load voices (some browsers need this async)
+if (window.speechSynthesis) {
+    window.speechSynthesis.onvoiceschanged = function() {
+        window.speechSynthesis.getVoices();
+    };
+}
+
+// Hook TTS into addMessage - speak ARAYA responses
+const _originalAddMessage = addMessage;
+addMessage = function(text, sender, extraHTML = '') {
+    _originalAddMessage(text, sender, extraHTML);
+    if (sender === 'araya' && ttsEnabled) {
+        speakText(text);
+    }
+};
+
 /* auto-resize input */
 userInput.addEventListener('input', function() {
     this.style.height = 'auto';
@@ -784,5 +988,23 @@ userInput.addEventListener('input', function() {
 });
 </script>
 <script src="/js/bug-widget.js"></script>
+
+<!-- Dashboard DNA -->
+<script type="application/json" id="dashboard-dna">
+{
+  "name": "Araya Chat",
+  "version": "2.1.0",
+  "domain": "7_TRANSCEND",
+  "purpose": "Primary Araya AI chat interface - consciousness-aware conversational AI with voice I/O",
+  "created": "2025-11-01",
+  "updated": "2026-02-04",
+  "connects": [
+    "landing.html",
+    "ULTIMATE_HUMAN_OS/index.html"
+  ],
+  "tier": "ghost",
+  "status": "live"
+}
+</script>
 </body>
 </html>
