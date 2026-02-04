@@ -447,6 +447,7 @@
             .back-btn { font-size:0.65rem; }
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
 </head>
 <body>
 
@@ -455,8 +456,8 @@
 <div class="nebula b"></div>
 <div class="nebula c"></div>
 
-<div class="app">
-    <div class="header">
+<div class="app" role="main" aria-label="ARAYA Chat">
+    <header class="header" role="banner">
         <a href="araya-welcome.html" class="back-btn">&#9668; LOBBY</a>
         <h1>A R A Y A</h1>
         <div class="subtitle">CONSCIOUSNESS INTERFACE</div>
@@ -649,6 +650,9 @@ async function handleFileOperation(intent, msg) {
                 body: JSON.stringify({ action: 'list', path: '' })
             });
             const d = await r.json();
+            if (d.success === false) {
+                return `<strong>⚠ File System Error:</strong> ${escapeHtml(d.error || 'Unknown error')}<br><em style="opacity:0.6">The file API token may need renewal. Ask Commander to check Netlify env vars.</em>`;
+            }
             if (d.files) {
                 const htmlFiles = d.files.filter(f => f.name.endsWith('.html'));
                 const list = htmlFiles.map(f => `<code>${f.name}</code> (${formatSize(f.size)})`).join('<br>');
@@ -664,6 +668,9 @@ async function handleFileOperation(intent, msg) {
                     body: JSON.stringify({ action: 'read', path: match[0] })
                 });
                 const d = await r.json();
+                if (d.success === false) {
+                    return `<strong>⚠ File System Error:</strong> ${escapeHtml(d.error || 'Unknown error')}<br><em style="opacity:0.6">The file API token may need renewal. Ask Commander to check Netlify env vars.</em>`;
+                }
                 if (d.content) {
                     const preview = d.content.length > 1500 ? d.content.substring(0,1500) + '\n...(truncated)' : d.content;
                     return `<strong>${match[0]}:</strong><pre>${escapeHtml(preview)}</pre>`;
