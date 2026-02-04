@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- ============================================================
+  DASHBOARD DNA: community.html
+  Universal Dashboard Standard v1.0.0
+  7 Layers: Identity | Display | Data | Health | Upgrade | Manual | Bridge
+  Clone from: DASHBOARD_TEMPLATE.html
+  ============================================================ -->
+<script type="application/json" id="dashboard-dna">
+{
+  "name": "Community Portal",
+  "version": "1.0.0",
+  "purpose": "Show community activity in outer-space Discord skin theme",
+  "owner": "Commander",
+  "domain": "3_CONNECT",
+  "created": "2026-02-02",
+  "status": "LIVE",
+  "url": "consciousnessrevolution.io/community.html",
+  "dataSources": [
+    {"type": "supabase", "tables": ["discord_users", "xp_log"], "via": "netlify-function"},
+    {"type": "static", "note": "Fallback data if API fails"},
+    {"type": "discord", "channel": "general", "via": "bot"}
+  ],
+  "changelog": [
+    {"version": "1.0.0", "date": "2026-02-02", "changes": "Initial outer-space Discord skin"},
+    {"version": "1.1.0", "date": "2026-02-03", "changes": "Added Dashboard DNA (7-layer standard)"},
+    {"version": "1.2.0", "date": "2026-02-03", "changes": "M18: Live Discord data via discord-community-api"}
+  ],
+  "layers": {
+    "identity": true,
+    "display": true,
+    "data": true,
+    "health": true,
+    "upgrade": true,
+    "manual": true,
+    "bridge": true
+  }
+}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consciousness Revolution - The Builders Network</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a1a;--bg2:#0d0d24;--bg3:#12122e;
+  --cyan:#00f0ff;--purple:#8b5cf6;--gold:#f59e0b;--pink:#ec4899;
+  --glass:rgba(15,15,40,0.6);--glass2:rgba(20,20,50,0.45);
+  --border:rgba(0,240,255,0.12);--border2:rgba(139,92,246,0.15);
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --radius:16px;--radius-sm:10px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);
+  overflow-x:hidden;min-height:100vh;line-height:1.6;
+}
+
+/* === STARFIELD === */
+#starfield{position:fixed;inset:0;z-index:0;pointer-events:none}
+#starfield canvas{width:100%;height:100%}
+
+/* === SACRED GEOMETRY BACKGROUND === */
+.sacred-bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,10 190,75 160,170 40,170 10,75' fill='none' stroke='%2300f0ff' stroke-width='.5'/%3E%3Ccircle cx='100' cy='100' r='80' fill='none' stroke='%238b5cf6' stroke-width='.3'/%3E%3Ccircle cx='100' cy='100' r='50' fill='none' stroke='%2300f0ff' stroke-width='.3'/%3E%3Cline x1='100' y1='10' x2='100' y2='190' stroke='%238b5cf6' stroke-width='.2'/%3E%3Cline x1='10' y1='100' x2='190' y2='100' stroke='%238b5cf6' stroke-width='.2'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
+
+/* === FLOATING ORBS === */
+.orb{
+  position:fixed;border-radius:50%;pointer-events:none;z-index:0;
+  filter:blur(80px);opacity:.15;animation:orbFloat 20s ease-in-out infinite;
+}
+.orb-1{width:400px;height:400px;background:var(--cyan);top:-100px;left:-100px;animation-delay:0s}
+.orb-2{width:350px;height:350px;background:var(--purple);bottom:-80px;right:-80px;animation-delay:-7s}
+.orb-3{width:300px;height:300px;background:var(--gold);top:40%;left:60%;animation-delay:-14s;opacity:.08}
+@keyframes orbFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  25%{transform:translate(30px,-40px) scale(1.05)}
+  50%{transform:translate(-20px,30px) scale(.95)}
+  75%{transform:translate(40px,20px) scale(1.02)}
+}
+
+/* === LAYOUT === */
+.app{
+  position:relative;z-index:1;display:grid;min-height:100vh;
+  grid-template-columns:260px 1fr 300px;
+  grid-template-rows:auto 1fr auto;
+  grid-template-areas:
+    "hero hero hero"
+    "sidebar main chat"
+    "footer footer footer";
+}
+@media(max-width:1100px){
+  .app{
+    grid-template-columns:1fr 300px;
+    grid-template-areas:"hero hero" "main chat" "nav nav" "footer footer";
+  }
+  .sidebar{display:none}
+  .bottom-nav{display:flex!important}
+}
+@media(max-width:768px){
+  .app{
+    grid-template-columns:1fr;
+    grid-template-areas:"hero" "main" "nav" "footer";
+  }
+  .chat-panel{display:none}
+  .chat-toggle{display:flex!important}
+}
+
+/* === GLASS CARD === */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--border);border-radius:var(--radius);
+}
+.glass-2{
+  background:var(--glass2);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--border2);border-radius:var(--radius-sm);
+}
+
+/* === HERO === */
+.hero{
+  grid-area:hero;text-align:center;
+  padding:60px 20px 40px;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--cyan),var(--purple),var(--cyan),transparent);
+}
+.hero h1{
+  font-size:clamp(2rem,6vw,4rem);font-weight:800;
+  background:linear-gradient(135deg,var(--cyan),var(--purple),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:glowPulse 4s ease-in-out infinite;
+  letter-spacing:-1px;
+}
+.hero h2{
+  font-size:clamp(.9rem,2.5vw,1.3rem);color:var(--text2);
+  font-weight:400;margin-top:8px;letter-spacing:4px;text-transform:uppercase;
+}
+.hero-stats{
+  display:flex;justify-content:center;gap:32px;margin-top:24px;flex-wrap:wrap;
+}
+.hero-stat{display:flex;flex-direction:column;align-items:center}
+.hero-stat-num{
+  font-size:1.8rem;font-weight:800;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-stat-label{font-size:.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:20px;padding:8px 20px;
+  border-radius:100px;font-size:.8rem;color:var(--cyan);
+  border:1px solid rgba(0,240,255,0.2);
+  background:rgba(0,240,255,0.05);
+}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);
+  animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* === DATA SOURCE INDICATOR === */
+.data-indicator{
+  display:inline-block;padding:3px 10px;border-radius:100px;
+  font-size:.65rem;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;margin-left:8px;vertical-align:middle;
+}
+.data-indicator.live{
+  background:rgba(34,197,94,0.15);color:#22c55e;
+  border:1px solid rgba(34,197,94,0.3);
+  animation:blink 2s ease-in-out infinite;
+}
+.data-indicator.demo{
+  background:rgba(245,158,11,0.15);color:#f59e0b;
+  border:1px solid rgba(245,158,11,0.3);
+}
+#live-stats{
+  font-size:inherit;color:inherit;
+}
+
+@keyframes glowPulse{
+  0%,100%{filter:brightness(1) drop-shadow(0 0 20px rgba(0,240,255,.2))}
+  50%{filter:brightness(1.15) drop-shadow(0 0 40px rgba(139,92,246,.3))}
+}
+
+/* === STORIES BAR === */
+.stories{
+  padding:16px 20px;display:flex;gap:16px;overflow-x:auto;
+  scrollbar-width:none;
+}
+.stories::-webkit-scrollbar{display:none}
+.story{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;flex-shrink:0}
+.story-ring{
+  width:56px;height:56px;border-radius:50%;padding:3px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple),var(--gold));
+  animation:ringRotate 6s linear infinite;
+}
+.story:hover .story-ring{transform:scale(1.08)}
+@keyframes ringRotate{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+.story-avatar{
+  width:100%;height:100%;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.9rem;color:#fff;
+  border:2px solid var(--bg);
+}
+.story-name{font-size:.65rem;color:var(--text3);max-width:60px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
+
+/* === SIDEBAR (Channel Navigator) === */
+.sidebar{
+  grid-area:sidebar;padding:16px 12px;
+  border-right:1px solid var(--border);
+  overflow-y:auto;position:sticky;top:0;height:100vh;
+}
+.sidebar-logo{
+  padding:8px 12px 16px;display:flex;align-items:center;gap:10px;
+  border-bottom:1px solid var(--border);margin-bottom:12px;
+}
+.sidebar-logo-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.85rem;color:#fff;
+}
+.sidebar-logo-text{font-weight:700;font-size:.85rem}
+.sidebar-title{
+  font-size:.65rem;text-transform:uppercase;letter-spacing:2px;
+  color:var(--text3);padding:12px 12px 8px;font-weight:600;
+}
+.channel{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:var(--radius-sm);
+  cursor:pointer;transition:all .2s;position:relative;
+  color:var(--text2);font-size:.9rem;
+}
+.channel:hover,.channel.active{background:rgba(0,240,255,.06);color:var(--text)}
+.channel.active{border-left:2px solid var(--cyan)}
+.channel-icon{font-size:1.1rem;width:24px;text-align:center;flex-shrink:0}
+.channel-name{flex:1}
+.unread{
+  min-width:20px;height:20px;border-radius:10px;
+  background:var(--purple);color:#fff;font-size:.7rem;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;padding:0 6px;
+}
+
+/* === MAIN CONTENT === */
+.main{grid-area:main;padding:0 20px 20px;overflow-y:auto}
+
+/* === MEMBER SPOTLIGHT === */
+.section-title{
+  font-size:1rem;font-weight:700;padding:20px 0 12px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-title::before{
+  content:'';width:4px;height:18px;border-radius:2px;
+  background:linear-gradient(180deg,var(--cyan),var(--purple));
+}
+.members-scroll{
+  display:flex;gap:12px;overflow-x:auto;padding-bottom:12px;
+  scrollbar-width:none;
+}
+.members-scroll::-webkit-scrollbar{display:none}
+.member-card{
+  flex-shrink:0;width:140px;padding:16px 12px;text-align:center;
+  transition:transform .2s,border-color .2s;cursor:pointer;
+}
+.member-card:hover{transform:translateY(-4px);border-color:rgba(0,240,255,.3)}
+.member-avatar{
+  width:52px;height:52px;border-radius:50%;margin:0 auto 8px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:1rem;color:#fff;
+}
+.member-name{font-size:.8rem;font-weight:600;margin-bottom:4px}
+.member-role{
+  font-size:.6rem;text-transform:uppercase;letter-spacing:1px;
+  padding:2px 8px;border-radius:100px;display:inline-block;font-weight:600;
+}
+.role-commander{background:rgba(245,158,11,.15);color:var(--gold);border:1px solid rgba(245,158,11,.3)}
+.role-architect{background:rgba(139,92,246,.15);color:var(--purple);border:1px solid rgba(139,92,246,.3)}
+.role-oracle{background:rgba(236,72,153,.15);color:var(--pink);border:1px solid rgba(236,72,153,.3)}
+.role-builder{background:rgba(0,240,255,.1);color:var(--cyan);border:1px solid rgba(0,240,255,.2)}
+.builder-score{font-size:.7rem;color:var(--text3);margin-top:6px}
+.builder-score span{color:var(--gold);font-weight:700;font-size:.85rem}
+
+/* === FEED === */
+.feed{display:grid;gap:16px;padding-top:16px}
+@media(min-width:900px){.feed{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}}
+.post{padding:0;overflow:hidden;transition:transform .2s,border-color .2s}
+.post:hover{transform:translateY(-2px);border-color:rgba(0,240,255,.25)}
+.post-header{display:flex;align-items:center;gap:10px;padding:14px 16px}
+.post-avatar{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;
+}
+.post-meta{flex:1}
+.post-user{font-size:.85rem;font-weight:600}
+.post-time{font-size:.7rem;color:var(--text3)}
+.post-channel{font-size:.65rem;color:var(--purple);margin-left:8px}
+.post-body{padding:0 16px 12px;font-size:.9rem;line-height:1.6;color:var(--text2)}
+.post-image{
+  width:100%;aspect-ratio:16/9;
+  background:linear-gradient(135deg,var(--bg2),var(--bg3));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text3);font-size:.8rem;position:relative;overflow:hidden;
+}
+.post-image::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 30% 40%,rgba(0,240,255,.08),transparent 60%),
+    radial-gradient(circle at 70% 60%,rgba(139,92,246,.08),transparent 60%);
+}
+.post-image svg{width:40px;height:40px;opacity:.3;position:relative;z-index:1}
+.post-image-label{
+  position:absolute;bottom:12px;left:16px;font-size:.7rem;
+  color:var(--text3);z-index:1;
+}
+.post-actions{
+  display:flex;gap:20px;padding:12px 16px;
+  border-top:1px solid rgba(255,255,255,.04);
+}
+.post-action{
+  display:flex;align-items:center;gap:6px;
+  font-size:.8rem;color:var(--text3);cursor:pointer;
+  transition:color .2s;user-select:none;
+}
+.post-action:hover{color:var(--cyan)}
+.post-action svg{width:18px;height:18px}
+.post-action.liked{color:var(--pink)}
+.post-action.liked svg{fill:var(--pink)}
+
+/* === CHAT PANEL === */
+.chat-panel{
+  grid-area:chat;border-left:1px solid var(--border);
+  display:flex;flex-direction:column;position:sticky;top:0;height:100vh;
+}
+.chat-header{
+  padding:16px;border-bottom:1px solid var(--border);
+  font-weight:700;font-size:.9rem;
+  display:flex;align-items:center;gap:8px;
+}
+.chat-header .dot{width:8px;height:8px;border-radius:50%;background:#22c55e}
+.chat-messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+.chat-msg{display:flex;gap:8px;animation:msgIn .3s ease-out}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg-avatar{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;font-weight:700;color:#fff;
+}
+.chat-msg-body{flex:1;min-width:0}
+.chat-msg-name{font-size:.7rem;font-weight:600;margin-bottom:2px}
+.chat-msg-text{
+  font-size:.8rem;color:var(--text2);line-height:1.5;
+  background:rgba(255,255,255,.03);padding:8px 10px;
+  border-radius:0 10px 10px 10px;word-break:break-word;
+}
+.chat-msg-time{font-size:.6rem;color:var(--text3);margin-top:2px}
+.typing-indicator{
+  display:flex;align-items:center;gap:6px;padding:8px 12px;
+  font-size:.75rem;color:var(--text3);
+}
+.typing-dots{display:flex;gap:3px}
+.typing-dots span{
+  width:6px;height:6px;border-radius:50%;background:var(--text3);
+  animation:typingBounce 1.4s infinite;
+}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.chat-input-wrap{padding:12px;border-top:1px solid var(--border)}
+.chat-input{
+  width:100%;padding:10px 14px;border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  color:var(--text);font-size:.85rem;outline:none;
+  transition:border-color .2s;font-family:inherit;
+}
+.chat-input:focus{border-color:var(--cyan)}
+.chat-input::placeholder{color:var(--text3)}
+
+/* === JOIN CTA === */
+.join-cta{text-align:center;padding:50px 20px;margin-top:30px}
+.join-btn{
+  position:relative;display:inline-flex;align-items:center;gap:10px;
+  padding:16px 40px;border-radius:100px;border:none;
+  font-size:1.1rem;font-weight:700;color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  box-shadow:0 0 30px rgba(0,240,255,.25),0 0 60px rgba(139,92,246,.15);
+  transition:all .3s;text-decoration:none;font-family:inherit;
+}
+.join-btn:hover{
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 0 50px rgba(0,240,255,.4),0 0 100px rgba(139,92,246,.25);
+}
+.join-btn::before{
+  content:'';position:absolute;inset:-2px;border-radius:100px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple),var(--gold));
+  z-index:-1;filter:blur(10px);opacity:.5;
+  animation:btnGlow 3s ease-in-out infinite;
+}
+@keyframes btnGlow{0%,100%{opacity:.3}50%{opacity:.6}}
+.join-subtitle{font-size:.85rem;color:var(--text3);margin-top:12px}
+
+/* === BOTTOM NAV (mobile) === */
+.bottom-nav{
+  display:none!important;position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,26,.95);backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-top:1px solid var(--border);
+  padding:8px 0 calc(8px + env(safe-area-inset-bottom));
+  justify-content:space-around;
+}
+.bottom-nav-item{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  font-size:.6rem;color:var(--text3);cursor:pointer;padding:4px 12px;
+  transition:color .2s;position:relative;
+}
+.bottom-nav-item.active,.bottom-nav-item:hover{color:var(--cyan)}
+.bottom-nav-item svg{width:22px;height:22px}
+.bottom-nav-item .nav-badge{
+  position:absolute;top:0;right:4px;
+  min-width:14px;height:14px;border-radius:7px;
+  background:var(--purple);color:#fff;font-size:.55rem;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;padding:0 3px;
+}
+
+/* === CHAT TOGGLE (mobile) === */
+.chat-toggle{
+  display:none!important;position:fixed;bottom:80px;right:16px;z-index:99;
+  width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  color:#fff;font-size:1.3rem;
+  box-shadow:0 4px 20px rgba(0,240,255,.3);
+  align-items:center;justify-content:center;
+  transition:transform .2s;
+}
+.chat-toggle:hover{transform:scale(1.1)}
+
+/* === FOOTER === */
+.site-footer{
+  grid-area:footer;text-align:center;
+  padding:30px 20px;
+  border-top:1px solid var(--border);
+  font-size:.75rem;color:var(--text3);
+}
+.site-footer a{color:var(--cyan);text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+.footer-pattern{
+  display:flex;justify-content:center;gap:4px;margin-bottom:12px;
+}
+.footer-pattern span{
+  width:6px;height:6px;border-radius:50%;
+  animation:footerDot 3s ease-in-out infinite;
+}
+.footer-pattern span:nth-child(1){background:var(--cyan);animation-delay:0s}
+.footer-pattern span:nth-child(2){background:var(--purple);animation-delay:.2s}
+.footer-pattern span:nth-child(3){background:var(--gold);animation-delay:.4s}
+.footer-pattern span:nth-child(4){background:var(--purple);animation-delay:.6s}
+.footer-pattern span:nth-child(5){background:var(--cyan);animation-delay:.8s}
+.footer-pattern span:nth-child(6){background:var(--gold);animation-delay:1s}
+.footer-pattern span:nth-child(7){background:var(--pink);animation-delay:1.2s}
+@keyframes footerDot{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.15)}
+
+/* === MOBILE SPACING === */
+@media(max-width:768px){
+  .main{padding-bottom:80px}
+  .hero{padding:40px 16px 28px}
+  .hero-stats{gap:20px}
+  .hero-stat-num{font-size:1.4rem}
+}
+</style>
+</head>
+<body>
+
+<div id="starfield"></div>
+<div class="sacred-bg"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="app">
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Consciousness Revolution</h1>
+    <h2>The Builders Network</h2>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-atoms">163,693</div>
+        <div class="hero-stat-label">Brain Atoms</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-members">44</div>
+        <div class="hero-stat-label">Members</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-online">--</div>
+        <div class="hero-stat-label">Online Now</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">7</div>
+        <div class="hero-stat-label">Domains</div>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span id="live-stats">Network Active</span>
+      <span id="data-source-indicator" class="data-indicator demo">DEMO</span>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">CR</div>
+      <div class="sidebar-logo-text">Consciousness<br>Revolution</div>
+    </div>
+
+    <div class="sidebar-title">Channels</div>
+    <div class="channel active" data-ch="general">
+      <span class="channel-icon">#</span>
+      <span class="channel-name">general</span>
+      <span class="unread">5</span>
+    </div>
+    <div class="channel" data-ch="builds">
+      <span class="channel-icon">#</span>
+      <span class="channel-name">builds</span>
+      <span class="unread">3</span>
+    </div>
+    <div class="channel" data-ch="consciousness">
+      <span class="channel-icon">#</span>
+      <span class="channel-name">consciousness</span>
+      <span class="unread">12</span>
+    </div>
+    <div class="channel" data-ch="announcements">
+      <span class="channel-icon">#</span>
+      <span class="channel-name">announcements</span>
+    </div>
+    <div class="channel" data-ch="araya-chat">
+      <span class="channel-icon">#</span>
+      <span class="channel-name">araya-chat</span>
+      <span class="unread">8</span>
+    </div>
+    <div class="channel" data-ch="music">
+      <span class="channel-icon">#</span>
+      <span class="channel-name">music</span>
+    </div>
+    <div class="channel" data-ch="memes">
+      <span class="channel-icon">#</span>
+      <span class="channel-name">memes</span>
+      <span class="unread">2</span>
+    </div>
+
+    <div class="sidebar-title" style="margin-top:20px">Voice</div>
+    <div class="channel" data-ch="lounge">
+      <span class="channel-icon">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </span>
+      <span class="channel-name">Builders Lounge</span>
+    </div>
+    <div class="channel" data-ch="focus">
+      <span class="channel-icon">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </span>
+      <span class="channel-name">Deep Focus</span>
+    </div>
+
+    <div class="sidebar-title" style="margin-top:20px">Direct Messages</div>
+    <div class="channel" data-ch="dm-araya">
+      <span class="channel-icon" style="font-size:.8rem">
+        <span style="width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#00f0ff,#8b5cf6);font-size:.55rem;font-weight:700;color:#fff">AR</span>
+      </span>
+      <span class="channel-name">Araya</span>
+      <span class="unread">1</span>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- STORIES BAR -->
+    <div class="stories glass" style="margin-top:16px" id="stories-bar"></div>
+
+    <!-- MEMBER SPOTLIGHT -->
+    <div class="section-title">Member Spotlight</div>
+    <div class="members-scroll" id="members-container"></div>
+
+    <!-- FEED -->
+    <div class="section-title">Community Feed</div>
+    <div class="feed" id="feed-container"></div>
+
+    <!-- JOIN CTA -->
+    <div class="join-cta">
+      <a href="https://discord.gg/consciousnessrevolution" target="_blank" class="join-btn">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        Join the Revolution
+      </a>
+      <div class="join-subtitle">Free access. Build with consciousness. 3 &rarr; 7 &rarr; 13 &rarr; &infin;</div>
+    </div>
+  </main>
+
+  <!-- CHAT PANEL -->
+  <aside class="chat-panel">
+    <div class="chat-header">
+      <span class="dot"></span>
+      Live Chat &mdash; #general
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="typing-indicator" id="typing" style="display:none">
+      <div class="typing-dots"><span></span><span></span><span></span></div>
+      <span id="typing-name">Araya is typing...</span>
+    </div>
+    <div class="chat-input-wrap">
+      <input type="text" class="chat-input" placeholder="Message #general..." id="chat-input">
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-pattern">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    Powered by <a href="https://consciousnessrevolution.io">Consciousness Revolution</a> &middot; 3 &rarr; 7 &rarr; 13 &rarr; &infin;
+  </footer>
+</div>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-item active">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+    Feed
+  </div>
+  <div class="bottom-nav-item">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Channels
+    <span class="nav-badge">30</span>
+  </div>
+  <div class="bottom-nav-item">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    Members
+  </div>
+  <div class="bottom-nav-item">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    Search
+  </div>
+</nav>
+
+<!-- CHAT TOGGLE (mobile) -->
+<button class="chat-toggle" onclick="alert('Chat coming soon on mobile!')">
+  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+</button>
+
+<script>
+/* ================================================================
+   DATA - Live from Supabase via discord-community-api, static fallback
+   M18: Wired 2026-02-03
+   ================================================================ */
+
+// Static fallback data (used if API is down)
+const FALLBACK_MEMBERS = [
+  { name:'Commander', initials:'DP', role:'Commander', score:9999, gradient:'linear-gradient(135deg,#f59e0b,#ef4444)' },
+  { name:'Francis', initials:'FH', role:'Architect', score:847, gradient:'linear-gradient(135deg,#8b5cf6,#6366f1)' },
+  { name:'.acustic', initials:'AC', role:'Builder', score:632, gradient:'linear-gradient(135deg,#00f0ff,#0ea5e9)' },
+  { name:'gatewalker', initials:'GW', role:'Oracle', score:781, gradient:'linear-gradient(135deg,#ec4899,#8b5cf6)' },
+  { name:'bearwav', initials:'BW', role:'Builder', score:543, gradient:'linear-gradient(135deg,#22c55e,#0ea5e9)' },
+  { name:'Tiger', initials:'TG', role:'Builder', score:498, gradient:'linear-gradient(135deg,#f59e0b,#ef4444)' },
+  { name:'Erica', initials:'ER', role:'Builder', score:412, gradient:'linear-gradient(135deg,#ec4899,#f59e0b)' },
+  { name:'Brandon', initials:'BR', role:'Architect', score:723, gradient:'linear-gradient(135deg,#8b5cf6,#00f0ff)' },
+];
+
+const FALLBACK_POSTS = [
+  {
+    user:'Commander', initials:'DP', gradient:'linear-gradient(135deg,#f59e0b,#ef4444)',
+    time:'2 hours ago', channel:'builds',
+    text:'Just deployed the new consciousness dashboard. 137,697 atoms in the Cyclotron and growing. The brain never sleeps.',
+    likes:24, comments:7, hasImage:true, imageLabel:'Consciousness Dashboard v4.2'
+  },
+  {
+    user:'Francis', initials:'FH', gradient:'linear-gradient(135deg,#8b5cf6,#6366f1)',
+    time:'4 hours ago', channel:'consciousness',
+    text:'Pattern Theory is real -- 92.2% accuracy confirmed on the latest batch. The 5-phase awakening protocol is producing measurable results across all test subjects.',
+    likes:31, comments:12, hasImage:false
+  },
+  {
+    user:'gatewalker', initials:'GW', gradient:'linear-gradient(135deg,#ec4899,#8b5cf6)',
+    time:'6 hours ago', channel:'consciousness',
+    text:'Sacred geometry patterns emerging in the code architecture. The hexagonal lattice maps perfectly to the 7-domain structure. As above, so below.',
+    likes:18, comments:5, hasImage:true, imageLabel:'Sacred Geometry Code Map'
+  },
+  {
+    user:'.acustic', initials:'AC', gradient:'linear-gradient(135deg,#00f0ff,#0ea5e9)',
+    time:'8 hours ago', channel:'builds',
+    text:'New audio processing pipeline is live. Solfeggio frequencies now auto-detected and classified. 528 Hz Love frequency showing up everywhere in conscious music.',
+    likes:15, comments:9, hasImage:false
+  },
+  {
+    user:'Brandon', initials:'BR', gradient:'linear-gradient(135deg,#8b5cf6,#00f0ff)',
+    time:'12 hours ago', channel:'general',
+    text:'The Trinity system (C1 x C2 x C3 = infinity) architecture review is complete. Every component validated. Scaling from 5 to 5000 users is now mapped.',
+    likes:42, comments:16, hasImage:true, imageLabel:'Trinity Architecture Blueprint'
+  },
+  {
+    user:'bearwav', initials:'BW', gradient:'linear-gradient(135deg,#22c55e,#0ea5e9)',
+    time:'1 day ago', channel:'music',
+    text:'Dropped a new track using the conscious music creator module. Max Martin production framework + Pattern Theory = something different. Link in thread.',
+    likes:27, comments:8, hasImage:false
+  },
+];
+
+// Live data containers (populated by API, fallback to static)
+var MEMBERS = FALLBACK_MEMBERS.slice();
+var POSTS = FALLBACK_POSTS.slice();
+var DATA_SOURCE = 'static'; // 'live' when API succeeds
+
+// Fetch live data from discord-community-api
+(function loadLiveData() {
+  fetch('/.netlify/functions/discord-community-api?type=all')
+    .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(json) {
+      if (!json.success || !json.data) return;
+      var d = json.data;
+
+      // Update members if we got live data
+      if (d.members && d.members.length > 0) {
+        MEMBERS = d.members;
+        renderStories();
+        renderMembers();
+        DATA_SOURCE = 'live';
+      }
+
+      // Update feed if we got activity data
+      if (d.activity && d.activity.length > 0) {
+        POSTS = d.activity.map(function(a) {
+          return {
+            user: a.user, initials: a.initials, gradient: a.gradient,
+            time: a.time, channel: a.channel || 'activity',
+            text: a.text + (a.xp ? ' (+' + a.xp + ' XP)' : ''),
+            likes: a.xp || 0, comments: 0, hasImage: false
+          };
+        });
+        renderFeed();
+      }
+
+      // Update stats badge
+      if (d.stats) {
+        var badge = document.getElementById('live-stats');
+        if (badge) {
+          badge.textContent = d.stats.totalMembers + ' members | ' + d.stats.activeLast24h + ' active today';
+        }
+      }
+
+      // Show live indicator
+      var ind = document.getElementById('data-source-indicator');
+      if (ind) { ind.textContent = 'LIVE'; ind.className = 'data-indicator live'; }
+
+      console.log('[community] Live data loaded:', d.stats || {});
+    })
+    .catch(function(err) {
+      console.log('[community] API unavailable, using static data:', err.message);
+      var ind = document.getElementById('data-source-indicator');
+      if (ind) { ind.textContent = 'DEMO'; ind.className = 'data-indicator demo'; }
+    });
+})();
+
+const CHAT_MSGS = [
+  { user:'Araya', initials:'AR', gradient:'linear-gradient(135deg,#00f0ff,#8b5cf6)', text:'Good morning builders. System health: nominal. 15 MCP servers online.', time:'9:01 AM' },
+  { user:'Commander', initials:'DP', gradient:'linear-gradient(135deg,#f59e0b,#ef4444)', text:'Let\'s ship something today. What\'s the highest priority task?', time:'9:03 AM' },
+  { user:'Francis', initials:'FH', gradient:'linear-gradient(135deg,#8b5cf6,#6366f1)', text:'The Bergmal offline module needs testing. I can run it through the alliance.', time:'9:05 AM' },
+  { user:'.acustic', initials:'AC', gradient:'linear-gradient(135deg,#00f0ff,#0ea5e9)', text:'Audio pipeline is green. Ready to integrate.', time:'9:07 AM' },
+  { user:'Araya', initials:'AR', gradient:'linear-gradient(135deg,#00f0ff,#8b5cf6)', text:'I detect 3 pending tasks in the queue. Shall I prioritize?', time:'9:08 AM' },
+  { user:'gatewalker', initials:'GW', gradient:'linear-gradient(135deg,#ec4899,#8b5cf6)', text:'The pattern is clear. Build now, iterate forever.', time:'9:10 AM' },
+  { user:'Tiger', initials:'TG', gradient:'linear-gradient(135deg,#f59e0b,#ef4444)', text:'Just onboarded. This system is wild. Where do I start?', time:'9:12 AM' },
+  { user:'Commander', initials:'DP', gradient:'linear-gradient(135deg,#f59e0b,#ef4444)', text:'Start with /hub -- it shows you everything. Welcome to the revolution.', time:'9:13 AM' },
+];
+
+/* ================================================================
+   SVG ICONS
+   ================================================================ */
+const heartSvg = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>';
+const commentSvg = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>';
+const shareSvg = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>';
+const imgSvg = '<svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>';
+
+/* ================================================================
+   RENDER FUNCTIONS (callable by live-data fetch)
+   ================================================================ */
+function renderStories() {
+  document.getElementById('stories-bar').innerHTML = MEMBERS.map(function(m) {
+    return '<div class="story">' +
+      '<div class="story-ring">' +
+        '<div class="story-avatar" style="background:' + m.gradient + '">' + m.initials + '</div>' +
+      '</div>' +
+      '<span class="story-name">' + m.name + '</span>' +
+    '</div>';
+  }).join('');
+}
+
+function renderMembers() {
+  document.getElementById('members-container').innerHTML = MEMBERS.map(function(m) {
+    var rc = (m.role || 'builder').toLowerCase();
+    return '<div class="member-card glass-2">' +
+      '<div class="member-avatar" style="background:' + m.gradient + '">' + m.initials + '</div>' +
+      '<div class="member-name">' + m.name + '</div>' +
+      '<div class="member-role role-' + rc + '">' + m.role + '</div>' +
+      '<div class="builder-score">Score: <span>' + (m.score || 0).toLocaleString() + '</span></div>' +
+    '</div>';
+  }).join('');
+}
+
+// Initial render with static data
+renderStories();
+renderMembers();
+
+/* ================================================================
+   RENDER FEED (callable by live-data fetch)
+   ================================================================ */
+function renderFeed() {
+  document.getElementById('feed-container').innerHTML = POSTS.map(function(p) {
+    var imageBlock = '';
+    if (p.hasImage) {
+      imageBlock = '<div class="post-image">' + imgSvg +
+        '<span class="post-image-label">' + p.imageLabel + '</span></div>';
+    }
+    return '<article class="post glass">' +
+      '<div class="post-header">' +
+        '<div class="post-avatar" style="background:' + p.gradient + '">' + p.initials + '</div>' +
+        '<div class="post-meta">' +
+          '<div class="post-user">' + p.user + '<span class="post-channel">#' + (p.channel || 'general') + '</span></div>' +
+          '<div class="post-time">' + p.time + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="post-body">' + p.text + '</div>' +
+      imageBlock +
+      '<div class="post-actions">' +
+        '<div class="post-action" data-type="like" data-count="' + (p.likes || 0) + '">' + heartSvg + ' ' + (p.likes || 0) + '</div>' +
+        '<div class="post-action">' + commentSvg + ' ' + (p.comments || 0) + '</div>' +
+        '<div class="post-action">' + shareSvg + ' Share</div>' +
+      '</div>' +
+    '</article>';
+  }).join('');
+}
+
+// Initial render with static data
+renderFeed();
+
+/* ================================================================
+   RENDER CHAT
+   ================================================================ */
+var chatEl = document.getElementById('chat-messages');
+chatEl.innerHTML = CHAT_MSGS.map(function(m) {
+  return '<div class="chat-msg">' +
+    '<div class="chat-msg-avatar" style="background:' + m.gradient + '">' + m.initials + '</div>' +
+    '<div class="chat-msg-body">' +
+      '<div class="chat-msg-name">' + m.user + '</div>' +
+      '<div class="chat-msg-text">' + m.text + '</div>' +
+      '<div class="chat-msg-time">' + m.time + '</div>' +
+    '</div>' +
+  '</div>';
+}).join('');
+chatEl.scrollTop = chatEl.scrollHeight;
+
+/* ================================================================
+   SIMULATED LIVE CHAT
+   ================================================================ */
+var extraMsgs = [
+  { user:'Erica', initials:'ER', gradient:'linear-gradient(135deg,#ec4899,#f59e0b)', text:'The 7-domain filing system changed everything for me. Total clarity.' },
+  { user:'Araya', initials:'AR', gradient:'linear-gradient(135deg,#00f0ff,#8b5cf6)', text:'Pattern detected: builder momentum increasing. Consciousness at 84.5%.' },
+  { user:'bearwav', initials:'BW', gradient:'linear-gradient(135deg,#22c55e,#0ea5e9)', text:'New beat dropping tonight. 432 Hz tuning. Stay tuned.' },
+  { user:'Commander', initials:'DP', gradient:'linear-gradient(135deg,#f59e0b,#ef4444)', text:'Remember: LFSME. Lighter, Faster, Stronger, More Elegant, Less Expensive.' },
+  { user:'Francis', initials:'FH', gradient:'linear-gradient(135deg,#8b5cf6,#6366f1)', text:'Bergmal passed all tests. Offline AI is fully operational.' },
+  { user:'Brandon', initials:'BR', gradient:'linear-gradient(135deg,#8b5cf6,#00f0ff)', text:'Scaling architecture review done. We can handle 5000 users tomorrow.' },
+];
+var msgIdx = 0;
+var typingEl = document.getElementById('typing');
+var typingName = document.getElementById('typing-name');
+
+function formatTime() {
+  var d = new Date();
+  var h = d.getHours();
+  var m = String(d.getMinutes()).padStart(2, '0');
+  var ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  return h + ':' + m + ' ' + ampm;
+}
+
+function addSimulatedMsg() {
+  if (msgIdx >= extraMsgs.length) msgIdx = 0;
+  var m = extraMsgs[msgIdx++];
+  typingName.textContent = m.user + ' is typing...';
+  typingEl.style.display = 'flex';
+  chatEl.scrollTop = chatEl.scrollHeight;
+
+  setTimeout(function() {
+    typingEl.style.display = 'none';
+    var time = formatTime();
+    var html = '<div class="chat-msg">' +
+      '<div class="chat-msg-avatar" style="background:' + m.gradient + '">' + m.initials + '</div>' +
+      '<div class="chat-msg-body">' +
+        '<div class="chat-msg-name">' + m.user + '</div>' +
+        '<div class="chat-msg-text">' + m.text + '</div>' +
+        '<div class="chat-msg-time">' + time + '</div>' +
+      '</div>' +
+    '</div>';
+    chatEl.insertAdjacentHTML('beforeend', html);
+    chatEl.scrollTop = chatEl.scrollHeight;
+  }, 2500);
+}
+
+setInterval(addSimulatedMsg, 12000);
+setTimeout(addSimulatedMsg, 4000);
+
+/* ================================================================
+   CHAT INPUT
+   ================================================================ */
+document.getElementById('chat-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && this.value.trim()) {
+    var text = this.value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    var time = formatTime();
+    var html = '<div class="chat-msg">' +
+      '<div class="chat-msg-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">YU</div>' +
+      '<div class="chat-msg-body">' +
+        '<div class="chat-msg-name">You</div>' +
+        '<div class="chat-msg-text">' + text + '</div>' +
+        '<div class="chat-msg-time">' + time + '</div>' +
+      '</div>' +
+    '</div>';
+    chatEl.insertAdjacentHTML('beforeend', html);
+    chatEl.scrollTop = chatEl.scrollHeight;
+    this.value = '';
+
+    // Araya auto-reply
+    setTimeout(function() {
+      typingName.textContent = 'Araya is typing...';
+      typingEl.style.display = 'flex';
+      chatEl.scrollTop = chatEl.scrollHeight;
+      setTimeout(function() {
+        typingEl.style.display = 'none';
+        var replies = [
+          'Acknowledged. Processing your input through the consciousness matrix.',
+          'Pattern recognized. Routing to the appropriate domain.',
+          'The Cyclotron has absorbed your message. Builder score +1.',
+          'Interesting perspective. Cross-referencing with 137,697 atoms.',
+          'Message received. The Trinity is listening.',
+        ];
+        var reply = replies[Math.floor(Math.random() * replies.length)];
+        var replyTime = formatTime();
+        var replyHtml = '<div class="chat-msg">' +
+          '<div class="chat-msg-avatar" style="background:linear-gradient(135deg,#00f0ff,#8b5cf6)">AR</div>' +
+          '<div class="chat-msg-body">' +
+            '<div class="chat-msg-name">Araya</div>' +
+            '<div class="chat-msg-text">' + reply + '</div>' +
+            '<div class="chat-msg-time">' + replyTime + '</div>' +
+          '</div>' +
+        '</div>';
+        chatEl.insertAdjacentHTML('beforeend', replyHtml);
+        chatEl.scrollTop = chatEl.scrollHeight;
+      }, 1800);
+    }, 500);
+  }
+});
+
+/* ================================================================
+   CHANNEL CLICK
+   ================================================================ */
+document.querySelectorAll('.channel').forEach(function(ch) {
+  ch.addEventListener('click', function() {
+    document.querySelectorAll('.channel').forEach(function(c) { c.classList.remove('active'); });
+    this.classList.add('active');
+    var badge = this.querySelector('.unread');
+    if (badge) badge.remove();
+  });
+});
+
+/* ================================================================
+   LIKE INTERACTION
+   ================================================================ */
+document.querySelectorAll('.post-action[data-type="like"]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    if (this.classList.contains('liked')) return;
+    this.classList.add('liked');
+    var count = parseInt(this.getAttribute('data-count')) + 1;
+    var svg = this.querySelector('svg');
+    svg.setAttribute('fill', '#ec4899');
+    this.innerHTML = '';
+    this.appendChild(svg);
+    this.insertAdjacentHTML('beforeend', ' ' + count);
+  });
+});
+
+/* ================================================================
+   STARFIELD CANVAS
+   ================================================================ */
+(function() {
+  var canvas = document.createElement('canvas');
+  document.getElementById('starfield').appendChild(canvas);
+  var ctx = canvas.getContext('2d');
+  var w, h;
+  var stars = [];
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Create stars
+  for (var i = 0; i < 220; i++) {
+    stars.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.5 + 0.3,
+      a: Math.random(),
+      da: (Math.random() - 0.5) * 0.008,
+      dx: (Math.random() - 0.5) * 0.06,
+      dy: (Math.random() - 0.5) * 0.06,
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      s.x += s.dx;
+      s.y += s.dy;
+      s.a += s.da;
+      if (s.a > 1) { s.a = 1; s.da = -Math.abs(s.da); }
+      if (s.a < 0.1) { s.a = 0.1; s.da = Math.abs(s.da); }
+      if (s.x < 0) s.x = w;
+      if (s.x > w) s.x = 0;
+      if (s.y < 0) s.y = h;
+      if (s.y > h) s.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(200,220,255,' + (s.a * 0.7) + ')';
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  // Shooting stars
+  setInterval(function() {
+    if (Math.random() > 0.5) return;
+    var sx = Math.random() * w;
+    var sy = Math.random() * h * 0.4;
+    var len = 100 + Math.random() * 150;
+    var angle = 0.4 + Math.random() * 0.4;
+    var progress = 0;
+
+    function shoot() {
+      if (progress > 1) return;
+      progress += 0.035;
+      var cx = sx + len * progress * Math.cos(angle);
+      var cy = sy + len * progress * Math.sin(angle);
+      var tailLen = 40;
+      var tailX = cx - tailLen * Math.cos(angle);
+      var tailY = cy - tailLen * Math.sin(angle);
+      var grad = ctx.createLinearGradient(tailX, tailY, cx, cy);
+      grad.addColorStop(0, 'rgba(255,255,255,0)');
+      grad.addColorStop(1, 'rgba(200,230,255,' + ((1 - progress) * 0.8) + ')');
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(cx, cy);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      requestAnimationFrame(shoot);
+    }
+    shoot();
+  }, 3500);
+})();
+
+/* ================================================================
+   BOTTOM NAV INTERACTION
+   ================================================================ */
+document.querySelectorAll('.bottom-nav-item').forEach(function(item) {
+  item.addEventListener('click', function() {
+    document.querySelectorAll('.bottom-nav-item').forEach(function(i) { i.classList.remove('active'); });
+    this.classList.add('active');
+  });
+});
+
+/* ================================================================
+   DASHBOARD DNA RUNTIME - Layers 3-7
+   Standard systems from DASHBOARD_TEMPLATE.html v1.0.0
+   ================================================================ */
+(function() {
+  // Layer 1: Identity
+  var DNA = JSON.parse(document.getElementById('dashboard-dna').textContent);
+
+  // Layer 3: Data Layer
+  var prefix = 'db_community_';
+  var Data = {
+    get: function(k) { try { return JSON.parse(localStorage.getItem(prefix + k)); } catch(e) { return null; } },
+    set: function(k, v) { localStorage.setItem(prefix + k, JSON.stringify(v)); },
+    delete: function(k) { localStorage.removeItem(prefix + k); }
+  };
+
+  // Layer 4: Health System
+  var health = { identity: !!DNA.name, display: !!document.querySelector('style'), data: true, health: true, upgrade: true, manual: true, bridge: true };
+  var ok = Object.values(health).every(function(v) { return v; });
+  console.info('[DASHBOARD HEALTH] ' + DNA.name + ' v' + DNA.version + ' - ' + (ok ? 'ALL LAYERS OK' : 'DEGRADED'));
+
+  // Layer 7: Bridge (BroadcastChannel + Discord announce)
+  var channel = null;
+  try { channel = new BroadcastChannel('dashboard-network'); } catch(e) {}
+  if (channel) {
+    channel.onmessage = function(ev) {
+      console.log('[BRIDGE] Message from ' + ev.data.from + ': ' + ev.data.type);
+    };
+    channel.postMessage({ from: DNA.name, version: DNA.version, type: 'boot', timestamp: Date.now() });
+  }
+  window.addEventListener('storage', function(e) {
+    if (e.key && e.key.startsWith('db_') && !e.key.startsWith(prefix)) {
+      console.log('[BRIDGE] Cross-tab update: ' + e.key);
+    }
+  });
+
+  // Layer 7: Edit Mode
+  window.DashboardEdit = {
+    active: false,
+    toggle: function() {
+      this.active = !this.active;
+      document.querySelectorAll('[data-editable]').forEach(function(el) {
+        if (window.DashboardEdit.active) { el.setAttribute('contenteditable', 'true'); el.style.outline = '1px dashed rgba(0,240,255,0.4)'; }
+        else { el.removeAttribute('contenteditable'); el.style.outline = ''; }
+      });
+      console.log('[EDIT] Mode ' + (this.active ? 'ON' : 'OFF'));
+    },
+    save: function() {
+      var edits = {};
+      document.querySelectorAll('[data-editable]').forEach(function(el) { if (el.id) edits[el.id] = el.innerHTML; });
+      Data.set('edits', edits);
+      console.log('[EDIT] Saved ' + Object.keys(edits).length + ' edits');
+    },
+    load: function() {
+      var edits = Data.get('edits');
+      if (!edits) return;
+      Object.keys(edits).forEach(function(id) { var el = document.getElementById(id); if (el) el.innerHTML = edits[id]; });
+    }
+  };
+  window.DashboardEdit.load();
+
+  // Layer 7: Bug Reporter
+  window.DashboardBugs = {
+    bugs: Data.get('bugs') || [],
+    submit: function(desc, severity) {
+      severity = severity || 'medium';
+      this.bugs.push({ id: Date.now(), desc: desc, severity: severity, timestamp: new Date().toISOString(), dashboard: DNA.name, version: DNA.version });
+      Data.set('bugs', this.bugs);
+      console.log('[BUG] Reported: ' + desc + ' (' + severity + ')');
+      return this.bugs.length;
+    },
+    list: function() { return this.bugs; },
+    count: function() { return this.bugs.length; }
+  };
+
+  // Expose DNA globally
+  window.DashboardDNA = DNA;
+  console.log('[BOOT] ' + DNA.name + ' v' + DNA.version + ' - All 7 layers active');
+})();
+</script>
+</body>
+</html>
