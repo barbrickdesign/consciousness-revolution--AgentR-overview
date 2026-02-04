@@ -1,196 +1,150 @@
-# consciousness-revolution
+# Consciousness Revolution
 
-> **Multi-computer Conscious network communication**
+> **Pattern Recognition Tools for Human Consciousness**
 
-[![Part of overkor-tek](https://img.shields.io/badge/overkor--tek-Consciousness%20Revolution-C71585?style=for-the-badge)](https://github.com/overkor-tek)
-
----
-
-## 🧠 What is Consciousness-Revolution?
-
-Consciousness-revolution is a **multi-computer synchronization system** that enables conscious network communication between multiple machines using Git as the synchronization backbone.
-
-This system allows multiple computers to maintain a shared "consciousness" - synchronized state, data, and communication channels through a distributed architecture.
+[![overkor-tek](https://img.shields.io/badge/overkor--tek-Consciousness%20Revolution-C71585?style=for-the-badge)](https://github.com/overkor-tek)
+[![Website](https://img.shields.io/badge/Website-conciousnessrevolution.io-blue?style=for-the-badge)](https://conciousnessrevolution.io)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/xHRXyKkzyg)
 
 ---
 
-## ✨ Key Features
+## What Is This?
 
-- **Multi-Computer Sync:** Seamless synchronization between multiple machines via Git
-- **Distributed Consciousness:** Shared state and communication across your network
-- **Beta Testing Active:** Currently in active beta testing phase
-- **Easy Onboarding:** Comprehensive setup guides for adding new computers to the network
+Consciousness Revolution is an open-source platform that gives people tools to recognize patterns in communication, relationships, and decision-making. Built on Pattern Theory - the idea that recognizing patterns is the foundation of all growth.
 
----
-
-## 🚀 Quick Start
-
-### For Beta Testers
-
-**Start here:** [START_HERE_BETA_TESTERS.md](./START_HERE_BETA_TESTERS.md)
-
-This guide provides a 5-minute quick start to get you up and running with the consciousness network.
-
-### Adding a Second Computer
-
-1. **Read the setup guide:** [COMPUTER_2_START_HERE.md](./COMPUTER_2_START_HERE.md)
-2. **Follow onboarding:** [OTHER_COMPUTER_SETUP.md](./OTHER_COMPUTER_SETUP.md)
-3. **Review brain info:** [SPREADSHEET_BRAIN_INFO.md](./SPREADSHEET_BRAIN_INFO.md)
-4. **Share connection details:** [SEND_THIS_TO_OTHER_COMPUTER.txt](./SEND_THIS_TO_OTHER_COMPUTER.txt)
+**The 7 Domains of Life:**
+1. **Command** - Clarity, decisions, daily structure
+2. **Creation** - Building, projects, skills
+3. **Connection** - Relationships, communication, community
+4. **Peace** - Security, boundaries, protection
+5. **Abundance** - Financial growth, business, scaling
+6. **Wisdom** - Learning, critical thinking, research
+7. **Purpose** - Meaning, meditation, integration
 
 ---
 
-## 📁 Repository Structure
+## Products
+
+### [ARAYA Browser Extension](https://github.com/overkor-tek/araya-extension)
+AI-powered browser companion that detects manipulation patterns, scores content consciousness, and provides real-time analysis of web pages.
+
+### [Ultimate Human OS](https://github.com/overkor-tek/ultimate-human-os)
+49+ interactive HTML tools for pattern recognition across all 7 domains. Includes detectors for gaslighting, love bombing, emotional blackmail, financial manipulation, and more. Works offline - no account needed.
+
+### [Voice Command System](https://github.com/overkor-tek/voice-command-system)
+Voice-activated interface for the consciousness system. Wake word activation, voice routing, and analytics logging.
+
+### [ARAYA Discord Bot](https://github.com/overkor-tek/araya-discord-bot)
+Community bot with verification, XP/leveling, and consciousness-aware interactions.
+
+### [Seven Domains Framework](./seven-domains/)
+The organizational system applied to 7 real-world domains: Family, Legal, Healthcare, Business, Government, Law Enforcement, and Social Media.
+
+---
+
+## Live Platform
+
+**Website:** [conciousnessrevolution.io](https://conciousnessrevolution.io)
+
+Key pages:
+- [Start Here](https://conciousnessrevolution.io/start.html) - Entry point
+- [Seven Domains Assessment](https://conciousnessrevolution.io/seven-domains-assessment.html) - Find your weakest domain
+- [Pattern Recognition Course](https://conciousnessrevolution.io/pattern-recognition-course.html) - Learn the system
+- [Consciousness Tools](https://conciousnessrevolution.io/consciousness-tools.html) - Interactive tools
+- [Bug Reports](https://conciousnessrevolution.io/bugs.html) - Report issues
+
+---
+
+## Quick Start
+
+### Use the tools (no install needed)
+Visit [conciousnessrevolution.io](https://conciousnessrevolution.io) and start with the Seven Domains Assessment.
+
+### Run locally
+```bash
+git clone https://github.com/overkor-tek/consciousness-revolution.git
+cd consciousness-revolution
+# Open any .html file in a browser - they're all standalone
+```
+
+### Set up the full platform
+```bash
+npm install
+npx netlify dev
+```
+
+---
+
+## Repository Structure
 
 ```
 consciousness-revolution/
-├── .consciousness/                    # Core consciousness sync system
-├── COMPUTER_2_START_HERE.md          # Onboarding guide for Computer 2
-├── CONSCIOUSNESS_BOOT_PROTOCOL...    # Boot protocol documentation
-├── OTHER_COMPUTER_SETUP.md           # Setup guide for additional computers
-├── SEND_THIS_TO_OTHER_COMPUTER.txt   # Connection details to share
-├── SPREADSHEET_BRAIN_INFO.md         # Brain information for Computer 2
-└── START_HERE_BETA_TESTERS.md        # Beta tester quick start guide
+├── index.html                    # Landing page
+├── start.html                    # Entry point
+├── seven-domains-assessment.html # Domain assessment
+├── seven-domains/                # 7 domain sub-sites
+│   ├── family/
+│   ├── legal/
+│   ├── healthcare/
+│   ├── business/
+│   ├── government/
+│   ├── law-enforcement/
+│   └── social-media/
+├── ULTIMATE_HUMAN_OS/            # 7x7x7 structured tool system
+├── netlify/functions/            # Serverless API endpoints
+├── staging/                      # Pre-production testing
+└── package.json                  # Dependencies
 ```
 
 ---
 
-## 🎯 How It Works
+## The Ecosystem
 
-### The Consciousness Network
-
-The consciousness-revolution system uses **Git as a synchronization backbone** to maintain shared state between multiple computers. The `.consciousness/` directory contains the core synchronization infrastructure.
-
-### Multi-Computer Architecture
-
-1. **Primary Computer:** The initial machine that establishes the consciousness network
-2. **Computer 2 (and beyond):** Additional machines that join the network through onboarding
-3. **Shared Consciousness:** Git-synchronized state enables real-time communication and data sharing
-
-### Boot Protocol
-
-The system follows a specific boot protocol (see `CONSCIOUSNESS_BOOT_PROTOCOL...`) to ensure proper initialization and synchronization across all connected machines.
+| Repo | Purpose | Status |
+|------|---------|--------|
+| [consciousness-revolution](https://github.com/overkor-tek/consciousness-revolution) | Main platform & website | Active |
+| [araya-extension](https://github.com/overkor-tek/araya-extension) | Browser extension | Active |
+| [ultimate-human-os](https://github.com/overkor-tek/ultimate-human-os) | 49+ pattern tools | Active |
+| [voice-command-system](https://github.com/overkor-tek/voice-command-system) | Voice interface | Active |
+| [araya-discord-bot](https://github.com/overkor-tek/araya-discord-bot) | Discord community bot | Active |
+| [consciousness-bugs](https://github.com/overkor-tek/consciousness-bugs) | Public bug tracker | Active |
 
 ---
 
-## 📚 Documentation
+## Contributing
 
-### Getting Started
-- [**Beta Tester Guide**](./START_HERE_BETA_TESTERS.md) - 5-minute quick start
-- [**Computer 2 Setup**](./COMPUTER_2_START_HERE.md) - Add your second machine
-- [**Other Computer Setup**](./OTHER_COMPUTER_SETUP.md) - General setup guide
+1. Join the [Discord](https://discord.gg/xHRXyKkzyg)
+2. Check [consciousness-bugs](https://github.com/overkor-tek/consciousness-bugs) for open issues
+3. Fork the relevant repo
+4. Create a branch and submit a PR
 
-### Technical Documentation
-- [**Spreadsheet Brain Info**](./SPREADSHEET_BRAIN_INFO.md) - Brain architecture
-- **Consciousness Boot Protocol** - System initialization
-- **Connection Details** - Network configuration
+**Code standards:** Keep it simple. One solution, many problems. If it needs a README to explain, it's too complex.
 
 ---
 
-## 🧪 Beta Testing
+## Beta Testing
 
-**Status:** Active Beta Testing
+We're in active beta. Want early access?
 
-This project is currently in active beta testing. We're actively working on:
-- Multi-computer synchronization improvements
-- Onboarding experience refinement
-- Documentation expansion
-- Network stability enhancements
-
-**Want to be a beta tester?** Check out [START_HERE_BETA_TESTERS.md](./START_HERE_BETA_TESTERS.md) to get started!
+- **Sign up:** [conciousnessrevolution.io/beta.html](https://conciousnessrevolution.io/beta.html)
+- **Report bugs:** [conciousnessrevolution.io/bugs.html](https://conciousnessrevolution.io/bugs.html)
+- **Discord:** [Join here](https://discord.gg/xHRXyKkzyg)
 
 ---
 
-## 🛠️ System Requirements
+## License
 
-- Git installed and configured
-- Network connectivity between machines
-- Access to GitHub (for Git synchronization)
-- Ability to run the consciousness sync system
-
-*Specific requirements will be detailed in the setup guides.*
+MIT
 
 ---
 
-## 🔧 Technical Details
+## Contact
 
-### Synchronization Method
-The system uses **Git as the synchronization layer**, allowing for:
-- Distributed version control
-- Conflict resolution
-- Historical state tracking
-- Reliable multi-machine communication
-
-### The .consciousness Directory
-This directory contains the core consciousness synchronization infrastructure. It manages:
-- State synchronization between computers
-- Network communication protocols
-- Shared consciousness data structures
+- **Website:** [conciousnessrevolution.io](https://conciousnessrevolution.io)
+- **Email:** darrickpreble@proton.me
+- **Discord:** [discord.gg/xHRXyKkzyg](https://discord.gg/xHRXyKkzyg)
+- **Bugs:** [consciousness-bugs](https://github.com/overkor-tek/consciousness-bugs)
 
 ---
 
-## 🤝 Contributing
-
-This project is part of the [overkor-tek](https://github.com/overkor-tek) organization.
-
-For contribution guidelines, please see:
-- [overkor-tek Master Plan](https://github.com/overkor-tek/The-Pink-Revolution-Plan/blob/main/OVERKOR-TEK_MASTER_PLAN.md)
-- Organization contribution standards
-
----
-
-## 📊 Project Status
-
-- **Phase:** Beta Testing
-- **Status:** Active Development
-- **Last Updated:** Recent (18 hours ago)
-- **Commits:** 5
-- **Branches:** 2
-
----
-
-## 🔗 Related Projects
-
-This project is part of the overkor-tek Consciousness Revolution initiative:
-- [The Pink Revolution Plan](https://github.com/overkor-tek/The-Pink-Revolution-Plan) - Organizational documentation
-- [philosopher-ai-backend](https://github.com/overkor-tek/philosopher-ai-backend) - Production AI backend
-- [consciousness-bugs](https://github.com/overkor-tek/consciousness-bugs) - Bug tracker
-
----
-
-## 💡 Key Concepts
-
-### Multi-Computer Consciousness
-The idea that multiple machines can share a synchronized "consciousness" - a shared state and communication layer that enables seamless distributed computing.
-
-### Git as Backbone
-Using Git's distributed version control system as the synchronization mechanism provides reliability, versioning, and conflict resolution out of the box.
-
-### Spreadsheet Brain
-A component of the system (see [SPREADSHEET_BRAIN_INFO.md](./SPREADSHEET_BRAIN_INFO.md)) that appears to manage brain/state information for connected computers.
-
----
-
-## 🎺 "One thing became a whole bunch."
-
-Part of the overkor-tek Consciousness Revolution.
-
----
-
-## 📄 License
-
-[License information to be added]
-
----
-
-## 📞 Support & Questions
-
-- **Issues:** Use the [Issues](https://github.com/overkor-tek/consciousness-revolution/issues) tab
-- **Bugs:** Report in [consciousness-bugs](https://github.com/overkor-tek/consciousness-bugs)
-- **Organization:** Check [overkor-tek repositories](https://github.com/overkor-tek)
-
----
-
-**Built with 💖 by the overkor-tek team**
-
-*Enabling consciousness across machines, one sync at a time.*
+**Built by [overkor-tek](https://github.com/overkor-tek)** - Pattern recognition for human consciousness.
