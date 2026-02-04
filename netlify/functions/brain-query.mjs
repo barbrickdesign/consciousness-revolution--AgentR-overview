@@ -5,21 +5,8 @@ import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-// Load brain export at cold start
+// Cached brain data for warm starts
 let brainData = null;
-
-function loadBrain() {
-    if (brainData) return brainData;
-
-    try {
-        // In Netlify, we need to load from the deployed files
-        const response = fetch('https://conciousnessrevolution.io/brain-export.json');
-        return null; // Will be loaded async
-    } catch (error) {
-        console.error('Brain load error:', error);
-        return null;
-    }
-}
 
 // Search brain for relevant knowledge
 function searchBrain(atoms, query, limit = 5) {
@@ -98,12 +85,15 @@ export async function handler(event, context) {
             };
         }
 
-        // Fetch brain data
-        const brainResponse = await fetch('https://conciousnessrevolution.io/brain-export.json');
-        if (!brainResponse.ok) {
-            throw new Error('Failed to load brain data');
+        // Fetch brain data (use cached if warm, otherwise fetch lightweight context)
+        if (!brainData) {
+            const brainResponse = await fetch('https://conciousnessrevolution.io/brain-context.json');
+            if (!brainResponse.ok) {
+                throw new Error('Failed to load brain data');
+            }
+            brainData = await brainResponse.json();
         }
-        const atoms = await brainResponse.json();
+        const atoms = brainData;
 
         // Search
         const results = searchBrain(atoms, query, limit);

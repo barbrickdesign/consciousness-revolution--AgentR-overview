@@ -193,10 +193,10 @@ async function updateUserProfile(userId, updates, existingProfileId = null) {
     }
 }
 
-// Brain helper - fetch relevant knowledge from Cyclotron (124k+ atoms)
+// Brain helper - fetch relevant knowledge from curated brain context (44 high-value atoms, 14KB)
 async function fetchBrainContext(query, limit = 3) {
     try {
-        const response = await fetch('https://conciousnessrevolution.io/brain-export.json');
+        const response = await fetch('https://conciousnessrevolution.io/brain-context.json');
         if (!response.ok) return [];
 
         const atoms = await response.json();
