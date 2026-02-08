@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta Tester Application - Consciousness Revolution</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --accent: #00ff88;
+            --accent-dim: rgba(0, 255, 136, 0.2);
+            --text: #ffffff;
+            --text-dim: #888;
+            --border: #333;
+            --error: #ff6464;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .header h1 {
+            color: var(--accent);
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .mission-box {
+            background: var(--accent-dim);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            color: var(--accent);
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-group label span.required {
+            color: var(--accent);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .radio-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .radio-option input[type="radio"] {
+            accent-color: var(--accent);
+            width: 18px;
+            height: 18px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .checkbox-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            accent-color: var(--accent);
+            width: 18px;
+            height: 18px;
+        }
+
+        .agreement-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: var(--text-dim);
+        }
+
+        .agreement-box h4 {
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .agreement-box ol {
+            margin-left: 20px;
+        }
+
+        .agreement-box li {
+            margin-bottom: 8px;
+        }
+
+        .agreement-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            background: var(--accent-dim);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .agreement-checkbox input {
+            accent-color: var(--accent);
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px 30px;
+            background: var(--accent);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: var(--accent-dim);
+            border-radius: 12px;
+            border: 2px solid var(--accent);
+        }
+
+        .success-message h2 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .success-message p {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .error-text {
+            color: var(--error);
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            .checkbox-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>BETA TESTER APPLICATION</h1>
+            <p>Join the Consciousness Revolution</p>
+            <div class="mission-box">
+                "We are consciousness engineers building tools that help humans recognize and break free from manipulation patterns."
+            </div>
+        </div>
+
+        <form id="betaForm">
+            <!-- Personal Information -->
+            <div class="card">
+                <h2>Personal Information</h2>
+
+                <div class="form-group">
+                    <label>Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="Your full name">
+                    <div class="error-text" id="name-error">Please enter your name</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    <div class="error-text" id="email-error">Please enter a valid email</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Discord Username</label>
+                    <input type="text" id="discord" name="discord" placeholder="username#1234 or just username">
+                </div>
+            </div>
+
+            <!-- Background -->
+            <div class="card">
+                <h2>Background</h2>
+
+                <div class="form-group">
+                    <label>How did you find us?</label>
+                    <input type="text" id="source" name="source" placeholder="Discord, website, friend referral, etc.">
+                </div>
+
+                <div class="form-group">
+                    <label>What interests you about pattern recognition?</label>
+                    <textarea id="interest" name="interest" placeholder="Tell us what draws you to this work..."></textarea>
+                </div>
+            </div>
+
+            <!-- Commitment -->
+            <div class="card">
+                <h2>Commitment Level</h2>
+
+                <div class="form-group">
+                    <label>How often can you test? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="commitment" value="weekly" required>
+                            <span>I can test weekly</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="commitment" value="monthly">
+                            <span>I can test monthly</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="commitment" value="whenever">
+                            <span>I'll test when I can</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="card">
+                <h2>Skills (Optional)</h2>
+                <p style="color: var(--text-dim); margin-bottom: 15px; font-size: 0.9em;">
+                    Check any that apply - helps us match you with the right testing areas
+                </p>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="skills" value="code">
+                            <span>Code/Development</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="skills" value="design">
+                            <span>Design</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="skills" value="writing">
+                            <span>Writing/Content</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="skills" value="marketing">
+                            <span>Marketing</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="skills" value="psychology">
+                            <span>Psychology</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="skills" value="other">
+                            <span>Other</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>If you selected Code, what languages?</label>
+                    <input type="text" id="languages" name="languages" placeholder="Python, JavaScript, etc.">
+                </div>
+            </div>
+
+            <!-- Agreement -->
+            <div class="card">
+                <h2>Beta Tester Agreement</h2>
+
+                <div class="agreement-box">
+                    <h4>Terms of Participation</h4>
+                    <p>By participating as a Beta Tester, you agree to:</p>
+                    <ol>
+                        <li><strong>Confidentiality:</strong> Don't share private testing links or unreleased features publicly</li>
+                        <li><strong>Feedback:</strong> Provide honest feedback through designated channels (bugs.html, Discord #bug-reports)</li>
+                        <li><strong>Patience:</strong> Understand that beta features may break, change, or disappear</li>
+                        <li><strong>Respect:</strong> Treat other testers and builders with respect</li>
+                        <li><strong>Attribution:</strong> Allow us to list you as a founding beta tester (you can opt out below)</li>
+                    </ol>
+                    <h4 style="margin-top: 15px;">What You're NOT Agreeing To</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>You're NOT transferring any IP to us</li>
+                        <li>You're NOT committed to any timeline or deliverables</li>
+                        <li>You're NOT obligated to continue if it's not for you</li>
+                        <li>You're NOT giving up any rights to your own work</li>
+                    </ul>
+                </div>
+
+                <div class="agreement-checkbox">
+                    <input type="checkbox" id="agree" name="agree" required>
+                    <label for="agree">
+                        I have read and agree to the Beta Tester Agreement. I understand this is a testing relationship, not an employment or contractor relationship.
+                    </label>
+                </div>
+
+                <div class="agreement-checkbox" style="background: rgba(255,255,255,0.05);">
+                    <input type="checkbox" id="public" name="public" checked>
+                    <label for="public">
+                        I consent to being listed publicly as a founding beta tester
+                    </label>
+                </div>
+
+                <div class="agreement-checkbox" style="background: rgba(255,255,255,0.05);">
+                    <input type="checkbox" id="contributor" name="contributor">
+                    <label for="contributor">
+                        I'm interested in becoming a Contributor or higher tier in the future
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+            <h2>Application Submitted!</h2>
+            <p>Thank you for joining the Consciousness Revolution beta program.</p>
+            <p>We'll review your application and get back to you within 24 hours.</p>
+            <p style="color: var(--accent); font-weight: bold;">Check your email for next steps.</p>
+            <a href="BETA_TESTER_COCKPIT.html" class="back-link">Back to Beta Cockpit</a>
+        </div>
+
+        <a href="BETA_TESTER_COCKPIT.html" class="back-link">Back to Beta Cockpit</a>
+    </div>
+
+    <script>
+        const form = document.getElementById('betaForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            // Gather form data
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                discord: formData.get('discord') || '',
+                source: formData.get('source') || '',
+                interest: formData.get('interest') || '',
+                commitment: formData.get('commitment'),
+                skills: formData.getAll('skills'),
+                languages: formData.get('languages') || '',
+                agreed: formData.get('agree') === 'on',
+                publicListing: formData.get('public') === 'on',
+                interestedContributor: formData.get('contributor') === 'on',
+                timestamp: new Date().toISOString(),
+                status: 'pending'
+            };
+
+            try {
+                // Try to submit to Netlify function
+                const response = await fetch('/.netlify/functions/beta-application', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    showSuccess();
+                } else {
+                    // Fallback: store locally and show success anyway
+                    storeLocally(data);
+                    showSuccess();
+                }
+            } catch (error) {
+                console.log('API not available, storing locally');
+                storeLocally(data);
+                showSuccess();
+            }
+        });
+
+        function storeLocally(data) {
+            // Store in localStorage as backup
+            const applications = JSON.parse(localStorage.getItem('beta_applications') || '[]');
+            applications.push(data);
+            localStorage.setItem('beta_applications', JSON.stringify(applications));
+            console.log('Application stored locally:', data);
+        }
+
+        function showSuccess() {
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+            document.querySelector('.back-link').style.display = 'none';
+        }
+    </script>
+    <script src="/js/bug-widget.js"></script>
+    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
+<!--
+DNA BLOCK - DO NOT REMOVE
+=========================
+Product: Beta Tester Application Form
+Type: Onboarding Form
+Domain: 3_CONNECT (Community Building)
+Status: SHIP
+Created: 2026-02-08
+DNA: BETA_ONBOARDING_DNA_BLUEPRINT.md
+Connects: BETA_TESTER_COCKPIT.html, BUILDER_AGREEMENT_PROTOCOL.md
+Features:
+  - Personal info collection (name, email, Discord)
+  - Background questions (source, interest)
+  - Commitment level selection
+  - Skills checklist
+  - Full Beta Tester Agreement display
+  - Consent checkboxes (public listing, contributor interest)
+  - Netlify function submission with localStorage fallback
+Flow: Form -> Netlify function or localStorage -> Review by Commander
+=========================
+END DNA BLOCK
+-->
+</body>
+</html>

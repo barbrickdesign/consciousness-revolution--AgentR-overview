@@ -309,13 +309,6 @@
                     <button class="copy-btn" onclick="copyLink(event, 'https://conciousnessrevolution.io/bugs.html')">Copy</button>
                 </a>
 
-                <a href="https://conciousnessrevolution.io/turkey-tornado.html" target="_blank" class="link-button">
-                    <div>
-                        <strong>Turkey Tornado Dashboard</strong>
-                        <div class="url">conciousnessrevolution.io/turkey-tornado.html</div>
-                    </div>
-                    <button class="copy-btn" onclick="copyLink(event, 'https://conciousnessrevolution.io/turkey-tornado.html')">Copy</button>
-                </a>
             </div>
         </div>
 
@@ -324,17 +317,20 @@
             <h2>Beta Program Stats</h2>
             <div class="stats">
                 <div class="stat-box">
-                    <div class="number" id="total-testers">5</div>
+                    <div class="number" id="total-testers">1</div>
                     <div class="label">Total Testers</div>
                 </div>
                 <div class="stat-box">
-                    <div class="number" id="active-testers">3</div>
+                    <div class="number" id="active-testers">1</div>
                     <div class="label">Active</div>
                 </div>
                 <div class="stat-box">
-                    <div class="number" id="feedback-count">12</div>
+                    <div class="number" id="feedback-count">0</div>
                     <div class="label">Feedback</div>
                 </div>
+            </div>
+            <div style="margin-top: 15px; padding: 10px; background: rgba(0, 255, 136, 0.1); border-radius: 8px; text-align: center;">
+                <span style="color: var(--accent);">Fresh Start: Dec 31, 2025</span>
             </div>
         </div>
     </div>
@@ -346,39 +342,23 @@
             <div class="tester-list">
                 <div class="tester-item">
                     <div>
-                        <strong>Josh Serrano</strong>
-                        <div style="color: var(--text-dim); font-size: 0.9em;">joshua.serrano2022@...</div>
+                        <strong>Commander (Darrick)</strong>
+                        <div style="color: var(--text-dim); font-size: 0.9em;">darrickpreble@proton.me</div>
                     </div>
                     <span class="status active">Active</span>
                 </div>
-                <div class="tester-item">
+                <div class="tester-item" style="opacity: 0.6;">
                     <div>
-                        <strong>Toby Burrowes</strong>
-                        <div style="color: var(--text-dim); font-size: 0.9em;">tobyburrowes@...</div>
+                        <strong>Awaiting New Testers</strong>
+                        <div style="color: var(--text-dim); font-size: 0.9em;">Complete onboarding to join</div>
                     </div>
-                    <span class="status active">Active</span>
+                    <span class="status pending">Open</span>
                 </div>
-                <div class="tester-item">
-                    <div>
-                        <strong>Bill Brotherton</strong>
-                        <div style="color: var(--text-dim); font-size: 0.9em;">wdbrotherton@...</div>
-                    </div>
-                    <span class="status pending">Pending</span>
-                </div>
-                <div class="tester-item">
-                    <div>
-                        <strong>Dean Sabr</strong>
-                        <div style="color: var(--text-dim); font-size: 0.9em;">deansabrwork@...</div>
-                    </div>
-                    <span class="status active">Active</span>
-                </div>
-                <div class="tester-item">
-                    <div>
-                        <strong>William Varni</strong>
-                        <div style="color: var(--text-dim); font-size: 0.9em;">varniwilliam@...</div>
-                    </div>
-                    <span class="status pending">Pending</span>
-                </div>
+            </div>
+            <div style="margin-top: 15px; padding: 12px; background: rgba(0, 255, 136, 0.1); border-radius: 8px;">
+                <strong style="color: var(--accent);">New Onboarding Flow</strong>
+                <p style="font-size: 0.9em; color: var(--text-dim); margin-top: 5px;">Previous testers archived. New beta testers require formal onboarding.</p>
+                <a href="BETA_ONBOARDING_FLOW.html" style="color: var(--accent); font-size: 0.9em;">View Onboarding Requirements</a>
             </div>
         </div>
 
@@ -386,28 +366,30 @@
         <div class="card">
             <h2>Email Template</h2>
             <div class="email-section">
-                <div class="email-template" id="email-template">Subject: Consciousness Revolution Beta Update - New Features Ready!
+                <div class="email-template" id="email-template">Subject: Join the Consciousness Revolution Beta Program
 
 Hi [NAME],
 
-Quick update on the Consciousness Revolution beta:
+You're invited to join the Consciousness Revolution beta program.
 
-NEW FEATURES READY TO TEST:
-1. Araya AI Chat - Talk to our AI assistant
-   Link: https://conciousnessrevolution.io/araya-chat.html
+WHAT YOU'LL GET ACCESS TO:
+1. Araya AI - Pattern recognition assistant
+   https://conciousnessrevolution.io/araya-chat.html
 
-2. 7 Domains Assessment - Discover your patterns
-   Link: https://conciousnessrevolution.io/seven-domains-assessment.html
+2. 7 Domains Assessment - Map your consciousness
+   https://conciousnessrevolution.io/seven-domains-assessment.html
 
-3. Turkey Tornado Dashboard - See the AI at work
-   Link: https://conciousnessrevolution.io/turkey-tornado.html
+3. Direct line to the development team
 
-Please try these out and let us know what you think!
+WHAT WE NEED FROM YOU:
+- Honest feedback (bugs, suggestions, ideas)
+- Patience with unfinished features
+- A few minutes each week to test
 
-Submit feedback here:
+Ready to join? Reply to this email or visit:
 https://conciousnessrevolution.io/bugs.html
 
-Thanks for being part of this!
+Let's build consciousness tools together.
 - The Team</div>
                 <div class="action-buttons">
                     <button class="action-btn primary" onclick="copyEmail()">Copy Email</button>
@@ -420,21 +402,14 @@ Thanks for being part of this!
     <div class="card">
         <h2>Recent Feedback</h2>
         <div class="feedback-list" id="feedback-list">
-            <div class="feedback-item">
-                <div class="meta">Josh S. - 2 hours ago</div>
-                <div>Araya chat is working great! Love the personality.</div>
-            </div>
-            <div class="feedback-item">
-                <div class="meta">Toby B. - 5 hours ago</div>
-                <div>Assessment loaded fast. Questions are thought-provoking.</div>
-            </div>
-            <div class="feedback-item">
-                <div class="meta">Dean S. - 1 day ago</div>
-                <div>Dashboard looks amazing. Can we get more real-time stats?</div>
+            <div class="feedback-item" style="text-align: center; opacity: 0.6;">
+                <div class="meta">Fresh Start - Dec 31, 2025</div>
+                <div>No feedback yet. Previous feedback archived.</div>
             </div>
         </div>
-        <div style="margin-top: 15px;">
+        <div style="margin-top: 15px; display: flex; gap: 10px;">
             <button class="action-btn secondary" onclick="loadFeedback()">Refresh Feedback</button>
+            <a href="bugs.html" class="action-btn primary" style="text-decoration: none;">Submit Feedback</a>
         </div>
     </div>
 
