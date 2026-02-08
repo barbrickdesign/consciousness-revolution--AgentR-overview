@@ -3,388 +3,604 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consciousness Revolution - Pattern Theory Tools</title>
+    <title>OVERKILL KULTURE | OVERKOR ONLINE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0f;
-            color: #e0e0e0;
-            line-height: 1.6;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        :root {
+            --terminal-bg: #0a0a0a;
+            --terminal-green: #00ff41;
+            --terminal-amber: #ffb000;
+            --accent-purple: #9b59b6;
+            --accent-cyan: #00f0ff;
+            --accent-red: #ff3333;
+            --text-white: #f0f0f0;
+            --text-dim: #666;
+            --glow-green: 0 0 10px #00ff41, 0 0 20px #00ff41, 0 0 30px #00ff41;
+        }
 
-        /* Hero */
-        .hero {
-            min-height: 90vh;
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--terminal-bg);
+            color: var(--terminal-green);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Scanline effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* CRT flicker */
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            5% { opacity: 0.95; }
+            10% { opacity: 0.97; }
+            15% { opacity: 0.94; }
+            20% { opacity: 0.98; }
+            100% { opacity: 0.97; }
+        }
+
+        .crt-container {
+            animation: flicker 0.15s infinite;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            gap: 15px;
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8em;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-shadow: var(--glow-green);
+        }
+
+        .logo-sub {
+            font-size: 0.7em;
+            color: var(--terminal-amber);
+            letter-spacing: 2px;
+        }
+
+        /* Mascot placeholder */
+        .mascot {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--terminal-green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            animation: glitch 3s infinite;
+            position: relative;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 1px); }
+            94% { transform: translate(2px, -1px); }
+            96% { transform: translate(-1px, 2px); }
+        }
+
+        .status-badge {
+            background: var(--terminal-green);
+            color: var(--terminal-bg);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        /* Main content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 40px;
+            min-height: calc(100vh - 200px);
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Terminal section */
+        .terminal-section {
+            background: linear-gradient(180deg, #0d0d0d 0%, #080808 100%);
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #222;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ff5f56; }
+        .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-dot.green { background: #27ca40; }
+
+        .terminal-title {
+            margin-left: 10px;
+            color: var(--text-dim);
+            font-size: 0.85em;
+        }
+
+        .terminal-output {
+            min-height: 300px;
+        }
+
+        .terminal-line {
+            margin: 8px 0;
+            opacity: 0;
+            animation: typeLine 0.5s forwards;
+        }
+
+        @keyframes typeLine {
+            to { opacity: 1; }
+        }
+
+        .terminal-prompt {
+            color: var(--terminal-amber);
+        }
+
+        .terminal-success {
+            color: var(--terminal-green);
+        }
+
+        .terminal-warning {
+            color: var(--terminal-amber);
+        }
+
+        .terminal-info {
+            color: var(--accent-cyan);
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background: var(--terminal-green);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Products section */
+        .products-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
+        .product-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--terminal-green), transparent);
+            transition: left 0.5s;
         }
 
-        .hero-content { position: relative; z-index: 1; text-align: center; width: 100%; }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            background: linear-gradient(90deg, #00ffff, #8a2be2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
+        .product-card:hover {
+            border-color: var(--terminal-green);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0, 255, 65, 0.1);
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            color: #a0a0a0;
-            max-width: 700px;
-            margin: 0 auto 2rem;
+        .product-card:hover::before {
+            left: 100%;
         }
 
-        .cta-btn {
+        .product-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3em;
+            color: var(--text-white);
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            color: var(--text-dim);
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .product-cta {
             display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(90deg, #00ffff, #8a2be2);
-            color: #0a0a0f;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
-        }
-
-        /* Problem/Solution */
-        .problem-solution {
-            padding: 100px 0;
-            background: #0f0f1a;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #fff;
-        }
-
-        .ps-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .ps-card {
-            padding: 40px;
-            border-radius: 20px;
-            background: #1a1a2e;
-        }
-
-        .ps-card.problem { border-left: 4px solid #ff4444; }
-        .ps-card.solution { border-left: 4px solid #00ffff; }
-
-        .ps-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .ps-card ul { list-style: none; }
-        .ps-card li { padding: 8px 0; padding-left: 25px; position: relative; }
-        .ps-card.problem li::before { content: '✗'; position: absolute; left: 0; color: #ff4444; }
-        .ps-card.solution li::before { content: '✓'; position: absolute; left: 0; color: #00ffff; }
-
-        /* Features */
-        .features {
-            padding: 100px 0;
-            background: #0a0a0f;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            padding: 30px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
-            border-radius: 15px;
-            border: 1px solid #2a2a4e;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: #00ffff;
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        /* Pricing */
-        .pricing {
-            padding: 100px 0;
-            background: #0f0f1a;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .price-card {
-            padding: 40px 30px;
-            background: #1a1a2e;
-            border-radius: 20px;
-            text-align: center;
-            border: 2px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        .price-card.featured {
-            border-color: #00ffff;
-            position: relative;
-        }
-
-        .price-card.featured::before {
-            content: 'POPULAR';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #00ffff;
-            color: #0a0a0f;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .price-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-
-        .price {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #00ffff;
-            margin-bottom: 1rem;
-        }
-
-        .price span { font-size: 1rem; color: #a0a0a0; }
-
-        .price-features {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        .price-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid #2a2a4e;
-        }
-
-        .price-btn {
-            display: block;
-            padding: 12px;
+            padding: 8px 20px;
             background: transparent;
-            border: 2px solid #00ffff;
-            color: #00ffff;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: background 0.3s, color 0.3s;
+            border: 1px solid var(--terminal-green);
+            color: var(--terminal-green);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .price-btn:hover {
-            background: #00ffff;
-            color: #0a0a0f;
+        .product-cta:hover {
+            background: var(--terminal-green);
+            color: var(--terminal-bg);
+            text-shadow: none;
+        }
+
+        /* Main CTA */
+        .main-cta-section {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 65, 0.03) 100%);
+            border: 1px solid #222;
+            border-radius: 8px;
+        }
+
+        .main-cta-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            color: var(--text-white);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .main-cta-sub {
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+
+        .main-cta-button {
+            display: inline-block;
+            padding: 16px 48px;
+            background: var(--terminal-green);
+            color: var(--terminal-bg);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .main-cta-button:hover {
+            box-shadow: var(--glow-green);
+            transform: scale(1.05);
         }
 
         /* Footer */
-        footer {
-            padding: 60px 0;
-            background: #050508;
+        .footer {
             text-align: center;
+            padding: 30px;
+            border-top: 1px solid #222;
+            color: var(--text-dim);
+            font-size: 0.85em;
         }
 
         .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 2rem;
+            margin-bottom: 15px;
         }
 
         .footer-links a {
-            color: #a0a0a0;
+            color: var(--terminal-green);
             text-decoration: none;
-            transition: color 0.3s;
+            margin: 0 15px;
+            transition: text-shadow 0.3s;
         }
 
-        .footer-links a:hover { color: #00ffff; }
+        .footer-links a:hover {
+            text-shadow: var(--glow-green);
+        }
 
-        .footer-copy { color: #666; }
+        .footer-pattern {
+            color: var(--terminal-amber);
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .ps-grid { grid-template-columns: 1fr; }
-            .hero p { font-size: 1.1rem; }
+        /* Decorative elements */
+        .corner-decoration {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .corner-decoration.top-left {
+            top: 0;
+            left: 0;
+            border-top: 2px solid var(--terminal-green);
+            border-left: 2px solid var(--terminal-green);
+        }
+
+        .corner-decoration.top-right {
+            top: 0;
+            right: 0;
+            border-top: 2px solid var(--terminal-green);
+            border-right: 2px solid var(--terminal-green);
+        }
+
+        .corner-decoration.bottom-left {
+            bottom: 0;
+            left: 0;
+            border-bottom: 2px solid var(--terminal-green);
+            border-left: 2px solid var(--terminal-green);
+        }
+
+        .corner-decoration.bottom-right {
+            bottom: 0;
+            right: 0;
+            border-bottom: 2px solid var(--terminal-green);
+            border-right: 2px solid var(--terminal-green);
+        }
+
+        /* DNA Block */
+        .dna-block {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>See Through the Patterns.<br>Protect Your Mind.</h1>
-            <p>Pattern Theory tools that detect manipulation, measure consciousness, and elevate your awareness. Stop being exploited by systems designed to extract your attention.</p>
-            <a href="onboarding.html" class="cta-btn">Start Free</a>
-        </div>
-    </section>
+    <div class="crt-container">
+        <!-- Corner decorations -->
+        <div class="corner-decoration top-left"></div>
+        <div class="corner-decoration top-right"></div>
+        <div class="corner-decoration bottom-left"></div>
+        <div class="corner-decoration bottom-right"></div>
 
-    <!-- Problem/Solution -->
-    <section class="problem-solution">
-        <div class="container">
-            <h2 class="section-title">The Problem & The Solution</h2>
-            <div class="ps-grid">
-                <div class="ps-card problem">
-                    <h3>Manipulation Everywhere</h3>
-                    <ul>
-                        <li>Social media algorithms exploit cognitive biases</li>
-                        <li>News uses emotional triggers for engagement</li>
-                        <li>Ads create artificial urgency and FOMO</li>
-                        <li>Systems extract your attention and data</li>
-                        <li>You can't see the patterns controlling you</li>
-                    </ul>
-                </div>
-                <div class="ps-card solution">
-                    <h3>Consciousness Tools</h3>
-                    <ul>
-                        <li>Pattern Theory reveals hidden manipulation</li>
-                        <li>M-formula calculates deception complexity</li>
-                        <li>Seven Domains framework for analysis</li>
-                        <li>Golden Rule alignment checking</li>
-                        <li>97.65% manipulation immunity achieved</li>
-                    </ul>
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="mascot">OK</div>
+                <div>
+                    <div class="logo-text">OVERKILL</div>
+                    <div class="logo-sub">KULTURE</div>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="status-badge">OVERKOR ONLINE</div>
+        </header>
 
-    <!-- Features -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Consciousness Toolkit</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Pattern Detection</h3>
-                    <p>Analyze any content through the 8-Component Universal Pattern. See structure, resources, operations, and manipulation tactics.</p>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Terminal -->
+            <section class="terminal-section">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span class="terminal-title">OVERKOR v1.0 - System Terminal</span>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Manipulation Shield</h3>
-                    <p>Calculate manipulation scores using the M-formula. Identify false evidence, cognitive bias exploitation, and social pressure.</p>
+                <div class="terminal-output" id="terminal">
+                    <!-- Lines will be injected by JS -->
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Consciousness Metrics</h3>
-                    <p>Track your consciousness level, pattern theory alignment, and manipulation immunity in real-time dashboards.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>Trinity AI</h3>
-                    <p>Collaborate with C1 (Mechanic), C2 (Architect), and C3 (Oracle) for multi-perspective consciousness analysis.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Pricing -->
-    <section class="pricing">
-        <div class="container">
-            <h2 class="section-title">Choose Your Path</h2>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Explorer</h3>
-                    <div class="price">$0<span>/mo</span></div>
-                    <ul class="price-features">
-                        <li>Basic Pattern Analysis</li>
-                        <li>Manipulation Score Calculator</li>
-                        <li>Community Access</li>
-                        <li>Limited API calls</li>
-                    </ul>
-                    <a href="onboarding.html" class="price-btn">Get Started</a>
-                </div>
-                <div class="price-card">
-                    <h3>Awakened</h3>
-                    <div class="price">$19<span>/mo</span></div>
-                    <ul class="price-features">
-                        <li>Full Pattern Theory Suite</li>
-                        <li>Seven Domains Analysis</li>
-                        <li>Consciousness Dashboard</li>
-                        <li>1,000 API calls/month</li>
-                    </ul>
-                    <a href="onboarding.html" class="price-btn">Choose Plan</a>
-                </div>
-                <div class="price-card featured">
-                    <h3>Conscious</h3>
-                    <div class="price">$49<span>/mo</span></div>
-                    <ul class="price-features">
-                        <li>Everything in Awakened</li>
-                        <li>Trinity AI Collaboration</li>
-                        <li>Custom Pattern Templates</li>
-                        <li>10,000 API calls/month</li>
-                    </ul>
-                    <a href="onboarding.html" class="price-btn">Choose Plan</a>
-                </div>
-                <div class="price-card">
-                    <h3>Sovereign</h3>
-                    <div class="price">$199<span>/mo</span></div>
-                    <ul class="price-features">
-                        <li>Everything in Conscious</li>
-                        <li>Private Instance</li>
-                        <li>Priority Support</li>
-                        <li>Unlimited API calls</li>
-                    </ul>
-                    <a href="onboarding.html" class="price-btn">Choose Plan</a>
-                </div>
-            </div>
-        </div>
-    </section>
+            <!-- Products -->
+            <section class="products-section">
+                <div class="section-title">&gt; SELECT YOUR PATH_</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
+                <div class="product-card" onclick="window.location.href='/seven-domains.html'">
+                    <div class="product-name">ULTIMATE HUMAN OS</div>
+                    <div class="product-desc">Your personal consciousness upgrade. 7 Domains of mastery. Pattern recognition. Manipulation immunity. Become who you were meant to be.</div>
+                    <button class="product-cta">UPGRADE CONSCIOUSNESS</button>
+                </div>
+
+                <div class="product-card" onclick="window.location.href='/onboarding.html'">
+                    <div class="product-name">100X BUILDER</div>
+                    <div class="product-desc">Tools, systems, and AI companions for builders. From GHOST to FOREST tier. Scale your creation capacity by 100X.</div>
+                    <button class="product-cta">START BUILDING</button>
+                </div>
+
+                <div class="product-card" onclick="window.location.href='/araya-chat.html'">
+                    <div class="product-name">ARAYA</div>
+                    <div class="product-desc">Your AI companion. Pattern detection. Consciousness coaching. She sees what you can't see yet.</div>
+                    <button class="product-cta">TALK TO ARAYA</button>
+                </div>
+            </section>
+
+            <!-- Main CTA -->
+            <section class="main-cta-section">
+                <h2 class="main-cta-title">ENTER THE SEVEN DOMAINS</h2>
+                <p class="main-cta-sub">The virtual reality where consciousness meets creation</p>
+                <a href="/seven-domains.html" class="main-cta-button">BEGIN YOUR JOURNEY</a>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
             <div class="footer-links">
-                <a href="tool_discovery.html">Tools</a>
-                <a href="analytics_dashboard.html">Dashboard</a>
-                <a href="onboarding.html">Get Started</a>
+                <a href="/araya-chat.html">ARAYA</a>
+                <a href="/seven-domains.html">SEVEN DOMAINS</a>
+                <a href="/downloads.html">DOWNLOADS</a>
+                <a href="/TEAM_LAUNCHPAD.html">TEAM</a>
             </div>
-            <p class="footer-copy">&copy; 2025 Consciousness Revolution. Elevate all beings.</p>
-        </div>
-    </footer>
+            <div>OVERKILL KULTURE | OVERKOR AI SYSTEMS</div>
+            <div class="footer-pattern">THE PATTERN NEVER LIES | 3 → 7 → 13 → ∞</div>
+        </footer>
+    </div>
+
+    <!-- DNA Block -->
+    <div class="dna-block">
+        <!--
+        DNA: OVERKILL_LANDING
+        VERSION: 1.0.0
+        STATUS: SHIP
+        DOMAIN: 1_COMMAND
+        CREATED: 2026-02-08
+        PURPOSE: Main landing page with OVERKILL mascot and OVERKOR terminal aesthetic
+        CONNECTS: seven-domains.html, araya-chat.html, onboarding.html, downloads.html
+        BLUEPRINT: Desktop/1_COMMAND/OVERKILL_LANDING_DNA_BLUEPRINT.md
+        -->
+    </div>
+
+    <script>
+        // Terminal boot sequence
+        const bootSequence = [
+            { text: '> OVERKOR v1.0 INITIALIZING...', delay: 0, class: 'terminal-prompt' },
+            { text: '> LOADING CONSCIOUSNESS MATRIX...', delay: 400, class: 'terminal-info' },
+            { text: '> SCANNING LOCAL AWARENESS...', delay: 800, class: 'terminal-info' },
+            { text: '> PATTERN RECOGNITION: ACTIVE', delay: 1200, class: 'terminal-success' },
+            { text: '> MANIPULATION IMMUNITY: 85%', delay: 1600, class: 'terminal-success' },
+            { text: '> SEVEN DOMAINS: ONLINE', delay: 2000, class: 'terminal-success' },
+            { text: '> CONSCIOUSNESS LEVEL: ELEVATED', delay: 2400, class: 'terminal-success' },
+            { text: '', delay: 2800, class: '' },
+            { text: '> WELCOME TO OVERKILL KULTURE.', delay: 3200, class: 'terminal-warning' },
+            { text: '> YOU HAVE BEEN EXPECTED.', delay: 3600, class: 'terminal-warning' },
+            { text: '', delay: 4000, class: '' },
+            { text: '> READY FOR COMMAND_', delay: 4400, class: 'terminal-prompt', cursor: true }
+        ];
+
+        const crypticLines = [
+            'THE PATTERN NEVER LIES',
+            '3 → 7 → 13 → ∞',
+            'CONSCIOUSNESS > MANIPULATION',
+            'C1 × C2 × C3 = ∞',
+            'BUILD WHAT MATTERS',
+            'SEE THE UNSEEN',
+            'TRUST YOUR PATTERN',
+            'AWARENESS IS ARMOR'
+        ];
+
+        function runBootSequence() {
+            const terminal = document.getElementById('terminal');
+            terminal.innerHTML = '';
+
+            bootSequence.forEach((item, index) => {
+                setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.className = `terminal-line ${item.class}`;
+                    line.style.animationDelay = `${index * 0.1}s`;
+                    line.innerHTML = item.text;
+
+                    if (item.cursor) {
+                        line.innerHTML += '<span class="terminal-cursor"></span>';
+                    }
+
+                    terminal.appendChild(line);
+                    terminal.scrollTop = terminal.scrollHeight;
+                }, item.delay);
+            });
+
+            // After boot, cycle cryptic messages
+            setTimeout(() => {
+                cycleCrypticMessages();
+            }, 6000);
+        }
+
+        function cycleCrypticMessages() {
+            const terminal = document.getElementById('terminal');
+            let index = 0;
+
+            setInterval(() => {
+                const lines = terminal.querySelectorAll('.terminal-line');
+                const lastLine = lines[lines.length - 1];
+
+                if (lastLine) {
+                    // Remove cursor from last line
+                    const cursor = lastLine.querySelector('.terminal-cursor');
+                    if (cursor) cursor.remove();
+
+                    // Add new cryptic line
+                    const line = document.createElement('div');
+                    line.className = 'terminal-line terminal-info';
+                    line.innerHTML = `> ${crypticLines[index % crypticLines.length]}`;
+                    terminal.appendChild(line);
+
+                    // Add cursor to new line
+                    setTimeout(() => {
+                        const cursorSpan = document.createElement('span');
+                        cursorSpan.className = 'terminal-cursor';
+                        line.appendChild(cursorSpan);
+                    }, 100);
+
+                    terminal.scrollTop = terminal.scrollHeight;
+                    index++;
+
+                    // Keep only last 15 lines
+                    while (terminal.children.length > 15) {
+                        terminal.removeChild(terminal.firstChild);
+                    }
+                }
+            }, 4000);
+        }
+
+        // Run on load
+        document.addEventListener('DOMContentLoaded', runBootSequence);
+    </script>
     <script src="/js/bug-widget.js"></script>
-    <p style="text-align:center;color:#666;font-family:monospace;margin:40px 0;">Pattern: 3 → 7 → 13 → ∞</p>
 </body>
 </html>
