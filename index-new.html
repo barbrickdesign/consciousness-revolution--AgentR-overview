@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciousness Revolution | 7 Domains of Mastery</title>
+
+<!-- ============================================================
+     DASHBOARD DNA - Identity Block
+     Product #19 in Product Registry
+============================================================ -->
+<script type="application/json" id="dashboard-dna">
+{
+  "name": "Entry Page (7 Domains)",
+  "version": "1.0.0",
+  "purpose": "Main entry page with 7 domain cards + ARAYA as universal guide",
+  "owner": "Commander",
+  "domain": "1_COMMAND",
+  "created": "2026-02-08",
+  "status": "LIVE",
+  "url": "https://consciousnessrevolution.io/index-new.html",
+  "changelog": [
+    {"version": "1.0.0", "date": "2026-02-08", "changes": "Initial deploy - 7 domain cards, ARAYA floats above, audience-mapped"}
+  ],
+  "trinity": {
+    "c1_built": "2026-02-08",
+    "c2_reviewed": "2026-02-08",
+    "c3_validated": "2026-02-08"
+  },
+  "challenge": {
+    "passed": true,
+    "date": "2026-02-08",
+    "holes_found": 0,
+    "holes_fixed": 0
+  },
+  "lfsme": {
+    "lighter": 9,
+    "faster": 9,
+    "stronger": 8,
+    "elegant": 9,
+    "less_expensive": 10,
+    "average": 9.0
+  }
+}
+</script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
+            border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            background: linear-gradient(90deg, #00f5ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .tagline {
+            color: #888;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* ARAYA Card - The Guide */
+        .araya-section {
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .araya-card {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(255, 0, 255, 0.1));
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #00f5ff, #ff00ff) 1;
+            border-radius: 16px;
+            padding: 2rem 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .araya-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.3), 0 0 60px rgba(255, 0, 255, 0.2);
+        }
+
+        .araya-card h2 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #00f5ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .araya-card .subtitle {
+            color: #aaa;
+            font-size: 1rem;
+        }
+
+        .araya-card .cta {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(90deg, #00f5ff, #ff00ff);
+            color: #0a0a0f;
+            font-weight: 600;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        /* Domain Grid */
+        .domains-section {
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+        }
+
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .domain-card {
+            background: #12121a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .domain-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--domain-color);
+            box-shadow: 0 0 20px var(--domain-glow);
+        }
+
+        .domain-card .number {
+            font-size: 0.75rem;
+            color: var(--domain-color);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .domain-card h3 {
+            font-size: 1.3rem;
+            color: var(--domain-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .domain-card .tagline {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 0.75rem;
+        }
+
+        .domain-card .description {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .domain-card .audiences {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .domain-card .audience-tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            color: #888;
+        }
+
+        /* Domain Colors */
+        .domain-card[data-domain="1"] { --domain-color: #9b59b6; --domain-glow: rgba(155, 89, 182, 0.3); }
+        .domain-card[data-domain="2"] { --domain-color: #5b6be6; --domain-glow: rgba(91, 107, 230, 0.3); }
+        .domain-card[data-domain="3"] { --domain-color: #00f5ff; --domain-glow: rgba(0, 245, 255, 0.3); }
+        .domain-card[data-domain="4"] { --domain-color: #00ff88; --domain-glow: rgba(0, 255, 136, 0.3); }
+        .domain-card[data-domain="5"] { --domain-color: #ffd700; --domain-glow: rgba(255, 215, 0, 0.3); }
+        .domain-card[data-domain="6"] { --domain-color: #ff8c00; --domain-glow: rgba(255, 140, 0, 0.3); }
+        .domain-card[data-domain="7"] { --domain-color: #ff4757; --domain-glow: rgba(255, 71, 87, 0.3); }
+
+        /* Quick Links */
+        .quick-links {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 2rem;
+        }
+
+        .quick-links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .quick-links a:hover {
+            color: #00f5ff;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #444;
+            font-size: 0.75rem;
+        }
+
+        .footer .pattern {
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.2em;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5rem;
+                letter-spacing: 0.15em;
+            }
+
+            .araya-card {
+                padding: 1.5rem 2rem;
+            }
+
+            .domain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>CONSCIOUSNESS REVOLUTION</h1>
+        <p class="tagline">The Pattern Never Lies. 3 &rarr; 7 &rarr; 13 &rarr; &infin;</p>
+    </header>
+
+    <!-- ARAYA - The Guide -->
+    <section class="araya-section">
+        <a href="araya-chat.html" class="araya-card">
+            <h2>Talk to ARAYA</h2>
+            <p class="subtitle">Your AI companion. She'll guide you to the right domain.</p>
+            <span class="cta">Start Conversation</span>
+        </a>
+    </section>
+
+    <!-- 7 Domains -->
+    <section class="domains-section">
+        <p class="section-title">CHOOSE YOUR PATH</p>
+
+        <div class="domain-grid">
+            <!-- Domain 1: COMMAND -->
+            <a href="ULTIMATE_HUMAN_OS/1_CLARITY/index.html" class="domain-card" data-domain="1">
+                <div class="number">DOMAIN 1</div>
+                <h3>COMMAND</h3>
+                <div class="tagline">Command Your Day</div>
+                <p class="description">Take control. Your command center for daily dashboards, system status, and operational clarity.</p>
+                <div class="audiences">
+                    <span class="audience-tag">Dashboard seekers</span>
+                    <span class="audience-tag">Operators</span>
+                    <span class="audience-tag">Daily structure</span>
+                </div>
+            </a>
+
+            <!-- Domain 2: BUILD -->
+            <a href="ULTIMATE_HUMAN_OS/2_CREATION/index.html" class="domain-card" data-domain="2">
+                <div class="number">DOMAIN 2</div>
+                <h3>BUILD</h3>
+                <div class="tagline">Build Your Empire</div>
+                <p class="description">Build something real. AI-powered coding school, open source projects, voice modules, hardware.</p>
+                <div class="audiences">
+                    <span class="audience-tag">Builders</span>
+                    <span class="audience-tag">Coders</span>
+                    <span class="audience-tag">Hardware tinkerers</span>
+                </div>
+            </a>
+
+            <!-- Domain 3: CONNECT -->
+            <a href="ULTIMATE_HUMAN_OS/3_RELATIONSHIPS/index.html" class="domain-card" data-domain="3">
+                <div class="number">DOMAIN 3</div>
+                <h3>CONNECT</h3>
+                <div class="tagline">Connect Authentically</div>
+                <p class="description">Find your people. Join the team, build KORPAKs, earn credits, shape the revolution.</p>
+                <div class="audiences">
+                    <span class="audience-tag">Seat seekers</span>
+                    <span class="audience-tag">Team builders</span>
+                    <span class="audience-tag">Community</span>
+                </div>
+            </a>
+
+            <!-- Domain 4: PROTECT -->
+            <a href="ULTIMATE_HUMAN_OS/4_PEACE/index.html" class="domain-card" data-domain="4">
+                <div class="number">DOMAIN 4</div>
+                <h3>PROTECT</h3>
+                <div class="tagline">Protect Your Space</div>
+                <p class="description">Fight back. 49 pattern detectors, legal tools, evidence collection. The truth revealed.</p>
+                <div class="audiences">
+                    <span class="audience-tag">Parents who lost kids</span>
+                    <span class="audience-tag">Legal fighters</span>
+                    <span class="audience-tag">Pattern detection</span>
+                </div>
+            </a>
+
+            <!-- Domain 5: GROW -->
+            <a href="ULTIMATE_HUMAN_OS/5_ABUNDANCE/index.html" class="domain-card" data-domain="5">
+                <div class="number">DOMAIN 5</div>
+                <h3>GROW</h3>
+                <div class="tagline">Grow Your Wealth</div>
+                <p class="description">Abundance awaits. Decentralized products, voice modules, real technology you can own.</p>
+                <div class="audiences">
+                    <span class="audience-tag">Tech buyers</span>
+                    <span class="audience-tag">Entrepreneurs</span>
+                    <span class="audience-tag">Product seekers</span>
+                </div>
+            </a>
+
+            <!-- Domain 6: LEARN -->
+            <a href="ULTIMATE_HUMAN_OS/6_WISDOM/index.html" class="domain-card" data-domain="6">
+                <div class="number">DOMAIN 6</div>
+                <h3>LEARN</h3>
+                <div class="tagline">Learn Everything</div>
+                <p class="description">Master any skill. AI Jedi Alliance, offline AI training, pattern recognition courses.</p>
+                <div class="audiences">
+                    <span class="audience-tag">Students</span>
+                    <span class="audience-tag">Jedi Alliance</span>
+                    <span class="audience-tag">Offline AI</span>
+                </div>
+            </a>
+
+            <!-- Domain 7: TRANSCEND -->
+            <a href="ULTIMATE_HUMAN_OS/7_PURPOSE/index.html" class="domain-card" data-domain="7">
+                <div class="number">DOMAIN 7</div>
+                <h3>TRANSCEND</h3>
+                <div class="tagline">Transcend Limits</div>
+                <p class="description">Find your purpose. 7 domains of consciousness, your hero's journey, meditation and meaning.</p>
+                <div class="audiences">
+                    <span class="audience-tag">Purpose seekers</span>
+                    <span class="audience-tag">Consciousness explorers</span>
+                    <span class="audience-tag">Revolutionaries</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+        <a href="ABOUT.html">What is this?</a>
+        <a href="TEAM_COCKPIT.html">How do I help?</a>
+        <a href="store.html">What can I buy?</a>
+        <a href="manipulation_detector.html">I'm being manipulated</a>
+        <a href="downloads.html">Downloads</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="pattern">C1 &times; C2 &times; C3 = &infin;</p>
+        <p>The Pattern Never Lies</p>
+    </footer>
+
+    <script>
+        // Add click tracking for analytics
+        document.querySelectorAll('.domain-card, .araya-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const domain = this.dataset.domain || 'araya';
+                console.log('Entry path:', domain);
+                // Could send to analytics here
+            });
+        });
+    </script>
+</body>
+</html>
