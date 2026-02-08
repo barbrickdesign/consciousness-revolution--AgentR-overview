@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Launchpad | Consciousness Revolution</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            background: linear-gradient(90deg, #00f5ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: #666;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .link-card {
+            background: #12121a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--card-color, #00f5ff);
+            box-shadow: 0 0 20px var(--card-glow, rgba(0, 245, 255, 0.2));
+        }
+
+        .link-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-card h3 {
+            color: var(--card-color, #00f5ff);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .link-card .description {
+            color: #888;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .link-card .url {
+            color: #555;
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+            word-break: break-all;
+        }
+
+        /* Section Colors */
+        .public .link-card { --card-color: #00f5ff; --card-glow: rgba(0, 245, 255, 0.2); }
+        .dashboards .link-card { --card-color: #ff00ff; --card-glow: rgba(255, 0, 255, 0.2); }
+        .dev .link-card { --card-color: #00ff88; --card-glow: rgba(0, 255, 136, 0.2); }
+        .team .link-card { --card-color: #ffd700; --card-glow: rgba(255, 215, 0, 0.2); }
+
+        /* Role Badges */
+        .role-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            margin-left: 0.5rem;
+        }
+
+        .role-badge.commander { background: rgba(255, 215, 0, 0.2); color: #ffd700; }
+        .role-badge.tiger { background: rgba(255, 140, 0, 0.2); color: #ff8c00; }
+        .role-badge.teddy { background: rgba(155, 89, 182, 0.2); color: #9b59b6; }
+        .role-badge.all { background: rgba(0, 245, 255, 0.2); color: #00f5ff; }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .quick-action {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(255, 0, 255, 0.1));
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            color: #00f5ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .quick-action:hover {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.2), rgba(255, 0, 255, 0.2));
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #444;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 600px) {
+            .link-grid { grid-template-columns: 1fr; }
+            .quick-actions { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>TEAM LAUNCHPAD</h1>
+        <p class="subtitle">One bookmark to rule them all. The frame for your keys.</p>
+    </header>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+        <a href="araya-chat.html" class="quick-action">Talk to ARAYA</a>
+        <a href="https://discord.gg/KjRm34dmh8" class="quick-action" target="_blank">Discord</a>
+        <a href="https://github.com/overkor-tek/consciousness-revolution" class="quick-action" target="_blank">GitHub</a>
+        <a href="TEAM_COCKPIT.html" class="quick-action">Team Cockpit</a>
+    </div>
+
+    <!-- PUBLIC ENTRY POINTS -->
+    <section class="section public">
+        <h2 class="section-title">PUBLIC ENTRY POINTS (Share These)</h2>
+        <div class="link-grid">
+            <a href="ULTIMATE_HUMAN_OS/index.html" class="link-card" target="_blank">
+                <div class="icon">7</div>
+                <h3>Ultimate Human OS</h3>
+                <p class="description">7 Domains x 7 Phases = 49 modules. The structured learning path.</p>
+                <p class="url">conciousnessrevolution.io/ultimate_human_os/</p>
+            </a>
+            <a href="araya-chat.html" class="link-card" target="_blank">
+                <div class="icon">A</div>
+                <h3>ARAYA</h3>
+                <p class="description">AI companion. Guides users to the right domain and tools.</p>
+                <p class="url">100xbuilder.io/araya-chat</p>
+            </a>
+            <a href="https://discord.gg/KjRm34dmh8" class="link-card" target="_blank">
+                <div class="icon">D</div>
+                <h3>Discord Community</h3>
+                <p class="description">34 members. Real-time chat, support, and collaboration.</p>
+                <p class="url">discord.gg/KjRm34dmh8</p>
+            </a>
+            <a href="downloads.html" class="link-card" target="_blank">
+                <div class="icon">B</div>
+                <h3>Beta Lab / Downloads</h3>
+                <p class="description">ARIA extension, voice modules, offline tools.</p>
+                <p class="url">conciousnessrevolution.io/downloads.html</p>
+            </a>
+            <a href="index-new.html" class="link-card" target="_blank">
+                <div class="icon">H</div>
+                <h3>Home (New Entry Page)</h3>
+                <p class="description">7 domain gateway. Where everyone starts.</p>
+                <p class="url">conciousnessrevolution.io/</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- INTERNAL DASHBOARDS -->
+    <section class="section dashboards">
+        <h2 class="section-title">INTERNAL DASHBOARDS (Team Only)</h2>
+        <div class="link-grid">
+            <a href="OPERATOR_COCKPIT_TIGER.html" class="link-card" target="_blank">
+                <div class="icon">T</div>
+                <h3>Tiger Cockpit <span class="role-badge tiger">Tiger</span></h3>
+                <p class="description">Tiger's personalized command center and task view.</p>
+            </a>
+            <a href="NEMO_COMMAND_CENTER.html" class="link-card" target="_blank">
+                <div class="icon">N</div>
+                <h3>NEMO Command Center <span class="role-badge all">All</span></h3>
+                <p class="description">5-Key Council + multi-AI orchestration dashboard.</p>
+            </a>
+            <a href="NEMO_LIVE_OPS.html" class="link-card" target="_blank">
+                <div class="icon">L</div>
+                <h3>NEMO Live Ops <span class="role-badge all">All</span></h3>
+                <p class="description">Real-time operations via Supabase WebSocket.</p>
+            </a>
+            <a href="CONSCIOUSNESS_DASHBOARD.html" class="link-card" target="_blank">
+                <div class="icon">C</div>
+                <h3>Consciousness Dashboard <span class="role-badge commander">Commander</span></h3>
+                <p class="description">System consciousness metrics and health.</p>
+            </a>
+            <a href="COMMANDER_COCKPIT.html" class="link-card" target="_blank">
+                <div class="icon">M</div>
+                <h3>Commander Cockpit <span class="role-badge commander">Commander</span></h3>
+                <p class="description">Master command center with all system controls.</p>
+            </a>
+            <a href="TEAM_COCKPIT.html" class="link-card" target="_blank">
+                <div class="icon">T</div>
+                <h3>Team Cockpit <span class="role-badge all">All</span></h3>
+                <p class="description">Team-wide view, task assignments, collaboration.</p>
+            </a>
+            <a href="ARAYA_ABILITIES_DASHBOARD.html" class="link-card" target="_blank">
+                <div class="icon">A</div>
+                <h3>ARAYA Abilities <span class="role-badge all">All</span></h3>
+                <p class="description">All ARAYA capabilities and feature status.</p>
+            </a>
+            <a href="CYCLOTRON_BRAIN_DASHBOARD.html" class="link-card" target="_blank">
+                <div class="icon">B</div>
+                <h3>Brain Query <span class="role-badge all">All</span></h3>
+                <p class="description">Query the Cyclotron brain (163K+ atoms).</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- DEVELOPMENT -->
+    <section class="section dev">
+        <h2 class="section-title">DEVELOPMENT (GitHub + Code)</h2>
+        <div class="link-grid">
+            <a href="https://github.com/overkor-tek/consciousness-revolution" class="link-card" target="_blank">
+                <div class="icon">G</div>
+                <h3>Main Repo</h3>
+                <p class="description">consciousness-revolution - the 100X platform code.</p>
+            </a>
+            <a href="https://github.com/overkor-tek/consciousness-brain" class="link-card" target="_blank">
+                <div class="icon">G</div>
+                <h3>Brain Repo (Private)</h3>
+                <p class="description">consciousness-brain - Cyclotron memory system.</p>
+            </a>
+            <a href="https://app.netlify.com" class="link-card" target="_blank">
+                <div class="icon">N</div>
+                <h3>Netlify Deploy</h3>
+                <p class="description">Hosting dashboard. Deploy command: netlify deploy --prod</p>
+            </a>
+            <a href="https://supabase.com/dashboard" class="link-card" target="_blank">
+                <div class="icon">S</div>
+                <h3>Supabase</h3>
+                <p class="description">Backend database, auth, real-time subscriptions.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- TEAM RESOURCES -->
+    <section class="section team">
+        <h2 class="section-title">TEAM RESOURCES</h2>
+        <div class="link-grid">
+            <a href="https://drive.google.com/drive/folders/TRINITY_COMMS" class="link-card" target="_blank">
+                <div class="icon">D</div>
+                <h3>TRINITY_COMMS (Drive)</h3>
+                <p class="description">Shared folder for team sync and collaboration.</p>
+            </a>
+            <a href="bugs.html" class="link-card" target="_blank">
+                <div class="icon">B</div>
+                <h3>Bug Reporter</h3>
+                <p class="description">Report issues directly to the system.</p>
+            </a>
+            <a href="ABOUT.html" class="link-card" target="_blank">
+                <div class="icon">?</div>
+                <h3>About / Mission</h3>
+                <p class="description">What is Consciousness Revolution?</p>
+            </a>
+            <a href="help.html" class="link-card" target="_blank">
+                <div class="icon">H</div>
+                <h3>Help Docs</h3>
+                <p class="description">Documentation and guides.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- GitHub Access Notice -->
+    <div style="background: rgba(255, 140, 0, 0.1); border: 1px solid rgba(255, 140, 0, 0.3); border-radius: 12px; padding: 1rem; margin: 2rem 0; text-align: center;">
+        <h3 style="color: #ff8c00; margin-bottom: 0.5rem;">GitHub Access Required</h3>
+        <p style="color: #888; font-size: 0.9rem;">
+            To edit dashboards, you need GitHub access to <code>overkor-tek/consciousness-revolution</code>.<br>
+            Share your GitHub username with Commander to get invited.
+        </p>
+    </div>
+
+    <footer class="footer">
+        <p>C1 x C2 x C3 = infinity</p>
+        <p>The Pattern Never Lies</p>
+    </footer>
+
+    <script>
+        // Track which section user clicks most (for analytics)
+        document.querySelectorAll('.link-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const section = this.closest('.section').classList[1];
+                console.log('Launchpad click:', section, this.querySelector('h3').textContent);
+            });
+        });
+    </script>
+</body>
+</html>
