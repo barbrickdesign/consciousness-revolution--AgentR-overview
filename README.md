@@ -15,7 +15,7 @@
 > - **100% of the code** in this repository originates from the main repository
 > - **Purpose**: Overview and reference copy for AgentR analysis
 > - **Main Repository**: Visit [overkor-tek/consciousness-revolution](https://github.com/overkor-tek/consciousness-revolution) for the canonical source
-> - **Full Attribution Details**: See [SOURCE_ATTRIBUTION.md](./SOURCE_ATTRIBUTION.md) and [REPOSITORY_ANALYSIS.md](./REPOSITORY_ANALYSIS.md)
+> - **📚 Full Documentation**: See [SOURCE_DOCS_INDEX.md](./SOURCE_DOCS_INDEX.md) for navigation to all attribution documents
 
 ---
 
