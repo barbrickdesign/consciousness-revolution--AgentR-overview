@@ -31,9 +31,12 @@ Consciousness Revolution now includes **Multi-Provider AI Orchestration** with *
 - ✅ **Pattern Detection** - AI-enhanced manipulation and consciousness analysis
 - ✅ **ARAYA Integration** - AI companion for the 7 Domains of Consciousness
 - ✅ **Voice Transcription** - Speech-to-text with Whisper model
+- ✅ **KERNEL Framework** - Proven prompt engineering with 94% first-try success rate
 - ✅ **Zero Config** - Works out of the box with sensible defaults
 
 📖 **[Read the Full Multi-Provider AI Guide](MULTI_PROVIDER_AI_GUIDE.md)** for detailed integration examples and advanced usage.
+
+📖 **[Learn KERNEL Prompt Engineering](KERNEL_FRAMEWORK.md)** - 6 principles for reliable AI interactions with pattern detection and consciousness work.
 
 ---
 
