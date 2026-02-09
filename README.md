@@ -8,6 +8,17 @@
 
 ---
 
+## 📋 Repository Attribution
+
+> **Note**: This repository is a complete copy of the main Consciousness Revolution platform, sourced from [`overkor-tek/consciousness-revolution`](https://github.com/overkor-tek/consciousness-revolution).
+> 
+> - **100% of the code** in this repository originates from the main repository
+> - **Purpose**: Overview and reference copy for AgentR analysis
+> - **Main Repository**: Visit [overkor-tek/consciousness-revolution](https://github.com/overkor-tek/consciousness-revolution) for the canonical source
+> - **Full Attribution Details**: See [SOURCE_ATTRIBUTION.md](./SOURCE_ATTRIBUTION.md) and [REPOSITORY_ANALYSIS.md](./REPOSITORY_ANALYSIS.md)
+
+---
+
 ## What Is This?
 
 Consciousness Revolution is an open-source platform that gives people tools to recognize patterns in communication, relationships, and decision-making. Built on Pattern Theory - the idea that recognizing patterns is the foundation of all growth.
