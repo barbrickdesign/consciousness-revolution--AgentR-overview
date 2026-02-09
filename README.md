@@ -109,6 +109,10 @@ consciousness-revolution/
 | [araya-discord-bot](https://github.com/overkor-tek/araya-discord-bot) | Discord community bot | Active |
 | [consciousness-bugs](https://github.com/overkor-tek/consciousness-bugs) | Public bug tracker | Active |
 
+**📚 System Documentation:**
+- [Systems Index](SYSTEMS_INDEX.md) - Quick reference guide to all systems and links
+- [Complete Systems Catalog](SYSTEMS_AND_LINKS_CATALOG.md) - Comprehensive documentation of all systems, repositories, and links in this ecosystem
+
 ---
 
 ## Contributing
