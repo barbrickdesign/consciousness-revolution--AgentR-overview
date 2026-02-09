@@ -41,4 +41,3 @@ Cherry-pick commits to a new branch based on current master.
 - Contributor Grant System, Marketing Agent  
 - Moltbook IP Protection, Security Monitoring
 - Architecture and technical documentation
-
