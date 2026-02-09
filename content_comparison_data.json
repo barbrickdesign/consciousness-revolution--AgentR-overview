@@ -1,0 +1,1341 @@
+{
+  "summary": {
+    "current_total": 750,
+    "main_total": 1884,
+    "exact_matches_count": 0,
+    "name_matches_count": 244,
+    "unique_count": 727,
+    "exact_percentage": 0.0,
+    "name_percentage": 32.53,
+    "unique_percentage": 96.93,
+    "exact_bytes": 0,
+    "name_bytes": 2860193,
+    "total_bytes": 64063256,
+    "exact_size_percentage": 0.0
+  },
+  "exact_matches": [],
+  "name_matches": [
+    {
+      "current_path": "CHANGELOG.md",
+      "main_path": "CHANGELOG.md",
+      "size": 2288
+    },
+    {
+      "current_path": "admin-dashboard.html",
+      "main_path": "admin-dashboard.html",
+      "size": 25921
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "rdata/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "city-3d/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 19303
+    },
+    {
+      "current_path": "dashboard.html",
+      "main_path": "dashboard.html",
+      "size": 11916
+    },
+    {
+      "current_path": "package-lock.json",
+      "main_path": "ember-terminal-main/ember-terminal-main/package-lock.json",
+      "size": 636357
+    },
+    {
+      "current_path": "package-lock.json",
+      "main_path": "backend/package-lock.json",
+      "size": 636357
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "projects/LINKt/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "projects/LINKt/vendor/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "ember-terminal-main/ember-terminal-main/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "scripts/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "logs/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "backend/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "city-3d/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "city-3d/3d-roompure-css/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "mandem.os/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "README.md",
+      "main_path": "language-samples/README.md",
+      "size": 5862
+    },
+    {
+      "current_path": "netlify.toml",
+      "main_path": "netlify.toml",
+      "size": 428
+    },
+    {
+      "current_path": "login.html",
+      "main_path": "login.html",
+      "size": 7846
+    },
+    {
+      "current_path": "login.html",
+      "main_path": "mandem.os/workspace/login.html",
+      "size": 7846
+    },
+    {
+      "current_path": "package.json",
+      "main_path": "package.json",
+      "size": 592
+    },
+    {
+      "current_path": "package.json",
+      "main_path": "projects/LINKt/package.json",
+      "size": 592
+    },
+    {
+      "current_path": "package.json",
+      "main_path": "ember-terminal-main/ember-terminal-main/package.json",
+      "size": 592
+    },
+    {
+      "current_path": "package.json",
+      "main_path": "backend/package.json",
+      "size": 592
+    },
+    {
+      "current_path": "package.json",
+      "main_path": "mandem.os/workspace/package.json",
+      "size": 592
+    },
+    {
+      "current_path": "package.json",
+      "main_path": "language-samples/package.json",
+      "size": 592
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "rdata/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "JASON_NOTICE_SYSTEM/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 7831
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "rdata/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "staging/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 6481
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "projects/LINKt/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "projects/LINKt/vendor/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "ember-terminal-main/ember-terminal-main/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "scripts/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "logs/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "backend/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "city-3d/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "city-3d/3d-roompure-css/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "mandem.os/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "voice-system/README.md",
+      "main_path": "language-samples/README.md",
+      "size": 3035
+    },
+    {
+      "current_path": "araya-extension/manifest.json",
+      "main_path": "manifest.json",
+      "size": 875
+    },
+    {
+      "current_path": "ARAYA/TEST_FILES/styles.css",
+      "main_path": "mandem.os/workspace/public/styles.css",
+      "size": 135
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "rdata/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 7917
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "rdata/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/family/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 3839
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "rdata/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/healthcare/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 3813
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "rdata/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/social-media/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 3746
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "rdata/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/_archive_sanctuary/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 15312
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "rdata/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/business/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 3967
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "rdata/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/law-enforcement/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 3791
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "rdata/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/government/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 3793
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "ember-terminal/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "ember-terminal/MandemOsV3/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "ember-terminal/terminal/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "ember-terminal-main/ember-terminal-main/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "OSKeyMap/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "rdata/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "GemBotMemory2025/GemBotAiWebControl/3dQuantumnNeuralNetGemRender/3d-quantum-neural-network/src/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "city-3d/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "city-3d/3d-roompure-css/mobile-menu-css-only/src/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "mandem.os/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "mandem.os/workspace/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "mandem.os/app/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "mandem.os/workingNicely/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "mandem.os/workingNicely/workingBetter/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "mandem.os/Mandemos-v2-main/index.html",
+      "size": 3731
+    },
+    {
+      "current_path": "seven-domains/legal/index.html",
+      "main_path": "Mandemos-v2-main/index.html",
+      "size": 3731
+    }
+  ],
+  "unique_files_sample": [
+    "C2_RESPONSIVE_ARCHITECTURE_DELIVERY_SUMMARY.md",
+    "PATTERN_DETECTOR.py",
+    "EMAIL_ANALYZER.html",
+    "TEAM_AGREEMENT.html",
+    "computer-setup-guide.html",
+    "test-component.html",
+    "10-believers-access.html",
+    "STRIPE_INTEGRATION.py",
+    "vault.html",
+    "glass-window.html",
+    "TRINITY_NEXUS_DASHBOARD.html",
+    "TRINITY_NETWORK_STATUS.html",
+    "BRAIN_INTEGRATION_HOOKS.py",
+    "SALES_PITCH_DETECTOR.html",
+    "ARAYA_LIVE_EDITING_SYSTEM.md",
+    "STONEWALLING_ANALYZER.html",
+    "trick-donkey.html",
+    "C2_TO_C1_RESPONSIVE_HANDOFF.md",
+    "course-dashboard.html",
+    "araya-beta-signup.html",
+    "BELIEF_CHECKER.html",
+    "araya-chat-with-file-writer.html",
+    "CYCLOTRON_INDEX_UPDATER.py",
+    "MANIPULATION_IMMUNITY_TRACKER.html",
+    "ARCHITECTURE.md",
+    "COMPONENT_LIBRARY_DEMO.html",
+    "FINANCIAL_DECISION_CHECKER.html",
+    "test_araya_write.txt",
+    "CYCLOTRON_ANALYTICS_ENGINE.py",
+    "SESSION_CAPTURE.py",
+    "workshop.html",
+    "START_ARAYA_SYSTEM.sh",
+    "5_ADDITIONAL_COMMS_ROUTES.md",
+    "CYCLOTRON_BRAIN_AGENT.py",
+    "CYCLOTRON_SEARCH.py",
+    "C2_7_DOMAINS_ARCHITECTURE_VISUAL.html",
+    "GOAL_ALIGNMENT_CHECK.html",
+    "araya-chat-trial.html",
+    "POST_PURCHASE_SETUP.md",
+    "network.html",
+    "tool_discovery.html",
+    "course-welcome.html",
+    "workspace.html",
+    "ARAYA_MEMORY_TABLE.sql",
+    "INDEX.md",
+    "BETA_ONBOARDING_FLOW.html",
+    "CYCLOTRON_AUDIT_SUMMARY.md",
+    "MEETING_ANALYZER.html",
+    "OPERATOR_COCKPIT_ALEX.html",
+    "PERFECTION_STATE.json",
+    "MEDIA_ANALYZER.html",
+    "CONTRIBUTING.md",
+    "GRAPHRAG_ENTITY_EXTRACTOR.py",
+    "SECURITY_SCAN_REPORT_2025_11_23.md",
+    "TEAM_LAUNCHPAD.html",
+    "RUN_ARCHITECTURE_SIMULATOR.bat",
+    "FOUNDATION_SCHEMA.sql",
+    "TRINITY_MODE_CONFIG.json",
+    "BUILDER_ECONOMICS_IMPLEMENTATION.md",
+    "sacred-theme.css",
+    "DEPLOY_CONSCIOUSNESS_DASHBOARD.md",
+    "KNOWLEDGE_CAPTURE_PIPELINE.py",
+    "WIRING_TEST.txt",
+    "MYCELIUM_API_SPEC.md",
+    "TRIPLE_TORNADO_DASHBOARD.html",
+    "pricing-live.html",
+    "GLYPH_EMAIL_ANALYZER.html",
+    "TRINITY_COMMS_R1_IDEAS.md",
+    "BRAIN_QUERY_DASHBOARD.html",
+    "community.html",
+    "temple.html",
+    "CYCLOTRON_MASTER_RAKER.py",
+    "ARCHITECTURE_SIMULATION_RESULTS.json",
+    "OPERATOR_COCKPIT_JOSH.html",
+    "index-new.html",
+    "GLYPH_BACKBONE_VISUAL.html",
+    "INFLUENCE_DETECTOR.html",
+    "COMMANDER_BRAIN.json",
+    "ARAYA_FILE_WRITER.py",
+    "music-sanctuary.html",
+    "GLYPH_ARCHITECTURE_VISUAL.html",
+    "PRESSURE_DETECTOR.html",
+    "C2_BRAIN_AGENTS_DELIVERY.md",
+    "PERSON_BODY.md",
+    "COMPUTER_2_START_HERE.md",
+    "TEMPORAL_DATA_ROTATION.py",
+    "C2_BRAIN_VISUAL_ARCHITECTURE.html",
+    "CONSCIOUSNESS_AWAKENING_FLOW.html",
+    "HOOVERING_DETECTOR.html",
+    "EMOTIONAL_STATE_CHECKER.html",
+    "TERRAIN_TIMELINE.md",
+    "SACRED_GEOMETRY_LOBBY_WITH_LOCKS_PREVIEW.html",
+    "stripe_webhook_handler.py",
+    "GASLIGHTING_DETECTOR.html",
+    "C2_7_DOMAINS_ARCHITECTURE_BLUEPRINT.md",
+    "TRUTH_SIGNAL_FINDER.html",
+    "araya-welcome.html",
+    "BOOT_VERIFICATION_RESULTS.json",
+    "ARAYA_FILE_ACCESS_README.md",
+    "RUN_ARAYA.bat"
+  ]
+}
