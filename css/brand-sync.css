@@ -1,0 +1,216 @@
+/*
+ * MASTER BRAND SYNC CSS
+ * Imports all brand systems + defines Seven Domains colors
+ * Source: Desktop/1_COMMAND/MASTER_BRAND_DNA.md
+ *
+ * USAGE: @import url('css/brand-sync.css');
+ * This gives you access to ALL brand color systems
+ */
+
+/* Import individual brand files */
+@import url('brand-overkill.css');
+@import url('brand-araya.css');
+
+:root {
+  /* ═══════════════════════════════════════════════════════════
+     CURRENT BRAND CONTEXT
+     Set this per-page to indicate which brand is active
+     ═══════════════════════════════════════════════════════════ */
+  --current-brand: 'overkill'; /* overkill | araya | domains | uhos | builder */
+
+  /* ═══════════════════════════════════════════════════════════
+     SEVEN DOMAINS COLORS - Chakra Mapped
+     ═══════════════════════════════════════════════════════════ */
+  --domain-1-command: #ff0000;     /* Red - Root - Control */
+  --domain-2-build: #ff7f00;       /* Orange - Sacral - Create */
+  --domain-3-connect: #ffff00;     /* Yellow - Solar Plexus - Communicate */
+  --domain-4-protect: #00ff00;     /* Green - Heart - Defend */
+  --domain-5-grow: #00ffff;        /* Cyan - Throat - Expand */
+  --domain-6-learn: #0000ff;       /* Indigo - Third Eye - Study */
+  --domain-7-transcend: #8b00ff;   /* Violet - Crown - Ascend */
+
+  /* Domain backgrounds (darker versions) */
+  --domain-1-bg: rgba(255, 0, 0, 0.1);
+  --domain-2-bg: rgba(255, 127, 0, 0.1);
+  --domain-3-bg: rgba(255, 255, 0, 0.1);
+  --domain-4-bg: rgba(0, 255, 0, 0.1);
+  --domain-5-bg: rgba(0, 255, 255, 0.1);
+  --domain-6-bg: rgba(0, 0, 255, 0.1);
+  --domain-7-bg: rgba(139, 0, 255, 0.1);
+
+  /* ═══════════════════════════════════════════════════════════
+     ULTIMATE HUMAN OS COLORS - Premium/Clean
+     ═══════════════════════════════════════════════════════════ */
+  --uhos-primary: #6c5ce7;         /* Premium purple */
+  --uhos-accent: #00cec9;          /* Teal accent */
+  --uhos-bg: #1a1a2e;              /* Dark blue-black */
+  --uhos-surface: #252542;         /* Surface level */
+  --uhos-text: #f0f0f0;            /* Clean white */
+  --uhos-text-muted: #a0a0a0;      /* Muted text */
+
+  /* ═══════════════════════════════════════════════════════════
+     100X BUILDER COLORS - Creator/Builder
+     ═══════════════════════════════════════════════════════════ */
+  --builder-primary: #f39c12;      /* Construction gold */
+  --builder-accent: #3498db;       /* Blueprint blue */
+  --builder-success: #2ecc71;      /* Build complete green */
+  --builder-warning: #e67e22;      /* Warning orange */
+  --builder-bg: #1a1a1a;           /* Dark background */
+  --builder-surface: #252525;      /* Surface level */
+
+  /* ═══════════════════════════════════════════════════════════
+     SHARED TYPOGRAPHY LOADING
+     ═══════════════════════════════════════════════════════════ */
+  /*
+   * Add this to <head>:
+   * <link rel="preconnect" href="https://fonts.googleapis.com">
+   * <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;700&family=VT323&family=Share+Tech+Mono&family=Fira+Code&family=JetBrains+Mono&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+   */
+
+  /* ═══════════════════════════════════════════════════════════
+     UHOS TYPOGRAPHY
+     ═══════════════════════════════════════════════════════════ */
+  --uhos-font-display: 'Poppins', system-ui, sans-serif;
+  --uhos-font-body: 'Inter', system-ui, sans-serif;
+  --uhos-font-mono: 'Fira Code', monospace;
+
+  /* ═══════════════════════════════════════════════════════════
+     100X BUILDER TYPOGRAPHY
+     ═══════════════════════════════════════════════════════════ */
+  --builder-font-display: 'Orbitron', sans-serif;
+  --builder-font-body: 'Exo 2', system-ui, sans-serif;
+  --builder-font-mono: 'Fira Code', monospace;
+
+  /* ═══════════════════════════════════════════════════════════
+     SEVEN DOMAINS TYPOGRAPHY
+     ═══════════════════════════════════════════════════════════ */
+  --domains-font-display: 'Inter', system-ui, sans-serif;
+  --domains-font-body: 'Inter', system-ui, sans-serif;
+  --domains-font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SEVEN DOMAINS UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+
+.domain-1 { color: var(--domain-1-command); }
+.domain-2 { color: var(--domain-2-build); }
+.domain-3 { color: var(--domain-3-connect); }
+.domain-4 { color: var(--domain-4-protect); }
+.domain-5 { color: var(--domain-5-grow); }
+.domain-6 { color: var(--domain-6-learn); }
+.domain-7 { color: var(--domain-7-transcend); }
+
+.domain-1-bg { background: var(--domain-1-bg); border-left: 3px solid var(--domain-1-command); }
+.domain-2-bg { background: var(--domain-2-bg); border-left: 3px solid var(--domain-2-build); }
+.domain-3-bg { background: var(--domain-3-bg); border-left: 3px solid var(--domain-3-connect); }
+.domain-4-bg { background: var(--domain-4-bg); border-left: 3px solid var(--domain-4-protect); }
+.domain-5-bg { background: var(--domain-5-bg); border-left: 3px solid var(--domain-5-grow); }
+.domain-6-bg { background: var(--domain-6-bg); border-left: 3px solid var(--domain-6-learn); }
+.domain-7-bg { background: var(--domain-7-bg); border-left: 3px solid var(--domain-7-transcend); }
+
+/* Domain badges */
+.domain-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.domain-badge.d1 { background: var(--domain-1-command); color: white; }
+.domain-badge.d2 { background: var(--domain-2-build); color: black; }
+.domain-badge.d3 { background: var(--domain-3-connect); color: black; }
+.domain-badge.d4 { background: var(--domain-4-protect); color: black; }
+.domain-badge.d5 { background: var(--domain-5-grow); color: black; }
+.domain-badge.d6 { background: var(--domain-6-learn); color: white; }
+.domain-badge.d7 { background: var(--domain-7-transcend); color: white; }
+
+/* ═══════════════════════════════════════════════════════════════
+   UHOS UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+
+.uhos-bg { background: var(--uhos-bg); }
+.uhos-surface { background: var(--uhos-surface); }
+.uhos-text { color: var(--uhos-text); }
+.uhos-primary { color: var(--uhos-primary); }
+.uhos-accent { color: var(--uhos-accent); }
+
+.uhos-card {
+  background: var(--uhos-surface);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.uhos-btn {
+  background: var(--uhos-primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.uhos-btn:hover {
+  background: #5b4cdb;
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   100X BUILDER UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+
+.builder-bg { background: var(--builder-bg); }
+.builder-surface { background: var(--builder-surface); }
+.builder-primary { color: var(--builder-primary); }
+.builder-accent { color: var(--builder-accent); }
+
+.builder-card {
+  background: var(--builder-surface);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid rgba(243, 156, 18, 0.2);
+}
+
+.builder-btn {
+  background: var(--builder-primary);
+  color: black;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-family: var(--builder-font-display);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.builder-btn:hover {
+  background: #e08e0b;
+  box-shadow: 0 0 20px rgba(243, 156, 18, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BRAND RELATIONSHIP RULES (Reference)
+
+   Hierarchy:
+   1. OVERKILL can appear alone (top-level brand)
+   2. OVERKOR always appears with or after OVERKILL
+   3. ARAYA can appear alone OR with OVERKOR
+   4. Seven Domains appears after OVERKOR introduction
+   5. UHOS/100X Builder appear within Seven Domains context
+
+   Color Mixing:
+   - OVERKILL pages: Use OVERKILL colors only
+   - OVERKOR terminal: Use OVERKOR + OVERKILL colors
+   - ARAYA interface: Use ARAYA colors exclusively
+   - Seven Domains nav: Use domain colors for icons, neutral for chrome
+   - Product pages: Blend product colors with parent brand
+   ═══════════════════════════════════════════════════════════════ */
+
+/*
+ * MASTER BRAND SYNC
+ * "The umbrella that holds it all together"
+ * THE PATTERN NEVER LIES
+ */

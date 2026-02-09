@@ -1,0 +1,246 @@
+/*
+ * ARAYA VISUAL IDENTITY CSS
+ * Retro-Futuristic AI Companion Brand System
+ * Source: Desktop/1_COMMAND/ARAYA_VISUAL_IDENTITY_DNA.md
+ *
+ * THE FEELING: 80s arcade meets spacecraft AI
+ * Tron Legacy vibes, Blade Runner 2049 aesthetics
+ */
+
+:root {
+  /* ═══════════════════════════════════════════════════════════
+     PRIMARY COLORS - The ARAYA Signature
+     ═══════════════════════════════════════════════════════════ */
+  --araya-cyan: #00f0ff;           /* Electric cyan - primary */
+  --araya-gold: #ffd700;           /* Cosmic gold - accent */
+  --araya-purple: #9370db;         /* Nebula purple - secondary */
+
+  /* The signature gradient */
+  --araya-gradient: linear-gradient(135deg, #00f0ff, #9370db, #ffd700);
+  --araya-gradient-reverse: linear-gradient(135deg, #ffd700, #9370db, #00f0ff);
+  --araya-gradient-vertical: linear-gradient(180deg, #00f0ff, #9370db, #ffd700);
+
+  /* ═══════════════════════════════════════════════════════════
+     BACKGROUND SYSTEM - Deep Space
+     ═══════════════════════════════════════════════════════════ */
+  --araya-bg-void: #030014;        /* The void - deepest */
+  --araya-bg-space: #0a0a1a;       /* Space black */
+  --araya-bg-nebula: #12122a;      /* Nebula dark */
+  --araya-bg-surface: #1a1a2e;     /* Surface level */
+
+  /* Glass effects */
+  --araya-glass: rgba(0, 240, 255, 0.05);
+  --araya-glass-medium: rgba(0, 240, 255, 0.1);
+  --araya-glass-strong: rgba(0, 240, 255, 0.15);
+  --araya-glass-border: rgba(0, 240, 255, 0.15);
+  --araya-glass-border-strong: rgba(0, 240, 255, 0.3);
+
+  /* ═══════════════════════════════════════════════════════════
+     GLOW EFFECTS - Neon Aesthetics
+     ═══════════════════════════════════════════════════════════ */
+  --araya-glow-cyan: 0 0 20px rgba(0, 240, 255, 0.5), 0 0 40px rgba(0, 240, 255, 0.3);
+  --araya-glow-gold: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.3);
+  --araya-glow-purple: 0 0 20px rgba(147, 112, 219, 0.5), 0 0 40px rgba(147, 112, 219, 0.3);
+  --araya-glow-pulse: 0 0 30px rgba(0, 240, 255, 0.8);
+  --araya-glow-soft: 0 0 10px rgba(0, 240, 255, 0.3);
+
+  /* ═══════════════════════════════════════════════════════════
+     STATE COLORS - Widget Interaction
+     ═══════════════════════════════════════════════════════════ */
+  --araya-thinking: #00f0ff;       /* Cyan pulse when thinking */
+  --araya-speaking: #ffd700;       /* Gold when responding */
+  --araya-listening: #9370db;      /* Purple when waiting */
+  --araya-alert: #ff6b6b;          /* Pattern detected */
+  --araya-success: #50fa7b;        /* Positive confirmation */
+  --araya-warning: #f1c40f;        /* Caution */
+
+  /* ═══════════════════════════════════════════════════════════
+     TYPOGRAPHY
+     ═══════════════════════════════════════════════════════════ */
+  --araya-font-logo: 'Orbitron', 'Exo 2', 'Rajdhani', sans-serif;
+  --araya-font-display: 'Orbitron', 'Audiowide', sans-serif;
+  --araya-font-body: 'Exo 2', 'Rajdhani', system-ui, sans-serif;
+  --araya-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ═══════════════════════════════════════════════════════════
+     SPACING & SIZING
+     ═══════════════════════════════════════════════════════════ */
+  --araya-widget-collapsed: 60px;
+  --araya-widget-width: 380px;
+  --araya-widget-height: 520px;
+  --araya-border-radius: 16px;
+  --araya-border-radius-sm: 8px;
+
+  /* ═══════════════════════════════════════════════════════════
+     TRANSITIONS
+     ═══════════════════════════════════════════════════════════ */
+  --araya-transition-fast: 0.15s ease;
+  --araya-transition-normal: 0.3s ease;
+  --araya-transition-slow: 0.5s ease;
+  --araya-transition-glow: 0.3s ease-in-out;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMATIONS - ARAYA Signature Effects
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Breathing glow - idle state */
+@keyframes araya-breathe {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
+  }
+}
+
+/* Floating effect */
+@keyframes araya-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Thinking pulse - faster */
+@keyframes araya-thinking {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Speaking glow - gold */
+@keyframes araya-speaking {
+  0% { filter: drop-shadow(0 0 5px var(--araya-gold)); }
+  100% { filter: drop-shadow(0 0 25px var(--araya-gold)); }
+}
+
+/* Idle pulse - soft */
+@keyframes araya-idle {
+  0%, 100% { filter: drop-shadow(0 0 10px var(--araya-cyan)); }
+  50% { filter: drop-shadow(0 0 20px var(--araya-cyan)); }
+}
+
+/* Entry animation */
+@keyframes araya-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Glitch effect for name */
+@keyframes araya-glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}
+
+/* Neon border color cycle */
+@keyframes araya-neon-border {
+  0%, 100% { border-color: var(--araya-cyan); }
+  33% { border-color: var(--araya-purple); }
+  66% { border-color: var(--araya-gold); }
+}
+
+/* Scanline sweep */
+@keyframes araya-scanline {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RETRO-FUTURISTIC EFFECTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Scanline overlay (CRT vibes) */
+.araya-scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: 10;
+}
+
+/* Grid background (Tron floor) */
+.araya-grid {
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Pixel corners (8-bit reference) */
+.araya-pixel-corners {
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 8px),
+    0 calc(100% - 8px)
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+
+.araya-text-cyan { color: var(--araya-cyan); }
+.araya-text-gold { color: var(--araya-gold); }
+.araya-text-purple { color: var(--araya-purple); }
+
+.araya-bg-void { background: var(--araya-bg-void); }
+.araya-bg-space { background: var(--araya-bg-space); }
+.araya-bg-glass {
+  background: var(--araya-glass);
+  backdrop-filter: blur(10px);
+}
+
+.araya-border {
+  border: 1px solid var(--araya-glass-border);
+}
+.araya-border-glow {
+  border: 1px solid var(--araya-glass-border);
+  box-shadow: var(--araya-glow-soft);
+}
+
+.araya-glow { box-shadow: var(--araya-glow-cyan); }
+.araya-glow-gold { box-shadow: var(--araya-glow-gold); }
+
+.araya-font-logo { font-family: var(--araya-font-logo); }
+.araya-font-body { font-family: var(--araya-font-body); }
+.araya-font-mono { font-family: var(--araya-font-mono); }
+
+.araya-animate-breathe { animation: araya-breathe 3s ease-in-out infinite; }
+.araya-animate-float { animation: araya-float 3s ease-in-out infinite; }
+.araya-animate-thinking { animation: araya-thinking 1s ease-in-out infinite; }
+.araya-animate-enter { animation: araya-enter 0.5s ease forwards; }
+
+/* ═══════════════════════════════════════════════════════════════
+   GRADIENT TEXT
+   ═══════════════════════════════════════════════════════════════ */
+
+.araya-gradient-text {
+  background: var(--araya-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/*
+ * THE PATTERN NEVER LIES
+ * "Your AI companion in the void"
+ */

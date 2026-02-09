@@ -6,7 +6,9 @@
     <title>OVERKILL KULTURE | OVERKOR ONLINE</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;700&family=VT323&display=swap" rel="stylesheet">
+    <!-- Brand System CSS -->
+    <link rel="stylesheet" href="/css/brand-sync.css">
     <style>
         * {
             margin: 0;
@@ -497,12 +499,14 @@
     <div class="dna-block">
         <!--
         DNA: OVERKILL_LANDING
-        VERSION: 1.0.0
+        VERSION: 1.1.0
         STATUS: SHIP
         DOMAIN: 1_COMMAND
         CREATED: 2026-02-08
-        PURPOSE: Main landing page with OVERKILL mascot and OVERKOR terminal aesthetic
+        UPDATED: 2026-02-08
+        PURPOSE: Main landing page with OVERKILL mascot, OVERKOR terminal, and ARAYA widget
         CONNECTS: seven-domains.html, araya-chat.html, onboarding.html, downloads.html
+        INTEGRATES: araya-widget.js, brand-sync.css (ARAYA + OVERKILL brand systems)
         BLUEPRINT: Desktop/1_COMMAND/OVERKILL_LANDING_DNA_BLUEPRINT.md
         -->
     </div>
@@ -602,5 +606,21 @@
         document.addEventListener('DOMContentLoaded', runBootSequence);
     </script>
     <script src="/js/bug-widget.js"></script>
+
+    <!-- ARAYA Widget -->
+    <div id="araya-widget"></div>
+    <script src="/js/araya-widget.js"></script>
+    <script>
+        // Initialize ARAYA widget
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof ArayaWidget !== 'undefined') {
+                ArayaWidget.init({
+                    position: 'bottom-right',
+                    enableScanlines: true,
+                    persistChat: true
+                });
+            }
+        });
+    </script>
 </body>
 </html>

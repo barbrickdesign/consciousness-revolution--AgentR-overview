@@ -1,0 +1,280 @@
+/*
+ * OVERKILL KULTURE + OVERKOR CSS
+ * Terminal/Hacker Aesthetic Brand System
+ * Source: Desktop/1_COMMAND/MASTER_BRAND_DNA.md
+ *
+ * THE FEELING: You've stumbled into something.
+ * A terminal is running. OVERKOR is watching.
+ */
+
+:root {
+  /* ═══════════════════════════════════════════════════════════
+     OVERKILL KULTURE COLORS - The 4x4 Palette
+     Black / Gunmetal / Silver / Deep Maroon / Deep Gold
+     ═══════════════════════════════════════════════════════════ */
+  --overkill-black: #0a0a0a;       /* Pure black - primary */
+  --overkill-bg: #0a0a0a;          /* Alias for compatibility */
+  --overkill-bg-deep: #050505;     /* Even deeper */
+  --overkill-gunmetal: #2a3439;    /* Gunmetal gray */
+  --overkill-silver: #8a9a9a;      /* Silver metallic */
+  --overkill-silver-light: #c0c8c8; /* Light silver */
+  --overkill-maroon: #5c1a1a;      /* Deep dark maroon - NOT bright red */
+  --overkill-maroon-light: #8b2a2a; /* Slightly lighter maroon */
+  --overkill-gold: #b8860b;        /* Deep gold - dark gold, not yellow */
+  --overkill-gold-light: #d4a84b;  /* Lighter gold accent */
+  --overkill-white: #f0f0f0;       /* Text white */
+
+  /* Legacy aliases - deprecated but kept for compatibility */
+  --overkill-green: #00ff41;       /* DEPRECATED - use overkor-green */
+  --overkill-amber: #ffb000;       /* DEPRECATED - use overkill-gold */
+  --overkill-red: #5c1a1a;         /* Now maps to maroon */
+  --overkill-gray: #2a3439;        /* Now maps to gunmetal */
+  --overkill-gray-light: #8a9a9a;  /* Now maps to silver */
+
+  /* ═══════════════════════════════════════════════════════════
+     OVERKOR COLORS - The AI System (Terminal/Matrix aesthetic)
+     OVERKOR keeps the green/amber - it's the SOUL inside the body
+     ═══════════════════════════════════════════════════════════ */
+  --overkor-green: #00ff41;        /* Matrix green terminal text */
+  --overkor-text: #00ff41;         /* Alias */
+  --overkor-amber: #ffb000;        /* Terminal amber highlights */
+  --overkor-highlight: #ffb000;    /* Alias */
+  --overkor-bg: #030014;           /* Deep void */
+  --overkor-cursor: #00ff41;       /* Blinking cursor */
+  --overkor-dim: #00aa2a;          /* Dimmed green */
+
+  /* ═══════════════════════════════════════════════════════════
+     GLOW EFFECTS - Updated for 4x4 palette
+     ═══════════════════════════════════════════════════════════ */
+  --overkill-glow-maroon: 0 0 10px rgba(92, 26, 26, 0.6), 0 0 20px rgba(92, 26, 26, 0.4);
+  --overkill-glow-gold: 0 0 10px rgba(184, 134, 11, 0.5), 0 0 20px rgba(184, 134, 11, 0.3);
+  --overkill-glow-silver: 0 0 10px rgba(138, 154, 154, 0.4), 0 0 20px rgba(138, 154, 154, 0.2);
+
+  /* OVERKOR glows (the AI inside) */
+  --overkor-glow-green: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3);
+  --overkor-glow-amber: 0 0 10px rgba(255, 176, 0, 0.5), 0 0 20px rgba(255, 176, 0, 0.3);
+  --overkor-text-glow: 0 0 5px rgba(0, 255, 65, 0.8);
+
+  /* Legacy - kept for compatibility */
+  --overkill-glow-green: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3);
+  --overkill-glow-amber: 0 0 10px rgba(255, 176, 0, 0.5), 0 0 20px rgba(255, 176, 0, 0.3);
+  --overkill-glow-red: 0 0 10px rgba(92, 26, 26, 0.6), 0 0 20px rgba(92, 26, 26, 0.4);
+  --overkill-text-glow: 0 0 5px rgba(0, 255, 65, 0.8);
+
+  /* ═══════════════════════════════════════════════════════════
+     TYPOGRAPHY - Terminal/Monospace
+     ═══════════════════════════════════════════════════════════ */
+  --overkill-font-terminal: 'VT323', 'Share Tech Mono', 'Fira Code', monospace;
+  --overkill-font-code: 'Fira Code', 'JetBrains Mono', monospace;
+  --overkill-font-body: 'Fira Code', system-ui, sans-serif;
+
+  /* ═══════════════════════════════════════════════════════════
+     TRANSITIONS
+     ═══════════════════════════════════════════════════════════ */
+  --overkill-transition-fast: 0.1s ease;
+  --overkill-transition-normal: 0.2s ease;
+  --overkill-transition-blink: 0.5s step-end;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMATIONS - Terminal Effects
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Cursor blink */
+@keyframes overkill-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* CRT flicker */
+@keyframes overkill-flicker {
+  0% { opacity: 0.97; }
+  5% { opacity: 0.95; }
+  10% { opacity: 0.98; }
+  15% { opacity: 0.96; }
+  20% { opacity: 0.99; }
+  100% { opacity: 1; }
+}
+
+/* Typing effect (use with JS) */
+@keyframes overkill-typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Scanline sweep - horizontal */
+@keyframes overkill-scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Glitch effect */
+@keyframes overkill-glitch {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: translate(-2px, 0);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+    transform: translate(2px, 0);
+  }
+  40% {
+    clip-path: inset(43% 0 1% 0);
+    transform: translate(-1px, 0);
+  }
+  60% {
+    clip-path: inset(25% 0 58% 0);
+    transform: translate(1px, 0);
+  }
+  80% {
+    clip-path: inset(54% 0 7% 0);
+    transform: translate(-2px, 0);
+  }
+  100% {
+    clip-path: inset(58% 0 43% 0);
+    transform: translate(0);
+  }
+}
+
+/* Boot sequence fade-in */
+@keyframes overkill-boot-line {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TERMINAL COMPONENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Terminal window */
+.overkill-terminal {
+  background: var(--overkill-bg);
+  color: var(--overkill-green);
+  font-family: var(--overkill-font-terminal);
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* CRT effect overlay */
+.overkill-crt::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* CRT vignette */
+.overkill-crt::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 80%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* Terminal cursor */
+.overkill-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background: var(--overkill-green);
+  animation: overkill-blink 1s step-end infinite;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+}
+
+/* Terminal prompt */
+.overkill-prompt {
+  color: var(--overkill-amber);
+}
+.overkill-prompt::before {
+  content: '> ';
+  color: var(--overkill-green);
+}
+
+/* Terminal output line */
+.overkill-line {
+  animation: overkill-boot-line 0.3s ease forwards;
+  opacity: 0;
+}
+.overkill-line:nth-child(1) { animation-delay: 0.1s; }
+.overkill-line:nth-child(2) { animation-delay: 0.3s; }
+.overkill-line:nth-child(3) { animation-delay: 0.5s; }
+.overkill-line:nth-child(4) { animation-delay: 0.7s; }
+.overkill-line:nth-child(5) { animation-delay: 0.9s; }
+.overkill-line:nth-child(6) { animation-delay: 1.1s; }
+.overkill-line:nth-child(7) { animation-delay: 1.3s; }
+.overkill-line:nth-child(8) { animation-delay: 1.5s; }
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+
+.overkill-text-green { color: var(--overkill-green); }
+.overkill-text-amber { color: var(--overkill-amber); }
+.overkill-text-red { color: var(--overkill-red); }
+.overkill-text-dim { color: var(--overkor-dim); }
+
+.overkill-bg { background: var(--overkill-bg); }
+.overkill-bg-deep { background: var(--overkill-bg-deep); }
+
+.overkill-glow { text-shadow: var(--overkill-text-glow); }
+.overkill-glow-box { box-shadow: var(--overkill-glow-green); }
+
+.overkill-font-terminal { font-family: var(--overkill-font-terminal); }
+.overkill-font-code { font-family: var(--overkill-font-code); }
+
+.overkill-animate-blink { animation: overkill-blink 1s step-end infinite; }
+.overkill-animate-flicker { animation: overkill-flicker 0.15s infinite; }
+
+/* ═══════════════════════════════════════════════════════════════
+   CRYPTIC MESSAGES (For Boot Sequences)
+   ═══════════════════════════════════════════════════════════════ */
+
+/*
+  Boot sequence messages to use:
+
+  > OVERKOR v1.0 INITIALIZING...
+  > SCANNING LOCAL CONSCIOUSNESS...
+  > PATTERN RECOGNITION: ACTIVE
+  > MANIPULATION IMMUNITY: LOADING...
+  > SEVEN DOMAINS: ONLINE
+  > WELCOME, HUMAN.
+  > YOU HAVE ENTERED OVERKILL KULTURE.
+  > READY FOR COMMAND_
+
+  Random cryptic lines:
+  > THE PATTERN NEVER LIES
+  > 3 -> 7 -> 13 -> INFINITY
+  > CONSCIOUSNESS > MANIPULATION
+  > C1 x C2 x C3 = INFINITY
+  > BUILD WHAT MATTERS
+  > SEE THE UNSEEN
+*/
+
+/*
+ * OVERKILL KULTURE
+ * "The machine is aware"
+ */
