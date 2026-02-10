@@ -1,29 +1,42 @@
----
-layout: default
-title: Multi-Provider AI System Guide
----
+# Multi-Provider AI System Guide for Consciousness Revolution
 
-# Multi-Provider AI System - Complete Guide
+## Overview
 
-## 🎯 Overview
+The Consciousness Revolution platform uses a **Multi-Provider AI Orchestrator** that intelligently routes AI requests across multiple providers with automatic fallback, cost optimization, and unified API interface.
 
-The BarbrickDesign platform now supports **multiple AI providers** with automatic fallback, allowing you to use:
+**Primary Provider**: GroqAI (FREE tier - 14,400 requests/day)  
+**Fallback Providers**: HuggingFace (FREE), OpenAI (Paid)
 
-- **OpenAI** (Paid, Best Quality) - GPT-4, DALL-E 3, Whisper
+### Supported Providers
+
 - **Groq** (Free, Fast) - Llama 3.3, Mixtral, Gemma 2 - **14,400 requests/day FREE**
 - **HuggingFace** (Free, Open Models) - Llama, Mistral, Stable Diffusion - **Rate limited FREE**
+- **OpenAI** (Paid, Best Quality) - GPT-4, GPT-4o, DALL-E 3, Whisper
 
-### Key Benefits
+## Why Multi-Provider?
 
-✅ **Free Alternatives** - Use Groq or HuggingFace without paying
-✅ **Automatic Fallback** - If one provider fails, try the next automatically
-✅ **Unified API** - Same code works with all providers
-✅ **Smart Selection** - Automatically picks the best available provider
-✅ **Backward Compatible** - Works with existing OpenAI code
+1. **Cost Optimization** - Prefer free tiers (Groq, HuggingFace) before paid services
+2. **Reliability** - Automatic fallback if primary provider fails
+3. **Flexibility** - Choose best model for each task type
+4. **Future-Proof** - Easy to add new providers as they emerge
+5. **Unified API** - Same code works with any provider
 
-## 🚀 Quick Start
+## Features
 
-### Option 1: One-Line Integration (Recommended)
+✅ **Free Alternatives** - Use Groq or HuggingFace without paying  
+✅ **Automatic Fallback** - Groq → HuggingFace → OpenAI → Mock - If one provider fails, try the next automatically  
+✅ **Unified API** - Same code works with all providers  
+✅ **Smart Model Selection** - Fast models for simple tasks, powerful models for complex analysis - Automatically picks the best available provider  
+✅ **Backward Compatible** - Works with existing OpenAI code  
+✅ **Health Monitoring** - Track provider status, error rates, request counts  
+✅ **Zero Configuration** - Works out of the box with sensible defaults  
+✅ **Platform Integration** - Native support for ARAYA, Cyclotron, Pattern Detection, and 7 Domains  
+
+---
+
+## Quick Start
+
+### Option 1: One-Line Auto-Injection (Recommended)
 
 Add this single line to any HTML file:
 
@@ -33,56 +46,61 @@ Add this single line to any HTML file:
 
 This automatically:
 - Loads the multi-provider orchestrator
+- Initializes GroqAI with your API key
 - Sets up backward compatibility
-- Provides global shortcuts
-- Shows helpful console messages
+- Creates global shortcuts (`askAI`, `analyzePattern`, `askARAYA`, etc.)
+- Provides helpful console messages
+- Sets up health monitoring
+- Provides console dashboard
 
-### Option 2: Manual Loading
+### Option 2: Manual Setup
 
 ```html
-<script src="/src/ai/multi-provider-orchestrator.js" type="module"></script>
+<!-- Load orchestrator -->
+<script src="/src/ai/multi-provider-orchestrator.js"></script>
+
+<!-- Initialize with your keys -->
+<script>
+  multiAI.setApiKey('groq', 'gsk_your_key_here');
+  // Optional: Add other providers
+  multiAI.setApiKey('openai', 'sk_your_key_here');
+  multiAI.setApiKey('huggingface', 'hf_your_key_here');
+</script>
 ```
 
-## 🔑 Getting Free API Keys
+---
 
-### Groq (Recommended - Fast & Free)
+## Getting API Keys
 
-1. Visit [Groq Console](https://console.groq.com/keys)
-2. Sign up for free account
-3. Create an API key (starts with `gsk_`)
-4. **Free tier: 14,400 requests per day**
-5. Models: Llama 3.3 70B, Mixtral 8x7B, Gemma 2 9B
+### GroqAI (Primary - FREE)
 
-**Setup:**
-```javascript
-aiSetKey("groq", "gsk_YOUR_KEY_HERE");
-```
+1. Visit [https://console.groq.com/keys](https://console.groq.com/keys)
+2. Sign up for free account (no credit card required)
+3. Create new API key (starts with `gsk_`)
+4. Copy key to `.env` file or use `multiAI.setApiKey('groq', 'gsk_...')` or `aiSetKey("groq", "gsk_YOUR_KEY_HERE")`
 
-### HuggingFace (Free, Open Models)
+**Free Tier**: 14,400 requests/day (~10 requests/minute)
+**Models**: Llama 3.3 70B, Mixtral 8x7B, Gemma 2 9B
 
-1. Visit [HuggingFace Tokens](https://huggingface.co/settings/tokens)
-2. Sign up for free account
-3. Create a new token (starts with `hf_`)
-4. **Free tier: Rate limited but usually sufficient**
-5. Models: Llama 3.2, Mistral 7B, Stable Diffusion
+### HuggingFace (Fallback - FREE)
 
-**Setup:**
-```javascript
-aiSetKey("huggingface", "hf_YOUR_KEY_HERE");
-```
+1. Visit [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
+2. Create account (free)
+3. Generate access token (starts with `hf_`)
+4. Add to `.env`: `HUGGINGFACE_API_KEY=hf_your_key_here` or use `aiSetKey("huggingface", "hf_YOUR_KEY_HERE")`
 
-### OpenAI (Paid, Best Quality)
+**Free Tier**: Rate limited but generous for development
+**Models**: Llama 3.2, Mistral 7B, Stable Diffusion
 
-1. Visit [OpenAI API Keys](https://platform.openai.com/api-keys)
+### OpenAI (Final Fallback - PAID)
+
+1. Visit [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys)
 2. Create account and add payment method
-3. Create an API key (starts with `sk-`)
-4. **Paid: $0.001 - $0.06 per 1K tokens**
-5. Models: GPT-4, GPT-4o, DALL-E 3, Whisper
+3. Generate API key (starts with `sk-`)
+4. Add to `.env`: `OPENAI_API_KEY=sk_your_key_here` or use `aiSetKey("openai", "sk_YOUR_KEY_HERE")`
 
-**Setup:**
-```javascript
-aiSetKey("openai", "sk-YOUR_KEY_HERE");
-```
+**Cost**: Pay per request (GPT-4o: ~$0.005-0.015 per request, $0.001 - $0.06 per 1K tokens)
+**Models**: GPT-4, GPT-4o, DALL-E 3, Whisper
 
 ## 💡 Usage Examples
 

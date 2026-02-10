@@ -1,9 +1,10 @@
 {
-  "name": "Barbrick Design GroqAI Orchestrator",
+  "name": "Consciousness Revolution GroqAI Orchestrator",
   "version": "1.0.0",
   "description": "Repository-wide AI orchestration using GroqAI as the primary provider",
   "provider": "groq",
-  "apiKey": "YOUR_GROQ_API_KEY_HERE",
+  "apiKey": "",
+  "apiKeyEnv": "GROQ_API_KEY",
   "enabled": true,
   "priority": 1,
   "freeTier": true,
@@ -30,6 +31,10 @@
     "logging": true
   },
   "integrations": {
+    "arayaSystem": true,
+    "cyclotronBrain": true,
+    "trinityOrchestration": true,
+    "patternDetectors": true,
     "merlinHive": true,
     "multiProviderOrchestrator": true,
     "autonomousAPIKeyManager": true,
@@ -46,6 +51,11 @@
   },
   "usage": {
     "projects": [
+      "araya-consciousness-system",
+      "cyclotron-brain",
+      "pattern-detection-tools",
+      "consciousness-dashboard",
+      "seven-domains-assessment",
       "agent-systems",
       "government-grants-portal",
       "contributor-dashboard",

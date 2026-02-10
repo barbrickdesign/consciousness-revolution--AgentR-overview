@@ -11,7 +11,7 @@
  * - Performance monitoring
  * - Error handling with retry logic
  * 
- * @author BarbrickDesign Platform Team
+ * @author Consciousness Revolution Team
  * @version 1.0.0
  */
 
@@ -93,7 +93,7 @@
             await loadScript('/src/ai/multi-provider-orchestrator.js');
         }
 
-        // Wait for multiAI to be available with setApiKey method
+        // Wait for multiAI to be available with all required methods
         let attempts = 0;
         while ((!window.multiAI || typeof window.multiAI.setApiKey !== 'function') && attempts < 10) {
             await sleep(100);
