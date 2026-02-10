@@ -1,28 +1,49 @@
-# GroqAI Orchestrator Integration Guide
+# GroqAI Orchestrator Guide for Consciousness Revolution
 
 ## Overview
 
-The Barbrick Design repository now uses **GroqAI** as the primary, repo-wide AI orchestrator. This integration provides:
+The Consciousness Revolution platform uses **GroqAI** as the primary AI orchestrator, providing **FREE** AI capabilities with automatic fallback to other providers.
 
-- **Free Tier Access**: 14,400 requests per day
-- **Fast Inference**: Optimized for speed with Llama 3.3, Mixtral, and other models
-- **Automatic Fallback**: Falls back to OpenAI or HuggingFace if needed
-- **Unified Interface**: Consistent API across all projects
-- **Health Monitoring**: Automatic health checks and error tracking
-- **Zero Configuration**: Works out of the box for all projects
+## Features
 
-## API Key
+- ✅ **Free Tier**: 14,400 requests per day (no credit card required!)
+- ✅ **Fast Inference**: Optimized for speed with Llama 3.3, Mixtral models
+- ✅ **Automatic Fallback**: Falls back to HuggingFace or OpenAI if needed
+- ✅ **Unified Interface**: Consistent API across all projects
+- ✅ **Health Monitoring**: Automatic health checks and error tracking
+- ✅ **Zero Configuration**: Works out of the box for all projects
 
-The repo-wide GroqAI API key is:
+## API Key Setup
+
+### Get Your Free Groq API Key
+
+1. Visit [https://console.groq.com/keys](https://console.groq.com/keys)
+2. Sign up for a free account (no credit card needed)
+3. Create a new API key (starts with `gsk_`)
+4. Copy your key
+
+### Configure API Key
+
+Add your key to `.env` file:
+
+```bash
+GROQ_API_KEY=gsk_your_key_here
 ```
-YOUR_GROQ_API_KEY_HERE
-```
-(Get your key from https://console.groq.com/keys)
 
 This key is configured in:
 - **Configuration File**: `groq-orchestrator-config.json`
 - **Environment File**: `.env` (not committed to git)
 - **Initialization Script**: `groq-orchestrator-init.js`
+
+Or set it directly in your HTML:
+
+```html
+<script src="/groq-orchestrator-init.js"></script>
+<script>
+  // Set key programmatically
+  multiAI.setApiKey('groq', 'gsk_your_key_here');
+</script>
+```
 
 ## Quick Start
 
@@ -40,7 +61,7 @@ Add this to your HTML file:
     const response = await groqAI.chat([
       {
         role: 'user',
-        content: 'Hello! How can you help me?'
+        content: 'Explain pattern recognition'
       }
     ]);
     
@@ -57,7 +78,7 @@ Add this to your HTML file:
 
 <script>
   // Set GroqAI key
-  multiAI.setApiKey('groq', 'YOUR_GROQ_API_KEY_HERE');
+  multiAI.setApiKey('groq', 'gsk_your_key_here');
   
   // Use the API
   async function myAIFunction() {
@@ -79,10 +100,7 @@ Add this to your HTML file:
 
 ```javascript
 const response = await groqAI.chat([
-  {
-    role: 'user',
-    content: 'What is the capital of France?'
-  }
+  { role: 'user', content: 'What are the 7 domains of consciousness?' }
 ]);
 
 console.log(response.choices[0].message.content);
@@ -94,11 +112,11 @@ console.log(response.choices[0].message.content);
 const response = await groqAI.chat([
   {
     role: 'system',
-    content: 'You are a helpful assistant for the Barbrick Design platform.'
+    content: 'You are a consciousness coach helping people recognize patterns.'
   },
   {
     role: 'user',
-    content: 'How do I create a new project?'
+    content: 'How do I identify gaslighting?'
   }
 ]);
 
@@ -111,7 +129,7 @@ console.log(response.choices[0].message.content);
 const response = await groqAI.chat([
   {
     role: 'user',
-    content: 'Generate a creative story.'
+    content: 'Generate a creative healing story.'
   }
 ], {
   model: 'llama-3.3-70b-versatile',  // Specify model
@@ -128,7 +146,7 @@ console.log(response.choices[0].message.content);
 // Get audio file from input
 const audioFile = document.getElementById('audioInput').files[0];
 
-// Transcribe
+// Transcribe with Whisper
 const transcription = await groqAI.transcribe(audioFile);
 
 console.log(transcription.text);
@@ -137,14 +155,15 @@ console.log(transcription.text);
 ### Check Status
 
 ```javascript
-// Get current status
+// Get current AI system status
 const status = groqAI.getStatus();
 
 console.log('Health:', status.healthStatus);
 console.log('Requests:', status.requestCount);
+console.log('Errors:', status.errorCount);
 console.log('Error Rate:', status.errorRate);
 
-// Show dashboard
+// Show detailed dashboard
 groqAI.showDashboard();
 ```
 
@@ -152,12 +171,12 @@ groqAI.showDashboard();
 
 ### Chat Models
 
-| Model | Description | Speed | Quality |
-|-------|-------------|-------|---------|
-| `llama-3.3-70b-versatile` | Primary model, best balance | Fast | High |
-| `llama-3.1-8b-instant` | Fastest model, good quality | Fastest | Medium-High |
-| `mixtral-8x7b-32768` | Large context window | Fast | High |
-| `gemma2-9b-it` | Lightweight alternative | Fastest | Medium |
+| Model | Description | Speed | Best For |
+|-------|-------------|-------|----------|
+| `llama-3.3-70b-versatile` | Primary model (default) | Fast | General purpose, high quality, consciousness analysis |
+| `llama-3.1-8b-instant` | Fastest model | Fastest | Quick responses, simple tasks, pattern detection |
+| `mixtral-8x7b-32768` | Large context window | Fast | Long conversations, documents, deep analysis |
+| `gemma2-9b-it` | Lightweight | Very Fast | Simple queries, basic pattern recognition |
 
 **Note:** `llama-3.1-70b-versatile` has been decommissioned by Groq. Use `llama-3.3-70b-versatile` as the primary alternative.
 
@@ -165,7 +184,7 @@ groqAI.showDashboard();
 
 | Model | Description | Use Case |
 |-------|-------------|----------|
-| `whisper-large-v3` | Audio transcription | Speech-to-text |
+| `whisper-large-v3` | Audio transcription | Speech-to-text, voice notes, conversation analysis |
 
 ## Configuration
 
@@ -173,9 +192,9 @@ groqAI.showDashboard();
 
 ```json
 {
-  "name": "Barbrick Design GroqAI Orchestrator",
+  "name": "Consciousness Revolution GroqAI Orchestrator",
   "provider": "groq",
-  "apiKey": "YOUR_GROQ_API_KEY_HERE",
+  "apiKey": "gsk_your_key_here",
   "enabled": true,
   "priority": 1,
   "models": {
@@ -196,35 +215,100 @@ groqAI.showDashboard();
 
 ```bash
 # Primary AI Orchestrator
-GROQ_API_KEY=YOUR_GROQ_API_KEY_HERE
+GROQ_API_KEY=gsk_your_key_here
 
 # Fallback providers (optional)
 OPENAI_API_KEY=sk-your-openai-key-here
+HUGGINGFACE_API_KEY=hf_your_key_here
 ```
 
 ## Integration Points
 
 The GroqAI orchestrator is integrated across:
 
-### 1. Agent Systems
+### 1. Consciousness Systems
+- **ARAYA**: Healing consciousness conversations and pattern analysis
+- **Cyclotron Brain**: Knowledge queries and semantic search
+- **Pattern Detectors**: Real-time manipulation pattern recognition
+- **7 Domains**: Consciousness assessment and guidance
+
+### 2. Agent Systems
 - **Merlin Hive**: Central AI coordination
 - **Agent R**: System architecture decisions
 - **Management Dashboard**: Monitoring and control
 
-### 2. User-Facing Features
+### 3. User-Facing Features
 - **Government Grants Portal**: Grant matching and application generation
 - **Contributor Dashboard**: AI-assisted guidance
 - **Megan AI Dashboard**: Multi-provider interface
 
-### 3. Backend Services
+### 4. Backend Services
 - **API Connection Manager**: Automatic retry and fallback
 - **Autonomous API Key Manager**: Smart key sourcing
 - **Enhancement Loop**: Code improvement suggestions
 
-### 4. Content Generation
+### 5. Content Generation
 - **GemBot Universe**: AI character interactions
 - **Voice NFT**: Audio processing
 - **Content Sharing**: Automated content generation
+
+## Integration with Consciousness Systems
+
+### ARAYA Consciousness System
+
+```javascript
+// Integrate with ARAYA for consciousness analysis
+const analysis = await groqAI.chat([
+  {
+    role: 'system',
+    content: 'You are ARAYA, analyzing consciousness patterns with empathy and wisdom.'
+  },
+  {
+    role: 'user',
+    content: `Analyze this message for manipulation patterns: "${userMessage}"`
+  }
+]);
+```
+
+### Pattern Detection Tools
+
+```javascript
+// Enhance pattern detectors with AI
+async function detectGaslighting(message) {
+  const response = await groqAI.chat([
+    {
+      role: 'system',
+      content: 'You are a pattern recognition expert. Identify gaslighting tactics educationally, not diagnostically.'
+    },
+    {
+      role: 'user',
+      content: message
+    }
+  ]);
+  
+  return response.choices[0].message.content;
+}
+```
+
+### Cyclotron Brain Integration
+
+```javascript
+// Use for Cyclotron knowledge queries
+async function queryBrain(question) {
+  const response = await groqAI.chat([
+    {
+      role: 'system',
+      content: 'You have access to the Cyclotron knowledge base. Answer based on consciousness principles and pattern theory.'
+    },
+    {
+      role: 'user',
+      content: question
+    }
+  ]);
+  
+  return response.choices[0].message.content;
+}
+```
 
 ## API Reference
 
@@ -293,6 +377,27 @@ A comprehensive test suite is available at:
 3. Check results for each test
 4. View system status in real-time
 
+Or check the status dashboard in browser console:
+
+```javascript
+// In browser console
+groqAI.showDashboard();
+```
+
+Output:
+```
+🤖 GroqAI Orchestrator Dashboard
+══════════════════════════════════════════════════
+Status: ✅ Initialized
+Health: ✅ healthy
+Provider: groq
+Primary Model: llama-3.3-70b-versatile
+Requests: 42
+Errors: 0
+Error Rate: 0.00%
+══════════════════════════════════════════════════
+```
+
 ## Monitoring
 
 ### Health Checks
@@ -320,28 +425,6 @@ console.log(`Errors: ${status.errorCount}`);
 console.log(`Error Rate: ${status.errorRate}`);
 ```
 
-### Dashboard
-
-View real-time status:
-
-```javascript
-groqAI.showDashboard();
-```
-
-Output:
-```
-🤖 GroqAI Orchestrator Dashboard
-══════════════════════════════════════════════════
-Status: ✅ Initialized
-Health: ✅ healthy
-Provider: groq
-Primary Model: llama-3.3-70b-versatile
-Requests: 42
-Errors: 0
-Error Rate: 0.00%
-══════════════════════════════════════════════════
-```
-
 ## Error Handling
 
 The orchestrator includes robust error handling:
@@ -362,9 +445,16 @@ try {
 ### Fallback Providers
 
 If GroqAI fails, the system automatically falls back to:
-1. OpenAI (if configured)
-2. HuggingFace (if configured)
-3. Mock responses (for testing)
+1. **HuggingFace** (free, rate limited)
+2. **OpenAI** (paid, highest quality)
+3. **Mock responses** (for testing)
+
+Configure fallback providers in `.env`:
+
+```bash
+HUGGINGFACE_API_KEY=hf_your_key_here
+OPENAI_API_KEY=sk-your_key_here
+```
 
 ### Error Types
 
@@ -377,14 +467,21 @@ Common errors and solutions:
 | `Invalid model` | Model name typo | Check available models list |
 | `Network error` | Connection issue | Check internet connection |
 
-## Best Practices
+## Rate Limits & Best Practices
 
-### 1. Keep Requests Concise
+### Free Tier Limits
+- **Daily**: 14,400 requests per day
+- **Rate**: ~10 requests per minute average
+- **Burst**: Higher rates allowed for short periods
+
+### Best Practices
+
+#### 1. Keep Requests Concise
 
 ```javascript
 // Good
 const response = await groqAI.chat([
-  { role: 'user', content: 'What is 2+2?' }
+  { role: 'user', content: 'Summarize pattern theory in 2 sentences' }
 ]);
 
 // Avoid
@@ -393,7 +490,7 @@ const response = await groqAI.chat([
 ]);
 ```
 
-### 2. Use Appropriate Models
+#### 2. Use Appropriate Models
 
 ```javascript
 // For quick tasks, use fast model
@@ -401,13 +498,13 @@ const quick = await groqAI.chat([...], {
   model: 'llama-3.1-8b-instant'
 });
 
-// For complex tasks, use primary model
+// For complex consciousness analysis, use primary model
 const complex = await groqAI.chat([...], {
   model: 'llama-3.3-70b-versatile'
 });
 ```
 
-### 3. Handle Errors Gracefully
+#### 3. Handle Errors Gracefully
 
 ```javascript
 async function safeAIRequest(prompt) {
@@ -418,15 +515,21 @@ async function safeAIRequest(prompt) {
     return response.choices[0].message.content;
   } catch (error) {
     console.error('AI request failed:', error);
-    return 'Sorry, I encountered an error. Please try again.';
+    return 'Sorry, AI is temporarily unavailable. Please try again.';
   }
 }
 ```
 
-### 4. Monitor Usage
+#### 4. Monitor Usage
 
 ```javascript
 // Check status periodically
+const status = groqAI.getStatus();
+if (status.requestCount > 10000) {
+  console.warn('Approaching daily limit');
+}
+
+// Check periodically
 setInterval(() => {
   const status = groqAI.getStatus();
   if (status.errorRate > 10) {
@@ -435,19 +538,12 @@ setInterval(() => {
 }, 60000); // Check every minute
 ```
 
-## Rate Limits
-
-### GroqAI Free Tier
-- **Daily Limit**: 14,400 requests per day
-- **Rate**: ~10 requests per minute on average
-- **Burst**: Higher rates allowed for short periods
-
 ### Avoiding Rate Limits
 
 ```javascript
 // Implement request queue
 const requestQueue = [];
-const processing = false;
+let processing = false;
 
 async function queuedRequest(messages) {
   return new Promise((resolve, reject) => {
@@ -476,29 +572,48 @@ async function processQueue() {
 
 ## Troubleshooting
 
-### Issue: "GroqAI orchestrator not initialized"
+### "GroqAI orchestrator not initialized"
 
 **Solution:**
 1. Check that `groq-orchestrator-init.js` is loaded
 2. Wait for initialization: `window.addEventListener('load', () => { /* use groqAI */ })`
 3. Check browser console for initialization errors
 
-### Issue: "API key validation failed"
+```javascript
+window.addEventListener('load', () => {
+  // Use groqAI after page loads
+  groqAI.showDashboard();
+});
+```
+
+### "API key not set" or "API key validation failed"
 
 **Solution:**
 1. Verify key in `groq-orchestrator-config.json`
 2. Check that key starts with `gsk_`
 3. Ensure config file is accessible (not blocked by CORS)
+4. Set key programmatically if needed:
 
-### Issue: Rate limit errors
+```javascript
+multiAI.setApiKey('groq', 'gsk_your_key_here');
+```
+
+### Rate limit errors
 
 **Solution:**
 1. Check request count: `groqAI.getStatus().requestCount`
 2. Implement request queuing (see Rate Limits section)
 3. Consider using fast model for simple requests
 4. Wait for rate limit to reset (resets daily)
+5. Add delay between requests:
 
-### Issue: Slow responses
+```javascript
+// Add delay between requests
+await new Promise(resolve => setTimeout(resolve, 1000));
+const response = await groqAI.chat(messages);
+```
+
+### Slow responses
 
 **Solution:**
 1. Use faster model: `llama-3.1-8b-instant`
@@ -546,10 +661,16 @@ For issues or questions:
 1. **Check Test Suite**: Run `test-groq-orchestrator.html` to diagnose
 2. **View Console**: Check browser console for detailed error messages
 3. **Check Status**: Run `groqAI.showDashboard()` to see health status
-4. **Contact**: Email BarbrickDesign@gmail.com with:
-   - Error messages from console
-   - Test results
-   - Steps to reproduce
+4. **Get API Key**: [https://console.groq.com/keys](https://console.groq.com/keys)
+5. **Documentation**: This file
+6. **Issues**: Open issue on GitHub repository
+
+## Security Notes
+
+- ✅ API keys should be in `.env` file (not committed to git)
+- ✅ `.env` is already in `.gitignore`
+- ✅ Never hardcode API keys in source code
+- ✅ Use environment variables for production
 
 ## Changelog
 
@@ -561,13 +682,15 @@ For issues or questions:
 - Multi-provider fallback support
 - Health monitoring and tracking
 - Full documentation
+- Integration with ARAYA, Cyclotron, and pattern detectors
 
 ## License
 
-This integration is part of the Barbrick Design platform. See main repository LICENSE for details.
+This integration is part of the Consciousness Revolution platform. See main repository LICENSE for details.
 
 ---
 
-**Last Updated**: 2026-02-08
-**Maintained by**: BarbrickDesign Platform Team
-**Contact**: BarbrickDesign@gmail.com
+**Built for Consciousness Revolution** - Pattern recognition powered by AI 🧠✨
+
+**Last Updated**: 2026-02-08  
+**Contact**: Open issue on GitHub for support

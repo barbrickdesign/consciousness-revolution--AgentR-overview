@@ -8,6 +8,52 @@
 
 ---
 
+## 🔄 Repository Merge Status
+
+This overview repository is ready to merge with the main [consciousness-revolution](https://github.com/overkor-tek/consciousness-revolution) repository. 
+
+**Merge Documentation:**
+- 📋 [MERGE_PLAN.md](MERGE_PLAN.md) - Complete 7-phase merge strategy
+- ⚡ [MERGE_QUICKSTART.md](MERGE_QUICKSTART.md) - Quick start guide for merging
+- 🔧 [MERGE_CONFLICT_RESOLUTION.md](MERGE_CONFLICT_RESOLUTION.md) - Detailed conflict resolution guide
+- 🤖 [merge-main-repo.sh](merge-main-repo.sh) - Automated merge script
+
+**What Will Be Merged:** ~1,140 files including ember-terminal, GemBotMemory2025, city-3d, mandem.os, and more.
+
+---
+
+## 🤖 AI-Powered Platform
+
+Consciousness Revolution now includes **Multi-Provider AI Orchestration** with **FREE** GroqAI integration (14,400 requests/day).
+
+**Quick Integration:**
+```html
+<!-- Add to any HTML page for instant AI capabilities -->
+<script src="/js/multi-ai-auto-inject.js"></script>
+<script>
+  // Use AI anywhere in your code
+  const answer = await askAI('What is pattern recognition?');
+  const analysis = await analyzePattern('Text to analyze', 'manipulation');
+  const guidance = await askARAYA('How do I set boundaries?', 'Peace');
+</script>
+```
+
+**Key Features:**
+- ✅ **Free Tier** - 14,400 AI requests per day via GroqAI (no credit card)
+- ✅ **Smart Fallback** - Automatically switches between Groq, HuggingFace, OpenAI
+- ✅ **One-Line Setup** - Single script tag for complete AI integration
+- ✅ **Pattern Detection** - AI-enhanced manipulation and consciousness analysis
+- ✅ **ARAYA Integration** - AI companion for the 7 Domains of Consciousness
+- ✅ **Voice Transcription** - Speech-to-text with Whisper model
+- ✅ **KERNEL Framework** - Proven prompt engineering with 94% first-try success rate
+- ✅ **Zero Config** - Works out of the box with sensible defaults
+
+📖 **[Read the Full Multi-Provider AI Guide](MULTI_PROVIDER_AI_GUIDE.md)** for detailed integration examples and advanced usage.
+
+📖 **[Learn KERNEL Prompt Engineering](KERNEL_FRAMEWORK.md)** - 6 principles for reliable AI interactions with pattern detection and consciousness work.
+
+---
+
 ## What Is This?
 
 Consciousness Revolution is an open-source platform that gives people tools to recognize patterns in communication, relationships, and decision-making. Built on Pattern Theory - the idea that recognizing patterns is the foundation of all growth.

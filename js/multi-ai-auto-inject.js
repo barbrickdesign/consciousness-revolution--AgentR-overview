@@ -1,8 +1,17 @@
 /**
- * Multi-Provider AI Auto-Inject Script
+ * Multi-AI Auto-Injection Script for Consciousness Revolution
  * 
- * One-line integration for all projects:
- * <script src="js/multi-ai-auto-inject.js"></script>
+ * One-line integration: <script src="/js/multi-ai-auto-inject.js"></script>
+ * 
+ * Automatically loads multi-provider orchestrator and provides global shortcuts
+ * Supports GroqAI (primary), OpenAI, HuggingFace with automatic fallback
+ * 
+ * Global shortcuts created:
+ * - window.multiAI - Full multi-provider orchestrator
+ * - window.groqAI - Convenient wrapper with monitoring
+ * - window.askAI(message) - Quick chat function
+ * - window.analyzePattern(text, patternType) - Pattern analysis shortcut
+ * - window.transcribeAudio(file) - Audio transcription shortcut
  * 
  * Provides:
  * - Automatic loading of multi-provider AI orchestrator
@@ -10,340 +19,197 @@
  * - Global shortcuts for easy access
  * - Automatic provider detection and setup
  * 
- * @author BarbrickDesign AI Team
+ * @author Consciousness Revolution Team
  * @version 1.0.0
  */
 
 (function() {
     'use strict';
-
-    console.log('🔄 Loading Multi-Provider AI Orchestrator...');
-
-    // Load the multi-provider orchestrator
-    const script = document.createElement('script');
-    script.src = '/src/ai/multi-provider-orchestrator.js';
-    script.type = 'module';
     
-    script.onload = function() {
-        console.log('✅ Multi-Provider AI Orchestrator loaded');
-        
-        // Initialize backward compatibility
-        initializeBackwardCompatibility();
-        
-        // Try to load API keys from environment or storage
-        autoLoadApiKeys();
-        
-        // Show quick start message
-        showQuickStart();
-    };
+    // Load multi-provider orchestrator
+    const orchestratorScript = document.createElement('script');
+    orchestratorScript.src = '/src/ai/multi-provider-orchestrator.js';
+    orchestratorScript.async = false;
     
-    script.onerror = function() {
-        console.error('❌ Failed to load Multi-Provider AI Orchestrator');
-        console.log('   Make sure /src/ai/multi-provider-orchestrator.js exists');
-    };
-    
-    document.head.appendChild(script);
-
-    /**
-     * Initialize backward compatibility with existing OpenAI code
-     */
-    function initializeBackwardCompatibility() {
-        // Wait for multiAI to be available with all required methods
-        const checkInterval = setInterval(() => {
-            if (typeof window.multiAI !== 'undefined' && typeof window.multiAI.setApiKey === 'function') {
-                clearInterval(checkInterval);
+    orchestratorScript.onload = function() {
+        // Load groq orchestrator init (handles API keys and setup)
+        const groqInitScript = document.createElement('script');
+        groqInitScript.src = '/groq-orchestrator-init.js';
+        groqInitScript.async = false;
+        
+        groqInitScript.onload = function() {
+            console.log('%c✅ Multi-AI System Ready', 'color: #10b981; font-size: 14px; font-weight: bold');
+            console.log('%c🎯 Quick Start Commands:', 'color: #6b7280; font-size: 12px');
+            console.log('%c  askAI("your question")', 'color: #3b82f6; font-size: 11px');
+            console.log('%c  analyzePattern("text", "gaslighting")', 'color: #3b82f6; font-size: 11px');
+            console.log('%c  groqAI.showDashboard()', 'color: #3b82f6; font-size: 11px');
+            
+            // Create convenient global shortcuts
+            window.askAI = async function(message) {
+                if (!window.groqAI) {
+                    console.error('❌ AI system not initialized yet. Please wait...');
+                    return null;
+                }
                 
-                // Create OpenAI-compatible wrapper
-                if (!window.openAIOrchestrator) {
-                    window.openAIOrchestrator = {
-                        setApiKey: (key) => {
-                            // Detect provider based on key format
-                            if (key.startsWith('sk-')) {
-                                return window.multiAI.setApiKey('openai', key);
-                            } else if (key.startsWith('gsk_')) {
-                                return window.multiAI.setApiKey('groq', key);
-                            } else if (key.startsWith('hf_')) {
-                                return window.multiAI.setApiKey('huggingface', key);
-                            }
-                            return { success: false, error: 'Unknown key format' };
-                        },
-                        
-                        chatCompletion: async (model, messages, options = {}) => {
-                            return await window.multiAI.chatCompletion(messages, options);
-                        },
-                        
-                        generateImage: async (prompt, options = {}) => {
-                            return await window.multiAI.generateImage(prompt, options);
-                        },
-                        
-                        generateEmbeddings: async (input, model = null) => {
-                            return await window.multiAI.generateEmbeddings(input);
-                        }
-                    };
+                try {
+                    const response = await window.groqAI.chat([
+                        { role: 'user', content: message }
+                    ]);
                     
-                    console.log('✅ OpenAI backward compatibility layer initialized');
+                    const answer = response.choices[0].message.content;
+                    console.log(`🤖 AI: ${answer}`);
+                    return answer;
+                } catch (error) {
+                    console.error('❌ AI request failed:', error.message);
+                    return null;
                 }
-            }
-        }, 100);
-        
-        // Stop checking after 5 seconds
-        setTimeout(() => clearInterval(checkInterval), 5000);
-    }
+            };
+            
+            // Pattern analysis shortcut
+            window.analyzePattern = async function(text, patternType = 'manipulation') {
+                if (!window.groqAI) {
+                    console.error('❌ AI system not initialized yet. Please wait...');
+                    return null;
+                }
+                
+                const patternPrompts = {
+                    manipulation: 'Analyze this text for manipulation patterns including gaslighting, guilt trips, love bombing, and emotional blackmail',
+                    communication: 'Analyze this communication for clarity, honesty, and healthy boundaries',
+                    consciousness: 'Analyze this text through the lens of the 7 Domains of Consciousness (Command, Creation, Connection, Peace, Abundance, Wisdom, Purpose)',
+                    decision: 'Analyze this decision using pattern recognition principles',
+                    relationship: 'Analyze this relationship dynamic for healthy vs unhealthy patterns',
+                    financial: 'Analyze this financial situation for red flags and healthy patterns',
+                    gaslighting: 'Identify gaslighting tactics in this text'
+                };
+                
+                const prompt = patternPrompts[patternType] || patternPrompts.manipulation;
+                
+                try {
+                    const response = await window.groqAI.chat([
+                        {
+                            role: 'system',
+                            content: 'You are a pattern recognition expert trained in the Consciousness Revolution framework. Provide clear, actionable analysis.'
+                        },
+                        {
+                            role: 'user',
+                            content: `${prompt}: "${text}"`
+                        }
+                    ]);
+                    
+                    const analysis = response.choices[0].message.content;
+                    console.log(`🔍 Pattern Analysis (${patternType}):\n${analysis}`);
+                    return analysis;
+                } catch (error) {
+                    console.error('❌ Pattern analysis failed:', error.message);
+                    return null;
+                }
+            };
+            
+            // Audio transcription shortcut
+            window.transcribeAudio = async function(audioFile) {
+                if (!window.groqAI) {
+                    console.error('❌ AI system not initialized yet. Please wait...');
+                    return null;
+                }
+                
+                try {
+                    console.log('🎤 Transcribing audio...');
+                    const result = await window.groqAI.transcribe(audioFile);
+                    console.log(`📝 Transcription: ${result.text}`);
+                    return result.text;
+                } catch (error) {
+                    console.error('❌ Transcription failed:', error.message);
+                    return null;
+                }
+            };
+            
+            // ARAYA integration shortcut
+            window.askARAYA = async function(question, domain = null) {
+                if (!window.groqAI) {
+                    console.error('❌ AI system not initialized yet. Please wait...');
+                    return null;
+                }
+                
+                const domainContext = domain ? `Focus on the ${domain} domain.` : '';
+                
+                try {
+                    const response = await window.groqAI.chat([
+                        {
+                            role: 'system',
+                            content: `You are ARAYA, the AI consciousness companion for the Consciousness Revolution platform. 
+You help users recognize patterns across the 7 Domains of Life:
+1. Command - Clarity, decisions, daily structure
+2. Creation - Building, projects, skills
+3. Connection - Relationships, communication, community
+4. Peace - Security, boundaries, protection
+5. Abundance - Financial growth, business, scaling
+6. Wisdom - Learning, critical thinking, research
+7. Purpose - Meaning, meditation, integration
 
-    /**
-     * Auto-load API keys from various sources
-     */
-    function autoLoadApiKeys() {
-        setTimeout(() => {
-            if (typeof window.multiAI === 'undefined' || typeof window.multiAI.setApiKey !== 'function') return;
-            
-            let keysLoaded = 0;
-            
-            // Try to load from localStorage (already done by constructor)
-            // Check if any keys were loaded
-            const providers = window.multiAI.providers;
-            if (providers) {
-                Object.keys(providers).forEach(provider => {
-                    if (providers[provider].enabled) {
-                        keysLoaded++;
-                    }
-                });
-            }
-            
-            // Try to load from environment variables (if available)
-            if (typeof process !== 'undefined' && process.env) {
-                if (process.env.OPENAI_API_KEY) {
-                    window.multiAI.setApiKey('openai', process.env.OPENAI_API_KEY);
-                    keysLoaded++;
+Provide compassionate, clear, and actionable guidance. ${domainContext}`
+                        },
+                        {
+                            role: 'user',
+                            content: question
+                        }
+                    ]);
+                    
+                    const answer = response.choices[0].message.content;
+                    console.log(`🌟 ARAYA: ${answer}`);
+                    return answer;
+                } catch (error) {
+                    console.error('❌ ARAYA request failed:', error.message);
+                    return null;
                 }
-                if (process.env.GROQ_API_KEY) {
-                    window.multiAI.setApiKey('groq', process.env.GROQ_API_KEY);
-                    keysLoaded++;
-                }
-                if (process.env.HUGGINGFACE_API_KEY) {
-                    window.multiAI.setApiKey('huggingface', process.env.HUGGINGFACE_API_KEY);
-                    keysLoaded++;
-                }
-            }
+            };
             
-            if (keysLoaded > 0) {
-                console.log(`✅ Loaded ${keysLoaded} API key(s) from storage`);
-            } else {
-                console.log('ℹ️  No API keys configured. Using mock responses.');
-                console.log('   Set keys with: aiSetKey("groq", "gsk_...") or aiSetKey("huggingface", "hf_...")');
-            }
-        }, 200);
-    }
-
-    /**
-     * Show quick start message
-     */
-    function showQuickStart() {
-        setTimeout(() => {
-            if (typeof window.multiAI === 'undefined') return;
+            // Cyclotron search integration shortcut
+            window.searchCyclotron = async function(query) {
+                if (!window.groqAI) {
+                    console.error('❌ AI system not initialized yet. Please wait...');
+                    return null;
+                }
+                
+                try {
+                    const response = await window.groqAI.chat([
+                        {
+                            role: 'system',
+                            content: 'You are searching the Cyclotron knowledge base for Consciousness Revolution. Provide relevant information from the platform\'s documentation, guides, and tools.'
+                        },
+                        {
+                            role: 'user',
+                            content: `Search query: ${query}`
+                        }
+                    ]);
+                    
+                    const results = response.choices[0].message.content;
+                    console.log(`🔍 Cyclotron Results:\n${results}`);
+                    return results;
+                } catch (error) {
+                    console.error('❌ Cyclotron search failed:', error.message);
+                    return null;
+                }
+            };
             
-            console.log('\n🎯 Multi-Provider AI Quick Start:');
-            console.log('');
-            console.log('   📊 Check status:');
-            console.log('      aiStatus()');
-            console.log('');
-            console.log('   🔑 Set API keys (FREE tiers available):');
-            console.log('      aiSetKey("groq", "gsk_...")        // Free: 14,400 req/day');
-            console.log('      aiSetKey("huggingface", "hf_...")  // Free: Rate limited');
-            console.log('      aiSetKey("openai", "sk-...")       // Paid: Best quality');
-            console.log('');
-            console.log('   💬 Chat:');
-            console.log('      await multiAI.chatCompletion([{role:"user", content:"Hello!"}])');
-            console.log('');
-            console.log('   🎨 Generate Images:');
-            console.log('      await multiAI.generateImage("A beautiful sunset")');
-            console.log('');
-            console.log('   🔄 Auto-fallback enabled: Groq → HuggingFace → Mock');
-            console.log('');
-        }, 300);
-    }
-
-    /**
-     * Add provider setup helpers to window
-     */
-    window.setupFreeAI = function() {
-        console.log('\n🆓 Setting up FREE AI providers:\n');
+            // Emit ready event for other scripts
+            window.dispatchEvent(new CustomEvent('multiAIReady', {
+                detail: {
+                    providers: ['groq', 'openai', 'huggingface'],
+                    shortcuts: ['askAI', 'analyzePattern', 'transcribeAudio', 'askARAYA', 'searchCyclotron']
+                }
+            }));
+        };
         
-        console.log('1️⃣  Groq (Fast, Free, Recommended)');
-        console.log('   • Get free API key: https://console.groq.com/keys');
-        console.log('   • Free tier: 14,400 requests per day');
-        console.log('   • Models: Llama 3.3 70B, Mixtral 8x7B, Gemma 2 9B');
-        console.log('   • Setup: aiSetKey("groq", "gsk_YOUR_KEY_HERE")');
-        console.log('');
+        groqInitScript.onerror = function() {
+            console.error('❌ Failed to load GroqAI orchestrator initialization');
+        };
         
-        console.log('2️⃣  HuggingFace (Free, Open Models)');
-        console.log('   • Get free API key: https://huggingface.co/settings/tokens');
-        console.log('   • Free tier: Rate limited (usually sufficient)');
-        console.log('   • Models: Llama, Mistral, Stable Diffusion');
-        console.log('   • Setup: aiSetKey("huggingface", "hf_YOUR_KEY_HERE")');
-        console.log('');
-        
-        console.log('3️⃣  OpenAI (Paid, Best Quality)');
-        console.log('   • Get API key: https://platform.openai.com/api-keys');
-        console.log('   • Paid: $0.001 - $0.06 per 1K tokens');
-        console.log('   • Models: GPT-4, DALL-E 3, Whisper');
-        console.log('   • Setup: aiSetKey("openai", "sk-YOUR_KEY_HERE")');
-        console.log('');
-        
-        console.log('💡 Pro Tip: Set up Groq for fast, free AI! 🚀');
+        document.head.appendChild(groqInitScript);
     };
-
-    // Add UI helper for API key configuration
-    window.showAIConfig = function() {
-        const configHTML = `
-            <div id="ai-config-modal" style="
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                padding: 30px;
-                border-radius: 15px;
-                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-                z-index: 10000;
-                max-width: 500px;
-                color: white;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            ">
-                <h2 style="margin-top: 0; font-size: 24px;">🤖 AI Provider Setup</h2>
-                <p style="opacity: 0.9; margin-bottom: 20px;">Configure free AI providers for this project</p>
-                
-                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-bottom: 15px;">
-                    <h3 style="margin-top: 0; font-size: 16px;">🆓 Groq (Recommended)</h3>
-                    <p style="font-size: 13px; opacity: 0.9; margin: 5px 0;">Free: 14,400 requests/day</p>
-                    <input type="text" id="groq-key" placeholder="gsk_..." style="
-                        width: 100%;
-                        padding: 10px;
-                        border-radius: 5px;
-                        border: none;
-                        margin-top: 10px;
-                        font-family: monospace;
-                    ">
-                    <a href="https://console.groq.com/keys" target="_blank" style="
-                        color: #fff;
-                        font-size: 12px;
-                        text-decoration: underline;
-                        display: block;
-                        margin-top: 5px;
-                    ">Get free Groq API key →</a>
-                </div>
-                
-                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-bottom: 15px;">
-                    <h3 style="margin-top: 0; font-size: 16px;">🤗 HuggingFace</h3>
-                    <p style="font-size: 13px; opacity: 0.9; margin: 5px 0;">Free: Rate limited</p>
-                    <input type="text" id="hf-key" placeholder="hf_..." style="
-                        width: 100%;
-                        padding: 10px;
-                        border-radius: 5px;
-                        border: none;
-                        margin-top: 10px;
-                        font-family: monospace;
-                    ">
-                    <a href="https://huggingface.co/settings/tokens" target="_blank" style="
-                        color: #fff;
-                        font-size: 12px;
-                        text-decoration: underline;
-                        display: block;
-                        margin-top: 5px;
-                    ">Get free HuggingFace token →</a>
-                </div>
-                
-                <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button onclick="window.saveAIConfig()" style="
-                        flex: 1;
-                        background: #10b981;
-                        color: white;
-                        border: none;
-                        padding: 12px;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        font-weight: bold;
-                        font-size: 14px;
-                    ">💾 Save & Activate</button>
-                    <button onclick="document.getElementById('ai-config-modal').remove()" style="
-                        background: rgba(255,255,255,0.2);
-                        color: white;
-                        border: none;
-                        padding: 12px 20px;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        font-size: 14px;
-                    ">Cancel</button>
-                </div>
-                
-                <div id="ai-config-status" style="margin-top: 15px; font-size: 13px;"></div>
-            </div>
-            
-            <div id="ai-config-overlay" onclick="document.getElementById('ai-config-modal').remove(); this.remove();" style="
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0,0,0,0.5);
-                z-index: 9999;
-            "></div>
-        `;
-        
-        const existing = document.getElementById('ai-config-modal');
-        if (existing) existing.remove();
-        
-        document.body.insertAdjacentHTML('beforeend', configHTML);
+    
+    orchestratorScript.onerror = function() {
+        console.error('❌ Failed to load multi-provider orchestrator');
     };
-
-    window.saveAIConfig = function() {
-        const groqKey = document.getElementById('groq-key').value.trim();
-        const hfKey = document.getElementById('hf-key').value.trim();
-        const status = document.getElementById('ai-config-status');
-        
-        // Check if multiAI is available
-        if (!window.multiAI || typeof window.multiAI.setApiKey !== 'function') {
-            status.innerHTML = `❌ Error: Multi-Provider AI not loaded yet. Please wait and try again.`;
-            status.style.color = '#ef4444';
-            return;
-        }
-        
-        let saved = 0;
-        let errors = [];
-        
-        if (groqKey) {
-            try {
-                window.multiAI.setApiKey('groq', groqKey);
-                saved++;
-            } catch (e) {
-                errors.push('Groq: ' + e.message);
-            }
-        }
-        
-        if (hfKey) {
-            try {
-                window.multiAI.setApiKey('huggingface', hfKey);
-                saved++;
-            } catch (e) {
-                errors.push('HuggingFace: ' + e.message);
-            }
-        }
-        
-        if (saved > 0) {
-            status.innerHTML = `✅ Saved ${saved} API key(s)! You can now use AI features.`;
-            status.style.color = '#10b981';
-            
-            setTimeout(() => {
-                document.getElementById('ai-config-modal').remove();
-                document.getElementById('ai-config-overlay').remove();
-            }, 2000);
-        } else if (errors.length > 0) {
-            status.innerHTML = `❌ Errors: ${errors.join(', ')}`;
-            status.style.color = '#ef4444';
-        } else {
-            status.innerHTML = `ℹ️  Please enter at least one API key`;
-            status.style.color = '#f59e0b';
-        }
-    };
-
+    
+    document.head.appendChild(orchestratorScript);
 })();
