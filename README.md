@@ -8,6 +8,20 @@
 
 ---
 
+## 🔄 Repository Merge Status
+
+This overview repository is ready to merge with the main [consciousness-revolution](https://github.com/overkor-tek/consciousness-revolution) repository. 
+
+**Merge Documentation:**
+- 📋 [MERGE_PLAN.md](MERGE_PLAN.md) - Complete 7-phase merge strategy
+- ⚡ [MERGE_QUICKSTART.md](MERGE_QUICKSTART.md) - Quick start guide for merging
+- 🔧 [MERGE_CONFLICT_RESOLUTION.md](MERGE_CONFLICT_RESOLUTION.md) - Detailed conflict resolution guide
+- 🤖 [merge-main-repo.sh](merge-main-repo.sh) - Automated merge script
+
+**What Will Be Merged:** ~1,140 files including ember-terminal, GemBotMemory2025, city-3d, mandem.os, and more.
+
+---
+
 ## 🤖 AI-Powered Platform
 
 Consciousness Revolution now includes **Multi-Provider AI Orchestration** with **FREE** GroqAI integration (14,400 requests/day).
